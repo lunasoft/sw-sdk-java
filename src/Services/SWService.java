@@ -4,10 +4,27 @@ package Services;
  * Created by asalvio on 08/02/2017.
  */
 public  abstract class SWService {
-    public String Token;
-    public String User;
-    public String Password;
-    public String URI;
+    private String Token;
+    private String User;
+    private String Password;
+
+    public String getToken() {
+        return Token;
+    }
+
+    public String getUser() {
+        return User;
+    }
+
+    public String getPassword() {
+        return Password;
+    }
+
+    public String getURI() {
+        return URI;
+    }
+
+    private String URI;
 
     protected SWService(String user, String password, String URI) {
         User = user;

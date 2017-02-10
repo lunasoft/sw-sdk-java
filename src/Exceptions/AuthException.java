@@ -4,14 +4,14 @@ package Exceptions;
  * Created by asalvio on 08/02/2017.
  */
 public class AuthException extends Exception {
-    public String HttpStatusCode;
+    public int HttpStatusCode;
     public String ErrorMSG;
 
-    public String getHttpStatusCode() {
+    public int getHttpStatusCode() {
         return HttpStatusCode;
     }
 
-    public void setHttpStatusCode(String httpStatusCode) {
+    public void setHttpStatusCode(int httpStatusCode) {
         HttpStatusCode = httpStatusCode;
     }
 
@@ -23,7 +23,7 @@ public class AuthException extends Exception {
         ErrorMSG = errorMSG;
     }
 
-    public AuthException(String httpStatusCode, String errorMSG) {
+    public AuthException(int httpStatusCode, String errorMSG) {
         super(errorMSG);
         HttpStatusCode = httpStatusCode;
         ErrorMSG = errorMSG;

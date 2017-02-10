@@ -14,8 +14,8 @@ public class SWAuthenticationService extends SWService {
     }
 
 
-    public IResponse getToken() {
-        AuthOptionsRequest settings = new AuthOptionsRequest(URI,User,Password);
+    public IResponse Token() {
+        AuthOptionsRequest settings = new AuthOptionsRequest(getURI(),getUser(),getPassword());
         AuthRequest req = new AuthRequest();
         return req.sendRequest(settings);
 

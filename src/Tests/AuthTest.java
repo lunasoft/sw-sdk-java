@@ -11,7 +11,7 @@ public class AuthTest {
     public static void main(String[] args){
 
         SWAuthenticationService auth = new SWAuthenticationService("demo","12345678A","http://swservicestest.sw.com.mx/seguridad/autenticar");
-        AuthResponse response = (AuthResponse) auth.getToken();
+        AuthResponse response = (AuthResponse) auth.Token();
         System.out.println(response.HttpStatusCode);
         System.out.println(response.Msg);
     }

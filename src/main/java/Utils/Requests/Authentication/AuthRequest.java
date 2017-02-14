@@ -26,14 +26,13 @@ public class AuthRequest implements IRequestor {
     @Override
     public IResponse sendRequest(IRequest request) throws GenaralException {
         if (request.URI.isEmpty()){
-            return new AuthResponse(500,"URL VACIA");
+            throw new GenaralException(500,"URL VACIA");
         }
         try {
             HttpResponse<JsonNode> response = Unirest.post(request.URI)
                     .header("usuario",request.User)
                     .header("contrasena",request.Password).asJson();
             JSONObject parser = new JSONObject(response.getBody().toString());
-
 
             return (IResponse) JSendFactory.response(
                     parser.getJSONObject("status").toString(),

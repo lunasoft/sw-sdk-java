@@ -1,0 +1,14 @@
+Exceptions
+Services
+Services.Authentication
+Services.Cancelation
+Services.Stamp
+Tests
+Tests.Authentication
+Tests.Stamp
+Utils
+Utils.Requests
+Utils.Requests.Authentication
+Utils.Requests.Cancelation
+Utils.Requests.Stamp
+Utils.Responses

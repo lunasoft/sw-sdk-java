@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>mx.com.sw.services</groupId>
+  <artifactId>SW-JAVA</artifactId>
+  <versioning>
+    <versions>
+      <version>1.0-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20170215030029</lastUpdated>
+  </versioning>
+</metadata>

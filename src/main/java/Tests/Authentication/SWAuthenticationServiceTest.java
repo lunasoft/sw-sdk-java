@@ -2,7 +2,6 @@ package Tests.Authentication;
 
 import Services.Authentication.SWAuthenticationService;
 import junit.framework.TestCase;
-import org.junit.Test;
 
 /**
  * Created by asalvio on 10/02/2017.

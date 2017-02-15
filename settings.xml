@@ -1,0 +1,11 @@
+<settings>
+    <localRepository>C:\Users\asalvio\Documents\WORKSPACE\JAVA\SW-JAVA</localRepository>
+    <servers>
+        <server>
+            <id>ossrh</id>
+            <username>hermes.jimenez</username>
+            <password>2995967h</password>
+        </server>
+    </servers>
+
+</settings>

@@ -9,6 +9,7 @@ import Utils.Requests.Authentication.AuthOptionsRequest;
 import Utils.Requests.Authentication.AuthRequest;
 import Utils.Requests.Stamp.StampOptionsRequest;
 import Utils.Requests.Stamp.StampRequest;
+import Utils.Requests.Stamp.StampRequestDummy;
 import Utils.Responses.AuthResponse;
 import Utils.Responses.IResponse;
 
@@ -60,6 +61,11 @@ public class SWStampService extends SWService {
         //MAKE STAMP PROCESS, CUSTOMER ALREADY HAS TOKEN
 
         StampOptionsRequest settings = new StampOptionsRequest(getToken(),getURI()+version,xml,version);
+        String dum = settings.URI.split("-")[0];
+        if (dum.equalsIgnoreCase("d")){
+            StampRequestDummy req = new StampRequestDummy();
+            return req.sendRequest(settings);
+        }
         StampRequest req = new StampRequest();
         return req.sendRequest(settings);
 
@@ -108,6 +114,12 @@ public class SWStampService extends SWService {
         //MAKE STAMP PROCESS, CUSTOMER ALREADY HAS TOKEN
 
         StampOptionsRequest settings = new StampOptionsRequest(getToken(),getURI()+version,xmlProcess,version);
+
+            String dum = settings.URI.split("-")[0];
+            if (dum.equalsIgnoreCase("d")){
+                StampRequestDummy req = new StampRequestDummy();
+                return req.sendRequest(settings);
+            }
         StampRequest req = new StampRequest();
         return req.sendRequest(settings);
 

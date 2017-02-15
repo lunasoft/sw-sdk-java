@@ -7,7 +7,155 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f0057f7-8acf-4b8e-8dff-f3ce89d9cf81" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/SW-JAVA-1.0-SNAPSHOT.jar.asc" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/SW-JAVA-1.0-SNAPSHOT-javadoc.jar" afterPath="$PROJECT_DIR$/target/SW-JAVA-1.0-SNAPSHOT-javadoc.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/SW-JAVA-1.0-SNAPSHOT-sources.jar" afterPath="$PROJECT_DIR$/target/SW-JAVA-1.0-SNAPSHOT-sources.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/SW-JAVA-1.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/target/SW-JAVA-1.0-SNAPSHOT.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0-SNAPSHOT/SW-JAVA-1.0-SNAPSHOT-javadoc.jar" afterPath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0-SNAPSHOT/SW-JAVA-1.0-SNAPSHOT-javadoc.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0-SNAPSHOT/SW-JAVA-1.0-SNAPSHOT-sources.jar" afterPath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0-SNAPSHOT/SW-JAVA-1.0-SNAPSHOT-sources.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0-SNAPSHOT/SW-JAVA-1.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0-SNAPSHOT/SW-JAVA-1.0-SNAPSHOT.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/Tests/Stamp/SWStampServiceTest.class" afterPath="$PROJECT_DIR$/target/test-classes/Tests/Stamp/SWStampServiceTest.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/SW-JAVA-1.0-SNAPSHOT-javadoc.jar.asc" afterPath="$PROJECT_DIR$/target/SW-JAVA-1.0-SNAPSHOT-javadoc.jar.asc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/SW-JAVA-1.0-SNAPSHOT-sources.jar.asc" afterPath="$PROJECT_DIR$/target/SW-JAVA-1.0-SNAPSHOT-sources.jar.asc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/SW-JAVA-1.0-SNAPSHOT.pom" afterPath="$PROJECT_DIR$/target/SW-JAVA-1.0-SNAPSHOT.pom" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/SW-JAVA-1.0-SNAPSHOT.pom.asc" afterPath="$PROJECT_DIR$/target/SW-JAVA-1.0-SNAPSHOT.pom.asc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Exceptions/AuthException.html" afterPath="$PROJECT_DIR$/target/apidocs/Exceptions/AuthException.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Exceptions/GenaralException.html" afterPath="$PROJECT_DIR$/target/apidocs/Exceptions/GenaralException.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Exceptions/class-use/AuthException.html" afterPath="$PROJECT_DIR$/target/apidocs/Exceptions/class-use/AuthException.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Exceptions/class-use/GenaralException.html" afterPath="$PROJECT_DIR$/target/apidocs/Exceptions/class-use/GenaralException.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Exceptions/package-frame.html" afterPath="$PROJECT_DIR$/target/apidocs/Exceptions/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Exceptions/package-summary.html" afterPath="$PROJECT_DIR$/target/apidocs/Exceptions/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Exceptions/package-tree.html" afterPath="$PROJECT_DIR$/target/apidocs/Exceptions/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Exceptions/package-use.html" afterPath="$PROJECT_DIR$/target/apidocs/Exceptions/package-use.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Services/Authentication/SWAuthenticationService.html" afterPath="$PROJECT_DIR$/target/apidocs/Services/Authentication/SWAuthenticationService.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Services/Authentication/class-use/SWAuthenticationService.html" afterPath="$PROJECT_DIR$/target/apidocs/Services/Authentication/class-use/SWAuthenticationService.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Services/Authentication/package-frame.html" afterPath="$PROJECT_DIR$/target/apidocs/Services/Authentication/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Services/Authentication/package-summary.html" afterPath="$PROJECT_DIR$/target/apidocs/Services/Authentication/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Services/Authentication/package-tree.html" afterPath="$PROJECT_DIR$/target/apidocs/Services/Authentication/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Services/Authentication/package-use.html" afterPath="$PROJECT_DIR$/target/apidocs/Services/Authentication/package-use.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Services/Cancelation/SWCancelationService.html" afterPath="$PROJECT_DIR$/target/apidocs/Services/Cancelation/SWCancelationService.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Services/Cancelation/class-use/SWCancelationService.html" afterPath="$PROJECT_DIR$/target/apidocs/Services/Cancelation/class-use/SWCancelationService.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Services/Cancelation/package-frame.html" afterPath="$PROJECT_DIR$/target/apidocs/Services/Cancelation/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Services/Cancelation/package-summary.html" afterPath="$PROJECT_DIR$/target/apidocs/Services/Cancelation/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Services/Cancelation/package-tree.html" afterPath="$PROJECT_DIR$/target/apidocs/Services/Cancelation/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Services/Cancelation/package-use.html" afterPath="$PROJECT_DIR$/target/apidocs/Services/Cancelation/package-use.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Services/SWService.html" afterPath="$PROJECT_DIR$/target/apidocs/Services/SWService.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Services/Stamp/SWStampService.html" afterPath="$PROJECT_DIR$/target/apidocs/Services/Stamp/SWStampService.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Services/Stamp/class-use/SWStampService.html" afterPath="$PROJECT_DIR$/target/apidocs/Services/Stamp/class-use/SWStampService.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Services/Stamp/package-frame.html" afterPath="$PROJECT_DIR$/target/apidocs/Services/Stamp/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Services/Stamp/package-summary.html" afterPath="$PROJECT_DIR$/target/apidocs/Services/Stamp/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Services/Stamp/package-tree.html" afterPath="$PROJECT_DIR$/target/apidocs/Services/Stamp/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Services/Stamp/package-use.html" afterPath="$PROJECT_DIR$/target/apidocs/Services/Stamp/package-use.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Services/class-use/SWService.html" afterPath="$PROJECT_DIR$/target/apidocs/Services/class-use/SWService.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Services/package-frame.html" afterPath="$PROJECT_DIR$/target/apidocs/Services/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Services/package-summary.html" afterPath="$PROJECT_DIR$/target/apidocs/Services/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Services/package-tree.html" afterPath="$PROJECT_DIR$/target/apidocs/Services/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Services/package-use.html" afterPath="$PROJECT_DIR$/target/apidocs/Services/package-use.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Tests/Authentication/AuthTest.html" afterPath="$PROJECT_DIR$/target/apidocs/Tests/Authentication/AuthTest.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Tests/Authentication/class-use/AuthTest.html" afterPath="$PROJECT_DIR$/target/apidocs/Tests/Authentication/class-use/AuthTest.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Tests/Authentication/package-frame.html" afterPath="$PROJECT_DIR$/target/apidocs/Tests/Authentication/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Tests/Authentication/package-summary.html" afterPath="$PROJECT_DIR$/target/apidocs/Tests/Authentication/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Tests/Authentication/package-tree.html" afterPath="$PROJECT_DIR$/target/apidocs/Tests/Authentication/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Tests/Authentication/package-use.html" afterPath="$PROJECT_DIR$/target/apidocs/Tests/Authentication/package-use.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Tests/Helpers.html" afterPath="$PROJECT_DIR$/target/apidocs/Tests/Helpers.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Tests/Stamp/SWStampServiceTest.html" afterPath="$PROJECT_DIR$/target/apidocs/Tests/Stamp/SWStampServiceTest.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Tests/Stamp/StampTest.html" afterPath="$PROJECT_DIR$/target/apidocs/Tests/Stamp/StampTest.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Tests/Stamp/class-use/SWStampServiceTest.html" afterPath="$PROJECT_DIR$/target/apidocs/Tests/Stamp/class-use/SWStampServiceTest.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Tests/Stamp/class-use/StampTest.html" afterPath="$PROJECT_DIR$/target/apidocs/Tests/Stamp/class-use/StampTest.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Tests/Stamp/package-frame.html" afterPath="$PROJECT_DIR$/target/apidocs/Tests/Stamp/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Tests/Stamp/package-summary.html" afterPath="$PROJECT_DIR$/target/apidocs/Tests/Stamp/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Tests/Stamp/package-tree.html" afterPath="$PROJECT_DIR$/target/apidocs/Tests/Stamp/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Tests/Stamp/package-use.html" afterPath="$PROJECT_DIR$/target/apidocs/Tests/Stamp/package-use.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Tests/class-use/Helpers.html" afterPath="$PROJECT_DIR$/target/apidocs/Tests/class-use/Helpers.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Tests/package-frame.html" afterPath="$PROJECT_DIR$/target/apidocs/Tests/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Tests/package-summary.html" afterPath="$PROJECT_DIR$/target/apidocs/Tests/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Tests/package-tree.html" afterPath="$PROJECT_DIR$/target/apidocs/Tests/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Tests/package-use.html" afterPath="$PROJECT_DIR$/target/apidocs/Tests/package-use.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Constants.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Constants.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/EncoderHelper.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/EncoderHelper.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Authentication/AuthOptionsRequest.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Authentication/AuthOptionsRequest.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Authentication/AuthRequest.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Authentication/AuthRequest.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Authentication/class-use/AuthOptionsRequest.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Authentication/class-use/AuthOptionsRequest.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Authentication/class-use/AuthRequest.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Authentication/class-use/AuthRequest.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Authentication/package-frame.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Authentication/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Authentication/package-summary.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Authentication/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Authentication/package-tree.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Authentication/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Authentication/package-use.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Authentication/package-use.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Cancelation/CancelationOptionsRequest.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Cancelation/CancelationOptionsRequest.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Cancelation/CancelationRequest.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Cancelation/CancelationRequest.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Cancelation/class-use/CancelationOptionsRequest.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Cancelation/class-use/CancelationOptionsRequest.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Cancelation/class-use/CancelationRequest.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Cancelation/class-use/CancelationRequest.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Cancelation/package-frame.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Cancelation/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Cancelation/package-summary.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Cancelation/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Cancelation/package-tree.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Cancelation/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Cancelation/package-use.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Cancelation/package-use.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Requests/IRequest.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Requests/IRequest.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Requests/IRequestor.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Requests/IRequestor.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Stamp/StampOptionsRequest.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Stamp/StampOptionsRequest.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Stamp/StampRequest.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Stamp/StampRequest.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Stamp/class-use/StampOptionsRequest.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Stamp/class-use/StampOptionsRequest.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Stamp/class-use/StampRequest.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Stamp/class-use/StampRequest.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Stamp/package-frame.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Stamp/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Stamp/package-summary.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Stamp/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Stamp/package-tree.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Stamp/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Stamp/package-use.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Requests/Stamp/package-use.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Requests/class-use/IRequest.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Requests/class-use/IRequest.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Requests/class-use/IRequestor.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Requests/class-use/IRequestor.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Requests/package-frame.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Requests/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Requests/package-summary.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Requests/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Requests/package-tree.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Requests/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Requests/package-use.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Requests/package-use.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Responses/AuthResponse.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Responses/AuthResponse.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Responses/CancelationResponse.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Responses/CancelationResponse.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Responses/FailureResponse.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Responses/FailureResponse.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Responses/IJSend.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Responses/IJSend.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Responses/IResponse.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Responses/IResponse.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Responses/JSendFactory.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Responses/JSendFactory.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Responses/StampResponse.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Responses/StampResponse.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Responses/SuccessResponse.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Responses/SuccessResponse.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Responses/class-use/AuthResponse.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Responses/class-use/AuthResponse.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Responses/class-use/CancelationResponse.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Responses/class-use/CancelationResponse.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Responses/class-use/FailureResponse.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Responses/class-use/FailureResponse.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Responses/class-use/IJSend.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Responses/class-use/IJSend.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Responses/class-use/IResponse.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Responses/class-use/IResponse.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Responses/class-use/JSendFactory.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Responses/class-use/JSendFactory.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Responses/class-use/StampResponse.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Responses/class-use/StampResponse.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Responses/class-use/SuccessResponse.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Responses/class-use/SuccessResponse.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Responses/package-frame.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Responses/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Responses/package-summary.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Responses/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Responses/package-tree.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Responses/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/Responses/package-use.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/Responses/package-use.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/class-use/Constants.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/class-use/Constants.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/class-use/EncoderHelper.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/class-use/EncoderHelper.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/package-frame.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/package-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/package-summary.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/package-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/package-tree.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/package-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Utils/package-use.html" afterPath="$PROJECT_DIR$/target/apidocs/Utils/package-use.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/allclasses-frame.html" afterPath="$PROJECT_DIR$/target/apidocs/allclasses-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/allclasses-noframe.html" afterPath="$PROJECT_DIR$/target/apidocs/allclasses-noframe.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/constant-values.html" afterPath="$PROJECT_DIR$/target/apidocs/constant-values.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/deprecated-list.html" afterPath="$PROJECT_DIR$/target/apidocs/deprecated-list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/help-doc.html" afterPath="$PROJECT_DIR$/target/apidocs/help-doc.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/index-all.html" afterPath="$PROJECT_DIR$/target/apidocs/index-all.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/index.html" afterPath="$PROJECT_DIR$/target/apidocs/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/overview-frame.html" afterPath="$PROJECT_DIR$/target/apidocs/overview-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/overview-summary.html" afterPath="$PROJECT_DIR$/target/apidocs/overview-summary.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/overview-tree.html" afterPath="$PROJECT_DIR$/target/apidocs/overview-tree.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/serialized-form.html" afterPath="$PROJECT_DIR$/target/apidocs/serialized-form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/.index" afterPath="$PROJECT_DIR$/target/nexus-staging/deferred/.index" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0-SNAPSHOT/SW-JAVA-1.0-SNAPSHOT-javadoc.jar.asc" afterPath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0-SNAPSHOT/SW-JAVA-1.0-SNAPSHOT-javadoc.jar.asc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0-SNAPSHOT/SW-JAVA-1.0-SNAPSHOT-sources.jar.asc" afterPath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0-SNAPSHOT/SW-JAVA-1.0-SNAPSHOT-sources.jar.asc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0-SNAPSHOT/SW-JAVA-1.0-SNAPSHOT.jar.asc" afterPath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0-SNAPSHOT/SW-JAVA-1.0-SNAPSHOT.jar.asc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0-SNAPSHOT/SW-JAVA-1.0-SNAPSHOT.pom" afterPath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0-SNAPSHOT/SW-JAVA-1.0-SNAPSHOT.pom" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0-SNAPSHOT/SW-JAVA-1.0-SNAPSHOT.pom.asc" afterPath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0-SNAPSHOT/SW-JAVA-1.0-SNAPSHOT.pom.asc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0-SNAPSHOT/maven-metadata-nexus.xml" afterPath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0-SNAPSHOT/maven-metadata-nexus.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/maven-metadata-nexus.xml" afterPath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/maven-metadata-nexus.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-Tests.Authentication.SWAuthenticationServiceTest.xml" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-Tests.Authentication.SWAuthenticationServiceTest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-Tests.Stamp.SWStampServiceTest.xml" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-Tests.Stamp.SWStampServiceTest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/Tests.Authentication.SWAuthenticationServiceTest.txt" afterPath="$PROJECT_DIR$/target/surefire-reports/Tests.Authentication.SWAuthenticationServiceTest.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/Tests.Stamp.SWStampServiceTest.txt" afterPath="$PROJECT_DIR$/target/surefire-reports/Tests.Stamp.SWStampServiceTest.txt" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -49,8 +197,8 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
-              <caret line="112" column="21" lean-forward="false" selection-start-line="112" selection-start-column="21" selection-end-line="112" selection-end-column="21" />
+            <state relative-caret-position="136">
+              <caret line="8" column="18" lean-forward="false" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -746,7 +894,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -768,8 +916,8 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32683983" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32683983" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26599148" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1114,7 +1262,7 @@
         <state relative-caret-position="255">
           <caret line="15" column="70" lean-forward="false" selection-start-line="15" selection-start-column="70" selection-end-line="15" selection-end-column="70" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1159,8 +1307,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="112" column="21" lean-forward="false" selection-start-line="112" selection-start-column="21" selection-end-line="112" selection-end-column="21" />
+        <state relative-caret-position="136">
+          <caret line="8" column="18" lean-forward="false" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
           <folding />
         </state>
       </provider>

@@ -7,18 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f0057f7-8acf-4b8e-8dff-f3ce89d9cf81" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/Tests/Authentication/SWAuthenticationServiceTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/Tests/Authentication/SWAuthenticationServiceTest.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Services/Authentication/SWAuthenticationService.class" afterPath="$PROJECT_DIR$/target/classes/Services/Authentication/SWAuthenticationService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Services/Stamp/SWStampService.class" afterPath="$PROJECT_DIR$/target/classes/Services/Stamp/SWStampService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Tests/Authentication/AuthTest.class" afterPath="$PROJECT_DIR$/target/classes/Tests/Authentication/AuthTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Tests/Helpers.class" afterPath="$PROJECT_DIR$/target/classes/Tests/Helpers.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SW-JAVA.iml" afterPath="$PROJECT_DIR$/SW-JAVA.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Services/Authentication/SWAuthenticationService.java" afterPath="$PROJECT_DIR$/src/main/java/Services/Authentication/SWAuthenticationService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Services/Stamp/SWStampService.java" afterPath="$PROJECT_DIR$/src/main/java/Services/Stamp/SWStampService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Tests/Authentication/AuthTest.java" afterPath="$PROJECT_DIR$/src/main/java/Tests/Authentication/AuthTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -60,8 +49,8 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="22" column="42" lean-forward="false" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
+            <state relative-caret-position="398">
+              <caret line="112" column="21" lean-forward="false" selection-start-line="112" selection-start-column="21" selection-end-line="112" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -211,11 +200,11 @@
         <option value="$PROJECT_DIR$/src/main/java/Tests/Authentication/AuthTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/Utils/Requests/Authentication/AuthRequestDummy.java" />
         <option value="$PROJECT_DIR$/src/test/java/Tests/Authentication/SWAuthenticationServiceTest.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/Services/Stamp/SWStampService.java" />
         <option value="$PROJECT_DIR$/src/test/java/Tests/Authentication/SWStampServiceTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/Utils/Requests/Stamp/StampRequestDummy.java" />
         <option value="$PROJECT_DIR$/src/test/java/Tests/Stamp/SWStampServiceTest.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -781,7 +770,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32683983" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26599148" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26599148" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1170,8 +1159,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="22" column="42" lean-forward="false" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
+        <state relative-caret-position="398">
+          <caret line="112" column="21" lean-forward="false" selection-start-line="112" selection-start-column="21" selection-end-line="112" selection-end-column="21" />
           <folding />
         </state>
       </provider>

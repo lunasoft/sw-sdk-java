@@ -24,7 +24,7 @@ public class GenaralException extends Exception {
     }
 
     public GenaralException(int httpStatusCode, String errorMSG) {
-        super(httpStatusCode+"---->"+errorMSG);
+        super(httpStatusCode+" ----> "+errorMSG);
         HttpStatusCode = httpStatusCode;
         ErrorMSG = errorMSG;
     }

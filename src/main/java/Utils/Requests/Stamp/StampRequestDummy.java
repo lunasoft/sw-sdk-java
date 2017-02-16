@@ -14,12 +14,14 @@ public class StampRequestDummy implements IRequestor{
     @Override
     public IResponse sendRequest(IRequest request) throws GenaralException {
         String dummy_case = request.URI.split("-")[1].toString();
-        switch (dummy_case){
-            case "successv1":
+        String dcase = dummy_case.split("/")[0].toString();
+
+        switch (dcase){
+            case "success":
                 JSONObject parser = new JSONObject();
                 JSONObject data = new JSONObject();
                 parser.put("status","success");
-                parser.put("data",data.put("tfd","xml o complemento"));
+                parser.put("data",data.put("tfd","correcto"));
 
                 JSONObject res = new JSONObject(parser.toString());
 
@@ -28,7 +30,7 @@ public class StampRequestDummy implements IRequestor{
                         res.getString("status").toString().equals("error") ? res.getString("message").toString() : res.getJSONObject("data").toString(),
                         res.getString("status").toString().equals("error") ? Integer.parseInt(res.getString("code").toString()) : 0
                 );
-            case "failv1":
+            case "fail":
                 JSONObject parserfail = new JSONObject();
                 JSONObject datafail = new JSONObject();
                 parserfail.put("status","fail");
@@ -39,7 +41,7 @@ public class StampRequestDummy implements IRequestor{
                         res2.getString("status").toString().equals("error") ? res2.getString("message").toString() : res2.getString("data").toString(),
                         res2.getString("status").toString().equals("error") ? Integer.parseInt(res2.getString("code").toString()) : 0
                 );
-            case "errorv1":
+            case "error":
                 JSONObject parsererror = new JSONObject();
                 parsererror.put("status","error");
                 parsererror.put("message","Unable to communicate with database");
@@ -55,12 +57,12 @@ public class StampRequestDummy implements IRequestor{
                 parsererror2.put("status","error");
                 parsererror2.put("dara","");
                 parsererror2.put("message","Unable to communicate with database");
-                parsererror2.put("code","Tfd-500");
+                parsererror2.put("code","500");
                 res = new JSONObject(parsererror2.toString());
                 return (IResponse) JSendFactory.response(
                         res.getString("status").toString(),
-                        res.getString("status").toString().equals("fail") ? res.getString("message").toString() : res.getString("data").toString(),
-                        res.getString("status").toString().equals("fail") ? Integer.parseInt(res.getString("code").toString()) : 0
+                        res.getString("status").toString().equals("error") ? res.getString("message").toString() : res.getString("data").toString(),
+                        res.getString("status").toString().equals("error") ? Integer.parseInt(res.getString("code").toString()) : 0
                 );
         }
 

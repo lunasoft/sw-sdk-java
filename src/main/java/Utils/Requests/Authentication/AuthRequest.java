@@ -25,19 +25,21 @@ public class AuthRequest implements IRequestor {
 
     @Override
     public IResponse sendRequest(IRequest request) throws GenaralException {
+
         if (request.URI.isEmpty()){
             throw new GenaralException(500,"URL VACIA");
         }
         try {
+
             HttpResponse<JsonNode> response = Unirest.post(request.URI)
                     .header("usuario",request.User)
                     .header("contrasena",request.Password).asJson();
             JSONObject parser = new JSONObject(response.getBody().toString());
 
             return (IResponse) JSendFactory.response(
-                    parser.getJSONObject("status").toString(),
-                    parser.getJSONObject("status").toString().equals("fail") ? parser.getJSONObject("message").toString() : parser.getJSONObject("data").toString(),
-                    parser.getJSONObject("status").toString().equals("fail") ? Integer.parseInt(parser.getJSONObject("code").toString()) : null
+                    parser.getString("status").toString(),
+                    parser.getString("status").toString().equals("error") ? parser.getString("message").toString() : parser.getString("data").toString(),
+                    response.getStatus()
             );
 
 
@@ -47,7 +49,7 @@ public class AuthRequest implements IRequestor {
             throw new GenaralException(500,"SERVIDOR INACTIVO");
         }
         catch(JSONException e){
-            return new AuthResponse(500,e.getMessage());
+            throw new GenaralException(500,e.getMessage());
         }
 
 

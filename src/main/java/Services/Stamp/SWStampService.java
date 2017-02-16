@@ -14,9 +14,8 @@ import Utils.Responses.AuthResponse;
 import Utils.Responses.IResponse;
 
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
+import java.net.MalformedURLException;
 
 
 /**
@@ -49,19 +48,20 @@ public class SWStampService extends SWService {
             AuthRequest req = new AuthRequest();
             AuthResponse res = (AuthResponse) req.sendRequest(settings);
             if (res.HttpStatusCode==200){
-                setToken(res.Msg);
+                setToken(res.Data);
             }
             else{
                 //CUSTOMER HASN'T TOKEN, AND USER AND PASSWORD ARE BAD--> WE CANT' DO ANYTHING --> THROW EXCEPTION
-                throw new AuthException(res.HttpStatusCode,res.Msg);
+                throw new AuthException(res.HttpStatusCode,res.Data);
             }
 
 
         }
         //MAKE STAMP PROCESS, CUSTOMER ALREADY HAS TOKEN
 
-        StampOptionsRequest settings = new StampOptionsRequest(getToken(),getURI()+version,xml,version);
+        StampOptionsRequest settings = new StampOptionsRequest(getToken(),getURI(),xml,version);
         String dum = settings.URI.split("-")[0];
+        System.out.println(dum);
         if (dum.equalsIgnoreCase("d")){
             StampRequestDummy req = new StampRequestDummy();
             return req.sendRequest(settings);
@@ -101,11 +101,11 @@ public class SWStampService extends SWService {
             AuthRequest req = new AuthRequest();
             AuthResponse res = (AuthResponse) req.sendRequest(settings);
             if (res.HttpStatusCode==200){
-                setToken(res.Msg);
+                setToken(res.Data);
             }
             else{
                 //CUSTOMER HASN'T TOKEN, AND USER AND PASSWORD ARE BAD--> WE CANT' DO ANYTHING --> THROW EXCEPTION
-                throw new AuthException(res.HttpStatusCode,res.Msg);
+                throw new AuthException(res.HttpStatusCode,res.Data);
             }
 
 
@@ -113,9 +113,10 @@ public class SWStampService extends SWService {
 
         //MAKE STAMP PROCESS, CUSTOMER ALREADY HAS TOKEN
 
-        StampOptionsRequest settings = new StampOptionsRequest(getToken(),getURI()+version,xmlProcess,version);
+        StampOptionsRequest settings = new StampOptionsRequest(getToken(),getURI(),xmlProcess,version);
 
             String dum = settings.URI.split("-")[0];
+            System.out.println(dum);
             if (dum.equalsIgnoreCase("d")){
                 StampRequestDummy req = new StampRequestDummy();
                 return req.sendRequest(settings);
@@ -123,8 +124,10 @@ public class SWStampService extends SWService {
         StampRequest req = new StampRequest();
         return req.sendRequest(settings);
 
-        }catch(Exception e){
-            throw new GenaralException(500,e.getMessage());
+        }catch (FileNotFoundException e) {
+            throw new GenaralException(500,"ERROR AL LEER ARCHIVO");
+        } catch (IOException e) {
+            throw new GenaralException(500,"ERROR AL LEER ARCHIVO");
         }
 
     }

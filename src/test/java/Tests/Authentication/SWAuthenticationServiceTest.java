@@ -13,7 +13,7 @@ public class SWAuthenticationServiceTest extends TestCase {
 
     public  void testToken() throws Exception {
         SWAuthenticationService auth;
-        auth = new SWAuthenticationService("demo","12345678A","http://swservicestest.azurewebsites.net");
+        auth = new SWAuthenticationService("demo","123456789","http://swservicestest.azurewebsites.net");
         IResponse response;
         response =  auth.Token();
         System.out.println(response.Status);

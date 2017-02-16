@@ -18,7 +18,9 @@ public class AuthRequestDummy implements IRequestor {
     @Override
     public IResponse sendRequest(IRequest request) throws GenaralException {
         String dummy_case = request.URI.split("-")[1].toString();
-        switch (dummy_case){
+        String dcase = dummy_case.split("/")[0].toString();
+
+        switch (dcase){
             case "success":
             JSONObject parser = new JSONObject();
             JSONObject data = new JSONObject();
@@ -64,8 +66,8 @@ public class AuthRequestDummy implements IRequestor {
                 res = new JSONObject(parsererror2.toString());
                 return (IResponse) JSendFactory.response(
                         res.getString("status").toString(),
-                        res.getString("status").toString().equals("fail") ? res.getString("message").toString() : res.getString("data").toString(),
-                        res.getString("status").toString().equals("fail") ? Integer.parseInt(res.getString("code").toString()) : 0
+                        res.getString("status").toString().equals("error") ? res.getString("message").toString() : res.getString("data").toString(),
+                        res.getString("status").toString().equals("error") ? Integer.parseInt(res.getString("code").toString()) : 0
                 );
         }
 

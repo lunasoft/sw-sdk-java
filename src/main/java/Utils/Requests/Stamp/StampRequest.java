@@ -30,7 +30,7 @@ public class StampRequest implements IRequestor {
             bw.write(xmlStr);
             bw.close();
             tempFile.deleteOnExit();
-            System.out.println(request.URI);
+
             HttpResponse<JsonNode> response = Unirest.post(request.URI)
                     .header("Authorization",request.Token)
 

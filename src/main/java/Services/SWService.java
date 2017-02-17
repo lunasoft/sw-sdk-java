@@ -41,4 +41,12 @@ public  abstract class SWService {
     public void setToken(String token) {
         Token = token;
     }
+
+    public void setUser(String user) {
+        User = user;
+    }
+
+    public void setPassword(String password) {
+        Password = password;
+    }
 }

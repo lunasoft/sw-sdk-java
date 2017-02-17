@@ -7,6 +7,7 @@ import Utils.Constants;
 import Utils.EncoderHelper;
 import Utils.Requests.Authentication.AuthOptionsRequest;
 import Utils.Requests.Authentication.AuthRequest;
+import Utils.Requests.Authentication.AuthSoapRequest;
 import Utils.Requests.Stamp.StampOptionsRequest;
 import Utils.Requests.Stamp.StampRequest;
 import Utils.Requests.Stamp.StampRequestDummy;
@@ -44,9 +45,10 @@ public class SWStampService extends SWService {
             }
 
             //CUSTOMER HASN'T TOKEN, BUT HAS USER AND PASSWORD --> AUTH,GENERATE TOKEN AND SET TOKEN IN GLOBAL SETTINGS
+            // Temporaly changes to soap
             AuthOptionsRequest settings = new AuthOptionsRequest(Constants.BASE_PATH+Constants.AUTH_PATH,getUser(),getPassword());
-            AuthRequest req = new AuthRequest();
-            AuthResponse res = (AuthResponse) req.sendRequest(settings);
+            AuthSoapRequest req = new AuthSoapRequest();
+            IResponse res = req.sendRequest(settings);
             if (res.HttpStatusCode==200){
                 setToken(res.Data);
             }
@@ -61,7 +63,6 @@ public class SWStampService extends SWService {
 
         StampOptionsRequest settings = new StampOptionsRequest(getToken(),getURI(),xml,version);
         String dum = settings.URI.split("-")[0];
-        System.out.println(dum);
         if (dum.equalsIgnoreCase("d")){
             StampRequestDummy req = new StampRequestDummy();
             return req.sendRequest(settings);

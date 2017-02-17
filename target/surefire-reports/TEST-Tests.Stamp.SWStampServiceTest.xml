@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="4" failures="0" name="Tests.Stamp.SWStampServiceTest" time="0.602" errors="0" skipped="0">
+<testsuite tests="9" failures="0" name="Tests.Stamp.SWStampServiceTest" time="12.581" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_121\jre\bin"/>
@@ -65,8 +65,13 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="Tests.Stamp.SWStampServiceTest" name="testStampSUCCESS" time="0.003"/>
-  <testcase classname="Tests.Stamp.SWStampServiceTest" name="testStampXML_STRING" time="0.593"/>
-  <testcase classname="Tests.Stamp.SWStampServiceTest" name="testStampFAILURE" time="0.003"/>
-  <testcase classname="Tests.Stamp.SWStampServiceTest" name="testStampERROR" time="0.003"/>
+  <testcase classname="Tests.Stamp.SWStampServiceTest" name="testStampRenewToken" time="7.956"/>
+  <testcase classname="Tests.Stamp.SWStampServiceTest" name="testStampREAL_XML_STRING_INCORRECT_PARAMS" time="0.271"/>
+  <testcase classname="Tests.Stamp.SWStampServiceTest" name="testStampDUMMY_ERROR" time="0"/>
+  <testcase classname="Tests.Stamp.SWStampServiceTest" name="testStampREAL_XML_STRING_EMPTY_PARAMS" time="0.145"/>
+  <testcase classname="Tests.Stamp.SWStampServiceTest" name="testStampDUMMY_SUCCESS" time="0"/>
+  <testcase classname="Tests.Stamp.SWStampServiceTest" name="testStampREAL_XML_STRING_TOKEN_AUTH" time="0.22"/>
+  <testcase classname="Tests.Stamp.SWStampServiceTest" name="testStampDUMMY_FAILURE" time="0.001"/>
+  <testcase classname="Tests.Stamp.SWStampServiceTest" name="testStampREAL_XML_STRING_USER_PASSWORD_AUTH" time="0.211"/>
+  <testcase classname="Tests.Stamp.SWStampServiceTest" name="testStampTOKEN_EXPIRES_NOT_USER_NOT_PASSWORD" time="3.777"/>
 </testsuite>

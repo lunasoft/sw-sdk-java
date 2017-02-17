@@ -14,10 +14,21 @@ public class StampRequestDummy implements IRequestor{
     @Override
     public IResponse sendRequest(IRequest request) throws GenaralException {
         String dummy_case = request.URI.split("-")[1].toString();
-        String dcase = dummy_case.split("/")[0].toString();
 
-        switch (dcase){
-            case "success":
+        String dcase = dummy_case.split("/")[0].toString();
+        int idcae = 0;
+        if (dcase.equalsIgnoreCase("success")){
+            idcae = 1;
+        }
+        else if(dcase.equalsIgnoreCase("fail")){
+            idcae = 2;
+        }
+        else if (dcase.equalsIgnoreCase("error")){
+            idcae = 3;
+        }
+
+        switch (idcae){
+            case 1:
                 JSONObject parser = new JSONObject();
                 JSONObject data = new JSONObject();
                 parser.put("status","success");
@@ -30,7 +41,7 @@ public class StampRequestDummy implements IRequestor{
                         res.getString("status").toString().equals("error") ? res.getString("message").toString() : res.getJSONObject("data").toString(),
                         res.getString("status").toString().equals("error") ? Integer.parseInt(res.getString("code").toString()) : 0
                 );
-            case "fail":
+            case 2:
                 JSONObject parserfail = new JSONObject();
                 JSONObject datafail = new JSONObject();
                 parserfail.put("status","fail");
@@ -41,7 +52,7 @@ public class StampRequestDummy implements IRequestor{
                         res2.getString("status").toString().equals("error") ? res2.getString("message").toString() : res2.getString("data").toString(),
                         res2.getString("status").toString().equals("error") ? Integer.parseInt(res2.getString("code").toString()) : 0
                 );
-            case "error":
+            case 3:
                 JSONObject parsererror = new JSONObject();
                 parsererror.put("status","error");
                 parsererror.put("message","Unable to communicate with database");

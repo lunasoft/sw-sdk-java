@@ -17,7 +17,6 @@ java.io
 java.lang
 java.lang.annotation
 java.lang.instrument
-java.lang.invoke
 java.lang.management
 java.lang.ref
 java.lang.reflect
@@ -28,9 +27,6 @@ java.nio.channels
 java.nio.channels.spi
 java.nio.charset
 java.nio.charset.spi
-java.nio.file
-java.nio.file.attribute
-java.nio.file.spi
 java.rmi
 java.rmi.activation
 java.rmi.dgc
@@ -124,7 +120,6 @@ javax.swing.plaf
 javax.swing.plaf.basic
 javax.swing.plaf.metal
 javax.swing.plaf.multi
-javax.swing.plaf.nimbus
 javax.swing.plaf.synth
 javax.swing.table
 javax.swing.text
@@ -168,7 +163,6 @@ javax.xml.ws.handler.soap
 javax.xml.ws.http
 javax.xml.ws.soap
 javax.xml.ws.spi
-javax.xml.ws.spi.http
 javax.xml.ws.wsaddressing
 javax.xml.xpath
 org.ietf.jgss

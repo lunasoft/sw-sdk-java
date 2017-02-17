@@ -22,7 +22,7 @@ public class SWStampServiceTest extends TestCase {
         System.out.println(response.Data);
     }
 
-   
+
 
 
     public void testStampSUCCESS() throws Exception {

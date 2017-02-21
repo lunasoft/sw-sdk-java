@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="SW-JAVA">
+    <output-path>$PROJECT_DIR$/out/artifacts/SW_JAVA</output-path>
+    <root id="archive" name="SW-JAVA.jar">
+      <element id="module-output" name="SW-JAVA" />
+    </root>
+  </artifact>
+</component>

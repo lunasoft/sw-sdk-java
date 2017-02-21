@@ -20,9 +20,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.io.StringReader;
 
-/**
- * Created by asalvio on 16/02/2017.
- */
 public class AuthSoapRequest implements IRequestor {
     @Override
     public IResponse sendRequest(IRequest request) throws GenaralException, AuthException {

@@ -9,9 +9,6 @@ import org.json.JSONObject;
 
 import static junit.framework.Assert.fail;
 
-/**
- * Created by asalvio on 15/02/2017.
- */
 public class AuthRequestDummy implements IRequestor {
     @Override
     public IResponse sendRequest(IRequest request) throws GenaralException {

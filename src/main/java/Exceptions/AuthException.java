@@ -1,8 +1,5 @@
 package Exceptions;
 
-/**
- * Created by asalvio on 08/02/2017.
- */
 public class AuthException extends Exception {
     public int HttpStatusCode;
     public String ErrorMSG;

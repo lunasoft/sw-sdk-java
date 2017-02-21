@@ -3,9 +3,6 @@ package Utils.Requests.Authentication;
 import Utils.Constants;
 import Utils.Requests.IRequest;
 
-/**
- * Created by asalvio on 08/02/2017.
- */
 public class AuthOptionsRequest extends IRequest {
 
 

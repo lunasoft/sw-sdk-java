@@ -16,10 +16,6 @@ import org.json.JSONObject;
 
 import java.net.MalformedURLException;
 
-
-/**
- * Created by asalvio on 08/02/2017.
- */
 public class AuthRequest implements IRequestor {
 
 

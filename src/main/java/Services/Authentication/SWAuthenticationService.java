@@ -10,9 +10,6 @@ import Utils.Requests.Authentication.AuthRequestDummy;
 import Utils.Requests.Authentication.AuthSoapRequest;
 import Utils.Responses.IResponse;
 
-/**
- * Created by asalvio on 08/02/2017.
- */
 public class SWAuthenticationService extends SWService {
     public SWAuthenticationService(String user, String password, String URI) {
         super(user, password, URI);

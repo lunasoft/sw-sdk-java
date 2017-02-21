@@ -11,9 +11,6 @@ import java.nio.charset.Charset;
 import java.nio.charset.CharsetDecoder;
 import java.nio.charset.CharsetEncoder;
 
-/**
- * Created by asalvio on 10/02/2017.
- */
 public class EncoderHelper {
 
     public static boolean isNotUTF8( String input ) {

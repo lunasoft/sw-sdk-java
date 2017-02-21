@@ -1,8 +1,5 @@
 package Services;
 
-/**
- * Created by asalvio on 08/02/2017.
- */
 public  abstract class SWService {
     private String Token = null;
     private String User = null;

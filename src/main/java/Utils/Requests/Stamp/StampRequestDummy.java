@@ -7,9 +7,7 @@ import Utils.Responses.IResponse;
 import Utils.Responses.JSendFactory;
 import org.json.JSONObject;
 
-/**
- * Created by asalvio on 15/02/2017.
- */
+
 public class StampRequestDummy implements IRequestor{
     @Override
     public IResponse sendRequest(IRequest request) throws GenaralException {

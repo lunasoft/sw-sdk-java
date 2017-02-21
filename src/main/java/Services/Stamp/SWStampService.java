@@ -18,10 +18,6 @@ import Utils.Responses.IResponse;
 import java.io.*;
 import java.net.MalformedURLException;
 
-
-/**
- * Created by asalvio on 09/02/2017.
- */
 public class SWStampService extends SWService {
 
     public SWStampService(String user, String password, String URI) {

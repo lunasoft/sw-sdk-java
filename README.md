@@ -30,13 +30,13 @@ Descargas el modulo mediante Maven:
             try{
                     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
                     //Se especifica el base path, esto para consumir el api de pruebas o productivo
-                    SWStampService api = new SWStampService("demo","123456789","http://swservicestest.azurewebsites.net");
+                    SWStampService sdk = new SWStampService("demo","123456789","http://swservicestest.azurewebsites.net");
                     //Se inicializa un objeto response, que obtendra la respuesta del api
                     IResponse response = null;
                     //Se asigna el resultado de la respuesta a dicho objeto
                     //Se ejecuta el metodo "Stamp", que timbrara nuestro comprobante posteriormente sellado, asi como la versión del servicio de timbrado,
                     //puede ver mas de estas versiones en el apartado "Versiones de timbrado"
-                    response = api.Stamp("String o File XML","v1");
+                    response = sdk.Stamp("String o File XML","v1");
                     //El objeto response tendra así los atributos:
                     // Status: estado de la petición procesada, puede ser : "success", "fail", "error"
                     // HttpStatusCode: Codigo de respuesta HTTP del servidor: eg. 200, 400, 500

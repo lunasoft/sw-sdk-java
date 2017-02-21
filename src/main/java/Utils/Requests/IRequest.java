@@ -1,8 +1,5 @@
 package Utils.Requests;
 
-/**
- * Created by asalvio on 08/02/2017.
- */
 public abstract class IRequest {
     public String Token;
     public String URI;

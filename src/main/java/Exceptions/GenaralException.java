@@ -1,8 +1,5 @@
 package Exceptions;
 
-/**
- * Created by asalvio on 10/02/2017.
- */
 public class GenaralException extends Exception {
     public int HttpStatusCode;
     public String ErrorMSG;

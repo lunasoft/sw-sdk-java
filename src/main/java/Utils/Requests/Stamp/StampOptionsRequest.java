@@ -5,9 +5,6 @@ import Utils.Requests.IRequest;
 
 import java.io.File;
 
-/**
- * Created by asalvio on 09/02/2017.
- */
 public class StampOptionsRequest extends IRequest {
     private String xml;
     private String version;

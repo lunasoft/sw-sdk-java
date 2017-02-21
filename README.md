@@ -23,6 +23,14 @@ Descargas el modulo mediante Maven:
         </dependency>
 </dependencies>
 ```
+##Instalación manual
+```
+git clone https://github.com/lunasoft/sw-sdk-java.git
+cd sw-sdk-java/
+mvn clean package
+
+
+```
 
 ##Uso rapido...
 

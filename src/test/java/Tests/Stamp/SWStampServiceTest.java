@@ -7,6 +7,7 @@ import Tests.Utils;
 import Utils.Responses.IResponse;
 import Utils.Responses.StampResponse;
 import junit.framework.TestCase;
+import org.json.JSONObject;
 import org.junit.Assert;
 
 
@@ -24,8 +25,9 @@ public class SWStampServiceTest extends TestCase {
 
     public void testStampREAL_XML_STRING_TOKEN_AUTH() throws Exception {
         SWAuthenticationService auth = new SWAuthenticationService("demo","123456789","http://swservicestest.azurewebsites.net");
-
-        SWStampService api = new SWStampService(auth.Token().Data,"http://swservicestest.azurewebsites.net");
+        JSONObject obj = new JSONObject(auth.Token().Data);
+        String tkn = obj.getString("token");
+        SWStampService api = new SWStampService(tkn,"http://swservicestest.azurewebsites.net");
         IResponse response = null;
         response = api.Stamp(Utils.dummy_xml_string,"v1");
         System.out.println(response.Status);

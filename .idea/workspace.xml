@@ -7,34 +7,98 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f0057f7-8acf-4b8e-8dff-f3ce89d9cf81" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/SW-JAVA-1.0.0-SNAPSHOT-javadoc.jar" afterPath="$PROJECT_DIR$/target/SW-JAVA-1.0.0-SNAPSHOT-javadoc.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/SW-JAVA-1.0.0-SNAPSHOT-sources.jar" afterPath="$PROJECT_DIR$/target/SW-JAVA-1.0.0-SNAPSHOT-sources.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/SW-JAVA-1.0.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/target/SW-JAVA-1.0.0-SNAPSHOT.jar" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/SW-JAVA-1.0-SNAPSHOT-javadoc.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/SW-JAVA-1.0-SNAPSHOT-javadoc.jar.asc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/SW-JAVA-1.0-SNAPSHOT-sources.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/SW-JAVA-1.0-SNAPSHOT-sources.jar.asc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/SW-JAVA-1.0-SNAPSHOT.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/SW-JAVA-1.0-SNAPSHOT.pom" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/SW-JAVA-1.0-SNAPSHOT.pom.asc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/SW-JAVA-1.0.0-SNAPSHOT-javadoc.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/SW-JAVA-1.0.0-SNAPSHOT-javadoc.jar.asc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/SW-JAVA-1.0.0-SNAPSHOT-sources.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/SW-JAVA-1.0.0-SNAPSHOT-sources.jar.asc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/SW-JAVA-1.0.0-SNAPSHOT.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/SW-JAVA-1.0.0-SNAPSHOT.jar.asc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/SW-JAVA-1.0.0-SNAPSHOT.pom" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/SW-JAVA-1.0.0-SNAPSHOT.pom.asc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/apidocs/Tests/Authentication/AuthTest.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/apidocs/Tests/Authentication/SWAuthenticationServiceTest.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/apidocs/Tests/Authentication/class-use/AuthTest.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/apidocs/Tests/Authentication/class-use/SWAuthenticationServiceTest.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/apidocs/Tests/Authentication/package-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/apidocs/Tests/Authentication/package-summary.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/apidocs/Tests/Authentication/package-tree.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/apidocs/Tests/Authentication/package-use.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/apidocs/Tests/Helpers.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/apidocs/Tests/Stamp/SWStampServiceTest.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/apidocs/Tests/Stamp/StampTest.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/apidocs/Tests/Stamp/class-use/SWStampServiceTest.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/apidocs/Tests/Stamp/class-use/StampTest.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/apidocs/Tests/Stamp/package-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/apidocs/Tests/Stamp/package-summary.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/apidocs/Tests/Stamp/package-tree.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/apidocs/Tests/Stamp/package-use.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/apidocs/Tests/class-use/Helpers.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/apidocs/Tests/package-frame.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/apidocs/Tests/package-summary.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/apidocs/Tests/package-tree.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/apidocs/Tests/package-use.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/.index" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0-SNAPSHOT/SW-JAVA-1.0-SNAPSHOT-javadoc.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0-SNAPSHOT/SW-JAVA-1.0-SNAPSHOT-javadoc.jar.asc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0-SNAPSHOT/SW-JAVA-1.0-SNAPSHOT-sources.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0-SNAPSHOT/SW-JAVA-1.0-SNAPSHOT-sources.jar.asc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0-SNAPSHOT/SW-JAVA-1.0-SNAPSHOT.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0-SNAPSHOT/SW-JAVA-1.0-SNAPSHOT.jar.asc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0-SNAPSHOT/SW-JAVA-1.0-SNAPSHOT.pom" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0-SNAPSHOT/SW-JAVA-1.0-SNAPSHOT.pom.asc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0-SNAPSHOT/maven-metadata-nexus.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0.0-SNAPSHOT/SW-JAVA-1.0.0-SNAPSHOT-javadoc.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0.0-SNAPSHOT/SW-JAVA-1.0.0-SNAPSHOT-javadoc.jar.asc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0.0-SNAPSHOT/SW-JAVA-1.0.0-SNAPSHOT-sources.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0.0-SNAPSHOT/SW-JAVA-1.0.0-SNAPSHOT-sources.jar.asc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0.0-SNAPSHOT/SW-JAVA-1.0.0-SNAPSHOT.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0.0-SNAPSHOT/SW-JAVA-1.0.0-SNAPSHOT.jar.asc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0.0-SNAPSHOT/SW-JAVA-1.0.0-SNAPSHOT.pom" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0.0-SNAPSHOT/SW-JAVA-1.0.0-SNAPSHOT.pom.asc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0.0-SNAPSHOT/maven-metadata-nexus.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/maven-metadata-nexus.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Exceptions/AuthException.class" afterPath="$PROJECT_DIR$/target/classes/Exceptions/AuthException.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Exceptions/GenaralException.class" afterPath="$PROJECT_DIR$/target/classes/Exceptions/GenaralException.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Services/Authentication/SWAuthenticationService.class" afterPath="$PROJECT_DIR$/target/classes/Services/Authentication/SWAuthenticationService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Services/Cancelation/SWCancelationService.class" afterPath="$PROJECT_DIR$/target/classes/Services/Cancelation/SWCancelationService.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Services/SWService.class" afterPath="$PROJECT_DIR$/target/classes/Services/SWService.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Services/Stamp/SWStampService.class" afterPath="$PROJECT_DIR$/target/classes/Services/Stamp/SWStampService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Utils/Constants.class" afterPath="$PROJECT_DIR$/target/classes/Utils/Constants.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Utils/EncoderHelper.class" afterPath="$PROJECT_DIR$/target/classes/Utils/EncoderHelper.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Utils/Requests/Authentication/AuthOptionsRequest.class" afterPath="$PROJECT_DIR$/target/classes/Utils/Requests/Authentication/AuthOptionsRequest.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Utils/Requests/Authentication/AuthRequest.class" afterPath="$PROJECT_DIR$/target/classes/Utils/Requests/Authentication/AuthRequest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Utils/Requests/Authentication/AuthRequestDummy.class" afterPath="$PROJECT_DIR$/target/classes/Utils/Requests/Authentication/AuthRequestDummy.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Utils/Requests/Authentication/AuthSoapRequest.class" afterPath="$PROJECT_DIR$/target/classes/Utils/Requests/Authentication/AuthSoapRequest.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Utils/Requests/Cancelation/CancelationOptionsRequest.class" afterPath="$PROJECT_DIR$/target/classes/Utils/Requests/Cancelation/CancelationOptionsRequest.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Utils/Requests/Cancelation/CancelationRequest.class" afterPath="$PROJECT_DIR$/target/classes/Utils/Requests/Cancelation/CancelationRequest.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Utils/Requests/IRequest.class" afterPath="$PROJECT_DIR$/target/classes/Utils/Requests/IRequest.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Utils/Requests/IRequestor.class" afterPath="$PROJECT_DIR$/target/classes/Utils/Requests/IRequestor.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Utils/Requests/Stamp/StampOptionsRequest.class" afterPath="$PROJECT_DIR$/target/classes/Utils/Requests/Stamp/StampOptionsRequest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Utils/Requests/Stamp/StampRequest.class" afterPath="$PROJECT_DIR$/target/classes/Utils/Requests/Stamp/StampRequest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Utils/Requests/Stamp/StampRequestDummy.class" afterPath="$PROJECT_DIR$/target/classes/Utils/Requests/Stamp/StampRequestDummy.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Utils/Responses/AuthResponse.class" afterPath="$PROJECT_DIR$/target/classes/Utils/Responses/AuthResponse.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Utils/Responses/CancelationResponse.class" afterPath="$PROJECT_DIR$/target/classes/Utils/Responses/CancelationResponse.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Utils/Responses/FailureResponse.class" afterPath="$PROJECT_DIR$/target/classes/Utils/Responses/FailureResponse.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Utils/Responses/IJSend.class" afterPath="$PROJECT_DIR$/target/classes/Utils/Responses/IJSend.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Utils/Responses/IResponse.class" afterPath="$PROJECT_DIR$/target/classes/Utils/Responses/IResponse.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Utils/Responses/JSendFactory.class" afterPath="$PROJECT_DIR$/target/classes/Utils/Responses/JSendFactory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0.0-SNAPSHOT/SW-JAVA-1.0.0-SNAPSHOT-javadoc.jar" afterPath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0.0-SNAPSHOT/SW-JAVA-1.0.0-SNAPSHOT-javadoc.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0.0-SNAPSHOT/SW-JAVA-1.0.0-SNAPSHOT-sources.jar" afterPath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0.0-SNAPSHOT/SW-JAVA-1.0.0-SNAPSHOT-sources.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0.0-SNAPSHOT/SW-JAVA-1.0.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0.0-SNAPSHOT/SW-JAVA-1.0.0-SNAPSHOT.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Utils/Responses/StampResponse.class" afterPath="$PROJECT_DIR$/target/classes/Utils/Responses/StampResponse.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Utils/Responses/SuccessResponse.class" afterPath="$PROJECT_DIR$/target/classes/Utils/Responses/SuccessResponse.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/Tests/Authentication/SWAuthenticationServiceTest.class" afterPath="$PROJECT_DIR$/target/test-classes/Tests/Authentication/SWAuthenticationServiceTest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/Tests/Stamp/SWStampServiceTest.class" afterPath="$PROJECT_DIR$/target/test-classes/Tests/Stamp/SWStampServiceTest.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/Tests/Utils.class" afterPath="$PROJECT_DIR$/target/test-classes/Tests/Utils.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SW-JAVA.iml" afterPath="$PROJECT_DIR$/SW-JAVA.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Services/SWService.java" afterPath="$PROJECT_DIR$/src/main/java/Services/SWService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Services/Stamp/SWStampService.java" afterPath="$PROJECT_DIR$/src/main/java/Services/Stamp/SWStampService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Utils/Requests/Authentication/AuthRequestDummy.java" afterPath="$PROJECT_DIR$/src/main/java/Utils/Requests/Authentication/AuthRequestDummy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Utils/Requests/Stamp/StampRequest.java" afterPath="$PROJECT_DIR$/src/main/java/Utils/Requests/Stamp/StampRequest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Utils/Requests/Stamp/StampRequestDummy.java" afterPath="$PROJECT_DIR$/src/main/java/Utils/Requests/Stamp/StampRequestDummy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Utils/Responses/JSendFactory.java" afterPath="$PROJECT_DIR$/src/main/java/Utils/Responses/JSendFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/Tests/Stamp/SWStampServiceTest.java" afterPath="$PROJECT_DIR$/src/test/java/Tests/Stamp/SWStampServiceTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/SW-JAVA-1.0.0-SNAPSHOT-javadoc.jar.asc" afterPath="$PROJECT_DIR$/target/SW-JAVA-1.0.0-SNAPSHOT-javadoc.jar.asc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/SW-JAVA-1.0.0-SNAPSHOT-sources.jar.asc" afterPath="$PROJECT_DIR$/target/SW-JAVA-1.0.0-SNAPSHOT-sources.jar.asc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/SW-JAVA-1.0.0-SNAPSHOT.jar.asc" afterPath="$PROJECT_DIR$/target/SW-JAVA-1.0.0-SNAPSHOT.jar.asc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/SW-JAVA-1.0.0-SNAPSHOT.pom" afterPath="$PROJECT_DIR$/target/SW-JAVA-1.0.0-SNAPSHOT.pom" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/SW-JAVA-1.0.0-SNAPSHOT.pom.asc" afterPath="$PROJECT_DIR$/target/SW-JAVA-1.0.0-SNAPSHOT.pom.asc" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Exceptions/AuthException.html" afterPath="$PROJECT_DIR$/target/apidocs/Exceptions/AuthException.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Exceptions/GenaralException.html" afterPath="$PROJECT_DIR$/target/apidocs/Exceptions/GenaralException.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/Exceptions/class-use/AuthException.html" afterPath="$PROJECT_DIR$/target/apidocs/Exceptions/class-use/AuthException.html" />
@@ -144,15 +208,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/overview-summary.html" afterPath="$PROJECT_DIR$/target/apidocs/overview-summary.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/overview-tree.html" afterPath="$PROJECT_DIR$/target/apidocs/overview-tree.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/apidocs/serialized-form.html" afterPath="$PROJECT_DIR$/target/apidocs/serialized-form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/javadoc-bundle-options/package-list" afterPath="$PROJECT_DIR$/target/javadoc-bundle-options/package-list" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/.index" afterPath="$PROJECT_DIR$/target/nexus-staging/deferred/.index" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0.0-SNAPSHOT/SW-JAVA-1.0.0-SNAPSHOT-javadoc.jar.asc" afterPath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0.0-SNAPSHOT/SW-JAVA-1.0.0-SNAPSHOT-javadoc.jar.asc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0.0-SNAPSHOT/SW-JAVA-1.0.0-SNAPSHOT-sources.jar.asc" afterPath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0.0-SNAPSHOT/SW-JAVA-1.0.0-SNAPSHOT-sources.jar.asc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0.0-SNAPSHOT/SW-JAVA-1.0.0-SNAPSHOT.jar.asc" afterPath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0.0-SNAPSHOT/SW-JAVA-1.0.0-SNAPSHOT.jar.asc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0.0-SNAPSHOT/SW-JAVA-1.0.0-SNAPSHOT.pom" afterPath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0.0-SNAPSHOT/SW-JAVA-1.0.0-SNAPSHOT.pom" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0.0-SNAPSHOT/SW-JAVA-1.0.0-SNAPSHOT.pom.asc" afterPath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0.0-SNAPSHOT/SW-JAVA-1.0.0-SNAPSHOT.pom.asc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0.0-SNAPSHOT/maven-metadata-nexus.xml" afterPath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/1.0.0-SNAPSHOT/maven-metadata-nexus.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/maven-metadata-nexus.xml" afterPath="$PROJECT_DIR$/target/nexus-staging/deferred/mx/com/sw/services/SW-JAVA/maven-metadata-nexus.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-Tests.Authentication.SWAuthenticationServiceTest.xml" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-Tests.Authentication.SWAuthenticationServiceTest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-Tests.Stamp.SWStampServiceTest.xml" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-Tests.Stamp.SWStampServiceTest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/Tests.Authentication.SWAuthenticationServiceTest.txt" afterPath="$PROJECT_DIR$/target/surefire-reports/Tests.Authentication.SWAuthenticationServiceTest.txt" />
@@ -173,11 +229,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SWStampServiceTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SWStampServiceTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/Tests/Stamp/SWStampServiceTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state relative-caret-position="153">
+              <caret line="16" column="7" lean-forward="false" selection-start-line="16" selection-start-column="7" selection-end-line="21" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -186,18 +242,44 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="30" column="31" lean-forward="false" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
+            <state relative-caret-position="363">
+              <caret line="35" column="128" lean-forward="false" selection-start-line="35" selection-start-column="128" selection-end-line="35" selection-end-column="128" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Utils.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/Tests/Utils.java">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="36" lean-forward="false" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
+            <state relative-caret-position="51">
+              <caret line="3" column="11" lean-forward="true" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="357">
+                <caret line="33" column="3" lean-forward="true" selection-start-line="33" selection-start-column="3" selection-end-line="33" selection-end-column="3" />
+                <folding>
+                  <marker date="1487636630604" expanded="true" signature="228:420" ph="..." />
+                  <marker date="1487636630604" expanded="true" signature="250:404" ph="..." />
+                </folding>
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SWAuthenticationServiceTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/Tests/Authentication/SWAuthenticationServiceTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="663">
+              <caret line="43" column="8" lean-forward="false" selection-start-line="43" selection-start-column="8" selection-end-line="54" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -256,8 +338,6 @@
         <option value="$PROJECT_DIR$/src/main/java/Utils/Responses/ResponseFactory.java" />
         <option value="$PROJECT_DIR$/src/main/java/Utils/Responses/IJSend.java" />
         <option value="$PROJECT_DIR$/src/main/java/Utils/Responses/GeneralResponse.java" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/main/java/Tests/Authentication/SWAuthenticationServiceTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/Tests/Authentication/AuthTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/Tests/Authentication/SWStampServiceTest.java" />
@@ -286,14 +366,16 @@
         <option value="$PROJECT_DIR$/src/main/java/Utils/Requests/Authentication/AuthRequestDummy.java" />
         <option value="$PROJECT_DIR$/src/main/java/Utils/Requests/Stamp/StampRequestDummy.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
+    <option name="x" value="-1928" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="height" value="1096" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -313,6 +395,20 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SW-JAVA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SW-JAVA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="PackagesPane" />
       <pane id="Scope">
         <subPane subId="Project Files">
@@ -343,20 +439,6 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SW-JAVA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SW-JAVA" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -392,33 +474,7 @@
       <recent name="C:\Users\asalvio\Documents\WORKSPACE\JAVA\SW-JAVA\src\main\java\Tests" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SWStampServiceTest">
-    <configuration default="false" name="SWStampServiceTest.testStampREAL_XML_STRING_EMPTY_PARAMS" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="Tests.Stamp.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="SW-JAVA" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="Tests.Stamp" />
-      <option name="MAIN_CLASS_NAME" value="Tests.Stamp.SWStampServiceTest" />
-      <option name="METHOD_NAME" value="testStampREAL_XML_STRING_EMPTY_PARAMS" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="JUnit.SWStampServiceTest.testStampREAL_XML_STRING_USER_PASSWORD_AUTH">
     <configuration default="false" name="SWStampServiceTest.testStampREAL_XML_STRING_INCORRECT_PARAMS" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -510,6 +566,32 @@
       <option name="PACKAGE_NAME" value="Tests.Authentication" />
       <option name="MAIN_CLASS_NAME" value="Tests.Authentication.SWAuthenticationServiceTest" />
       <option name="METHOD_NAME" value="testToken" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="SWStampServiceTest.testStampREAL_XML_STRING_USER_PASSWORD_AUTH" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="Tests.Stamp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="SW-JAVA" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="Tests.Stamp" />
+      <option name="MAIN_CLASS_NAME" value="Tests.Stamp.SWStampServiceTest" />
+      <option name="METHOD_NAME" value="testStampREAL_XML_STRING_USER_PASSWORD_AUTH" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -760,19 +842,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.SWStampServiceTest.testStampREAL_XML_STRING_EMPTY_PARAMS" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.SWStampServiceTest.testStampREAL_XML_STRING_INCORRECT_PARAMS" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.SWStampServiceTest.testStampREAL_XML_STRING_TOKEN_AUTH" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.SWStampServiceTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.SWAuthenticationServiceTest.testToken" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.SWStampServiceTest.testStampREAL_XML_STRING_INCORRECT_PARAMS" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.SWStampServiceTest.testStampREAL_XML_STRING_TOKEN_AUTH" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.SWStampServiceTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.SWAuthenticationServiceTest.testToken" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.SWStampServiceTest.testStampREAL_XML_STRING_USER_PASSWORD_AUTH" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.SWStampServiceTest" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.SWStampServiceTest.testStampREAL_XML_STRING_USER_PASSWORD_AUTH" />
         <item index="1" class="java.lang.String" itemvalue="JUnit.SWAuthenticationServiceTest.testToken" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.SWStampServiceTest.testStampREAL_XML_STRING_TOKEN_AUTH" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.SWStampServiceTest.testStampREAL_XML_STRING_INCORRECT_PARAMS" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.SWStampServiceTest.testStampREAL_XML_STRING_EMPTY_PARAMS" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.SWStampServiceTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.SWStampServiceTest.testStampREAL_XML_STRING_TOKEN_AUTH" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.SWStampServiceTest.testStampREAL_XML_STRING_INCORRECT_PARAMS" />
       </list>
     </recent_temporary>
   </component>
@@ -799,11 +881,8 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="SWStampServiceTest - 2017.02.17 at 14h 05m 09s.xml">
-      <configuration name="SWStampServiceTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="SWStampServiceTest - 2017.02.17 at 14h 07m 53s.xml">
-      <configuration name="SWStampServiceTest" configurationId="JUnit" />
+    <history-entry file="SWAuthenticationServiceTest_testToken - 2017.02.20 at 14h 42m 29s.xml">
+      <configuration name="SWAuthenticationServiceTest.testToken" configurationId="JUnit" />
     </history-entry>
     <history-entry file="SWStampServiceTest - 2017.02.17 at 14h 08m 37s.xml">
       <configuration name="SWStampServiceTest" configurationId="JUnit" />
@@ -823,6 +902,9 @@
     <history-entry file="SWStampServiceTest_testStampREAL_XML_STRING_TOKEN_AUTH - 2017.02.17 at 14h 04m 29s.xml">
       <configuration name="SWStampServiceTest.testStampREAL_XML_STRING_TOKEN_AUTH" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="SWStampServiceTest_testStampREAL_XML_STRING_USER_PASSWORD_AUTH - 2017.02.20 at 17h 33m 18s.xml">
+      <configuration name="SWStampServiceTest.testStampREAL_XML_STRING_USER_PASSWORD_AUTH" configurationId="JUnit" />
+    </history-entry>
     <history-entry file="SWStampServiceTest_testStampTOKEN_EXPIRES_NOT_USER_NOT_PASSWORD - 2017.02.17 at 13h 32m 42s.xml">
       <configuration name="SWStampServiceTest.testStampTOKEN_EXPIRES_NOT_USER_NOT_PASSWORD" configurationId="JUnit" />
     </history-entry>
@@ -840,8 +922,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <frame x="-1928" y="-8" width="1936" height="1096" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -863,10 +945,9 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28246754" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5984849" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18496802" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2821577" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4439834" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18710022" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -875,6 +956,7 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32913387" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -997,20 +1079,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Utils/Responses/GeneralResponse.java" />
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="18" lean-forward="false" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="13" lean-forward="true" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/junit.jar!/junit/framework/TestCase.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1025,7 +1093,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="20" column="54" lean-forward="false" selection-start-line="20" selection-start-column="54" selection-end-line="20" selection-end-column="54" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1041,7 +1108,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="66" lean-forward="false" selection-start-line="7" selection-start-column="66" selection-end-line="7" selection-end-column="66" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1070,10 +1136,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="12" column="24" lean-forward="false" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
-          <folding>
-            <element signature="e#212#213#0" expanded="true" />
-            <element signature="e#262#263#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1081,7 +1143,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1103,9 +1164,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="38" lean-forward="false" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1113,7 +1171,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="25" column="5" lean-forward="false" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1129,7 +1186,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="629">
           <caret line="55" column="23" lean-forward="false" selection-start-line="55" selection-start-column="23" selection-end-line="55" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1153,9 +1209,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="490">
           <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1163,9 +1216,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1177,16 +1227,6 @@
             <element signature="imports" expanded="false" />
             <element signature="e#863#864#0" expanded="false" />
             <element signature="e#896#897#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/Tests/Authentication/SWAuthenticationServiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="15" column="60" lean-forward="false" selection-start-line="15" selection-start-column="60" selection-end-line="15" selection-end-column="60" />
-          <folding>
-            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1214,7 +1254,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="47" lean-forward="false" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1222,7 +1261,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="18" column="8" lean-forward="true" selection-start-line="18" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1230,15 +1268,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="453">
           <caret line="54" column="18" lean-forward="false" selection-start-line="54" selection-start-column="18" selection-end-line="54" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="30" column="31" lean-forward="false" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1250,11 +1279,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/Tests/Authentication/SWAuthenticationServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="43" column="8" lean-forward="false" selection-start-line="43" selection-start-column="8" selection-end-line="54" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/Tests/Stamp/SWStampServiceTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state relative-caret-position="153">
+          <caret line="16" column="7" lean-forward="false" selection-start-line="16" selection-start-column="7" selection-end-line="21" selection-end-column="42" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="35" column="128" lean-forward="false" selection-start-line="35" selection-start-column="128" selection-end-line="35" selection-end-column="128" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="11" lean-forward="true" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="357">
+            <caret line="33" column="3" lean-forward="true" selection-start-line="33" selection-start-column="3" selection-end-line="33" selection-end-column="3" />
+            <folding>
+              <marker date="1487636630604" expanded="true" signature="228:420" ph="..." />
+              <marker date="1487636630604" expanded="true" signature="250:404" ph="..." />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="18" lean-forward="false" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
         </state>
       </provider>
     </entry>

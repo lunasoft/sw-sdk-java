@@ -1,4 +1,4 @@
-./out
-./target
-./.idea
-./SW-JAVA.iml
+out/
+target/
+.idea/
+SW-JAVA.iml

@@ -15,7 +15,7 @@ import org.junit.Assert;
 public class SWStampServiceTest extends TestCase {
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH() throws Exception {
-        SWStampService api = new SWStampService("demo","123456789","http://swservicestest.azurewebsites.net");
+        SWStampService api = new SWStampService("demo","123456789","http://services.test.sw.com.mx");
         IResponse response = null;
         response = api.Stamp(Utils.dummy_xml_string,"v1");
         System.out.println(response.Status);
@@ -24,10 +24,10 @@ public class SWStampServiceTest extends TestCase {
     }
 
     public void testStampREAL_XML_STRING_TOKEN_AUTH() throws Exception {
-        SWAuthenticationService auth = new SWAuthenticationService("demo","123456789","http://swservicestest.azurewebsites.net");
+        SWAuthenticationService auth = new SWAuthenticationService("demo","123456789","http://services.test.sw.com.mx");
         JSONObject obj = new JSONObject(auth.Token().Data);
         String tkn = obj.getString("token");
-        SWStampService api = new SWStampService(tkn,"http://swservicestest.azurewebsites.net");
+        SWStampService api = new SWStampService(tkn,"http://services.test.sw.com.mx");
         IResponse response = null;
         response = api.Stamp(Utils.dummy_xml_string,"v1");
         System.out.println(response.Status);
@@ -74,7 +74,7 @@ public class SWStampServiceTest extends TestCase {
     }
 
     public void testStampTOKEN_EXPIRES_NOT_USER_NOT_PASSWORD() throws Exception {
-        SWStampService api = new SWStampService("demo","123456789","http://swservicestest.azurewebsites.net");
+        SWStampService api = new SWStampService("demo","123456789","http://services.test.sw.com.mx");
         IResponse response = null;
 
         int request_number = 50;
@@ -102,7 +102,7 @@ public class SWStampServiceTest extends TestCase {
     }
 
     public void testStampRenewToken() throws Exception {
-        SWStampService api = new SWStampService("demo","123456789","http://swservicestest.azurewebsites.net");
+        SWStampService api = new SWStampService("demo","123456789","http://services.test.sw.com.mx");
         IResponse response = null;
 
         int request_number = 50;

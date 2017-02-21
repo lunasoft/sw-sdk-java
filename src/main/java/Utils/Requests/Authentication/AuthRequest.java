@@ -32,13 +32,13 @@ public class AuthRequest implements IRequestor {
         try {
 
             HttpResponse<JsonNode> response = Unirest.post(request.URI)
-                    .header("usuario",request.User)
-                    .header("contrasena",request.Password).asJson();
+                    .header("user",request.User)
+                    .header("password",request.Password).asJson();
             JSONObject parser = new JSONObject(response.getBody().toString());
 
             return (IResponse) JSendFactory.response(
                     parser.getString("status").toString(),
-                    parser.getString("status").toString().equals("error") ? parser.getString("message").toString() : parser.getString("data").toString(),
+                    parser.getString("status").toString().equals("error") ? parser.getString("message").toString() : parser.getJSONObject("data").toString(),
                     response.getStatus()
             );
 

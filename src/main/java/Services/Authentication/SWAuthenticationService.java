@@ -3,6 +3,7 @@ package Services.Authentication;
 import Exceptions.AuthException;
 import Exceptions.GenaralException;
 import Services.SWService;
+import Utils.Constants;
 import Utils.Requests.Authentication.AuthOptionsRequest;
 import Utils.Requests.Authentication.AuthRequest;
 import Utils.Requests.Authentication.AuthRequestDummy;
@@ -29,7 +30,7 @@ public class SWAuthenticationService extends SWService {
             AuthRequestDummy req = new AuthRequestDummy();
             return req.sendRequest(settings);
         }
-        AuthSoapRequest req = new AuthSoapRequest();
+        AuthRequest req = new AuthRequest();
         return req.sendRequest(settings);
 
     }

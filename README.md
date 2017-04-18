@@ -19,6 +19,7 @@ Java 1.6 o superior
 
 
 ##Instalación
+
 Descargas el modulo mediante Maven:
 	
 ```html
@@ -33,6 +34,7 @@ Descargas el modulo mediante Maven:
 ```
 ##Instalación manual (sin Maven)
 Descargar el modulo directamente de los siguientes links:
+
 * [Relase Github](https://github.com/lunasoft/sw-sdk-java/releases)
 * [Maven](https://oss.sonatype.org/service/local/repositories/releases/content/mx/com/sw/services/SW-JAVA/1.0.0/SW-JAVA-1.0.0.jar)
 Asi como instalar manualmente cada una de las dependencias:

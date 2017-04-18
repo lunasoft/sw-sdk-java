@@ -1,6 +1,6 @@
 package Utils.Requests.Authentication;
 
-import Exceptions.GenaralException;
+import Exceptions.GeneralException;
 import Utils.Requests.IRequest;
 import Utils.Requests.IRequestor;
 import Utils.Responses.IResponse;
@@ -11,7 +11,7 @@ import static junit.framework.Assert.fail;
 
 public class AuthRequestDummy implements IRequestor {
     @Override
-    public IResponse sendRequest(IRequest request) throws GenaralException {
+    public IResponse sendRequest(IRequest request) throws GeneralException {
         String dummy_case = request.URI.split("-")[1].toString();
         String dcase = dummy_case.split("/")[0].toString();
         int idcae = 0;

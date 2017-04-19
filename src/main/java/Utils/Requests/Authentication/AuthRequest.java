@@ -1,6 +1,6 @@
 package Utils.Requests.Authentication;
 
-import Exceptions.GenaralException;
+import Exceptions.GeneralException;
 import Utils.Requests.IRequest;
 import Utils.Requests.IRequestor;
 import Utils.Responses.AuthResponse;
@@ -20,10 +20,10 @@ public class AuthRequest implements IRequestor {
 
 
     @Override
-    public IResponse sendRequest(IRequest request) throws GenaralException {
+    public IResponse sendRequest(IRequest request) throws GeneralException {
 
         if (request.URI.isEmpty()){
-            throw new GenaralException(500,"URL VACIA");
+            throw new GeneralException(500,"URL VACIA");
         }
         try {
 
@@ -42,10 +42,10 @@ public class AuthRequest implements IRequestor {
 
         } catch (UnirestException e) {
 
-            throw new GenaralException(500,"SERVIDOR INACTIVO");
+            throw new GeneralException(500,"SERVIDOR INACTIVO");
         }
         catch(JSONException e){
-            throw new GenaralException(500,e.getMessage());
+            throw new GeneralException(500,e.getMessage());
         }
 
 

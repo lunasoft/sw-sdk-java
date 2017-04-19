@@ -1,6 +1,6 @@
 package Utils.Requests.Stamp;
 
-import Exceptions.GenaralException;
+import Exceptions.GeneralException;
 import Utils.Requests.IRequest;
 import Utils.Requests.IRequestor;
 import Utils.Responses.IResponse;
@@ -10,7 +10,7 @@ import org.json.JSONObject;
 
 public class StampRequestDummy implements IRequestor{
     @Override
-    public IResponse sendRequest(IRequest request) throws GenaralException {
+    public IResponse sendRequest(IRequest request) throws GeneralException {
         String dummy_case = request.URI.split("-")[1].toString();
 
         String dcase = dummy_case.split("/")[0].toString();

@@ -1,6 +1,6 @@
 package Exceptions;
 
-public class GenaralException extends Exception {
+public class GeneralException extends Exception {
     public int HttpStatusCode;
     public String ErrorMSG;
 
@@ -20,7 +20,7 @@ public class GenaralException extends Exception {
         ErrorMSG = errorMSG;
     }
 
-    public GenaralException(int httpStatusCode, String errorMSG) {
+    public GeneralException(int httpStatusCode, String errorMSG) {
         super(httpStatusCode+" ----> "+errorMSG);
         HttpStatusCode = httpStatusCode;
         ErrorMSG = errorMSG;

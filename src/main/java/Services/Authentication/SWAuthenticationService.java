@@ -1,7 +1,7 @@
 package Services.Authentication;
 
 import Exceptions.AuthException;
-import Exceptions.GenaralException;
+import Exceptions.GeneralException;
 import Services.SWService;
 import Utils.Constants;
 import Utils.Requests.Authentication.AuthOptionsRequest;
@@ -16,7 +16,7 @@ public class SWAuthenticationService extends SWService {
     }
 
 
-    public IResponse Token() throws GenaralException, AuthException {
+    public IResponse Token() throws GeneralException, AuthException {
         AuthOptionsRequest settings = new AuthOptionsRequest(getURI(),getUser(),getPassword());
 
         String dum = settings.URI.split("-")[0];

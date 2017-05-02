@@ -22,7 +22,7 @@ import java.util.regex.Pattern;
 
 public class SWStampServiceTest extends TestCase {
 
-   /* public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH() throws Exception {
+   public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1() throws Exception {
         SWStampService api = new SWStampService("demo","123456789","http://services.test.sw.com.mx");
         IResponse response = null;
         response = api.Stamp(Utils.dummy_xml_string,"v1");
@@ -31,6 +31,15 @@ public class SWStampServiceTest extends TestCase {
         System.out.println(response.Data);
     }
 
+    public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2() throws Exception {
+        SWStampService api = new SWStampService("demo","123456789","http://services.test.sw.com.mx");
+        IResponse response = null;
+        response = api.Stamp(Utils.dummy_xml_string,"v2");
+        System.out.println(response.Status);
+        System.out.println(response.HttpStatusCode);
+        System.out.println(response.Data);
+    }
+/*
     public void testStampREAL_XML_BYTES_USER_PASSWORD_AUTH() throws Exception {
 
         SWStampService api = new SWStampService("demo","123456789","http://services.test.sw.com.mx");

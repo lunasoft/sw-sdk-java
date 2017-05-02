@@ -6,7 +6,7 @@
 
     <groupId>mx.com.sw.services</groupId>
     <artifactId>SW-JAVA</artifactId>
-    <version>1.0.1</version>
+    <version>0.0.1.2</version>
 
     <packaging>jar</packaging>
 

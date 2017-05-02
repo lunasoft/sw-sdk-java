@@ -35,7 +35,7 @@ public class StampRequest implements IRequestor {
             tempFile.deleteOnExit();
 
             HttpResponse<JsonNode> response = Unirest.post(request.URI)
-                    .header("Authorization",request.Token)
+                    .header("Authorization","bearer "+request.Token)
 
                     .field("xml",tempFile).asJson();
             if (response.getStatus()==403){

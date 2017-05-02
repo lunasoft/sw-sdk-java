@@ -12,8 +12,14 @@ Java 1.6 o superior
 
 ##Dependencias
 * [Unirest](http://unirest.io/java.html)
+* [org.json](http://www.json.org/java)
+* [httpclient 4.3.6](http://hc.apache.org/downloads.cgi)
+* [httpmime 4.3.6](http://hc.apache.org/downloads.cgi)
+* [httpasyncclient 4.0.2](http://hc.apache.org/downloads.cgi)
+
 
 ##Instalación
+
 Descargas el modulo mediante Maven:
 	
 ```html
@@ -22,18 +28,25 @@ Descargas el modulo mediante Maven:
         <dependency>
             <groupId>mx.com.sw.services</groupId>
             <artifactId>SW-JAVA</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
         </dependency>
 </dependencies>
 ```
-##Instalación manual
-```
-git clone https://github.com/lunasoft/sw-sdk-java.git
-cd sw-sdk-java/
-mvn clean package
+##Instalación manual (sin Maven)
+Descargar el modulo directamente de los siguientes links:
+
+* [Relase Github](https://github.com/lunasoft/sw-sdk-java/releases)
+* [Maven](https://oss.sonatype.org/service/local/repositories/releases/content/mx/com/sw/services/SW-JAVA/1.0.0/SW-JAVA-1.0.0.jar)
+Asi como instalar manualmente cada una de las dependencias:
+* [Unirest](http://unirest.io/java.html)
+* [org.json](http://www.json.org/java)
+* [httpclient 4.3.6](http://hc.apache.org/downloads.cgi)
+* [httpmime 4.3.6](http://hc.apache.org/downloads.cgi)
+* [httpasyncclient 4.0.2](http://hc.apache.org/downloads.cgi)
+
+Alternativamente tambien se cuenta con un archivo JAR en el que se incluyen todas las dependencias, este se encuentra en la carpeta [Relase Github](https://github.com/lunasoft/sw-sdk-java/releases),  con el sufijo _"jar-with-dependencies.jar"_
 
 
-```
 
 ##Uso rapido...
 

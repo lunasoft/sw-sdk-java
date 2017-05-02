@@ -1,12 +1,11 @@
 package Utils.Requests.Stamp;
 
 import Exceptions.AuthException;
-import Exceptions.GenaralException;
+import Exceptions.GeneralException;
 import Utils.Requests.IRequest;
 import Utils.Requests.IRequestor;
 import Utils.Responses.IResponse;
 import Utils.Responses.JSendFactory;
-import Utils.Responses.StampResponse;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
@@ -19,20 +18,24 @@ import java.io.*;
 
 public class StampRequest implements IRequestor {
 
-    public IResponse sendRequest(IRequest request) throws GenaralException, AuthException {
+    public IResponse sendRequest(IRequest request) throws GeneralException, AuthException {
 
 
         try {
 
             String xmlStr = ((StampOptionsRequest) request).getXml();
+
             File tempFile = File.createTempFile("tmp-", ".xml");
-            BufferedWriter bw = new BufferedWriter(new FileWriter(tempFile));
+            //BufferedWriter bw = new BufferedWriter(new FileWriter(tempFile));
+            BufferedWriter bw = new BufferedWriter
+                    (new OutputStreamWriter(new FileOutputStream(tempFile),"UTF-8"));
             bw.write(xmlStr);
             bw.close();
+
             tempFile.deleteOnExit();
 
             HttpResponse<JsonNode> response = Unirest.post(request.URI)
-                    .header("Authorization",request.Token)
+                    .header("Authorization","bearer "+request.Token)
 
                     .field("xml",tempFile).asJson();
             if (response.getStatus()==403){
@@ -49,16 +52,16 @@ public class StampRequest implements IRequestor {
 
         } catch (UnirestException e) {
 
-            throw  new GenaralException(404,"HOST DESCONOCIDO");
+            throw  new GeneralException(404,"HOST DESCONOCIDO");
         }
         catch (JSONException e){
-            throw  new GenaralException(500,e.getMessage());
+            throw  new GeneralException(500,e.getMessage());
         }
         catch(java.net.MalformedURLException e){
-            throw  new GenaralException(404,"HOST DESCONOCIDO");
+            throw  new GeneralException(404,"HOST DESCONOCIDO");
         } catch (IOException e) {
-            e.printStackTrace();
-            throw  new GenaralException(404,e.getCause().getMessage());
+
+            throw  new GeneralException(404,e.getCause().getMessage());
         }
 
 

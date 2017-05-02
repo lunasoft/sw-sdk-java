@@ -12,8 +12,14 @@ Java 1.6 o superior
 
 ##Dependencias
 * [Unirest](http://unirest.io/java.html)
+* [org.json](http://www.json.org/java)
+* [httpclient 4.3.6](http://hc.apache.org/downloads.cgi)
+* [httpmime 4.3.6](http://hc.apache.org/downloads.cgi)
+* [httpasyncclient 4.0.2](http://hc.apache.org/downloads.cgi)
+
 
 ##Instalación
+
 Descargas el modulo mediante Maven:
 	
 ```html
@@ -22,18 +28,25 @@ Descargas el modulo mediante Maven:
         <dependency>
             <groupId>mx.com.sw.services</groupId>
             <artifactId>SW-JAVA</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
         </dependency>
 </dependencies>
 ```
-##Instalación manual
-```
-git clone https://github.com/lunasoft/sw-sdk-java.git
-cd sw-sdk-java/
-mvn clean package
+##Instalación manual (sin Maven)
+Descargar el modulo directamente de los siguientes links:
+
+* [Relase Github](https://github.com/lunasoft/sw-sdk-java/releases)
+* [Maven](https://oss.sonatype.org/service/local/repositories/releases/content/mx/com/sw/services/SW-JAVA/1.0.0/SW-JAVA-1.0.0.jar)
+Asi como instalar manualmente cada una de las dependencias:
+* [Unirest](http://unirest.io/java.html)
+* [org.json](http://www.json.org/java)
+* [httpclient 4.3.6](http://hc.apache.org/downloads.cgi)
+* [httpmime 4.3.6](http://hc.apache.org/downloads.cgi)
+* [httpasyncclient 4.0.2](http://hc.apache.org/downloads.cgi)
+
+Alternativamente tambien se cuenta con un archivo JAR en el que se incluyen todas las dependencias, este se encuentra en la carpeta [Relase Github](https://github.com/lunasoft/sw-sdk-java/releases),  con el sufijo _"jar-with-dependencies.jar"_
 
 
-```
 
 ##Uso rapido...
 
@@ -143,6 +156,104 @@ TimbrarV1 Recibe el contenido de un XML ya emitido (sellado) en formato String �
                     //puede ver mas de estas versiones en el apartado "Versiones de timbrado"
                     File fileXML = new File('xfdi.xml');
                     response = sdk.Stamp(fileXML,"v1");
+                    //El objeto response tendra así los atributos:
+                    // Status: estado de la petición procesada, puede ser : "success", "fail", "error"
+                    // HttpStatusCode: Codigo de respuesta HTTP del servidor: eg. 200, 400, 500
+                    // Data: Cuerpo de la respuesta que arroja el servidor
+                    //En este caso arrojara el complemento timbre: {"tfd":"<Complemento>"}
+                    System.out.println(response.Status);
+                    System.out.println(response.HttpStatusCode);
+                    System.out.println(response.Data);
+                    }
+                    catch(Exception e){
+                        //En caso de obtener estatus "fail", "error"
+                        //Se generara una excepción
+                        System.out.println(e.getMessage());
+                    }
+                 
+            
+```
+
+
+
+##Timbrar CFDI V2
+TimbrarV2 Recibe el contenido de un XML ya emitido (sellado) en formato String , posteriormente si la factura y el token son correctos devuelve el CFDI ya tibrado, en caso contrario lanza una excepción.
+
+##Timbrar XML en formato string utilizando usuario y contraseña
+```java
+            try{
+                    //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
+                    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+                    SWStampService sdk = new SWStampService("demo","123456789","http://services.test.sw.com.mx");
+                    //Se inicializa un objeto response, que obtendra la respuesta del api
+                    IResponse response = null;
+                    //Se asigna el resultado de la respuesta a dicho objeto
+                    //Se ejecuta el metodo "Stamp", que timbrara nuestro comprobante posteriormente sellado, asi como la versión del servicio de timbrado,
+                    //puede ver mas de estas versiones en el apartado "Versiones de timbrado"
+                    response = sdk.Stamp(stringXML,"v2");
+                    //El objeto response tendra así los atributos:
+                    // Status: estado de la petición procesada, puede ser : "success", "fail", "error"
+                    // HttpStatusCode: Codigo de respuesta HTTP del servidor: eg. 200, 400, 500
+                    // Data: Cuerpo de la respuesta que arroja el servidor
+                    //En este caso arrojara el complemento timbre: {"tfd":"<Complemento>"}
+                    System.out.println(response.Status);
+                    System.out.println(response.HttpStatusCode);
+                    System.out.println(response.Data);
+                    }
+                    catch(Exception e){
+                        //En caso de obtener estatus "fail", "error"
+                        //Se generara una excepción
+                        System.out.println(e.getMessage());
+                    }
+                 
+            
+```
+
+##Timbrar XML en formato string utilizando token
+
+```java
+            try{
+                    //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
+                    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+                    SWStampService sdk = new SWStampService("T2lYQ0t4L0R....","http://services.test.sw.com.mx");
+                    //Se inicializa un objeto response, que obtendra la respuesta del api
+                    IResponse response = null;
+                    //Se asigna el resultado de la respuesta a dicho objeto
+                    //Se ejecuta el metodo "Stamp", que timbrara nuestro comprobante posteriormente sellado, asi como la versión del servicio de timbrado,
+                    //puede ver mas de estas versiones en el apartado "Versiones de timbrado"
+                    response = sdk.Stamp(stringXML,"v2");
+                    //El objeto response tendra así los atributos:
+                    // Status: estado de la petición procesada, puede ser : "success", "fail", "error"
+                    // HttpStatusCode: Codigo de respuesta HTTP del servidor: eg. 200, 400, 500
+                    // Data: Cuerpo de la respuesta que arroja el servidor
+                    //En este caso arrojara el complemento timbre: {"tfd":"<Complemento>"}
+                    System.out.println(response.Status);
+                    System.out.println(response.HttpStatusCode);
+                    System.out.println(response.Data);
+                    }
+                    catch(Exception e){
+                        //En caso de obtener estatus "fail", "error"
+                        //Se generara una excepción
+                        System.out.println(e.getMessage());
+                    }
+                 
+            
+```
+
+##Timbrar XML en File type utilizando token
+
+```java
+            try{
+                    //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
+                    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+                    SWStampService sdk = new SWStampService("T2lYQ0t4L0R....","http://services.test.sw.com.mx");
+                    //Se inicializa un objeto response, que obtendra la respuesta del api
+                    IResponse response = null;
+                    //Se asigna el resultado de la respuesta a dicho objeto
+                    //Se ejecuta el metodo "Stamp", que timbrara nuestro comprobante posteriormente sellado, asi como la versión del servicio de timbrado,
+                    //puede ver mas de estas versiones en el apartado "Versiones de timbrado"
+                    File fileXML = new File('xfdi.xml');
+                    response = sdk.Stamp(fileXML,"v2");
                     //El objeto response tendra así los atributos:
                     // Status: estado de la petición procesada, puede ser : "success", "fail", "error"
                     // HttpStatusCode: Codigo de respuesta HTTP del servidor: eg. 200, 400, 500

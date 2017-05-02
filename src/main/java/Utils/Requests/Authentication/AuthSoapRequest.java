@@ -1,7 +1,7 @@
 package Utils.Requests.Authentication;
 
 import Exceptions.AuthException;
-import Exceptions.GenaralException;
+import Exceptions.GeneralException;
 import Utils.Constants;
 import Utils.Requests.IRequest;
 import Utils.Requests.IRequestor;
@@ -22,7 +22,7 @@ import java.io.StringReader;
 
 public class AuthSoapRequest implements IRequestor {
     @Override
-    public IResponse sendRequest(IRequest request) throws GenaralException, AuthException {
+    public IResponse sendRequest(IRequest request) throws GeneralException, AuthException {
         try {
             String body = Constants.auth_soap_envelope(request.User, request.Password);
             HttpResponse<String> response = Unirest.post("http://pruebascfdi.smartweb.com.mx/Autenticacion/wsAutenticacion.asmx?WSDL=")
@@ -55,13 +55,13 @@ public class AuthSoapRequest implements IRequestor {
             );
         } catch (UnirestException e) {
 
-            throw new GenaralException(500,e.getMessage());
+            throw new GeneralException(500,e.getMessage());
         } catch (ParserConfigurationException e) {
-            throw new GenaralException(500,e.getMessage());
+            throw new GeneralException(500,e.getMessage());
         } catch (SAXException e) {
-            throw new GenaralException(500,e.getMessage());
+            throw new GeneralException(500,e.getMessage());
         } catch (IOException e) {
-            throw new GenaralException(500,e.getMessage());
+            throw new GeneralException(500,e.getMessage());
         }
 
     }

@@ -1,6 +1,6 @@
 package Tests.Authentication;
 
-import Exceptions.GenaralException;
+import Exceptions.GeneralException;
 import Services.Authentication.SWAuthenticationService;
 import Utils.Responses.IResponse;
 import junit.framework.TestCase;
@@ -50,7 +50,7 @@ public class SWAuthenticationServiceTest extends TestCase {
             System.out.println(response.HttpStatusCode);
             System.out.println(response.Data);
         }
-        catch (GenaralException e){
+        catch (GeneralException e){
             Assert.assertNotNull("some bad happend", e);
         }
     }

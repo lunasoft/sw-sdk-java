@@ -1,9 +1,9 @@
 package Utils.Responses;
 
-import Exceptions.GenaralException;
+import Exceptions.GeneralException;
 
 public class JSendFactory {
-    public static IJSend response(String status,String msg, int code) throws GenaralException {
+    public static IJSend response(String status,String msg, int code) throws GeneralException {
 
         int idcae = 0;
         if (status.equalsIgnoreCase("success")){
@@ -22,7 +22,7 @@ public class JSendFactory {
             case 2:
                 return new FailureResponse(code, msg, status);
             case 3:
-                throw new GenaralException(code,msg);
+                throw new GeneralException(code,msg);
 
             default:
                 return new FailureResponse(code, msg, status);

@@ -77,6 +77,7 @@ public class SWStampServiceTest extends TestCase {
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
+        Assert.assertTrue(Utils.isValidB64(response.tfd));
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_b64() throws Exception {
@@ -87,6 +88,9 @@ public class SWStampServiceTest extends TestCase {
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
         System.out.println(response.cfdi);
+        boolean cfdi_valid = Utils.isValidB64(response.cfdi), tfd_valid = Utils.isValidB64(response.tfd);
+        Assert.assertTrue(cfdi_valid && tfd_valid);
+
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3_b64() throws Exception {
@@ -95,8 +99,8 @@ public class SWStampServiceTest extends TestCase {
         response = api.Stamp(Utils.b64xml,"v3",true);
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
-        System.out.println(response.tfd);
         System.out.println(response.cfdi);
+        Assert.assertTrue(Utils.isValidB64(response.cfdi));
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4_b64() throws Exception {
@@ -113,70 +117,13 @@ public class SWStampServiceTest extends TestCase {
         System.out.println(response.noCertificadoSAT);
         System.out.println(response.fechaTimbrado);
         System.out.println(response.uuid);
-    }
-/*
-    public void testStampREAL_XML_BYTES_USER_PASSWORD_AUTH() throws Exception {
-
-        SWStampService api = new SWStampService("demo","123456789","http://services.test.sw.com.mx");
-        IResponse response = null;
-
-        ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource("33-elbueno.xml").getFile());
-       byte[] b = Utils.fileToBytes(file);
-        IResponse res = api.Stamp(b,"v1");
-        System.out.println(res.Data);
-
+        boolean valid_cfdi = Utils.isValidB64(response.cfdi),
+                valid_qr = Utils.isValidB64(response.qrCode),
+                valid_sellocfdi = Utils.isValidB64(response.selloCFDI),
+                valid_sellosat = Utils.isValidB64(response.selloSAT);
+        Assert.assertTrue(valid_cfdi && valid_qr && valid_sellocfdi && valid_sellosat);
     }
 
-    public void testStamppattern() throws Exception {
-        ClassLoader classLoader = getClass().getClassLoader();
-        File fileDir = new File(classLoader.getResource("33-elbueno.xml").getFile());
-        try {
-
-
-            BufferedReader in = new BufferedReader(
-                    new InputStreamReader(new FileInputStream(fileDir), "UTF-8"));
-
-            String str;
-
-            while ((str = in.readLine()) != null) {
-                PrintStream out = new PrintStream(System.out, true, "UTF-8");
-
-
-                        out.println(str);
-
-
-            }
-
-            in.close();
-        }
-        catch (UnsupportedEncodingException e)
-        {
-            System.out.println(e.getMessage());
-        }
-        catch (IOException e)
-        {
-            System.out.println(e.getMessage());
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-        }
-
-    }
-
-    public void testStampREAL_XML_STRING_TOKEN_AUTH() throws Exception {
-        SWAuthenticationService auth = new SWAuthenticationService("demo","123456789","http://services.test.sw.com.mx");
-        JSONObject obj = new JSONObject(auth.Token().Data);
-        String tkn = obj.getString("token");
-        SWStampService api = new SWStampService(tkn,"http://services.test.sw.com.mx");
-        IResponse response = null;
-        Date date1 = new Date();
-        response = api.Stamp(Utils.dummy_xml_string,"v1");
-        Date date2 = new Date();
-        System.out.println(Utils.getDateDiff(date1,date2, TimeUnit.MILLISECONDS));
-        System.out.println(response.Data);
-    }*/
 
     public void testStampREAL_XML_STRING_EMPTY_PARAMS() throws Exception {
 
@@ -244,66 +191,6 @@ public class SWStampServiceTest extends TestCase {
         }
     }
 
-   /* public void testStampRenewToken() throws Exception {
-        SWStampService api = new SWStampService("demo","123456789","http://services.test.sw.com.mx");
-        IResponse response = null;
 
-        int request_number = 50;
-        int revoke_token_step = request_number/2;
-        int counter;
-        int success_request =0;
-        int fail_request = 0;
-        for (counter=0;counter<request_number;counter++){
-            if (counter==revoke_token_step){
-                api.setToken(null);
-            }
-            try{
-                response = api.Stamp(Utils.dummy_xml_string,"v1");
-
-                success_request++;
-            }catch (Exception e){
-                fail_request++;
-            }
-        }
-        System.out.println("Peticiones realizadas: "+request_number);
-        System.out.println("Peticiones exitosas: "+success_request);
-        System.out.println("Peticiones fallidas: "+fail_request);
-        Assert.assertTrue(fail_request==0 && success_request==request_number);
-
-    }
-
-
-    public void testStampDUMMY_SUCCESS() throws Exception {
-        SWStampService api = new SWStampService("tetete","d-success");
-        IResponse response = null;
-        response = api.Stamp("XML EN STRING","v1");
-        System.out.println(response.Status);
-        System.out.println(response.HttpStatusCode);
-        System.out.println(response.Data);
-    }
-
-    public void testStampDUMMY_FAILURE() throws Exception {
-        SWStampService api = new SWStampService("tetete","d-fail");
-        IResponse response = null;
-        response =  api.Stamp("XML EN STRING","v1");
-        System.out.println(response.Status);
-        System.out.println(response.HttpStatusCode);
-        System.out.println(response.Data);
-    }
-    public void testStampDUMMY_ERROR() throws Exception {
-        try{
-            SWStampService api = new SWStampService("tetete","d-error");
-            StampResponse response = null;
-            response = (StampResponse) api.Stamp("XML EN STRING","v1");
-            System.out.println(response.Status);
-            System.out.println(response.HttpStatusCode);
-            System.out.println(response.Data);
-        }
-        catch(GenaralException e){
-            System.out.println("Correcto excepcion lanzada");
-            Assert.assertNotNull("some bad happend", e);
-        }
-
-    }*/
 
 }

@@ -1,5 +1,10 @@
 package Tests;
 
+import jdk.nashorn.internal.runtime.regexp.RegExp;
+import jdk.nashorn.internal.runtime.regexp.RegExpMatcher;
+import org.apache.commons.codec.binary.Base64;
+import sun.misc.BASE64Decoder;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -50,10 +55,20 @@ public class Utils {
 
     }
 
-    public static long getDateDiff(Date date1, Date date2, TimeUnit timeUnit) {
-        long diffInMillies = date2.getTime() - date1.getTime();
-        return timeUnit.convert(diffInMillies, TimeUnit.MILLISECONDS);
+    public static boolean isValidB64(String value){
+        String pattern = "^([A-Za-z0-9+/]{4})*([A-Za-z0-9+/]{4}|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{2}==)$";
+        Pattern r = Pattern.compile(pattern);
+        Matcher m = r.matcher(value);
+        if (m.find()) {
+           return true;
+        } else {
+           return false;
+        }
     }
+
+
+
+
 
     public static String removeBadChars(String s) {
         if (s == null) return null;

@@ -28,12 +28,22 @@ public class AuthRequest implements IRequestor {
             HttpResponse<JsonNode> response = Unirest.post(request.URI)
                     .header("user",request.User)
                     .header("password",request.Password).asJson();
-            if(response.getStatus()==401 || response.getStatus()==500 || response.getStatus()==400){
-                throw new AuthException(401,"CREDENCIALES INVALIDAS");
+            if(!response.getBody().toString().isEmpty()) {
+                    JSONObject body = new JSONObject(response.getBody().toString());
+                    if(response.getStatus()==200){
+                        JSONObject data = body.getJSONObject("data");
+                        return new SuccessAuthResponse(response.getStatus(),body.getString("status"),data.getString("token"),true);
+                    }
+                    else{
+                        return new BadResponse(response.getStatus(),body.getString("status"),body.getString("message"),body.getString("messageDetail"));
+                    }
             }
-            JSONObject parser = new JSONObject(response.getBody().toString());
-                JSONObject data = parser.getJSONObject("data");
-            return new SuccessAuthResponse(response.getStatus(),parser.getString("status"),data.getString("token"),true);
+            else{
+                return new BadResponse(response.getStatus(),"error",response.getStatusText(),response.getStatusText());
+            }
+
+
+
 
 
 

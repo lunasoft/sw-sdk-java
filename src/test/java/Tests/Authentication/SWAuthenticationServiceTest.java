@@ -20,39 +20,6 @@ public class SWAuthenticationServiceTest extends TestCase {
         System.out.println(response.HttpStatusCode);
         System.out.println(response.token);
     }
-    public  void testTokenSUCCESS_RESPONSE() throws Exception {
-        SWAuthenticationService auth;
-        auth = new SWAuthenticationService("demo","12345678A","d-success");
-        IResponse response;
-        response =  auth.Token();
-        System.out.println(response.Status);
-        System.out.println(response.HttpStatusCode);
-        System.out.println(response.token);
-    }
 
-    public  void testTokenFAILURE_RESPONSE() throws Exception {
-        SWAuthenticationService auth;
-        auth = new SWAuthenticationService("demo","12345678A","d-fail");
-        IResponse response;
-        response =  auth.Token();
-        System.out.println(response.Status);
-        System.out.println(response.HttpStatusCode);
-        System.out.println(response.messageDetail);
-    }
-
-    public  void testTokenERROR_RESPONSE() throws Exception {
-        try{
-            SWAuthenticationService auth;
-            auth = new SWAuthenticationService("demo","12345678A","d-error");
-            IResponse response;
-            response =  auth.Token();
-            System.out.println(response.Status);
-            System.out.println(response.HttpStatusCode);
-            System.out.println(response.Data);
-        }
-        catch (GeneralException e){
-            Assert.assertNotNull("some bad happend", e);
-        }
-    }
 
 }

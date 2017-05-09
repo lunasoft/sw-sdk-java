@@ -58,11 +58,7 @@ public class SWStampService extends SWService {
         //MAKE STAMP PROCESS, CUSTOMER ALREADY HAS TOKEN
 
         StampOptionsRequest settings = new StampOptionsRequest(getToken(),getURI(),xml,version);
-        String dum = settings.URI.split("-")[0];
-        if (dum.equalsIgnoreCase("d")){
-            StampRequestDummy req = new StampRequestDummy();
-            return req.sendRequest(settings);
-        }
+
         StampRequest req = new StampRequest();
         return req.sendRequest(settings);
 
@@ -97,15 +93,19 @@ public class SWStampService extends SWService {
 
         }
         //MAKE STAMP PROCESS, CUSTOMER ALREADY HAS TOKEN
-
+    if(isb64){
         StampOptionsRequest settings = new StampOptionsRequest(getToken(),getURI(),xml,version,isb64);
-        String dum = settings.URI.split("-")[0];
-        if (dum.equalsIgnoreCase("d")){
-            StampRequestDummy req = new StampRequestDummy();
-            return req.sendRequest(settings);
-        }
         StampRequest req = new StampRequest();
         return req.sendRequest(settings);
+       }
+       else{
+        StampOptionsRequest settings = new StampOptionsRequest(getToken(),getURI(),xml,version);
+        StampRequest req = new StampRequest();
+        return req.sendRequest(settings);
+        }
+
+
+
 
     }
     public IResponse Stamp(byte[] xmlFile, String version, boolean isb64) throws AuthException, GeneralException {
@@ -142,11 +142,6 @@ public class SWStampService extends SWService {
 
         StampOptionsRequest settings = new StampOptionsRequest(getToken(),getURI(),xmlProcess,version);
 
-        String dum = settings.URI.split("-")[0];
-        if (dum.equalsIgnoreCase("d")){
-            StampRequestDummy req = new StampRequestDummy();
-            return req.sendRequest(settings);
-        }
         StampRequest req = new StampRequest();
         return req.sendRequest(settings);
 
@@ -186,11 +181,7 @@ public class SWStampService extends SWService {
 
         StampOptionsRequest settings = new StampOptionsRequest(getToken(),getURI(),xmlProcess,version);
 
-        String dum = settings.URI.split("-")[0];
-        if (dum.equalsIgnoreCase("d")){
-            StampRequestDummy req = new StampRequestDummy();
-            return req.sendRequest(settings);
-        }
+
         StampRequest req = new StampRequest();
         return req.sendRequest(settings);
 

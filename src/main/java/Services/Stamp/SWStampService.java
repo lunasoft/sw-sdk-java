@@ -45,8 +45,8 @@ public class SWStampService extends SWService {
             AuthRequest req = new AuthRequest();
             IResponse res =  req.sendRequest(settings);
             if (res.HttpStatusCode==200){
-                JSONObject obj = new JSONObject(res.Data);
-                setToken(obj.getString("token"));
+
+                setToken(res.token);
             }
             else{
                 //CUSTOMER HASN'T TOKEN, AND USER AND PASSWORD ARE BAD--> WE CANT' DO ANYTHING --> THROW EXCEPTION

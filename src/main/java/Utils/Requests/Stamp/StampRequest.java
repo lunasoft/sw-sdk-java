@@ -4,8 +4,10 @@ import Exceptions.AuthException;
 import Exceptions.GeneralException;
 import Utils.Requests.IRequest;
 import Utils.Requests.IRequestor;
+import Utils.Responses.BadResponse;
 import Utils.Responses.IResponse;
 import Utils.Responses.JSendFactory;
+import Utils.Responses.SuccessCFDIResponse;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
@@ -38,16 +40,26 @@ public class StampRequest implements IRequestor {
                     .header("Authorization","bearer "+request.Token)
 
                     .field("xml",tempFile).asJson();
-            if (response.getStatus()==403){
-                throw new AuthException(403,"Token invalido");
+            if (response.getStatus()>=401 && response.getStatus()<=403){
+                throw new AuthException(401,"Token invalido");
+            }
+
+            else if(response.getStatus()==400 || response.getStatus()==500){
+                JSONObject parser = new JSONObject(response.getBody().toString());
+                return new BadResponse(response.getStatus(), parser.getString("status").toString(), parser.getString("message").toString(), parser.getString("messageDetail").toString());
             }
 
             JSONObject parser = new JSONObject(response.getBody().toString());
-            return (IResponse) JSendFactory.response(
-                    parser.getString("status").toString(),
-                    parser.getString("status").toString().equals("error") ? parser.getString("message").toString() : parser.getJSONObject("data").toString(),
-                     response.getStatus()
-            );
+            JSONObject data = new JSONObject(parser.getString("data"));
+            String tfd = null;
+            String cfdi = null;
+            if(data.has("tfd")){
+                tfd = data.getString("tfd");
+            }
+            if(data.has("cfdi")){
+                cfdi = data.getString("cfdi");
+            }
+            return new SuccessCFDIResponse(response.getStatus(),data.toString(),parser.getString("status").toString(),tfd,cfdi);
 
 
         } catch (UnirestException e) {

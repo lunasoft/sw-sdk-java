@@ -18,7 +18,7 @@ public class SWAuthenticationServiceTest extends TestCase {
         response =  auth.Token();
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
-        System.out.println(response.Data);
+        System.out.println(response.token);
     }
     public  void testTokenSUCCESS_RESPONSE() throws Exception {
         SWAuthenticationService auth;
@@ -27,7 +27,7 @@ public class SWAuthenticationServiceTest extends TestCase {
         response =  auth.Token();
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
-        System.out.println(response.Data);
+        System.out.println(response.token);
     }
 
     public  void testTokenFAILURE_RESPONSE() throws Exception {
@@ -37,7 +37,7 @@ public class SWAuthenticationServiceTest extends TestCase {
         response =  auth.Token();
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
-        System.out.println(response.Data);
+        System.out.println(response.messageDetail);
     }
 
     public  void testTokenERROR_RESPONSE() throws Exception {

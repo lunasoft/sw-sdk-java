@@ -28,7 +28,7 @@ public class SWStampServiceTest extends TestCase {
         response = api.Stamp(Utils.dummy_xml_string,"v1");
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
-        System.out.println(response.Data);
+        System.out.println(response.messageDetail);
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2() throws Exception {

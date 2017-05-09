@@ -1,12 +1,10 @@
 package Utils.Requests.Authentication;
 
+import Exceptions.AuthException;
 import Exceptions.GeneralException;
 import Utils.Requests.IRequest;
 import Utils.Requests.IRequestor;
-import Utils.Responses.AuthResponse;
-import Utils.Responses.IJSend;
-import Utils.Responses.IResponse;
-import Utils.Responses.JSendFactory;
+import Utils.Responses.*;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
@@ -20,7 +18,7 @@ public class AuthRequest implements IRequestor {
 
 
     @Override
-    public IResponse sendRequest(IRequest request) throws GeneralException {
+    public IResponse sendRequest(IRequest request) throws GeneralException, AuthException {
 
         if (request.URI.isEmpty()){
             throw new GeneralException(500,"URL VACIA");
@@ -30,13 +28,13 @@ public class AuthRequest implements IRequestor {
             HttpResponse<JsonNode> response = Unirest.post(request.URI)
                     .header("user",request.User)
                     .header("password",request.Password).asJson();
+            if(response.getStatus()==401 || response.getStatus()==500 || response.getStatus()==400){
+                throw new AuthException(401,"CREDENCIALES INVALIDAS");
+            }
             JSONObject parser = new JSONObject(response.getBody().toString());
+                JSONObject data = parser.getJSONObject("data");
+            return new SuccessAuthResponse(response.getStatus(),parser.getString("status"),data.getString("token"),true);
 
-            return (IResponse) JSendFactory.response(
-                    parser.getString("status").toString(),
-                    parser.getString("status").toString().equals("error") ? parser.getString("message").toString() : parser.getJSONObject("data").toString(),
-                    response.getStatus()
-            );
 
 
 

@@ -44,7 +44,7 @@ public class SWStampServiceTest extends TestCase {
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3() throws Exception {
-        SWStampService api = new SWStampService("demo","123456789","http://swservicestest-rc.azurewebsites.net");
+        SWStampService api = new SWStampService("demo","123456789","http://services.test.sw.com.mx");
         IResponse response = null;
         response = api.Stamp(Utils.dummy_xml_string,"v3");
         System.out.println(response.Status);
@@ -54,7 +54,7 @@ public class SWStampServiceTest extends TestCase {
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4() throws Exception {
-        SWStampService api = new SWStampService("demo","123456789","http://swservicestest-rc.azurewebsites.net");
+        SWStampService api = new SWStampService("demo","123456789","http://services.test.sw.com.mx");
         IResponse response = null;
         response = api.Stamp(Utils.dummy_xml_string,"V4");
         System.out.println(response.Status);
@@ -71,7 +71,7 @@ public class SWStampServiceTest extends TestCase {
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1_b64() throws Exception {
-        SWStampService api = new SWStampService("demo","123456789","http://swservicestest-rc.azurewebsites.net");
+        SWStampService api = new SWStampService("demo","123456789","http://services.test.sw.com.mx");
         IResponse response = null;
         response = api.Stamp(Utils.b64xml,"v1",true);
         System.out.println(response.Status);
@@ -81,7 +81,7 @@ public class SWStampServiceTest extends TestCase {
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_b64() throws Exception {
-        SWStampService api = new SWStampService("demo","123456789","http://swservicestest-rc.azurewebsites.net");
+        SWStampService api = new SWStampService("demo","123456789","http://services.test.sw.com.mx");
         IResponse response = null;
         response = api.Stamp(Utils.b64xml,"v2",true);
         System.out.println(response.Status);
@@ -94,7 +94,7 @@ public class SWStampServiceTest extends TestCase {
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3_b64() throws Exception {
-        SWStampService api = new SWStampService("demo","123456789","http://swservicestest-rc.azurewebsites.net");
+        SWStampService api = new SWStampService("demo","123456789","http://services.test.sw.com.mx");
         IResponse response = null;
         response = api.Stamp(Utils.b64xml,"v3",true);
         System.out.println(response.Status);
@@ -104,7 +104,7 @@ public class SWStampServiceTest extends TestCase {
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4_b64() throws Exception {
-        SWStampService api = new SWStampService("demo","123456789","http://swservicestest-rc.azurewebsites.net");
+        SWStampService api = new SWStampService("demo","123456789","http://services.test.sw.com.mx");
         IResponse response = null;
         response = api.Stamp(Utils.b64xml,"V4",true);
         System.out.println(response.Status);

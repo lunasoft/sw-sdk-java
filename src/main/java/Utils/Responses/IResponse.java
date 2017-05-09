@@ -10,6 +10,29 @@ public abstract class IResponse {
     public String cfdi = null;
     public String token;
     public boolean isAuth;
+    public String cadenaOriginalSAT;
+    public String noCertificadoSAT;
+    public String noCertificadoCFDI;
+    public String uuid;
+    public String selloSAT;
+    public String selloCFDI;
+    public String fechaTimbrado;
+    public String qrCode;
+
+    //V4 Response
+    public IResponse(int httpStatusCode, String status, String cfdi, String cadenaOriginalSAT, String noCertificadoSAT, String noCertificadoCFDI, String uuid, String selloSAT, String selloCFDI, String fechaTimbrado, String qrCode) {
+        HttpStatusCode = httpStatusCode;
+        Status = status;
+        this.cfdi = cfdi;
+        this.cadenaOriginalSAT = cadenaOriginalSAT;
+        this.noCertificadoSAT = noCertificadoSAT;
+        this.noCertificadoCFDI = noCertificadoCFDI;
+        this.uuid = uuid;
+        this.selloSAT = selloSAT;
+        this.selloCFDI = selloCFDI;
+        this.fechaTimbrado = fechaTimbrado;
+        this.qrCode = qrCode;
+    }
 
     public IResponse(int httpStatusCode, String status, String token, boolean isAuth) {
         HttpStatusCode = httpStatusCode;

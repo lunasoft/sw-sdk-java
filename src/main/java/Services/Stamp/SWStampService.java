@@ -67,6 +67,90 @@ public class SWStampService extends SWService {
         return req.sendRequest(settings);
 
     }
+//
+
+    public IResponse Stamp(String xml, String version, boolean isb64) throws AuthException, GeneralException {
+
+
+
+        if (getToken()==null){
+
+            if (getUser()==null || getPassword()==null){
+                //CUSTOMER HASN'T TOKEN, USER AND PASSWORD--> WE CANT' DO ANYTHING --> THROW EXCEPTION
+                throw new AuthException(500,"no existen elementos de autenticación");
+
+            }
+
+            //CUSTOMER HASN'T TOKEN, BUT HAS USER AND PASSWORD --> AUTH,GENERATE TOKEN AND SET TOKEN IN GLOBAL SETTINGS
+            AuthOptionsRequest settings = new AuthOptionsRequest(Constants.BASE_PATH,getUser(),getPassword());
+            AuthRequest req = new AuthRequest();
+            IResponse res =  req.sendRequest(settings);
+            if (res.HttpStatusCode==200){
+
+                setToken(res.token);
+            }
+            else{
+                //CUSTOMER HASN'T TOKEN, AND USER AND PASSWORD ARE BAD--> WE CANT' DO ANYTHING --> THROW EXCEPTION
+                throw new AuthException(res.HttpStatusCode,res.Data);
+            }
+
+
+        }
+        //MAKE STAMP PROCESS, CUSTOMER ALREADY HAS TOKEN
+
+        StampOptionsRequest settings = new StampOptionsRequest(getToken(),getURI(),xml,version,isb64);
+        String dum = settings.URI.split("-")[0];
+        if (dum.equalsIgnoreCase("d")){
+            StampRequestDummy req = new StampRequestDummy();
+            return req.sendRequest(settings);
+        }
+        StampRequest req = new StampRequest();
+        return req.sendRequest(settings);
+
+    }
+    public IResponse Stamp(byte[] xmlFile, String version, boolean isb64) throws AuthException, GeneralException {
+        //BINARY XML
+
+
+        String xmlProcess = new String(xmlFile,Charset.forName("UTF-8"));
+
+        if (getToken()==null){
+
+            if (getUser()==null || getPassword()==null){
+                //CUSTOMER HASN'T TOKEN, USER AND PASSWORD--> WE CANT' DO ANYTHING --> THROW EXCEPTION
+                throw new AuthException(500,"no existen elementos de autenticación");
+
+            }
+
+            //CUSTOMER HASN'T TOKEN, BUT HAS USER AND PASSWORD --> TRY AUTH,GENERATE TOKEN AND SET TOKEN IN GLOBAL SETTINGS
+            AuthOptionsRequest settings = new AuthOptionsRequest(Constants.BASE_PATH,getUser(),getPassword());
+            AuthRequest req = new AuthRequest();
+            IResponse res =  req.sendRequest(settings);
+            if (res.HttpStatusCode==200){
+                JSONObject obj = new JSONObject(res.Data);
+                setToken(obj.getString("token"));
+            }
+            else{
+                //CUSTOMER HASN'T TOKEN, AND USER AND PASSWORD ARE BAD--> WE CANT' DO ANYTHING --> THROW EXCEPTION
+                throw new AuthException(res.HttpStatusCode,res.Data);
+            }
+
+
+        }
+
+        //MAKE STAMP PROCESS, CUSTOMER ALREADY HAS TOKEN
+
+        StampOptionsRequest settings = new StampOptionsRequest(getToken(),getURI(),xmlProcess,version);
+
+        String dum = settings.URI.split("-")[0];
+        if (dum.equalsIgnoreCase("d")){
+            StampRequestDummy req = new StampRequestDummy();
+            return req.sendRequest(settings);
+        }
+        StampRequest req = new StampRequest();
+        return req.sendRequest(settings);
+
+    }
 
     public IResponse Stamp(byte[] xmlFile, String version) throws AuthException, GeneralException {
         //BINARY XML
@@ -111,4 +195,6 @@ public class SWStampService extends SWService {
         return req.sendRequest(settings);
 
     }
+
+    //
 }

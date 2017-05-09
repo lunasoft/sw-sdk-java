@@ -4,10 +4,7 @@ import Exceptions.AuthException;
 import Exceptions.GeneralException;
 import Utils.Requests.IRequest;
 import Utils.Requests.IRequestor;
-import Utils.Responses.BadResponse;
-import Utils.Responses.IResponse;
-import Utils.Responses.JSendFactory;
-import Utils.Responses.SuccessCFDIResponse;
+import Utils.Responses.*;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
@@ -43,16 +40,22 @@ public class StampRequest implements IRequestor {
             if (response.getStatus()>=401 && response.getStatus()<=403){
                 throw new AuthException(401,"Token invalido");
             }
+            else if(response.getStatus()==404){
+                throw new GeneralException(404,"URL no encontrada");
+            }
 
             else if(response.getStatus()==400 || response.getStatus()==500){
                 JSONObject parser = new JSONObject(response.getBody().toString());
                 return new BadResponse(response.getStatus(), parser.getString("status").toString(), parser.getString("message").toString(), parser.getString("messageDetail").toString());
             }
-
             JSONObject parser = new JSONObject(response.getBody().toString());
-            JSONObject data = new JSONObject(parser.getString("data"));
+            JSONObject data = new JSONObject(parser.get("data").toString());
             String tfd = null;
             String cfdi = null;
+
+            if(request.version.equalsIgnoreCase("v4")){
+                return new SuccessV4Response(response.getStatus(),parser.getString("status"),data.getString("cfdi"),data.getString("cadenaOriginalSAT"),data.getString("noCertificadoSAT"),data.getString("noCertificadoCFDI"),data.getString("uuid"),data.getString("selloSAT"),data.getString("selloCFDI"),data.getString("fechaTimbrado"),data.getString("qrCode"));
+            }
             if(data.has("tfd")){
                 tfd = data.getString("tfd");
             }
@@ -60,6 +63,8 @@ public class StampRequest implements IRequestor {
                 cfdi = data.getString("cfdi");
             }
             return new SuccessCFDIResponse(response.getStatus(),data.toString(),parser.getString("status").toString(),tfd,cfdi);
+
+
 
 
         } catch (UnirestException e) {

@@ -22,13 +22,15 @@ import java.util.regex.Pattern;
 
 public class SWStampServiceTest extends TestCase {
 
+
+
    public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1() throws Exception {
         SWStampService api = new SWStampService("demo","123456789","http://services.test.sw.com.mx");
         IResponse response = null;
         response = api.Stamp(Utils.dummy_xml_string,"v1");
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
-        System.out.println(response.messageDetail);
+        System.out.println(response.tfd);
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2() throws Exception {
@@ -37,7 +39,80 @@ public class SWStampServiceTest extends TestCase {
         response = api.Stamp(Utils.dummy_xml_string,"v2");
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
-        System.out.println(response.Data);
+        System.out.println(response.tfd);
+        System.out.println(response.cfdi);
+    }
+
+    public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3() throws Exception {
+        SWStampService api = new SWStampService("demo","123456789","http://swservicestest-rc.azurewebsites.net");
+        IResponse response = null;
+        response = api.Stamp(Utils.dummy_xml_string,"v3");
+        System.out.println(response.Status);
+        System.out.println(response.HttpStatusCode);
+        System.out.println(response.tfd);
+        System.out.println(response.cfdi);
+    }
+
+    public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4() throws Exception {
+        SWStampService api = new SWStampService("demo","123456789","http://swservicestest-rc.azurewebsites.net");
+        IResponse response = null;
+        response = api.Stamp(Utils.dummy_xml_string,"V4");
+        System.out.println(response.Status);
+        System.out.println(response.cfdi);
+        System.out.println(response.qrCode);
+        System.out.println(response.cadenaOriginalSAT);
+        System.out.println(response.selloCFDI);
+        System.out.println(response.selloSAT);
+        System.out.println(response.noCertificadoCFDI);
+        System.out.println(response.noCertificadoSAT);
+        System.out.println(response.fechaTimbrado);
+        System.out.println(response.uuid);
+
+    }
+
+    public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1_b64() throws Exception {
+        SWStampService api = new SWStampService("demo","123456789","http://swservicestest-rc.azurewebsites.net");
+        IResponse response = null;
+        response = api.Stamp(Utils.b64xml,"v1",true);
+        System.out.println(response.Status);
+        System.out.println(response.HttpStatusCode);
+        System.out.println(response.tfd);
+    }
+
+    public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_b64() throws Exception {
+        SWStampService api = new SWStampService("demo","123456789","http://swservicestest-rc.azurewebsites.net");
+        IResponse response = null;
+        response = api.Stamp(Utils.b64xml,"v2",true);
+        System.out.println(response.Status);
+        System.out.println(response.HttpStatusCode);
+        System.out.println(response.tfd);
+        System.out.println(response.cfdi);
+    }
+
+    public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3_b64() throws Exception {
+        SWStampService api = new SWStampService("demo","123456789","http://swservicestest-rc.azurewebsites.net");
+        IResponse response = null;
+        response = api.Stamp(Utils.b64xml,"v3",true);
+        System.out.println(response.Status);
+        System.out.println(response.HttpStatusCode);
+        System.out.println(response.tfd);
+        System.out.println(response.cfdi);
+    }
+
+    public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4_b64() throws Exception {
+        SWStampService api = new SWStampService("demo","123456789","http://swservicestest-rc.azurewebsites.net");
+        IResponse response = null;
+        response = api.Stamp(Utils.b64xml,"V4",true);
+        System.out.println(response.Status);
+        System.out.println(response.cfdi);
+        System.out.println(response.qrCode);
+        System.out.println(response.cadenaOriginalSAT);
+        System.out.println(response.selloCFDI);
+        System.out.println(response.selloSAT);
+        System.out.println(response.noCertificadoCFDI);
+        System.out.println(response.noCertificadoSAT);
+        System.out.println(response.fechaTimbrado);
+        System.out.println(response.uuid);
     }
 /*
     public void testStampREAL_XML_BYTES_USER_PASSWORD_AUTH() throws Exception {

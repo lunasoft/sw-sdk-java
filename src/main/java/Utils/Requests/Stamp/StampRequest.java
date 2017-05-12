@@ -32,12 +32,13 @@ public class StampRequest implements IRequestor {
             bw.close();
 
             tempFile.deleteOnExit();
-
+            Unirest.setTimeouts(60000, 360000);
             HttpResponse<JsonNode> response = Unirest.post(request.URI)
                     .header("Authorization","bearer "+request.Token)
 
                     .field("xml",tempFile).asJson();
-            if(!response.getBody().toString().isEmpty()) {
+
+            if(!response.getBody().toString().equalsIgnoreCase("{}")) {
                 JSONObject body = new JSONObject(response.getBody().toString());
                 if(response.getStatus()==200){
                     JSONObject data = body.getJSONObject("data");
@@ -55,7 +56,12 @@ public class StampRequest implements IRequestor {
                     return new SuccessCFDIResponse(response.getStatus(),data.toString(),body.getString("status").toString(),tfd,cfdi);
                 }
                 else{
-                    return new BadResponse(response.getStatus(),body.getString("status"),body.getString("message"),body.getString("messageDetail"));
+                    String messageDetail = null;
+
+                    if (!body.isNull("messageDetail")){
+                        messageDetail = body.getString("messageDetail");
+                    }
+                    return new BadResponse(response.getStatus(),body.getString("status"),body.getString("message").toString(),messageDetail);
                 }
             }
             else{

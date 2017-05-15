@@ -28,10 +28,14 @@ public class SWStampServiceTest extends TestCase {
    public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
         IResponse response = null;
+
         response = api.Stamp(Utils.dummy_xml_string,"v1");
         System.out.println(response.Status);
+        System.out.println(response.message);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
+        String expect_status = "success";
+        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2() throws Exception {
@@ -42,6 +46,8 @@ public class SWStampServiceTest extends TestCase {
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
         System.out.println(response.cfdi);
+        String expect_status = "success";
+        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3() throws Exception {
@@ -52,6 +58,8 @@ public class SWStampServiceTest extends TestCase {
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
         System.out.println(response.cfdi);
+        String expect_status = "success";
+        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4() throws Exception {
@@ -68,6 +76,8 @@ public class SWStampServiceTest extends TestCase {
         System.out.println(response.noCertificadoSAT);
         System.out.println(response.fechaTimbrado);
         System.out.println(response.uuid);
+        String expect_status = "success";
+        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
 
     }
 
@@ -76,6 +86,7 @@ public class SWStampServiceTest extends TestCase {
         IResponse response = null;
         response = api.Stamp(Utils.b64xml,"v1",true);
         System.out.println(response.Status);
+        System.out.println(response.message);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
         Assert.assertTrue(Utils.isValidB64(response.tfd));
@@ -136,6 +147,8 @@ public class SWStampServiceTest extends TestCase {
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
+        String expect_status = "success";
+        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_CC10() throws Exception {
@@ -146,6 +159,8 @@ public class SWStampServiceTest extends TestCase {
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
         System.out.println(response.cfdi);
+        String expect_status = "success";
+        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3_CC10() throws Exception {
@@ -156,6 +171,8 @@ public class SWStampServiceTest extends TestCase {
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
         System.out.println(response.cfdi);
+        String expect_status = "success";
+        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4_CC10() throws Exception {
@@ -172,6 +189,8 @@ public class SWStampServiceTest extends TestCase {
         System.out.println(response.noCertificadoSAT);
         System.out.println(response.fechaTimbrado);
         System.out.println(response.uuid);
+        String expect_status = "success";
+        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
 
     }
 
@@ -245,6 +264,8 @@ public class SWStampServiceTest extends TestCase {
         System.out.println(response.message);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
+        String expect_status = "success";
+        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_PAGOS10() throws Exception {
@@ -256,6 +277,8 @@ public class SWStampServiceTest extends TestCase {
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
         System.out.println(response.cfdi);
+        String expect_status = "success";
+        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3_PAGOS10() throws Exception {
@@ -267,6 +290,8 @@ public class SWStampServiceTest extends TestCase {
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
         System.out.println(response.cfdi);
+        String expect_status = "success";
+        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4_PAGOS10() throws Exception {
@@ -283,6 +308,8 @@ public class SWStampServiceTest extends TestCase {
         System.out.println(response.noCertificadoSAT);
         System.out.println(response.fechaTimbrado);
         System.out.println(response.uuid);
+        String expect_status = "success";
+        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
 
     }
 
@@ -359,6 +386,8 @@ public class SWStampServiceTest extends TestCase {
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
+        String expect_status = "success";
+        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_NOMINA12() throws Exception {
@@ -369,6 +398,8 @@ public class SWStampServiceTest extends TestCase {
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
         System.out.println(response.cfdi);
+        String expect_status = "success";
+        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3_NOMINA12() throws Exception {
@@ -379,6 +410,8 @@ public class SWStampServiceTest extends TestCase {
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
         System.out.println(response.cfdi);
+        String expect_status = "success";
+        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4_NOMINA12() throws Exception {
@@ -395,6 +428,8 @@ public class SWStampServiceTest extends TestCase {
         System.out.println(response.noCertificadoSAT);
         System.out.println(response.fechaTimbrado);
         System.out.println(response.uuid);
+        String expect_status = "success";
+        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
 
     }
 
@@ -407,6 +442,8 @@ public class SWStampServiceTest extends TestCase {
         System.out.println(response.message);
         System.out.println(response.tfd);
         Assert.assertTrue(Utils.isValidB64(response.tfd));
+        String expect_status = "success";
+        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_b64_NOMINA12() throws Exception {

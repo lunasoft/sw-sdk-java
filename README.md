@@ -28,9 +28,7 @@ Descargas el modulo mediante Maven:
         <dependency>
             <groupId>mx.com.sw.services</groupId>
             <artifactId>SW-JAVA</artifactId>
-
-            <version>1.0.2.2</version>
-
+            <version>1.0.1.2</version>
         </dependency>
 </dependencies>
 ```
@@ -38,9 +36,7 @@ Descargas el modulo mediante Maven:
 Descargar el modulo directamente de los siguientes links:
 
 * [Relase Github](https://github.com/lunasoft/sw-sdk-java/releases)
-
-* [Maven](https://oss.sonatype.org/service/local/artifact/maven/redirect?r=releases&g=mx.com.sw.services&a=SW-JAVA&v=1.0.2.2&e=jar)
-
+* [Maven](https://oss.sonatype.org/service/local/artifact/maven/redirect?r=releases&g=mx.com.sw.services&a=SW-JAVA&v=1.0.1.2&e=jar)
 Asi como instalar manualmente cada una de las dependencias:
 * [Unirest](http://unirest.io/java.html)
 * [org.json](http://www.json.org/java)
@@ -72,7 +68,7 @@ Alternativamente tambien se cuenta con un archivo JAR en el que se incluyen toda
                     //En este caso arrojara el complemento timbre: {"tfd":"<Complemento>"}
                     System.out.println(response.Status);
                     System.out.println(response.HttpStatusCode);
-                    System.out.println(response.tfd);
+                    System.out.println(response.Data);
                     }
                     catch(Exception e){
                         //En caso de obtener estatus "fail", "error"
@@ -104,7 +100,7 @@ TimbrarV1 Recibe el contenido de un XML ya emitido (sellado) en formato String Ã
                     //En este caso arrojara el complemento timbre: {"tfd":"<Complemento>"}
                     System.out.println(response.Status);
                     System.out.println(response.HttpStatusCode);
-                    System.out.println(response.tfd);
+                    System.out.println(response.Data);
                     }
                     catch(Exception e){
                         //En caso de obtener estatus "fail", "error"
@@ -135,7 +131,7 @@ TimbrarV1 Recibe el contenido de un XML ya emitido (sellado) en formato String Ã
                     //En este caso arrojara el complemento timbre: {"tfd":"<Complemento>"}
                     System.out.println(response.Status);
                     System.out.println(response.HttpStatusCode);
-                    System.out.println(response.tfd);
+                    System.out.println(response.Data);
                     }
                     catch(Exception e){
                         //En caso de obtener estatus "fail", "error"
@@ -167,7 +163,7 @@ TimbrarV1 Recibe el contenido de un XML ya emitido (sellado) en formato String Ã
                     //En este caso arrojara el complemento timbre: {"tfd":"<Complemento>"}
                     System.out.println(response.Status);
                     System.out.println(response.HttpStatusCode);
-                    System.out.println(response.tfd);
+                    System.out.println(response.Data);
                     }
                     catch(Exception e){
                         //En caso de obtener estatus "fail", "error"
@@ -202,8 +198,7 @@ TimbrarV2 Recibe el contenido de un XML ya emitido (sellado) en formato String ,
                     //En este caso arrojara el complemento timbre: {"tfd":"<Complemento>"}
                     System.out.println(response.Status);
                     System.out.println(response.HttpStatusCode);
-                    System.out.println(response.tfd);
-                    System.out.println(response.cfdi);
+                    System.out.println(response.Data);
                     }
                     catch(Exception e){
                         //En caso de obtener estatus "fail", "error"
@@ -234,8 +229,7 @@ TimbrarV2 Recibe el contenido de un XML ya emitido (sellado) en formato String ,
                     //En este caso arrojara el complemento timbre: {"tfd":"<Complemento>"}
                     System.out.println(response.Status);
                     System.out.println(response.HttpStatusCode);
-                    System.out.println(response.tfd);
-                    System.out.println(response.cfdi);
+                    System.out.println(response.Data);
                     }
                     catch(Exception e){
                         //En caso de obtener estatus "fail", "error"
@@ -267,8 +261,7 @@ TimbrarV2 Recibe el contenido de un XML ya emitido (sellado) en formato String ,
                     //En este caso arrojara el complemento timbre: {"tfd":"<Complemento>"}
                     System.out.println(response.Status);
                     System.out.println(response.HttpStatusCode);
-                    System.out.println(response.tfd);
-                    System.out.println(response.cfdi);
+                    System.out.println(response.Data);
                     }
                     catch(Exception e){
                         //En caso de obtener estatus "fail", "error"

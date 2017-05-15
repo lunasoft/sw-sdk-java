@@ -4,8 +4,7 @@ import Exceptions.AuthException;
 import Exceptions.GeneralException;
 import Utils.Requests.IRequest;
 import Utils.Requests.IRequestor;
-import Utils.Responses.IResponse;
-import Utils.Responses.JSendFactory;
+import Utils.Responses.*;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
@@ -33,21 +32,51 @@ public class StampRequest implements IRequestor {
             bw.close();
 
             tempFile.deleteOnExit();
-
+            Unirest.setTimeouts(60000, 360000);
             HttpResponse<JsonNode> response = Unirest.post(request.URI)
                     .header("Authorization","bearer "+request.Token)
 
                     .field("xml",tempFile).asJson();
-            if (response.getStatus()==403){
-                throw new AuthException(403,"Token invalido");
+
+            if(!response.getBody().toString().equalsIgnoreCase("{}")) {
+                JSONObject body = new JSONObject(response.getBody().toString());
+                if(response.getStatus()==200){
+                    JSONObject data = body.getJSONObject("data");
+                    String tfd = null;
+                    String cfdi = null;
+                    if(request.version.equalsIgnoreCase("v4")){
+                        return new SuccessV4Response(response.getStatus(),body.getString("status"),data.getString("cfdi"),data.getString("cadenaOriginalSAT"),data.getString("noCertificadoSAT"),data.getString("noCertificadoCFDI"),data.getString("uuid"),data.getString("selloSAT"),data.getString("selloCFDI"),data.getString("fechaTimbrado"),data.getString("qrCode"));
+                    }
+                    if(data.has("tfd")){
+                        tfd = data.getString("tfd");
+                    }
+                    if(data.has("cfdi")){
+                        cfdi = data.getString("cfdi");
+                    }
+                    return new SuccessCFDIResponse(response.getStatus(),data.toString(),body.getString("status").toString(),tfd,cfdi);
+                }
+                else{
+                    String messageDetail = null;
+
+                    if (!body.isNull("messageDetail")){
+                        messageDetail = body.getString("messageDetail");
+                    }
+                    return new BadResponse(response.getStatus(),body.getString("status"),body.getString("message").toString(),messageDetail);
+                }
+            }
+            else{
+                return new BadResponse(response.getStatus(),"error",response.getStatusText(),response.getStatusText());
             }
 
-            JSONObject parser = new JSONObject(response.getBody().toString());
-            return (IResponse) JSendFactory.response(
-                    parser.getString("status").toString(),
-                    parser.getString("status").toString().equals("error") ? parser.getString("message").toString() : parser.getJSONObject("data").toString(),
-                     response.getStatus()
-            );
+
+
+
+
+
+
+
+
+
 
 
         } catch (UnirestException e) {

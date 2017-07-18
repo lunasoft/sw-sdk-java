@@ -10,10 +10,12 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
+import com.mashape.unirest.request.body.MultipartBody;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.*;
+import java.util.UUID;
 
 public class StampRequest implements IRequestor {
 
@@ -23,20 +25,15 @@ public class StampRequest implements IRequestor {
         try {
 
             String xmlStr = ((StampOptionsRequest) request).getXml();
+            String boundary = UUID.randomUUID().toString();
+            String raw = "--"+boundary+"\r\nContent-Disposition: form-data; name=xml; filename=xml\r\nContent-Type: application/xml\r\n\r\n"+xmlStr+"\r\n--"+boundary+"--";
 
-            File tempFile = File.createTempFile("tmp-", ".xml");
-            //BufferedWriter bw = new BufferedWriter(new FileWriter(tempFile));
-            BufferedWriter bw = new BufferedWriter
-                    (new OutputStreamWriter(new FileOutputStream(tempFile),"UTF-8"));
-            bw.write(xmlStr);
-            bw.close();
-
-            tempFile.deleteOnExit();
             Unirest.setTimeouts(60000, 360000);
             HttpResponse<JsonNode> response = Unirest.post(request.URI)
                     .header("Authorization","bearer "+request.Token)
+                    .header("content-type","multipart/form-data; boundary="+boundary)
+                    .body( raw).asJson();
 
-                    .field("xml",tempFile).asJson();
 
             if(!response.getBody().toString().equalsIgnoreCase("{}")) {
                 JSONObject body = new JSONObject(response.getBody().toString());
@@ -86,12 +83,7 @@ public class StampRequest implements IRequestor {
         catch (JSONException e){
             throw  new GeneralException(500,e.getMessage());
         }
-        catch(java.net.MalformedURLException e){
-            throw  new GeneralException(404,"HOST DESCONOCIDO");
-        } catch (IOException e) {
 
-            throw  new GeneralException(404,e.getCause().getMessage());
-        }
 
 
     }

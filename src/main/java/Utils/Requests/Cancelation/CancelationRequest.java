@@ -28,7 +28,6 @@ public class CancelationRequest implements IRequestor {
             HttpResponse<String> response = Unirest.post(request.URI)
                     .header("Authorization","bearer "+request.Token)
                     .header("Content-Type","application/json")
-                    .header("Cache-Control","no-cache")
                     .body("{\r\n \"uuid\": \""+((CancelationOptionsRequest) request).getUuid()+"\",\r\n \"password\": \""+((CancelationOptionsRequest) request).getPassword_csd()+"\",\r\n \"rfc\": \""+((CancelationOptionsRequest) request).getRfc()+"\",\r\n \"b64Cer\": \""+((CancelationOptionsRequest) request).getB64Cer()+"\",\r\n \"b64Key\": \""+((CancelationOptionsRequest) request).getB64key()+"\"\r\n}").asString();
 
             
@@ -85,7 +84,6 @@ public class CancelationRequest implements IRequestor {
             Unirest.setTimeouts(60000, 360000);
             HttpResponse<JsonNode> response = Unirest.post(request.URI)
                     .header("Authorization","bearer "+request.Token)
-
                     .field("xml",tempFile).asJson();
             
             if(!response.getBody().toString().equalsIgnoreCase("{}") && !response.getBody().equals("")){

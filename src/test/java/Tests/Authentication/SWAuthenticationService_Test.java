@@ -9,7 +9,7 @@ import org.junit.Assert;
 /**
  * Created by asalvio on 15/02/2017.
  */
-public class SWAuthenticationServiceTest extends TestCase {
+public class SWAuthenticationService_Test extends TestCase {
 
     public  void testToken() throws Exception {
         SWAuthenticationService auth;

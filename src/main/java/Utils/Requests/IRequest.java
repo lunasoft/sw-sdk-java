@@ -44,4 +44,9 @@ public abstract class IRequest {
         this.version = version;
         this.xml = xml;
     }
+    
+    public IRequest(String token, String URI) {
+        Token = token;
+        this.URI = URI;
+    }
 }

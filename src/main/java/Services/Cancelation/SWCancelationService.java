@@ -29,7 +29,7 @@ public class SWCancelationService extends SWService {
 
             if (getUser()==null || getPassword()==null){
                 //CUSTOMER HASN'T TOKEN, USER AND PASSWORD--> WE CANT' DO ANYTHING --> THROW EXCEPTION
-                throw new AuthException(500,"no existen elementos de autenticación");
+                throw new AuthException(400,"no existen elementos de autenticación");
 
             }
 
@@ -64,7 +64,7 @@ public class SWCancelationService extends SWService {
 
             if (getUser()==null || getPassword()==null){
                 //CUSTOMER HASN'T TOKEN, USER AND PASSWORD--> WE CANT' DO ANYTHING --> THROW EXCEPTION
-                throw new AuthException(500,"no existen elementos de autenticación");
+                throw new AuthException(400,"no existen elementos de autenticación");
 
             }
 

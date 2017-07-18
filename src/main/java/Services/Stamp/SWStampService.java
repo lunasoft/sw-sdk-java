@@ -41,7 +41,7 @@ public class SWStampService extends SWService {
             }
 
             //CUSTOMER HASN'T TOKEN, BUT HAS USER AND PASSWORD --> AUTH,GENERATE TOKEN AND SET TOKEN IN GLOBAL SETTINGS
-            AuthOptionsRequest settings = new AuthOptionsRequest(Constants.BASE_PATH,getUser(),getPassword());
+            AuthOptionsRequest settings = new AuthOptionsRequest(getURI(),getUser(),getPassword());
             AuthRequest req = new AuthRequest();
             IResponse res =  req.sendRequest(settings);
             if (res.HttpStatusCode==200){
@@ -78,7 +78,7 @@ public class SWStampService extends SWService {
             }
 
             //CUSTOMER HASN'T TOKEN, BUT HAS USER AND PASSWORD --> AUTH,GENERATE TOKEN AND SET TOKEN IN GLOBAL SETTINGS
-            AuthOptionsRequest settings = new AuthOptionsRequest(Constants.BASE_PATH,getUser(),getPassword());
+            AuthOptionsRequest settings = new AuthOptionsRequest(getURI(),getUser(),getPassword());
             AuthRequest req = new AuthRequest();
             IResponse res =  req.sendRequest(settings);
             if (res.HttpStatusCode==200){
@@ -123,7 +123,7 @@ public class SWStampService extends SWService {
             }
 
             //CUSTOMER HASN'T TOKEN, BUT HAS USER AND PASSWORD --> TRY AUTH,GENERATE TOKEN AND SET TOKEN IN GLOBAL SETTINGS
-            AuthOptionsRequest settings = new AuthOptionsRequest(Constants.BASE_PATH,getUser(),getPassword());
+            AuthOptionsRequest settings = new AuthOptionsRequest(getURI(),getUser(),getPassword());
             AuthRequest req = new AuthRequest();
             IResponse res =  req.sendRequest(settings);
             if (res.HttpStatusCode==200){
@@ -162,7 +162,7 @@ public class SWStampService extends SWService {
             }
 
             //CUSTOMER HASN'T TOKEN, BUT HAS USER AND PASSWORD --> TRY AUTH,GENERATE TOKEN AND SET TOKEN IN GLOBAL SETTINGS
-            AuthOptionsRequest settings = new AuthOptionsRequest(Constants.BASE_PATH,getUser(),getPassword());
+            AuthOptionsRequest settings = new AuthOptionsRequest(getURI(),getUser(),getPassword());
             AuthRequest req = new AuthRequest();
             IResponse res =  req.sendRequest(settings);
             if (res.HttpStatusCode==200){

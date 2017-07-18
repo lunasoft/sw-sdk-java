@@ -19,14 +19,7 @@ public class SWAuthenticationService extends SWService {
     public IResponse Token() throws GeneralException, AuthException {
         AuthOptionsRequest settings = new AuthOptionsRequest(getURI(),getUser(),getPassword());
 
-        String dum = settings.URI.split("-")[0];
 
-
-
-        if (dum.equalsIgnoreCase("d")){
-            AuthRequestDummy req = new AuthRequestDummy();
-            return req.sendRequest(settings);
-        }
         AuthRequest req = new AuthRequest();
         return req.sendRequest(settings);
 

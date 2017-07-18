@@ -13,12 +13,15 @@ public class SWAuthenticationServiceTest extends TestCase {
 
     public  void testToken() throws Exception {
         SWAuthenticationService auth;
-        auth = new SWAuthenticationService("demo","123456789","http://services.test.sw.com.mx");
+        auth = new SWAuthenticationService("mgarcia@e3creativa.com","EXITO2016","https://services.sw.com.mx");
         IResponse response;
         response =  auth.Token();
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
+        System.out.println(response.messageDetail);
+        System.out.println(response.message);
         System.out.println(response.token);
+
     }
 
 

@@ -33,27 +33,7 @@ public class SWStampService extends SWService {
 
 
         if (getToken()==null){
-
-            if (getUser()==null || getPassword()==null){
-                //CUSTOMER HASN'T TOKEN, USER AND PASSWORD--> WE CANT' DO ANYTHING --> THROW EXCEPTION
-                throw new AuthException(500,"no existen elementos de autenticación");
-
-            }
-
-            //CUSTOMER HASN'T TOKEN, BUT HAS USER AND PASSWORD --> AUTH,GENERATE TOKEN AND SET TOKEN IN GLOBAL SETTINGS
-            AuthOptionsRequest settings = new AuthOptionsRequest(getURI(),getUser(),getPassword());
-            AuthRequest req = new AuthRequest();
-            IResponse res =  req.sendRequest(settings);
-            if (res.HttpStatusCode==200){
-
-                setToken(res.token);
-            }
-            else{
-                //CUSTOMER HASN'T TOKEN, AND USER AND PASSWORD ARE BAD--> WE CANT' DO ANYTHING --> THROW EXCEPTION
-                throw new AuthException(res.HttpStatusCode,res.message);
-            }
-
-
+            generateToken();
         }
         //MAKE STAMP PROCESS, CUSTOMER ALREADY HAS TOKEN
 
@@ -70,26 +50,7 @@ public class SWStampService extends SWService {
 
 
         if (getToken()==null){
-
-            if (getUser()==null || getPassword()==null){
-                //CUSTOMER HASN'T TOKEN, USER AND PASSWORD--> WE CANT' DO ANYTHING --> THROW EXCEPTION
-                throw new AuthException(500,"no existen elementos de autenticación");
-
-            }
-
-            //CUSTOMER HASN'T TOKEN, BUT HAS USER AND PASSWORD --> AUTH,GENERATE TOKEN AND SET TOKEN IN GLOBAL SETTINGS
-            AuthOptionsRequest settings = new AuthOptionsRequest(getURI(),getUser(),getPassword());
-            AuthRequest req = new AuthRequest();
-            IResponse res =  req.sendRequest(settings);
-            if (res.HttpStatusCode==200){
-
-                setToken(res.token);
-            }
-            else{
-                //CUSTOMER HASN'T TOKEN, AND USER AND PASSWORD ARE BAD--> WE CANT' DO ANYTHING --> THROW EXCEPTION
-                throw new AuthException(res.HttpStatusCode,res.message);
-            }
-
+            generateToken();
 
         }
         //MAKE STAMP PROCESS, CUSTOMER ALREADY HAS TOKEN
@@ -116,24 +77,7 @@ public class SWStampService extends SWService {
 
         if (getToken()==null){
 
-            if (getUser()==null || getPassword()==null){
-                //CUSTOMER HASN'T TOKEN, USER AND PASSWORD--> WE CANT' DO ANYTHING --> THROW EXCEPTION
-                throw new AuthException(500,"no existen elementos de autenticación");
-
-            }
-
-            //CUSTOMER HASN'T TOKEN, BUT HAS USER AND PASSWORD --> TRY AUTH,GENERATE TOKEN AND SET TOKEN IN GLOBAL SETTINGS
-            AuthOptionsRequest settings = new AuthOptionsRequest(getURI(),getUser(),getPassword());
-            AuthRequest req = new AuthRequest();
-            IResponse res =  req.sendRequest(settings);
-            if (res.HttpStatusCode==200){
-                JSONObject obj = new JSONObject(res.Data);
-                setToken(obj.getString("token"));
-            }
-            else{
-                //CUSTOMER HASN'T TOKEN, AND USER AND PASSWORD ARE BAD--> WE CANT' DO ANYTHING --> THROW EXCEPTION
-                throw new AuthException(res.HttpStatusCode,res.message);
-            }
+            generateToken();
 
 
         }
@@ -155,24 +99,7 @@ public class SWStampService extends SWService {
 
         if (getToken()==null){
 
-            if (getUser()==null || getPassword()==null){
-                //CUSTOMER HASN'T TOKEN, USER AND PASSWORD--> WE CANT' DO ANYTHING --> THROW EXCEPTION
-                throw new AuthException(500,"no existen elementos de autenticación");
-
-            }
-
-            //CUSTOMER HASN'T TOKEN, BUT HAS USER AND PASSWORD --> TRY AUTH,GENERATE TOKEN AND SET TOKEN IN GLOBAL SETTINGS
-            AuthOptionsRequest settings = new AuthOptionsRequest(getURI(),getUser(),getPassword());
-            AuthRequest req = new AuthRequest();
-            IResponse res =  req.sendRequest(settings);
-            if (res.HttpStatusCode==200){
-                JSONObject obj = new JSONObject(res.Data);
-                setToken(obj.getString("token"));
-            }
-            else{
-                //CUSTOMER HASN'T TOKEN, AND USER AND PASSWORD ARE BAD--> WE CANT' DO ANYTHING --> THROW EXCEPTION
-                throw new AuthException(res.HttpStatusCode,res.message);
-            }
+            generateToken();
 
 
         }

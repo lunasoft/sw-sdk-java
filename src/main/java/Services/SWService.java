@@ -62,14 +62,14 @@ public  abstract class SWService {
         }
 
         //CUSTOMER HASN'T TOKEN, BUT HAS USER AND PASSWORD --> AUTH,GENERATE TOKEN AND SET TOKEN IN GLOBAL SETTINGS
-        AuthOptionsRequest settings = new AuthOptionsRequest(Constants.BASE_PATH, getUser(), getPassword());
+        AuthOptionsRequest settings = new AuthOptionsRequest(URI, getUser(), getPassword());
         AuthRequest req = new AuthRequest();
         IResponse res = req.sendRequest(settings);
         if (res.HttpStatusCode == 200) {
             setToken(res.token);
         } else {
             //CUSTOMER HASN'T TOKEN, AND USER AND PASSWORD ARE BAD--> WE CANT' DO ANYTHING --> THROW EXCEPTION
-            throw new AuthException(res.HttpStatusCode, res.Data);
+            throw new AuthException(res.HttpStatusCode, res.message);
         }
     }
 }

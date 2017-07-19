@@ -66,7 +66,11 @@ public abstract class IResponse {
         this.tfd = tfd;
         this.cfdi = cfdi;
     }
+    
+    public IResponse(int httpStatusCode, String msg, String status, int fly) {
+        HttpStatusCode = httpStatusCode;
+        Status = status;
+        Data = msg;
 
-
-
+    }
 }

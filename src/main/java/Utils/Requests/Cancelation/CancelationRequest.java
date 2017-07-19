@@ -37,7 +37,10 @@ public class CancelationRequest implements IRequestor {
                 if(response.getStatus()==200){
                     
                     JSONObject data = body.getJSONObject("data");
-                    return new CancelationResponse(response.getStatus(), data.toString(),body.getString("status"));
+                    String uuid = ((CancelationOptionsRequest) request).getUuid().toUpperCase();
+                    JSONObject uuid_data = data.getJSONObject("uuid");
+                    String uuidSC = uuid_data.getString(uuid);
+                    return new CancelationResponse(response.getStatus(), body.getString("status"),data.getString("acuse"),uuid, Integer.parseInt(uuidSC));
                 }
                 else{
                     
@@ -90,7 +93,11 @@ public class CancelationRequest implements IRequestor {
                 JSONObject body = new JSONObject(response.getBody().toString());
                 if(response.getStatus()==200){
                     JSONObject data = body.getJSONObject("data");
-                    return new CancelationResponse(response.getStatus(), data.toString(),body.getString("status"));
+                    String xml = ((CancelationOptionsRequest) request).getXml();
+                    String uuid = xml.substring(xml.indexOf("<UUID>") + 6, xml.indexOf("</UUID>")).toUpperCase();
+                    JSONObject uuid_data = data.getJSONObject("uuid");
+                    String uuidSC = uuid_data.getString(uuid);
+                    return new CancelationResponse(response.getStatus(), body.getString("status"),data.getString("acuse"),uuid, Integer.parseInt(uuidSC));
                 }
                 else{
                     

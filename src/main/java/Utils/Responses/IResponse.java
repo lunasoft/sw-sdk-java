@@ -18,6 +18,8 @@ public abstract class IResponse {
     public String selloCFDI;
     public String fechaTimbrado;
     public String qrCode;
+    public String acuse;
+    public int uuidStatusCode;
 
     //V4 Response
     public IResponse(int httpStatusCode, String status, String cfdi, String cadenaOriginalSAT, String noCertificadoSAT, String noCertificadoCFDI, String uuid, String selloSAT, String selloCFDI, String fechaTimbrado, String qrCode) {
@@ -70,6 +72,11 @@ public abstract class IResponse {
     public IResponse(int httpStatusCode, String data, String status, int cancelation) {
         HttpStatusCode = httpStatusCode;
         Data = data;
+        Status = status;
+    }
+    
+    public IResponse(int httpStatusCode, String status) {
+        HttpStatusCode = httpStatusCode;
         Status = status;
     }
 

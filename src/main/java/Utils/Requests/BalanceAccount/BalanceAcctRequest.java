@@ -29,7 +29,10 @@ public class BalanceAcctRequest implements IRequestor {
                 
                 if(response.getStatus()==200){
                     JSONObject data = body.getJSONObject("data");
-                    return new BalanceAcctResponse(response.getStatus(),data.toString(),body.getString("status"));
+                    
+                    return new BalanceAcctResponse(response.getStatus(),body.getString("status"),
+                            data.getString("idSaldoCliente"), data.getString("idClienteUsuario"), data.getInt("saldoTimbres"), data.getInt("timbresUtilizados"), 
+                            data.getString("fechaExpiracion"), data.getBoolean("unlimited"), data.getInt("timbresAsignados"));
                 }
                 else{
                     String messageDetail = null;

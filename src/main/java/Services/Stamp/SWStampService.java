@@ -50,7 +50,7 @@ public class SWStampService extends SWService {
             }
             else{
                 //CUSTOMER HASN'T TOKEN, AND USER AND PASSWORD ARE BAD--> WE CANT' DO ANYTHING --> THROW EXCEPTION
-                throw new AuthException(res.HttpStatusCode,res.Data);
+                throw new AuthException(res.HttpStatusCode,res.message);
             }
 
 
@@ -87,7 +87,7 @@ public class SWStampService extends SWService {
             }
             else{
                 //CUSTOMER HASN'T TOKEN, AND USER AND PASSWORD ARE BAD--> WE CANT' DO ANYTHING --> THROW EXCEPTION
-                throw new AuthException(res.HttpStatusCode,res.Data);
+                throw new AuthException(res.HttpStatusCode,res.message);
             }
 
 
@@ -132,7 +132,7 @@ public class SWStampService extends SWService {
             }
             else{
                 //CUSTOMER HASN'T TOKEN, AND USER AND PASSWORD ARE BAD--> WE CANT' DO ANYTHING --> THROW EXCEPTION
-                throw new AuthException(res.HttpStatusCode,res.Data);
+                throw new AuthException(res.HttpStatusCode,res.message);
             }
 
 
@@ -171,7 +171,7 @@ public class SWStampService extends SWService {
             }
             else{
                 //CUSTOMER HASN'T TOKEN, AND USER AND PASSWORD ARE BAD--> WE CANT' DO ANYTHING --> THROW EXCEPTION
-                throw new AuthException(res.HttpStatusCode,res.Data);
+                throw new AuthException(res.HttpStatusCode,res.message);
             }
 
 

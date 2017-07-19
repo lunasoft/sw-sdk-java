@@ -67,10 +67,10 @@ public abstract class IResponse {
         this.cfdi = cfdi;
     }
     
-    public IResponse(int httpStatusCode, String msg, String status, int fly) {
+    public IResponse(int httpStatusCode, String data, String status, int cancelation) {
         HttpStatusCode = httpStatusCode;
+        Data = data;
         Status = status;
-        Data = msg;
-
     }
+
 }

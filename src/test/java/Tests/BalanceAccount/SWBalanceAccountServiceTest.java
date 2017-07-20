@@ -21,7 +21,8 @@ public class SWBalanceAccountServiceTest extends TestCase {
         BalanceAcctResponse response = null;
         response = (BalanceAcctResponse) app.GetBalanceAccount();
         System.out.println(response.Status);
-        //System.out.println(response.Data);
+        System.out.println(response.timbresAsignados);
+
         System.out.println(response.HttpStatusCode);
         String expect_status = "success";
         Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));

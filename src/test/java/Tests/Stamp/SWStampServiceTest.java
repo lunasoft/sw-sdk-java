@@ -5,8 +5,7 @@ import Exceptions.GeneralException;
 import Services.Authentication.SWAuthenticationService;
 import Services.Stamp.SWStampService;
 import Tests.Utils;
-import Utils.Responses.IResponse;
-import Utils.Responses.StampResponse;
+import Utils.Responses.*;
 import junit.framework.TestCase;
 import org.json.JSONObject;
 import org.junit.Assert;
@@ -20,11 +19,11 @@ public class SWStampServiceTest extends TestCase {
 //STANDARD XML
    public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
-        IResponse response = null;
+        SuccessV1Response response = null;
 
-        response = api.Stamp(Utils.dummy_xml_string,"v1");
+        response = (SuccessV1Response) api.Stamp(Utils.xml_b,"v1");
         System.out.println(response.Status);
-        System.out.println(response.message);
+
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
         String expect_status = "success";
@@ -33,8 +32,9 @@ public class SWStampServiceTest extends TestCase {
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
-        IResponse response = null;
-        response = api.Stamp(Utils.dummy_xml_string,"v2");
+        SuccessV2Response response = null;
+        response = (SuccessV2Response) api.Stamp(Utils.dummy_xml_string,"v2");
+        System.out.println(response.message);
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
@@ -45,11 +45,11 @@ public class SWStampServiceTest extends TestCase {
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
-        IResponse response = null;
-        response = api.Stamp(Utils.dummy_xml_string,"v3");
+        SuccessV3Response response = null;
+        response = (SuccessV3Response) api.Stamp(Utils.dummy_xml_string,"v3");
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
-        System.out.println(response.tfd);
+        System.out.println(response.message);
         System.out.println(response.cfdi);
         String expect_status = "success";
         Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
@@ -57,8 +57,9 @@ public class SWStampServiceTest extends TestCase {
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
-        IResponse response = null;
-        response = api.Stamp(Utils.dummy_xml_string,"V4");
+        SuccessV4Response response = null;
+        response = (SuccessV4Response) api.Stamp(Utils.dummy_xml_string,"V4");
+        System.out.println(response.message);
         System.out.println(response.Status);
         System.out.println(response.cfdi);
         System.out.println(response.qrCode);
@@ -76,8 +77,8 @@ public class SWStampServiceTest extends TestCase {
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1_b64() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
-        IResponse response = null;
-        response = api.Stamp(Utils.b64xml,"v1",true);
+        SuccessV1Response response = null;
+        response = (SuccessV1Response) api.Stamp(Utils.toBase64(Utils.dummy_xml_string),"v1",true);
         System.out.println(response.Status);
         System.out.println(response.message);
         System.out.println(response.HttpStatusCode);
@@ -87,8 +88,8 @@ public class SWStampServiceTest extends TestCase {
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_b64() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
-        IResponse response = null;
-        response = api.Stamp(Utils.b64xml,"v2",true);
+        SuccessV2Response response = null;
+        response = (SuccessV2Response) api.Stamp(Utils.toBase64(Utils.dummy_xml_string),"v2",true);
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
@@ -100,18 +101,21 @@ public class SWStampServiceTest extends TestCase {
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3_b64() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
-        IResponse response = null;
-        response = api.Stamp(Utils.b64xml,"v3",true);
+        SuccessV3Response response = null;
+        response = (SuccessV3Response) api.Stamp(Utils.toBase64(Utils.dummy_xml_string),"v3",true);
+        System.out.println(response.message);
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
+        System.out.println(response.message);
         System.out.println(response.cfdi);
         Assert.assertTrue(Utils.isValidB64(response.cfdi));
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4_b64() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
-        IResponse response = null;
-        response = api.Stamp(Utils.b64xml,"V4",true);
+        SuccessV4Response response = null;
+        response = (SuccessV4Response) api.Stamp(Utils.toBase64(Utils.dummy_xml_string),"V4",true);
+        System.out.println(response.message);
         System.out.println(response.Status);
         System.out.println(response.cfdi);
         System.out.println(response.qrCode);
@@ -135,8 +139,9 @@ public class SWStampServiceTest extends TestCase {
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1_CC10() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
-        IResponse response = null;
-        response = api.Stamp(Utils.cc10,"v1");
+        SuccessV1Response response = null;
+        response = (SuccessV1Response) api.Stamp(Utils.cc10,"v1");
+        System.out.println(response.message);
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
@@ -146,8 +151,8 @@ public class SWStampServiceTest extends TestCase {
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_CC10() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
-        IResponse response = null;
-        response = api.Stamp(Utils.cc10,"v2");
+        SuccessV2Response response = null;
+        response = (SuccessV2Response) api.Stamp(Utils.cc10,"v2");
         System.out.println(response.Status);
         System.out.println(response.message);
         System.out.println(response.HttpStatusCode);
@@ -159,11 +164,10 @@ public class SWStampServiceTest extends TestCase {
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3_CC10() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
-        IResponse response = null;
-        response = api.Stamp(Utils.cc10,"v3");
+        SuccessV3Response response = null;
+        response = (SuccessV3Response) api.Stamp(Utils.cc10,"v3");
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
-        System.out.println(response.tfd);
         System.out.println(response.cfdi);
         String expect_status = "success";
         Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
@@ -171,10 +175,10 @@ public class SWStampServiceTest extends TestCase {
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4_CC10() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
-        IResponse response = null;
-        response = api.Stamp(Utils.cc10,"V4");
+        SuccessV4Response response = null;
+        response = (SuccessV4Response) api.Stamp(Utils.cc10,"V4");
         System.out.println(response.Status);
-        System.out.println(response.cfdi);
+
         System.out.println(response.qrCode);
         System.out.println(response.cadenaOriginalSAT);
         System.out.println(response.selloCFDI);
@@ -190,8 +194,8 @@ public class SWStampServiceTest extends TestCase {
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1_b64_CC10() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
-        IResponse response = null;
-        response = api.Stamp(Utils.toBase64(Utils.cc10),"v1",true);
+        SuccessV1Response response = null;
+        response = (SuccessV1Response) api.Stamp(Utils.toBase64(Utils.cc10),"v1",true);
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
@@ -200,8 +204,8 @@ public class SWStampServiceTest extends TestCase {
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_b64_CC10() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
-        IResponse response = null;
-        response = api.Stamp(Utils.toBase64(Utils.cc10),"v2",true);
+        SuccessV2Response response = null;
+        response = (SuccessV2Response) api.Stamp(Utils.toBase64(Utils.cc10),"v2",true);
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
@@ -213,8 +217,8 @@ public class SWStampServiceTest extends TestCase {
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3_b64_CC10() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
-        IResponse response = null;
-        response = api.Stamp(Utils.toBase64(Utils.cc10),"v3",true);
+        SuccessV3Response response = null;
+        response = (SuccessV3Response) api.Stamp(Utils.toBase64(Utils.cc10),"v3",true);
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.cfdi);
@@ -223,8 +227,8 @@ public class SWStampServiceTest extends TestCase {
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4_b64_CC10() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
-        IResponse response = null;
-        response = api.Stamp(Utils.toBase64(Utils.cc10),"V4",true);
+        SuccessV4Response response = null;
+        response = (SuccessV4Response) api.Stamp(Utils.toBase64(Utils.cc10),"V4",true);
         System.out.println(response.Status);
         System.out.println(response.cfdi);
         System.out.println(response.qrCode);
@@ -252,8 +256,8 @@ public class SWStampServiceTest extends TestCase {
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1_PAGOS10() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
-        IResponse response = null;
-        response = api.Stamp(Utils.pagos10,"v1");
+        SuccessV1Response response = null;
+        response = (SuccessV1Response) api.Stamp(Utils.pagos10,"v1");
         System.out.println(response.Status);
         System.out.println(response.message);
         System.out.println(response.HttpStatusCode);
@@ -264,8 +268,8 @@ public class SWStampServiceTest extends TestCase {
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_PAGOS10() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
-        IResponse response = null;
-        response = api.Stamp(Utils.pagos10,"v2");
+        SuccessV2Response response = null;
+        response = (SuccessV2Response) api.Stamp(Utils.pagos10,"v2");
         System.out.println(response.Status);
         System.out.println(response.message);
         System.out.println(response.HttpStatusCode);
@@ -277,12 +281,12 @@ public class SWStampServiceTest extends TestCase {
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3_PAGOS10() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
-        IResponse response = null;
-        response = api.Stamp(Utils.pagos10,"v3");
+        SuccessV3Response response = null;
+        response = (SuccessV3Response) api.Stamp(Utils.pagos10,"v3");
         System.out.println(response.Status);
         System.out.println(response.message);
         System.out.println(response.HttpStatusCode);
-        System.out.println(response.tfd);
+
         System.out.println(response.cfdi);
         String expect_status = "success";
         Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
@@ -290,8 +294,8 @@ public class SWStampServiceTest extends TestCase {
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4_PAGOS10() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
-        IResponse response = null;
-        response = api.Stamp(Utils.pagos10,"V4");
+        SuccessV4Response response = null;
+        response = (SuccessV4Response) api.Stamp(Utils.pagos10,"V4");
         System.out.println(response.Status);
         System.out.println(response.cfdi);
         System.out.println(response.qrCode);
@@ -309,8 +313,8 @@ public class SWStampServiceTest extends TestCase {
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1_b64_PAGOS10() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
-        IResponse response = null;
-        response = api.Stamp(Utils.toBase64(Utils.pagos10),"v1",true);
+        SuccessV1Response response = null;
+        response = (SuccessV1Response) api.Stamp(Utils.toBase64(Utils.pagos10),"v1",true);
         System.out.println(response.Status);
         System.out.println(response.message);
         System.out.println(response.HttpStatusCode);
@@ -320,8 +324,8 @@ public class SWStampServiceTest extends TestCase {
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_b64_PAGOS10() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
-        IResponse response = null;
-        response = api.Stamp(Utils.toBase64(Utils.pagos10),"v2",true);
+        SuccessV2Response response = null;
+        response = (SuccessV2Response) api.Stamp(Utils.toBase64(Utils.pagos10),"v2",true);
         System.out.println(response.Status);
         System.out.println(response.message);
         System.out.println(response.HttpStatusCode);
@@ -334,8 +338,8 @@ public class SWStampServiceTest extends TestCase {
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3_b64_PAGOS10() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
-        IResponse response = null;
-        response = api.Stamp(Utils.toBase64(Utils.pagos10),"v3",true);
+        SuccessV3Response response = null;
+        response = (SuccessV3Response) api.Stamp(Utils.toBase64(Utils.pagos10),"v3",true);
         System.out.println(response.Status);
         System.out.println(response.message);
         System.out.println(response.HttpStatusCode);
@@ -345,8 +349,8 @@ public class SWStampServiceTest extends TestCase {
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4_b64_PAGOS10() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
-        IResponse response = null;
-        response = api.Stamp(Utils.toBase64(Utils.pagos10),"V4",true);
+        SuccessV4Response response = null;
+        response = (SuccessV4Response) api.Stamp(Utils.toBase64(Utils.pagos10),"V4",true);
         System.out.println(response.Status);
         System.out.println(response.message);
         System.out.println(response.cfdi);
@@ -375,8 +379,8 @@ public class SWStampServiceTest extends TestCase {
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1_NOMINA12() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
-        IResponse response = null;
-        response = api.Stamp(Utils.nomina10,"v1");
+        SuccessV1Response response = null;
+        response = (SuccessV1Response) api.Stamp(Utils.nomina10,"v1");
         System.out.println(response.Status);
         System.out.print(response.message);
         System.out.println(response.HttpStatusCode);
@@ -386,8 +390,8 @@ public class SWStampServiceTest extends TestCase {
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_NOMINA12() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
-        IResponse response = null;
-        response = api.Stamp(Utils.nomina10,"v2");
+        SuccessV2Response response = null;
+        response = (SuccessV2Response) api.Stamp(Utils.nomina10,"v2");
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
@@ -397,19 +401,19 @@ public class SWStampServiceTest extends TestCase {
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3_NOMINA12() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
-        IResponse response = null;
-        response = api.Stamp(Utils.nomina10,"v3");
+        SuccessV3Response response = null;
+        response = (SuccessV3Response) api.Stamp(Utils.nomina10,"v3");
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
-        System.out.println(response.tfd);
+
         System.out.println(response.cfdi);
 
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4_NOMINA12() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
-        IResponse response = null;
-        response = api.Stamp(Utils.nomina10,"V4");
+        SuccessV4Response response = null;
+        response = (SuccessV4Response) api.Stamp(Utils.nomina10,"V4");
         System.out.println(response.Status);
         System.out.println(response.cfdi);
         System.out.println(response.qrCode);
@@ -426,8 +430,8 @@ public class SWStampServiceTest extends TestCase {
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1_b64_NOMINA12() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
-        IResponse response = null;
-        response = api.Stamp(Utils.toBase64(Utils.nomina10),"v1",true);
+        SuccessV1Response response = null;
+        response = (SuccessV1Response) api.Stamp(Utils.toBase64(Utils.nomina10),"v1",true);
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.message);
@@ -439,8 +443,8 @@ public class SWStampServiceTest extends TestCase {
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_b64_NOMINA12() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
-        IResponse response = null;
-        response = api.Stamp(Utils.toBase64(Utils.nomina10),"v2",true);
+        SuccessV2Response response = null;
+        response = (SuccessV2Response) api.Stamp(Utils.toBase64(Utils.nomina10),"v2",true);
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
@@ -452,8 +456,8 @@ public class SWStampServiceTest extends TestCase {
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3_b64_NOMINA12() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
-        IResponse response = null;
-        response = api.Stamp(Utils.toBase64(Utils.nomina10),"v3",true);
+        SuccessV3Response response = null;
+        response = (SuccessV3Response) api.Stamp(Utils.toBase64(Utils.nomina10),"v3",true);
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.cfdi);
@@ -462,8 +466,8 @@ public class SWStampServiceTest extends TestCase {
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4_b64_NOMINA12() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
-        IResponse response = null;
-        response = api.Stamp(Utils.toBase64(Utils.nomina10),"V4",true);
+        SuccessV4Response response = null;
+        response = (SuccessV4Response) api.Stamp(Utils.toBase64(Utils.nomina10),"V4",true);
         System.out.println(response.Status);
         System.out.println(response.cfdi);
         System.out.println(response.qrCode);
@@ -481,70 +485,7 @@ public class SWStampServiceTest extends TestCase {
         Assert.assertTrue(valid_cfdi && valid_qr && valid_sellocfdi && valid_sellosat);
     }
 
-    /*public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1_hard_xml(){
-        SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
-        IResponse response = null;
-        String s ;
 
-        try {
-            BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\asalvio\\Documents\\WORKSPACE\\JAVA\\SW-JAVA\\src\\test\\resources\\hard_xml.txt") , 8*1024);
-            StringBuilder sb = new StringBuilder();
-            String line = br.readLine();
-
-            while (line != null) {
-
-                sb.append(line).append("\n");
-                line = br.readLine();
-            }
-            s = sb.toString();
-            response = api.Stamp(s,"v2");
-            System.out.println(response.Status);
-            System.out.println(response.HttpStatusCode);
-            System.out.println(response.tfd);
-            System.out.println(response.cfdi);
-        } catch (AuthException e) {
-            e.printStackTrace();
-        } catch (GeneralException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
-    public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1_b64_hard_xml(){
-        SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
-        IResponse response = null;
-        String s ;
-
-        try {
-            BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\asalvio\\Documents\\WORKSPACE\\JAVA\\SW-JAVA\\src\\test\\resources\\hard_xml_b64.txt") , 8*1024);
-            StringBuilder sb = new StringBuilder();
-            String line = br.readLine();
-
-            while (line != null) {
-
-                sb.append(line).append("\n");
-                line = br.readLine();
-            }
-            s = sb.toString();
-            response = api.Stamp(s,"v2",true);
-            System.out.println(response.Status);
-            System.out.println(response.HttpStatusCode);
-            System.out.println(response.tfd);
-            System.out.println(response.cfdi);
-        } catch (AuthException e) {
-            e.printStackTrace();
-        } catch (GeneralException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }*/
 
     public void testStampREAL_XML_STRING_EMPTY_PARAMS() throws Exception {
 
@@ -554,7 +495,7 @@ public class SWStampServiceTest extends TestCase {
             response = api.Stamp(Utils.dummy_xml_string,"v1");
             System.out.println(response.Status);
             System.out.println(response.HttpStatusCode);
-            System.out.println(response.Data);
+
         }
         catch(Exception e){
             System.out.println("Correcto excepcion lanzada");
@@ -573,7 +514,7 @@ public class SWStampServiceTest extends TestCase {
             response = api.Stamp(Utils.dummy_xml_string,"v1");
             System.out.println(response.Status);
             System.out.println(response.HttpStatusCode);
-            System.out.println(response.Data);
+
         }
         catch(Exception e){
             System.out.println("Correcto excepcion lanzada");

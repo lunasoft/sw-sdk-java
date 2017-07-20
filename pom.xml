@@ -6,7 +6,7 @@
 
     <groupId>mx.com.sw.services</groupId>
     <artifactId>SW-JAVA</artifactId>
-    <version>0.0.3.1</version>
+    <version>0.0.3.3</version>
 
     <packaging>jar</packaging>
 
@@ -28,6 +28,20 @@
             <name>Ricardo Barusta</name>
             <email>ricardo.barusta@sw.com.mx</email>
             <url>https://github.com/rbarusta</url>
+            <organization>Smarter Web</organization>
+            <organizationUrl>https://sw.com.mx/</organizationUrl>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <properties>
+                <picUrl>https://media.licdn.com/media/AAEAAQAAAAAAAAYGAAAAJDY3NWU0NTkxLWMxOTctNGQ2NC1hMWYwLWQ4NzM4ZjI1OTE5ZQ.jpg</picUrl>
+            </properties>
+        </developer>
+        <developer>
+            <id>guadalupe.alvarado</id>
+            <name>Maria Guadalupe Alvarado</name>
+            <email>guadalupe.alvarado@sw.com.mx</email>
+            <url>https://github.com/lupineka</url>
             <organization>Smarter Web</organization>
             <organizationUrl>https://sw.com.mx/</organizationUrl>
             <roles>

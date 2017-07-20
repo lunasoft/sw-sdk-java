@@ -3,11 +3,8 @@ package Services.Authentication;
 import Exceptions.AuthException;
 import Exceptions.GeneralException;
 import Services.SWService;
-import Utils.Constants;
 import Utils.Requests.Authentication.AuthOptionsRequest;
 import Utils.Requests.Authentication.AuthRequest;
-import Utils.Requests.Authentication.AuthRequestDummy;
-import Utils.Requests.Authentication.AuthSoapRequest;
 import Utils.Responses.IResponse;
 
 public class SWAuthenticationService extends SWService {
@@ -19,14 +16,7 @@ public class SWAuthenticationService extends SWService {
     public IResponse Token() throws GeneralException, AuthException {
         AuthOptionsRequest settings = new AuthOptionsRequest(getURI(),getUser(),getPassword());
 
-        String dum = settings.URI.split("-")[0];
 
-
-
-        if (dum.equalsIgnoreCase("d")){
-            AuthRequestDummy req = new AuthRequestDummy();
-            return req.sendRequest(settings);
-        }
         AuthRequest req = new AuthRequest();
         return req.sendRequest(settings);
 

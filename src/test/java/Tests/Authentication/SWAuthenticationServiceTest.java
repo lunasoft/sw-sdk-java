@@ -1,25 +1,29 @@
 package Tests.Authentication;
 
+import Exceptions.AuthException;
 import Exceptions.GeneralException;
 import Services.Authentication.SWAuthenticationService;
 import Utils.Responses.IResponse;
+import Utils.Responses.SuccessAuthResponse;
+import junit.framework.Assert;
 import junit.framework.TestCase;
-import org.junit.Assert;
 
 /**
- * Created by asalvio on 15/02/2017.
+ * Created by asalvio on 18/07/2017.
  */
 public class SWAuthenticationServiceTest extends TestCase {
-
-    public  void testToken() throws Exception {
-        SWAuthenticationService auth;
-        auth = new SWAuthenticationService("demo","123456789","http://services.test.sw.com.mx");
-        IResponse response;
-        response =  auth.Token();
-        System.out.println(response.Status);
-        System.out.println(response.HttpStatusCode);
-        System.out.println(response.token);
+    public void testAuth(){
+        SWAuthenticationService auth = new SWAuthenticationService("demo","123456789","http://services.test.sw.com.mx");
+        try {
+            SuccessAuthResponse res = (SuccessAuthResponse) auth.Token();
+            String expected = "success";
+            System.out.println(res.token);
+            System.out.println(res.message);
+            System.out.println(res.messageDetail);
+            Assert.assertTrue(expected.equalsIgnoreCase(res.Status));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
     }
-
-
 }

@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.util.UUID;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -75,7 +76,8 @@ public class CancelationRequest implements IRequestor {
     
     public IResponse sendRequest(IRequest request, boolean isXml) throws GeneralException, AuthException {
         
-        try{            
+        try{    
+            /*
             File tempFile = File.createTempFile("tmp-", ".xml");
             //BufferedWriter bw = new BufferedWriter(new FileWriter(tempFile));
             BufferedWriter bw = new BufferedWriter
@@ -83,11 +85,23 @@ public class CancelationRequest implements IRequestor {
             bw.write(((CancelationOptionsRequest) request).getXml());
             bw.close();
 
-            tempFile.deleteOnExit();
+            tempFile.deleteOnExit();*/
+            
+            String xmlStr = ((CancelationOptionsRequest) request).getXml();
+            String boundary = UUID.randomUUID().toString();
+            String raw = "--"+boundary+"\r\nContent-Disposition: form-data; name=xml; filename=xml\r\nContent-Type: application/xml\r\n\r\n"+xmlStr+"\r\n--"+boundary+"--";
+
+            
+            /*
             Unirest.setTimeouts(60000, 360000);
             HttpResponse<JsonNode> response = Unirest.post(request.URI)
                     .header("Authorization","bearer "+request.Token)
-                    .field("xml",tempFile).asJson();
+                    .field("xml",tempFile).asJson();*/
+            Unirest.setTimeouts(60000, 360000);
+            HttpResponse<JsonNode> response = Unirest.post(request.URI)
+                    .header("Authorization","bearer "+request.Token)
+                    .header("content-type","multipart/form-data; boundary="+boundary)
+                    .body( raw).asJson();
             
             if(!response.getBody().toString().equalsIgnoreCase("{}") && !response.getBody().equals("")){
                 JSONObject body = new JSONObject(response.getBody().toString());
@@ -121,12 +135,6 @@ public class CancelationRequest implements IRequestor {
         }
         catch (JSONException e){
             throw  new GeneralException(500,e.getMessage());
-        }
-        catch(java.net.MalformedURLException e){
-            throw  new GeneralException(404,"HOST DESCONOCIDO");
-        } catch (IOException e) {
-
-            throw  new GeneralException(404,e.getCause().getMessage());
         }
         
     }

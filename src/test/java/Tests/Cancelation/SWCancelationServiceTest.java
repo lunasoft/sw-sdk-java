@@ -106,9 +106,9 @@ public class SWCancelationServiceTest extends TestCase {
         System.out.println(response.HttpStatusCode);
         System.out.println(response.message);
         System.out.println(response.messageDetail);
-        String expect_message = "CACFDI33 - Parámetros incompletos";
+
         int expected_HttpStatusCode = 400;
-        Assert.assertTrue(expect_message.equalsIgnoreCase(response.message));
+        Assert.assertTrue(response.message.contains("CACFDI33"));
         Assert.assertTrue(expected_HttpStatusCode == response.HttpStatusCode);
         
     }
@@ -144,9 +144,9 @@ public class SWCancelationServiceTest extends TestCase {
         System.out.println(response.message);
         System.out.println(response.messageDetail);
         String expect_status = "error";
-        String expect_message = "CA1000. El xml proporcionado está mal formado o es inválido.There is an error in XML document (1, 1).";
+
         Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
-        Assert.assertTrue(expect_message.equalsIgnoreCase(response.message));
+        Assert.assertTrue(response.message.contains("CA1000"));
     }
     
     public void testCancelationServiceXML_nullXML() throws Exception {
@@ -161,6 +161,6 @@ public class SWCancelationServiceTest extends TestCase {
         String expect_status = "error";
         String expect_message = "CA1000. El xml proporcionado está mal formado o es inválido.There is an error in XML document (0, 0).";
         Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
-        Assert.assertTrue(expect_message.equalsIgnoreCase(response.message));
+        Assert.assertTrue(response.message.contains("CA1000"));
     }
 }

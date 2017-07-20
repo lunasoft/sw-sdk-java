@@ -11,8 +11,8 @@ public class BalanceAcctResponse extends IResponse{
     public boolean unlimited;
     public int timbresAsignados;
     
-    public BalanceAcctResponse(int httpStatusCode, String status, String idSaldoCliente, String idClienteUsuario, int saldoTimbres, int timbresUtilizados, String fechaExpiracion, boolean unlimited, int timbresAsignados) {
-        super(httpStatusCode, status);
+    public BalanceAcctResponse(int httpStatusCode, String status, String idSaldoCliente, String idClienteUsuario, int saldoTimbres, int timbresUtilizados, String fechaExpiracion, boolean unlimited, int timbresAsignados, String msg, String msgDetail) {
+        super(httpStatusCode, status, msg, msgDetail);
         this.idSaldoCliente = idSaldoCliente;
         this.idClienteUsuario= idClienteUsuario;
         this.saldoTimbres=saldoTimbres;
@@ -20,5 +20,8 @@ public class BalanceAcctResponse extends IResponse{
         this.fechaExpiracion= fechaExpiracion;
         this.unlimited= unlimited;
         this.timbresAsignados = timbresAsignados;
+    }
+    public BalanceAcctResponse(int httpStatusCode, String status, String msg, String msgDetail) {
+        super(httpStatusCode, status, msg, msgDetail);
     }
 }

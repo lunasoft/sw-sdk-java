@@ -385,14 +385,14 @@ Recibe la llave CSD (.cer, .key, password), asi como el rfc emisor y el UUID del
             
 ```
 
-##Cancelacion XML
+##Cancelación XML
 Recibe el XML de cancelacion
 
 ```java
             SWCancelationService app = new SWCancelationService("demo","123456789",Utils.url_pruebas);
-           IResponse response = null;
+           CancelationResponse response = null;
                           
-           response = app.Cancelation(xml);
+           response = (CancelationResponse)app.Cancelation(xml);
            
            System.out.println(response.Status);
            System.out.println(response.message);

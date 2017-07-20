@@ -6,6 +6,7 @@ import Exceptions.AuthException;
 import Exceptions.GeneralException;
 import Services.BalanceAccount.SWBalanceAccountService;
 import Tests.Utils;
+import Utils.Responses.BalanceAcctResponse;
 import Utils.Responses.IResponse;
 import junit.framework.TestCase;
 import org.junit.Assert;
@@ -17,10 +18,10 @@ public class SWBalanceAccountServiceTest extends TestCase {
 
     public void testBalanceAccountService() throws AuthException, GeneralException {
         SWBalanceAccountService app = new SWBalanceAccountService("demo","123456789",Utils.url_pruebas);
-        IResponse response = null;
-        response = app.GetBalanceAccount();
+        BalanceAcctResponse response = null;
+        response = (BalanceAcctResponse) app.GetBalanceAccount();
         System.out.println(response.Status);
-        System.out.println(response.Data);
+        //System.out.println(response.Data);
         System.out.println(response.HttpStatusCode);
         String expect_status = "success";
         Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
@@ -31,8 +32,9 @@ public class SWBalanceAccountServiceTest extends TestCase {
         IResponse response = null;
         
         response = app.GetBalanceAccount();
+
         System.out.println(response.Status);
-        System.out.println(response.Data);
+        //System.out.println(response.Data);
         System.out.println(response.HttpStatusCode);
         String expect_status = "success";
         Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));

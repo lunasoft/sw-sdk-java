@@ -4,6 +4,7 @@ import Exceptions.AuthException;
 import Exceptions.GeneralException;
 import Services.Authentication.SWAuthenticationService;
 import Utils.Responses.IResponse;
+import Utils.Responses.SuccessAuthResponse;
 import junit.framework.Assert;
 import junit.framework.TestCase;
 
@@ -14,13 +15,14 @@ public class SWAuthenticationServiceTest extends TestCase {
     public void testAuth(){
         SWAuthenticationService auth = new SWAuthenticationService("demo","123456789","http://services.test.sw.com.mx");
         try {
-            IResponse res = auth.Token();
+            SuccessAuthResponse res = (SuccessAuthResponse) auth.Token();
             String expected = "success";
             System.out.println(res.token);
+            System.out.println(res.message);
+            System.out.println(res.messageDetail);
             Assert.assertTrue(expected.equalsIgnoreCase(res.Status));
-        } catch (GeneralException e) {
-            e.printStackTrace();
-        } catch (AuthException e) {
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
             e.printStackTrace();
         }
     }

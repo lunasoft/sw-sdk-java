@@ -4,7 +4,10 @@ package Utils.Responses;
  * Created by asalvio on 08/05/2017.
  */
 public class SuccessAuthResponse extends IResponse {
-    public SuccessAuthResponse(int httpStatusCode, String status, String token, boolean isAuth) {
-        super(httpStatusCode, status, token, isAuth);
+    public String token;
+    public SuccessAuthResponse(int httpStatusCode, String status, String _token, String msg, String msgDetail) {
+
+        super(httpStatusCode, status, msg,msgDetail);
+        this.token = _token;
     }
 }

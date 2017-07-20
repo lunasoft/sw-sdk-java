@@ -23,6 +23,8 @@ public class AuthRequest implements IRequestor {
         if (request.URI.isEmpty()){
             throw new GeneralException(500,"URL VACIA");
         }
+
+        String messageDetail = "";
         try {
 
             HttpResponse<JsonNode> response = Unirest.post(request.URI)
@@ -30,23 +32,23 @@ public class AuthRequest implements IRequestor {
                     .header("password",request.Password).asJson();
             if(!response.getBody().toString().isEmpty()) {
                     JSONObject body = new JSONObject(response.getBody().toString());
+                    if(!body.isNull("messageDetail")){
+                        messageDetail = body.getString("messageDetail");
+                    }
+
                     if(response.getStatus()==200){
                         JSONObject data = body.getJSONObject("data");
-                        return new SuccessAuthResponse(response.getStatus(),body.getString("status"),data.getString("token"),true);
+                        return new SuccessAuthResponse(response.getStatus(),body.getString("status"),data.getString("token"),"OK","OK");
                     }
                     else{
-                        return new BadResponse(response.getStatus(),body.getString("status"),body.getString("message"),body.getString("messageDetail"));
+                        return new SuccessAuthResponse(response.getStatus(),body.getString("status"),"",body.getString("message"),messageDetail);
+
                     }
             }
             else{
-                return new BadResponse(response.getStatus(),"error",response.getStatusText(),response.getStatusText());
+                return new SuccessAuthResponse(response.getStatus(),"error","",response.getStatusText(),response.getStatusText());
+
             }
-
-
-
-
-
-
 
         } catch (UnirestException e) {
 

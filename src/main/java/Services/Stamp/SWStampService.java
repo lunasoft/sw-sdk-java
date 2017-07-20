@@ -3,15 +3,10 @@ package Services.Stamp;
 import Exceptions.AuthException;
 import Exceptions.GeneralException;
 import Services.SWService;
-import Utils.Constants;
-import Utils.Requests.Authentication.AuthOptionsRequest;
-import Utils.Requests.Authentication.AuthRequest;
 import Utils.Requests.Stamp.StampOptionsRequest;
 import Utils.Requests.Stamp.StampRequest;
-import Utils.Requests.Stamp.StampRequestDummy;
 
 import Utils.Responses.IResponse;
-import org.json.JSONObject;
 
 
 import java.nio.charset.Charset;

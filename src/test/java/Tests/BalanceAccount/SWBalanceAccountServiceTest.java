@@ -56,10 +56,11 @@ public class SWBalanceAccountServiceTest extends TestCase {
         IResponse response = null;
         try {
             response = app.GetBalanceAccount();
-        } catch (GeneralException e) {
-            e.printStackTrace();
-        } catch (AuthException e) {
-            e.printStackTrace();
+        } 
+        catch(Exception e){
+            System.out.println("Correcto excepcion lanzada");
+            System.out.println(e.getMessage());
+            Assert.assertNotNull("some bad happend", e);
         }
     }
 }

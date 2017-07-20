@@ -2,6 +2,7 @@ package Tests.Cancelation;
 
 import Services.Cancelation.SWCancelationService;
 import Tests.Utils;
+import Utils.Responses.CancelationResponse;
 import Utils.Responses.IResponse;
 import junit.framework.TestCase;
 import org.junit.Assert;
@@ -22,12 +23,14 @@ public class SWCancelationServiceTest extends TestCase {
 //CSD
     public void testCancelationServiceCSD_authUser() throws Exception {
         SWCancelationService app = new SWCancelationService("demo","123456789",Utils.url_pruebas);
-        IResponse response = null;
-               
-        response = app.Cancelation(uuid, password_csd, rfc, b64Cer, b64Key);
+        CancelationResponse response = null;
+        response = (CancelationResponse)app.Cancelation(uuid, password_csd, rfc, b64Cer, b64Key);               
+        
         System.out.println(response.Status);
-        System.out.println(response.message);
         System.out.println(response.HttpStatusCode);
+        System.out.println(response.acuse);
+        System.out.println(response.uuid);
+        System.out.println(response.uuidStatusCode);
         String expect_status = "success";
         Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
     }

@@ -13,13 +13,11 @@ public abstract class IResponse {
     public String cadenaOriginalSAT;
     public String noCertificadoSAT;
     public String noCertificadoCFDI;
-    public String uuid;
     public String selloSAT;
     public String selloCFDI;
     public String fechaTimbrado;
     public String qrCode;
-    public String acuse;
-    public int uuidStatusCode;
+    public String uuid;
 
     //V4 Response
     public IResponse(int httpStatusCode, String status, String cfdi, String cadenaOriginalSAT, String noCertificadoSAT, String noCertificadoCFDI, String uuid, String selloSAT, String selloCFDI, String fechaTimbrado, String qrCode) {

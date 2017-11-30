@@ -21,11 +21,12 @@ public class SWStampServiceTest extends TestCase {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
         SuccessV1Response response = null;
 
-        response = (SuccessV1Response) api.Stamp(Utils.xml_b,"v1");
+        response = (SuccessV1Response) api.Stamp(Utils.dummy_xml_string,"v1");
         System.out.println(response.Status);
 
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
+        System.out.println(response.message);
         String expect_status = "success";
         Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
     }

@@ -29,7 +29,7 @@ Descargas el modulo mediante Maven:
             <groupId>mx.com.sw.services</groupId>
             <artifactId>SW-JAVA</artifactId>
 
-            <version>0.0.3.3</version>
+            <version>0.0.3.4</version>
 
         </dependency>
 </dependencies>
@@ -39,7 +39,7 @@ Descargar el modulo directamente de los siguientes links:
 
 * [Relase Github](https://github.com/lunasoft/sw-sdk-java/releases)
 
-* [Maven](https://oss.sonatype.org/service/local/artifact/maven/redirect?r=releases&g=mx.com.sw.services&a=SW-JAVA&v=0.0.3.3&e=jar)
+* [Maven](https://oss.sonatype.org/service/local/artifact/maven/redirect?r=releases&g=mx.com.sw.services&a=SW-JAVA&v=0.0.3.4&e=jar)
 
 Asi como instalar manualmente cada una de las dependencias:
 * [Unirest](http://unirest.io/java.html)

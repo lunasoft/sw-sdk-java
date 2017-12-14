@@ -32,10 +32,7 @@ import java.nio.charset.Charset;
 import java.security.cert.X509Certificate;
 import java.text.Normalizer;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Random;
-import java.util.Scanner;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -99,7 +96,9 @@ public class Utils {
 
     public String changeDate(String xml) {
         SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+        date.setTimeZone(TimeZone.getTimeZone("America/Mexico_City"));
         SimpleDateFormat time = new SimpleDateFormat("HH:mm:ss");
+        time.setTimeZone(TimeZone.getTimeZone("America/Mexico_City"));
         String datetime;
         datetime = date.format(new Date())+"T"+time.format(new Date());
 

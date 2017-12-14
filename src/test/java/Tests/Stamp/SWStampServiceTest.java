@@ -20,45 +20,59 @@ public class SWStampServiceTest extends TestCase {
    public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
         SuccessV1Response response = null;
+        Utils ut = new Utils();
 
-        response = (SuccessV1Response) api.Stamp(Utils.xml_b,"v1");
+
+        response = (SuccessV1Response) api.Stamp(ut.StringgenBasico(),"v1");
         System.out.println(response.Status);
 
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
+        System.out.println(response.message);
         String expect_status = "success";
-        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
+       String expect_error = "307. El comprobante contiene un timbre previo.";
+       Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status) || expect_error.equalsIgnoreCase(response.message));
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
         SuccessV2Response response = null;
-        response = (SuccessV2Response) api.Stamp(Utils.dummy_xml_string,"v2");
+        Utils ut = new Utils();
+        if(ut.getRandomBoolean()){
+            response = (SuccessV2Response) api.Stamp(ut.StringgenBasico(),"v2");
+        }else{
+            response = (SuccessV2Response) api.Stamp(ut.signXML(ut.StringgenBasico()),"v2");
+        }
+
         System.out.println(response.message);
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
         System.out.println(response.cfdi);
         String expect_status = "success";
-        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
+        String expect_error = "307. El comprobante contiene un timbre previo.";
+        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status) || expect_error.equalsIgnoreCase(response.message));
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
         SuccessV3Response response = null;
-        response = (SuccessV3Response) api.Stamp(Utils.dummy_xml_string,"v3");
+        Utils ut = new Utils();
+        response = (SuccessV3Response) api.Stamp(ut.StringgenBasico(),"v3");
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.message);
         System.out.println(response.cfdi);
         String expect_status = "success";
-        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
+        String expect_error = "307. El comprobante contiene un timbre previo.";
+        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status) || expect_error.equalsIgnoreCase(response.message));
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
         SuccessV4Response response = null;
-        response = (SuccessV4Response) api.Stamp(Utils.dummy_xml_string,"V4");
+        Utils ut = new Utils();
+        response = (SuccessV4Response) api.Stamp(ut.StringgenBasico(),"V4");
         System.out.println(response.message);
         System.out.println(response.Status);
         System.out.println(response.cfdi);
@@ -71,50 +85,60 @@ public class SWStampServiceTest extends TestCase {
         System.out.println(response.fechaTimbrado);
         System.out.println(response.uuid);
         String expect_status = "success";
-        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
+        String expect_error = "307. El comprobante contiene un timbre previo.";
+        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status) || expect_error.equalsIgnoreCase(response.message));
 
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1_b64() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
         SuccessV1Response response = null;
-        response = (SuccessV1Response) api.Stamp(Utils.toBase64(Utils.dummy_xml_string),"v1",true);
+        Utils ut = new Utils();
+        response = (SuccessV1Response) api.Stamp(ut.toBase64(ut.StringgenBasico()),"v1",true);
         System.out.println(response.Status);
         System.out.println(response.message);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
-        Assert.assertTrue(Utils.isValidB64(response.tfd));
+        String expect_error = "307. El comprobante contiene un timbre previo.";
+        Assert.assertTrue(Utils.isValidB64(response.tfd) || expect_error.equalsIgnoreCase(response.message));
+
+
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_b64() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
         SuccessV2Response response = null;
-        response = (SuccessV2Response) api.Stamp(Utils.toBase64(Utils.dummy_xml_string),"v2",true);
+        Utils ut = new Utils();
+        response = (SuccessV2Response) api.Stamp(ut.toBase64(ut.StringgenBasico()),"v2",true);
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
         System.out.println(response.cfdi);
         boolean cfdi_valid = Utils.isValidB64(response.cfdi), tfd_valid = Utils.isValidB64(response.tfd);
-        Assert.assertTrue(cfdi_valid && tfd_valid);
+        String expect_error = "307. El comprobante contiene un timbre previo.";
+        Assert.assertTrue(cfdi_valid && tfd_valid || expect_error.equalsIgnoreCase((response.message)));
 
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3_b64() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
         SuccessV3Response response = null;
-        response = (SuccessV3Response) api.Stamp(Utils.toBase64(Utils.dummy_xml_string),"v3",true);
+        Utils ut = new Utils();
+        response = (SuccessV3Response) api.Stamp(ut.toBase64(ut.StringgenBasico()),"v3",true);
         System.out.println(response.message);
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.message);
         System.out.println(response.cfdi);
-        Assert.assertTrue(Utils.isValidB64(response.cfdi));
+        String expect_error = "307. El comprobante contiene un timbre previo.";
+        Assert.assertTrue(Utils.isValidB64(response.cfdi) || expect_error.equalsIgnoreCase(response.message));
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4_b64() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
         SuccessV4Response response = null;
-        response = (SuccessV4Response) api.Stamp(Utils.toBase64(Utils.dummy_xml_string),"V4",true);
+        Utils ut = new Utils();
+        response = (SuccessV4Response) api.Stamp(ut.toBase64(ut.StringgenBasico()),"V4",true);
         System.out.println(response.message);
         System.out.println(response.Status);
         System.out.println(response.cfdi);
@@ -130,7 +154,8 @@ public class SWStampServiceTest extends TestCase {
                 valid_qr = Utils.isValidB64(response.qrCode),
                 valid_sellocfdi = Utils.isValidB64(response.selloCFDI),
                 valid_sellosat = Utils.isValidB64(response.selloSAT);
-        Assert.assertTrue(valid_cfdi && valid_qr && valid_sellocfdi && valid_sellosat);
+        String expect_error = "307. El comprobante contiene un timbre previo.";
+        Assert.assertTrue(valid_cfdi && valid_qr && valid_sellocfdi && valid_sellosat || expect_error.equalsIgnoreCase(response.message));
     }
 
 
@@ -140,43 +165,50 @@ public class SWStampServiceTest extends TestCase {
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1_CC10() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
         SuccessV1Response response = null;
-        response = (SuccessV1Response) api.Stamp(Utils.cc10,"v1");
+        Utils ut = new Utils();
+        response = (SuccessV1Response) api.Stamp(ut.genc10(),"v1");
         System.out.println(response.message);
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
         String expect_status = "success";
-        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
+        String expect_error = "307. El comprobante contiene un timbre previo.";
+        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status) || expect_error.equalsIgnoreCase(response.message));
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_CC10() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
         SuccessV2Response response = null;
-        response = (SuccessV2Response) api.Stamp(Utils.cc10,"v2");
+        Utils ut = new Utils();
+        response = (SuccessV2Response) api.Stamp(ut.genc10(),"v2");
         System.out.println(response.Status);
         System.out.println(response.message);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
         System.out.println(response.cfdi);
         String expect_status = "success";
-        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
+        String expect_error = "307. El comprobante contiene un timbre previo.";
+        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status) || expect_error.equalsIgnoreCase(response.message));
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3_CC10() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
         SuccessV3Response response = null;
-        response = (SuccessV3Response) api.Stamp(Utils.cc10,"v3");
+        Utils ut = new Utils();
+        response = (SuccessV3Response) api.Stamp(ut.genc10(),"v3");
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.cfdi);
         String expect_status = "success";
-        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
+        String expect_error = "307. El comprobante contiene un timbre previo.";
+        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status) || expect_error.equalsIgnoreCase(response.message));
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4_CC10() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
         SuccessV4Response response = null;
-        response = (SuccessV4Response) api.Stamp(Utils.cc10,"V4");
+        Utils ut = new Utils();
+        response = (SuccessV4Response) api.Stamp(ut.genc10(),"V4");
         System.out.println(response.Status);
 
         System.out.println(response.qrCode);
@@ -195,7 +227,8 @@ public class SWStampServiceTest extends TestCase {
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1_b64_CC10() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
         SuccessV1Response response = null;
-        response = (SuccessV1Response) api.Stamp(Utils.toBase64(Utils.cc10),"v1",true);
+        Utils ut = new Utils();
+        response = (SuccessV1Response) api.Stamp(ut.toBase64(ut.genc10()),"v1",true);
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
@@ -205,20 +238,23 @@ public class SWStampServiceTest extends TestCase {
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_b64_CC10() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
         SuccessV2Response response = null;
-        response = (SuccessV2Response) api.Stamp(Utils.toBase64(Utils.cc10),"v2",true);
+        Utils ut = new Utils();
+        response = (SuccessV2Response) api.Stamp(ut.toBase64(ut.genc10()),"v2",true);
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
         System.out.println(response.cfdi);
         boolean cfdi_valid = Utils.isValidB64(response.cfdi), tfd_valid = Utils.isValidB64(response.tfd);
-        Assert.assertTrue(cfdi_valid && tfd_valid);
+        String expect_error = "307. El comprobante contiene un timbre previo.";
+        Assert.assertTrue(cfdi_valid && tfd_valid || expect_error.equalsIgnoreCase(response.message));
 
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3_b64_CC10() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
         SuccessV3Response response = null;
-        response = (SuccessV3Response) api.Stamp(Utils.toBase64(Utils.cc10),"v3",true);
+        Utils ut = new Utils();
+        response = (SuccessV3Response) api.Stamp(ut.toBase64(ut.genc10()),"v3",true);
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.cfdi);
@@ -228,7 +264,8 @@ public class SWStampServiceTest extends TestCase {
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4_b64_CC10() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
         SuccessV4Response response = null;
-        response = (SuccessV4Response) api.Stamp(Utils.toBase64(Utils.cc10),"V4",true);
+        Utils ut = new Utils();
+        response = (SuccessV4Response) api.Stamp(ut.toBase64(ut.genc10()),"V4",true);
         System.out.println(response.Status);
         System.out.println(response.cfdi);
         System.out.println(response.qrCode);
@@ -257,7 +294,8 @@ public class SWStampServiceTest extends TestCase {
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1_PAGOS10() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
         SuccessV1Response response = null;
-        response = (SuccessV1Response) api.Stamp(Utils.pagos10,"v1");
+        Utils ut = new Utils();
+        response = (SuccessV1Response) api.Stamp(ut.genPagos10(),"v1");
         System.out.println(response.Status);
         System.out.println(response.message);
         System.out.println(response.HttpStatusCode);
@@ -269,7 +307,8 @@ public class SWStampServiceTest extends TestCase {
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_PAGOS10() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
         SuccessV2Response response = null;
-        response = (SuccessV2Response) api.Stamp(Utils.pagos10,"v2");
+        Utils ut = new Utils();
+        response = (SuccessV2Response) api.Stamp(ut.genPagos10(),"v2");
         System.out.println(response.Status);
         System.out.println(response.message);
         System.out.println(response.HttpStatusCode);
@@ -282,20 +321,23 @@ public class SWStampServiceTest extends TestCase {
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3_PAGOS10() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
         SuccessV3Response response = null;
-        response = (SuccessV3Response) api.Stamp(Utils.pagos10,"v3");
+        Utils ut = new Utils();
+        response = (SuccessV3Response) api.Stamp(ut.genPagos10(),"v3");
         System.out.println(response.Status);
         System.out.println(response.message);
         System.out.println(response.HttpStatusCode);
 
         System.out.println(response.cfdi);
         String expect_status = "success";
-        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
+        String expect_error = "307. El comprobante contiene un timbre previo.";
+        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status) || expect_error.equalsIgnoreCase(response.message));
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4_PAGOS10() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
         SuccessV4Response response = null;
-        response = (SuccessV4Response) api.Stamp(Utils.pagos10,"V4");
+        Utils ut = new Utils();
+        response = (SuccessV4Response) api.Stamp(ut.genPagos10(),"V4");
         System.out.println(response.Status);
         System.out.println(response.cfdi);
         System.out.println(response.qrCode);
@@ -307,25 +349,29 @@ public class SWStampServiceTest extends TestCase {
         System.out.println(response.fechaTimbrado);
         System.out.println(response.uuid);
         String expect_status = "success";
-        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
+        String expect_error = "307. El comprobante contiene un timbre previo.";
+        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status) || expect_error.equalsIgnoreCase(response.message));
 
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1_b64_PAGOS10() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
         SuccessV1Response response = null;
-        response = (SuccessV1Response) api.Stamp(Utils.toBase64(Utils.pagos10),"v1",true);
+        Utils ut = new Utils();
+        response = (SuccessV1Response) api.Stamp(ut.toBase64(ut.genPagos10()),"v1",true);
         System.out.println(response.Status);
         System.out.println(response.message);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
-        Assert.assertTrue(Utils.isValidB64(response.tfd));
+        String expect_error = "307. El comprobante contiene un timbre previo.";
+        Assert.assertTrue(Utils.isValidB64(response.tfd) || expect_error.equalsIgnoreCase(response.message));
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_b64_PAGOS10() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
         SuccessV2Response response = null;
-        response = (SuccessV2Response) api.Stamp(Utils.toBase64(Utils.pagos10),"v2",true);
+        Utils ut = new Utils();
+        response = (SuccessV2Response) api.Stamp(ut.toBase64(ut.genPagos10()),"v2",true);
         System.out.println(response.Status);
         System.out.println(response.message);
         System.out.println(response.HttpStatusCode);
@@ -339,18 +385,21 @@ public class SWStampServiceTest extends TestCase {
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3_b64_PAGOS10() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
         SuccessV3Response response = null;
-        response = (SuccessV3Response) api.Stamp(Utils.toBase64(Utils.pagos10),"v3",true);
+        Utils ut = new Utils();
+        response = (SuccessV3Response) api.Stamp(ut.toBase64(ut.genPagos10()),"v3",true);
         System.out.println(response.Status);
         System.out.println(response.message);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.cfdi);
-        Assert.assertTrue(Utils.isValidB64(response.cfdi));
+        String expect_error = "307. El comprobante contiene un timbre previo.";
+        Assert.assertTrue(Utils.isValidB64(response.cfdi) || expect_error.equalsIgnoreCase(response.message));
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4_b64_PAGOS10() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
         SuccessV4Response response = null;
-        response = (SuccessV4Response) api.Stamp(Utils.toBase64(Utils.pagos10),"V4",true);
+        Utils ut = new Utils();
+        response = (SuccessV4Response) api.Stamp(ut.toBase64(ut.genPagos10()),"V4",true);
         System.out.println(response.Status);
         System.out.println(response.message);
         System.out.println(response.cfdi);
@@ -380,7 +429,8 @@ public class SWStampServiceTest extends TestCase {
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1_NOMINA12() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
         SuccessV1Response response = null;
-        response = (SuccessV1Response) api.Stamp(Utils.nomina10,"v1");
+        Utils ut = new Utils();
+        response = (SuccessV1Response) api.Stamp(ut.genNomina10(),"v1");
         System.out.println(response.Status);
         System.out.print(response.message);
         System.out.println(response.HttpStatusCode);
@@ -391,7 +441,8 @@ public class SWStampServiceTest extends TestCase {
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_NOMINA12() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
         SuccessV2Response response = null;
-        response = (SuccessV2Response) api.Stamp(Utils.nomina10,"v2");
+        Utils ut = new Utils();
+        response = (SuccessV2Response) api.Stamp(ut.genNomina10(),"v2");
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
@@ -402,7 +453,8 @@ public class SWStampServiceTest extends TestCase {
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3_NOMINA12() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
         SuccessV3Response response = null;
-        response = (SuccessV3Response) api.Stamp(Utils.nomina10,"v3");
+        Utils ut = new Utils();
+        response = (SuccessV3Response) api.Stamp(ut.genNomina10(),"v3");
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
 
@@ -413,7 +465,8 @@ public class SWStampServiceTest extends TestCase {
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4_NOMINA12() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
         SuccessV4Response response = null;
-        response = (SuccessV4Response) api.Stamp(Utils.nomina10,"V4");
+        Utils ut = new Utils();
+        response = (SuccessV4Response) api.Stamp(ut.genNomina10(),"V4");
         System.out.println(response.Status);
         System.out.println(response.cfdi);
         System.out.println(response.qrCode);
@@ -431,20 +484,23 @@ public class SWStampServiceTest extends TestCase {
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1_b64_NOMINA12() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
         SuccessV1Response response = null;
-        response = (SuccessV1Response) api.Stamp(Utils.toBase64(Utils.nomina10),"v1",true);
+        Utils ut = new Utils();
+        response = (SuccessV1Response) api.Stamp(ut.toBase64(ut.genNomina10()),"v1",true);
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.message);
         System.out.println(response.tfd);
         Assert.assertTrue(Utils.isValidB64(response.tfd));
         String expect_status = "success";
-        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
+        String expect_error = "307. El comprobante contiene un timbre previo.";
+        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status) || expect_error.equalsIgnoreCase(response.message));
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_b64_NOMINA12() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
         SuccessV2Response response = null;
-        response = (SuccessV2Response) api.Stamp(Utils.toBase64(Utils.nomina10),"v2",true);
+        Utils ut = new Utils();
+        response = (SuccessV2Response) api.Stamp(ut.toBase64(ut.genNomina10()),"v2",true);
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
@@ -457,7 +513,8 @@ public class SWStampServiceTest extends TestCase {
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3_b64_NOMINA12() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
         SuccessV3Response response = null;
-        response = (SuccessV3Response) api.Stamp(Utils.toBase64(Utils.nomina10),"v3",true);
+        Utils ut = new Utils();
+        response = (SuccessV3Response) api.Stamp(ut.toBase64(ut.genNomina10()),"v3",true);
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.cfdi);
@@ -467,7 +524,8 @@ public class SWStampServiceTest extends TestCase {
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4_b64_NOMINA12() throws Exception {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
         SuccessV4Response response = null;
-        response = (SuccessV4Response) api.Stamp(Utils.toBase64(Utils.nomina10),"V4",true);
+        Utils ut = new Utils();
+        response = (SuccessV4Response) api.Stamp(ut.toBase64(ut.genNomina10()),"V4",true);
         System.out.println(response.Status);
         System.out.println(response.cfdi);
         System.out.println(response.qrCode);
@@ -482,7 +540,8 @@ public class SWStampServiceTest extends TestCase {
                 valid_qr = Utils.isValidB64(response.qrCode),
                 valid_sellocfdi = Utils.isValidB64(response.selloCFDI),
                 valid_sellosat = Utils.isValidB64(response.selloSAT);
-        Assert.assertTrue(valid_cfdi && valid_qr && valid_sellocfdi && valid_sellosat);
+        String expect_error = "307. El comprobante contiene un timbre previo.";
+        Assert.assertTrue(valid_cfdi && valid_qr && valid_sellocfdi && valid_sellosat || expect_error.equalsIgnoreCase(response.message));
     }
 
 
@@ -492,7 +551,8 @@ public class SWStampServiceTest extends TestCase {
         try{
             SWStampService api = new SWStampService("","","");
             IResponse response = null;
-            response = api.Stamp(Utils.dummy_xml_string,"v1");
+            Utils ut = new Utils();
+            response = api.Stamp(ut.StringgenBasico(),"v1");
             System.out.println(response.Status);
             System.out.println(response.HttpStatusCode);
 
@@ -511,7 +571,8 @@ public class SWStampServiceTest extends TestCase {
         try{
             SWStampService api = new SWStampService("USER_BAD","PASSWORD_BAD","BAD_URI");
             IResponse response = null;
-            response = api.Stamp(Utils.dummy_xml_string,"v1");
+            Utils ut = new Utils();
+            response = api.Stamp(ut.StringgenBasico(),"v1");
             System.out.println(response.Status);
             System.out.println(response.HttpStatusCode);
 
@@ -540,7 +601,8 @@ public class SWStampServiceTest extends TestCase {
                 api.setPassword(null);
             }
             try{
-                response = api.Stamp(Utils.dummy_xml_string,"v1");
+                Utils ut = new Utils();
+                response = api.Stamp(ut.StringgenBasico(),"v1");
 
 
             }catch (Exception e){

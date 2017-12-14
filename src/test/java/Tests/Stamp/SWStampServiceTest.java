@@ -315,7 +315,8 @@ public class SWStampServiceTest extends TestCase {
         System.out.println(response.tfd);
         System.out.println(response.cfdi);
         String expect_status = "success";
-        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
+        String expect_error = "307. El comprobante contiene un timbre previo.";
+        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status) || expect_error.equalsIgnoreCase(response.message));
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3_PAGOS10() throws Exception {

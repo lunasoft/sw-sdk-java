@@ -11,10 +11,23 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 import com.mashape.unirest.request.body.MultipartBody;
+import org.apache.http.HttpEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.mime.HttpMultipartMode;
+import org.apache.http.entity.mime.MultipartEntity;
+import org.apache.http.entity.mime.content.StringBody;
+import org.apache.http.impl.client.BasicResponseHandler;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
+import sun.misc.IOUtils;
 
 import java.io.*;
+import java.nio.charset.Charset;
+import java.util.Scanner;
 import java.util.UUID;
 
 public class StampRequest implements IRequestor {
@@ -28,32 +41,43 @@ public class StampRequest implements IRequestor {
             String boundary = UUID.randomUUID().toString();
             String raw = "--"+boundary+"\r\nContent-Disposition: form-data; name=xml; filename=xml\r\nContent-Type: application/xml\r\n\r\n"+xmlStr+"\r\n--"+boundary+"--";
 
-            Unirest.setTimeouts(60000, 360000);
-            HttpResponse<JsonNode> response = Unirest.post(request.URI)
-                    .header("Authorization","bearer "+request.Token)
-                    .header("content-type","multipart/form-data; boundary="+boundary)
-                    .body( raw).asJson();
+            CloseableHttpClient client = HttpClients.createDefault();
+            HttpPost httppost = new HttpPost(request.URI);
+            MultipartEntity entity = new MultipartEntity( HttpMultipartMode.BROWSER_COMPATIBLE );
+            StringBody xmlcfdi = new StringBody(raw,  Charset.forName( "UTF-8" ));
+            entity.addPart("xml",xmlcfdi);
+            httppost.setEntity(entity);
+            httppost.setHeader("Authorization", "bearer " + request.Token);
+            httppost.setHeader("Content-Type", "multipart/form-data; boundary="+boundary);
+            httppost.addHeader("Content-Disposition", "form-data; name=xml; filename=xml");
+            CloseableHttpResponse responseB = client.execute(httppost);
 
+            InputStream inputStream = responseB.getEntity().getContent();
 
-            if(!response.getBody().toString().equalsIgnoreCase("{}")) {
-                JSONObject body = new JSONObject(response.getBody().toString());
-                if(response.getStatus()==200){
+            Scanner s = new Scanner(inputStream).useDelimiter("\\A");
+            String responseString = s.hasNext() ? s.next() : "";
+
+            int statusE = responseB.getStatusLine().getStatusCode();
+            client.close();
+            if(!responseString.isEmpty()) {
+                JSONObject body = new JSONObject(responseString);
+                if(statusE==200){
                     JSONObject data = body.getJSONObject("data");
 
                     if (request.version.equalsIgnoreCase("v1")) {
-                        return new SuccessV1Response(response.getStatus(),body.getString("status"),data.getString("tfd"),"OK","OK");
+                        return new SuccessV1Response(statusE,body.getString("status"),data.getString("tfd"),"OK","OK");
                     }
                     else if(request.version.equalsIgnoreCase("v2")){
-                        return new SuccessV2Response(response.getStatus(),body.getString("status"),data.getString("tfd"),data.getString("cfdi"),"OK","OK");
+                        return new SuccessV2Response(statusE,body.getString("status"),data.getString("tfd"),data.getString("cfdi"),"OK","OK");
                     }
                     else if(request.version.equalsIgnoreCase("v3")){
-                        return new SuccessV3Response(response.getStatus(),body.getString("status"),data.getString("cfdi"),"OK","OK");
+                        return new SuccessV3Response(statusE,body.getString("status"),data.getString("cfdi"),"OK","OK");
 
                     }else if(request.version.equalsIgnoreCase("v4")){
-                        return new SuccessV4Response(response.getStatus(),body.getString("status"),data.getString("cfdi"),data.getString("cadenaOriginalSAT"),data.getString("noCertificadoSAT"),data.getString("noCertificadoCFDI"),data.getString("uuid"),data.getString("selloSAT"),data.getString("selloCFDI"),data.getString("fechaTimbrado"),data.getString("qrCode"),"OK","OK");
+                        return new SuccessV4Response(statusE,body.getString("status"),data.getString("cfdi"),data.getString("cadenaOriginalSAT"),data.getString("noCertificadoSAT"),data.getString("noCertificadoCFDI"),data.getString("uuid"),data.getString("selloSAT"),data.getString("selloCFDI"),data.getString("fechaTimbrado"),data.getString("qrCode"),"OK","OK");
                     }
                     else{
-                        return new SuccessV1Response(response.getStatus(),body.getString("status"),data.toString(),"OK","OK");
+                        return new SuccessV1Response(statusE,body.getString("status"),data.toString(),"OK","OK");
                     }
 
 
@@ -66,38 +90,38 @@ public class StampRequest implements IRequestor {
                         messageDetail = body.getString("messageDetail");
                     }
                     if (request.version.equalsIgnoreCase("v1")) {
-                        return new SuccessV1Response(response.getStatus(),body.getString("status"),"",body.getString("message"),messageDetail);
+                        return new SuccessV1Response(statusE,body.getString("status"),"",body.getString("message"),messageDetail);
                     }
                     else if(request.version.equalsIgnoreCase("v2")){
-                        return new SuccessV2Response(response.getStatus(),body.getString("status"),"","",body.getString("message"),messageDetail);
+                        return new SuccessV2Response(statusE,body.getString("status"),"","",body.getString("message"),messageDetail);
                     }
                     else if(request.version.equalsIgnoreCase("v3")){
-                        return new SuccessV3Response(response.getStatus(),body.getString("status"),"",body.getString("message"),messageDetail);
+                        return new SuccessV3Response(statusE,body.getString("status"),"",body.getString("message"),messageDetail);
 
                     }else if(request.version.equalsIgnoreCase("v4")){
-                        return new SuccessV4Response(response.getStatus(),body.getString("status"),"","","","","","","","","",body.getString("message"),messageDetail);
+                        return new SuccessV4Response(statusE,body.getString("status"),"","","","","","","","","",body.getString("message"),messageDetail);
                     }
                     else{
-                        return new SuccessV1Response(response.getStatus(),body.getString("status"),"",body.getString("message"),messageDetail);
+                        return new SuccessV1Response(statusE,body.getString("status"),"",body.getString("message"),messageDetail);
                     }
 
                 }
             }
             else{
                 if (request.version.equalsIgnoreCase("v1")) {
-                    return new SuccessV1Response(response.getStatus(),"error","",response.getStatusText(),response.getStatusText());
+                    return new SuccessV1Response(statusE,"error","",responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase());
                 }
                 else if(request.version.equalsIgnoreCase("v2")){
-                    return new SuccessV2Response(response.getStatus(),"error","","",response.getStatusText(),response.getStatusText());
+                    return new SuccessV2Response(statusE,"error","","",responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase());
                 }
                 else if(request.version.equalsIgnoreCase("v3")){
-                    return new SuccessV3Response(response.getStatus(),"error","",response.getStatusText(),response.getStatusText());
+                    return new SuccessV3Response(statusE,"error","",responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase());
 
                 }else if(request.version.equalsIgnoreCase("v4")){
-                    return new SuccessV4Response(response.getStatus(),"error","","","","","","","","","",response.getStatusText(),response.getStatusText());
+                    return new SuccessV4Response(statusE,"error","","","","","","","","","",responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase());
                 }
                 else{
-                    return new SuccessV1Response(response.getStatus(),"error","",response.getStatusText(),response.getStatusText());
+                    return new SuccessV1Response(statusE,"error","",responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase());
                 }
 
 
@@ -114,14 +138,13 @@ public class StampRequest implements IRequestor {
 
 
 
-        } catch (UnirestException e) {
-
-            throw  new GeneralException(404,"HOST DESCONOCIDO");
         }
         catch (JSONException e){
             throw  new GeneralException(500,e.getMessage());
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new GeneralException(500,e.getMessage());
         }
-
 
 
     }

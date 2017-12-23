@@ -31,8 +31,13 @@ public class SWStampService extends SWService {
             generateToken();
         }
         //MAKE STAMP PROCESS, CUSTOMER ALREADY HAS TOKEN
+        StampOptionsRequest settings;
+        if(getProxyHost() != null){
+             settings = new StampOptionsRequest(getToken(),getURI(),xml,version,getProxyHost(),getPortHost());
+        }else{
+             settings = new StampOptionsRequest(getToken(),getURI(),xml,version);
+        }
 
-        StampOptionsRequest settings = new StampOptionsRequest(getToken(),getURI(),xml,version);
 
         StampRequest req = new StampRequest();
         return req.sendRequest(settings);

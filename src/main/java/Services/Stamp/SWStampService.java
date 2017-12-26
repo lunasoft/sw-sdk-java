@@ -23,6 +23,10 @@ public class SWStampService extends SWService {
         super(token, URI);
     }
 
+    public SWStampService(String token, String URI, String hostProxy, String portProxy) {
+        super(token,hostProxy,portProxy, URI);
+    }
+
     public IResponse Stamp(String xml, String version) throws AuthException, GeneralException {
 
 

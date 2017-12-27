@@ -14,6 +14,14 @@ public  abstract class SWService {
     private String Password = null;
     private String ProxyHost = null;
 
+    public SWService(String user,String password, String proxyHost, String portHost, String URI) {
+        User = user;
+        Password = password;
+        ProxyHost = proxyHost;
+        PortHost = portHost;
+        this.URI = URI;
+    }
+
     public SWService(String token, String proxyHost, String portHost, String URI) {
         Token = token;
         ProxyHost = proxyHost;

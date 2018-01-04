@@ -46,7 +46,7 @@ public class CancelationRequest implements IRequestor {
             StringEntity d = new StringEntity(send.toString());
             httppost.setEntity(d);
             if( hostProxy !=null && portProxy != null){
-                HttpHost proxy = new HttpHost(hostProxy, Integer.parseInt(portProxy), request.URI.split(":")[0]);
+                HttpHost proxy = new HttpHost(hostProxy, Integer.parseInt(portProxy));
                 RequestConfig config = RequestConfig.custom()
                         .setProxy(proxy)
                         .build();

@@ -47,6 +47,7 @@ public class StampRequest implements IRequestor {
 
             CloseableHttpClient client = HttpClients.createDefault();
             HttpPost httppost = new HttpPost(request.URI);
+
             MultipartEntity entity = new MultipartEntity( HttpMultipartMode.BROWSER_COMPATIBLE );
             StringBody xmlcfdi = new StringBody(raw,  Charset.forName( "UTF-8" ));
             entity.addPart("xml",xmlcfdi);
@@ -57,9 +58,11 @@ public class StampRequest implements IRequestor {
             httppost.addHeader("Content-Disposition", "form-data; name=xml; filename=xml");
 
             if( hostProxy !=null && portProxy != null){
-                HttpHost proxy = new HttpHost(hostProxy, Integer.parseInt(portProxy), request.URI.split(":")[0]);
+                //, request.URI.split(":")[0]
+                HttpHost proxy = new HttpHost(hostProxy, Integer.parseInt(portProxy));
                 RequestConfig config = RequestConfig.custom()
                         .setProxy(proxy)
+
                         .build();
                 httppost.setConfig(config);
             }
@@ -136,22 +139,8 @@ public class StampRequest implements IRequestor {
                 else{
                     return new SuccessV1Response(statusE,"error","",responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase());
                 }
-
-
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-        }
+     }
+         }
         catch (JSONException e){
             throw  new GeneralException(500,e.getMessage());
         } catch (IOException e) {

@@ -12,6 +12,8 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 
 import com.mashape.unirest.request.body.MultipartBody;
 import org.apache.http.HttpEntity;
+import org.apache.http.HttpHost;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.mime.HttpMultipartMode;
@@ -38,18 +40,32 @@ public class StampRequest implements IRequestor {
         try {
 
             String xmlStr = ((StampOptionsRequest) request).getXml();
+            String hostProxy = ((StampOptionsRequest) request).getProxyHost();
+            String portProxy = ((StampOptionsRequest) request).getPortHost();
             String boundary = UUID.randomUUID().toString();
             String raw = "--"+boundary+"\r\nContent-Disposition: form-data; name=xml; filename=xml\r\nContent-Type: application/xml\r\n\r\n"+xmlStr+"\r\n--"+boundary+"--";
 
             CloseableHttpClient client = HttpClients.createDefault();
             HttpPost httppost = new HttpPost(request.URI);
+
             MultipartEntity entity = new MultipartEntity( HttpMultipartMode.BROWSER_COMPATIBLE );
             StringBody xmlcfdi = new StringBody(raw,  Charset.forName( "UTF-8" ));
             entity.addPart("xml",xmlcfdi);
+
             httppost.setEntity(entity);
             httppost.setHeader("Authorization", "bearer " + request.Token);
             httppost.setHeader("Content-Type", "multipart/form-data; boundary="+boundary);
             httppost.addHeader("Content-Disposition", "form-data; name=xml; filename=xml");
+
+            if( hostProxy !=null && portProxy != null){
+                //, request.URI.split(":")[0]
+                HttpHost proxy = new HttpHost(hostProxy, Integer.parseInt(portProxy));
+                RequestConfig config = RequestConfig.custom()
+                        .setProxy(proxy)
+
+                        .build();
+                httppost.setConfig(config);
+            }
             CloseableHttpResponse responseB = client.execute(httppost);
 
             InputStream inputStream = responseB.getEntity().getContent();
@@ -123,26 +139,12 @@ public class StampRequest implements IRequestor {
                 else{
                     return new SuccessV1Response(statusE,"error","",responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase());
                 }
-
-
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-        }
+     }
+         }
         catch (JSONException e){
             throw  new GeneralException(500,e.getMessage());
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
             throw new GeneralException(500,e.getMessage());
         }
 

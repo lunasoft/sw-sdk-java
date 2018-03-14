@@ -23,6 +23,10 @@ public class SWStampService extends SWService {
         super(token, URI);
     }
 
+    public SWStampService(String token, String URI, String hostProxy, String portProxy) {
+        super(token,hostProxy,portProxy, URI);
+    }
+
     public IResponse Stamp(String xml, String version) throws AuthException, GeneralException {
 
 
@@ -31,8 +35,13 @@ public class SWStampService extends SWService {
             generateToken();
         }
         //MAKE STAMP PROCESS, CUSTOMER ALREADY HAS TOKEN
+        StampOptionsRequest settings;
+        if(getProxyHost() != null){
+             settings = new StampOptionsRequest(getToken(),getURI(),xml,version,getProxyHost(),getPortHost());
+        }else{
+             settings = new StampOptionsRequest(getToken(),getURI(),xml,version);
+        }
 
-        StampOptionsRequest settings = new StampOptionsRequest(getToken(),getURI(),xml,version);
 
         StampRequest req = new StampRequest();
         return req.sendRequest(settings);

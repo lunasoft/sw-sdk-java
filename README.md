@@ -59,6 +59,7 @@ Alternativamente tambien se cuenta con un archivo JAR en el que se incluyen toda
                     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
                     //Se especifica el base path, esto para consumir el api de pruebas o productivo
                     SWStampService sdk = new SWStampService("demo","123456789","http://services.test.sw.com.mx");
+                    //Si deseas utilizar un proxy customizado, debes agregar dos parametros mas
                     //Se inicializa un objeto response, que obtendra la respuesta del api
                     SuccessV1Response response = null;
                     //Se asigna el resultado de la respuesta a dicho objeto

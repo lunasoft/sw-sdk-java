@@ -12,7 +12,41 @@ public  abstract class SWService {
     private String Token = null;
     private String User = null;
     private String Password = null;
+    private String ProxyHost = null;
 
+    public SWService(String user,String password, String proxyHost, String portHost, String URI) {
+        User = user;
+        Password = password;
+        ProxyHost = proxyHost;
+        PortHost = portHost;
+        this.URI = URI;
+    }
+
+    public SWService(String token, String proxyHost, String portHost, String URI) {
+        Token = token;
+        ProxyHost = proxyHost;
+        PortHost = portHost;
+        this.URI = URI;
+    }
+
+    public String getProxyHost() {
+
+        return ProxyHost;
+    }
+
+    public void setProxyHost(String proxyHost) {
+        ProxyHost = proxyHost;
+    }
+
+    public String getPortHost() {
+        return PortHost;
+    }
+
+    public void setPortHost(String portHost) {
+        PortHost = portHost;
+    }
+
+    private String PortHost = null;
     public String getToken() {
         return Token;
     }

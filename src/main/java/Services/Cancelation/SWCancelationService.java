@@ -21,6 +21,14 @@ public class SWCancelationService extends SWService {
     public SWCancelationService(String token, String URI) {
         super(token, URI);
     }
+
+    public SWCancelationService(String token, String URI, String hostProxy, String portProxy) {
+        super(token,hostProxy,portProxy, URI);
+    }
+
+    public SWCancelationService(String user, String password, String URI, String hostProxy, String portProxy) {
+        super(user, password,hostProxy,portProxy, URI);
+    }
     
     
     public IResponse Cancelation(String uuid, String password_csd, String rfc, String b64Cer, String b64Key) throws AuthException, GeneralException {
@@ -30,8 +38,13 @@ public class SWCancelationService extends SWService {
         }
         
         //MAKE CANCELATION PROCESS, CUSTOMER ALREADY HAS TOKEN
+        CancelationOptionsRequest settings;
+        if(getProxyHost() != null){
+            settings = new CancelationOptionsRequest(getToken(),getURI(),uuid, password_csd, rfc, b64Cer, b64Key, getProxyHost(),getPortHost());
+        }else{
+            settings = new CancelationOptionsRequest(getToken(),getURI(),uuid, password_csd, rfc, b64Cer, b64Key);
+        }
 
-        CancelationOptionsRequest settings = new CancelationOptionsRequest(getToken(),getURI(),uuid, password_csd, rfc, b64Cer, b64Key);
 
         CancelationRequest req = new CancelationRequest();
         return req.sendRequest(settings);
@@ -45,8 +58,13 @@ public class SWCancelationService extends SWService {
         }
         
         //MAKE CANCELATION PROCESS, CUSTOMER ALREADY HAS TOKEN
+        CancelationOptionsRequest settings;
+        if(getProxyHost() != null){
+            settings = new CancelationOptionsRequest(getToken(),getURI(),xml,getProxyHost(),getPortHost());
+        }else{
+            settings = new CancelationOptionsRequest(getToken(),getURI(),xml);
+        }
 
-        CancelationOptionsRequest settings = new CancelationOptionsRequest(getToken(),getURI(),xml);
 
         CancelationRequest req = new CancelationRequest();
         return req.sendRequest(settings, true);

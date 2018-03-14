@@ -2,6 +2,7 @@ package Utils.Requests.Cancelation;
 
 import Exceptions.AuthException;
 import Exceptions.GeneralException;
+import Utils.Requests.Authentication.AuthOptionsRequest;
 import Utils.Requests.IRequest;
 import Utils.Requests.IRequestor;
 import Utils.Responses.*;
@@ -9,13 +10,23 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
+
+import java.io.*;
+import java.nio.charset.Charset;
+import java.util.Scanner;
 import java.util.UUID;
 
+import org.apache.http.HttpHost;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.entity.mime.HttpMultipartMode;
+import org.apache.http.entity.mime.MultipartEntity;
+import org.apache.http.entity.mime.content.StringBody;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -24,39 +35,62 @@ public class CancelationRequest implements IRequestor {
     public IResponse sendRequest(IRequest request) throws GeneralException, AuthException {
 
         try {
+            String hostProxy = ((CancelationOptionsRequest) request).getProxyHost();
+            String portProxy = ((CancelationOptionsRequest) request).getPortHost();
 
-            HttpResponse<String> response = Unirest.post(request.URI)
-                    .header("Authorization", "bearer " + request.Token)
-                    .header("Content-Type", "application/json")
-                    .body("{\r\n \"uuid\": \"" + ((CancelationOptionsRequest) request).getUuid() + "\",\r\n \"password\": \"" + ((CancelationOptionsRequest) request).getPassword_csd() + "\",\r\n \"rfc\": \"" + ((CancelationOptionsRequest) request).getRfc() + "\",\r\n \"b64Cer\": \"" + ((CancelationOptionsRequest) request).getB64Cer() + "\",\r\n \"b64Key\": \"" + ((CancelationOptionsRequest) request).getB64key() + "\"\r\n}").asString();
+            CloseableHttpClient client = HttpClients.createDefault();
+            HttpPost httppost = new HttpPost(request.URI);
+            httppost.setHeader("Authorization", "bearer "+request.Token);
+            httppost.setHeader("Content-Type", "application/json");
+            JSONObject send = new JSONObject("{\r\n \"uuid\": \"" + ((CancelationOptionsRequest) request).getUuid() + "\",\r\n \"password\": \"" + ((CancelationOptionsRequest) request).getPassword_csd() + "\",\r\n \"rfc\": \"" + ((CancelationOptionsRequest) request).getRfc() + "\",\r\n \"b64Cer\": \"" + ((CancelationOptionsRequest) request).getB64Cer() + "\",\r\n \"b64Key\": \"" + ((CancelationOptionsRequest) request).getB64key() + "\"\r\n}");
+            StringEntity d = new StringEntity(send.toString());
+            httppost.setEntity(d);
+            if( hostProxy !=null && portProxy != null){
+                HttpHost proxy = new HttpHost(hostProxy, Integer.parseInt(portProxy));
+                RequestConfig config = RequestConfig.custom()
+                        .setProxy(proxy)
+                        .build();
+                httppost.setConfig(config);
+            }
+            CloseableHttpResponse responseB = client.execute(httppost);
 
-            if (!response.getBody().equalsIgnoreCase("{}") && !response.getBody().equals("")) {
-                JSONObject body = new JSONObject(response.getBody());
+            InputStream inputStream = responseB.getEntity().getContent();
 
-                if (response.getStatus() == 200) {
+            Scanner s = new Scanner(inputStream).useDelimiter("\\A");
+            String responseString = s.hasNext() ? s.next() : "";
 
+            int statusE = responseB.getStatusLine().getStatusCode();
+            client.close();
+            if(!responseString.isEmpty()) {
+                JSONObject body = new JSONObject(responseString);
+                if(statusE==200){
                     JSONObject data = body.getJSONObject("data");
                     String uuid = ((CancelationOptionsRequest) request).getUuid().toUpperCase();
                     JSONObject uuid_data = data.getJSONObject("uuid");
                     String uuidSC = uuid_data.getString(uuid);
-                    return new CancelationResponse(response.getStatus(), body.getString("status"), data.getString("acuse"), uuid, Integer.parseInt(uuidSC),"OK","OK");
-                } 
-                else {
-
+                    return new CancelationResponse(statusE, body.getString("status"), data.getString("acuse"), uuid, Integer.parseInt(uuidSC),"OK","OK");
+                }else{
                     String messageDetail = "";
 
                     if (!body.isNull("messageDetail")) {
                         messageDetail = body.getString("messageDetail");
                     }
-                    return new CancelationResponse(response.getStatus(),body.getString("status"),body.getString("message"),messageDetail);
+                    return new CancelationResponse(statusE,body.getString("status"),body.getString("message"),messageDetail);
                 }
-            } else {
-                return new CancelationResponse(response.getStatus(), "error", response.getStatusText(), response.getStatusText());
+            }else{
+                return new CancelationResponse(statusE, "error", responseB.getStatusLine().getReasonPhrase(), responseB.getStatusLine().getReasonPhrase());
+
             }
 
-        } catch (UnirestException ex) {
-            throw new GeneralException(404, "HOST DESCONOCIDO");
-        } catch (JSONException e) {
+
+
+        }  catch (JSONException e) {
+            throw new GeneralException(500, e.getMessage());
+        } catch (UnsupportedEncodingException e) {
+            throw new GeneralException(500, e.getMessage());
+        } catch (ClientProtocolException e) {
+            throw new GeneralException(500, e.getMessage());
+        } catch (IOException e) {
             throw new GeneralException(500, e.getMessage());
         }
     }
@@ -69,44 +103,69 @@ public class CancelationRequest implements IRequestor {
         try {
 
             String xmlStr = ((CancelationOptionsRequest) request).getXml();
+            String hostProxy = ((CancelationOptionsRequest) request).getProxyHost();
+            String portProxy = ((CancelationOptionsRequest) request).getPortHost();
             String boundary = UUID.randomUUID().toString();
             String raw = "--" + boundary + "\r\nContent-Disposition: form-data; name=xml; filename=xml\r\nContent-Type: application/xml\r\n\r\n" + xmlStr + "\r\n--" + boundary + "--";
 
-            Unirest.setTimeouts(60000, 360000);
-            HttpResponse<JsonNode> response = Unirest.post(request.URI)
-                    .header("Authorization", "bearer " + request.Token)
-                    .header("content-type", "multipart/form-data; boundary=" + boundary)
-                    .body(raw).asJson();
+            CloseableHttpClient client = HttpClients.createDefault();
+            HttpPost httppost = new HttpPost(request.URI);
+            MultipartEntity entity = new MultipartEntity( HttpMultipartMode.BROWSER_COMPATIBLE );
+            StringBody xmlcfdi = new StringBody(raw,  Charset.forName( "UTF-8" ));
+            entity.addPart("xml",xmlcfdi);
+            httppost.setEntity(entity);
+            httppost.setHeader("Authorization", "bearer " + request.Token);
+            httppost.setHeader("Content-Type", "multipart/form-data; boundary="+boundary);
+            httppost.addHeader("Content-Disposition", "form-data; name=xml; filename=xml");
 
-            if (!response.getBody().toString().equalsIgnoreCase("{}") && !response.getBody().equals("")) {
-                JSONObject body = new JSONObject(response.getBody().toString());
-                
-                if (response.getStatus() == 200) {
-                    
+            if( hostProxy !=null && portProxy != null){
+                HttpHost proxy = new HttpHost(hostProxy, Integer.parseInt(portProxy), request.URI.split(":")[0]);
+                RequestConfig config = RequestConfig.custom()
+                        .setProxy(proxy)
+                        .build();
+                httppost.setConfig(config);
+            }
+            CloseableHttpResponse responseB = client.execute(httppost);
+
+            InputStream inputStream = responseB.getEntity().getContent();
+
+            Scanner s = new Scanner(inputStream).useDelimiter("\\A");
+            String responseString = s.hasNext() ? s.next() : "";
+
+            int statusE = responseB.getStatusLine().getStatusCode();
+            client.close();
+
+            if(!responseString.isEmpty()) {
+                JSONObject body = new JSONObject(responseString);
+                if(statusE==200){
                     JSONObject data = body.getJSONObject("data");
-                    String xml = ((CancelationOptionsRequest) request).getXml();
-                    String uuid = xml.substring(xml.indexOf("<UUID>") + 6, xml.indexOf("</UUID>")).toUpperCase();
                     JSONObject uuid_data = data.getJSONObject("uuid");
-                    String uuidSC = uuid_data.getString(uuid);
-                    return new CancelationResponse(response.getStatus(), body.getString("status"), data.getString("acuse"), uuid, Integer.parseInt(uuidSC),"OK","OK");
-                    
-                } else {
-
-                    String messageDetail = null;
+                    String uuid = (String) uuid_data.keys().next();
+                    int st_uuid = Integer.parseInt((String) uuid_data.get(uuid));
+                    return new CancelationResponse(statusE, body.getString("status"), data.getString("acuse"), uuid, st_uuid,"OK","OK");
+                }else{
+                    String messageDetail = "";
 
                     if (!body.isNull("messageDetail")) {
                         messageDetail = body.getString("messageDetail");
                     }
-                    return new CancelationResponse(response.getStatus(),body.getString("status"),body.getString("message"),messageDetail);
+                    return new CancelationResponse(statusE,body.getString("status"),body.getString("message"),messageDetail);
                 }
-            } else {
-                return new CancelationResponse(response.getStatus(), "error", response.getStatusText(), response.getStatusText());
+            }else{
+                return new CancelationResponse(statusE, "error", responseB.getStatusLine().getReasonPhrase(), responseB.getStatusLine().getReasonPhrase());
+
             }
 
-        } catch (UnirestException e) {
 
-            throw new GeneralException(404, "HOST DESCONOCIDO");
-        } catch (JSONException e) {
+
+
+        }  catch (JSONException e) {
+            throw new GeneralException(500, e.getMessage());
+        } catch (UnsupportedEncodingException e) {
+            throw new GeneralException(500, e.getMessage());
+        } catch (ClientProtocolException e) {
+            throw new GeneralException(500, e.getMessage());
+        } catch (IOException e) {
             throw new GeneralException(500, e.getMessage());
         }
 

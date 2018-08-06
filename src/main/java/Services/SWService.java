@@ -1,11 +1,11 @@
 package Services;
 
+import java.io.IOException;
+
 import Exceptions.AuthException;
 import Exceptions.GeneralException;
-import Utils.Constants;
 import Utils.Requests.Authentication.AuthOptionsRequest;
 import Utils.Requests.Authentication.AuthRequest;
-import Utils.Responses.IResponse;
 import Utils.Responses.SuccessAuthResponse;
 
 public  abstract class SWService {
@@ -55,7 +55,7 @@ public  abstract class SWService {
         Password = password;
     }
     
-    public void generateToken() throws AuthException, GeneralException {
+    public void generateToken() throws AuthException, GeneralException, IOException {
 
         if (User == null || Password == null) {
             //CUSTOMER HASN'T TOKEN, USER AND PASSWORD--> WE CANT' DO ANYTHING --> THROW EXCEPTION

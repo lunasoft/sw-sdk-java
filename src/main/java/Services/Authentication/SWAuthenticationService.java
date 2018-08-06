@@ -1,5 +1,7 @@
 package Services.Authentication;
 
+import java.io.IOException;
+
 import Exceptions.AuthException;
 import Exceptions.GeneralException;
 import Services.SWService;
@@ -13,7 +15,7 @@ public class SWAuthenticationService extends SWService {
     }
 
 
-    public IResponse Token() throws GeneralException, AuthException {
+    public IResponse Token() throws GeneralException, AuthException, IOException {
         AuthOptionsRequest settings = new AuthOptionsRequest(getURI(),getUser(),getPassword());
 
 

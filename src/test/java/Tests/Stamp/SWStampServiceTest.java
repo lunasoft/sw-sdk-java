@@ -1,13 +1,9 @@
 package Tests.Stamp;
 
-import Exceptions.AuthException;
-import Exceptions.GeneralException;
-import Services.Authentication.SWAuthenticationService;
 import Services.Stamp.SWStampService;
 import Tests.Utils;
 import Utils.Responses.*;
 import junit.framework.TestCase;
-import org.json.JSONObject;
 import org.junit.Assert;
 
 
@@ -21,11 +17,8 @@ public class SWStampServiceTest extends TestCase {
         SWStampService api = new SWStampService("demo","123456789",Utils.url_pruebas);
         SuccessV1Response response = null;
         Utils ut = new Utils();
-
-
         response = (SuccessV1Response) api.Stamp(ut.StringgenBasico(),"v1");
         System.out.println(response.Status);
-
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
         System.out.println(response.message);

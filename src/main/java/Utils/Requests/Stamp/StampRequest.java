@@ -5,60 +5,47 @@ import Exceptions.GeneralException;
 import Utils.Requests.IRequest;
 import Utils.Requests.IRequestor;
 import Utils.Responses.*;
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
-import com.mashape.unirest.http.Unirest;
-import com.mashape.unirest.http.exceptions.UnirestException;
-
-import com.mashape.unirest.request.body.MultipartBody;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.HttpMultipartMode;
-import org.apache.http.entity.mime.MultipartEntity;
-import org.apache.http.entity.mime.content.StringBody;
-import org.apache.http.impl.client.BasicResponseHandler;
+import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
-import sun.misc.IOUtils;
-
 import java.io.*;
 import java.nio.charset.Charset;
-import java.util.Scanner;
 import java.util.UUID;
 
 public class StampRequest implements IRequestor {
 
     public IResponse sendRequest(IRequest request) throws GeneralException, AuthException {
-
-
         try {
-
             String xmlStr = ((StampOptionsRequest) request).getXml();
             String boundary = UUID.randomUUID().toString();
             String raw = "--"+boundary+"\r\nContent-Disposition: form-data; name=xml; filename=xml\r\nContent-Type: application/xml\r\n\r\n"+xmlStr+"\r\n--"+boundary+"--";
 
             CloseableHttpClient client = HttpClients.createDefault();
             HttpPost httppost = new HttpPost(request.URI);
-            MultipartEntity entity = new MultipartEntity( HttpMultipartMode.BROWSER_COMPATIBLE );
-            StringBody xmlcfdi = new StringBody(raw,  Charset.forName( "UTF-8" ));
-            entity.addPart("xml",xmlcfdi);
-            httppost.setEntity(entity);
             httppost.setHeader("Authorization", "bearer " + request.Token);
-            httppost.setHeader("Content-Type", "multipart/form-data; boundary="+boundary);
+            httppost.addHeader("Content-Type", "multipart/form-data; boundary="+boundary);
             httppost.addHeader("Content-Disposition", "form-data; name=xml; filename=xml");
+            MultipartEntityBuilder builder = MultipartEntityBuilder.create();
+            Charset chars = Charset.forName("UTF-8");
+        	builder.setCharset(chars);
+        	builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
+            builder.addTextBody("xml", raw, ContentType.DEFAULT_BINARY);
+            httppost.setEntity(builder.build());
+            
             CloseableHttpResponse responseB = client.execute(httppost);
-
-            InputStream inputStream = responseB.getEntity().getContent();
-
-            Scanner s = new Scanner(inputStream).useDelimiter("\\A");
-            String responseString = s.hasNext() ? s.next() : "";
-
+            HttpEntity entity = responseB.getEntity();
+            String responseString = EntityUtils.toString(entity, "UTF-8");
             int statusE = responseB.getStatusLine().getStatusCode();
             client.close();
+            responseB.close();
             if(!responseString.isEmpty()) {
                 JSONObject body = new JSONObject(responseString);
                 if(statusE==200){
@@ -84,8 +71,6 @@ public class StampRequest implements IRequestor {
                 }
                 else{
                     String messageDetail = "";
-
-
                     if (!body.isNull("messageDetail")){
                         messageDetail = body.getString("messageDetail");
                     }
@@ -123,20 +108,7 @@ public class StampRequest implements IRequestor {
                 else{
                     return new SuccessV1Response(statusE,"error","",responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase());
                 }
-
-
             }
-
-
-
-
-
-
-
-
-
-
-
 
         }
         catch (JSONException e){

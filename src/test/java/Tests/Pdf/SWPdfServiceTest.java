@@ -20,7 +20,7 @@ public class SWPdfServiceTest extends TestCase {
     
     
     public void testPdfService() throws AuthException, GeneralException, IOException {
-        SWPdfService app = new SWPdfService(token ,Utils.url_pruebas);
+        SWPdfService app = new SWPdfService(token, Utils.url_pruebas);
         PdfResponse response = null;
         response = (PdfResponse) app.GeneratePdf(xml);
         
@@ -36,13 +36,14 @@ public class SWPdfServiceTest extends TestCase {
         System.out.println(response.rfcIssuer);
         System.out.println(response.rfcReceptor);
         System.out.println(response.total);
+        
         String expect_status = "success";
         Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
     }
    
-    public void testBalanceAccountService_incorrectToken() throws Exception {
+    public void testPdfService_incorrectToken() throws Exception {
                 
-    	SWPdfService app = new SWPdfService("wrong this" ,Utils.url_pruebas);
+    	SWPdfService app = new SWPdfService("wrong this", Utils.url_pruebas);
         PdfResponse response = null;
         response = (PdfResponse) app.GeneratePdf(xml);
         
@@ -54,8 +55,8 @@ public class SWPdfServiceTest extends TestCase {
         Assert.assertTrue(expect_message.equalsIgnoreCase(response.message));
     }
     
-    public void testBalanceAccountService_emptyUserParams() throws AuthException, GeneralException {
-    	SWPdfService app = new SWPdfService("","" ,Utils.url_pruebas);
+    public void testPdfService_emptyUserParams() throws AuthException, GeneralException {
+    	SWPdfService app = new SWPdfService("", "", Utils.url_pruebas);
         PdfResponse response = null;
         try {
         	response = (PdfResponse) app.GeneratePdf(xml);

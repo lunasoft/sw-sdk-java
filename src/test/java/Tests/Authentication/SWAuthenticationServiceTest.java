@@ -5,7 +5,7 @@ import Exceptions.GeneralException;
 import Services.Authentication.SWAuthenticationService;
 import Utils.Responses.IResponse;
 import Utils.Responses.SuccessAuthResponse;
-import junit.framework.Assert;
+import org.junit.Assert;
 import junit.framework.TestCase;
 
 /**

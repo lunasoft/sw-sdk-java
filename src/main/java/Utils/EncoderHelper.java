@@ -42,10 +42,6 @@ public class EncoderHelper {
     }
 
     public static boolean isValidUTF8( String input ) {
-
-
-
-
         try {
             byte[] buf = new byte[4096];
             int nread;

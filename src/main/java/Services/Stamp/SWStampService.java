@@ -8,7 +8,7 @@ import Utils.Requests.Stamp.StampRequest;
 
 import Utils.Responses.IResponse;
 
-
+import java.io.IOException;
 import java.nio.charset.Charset;
 
 
@@ -23,7 +23,7 @@ public class SWStampService extends SWService {
         super(token, URI);
     }
 
-    public IResponse Stamp(String xml, String version) throws AuthException, GeneralException {
+    public IResponse Stamp(String xml, String version) throws AuthException, GeneralException, IOException {
 
 
 
@@ -40,7 +40,7 @@ public class SWStampService extends SWService {
     }
 //
 
-    public IResponse Stamp(String xml, String version, boolean isb64) throws AuthException, GeneralException {
+    public IResponse Stamp(String xml, String version, boolean isb64) throws AuthException, GeneralException, IOException {
 
 
 
@@ -64,7 +64,7 @@ public class SWStampService extends SWService {
 
 
     }
-    public IResponse Stamp(byte[] xmlFile, String version, boolean isb64) throws AuthException, GeneralException {
+    public IResponse Stamp(byte[] xmlFile, String version, boolean isb64) throws AuthException, GeneralException, IOException{
         //BINARY XML
 
 
@@ -86,7 +86,7 @@ public class SWStampService extends SWService {
 
     }
 
-    public IResponse Stamp(byte[] xmlFile, String version) throws AuthException, GeneralException {
+    public IResponse Stamp(byte[] xmlFile, String version) throws AuthException, GeneralException, IOException {
         //BINARY XML
 
 

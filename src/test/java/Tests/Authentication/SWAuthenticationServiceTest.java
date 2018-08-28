@@ -1,10 +1,8 @@
 package Tests.Authentication;
 
-import Exceptions.AuthException;
-import Exceptions.GeneralException;
 import Services.Authentication.SWAuthenticationService;
-import Utils.Responses.IResponse;
 import Utils.Responses.SuccessAuthResponse;
+import java.text.ParseException;
 import org.junit.Assert;
 import junit.framework.TestCase;
 
@@ -12,7 +10,7 @@ import junit.framework.TestCase;
  * Created by asalvio on 18/07/2017.
  */
 public class SWAuthenticationServiceTest extends TestCase {
-    public void testAuth(){
+    public void testAuth() throws ParseException{
         SWAuthenticationService auth = new SWAuthenticationService("demo","123456789","http://services.test.sw.com.mx");
         try {
             SuccessAuthResponse res = (SuccessAuthResponse) auth.Token();

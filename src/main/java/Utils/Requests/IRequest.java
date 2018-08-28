@@ -16,7 +16,7 @@ public abstract class IRequest {
         this.isb64 = isb64;
     }
 
-    public IRequest(String token, String URI, String version, boolean isb64) {
+    public IRequest(String URI, String token, String version, boolean isb64) {
 
         Token = token;
         this.URI = URI;
@@ -26,7 +26,7 @@ public abstract class IRequest {
 
     public boolean isb64;
 
-    public IRequest(String token, String URI, boolean isb64) {
+    public IRequest(String URI, String token, boolean isb64) {
         Token = token;
         this.URI = URI;
         this.isb64 = isb64;
@@ -38,14 +38,14 @@ public abstract class IRequest {
         Password = password;
     }
 
-    public IRequest(String token, String URI, String xml, String version) {
+    public IRequest(String URI, String token, String xml, String version) {
         Token = token;
         this.URI = URI;
         this.version = version;
         this.xml = xml;
     }
     
-    public IRequest(String token, String URI) {
+    public IRequest(String URI, String token) {
         Token = token;
         this.URI = URI;
     }

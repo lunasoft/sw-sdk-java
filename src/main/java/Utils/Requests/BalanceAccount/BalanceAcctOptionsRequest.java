@@ -7,8 +7,8 @@ import Utils.Requests.IRequest;
 
 public class BalanceAcctOptionsRequest extends IRequest {
     
-    public BalanceAcctOptionsRequest(String token, String URI) {
-        super(token, URI+ Constants.BALANCE_ACCOUNT_PATH);
+    public BalanceAcctOptionsRequest(String URI, String token) {
+        super(URI+ Constants.BALANCE_ACCOUNT_PATH, token);
     }
     
 }

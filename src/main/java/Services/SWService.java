@@ -4,15 +4,33 @@ import java.io.IOException;
 
 import Exceptions.AuthException;
 import Exceptions.GeneralException;
+import Services.Authentication.SWAuthenticationService;
 import Utils.Requests.Authentication.AuthOptionsRequest;
 import Utils.Requests.Authentication.AuthRequest;
 import Utils.Responses.SuccessAuthResponse;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public  abstract class SWService {
     private String Token = null;
     private String User = null;
     private String Password = null;
+    private int TimeSession = 2;
+    private Date expirationDate = null;
+    private String URI;
 
+    public String token(){ return Token; }
+
+    public String uri(){ return URI; }
+
+    public String user(){ return User; }
+
+    public  String password(){ return Password; }
+
+    public  Date expiration_Date(){ return expirationDate; }
+    
     public String getToken() {
         return Token;
     }
@@ -29,20 +47,6 @@ public  abstract class SWService {
         return URI;
     }
 
-    private String URI;
-
-    protected SWService(String user, String password, String URI) {
-        User = user;
-        Password = password;
-        this.URI = URI;
-    }
-
-    protected SWService(String token, String URI) {
-
-        Token = token;
-        this.URI = URI;
-    }
-
     public void setToken(String token) {
         Token = token;
     }
@@ -55,22 +59,49 @@ public  abstract class SWService {
         Password = password;
     }
     
+    protected  SWService(SWService swService){
+    }
+    
+    protected SWService(String URI, String user, String password) throws ParseException {
+        User = user;
+        Password = password;
+        this.URI = URI;
+    }
+
+    protected SWService(String URI, String token ) {
+        Token = token;
+        this.URI = URI;
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date());
+        cal.add(Calendar.YEAR, TimeSession);
+        expirationDate =  cal.getTime();
+    }
+
     public void generateToken() throws AuthException, GeneralException, IOException {
 
-        if (User == null || Password == null) {
-            //CUSTOMER HASN'T TOKEN, USER AND PASSWORD--> WE CANT' DO ANYTHING --> THROW EXCEPTION
-            throw new AuthException(400, "no existen elementos de autenticación");
-        }
-
-        //CUSTOMER HASN'T TOKEN, BUT HAS USER AND PASSWORD --> AUTH,GENERATE TOKEN AND SET TOKEN IN GLOBAL SETTINGS
         AuthOptionsRequest settings = new AuthOptionsRequest(URI, getUser(), getPassword());
         AuthRequest req = new AuthRequest();
         SuccessAuthResponse res = (SuccessAuthResponse) req.sendRequest(settings);
         if (res.HttpStatusCode == 200) {
             setToken(res.token);
         } else {
-            //CUSTOMER HASN'T TOKEN, AND USER AND PASSWORD ARE BAD--> WE CANT' DO ANYTHING --> THROW EXCEPTION
             throw new AuthException(res.HttpStatusCode, res.message);
         }
     }
+    
+    public SWService SetupRequest() throws GeneralException, AuthException, IOException, ParseException{
+
+        if(Token == null || expirationDate == null){
+            SWAuthenticationService auth = new SWAuthenticationService(getURI(), getUser(), getPassword());
+            SuccessAuthResponse response = (SuccessAuthResponse) auth.Token();
+            
+            System.out.println(response);
+            if("success".equals(response.Status)){
+                Token = response.token;
+                expirationDate = new SimpleDateFormat("yyyy-MM-dd mm:ss").parse(response.Expires_in);
+            }
+        }
+        return this;
+    }
+    
 }

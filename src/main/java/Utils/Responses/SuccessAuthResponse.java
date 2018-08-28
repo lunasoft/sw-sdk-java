@@ -5,7 +5,7 @@ package Utils.Responses;
  */
 public class SuccessAuthResponse extends IResponse {
     public String token;
-    public SuccessAuthResponse(int httpStatusCode, String status, String _token, String msg, String msgDetail) {
+    public SuccessAuthResponse(int httpStatusCode, String status, String _token, String Expires_in,String msg, String msgDetail) {
 
         super(httpStatusCode, status, msg,msgDetail);
         this.token = _token;

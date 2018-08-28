@@ -10,29 +10,23 @@ import Services.SWService;
 import Utils.Requests.BalanceAccount.BalanceAcctOptionsRequest;
 import Utils.Requests.BalanceAccount.BalanceAcctRequest;
 import Utils.Responses.IResponse;
+import java.text.ParseException;
 
 
 public class SWBalanceAccountService extends SWService {
     
-    public SWBalanceAccountService(String user, String password, String URI) {
-        super(user, password, URI);
+    public SWBalanceAccountService(String URI, String user, String password) throws ParseException, GeneralException, AuthException, IOException {
+        super(URI, user, password);
+        SetupRequest();
     }
 
-    public SWBalanceAccountService(String token, String URI) {
-        super(token, URI);
+    public SWBalanceAccountService(String URI, String token) {
+        super(URI, token);
     }
     
-    public IResponse GetBalanceAccount() throws AuthException, GeneralException, IOException {
+    public IResponse GetBalanceAccount() throws AuthException, GeneralException, IOException, ParseException {
 
-        if (getToken()==null){
-
-            generateToken();
-        }
-        
-        //MAKE GET BALANCE ACCOUNT PROCESS, CUSTOMER ALREADY HAS TOKEN
-
-        BalanceAcctOptionsRequest settings = new BalanceAcctOptionsRequest(getToken(),getURI());
-
+        BalanceAcctOptionsRequest settings = new BalanceAcctOptionsRequest(getURI(), getToken());
         BalanceAcctRequest req = new BalanceAcctRequest();
         return req.sendRequest(settings);
 

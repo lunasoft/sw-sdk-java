@@ -22,11 +22,11 @@ public class AuthRequest implements IRequestor {
 
     @Override
     public IResponse sendRequest(IRequest request) throws GeneralException, AuthException, IOException {
-
+/*
         if (request.URI.isEmpty()){
             throw new GeneralException(500,"URL VACIA");
         }
-
+*/
         String messageDetail = "";
         try {
         	CloseableHttpClient client = HttpClients.createDefault();

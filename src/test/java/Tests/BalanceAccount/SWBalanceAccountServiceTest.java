@@ -10,6 +10,7 @@ import Utils.Responses.BalanceAcctResponse;
 import junit.framework.TestCase;
 
 import java.io.IOException;
+import java.text.ParseException;
 
 import org.junit.Assert;
 
@@ -20,11 +21,11 @@ public class SWBalanceAccountServiceTest extends TestCase {
 
     
     
-    public void testBalanceAccountService() throws AuthException, GeneralException, IOException {
-        SWBalanceAccountService app = new SWBalanceAccountService("demo","123456789",Utils.url_pruebas);
-        BalanceAcctResponse response = null;
-        response = (BalanceAcctResponse) app.GetBalanceAccount();
-        
+    public void testBalanceAccountService() throws AuthException, GeneralException, IOException, ParseException {
+       SWBalanceAccountService app = new SWBalanceAccountService(Utils.url_pruebas, "demo","123456789");
+       BalanceAcctResponse response = null;
+       response = (BalanceAcctResponse) app.GetBalanceAccount();
+                
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.idSaldoCliente);
@@ -39,7 +40,7 @@ public class SWBalanceAccountServiceTest extends TestCase {
     }
     
     public void testBalanceAccountService_authToken() throws Exception {
-        SWBalanceAccountService app = new SWBalanceAccountService(token,Utils.url_pruebas);
+        SWBalanceAccountService app = new SWBalanceAccountService(Utils.url_pruebas, token);
         BalanceAcctResponse response = null;
         response = (BalanceAcctResponse) app.GetBalanceAccount();
 
@@ -58,7 +59,7 @@ public class SWBalanceAccountServiceTest extends TestCase {
    
     public void testBalanceAccountService_incorrectToken() throws Exception {
                 
-        SWBalanceAccountService app = new SWBalanceAccountService("wrong token",Utils.url_pruebas);
+        SWBalanceAccountService app = new SWBalanceAccountService(Utils.url_pruebas, "wrong token");
         BalanceAcctResponse response = null;
         response = (BalanceAcctResponse) app.GetBalanceAccount();
         
@@ -70,7 +71,7 @@ public class SWBalanceAccountServiceTest extends TestCase {
         Assert.assertTrue(expect_message.equalsIgnoreCase(response.message));
     }
     
-    public void testBalanceAccountService_emptyUserParams() throws AuthException, GeneralException {
+    public void testBalanceAccountService_emptyUserParams() throws AuthException, GeneralException, ParseException, IOException {
         SWBalanceAccountService app = new SWBalanceAccountService("", "", "");
         BalanceAcctResponse response = null;
         try {

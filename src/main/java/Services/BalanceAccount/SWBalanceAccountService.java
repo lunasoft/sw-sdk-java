@@ -1,13 +1,12 @@
 package Services.BalanceAccount;
 
+import java.io.IOException;
+
 //@author: Lupita Alvarado
 
 import Exceptions.AuthException;
 import Exceptions.GeneralException;
 import Services.SWService;
-import Utils.Constants;
-import Utils.Requests.Authentication.AuthOptionsRequest;
-import Utils.Requests.Authentication.AuthRequest;
 import Utils.Requests.BalanceAccount.BalanceAcctOptionsRequest;
 import Utils.Requests.BalanceAccount.BalanceAcctRequest;
 import Utils.Responses.IResponse;
@@ -23,19 +22,12 @@ public class SWBalanceAccountService extends SWService {
         super(token, URI);
     }
     
-    public IResponse GetBalanceAccount() throws AuthException, GeneralException {
-
+    public IResponse GetBalanceAccount() throws AuthException, GeneralException, IOException {
         if (getToken()==null){
-
             generateToken();
         }
-        
-        //MAKE GET BALANCE ACCOUNT PROCESS, CUSTOMER ALREADY HAS TOKEN
-
         BalanceAcctOptionsRequest settings = new BalanceAcctOptionsRequest(getToken(),getURI());
-
         BalanceAcctRequest req = new BalanceAcctRequest();
         return req.sendRequest(settings);
-
     }
 }

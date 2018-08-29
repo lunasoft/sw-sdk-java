@@ -2,7 +2,6 @@ package Utils.Requests.Cancelation;
 import Utils.Constants;
 import Utils.Requests.IRequest;
 
-
 public class CancelationOptionsRequest extends IRequest{
     
     private String uuid;
@@ -10,6 +9,7 @@ public class CancelationOptionsRequest extends IRequest{
     private String rfc;
     private String b64Cer;
     private String b64key;
+    private String b64Pfx;
     
     private String xml;
       
@@ -23,9 +23,22 @@ public class CancelationOptionsRequest extends IRequest{
         this.b64key = b64Key;
     }
     
+    public CancelationOptionsRequest(String token, String URI, String uuid, String password_csd, String rfc, String b64Pfx) {
+        super(token, URI+ Constants.CANCELATION_PFX_PATH);
+        this.uuid = uuid;
+        this.password_csd = password_csd;
+        this.rfc = rfc;
+        this.b64Pfx = b64Pfx;
+    }
+    
     public CancelationOptionsRequest(String token, String URI, String xml) {
         super(token, URI+ Constants.CANCELATION_XML_PATH);
         this.xml = xml;
+    }
+    public CancelationOptionsRequest(String token, String URI, String uuid, String rfc) {
+        super(token, URI+ Constants.CANCELATION_UUID_PATH+rfc+"/"+uuid);
+        this.uuid = uuid;
+        this.rfc = rfc;
     }
 
     public String getUuid() {
@@ -51,6 +64,8 @@ public class CancelationOptionsRequest extends IRequest{
     public String getXml() {
         return xml;
     }
-    
+    public String getB64Pfx() {
+        return b64Pfx;
+    }
 
 }

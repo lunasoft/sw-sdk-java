@@ -5,20 +5,20 @@ import Exceptions.GeneralException;
 import Utils.Requests.IRequest;
 import Utils.Requests.IRequestor;
 import Utils.Responses.*;
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
-import com.mashape.unirest.http.Unirest;
-import com.mashape.unirest.http.exceptions.UnirestException;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.net.MalformedURLException;
+import java.io.IOException;
 
 public class AuthRequest implements IRequestor {
-
-
-    @Override
-    public IResponse sendRequest(IRequest request) throws GeneralException, AuthException {
+    public IResponse sendRequest(IRequest request) throws GeneralException, AuthException, IOException {
 
         if (request.URI.isEmpty()){
             throw new GeneralException(500,"URL VACIA");
@@ -26,35 +26,38 @@ public class AuthRequest implements IRequestor {
 
         String messageDetail = "";
         try {
-
-            HttpResponse<JsonNode> response = Unirest.post(request.URI)
-                    .header("user",request.User)
-                    .header("password",request.Password).asJson();
-            if(!response.getBody().toString().isEmpty()) {
-                    JSONObject body = new JSONObject(response.getBody().toString());
+        	CloseableHttpClient client = HttpClients.createDefault();
+        	HttpPost httppost = new HttpPost(request.URI);
+        	httppost.setHeader("user", request.User);
+            httppost.addHeader("password", request.Password);
+            
+            CloseableHttpResponse responseB = client.execute(httppost);
+            HttpEntity entity = responseB.getEntity();
+            String responseString = EntityUtils.toString(entity, "UTF-8");
+            int status = responseB.getStatusLine().getStatusCode();
+            client.close();
+            responseB.close();
+            if(!responseString.isEmpty()) {
+                    JSONObject body = new JSONObject(responseString);
                     if(!body.isNull("messageDetail")){
                         messageDetail = body.getString("messageDetail");
                     }
 
-                    if(response.getStatus()==200){
+                    if(status==200){
                         JSONObject data = body.getJSONObject("data");
-                        return new SuccessAuthResponse(response.getStatus(),body.getString("status"),data.getString("token"),"OK","OK");
+                        return new SuccessAuthResponse(status,body.getString("status"),data.getString("token"),"OK","OK");
                     }
                     else{
-                        return new SuccessAuthResponse(response.getStatus(),body.getString("status"),"",body.getString("message"),messageDetail);
+                        return new SuccessAuthResponse(status,body.getString("status"),"",body.getString("message"),messageDetail);
 
                     }
             }
             else{
-                return new SuccessAuthResponse(response.getStatus(),"error","",response.getStatusText(),response.getStatusText());
+                return new SuccessAuthResponse(status,"error","",responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase());
 
             }
 
-        } catch (UnirestException e) {
-
-            throw new GeneralException(500,"SERVIDOR INACTIVO");
-        }
-        catch(JSONException e){
+        } catch(JSONException e){
             throw new GeneralException(500,e.getMessage());
         }
 

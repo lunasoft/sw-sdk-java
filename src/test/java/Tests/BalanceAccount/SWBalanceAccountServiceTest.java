@@ -8,6 +8,9 @@ import Services.BalanceAccount.SWBalanceAccountService;
 import Tests.Utils;
 import Utils.Responses.BalanceAcctResponse;
 import junit.framework.TestCase;
+
+import java.io.IOException;
+
 import org.junit.Assert;
 
 
@@ -17,7 +20,7 @@ public class SWBalanceAccountServiceTest extends TestCase {
 
     
     
-    public void testBalanceAccountService() throws AuthException, GeneralException {
+    public void testBalanceAccountService() throws AuthException, GeneralException, IOException {
         SWBalanceAccountService app = new SWBalanceAccountService("demo","123456789",Utils.url_pruebas);
         BalanceAcctResponse response = null;
         response = (BalanceAcctResponse) app.GetBalanceAccount();
@@ -74,9 +77,9 @@ public class SWBalanceAccountServiceTest extends TestCase {
             response = (BalanceAcctResponse) app.GetBalanceAccount();
         } 
         catch(Exception e){
-            System.out.println("Correcto excepcion lanzada");
+            System.out.println("Something bad happened");
             System.out.println(e.getMessage());
-            Assert.assertNotNull("some bad happend", e);
+            Assert.assertNotNull("Something bad happened", e);
         }
     }
 }

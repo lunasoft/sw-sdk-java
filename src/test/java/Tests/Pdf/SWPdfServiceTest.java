@@ -20,7 +20,7 @@ public class SWPdfServiceTest extends TestCase {
     
     
     public void testPdfService() throws AuthException, GeneralException, IOException {
-        SWPdfService app = new SWPdfService(token ,"http://api.test.sw.com.mx");
+        SWPdfService app = new SWPdfService(token, Utils.url_pruebas);
         PdfResponse response = null;
         response = (PdfResponse) app.GeneratePdf(xml);
         
@@ -43,11 +43,11 @@ public class SWPdfServiceTest extends TestCase {
    
     public void testPdfService_incorrectToken() throws Exception {
                 
-    	SWPdfService app = new SWPdfService("wrong this" ,Utils.url_pruebas);
+    	SWPdfService app = new SWPdfService("wrong this", Utils.url_pruebas);
         PdfResponse response = null;
         response = (PdfResponse) app.GeneratePdf(xml);
         
-        //System.out.println(response.Status);
+        System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.message);
         System.out.println(response.messageDetail);
@@ -56,15 +56,15 @@ public class SWPdfServiceTest extends TestCase {
     }
     
     public void testPdfService_emptyUserParams() throws AuthException, GeneralException {
-    	SWPdfService app = new SWPdfService("","" ,Utils.url_pruebas);
+    	SWPdfService app = new SWPdfService("", "", Utils.url_pruebas);
         PdfResponse response = null;
         try {
         	response = (PdfResponse) app.GeneratePdf(xml);
         } 
         catch(Exception e){
-            System.out.println("Correcto excepcion lanzada");
+            System.out.println("Something bad happened");
             System.out.println(e.getMessage());
-            Assert.assertNotNull("some bad happend", e);
+            Assert.assertNotNull("Something bad happened", e);
         }
     }
 }

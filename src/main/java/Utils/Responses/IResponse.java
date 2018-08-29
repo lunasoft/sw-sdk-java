@@ -5,9 +5,13 @@ public abstract class IResponse {
     public String Status;
     public String message = null;
     public String messageDetail = null;
-    public String Expires_in = null;
+
+
 
     public boolean isAuth;
+
+
+
 
     public IResponse(int httpStatusCode, String status, boolean isAuth) {
         HttpStatusCode = httpStatusCode;
@@ -22,11 +26,19 @@ public abstract class IResponse {
         this.message = message;
         this.messageDetail = messageDetail;
     }
-    
+
+
+
     //Status success general
     public IResponse(int httpStatusCode, String status) {
         HttpStatusCode = httpStatusCode;
         Status = status;
+
+
     }
+
+
+
+
 
 }

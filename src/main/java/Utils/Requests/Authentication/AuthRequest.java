@@ -18,15 +18,12 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 public class AuthRequest implements IRequestor {
-
-
-    @Override
     public IResponse sendRequest(IRequest request) throws GeneralException, AuthException, IOException {
-/*
+
         if (request.URI.isEmpty()){
             throw new GeneralException(500,"URL VACIA");
         }
-*/
+
         String messageDetail = "";
         try {
         	CloseableHttpClient client = HttpClients.createDefault();
@@ -37,7 +34,7 @@ public class AuthRequest implements IRequestor {
             CloseableHttpResponse responseB = client.execute(httppost);
             HttpEntity entity = responseB.getEntity();
             String responseString = EntityUtils.toString(entity, "UTF-8");
-            int statusE = responseB.getStatusLine().getStatusCode();
+            int status = responseB.getStatusLine().getStatusCode();
             client.close();
             responseB.close();
             if(!responseString.isEmpty()) {
@@ -46,17 +43,17 @@ public class AuthRequest implements IRequestor {
                         messageDetail = body.getString("messageDetail");
                     }
 
-                    if(statusE==200){
+                    if(status==200){
                         JSONObject data = body.getJSONObject("data");
-                        return new SuccessAuthResponse(statusE,body.getString("status"),data.getString("token"),"OK","OK");
+                        return new SuccessAuthResponse(status,body.getString("status"),data.getString("token"),"OK","OK");
                     }
                     else{
-                        return new SuccessAuthResponse(statusE,body.getString("status"),"",body.getString("message"),messageDetail);
+                        return new SuccessAuthResponse(status,body.getString("status"),"",body.getString("message"),messageDetail);
 
                     }
             }
             else{
-                return new SuccessAuthResponse(statusE,"error","",responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase());
+                return new SuccessAuthResponse(status,"error","",responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase());
 
             }
 

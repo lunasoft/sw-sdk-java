@@ -12,7 +12,6 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 
 
-
 public class SWStampService extends SWService {
 
     public SWStampService(String user, String password, String URI) {
@@ -24,31 +23,17 @@ public class SWStampService extends SWService {
     }
 
     public IResponse Stamp(String xml, String version) throws AuthException, GeneralException, IOException {
-
-
-
         if (getToken()==null){
             generateToken();
         }
-        //MAKE STAMP PROCESS, CUSTOMER ALREADY HAS TOKEN
-
         StampOptionsRequest settings = new StampOptionsRequest(getToken(),getURI(),xml,version);
-
         StampRequest req = new StampRequest();
         return req.sendRequest(settings);
-
     }
-//
-
     public IResponse Stamp(String xml, String version, boolean isb64) throws AuthException, GeneralException, IOException {
-
-
-
         if (getToken()==null){
             generateToken();
-
         }
-        //MAKE STAMP PROCESS, CUSTOMER ALREADY HAS TOKEN
     if(isb64){
         StampOptionsRequest settings = new StampOptionsRequest(getToken(),getURI(),xml,version,isb64);
         StampRequest req = new StampRequest();
@@ -59,55 +44,25 @@ public class SWStampService extends SWService {
         StampRequest req = new StampRequest();
         return req.sendRequest(settings);
         }
-
-
-
-
     }
     public IResponse Stamp(byte[] xmlFile, String version, boolean isb64) throws AuthException, GeneralException, IOException{
-        //BINARY XML
-
-
         String xmlProcess = new String(xmlFile,Charset.forName("UTF-8"));
-
         if (getToken()==null){
-
             generateToken();
-
-
         }
-
-        //MAKE STAMP PROCESS, CUSTOMER ALREADY HAS TOKEN
-
         StampOptionsRequest settings = new StampOptionsRequest(getToken(),getURI(),xmlProcess,version);
-
         StampRequest req = new StampRequest();
         return req.sendRequest(settings);
-
     }
 
     public IResponse Stamp(byte[] xmlFile, String version) throws AuthException, GeneralException, IOException {
-        //BINARY XML
-
-
         String xmlProcess = new String(xmlFile,Charset.forName("UTF-8"));
-
         if (getToken()==null){
-
             generateToken();
-
-
         }
-
-        //MAKE STAMP PROCESS, CUSTOMER ALREADY HAS TOKEN
-
         StampOptionsRequest settings = new StampOptionsRequest(getToken(),getURI(),xmlProcess,version);
-
-
         StampRequest req = new StampRequest();
         return req.sendRequest(settings);
 
     }
-
-    //
 }

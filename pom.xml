@@ -56,19 +56,6 @@
         </snapshotRepository>
     </distributionManagement>
     <build>
-        <resources>
-            <resource>
-                <targetPath>META-INF</targetPath>
-                <directory>src</directory>
-                <includes>
-                    <include>jax-ws-catalog.xml</include>
-                    <include>wsdl/**</include>
-                </includes>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-            </resource>
-        </resources>
         <sourceDirectory>src/main/java</sourceDirectory>
         <testSourceDirectory>src/test/java</testSourceDirectory>
         <plugins>
@@ -156,45 +143,6 @@
                     <additionalparam>-Xdoclint:none</additionalparam>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.jvnet.jax-ws-commons</groupId>
-                <artifactId>jaxws-maven-plugin</artifactId>
-                <version>2.3</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>wsimport</goal>
-                        </goals>
-                        <configuration>
-                            <wsdlFiles>
-                                <wsdlFile>pruebascfdi.smartweb.com.mx/Autenticacion/wsAutenticacion.asmx.wsdl</wsdlFile>
-                            </wsdlFiles>
-                            <packageName></packageName>
-                            <vmArgs>
-                                <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
-                            </vmArgs>
-                            <wsdlLocation>https://pruebascfdi.smartweb.com.mx/Autenticacion/wsAutenticacion.asmx?wsdl</wsdlLocation>
-                            <staleFile>${project.build.directory}/jaxws/stale/wsAutenticacion.asmx.stale</staleFile>
-                        </configuration>
-                        <id>wsimport-generate-wsAutenticacion.asmx</id>
-                        <phase>generate-sources</phase>
-                    </execution>
-                </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>javax.xml</groupId>
-                        <artifactId>webservices-api</artifactId>
-                        <version>2.0</version>
-                    </dependency>
-                </dependencies>
-                <configuration>
-                    <sourceDestDir>${project.build.directory}/generated-sources/jaxws-wsimport</sourceDestDir>
-                    <xnocompile>true</xnocompile>
-                    <verbose>true</verbose>
-                    <extension>true</extension>
-                    <catalog>${basedir}/src/jax-ws-catalog.xml</catalog>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
     <dependencies>
@@ -232,12 +180,6 @@
             <groupId>org.apache.servicemix.bundles</groupId>
             <artifactId>org.apache.servicemix.bundles.not-yet-commons-ssl</artifactId>
             <version>0.3.11_1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.servicemix.bundles</groupId>
-            <artifactId>org.apache.servicemix.bundles.not-yet-commons-ssl</artifactId>
-            <version>0.3.11_1</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>

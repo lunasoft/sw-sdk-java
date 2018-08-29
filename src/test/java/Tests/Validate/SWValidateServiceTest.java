@@ -23,7 +23,7 @@ public class SWValidateServiceTest extends TestCase {
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.message);
-        LinkedList<DetailNode> List = response.detail;
+        LinkedList<DetailNode> List = (LinkedList<DetailNode>) response.detail;
         for(int i = 0; i < List.size(); i++) {
         	DetailNode node = List.get(i);
         	LinkedList<DetailData> ListData = node.detail;

@@ -8,7 +8,7 @@ import Utils.Requests.Authentication.AuthOptionsRequest;
 import Utils.Requests.Authentication.AuthRequest;
 import Utils.Responses.SuccessAuthResponse;
 
-public  abstract class SWService {
+public abstract class SWService {
     private String Token = null;
     private String User = null;
     private String Password = null;
@@ -58,18 +58,14 @@ public  abstract class SWService {
     public void generateToken() throws AuthException, GeneralException, IOException {
 
         if (User == null || Password == null) {
-            //CUSTOMER HASN'T TOKEN, USER AND PASSWORD--> WE CANT' DO ANYTHING --> THROW EXCEPTION
             throw new AuthException(400, "no existen elementos de autenticación");
         }
-
-        //CUSTOMER HASN'T TOKEN, BUT HAS USER AND PASSWORD --> AUTH,GENERATE TOKEN AND SET TOKEN IN GLOBAL SETTINGS
         AuthOptionsRequest settings = new AuthOptionsRequest(URI, getUser(), getPassword());
         AuthRequest req = new AuthRequest();
         SuccessAuthResponse res = (SuccessAuthResponse) req.sendRequest(settings);
         if (res.HttpStatusCode == 200) {
             setToken(res.token);
         } else {
-            //CUSTOMER HASN'T TOKEN, AND USER AND PASSWORD ARE BAD--> WE CANT' DO ANYTHING --> THROW EXCEPTION
             throw new AuthException(res.HttpStatusCode, res.message);
         }
     }

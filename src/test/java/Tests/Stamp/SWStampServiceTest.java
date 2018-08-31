@@ -561,9 +561,9 @@ public class SWStampServiceTest extends TestCase {
 
         }
         catch(Exception e){
-            System.out.println("Correcto excepcion lanzada");
+            System.out.println("Something bad happened");
             System.out.println(e.getMessage());
-            Assert.assertNotNull("some bad happend", e);
+            Assert.assertNotNull("Something bad happened", e);
 
         }
 
@@ -581,9 +581,9 @@ public class SWStampServiceTest extends TestCase {
 
         }
         catch(Exception e){
-            System.out.println("Correcto excepcion lanzada");
+            System.out.println("Something bad happened");
             System.out.println(e.getMessage());
-            Assert.assertNotNull("some bad happend", e);
+            Assert.assertNotNull("Something bad happened", e);
 
         }
 
@@ -610,9 +610,9 @@ public class SWStampServiceTest extends TestCase {
 
             }catch (Exception e){
                 System.out.println(e.getMessage());
-                System.out.println("Correcto excepcion lanzada");
+                System.out.println("Something bad happened");
 
-               Assert.assertNotNull("some bad happend", e);
+               Assert.assertNotNull("Something bad happened", e);
                break;
             }
         }

@@ -47,7 +47,7 @@ public class SWPdfServiceTest extends TestCase {
         PdfResponse response = null;
         response = (PdfResponse) app.GeneratePdf(xml);
         
-        //System.out.println(response.Status);
+        System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.message);
         System.out.println(response.messageDetail);
@@ -62,9 +62,9 @@ public class SWPdfServiceTest extends TestCase {
         	response = (PdfResponse) app.GeneratePdf(xml);
         } 
         catch(Exception e){
-            System.out.println("Correcto excepcion lanzada");
+            System.out.println("Something bad happened");
             System.out.println(e.getMessage());
-            Assert.assertNotNull("some bad happend", e);
+            Assert.assertNotNull("Something bad happened", e);
         }
     }
 }

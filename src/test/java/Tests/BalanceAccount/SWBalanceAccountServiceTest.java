@@ -77,9 +77,9 @@ public class SWBalanceAccountServiceTest extends TestCase {
             response = (BalanceAcctResponse) app.GetBalanceAccount();
         } 
         catch(Exception e){
-            System.out.println("Correcto excepcion lanzada");
+            System.out.println("Something bad happened");
             System.out.println(e.getMessage());
-            Assert.assertNotNull("some bad happend", e);
+            Assert.assertNotNull("Something bad happened", e);
         }
     }
 }

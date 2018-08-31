@@ -3,13 +3,9 @@ package Utils.Requests.Stamp;
 import Utils.Constants;
 import Utils.Requests.IRequest;
 
-import java.io.File;
-
 public class StampOptionsRequest extends IRequest {
     private String xml;
     private String version;
-
-
 
     public StampOptionsRequest(String token, String URI, String xml, String version, boolean isb64) {
 

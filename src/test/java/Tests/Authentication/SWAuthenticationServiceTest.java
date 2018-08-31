@@ -1,16 +1,10 @@
 package Tests.Authentication;
 
-import Exceptions.AuthException;
-import Exceptions.GeneralException;
 import Services.Authentication.SWAuthenticationService;
-import Utils.Responses.IResponse;
 import Utils.Responses.SuccessAuthResponse;
 import org.junit.Assert;
 import junit.framework.TestCase;
 
-/**
- * Created by asalvio on 18/07/2017.
- */
 public class SWAuthenticationServiceTest extends TestCase {
     public void testAuth(){
         SWAuthenticationService auth = new SWAuthenticationService("demo","123456789","http://services.test.sw.com.mx");

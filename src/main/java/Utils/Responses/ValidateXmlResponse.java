@@ -1,6 +1,6 @@
 package Utils.Responses;
 
-import java.util.LinkedList;
+import java.util.List;
 
 public class ValidateXmlResponse extends IResponse{
     public String cadenaOriginalSAT;
@@ -8,10 +8,10 @@ public class ValidateXmlResponse extends IResponse{
     public String uuid;
     public String statusSat;
     public String statusCodeSat;
-    public LinkedList<DetailNode> detail;
+    public List<DetailNode> detail;
     
     
-    public ValidateXmlResponse(int httpStatusCode, String status, String cadenaOriginalSAT, String cadenaOriginalComprobante, String uuid, String statusSat, String statusCodeSat, LinkedList<DetailNode> detail, String msg, String msgDetail) {
+    public ValidateXmlResponse(int httpStatusCode, String status, String cadenaOriginalSAT, String cadenaOriginalComprobante, String uuid, String statusSat, String statusCodeSat, List<DetailNode> detail, String msg, String msgDetail) {
         super(httpStatusCode, status, msg, msgDetail);
         this.cadenaOriginalSAT = cadenaOriginalSAT;
         this.cadenaOriginalComprobante= cadenaOriginalComprobante;

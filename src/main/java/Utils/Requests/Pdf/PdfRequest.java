@@ -30,7 +30,7 @@ public class PdfRequest implements IRequestor{
 		try {
 			String boundary = UUID.randomUUID().toString();
 			String xmlStr = ((PdfOptionsRequest) request).getXml();
-			String raw = "--"+boundary+"\r\nContent-Disposition: form-data; name=file; filename=xml\r\nContent-Type: application/xml\r\n\r\n"+xmlStr+"\r\n--"+boundary+"--";
+			String raw = "--"+boundary+"\r\nContent-Disposition: form-data; name=file; filename=file\r\nContent-Type: application/xml\r\n\r\n"+xmlStr+"\r\n--"+boundary+"--";
 			CloseableHttpClient client = HttpClients.createDefault();
             HttpPost http = new HttpPost(request.URI);
             http.setHeader("Authorization", "Bearer " + request.Token);

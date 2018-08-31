@@ -14,13 +14,9 @@ public class SWAuthenticationService extends SWService {
         super(user, password, URI);
     }
 
-
     public IResponse Token() throws GeneralException, AuthException, IOException {
         AuthOptionsRequest settings = new AuthOptionsRequest(getURI(),getUser(),getPassword());
-
-
         AuthRequest req = new AuthRequest();
         return req.sendRequest(settings);
-
     }
 }

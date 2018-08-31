@@ -16,7 +16,8 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
-import java.io.*;
+
+import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.UUID;
 

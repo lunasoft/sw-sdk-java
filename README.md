@@ -1,4 +1,5 @@
 
+
 [![Smarter Web](http://sw.com.mx/images/logo.png)](http://sw.com.mx/)
 
 # SDK JAVA #
@@ -27,7 +28,7 @@ Descargas el modulo mediante Maven:
             <groupId>mx.com.sw.services</groupId>
             <artifactId>SW-JAVA</artifactId>
 
-            <version>0.0.3.4</version>
+            <version>0.0.4.0</version>
 
         </dependency>
 </dependencies>

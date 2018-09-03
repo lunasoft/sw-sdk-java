@@ -1,3 +1,4 @@
+
 [![Smarter Web](http://sw.com.mx/images/logo.png)](http://sw.com.mx/)
 
 # SDK JAVA #
@@ -507,7 +508,8 @@ System.out.println(response.messageDetail);
 Método necesario para conocer el estado de un CFDI a través del servicio de consulta del SAT.
 Será necesario conocer el RFC emisor, RFC receptor, total de la factura, y UUID de la factura que vamos a consultar. [Este servicio es consumido directamente del SAT].
 ```java
-SWCancelationService app = new SWCancelationService("demo", "123456789", Utils.url_pruebas);
+StatusCfdiService app = new StatusCfdiService("https://consultaqr.facturaelectronica.sat.gob.mx/ConsultaCFDIService.svc", "http://tempuri.org/IConsultaCFDIService/Consulta");
+
 StatusCancelationResponse response = null;
 response = (StatusCancelationResponse) app.StatusCancelation("LSO1306189R5", "LSO1306189R5", "1.16", "E0AAE6B3-43CC-4B9C-B229-7E221000E2BB");
 System.out.println(response.Status);
@@ -527,7 +529,7 @@ Método necesario para conocer los CFDI relacionados que existen a una factura. 
 ## CFDI Relacionados por CSD ##
 Para el consumo a través de este método necesitaremos el UUID de la factura, RFC emisor, Certificado en base64, Llave en base64 y Password del Certificado.
 ```java
-SWCancelationService app = new SWCancelationService("demo", "123456789", Utils.url_pruebas);
+SWRelationsService app = new SWRelationsService("demo", "123456789", Utils.url_pruebas);
 CfdiRelacionadosResponse response = null;
 response = (CfdiRelacionadosResponse) app.CfdiRelacionadosCSD(uuid, password_csd, rfc, b64Cer, b64Key);
 System.out.println(response.Status);
@@ -559,7 +561,7 @@ System.out.println(response.messageDetail);
 ## CFDI Relacionados por PFX ##
 Para el consumo a través de este método necesitaremos el UUID de la factura, RFC emisor, PFX en base64 y Password del Certificado.
 ```java
-SWCancelationService app = new SWCancelationService("demo", "123456789", Utils.url_pruebas);
+SWRelationsService app = new SWRelationsService("demo", "123456789", Utils.url_pruebas);
 CfdiRelacionadosResponse response = null;
 response = (CfdiRelacionadosResponse) app.CfdiRelacionadosPFX(uuid, password_csd, rfc, b64Pfx);
 System.out.println(response.Status);
@@ -591,7 +593,7 @@ System.out.println(response.messageDetail);
 ## CFDI Relacionados por XML ##
 Para el consumo a través de este método necesitaremos el XML. 
 ```java
-SWCancelationService app = new SWCancelationService("demo", "123456789", Utils.url_pruebas);
+SWRelationsService app = new SWRelationsService("demo", "123456789", Utils.url_pruebas);
 CfdiRelacionadosResponse response = null;
 response = (CfdiRelacionadosResponse) app.CfdiRelacionadosXML(xmlRelacionados);
 System.out.println(response.Status);
@@ -623,7 +625,7 @@ System.out.println(response.messageDetail);
 ## CFDI Relacionados por UUID ##
 Para el consumo a través de este método necesitaremos el UUID de la factura, así como el RFC del Emisor. 
 ```java
-SWCancelationService app = new SWCancelationService("demo", "123456789", Utils.url_pruebas);
+SWRelationsService app = new SWRelationsService("demo", "123456789", Utils.url_pruebas);
 CfdiRelacionadosResponse response = null;
 response = (CfdiRelacionadosResponse) app.CfdiRelacionadosUUID(uuid, rfc);
 System.out.println(response.Status);
@@ -656,7 +658,7 @@ System.out.println(response.messageDetail);
 Este servicio devuelve una lista con los UUID que tiene pendientes por Aceptación/Rechazo un RFC.
 Para el consumo de este método necesitaremos el RFC del cual consultaremos las facturas que tiene por Aceptar/Rechazar.
 ```java
-SWCancelationService app = new SWCancelationService("demo", "123456789", Utils.url_pruebas);
+SWPendingsService app = new SWPendingsService("demo", "123456789", Utils.url_pruebas);
 String rfc = "LAN7008173R5";
 PendientesCancelarResponse response = null;
 response = (PendientesCancelarResponse) app.PendientesPorCancelar(rfc);
@@ -683,7 +685,7 @@ Método para Aceptar o Rechazar una o más facturas.
 Para el consumo a través de este método necesitaremos el un **Map** con los UUID y la acción a realizar, **password** del certificado, **RFC** emisor, certificado en base64, llave en base64.
 
 ```java
-SWCancelationService app = new SWCancelationService("demo", "123456789", Utils.url_pruebas);
+SWAcceptRejectService app = new SWAcceptRejectService("demo", "123456789", Utils.url_pruebas);
 Map < String, String > uuids = new HashMap < String, String > ();
 uuids.put("06a46e4b-b154-4c12-bb77-f9a63ed55ff2", "Aceptacion");
 AceptarRechazarCancelationResponse response = null;
@@ -709,7 +711,7 @@ System.out.println(response.messageDetail);
 Para el consumo a través de este método necesitaremos el un **Map** con los UUID y la acción a realizar, **password** del certificado, **RFC** emisor, **PFX** en base64.
 
 ```java
-SWCancelationService app = new SWCancelationService("demo", "123456789", Utils.url_pruebas);
+SWAcceptRejectService app = new SWAcceptRejectService("demo", "123456789", Utils.url_pruebas);
 Map < String, String > uuids = new HashMap < String, String > ();
 uuids.put("06a46e4b-b154-4c12-bb77-f9a63ed55ff2", "Aceptacion");
 AceptarRechazarCancelationResponse response = null;
@@ -735,7 +737,7 @@ System.out.println(response.messageDetail);
 Para el consumo a través de este método necesitaremos el XML para la Aceptación/Rechazo.
 
 ```java
-SWCancelationService app = new SWCancelationService("demo", "123456789", Utils.url_pruebas);
+SWAcceptRejectService app = new SWAcceptRejectService("demo", "123456789", Utils.url_pruebas);
 AceptarRechazarCancelationResponse response = null;
 response = (AceptarRechazarCancelationResponse) app.AceptarRechazarCancelacionXML(xml);
 System.out.println(response.Status);
@@ -759,7 +761,7 @@ System.out.println(response.messageDetail);
 Para el consumo a través de este método necesitaremos el un **String** con el UUID y la acción a realizar, así como el **RFC** emisor.
 
 ```java
-SWCancelationService app = new SWCancelationService("demo", "123456789", Utils.url_pruebas);
+SWAcceptRejectService app = new SWAcceptRejectService("demo", "123456789", Utils.url_pruebas);
 AceptarRechazarCancelationResponse response = null;
 response = (AceptarRechazarCancelationResponse) app.AceptarRechazarCancelacionUUID(uuid, rfc, "Aceptacion");//Acción → "Aceptacion" o "Rechazo"
 System.out.println(response.Status);

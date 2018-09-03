@@ -18,7 +18,7 @@ public class StatusCfdiService {
         this.Action = Action;
     }
     
-    public IResponse StatusCancelation(String rfcEmisor, String rfcReceptor, String total, String uuid) throws AuthException, GeneralException, IOException, SOAPException {
+    public IResponse StatusCfdi(String rfcEmisor, String rfcReceptor, String total, String uuid) throws AuthException, GeneralException, IOException, SOAPException {
         StatusCancelationOptionsRequest settings = new StatusCancelationOptionsRequest(URL, Action, rfcEmisor, rfcReceptor, total, uuid);
         StatusCancelationRequest req = new StatusCancelationRequest();
         return req.sendRequest(settings);

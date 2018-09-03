@@ -10,7 +10,7 @@ public class StatusCfdiServiceTest extends TestCase{
 	public void testStatusCancelationService_Real() throws Exception {
 		StatusCfdiService app = new StatusCfdiService("https://consultaqr.facturaelectronica.sat.gob.mx/ConsultaCFDIService.svc", "http://tempuri.org/IConsultaCFDIService/Consulta");
 		StatusCfdiResponse response = null;
-		response = (StatusCfdiResponse) app.StatusCancelation("LSO1306189R5", "LSO1306189R5", "1.16", "E0AAE6B3-43CC-4B9C-B229-7E221000E2BB");
+		response = (StatusCfdiResponse) app.StatusCfdi("LSO1306189R5", "LSO1306189R5", "1.16", "E0AAE6B3-43CC-4B9C-B229-7E221000E2BB");
 		System.out.println(response.Status);
 		System.out.println(response.HttpStatusCode);
 		System.out.println(response.codigoEstatus);

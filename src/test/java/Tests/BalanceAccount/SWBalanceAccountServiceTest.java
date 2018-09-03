@@ -1,12 +1,10 @@
 package Tests.BalanceAccount;
 
-//@author Lupita Alvarado
-
 import Exceptions.AuthException;
 import Exceptions.GeneralException;
 import Services.BalanceAccount.SWBalanceAccountService;
 import Tests.Utils;
-import Utils.Responses.BalanceAcctResponse;
+import Utils.Responses.BalanceAccount.BalanceAcctResponse;
 import junit.framework.TestCase;
 
 import java.io.IOException;
@@ -61,7 +59,6 @@ public class SWBalanceAccountServiceTest extends TestCase {
         SWBalanceAccountService app = new SWBalanceAccountService("wrong token",Utils.url_pruebas);
         BalanceAcctResponse response = null;
         response = (BalanceAcctResponse) app.GetBalanceAccount();
-        
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.message);

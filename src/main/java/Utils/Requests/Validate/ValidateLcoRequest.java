@@ -16,7 +16,7 @@ import Exceptions.GeneralException;
 import Utils.Requests.IRequest;
 import Utils.Requests.IRequestor;
 import Utils.Responses.IResponse;
-import Utils.Responses.ValidateLcoResponse;
+import Utils.Responses.Validate.ValidateLcoResponse;
 
 public class ValidateLcoRequest implements IRequestor{
 

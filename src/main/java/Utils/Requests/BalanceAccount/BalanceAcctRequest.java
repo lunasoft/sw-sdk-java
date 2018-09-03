@@ -4,8 +4,8 @@ import Exceptions.AuthException;
 import Exceptions.GeneralException;
 import Utils.Requests.IRequest;
 import Utils.Requests.IRequestor;
-import Utils.Responses.BalanceAcctResponse;
 import Utils.Responses.IResponse;
+import Utils.Responses.BalanceAccount.BalanceAcctResponse;
 
 import java.io.IOException;
 

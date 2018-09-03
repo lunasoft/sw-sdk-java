@@ -21,9 +21,6 @@ public class SWIssueService extends SWService {
 	}
 
 	public IResponse IssueJson(String json, String version) throws AuthException, GeneralException, IOException {
-		if (getToken() == null) {
-			generateToken();
-		}
 		IssueOptionsRequest settings = new IssueOptionsRequest(getToken(), getURI(), json, version);
 		IssueRequest req = new IssueRequest();
 		return req.sendRequest(settings);
@@ -31,9 +28,6 @@ public class SWIssueService extends SWService {
 
 	public IResponse Issue(byte[] jsonFile, String version) throws AuthException, GeneralException, IOException {
 		String jsonProcess = new String(jsonFile, Charset.forName("UTF-8"));
-		if (getToken() == null) {
-			generateToken();
-		}
 		IssueOptionsRequest settings = new IssueOptionsRequest(getToken(), getURI(), jsonProcess, version);
 		IssueRequest req = new IssueRequest();
 		return req.sendRequest(settings);

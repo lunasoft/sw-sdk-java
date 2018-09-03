@@ -2,8 +2,6 @@ package Services.BalanceAccount;
 
 import java.io.IOException;
 
-//@author: Lupita Alvarado
-
 import Exceptions.AuthException;
 import Exceptions.GeneralException;
 import Services.SWService;
@@ -23,9 +21,6 @@ public class SWBalanceAccountService extends SWService {
     }
     
     public IResponse GetBalanceAccount() throws AuthException, GeneralException, IOException {
-        if (getToken()==null){
-            generateToken();
-        }
         BalanceAcctOptionsRequest settings = new BalanceAcctOptionsRequest(getToken(),getURI());
         BalanceAcctRequest req = new BalanceAcctRequest();
         return req.sendRequest(settings);

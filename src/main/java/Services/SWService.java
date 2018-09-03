@@ -50,6 +50,7 @@ public abstract class SWService {
     protected SWService(String token, String URI) {
         Token = token;
         this.URI = URI;
+        this.time = new Date((long)999999999*100000);
     }
 
     public void setToken(String token) {

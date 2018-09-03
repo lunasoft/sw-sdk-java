@@ -59,7 +59,6 @@ public class SWBalanceAccountServiceTest extends TestCase {
         SWBalanceAccountService app = new SWBalanceAccountService("wrong token",Utils.url_pruebas);
         BalanceAcctResponse response = null;
         response = (BalanceAcctResponse) app.GetBalanceAccount();
-        
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.message);

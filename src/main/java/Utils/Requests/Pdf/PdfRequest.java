@@ -22,7 +22,7 @@ import Utils.Requests.IRequest;
 import Utils.Requests.IRequestor;
 import Utils.Requests.Pdf.PdfOptionsRequest;
 import Utils.Responses.IResponse;
-import Utils.Responses.PdfResponse;
+import Utils.Responses.Pdf.PdfResponse;
 
 public class PdfRequest implements IRequestor{
 

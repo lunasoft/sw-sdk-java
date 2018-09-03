@@ -5,7 +5,7 @@ import Exceptions.AuthException;
 import Exceptions.GeneralException;
 import Services.Pdf.SWPdfService;
 import Tests.Utils;
-import Utils.Responses.PdfResponse;
+import Utils.Responses.Pdf.PdfResponse;
 import junit.framework.TestCase;
 
 import java.io.IOException;

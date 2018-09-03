@@ -4,7 +4,8 @@ import Exceptions.AuthException;
 import Exceptions.GeneralException;
 import Utils.Requests.IRequest;
 import Utils.Requests.IRequestor;
-import Utils.Responses.*;
+import Utils.Responses.IResponse;
+import Utils.Responses.Authentication.SuccessAuthResponse;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -45,15 +46,15 @@ public class AuthRequest implements IRequestor {
 
                     if(status==200){
                         JSONObject data = body.getJSONObject("data");
-                        return new SuccessAuthResponse(status,body.getString("status"),data.getString("token"),"OK","OK");
+                        return new SuccessAuthResponse(status,body.getString("status"),data.getString("token"),data.getInt("expires_in"),"OK","OK");
                     }
                     else{
-                        return new SuccessAuthResponse(status,body.getString("status"),"",body.getString("message"),messageDetail);
+                        return new SuccessAuthResponse(status,body.getString("status"),"",0,body.getString("message"),messageDetail);
 
                     }
             }
             else{
-                return new SuccessAuthResponse(status,"error","",responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase());
+                return new SuccessAuthResponse(status,"error","",0,responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase());
 
             }
 

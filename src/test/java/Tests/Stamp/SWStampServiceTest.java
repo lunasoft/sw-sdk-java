@@ -3,6 +3,10 @@ package Tests.Stamp;
 import Services.Stamp.SWStampService;
 import Tests.Utils;
 import Utils.Responses.*;
+import Utils.Responses.Stamp.SuccessV1Response;
+import Utils.Responses.Stamp.SuccessV2Response;
+import Utils.Responses.Stamp.SuccessV3Response;
+import Utils.Responses.Stamp.SuccessV4Response;
 import junit.framework.TestCase;
 import org.junit.Assert;
 

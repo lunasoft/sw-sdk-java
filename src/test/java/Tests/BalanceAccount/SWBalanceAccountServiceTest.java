@@ -1,12 +1,10 @@
 package Tests.BalanceAccount;
 
-//@author Lupita Alvarado
-
 import Exceptions.AuthException;
 import Exceptions.GeneralException;
 import Services.BalanceAccount.SWBalanceAccountService;
 import Tests.Utils;
-import Utils.Responses.BalanceAcctResponse;
+import Utils.Responses.BalanceAccount.BalanceAcctResponse;
 import junit.framework.TestCase;
 
 import java.io.IOException;

@@ -1,7 +1,10 @@
 package Tests.Issue;
 
 import Tests.Utils;
-import Utils.Responses.*;
+import Utils.Responses.Stamp.SuccessV1Response;
+import Utils.Responses.Stamp.SuccessV2Response;
+import Utils.Responses.Stamp.SuccessV3Response;
+import Utils.Responses.Stamp.SuccessV4Response;
 import junit.framework.TestCase;
 import org.junit.Assert;
 
@@ -19,7 +22,7 @@ public class SWIssueServiceTest extends TestCase {
 		System.out.println(response.tfd);
 		System.out.println(response.message);
 		String expect_status = "success";
-		String expect_error = "307. El comprobante contiene un timbre previo.";
+		String expect_error = "401 - El rango de la fecha de generación no debe de ser mayor a 72 horas para la emisión del timbre.";
 		Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status) || expect_error.equalsIgnoreCase(response.message));
 	}
 
@@ -34,7 +37,7 @@ public class SWIssueServiceTest extends TestCase {
 		System.out.println(response.tfd);
 		System.out.println(response.cfdi);
 		String expect_status = "success";
-		String expect_error = "307. El comprobante contiene un timbre previo.";
+		String expect_error = "401 - El rango de la fecha de generación no debe de ser mayor a 72 horas para la emisión del timbre.";
 		Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status) || expect_error.equalsIgnoreCase(response.message));
 	}
 
@@ -47,7 +50,7 @@ public class SWIssueServiceTest extends TestCase {
 		System.out.println(response.message);
 		System.out.println(response.cfdi);
 		String expect_status = "success";
-		String expect_error = "307. El comprobante contiene un timbre previo.";
+		String expect_error = "401 - El rango de la fecha de generación no debe de ser mayor a 72 horas para la emisión del timbre.";
 		Assert.assertTrue(
 				expect_status.equalsIgnoreCase(response.Status) || expect_error.equalsIgnoreCase(response.message));
 	}
@@ -68,7 +71,7 @@ public class SWIssueServiceTest extends TestCase {
 		System.out.println(response.fechaTimbrado);
 		System.out.println(response.uuid);
 		String expect_status = "success";
-		String expect_error = "307. El comprobante contiene un timbre previo.";
+		String expect_error = "401 - El rango de la fecha de generación no debe de ser mayor a 72 horas para la emisión del timbre.";
 		Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status) || expect_error.equalsIgnoreCase(response.message));
 	}
 }

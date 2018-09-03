@@ -5,10 +5,10 @@ import Exceptions.GeneralException;
 import Utils.Requests.IRequest;
 import Utils.Requests.IRequestor;
 import Utils.Responses.IResponse;
-import Utils.Responses.SuccessV1Response;
-import Utils.Responses.SuccessV2Response;
-import Utils.Responses.SuccessV3Response;
-import Utils.Responses.SuccessV4Response;
+import Utils.Responses.Stamp.SuccessV1Response;
+import Utils.Responses.Stamp.SuccessV2Response;
+import Utils.Responses.Stamp.SuccessV3Response;
+import Utils.Responses.Stamp.SuccessV4Response;
 
 import java.io.IOException;
 

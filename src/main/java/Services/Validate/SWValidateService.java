@@ -13,50 +13,31 @@ import Utils.Requests.Validate.ValidateXmlOptionsRequest;
 import Utils.Requests.Validate.ValidateXmlRequest;
 import Utils.Responses.IResponse;
 
-
 public class SWValidateService extends SWService {
-    
-    public SWValidateService(String user, String password, String URI) {
-        super(user, password, URI);
-    }
 
-    public SWValidateService(String token, String URI) {
-        super(token, URI);
-    }
-    
-    public IResponse ValidateXml(String xml) throws AuthException, GeneralException, IOException {
+	public SWValidateService(String user, String password, String URI) {
+		super(user, password, URI);
+	}
 
-        if (getToken()==null){
-            generateToken();
-        }
-        
-        ValidateXmlOptionsRequest settings = new ValidateXmlOptionsRequest(getToken(),getURI(), xml);
+	public SWValidateService(String token, String URI) {
+		super(token, URI);
+	}
 
-        ValidateXmlRequest req = new ValidateXmlRequest();
-        return req.sendRequest(settings);
-    }
-    
-    public IResponse ValidateLrfc(String Lrfc) throws AuthException, GeneralException, IOException {
+	public IResponse ValidateXml(String xml) throws AuthException, GeneralException, IOException {
+		ValidateXmlOptionsRequest settings = new ValidateXmlOptionsRequest(getToken(), getURI(), xml);
+		ValidateXmlRequest req = new ValidateXmlRequest();
+		return req.sendRequest(settings);
+	}
 
-        if (getToken()==null){
-            generateToken();
-        }
-        
-        ValidateLrfcOptionsRequest settings = new ValidateLrfcOptionsRequest(getToken(),getURI(), Lrfc);
+	public IResponse ValidateLrfc(String Lrfc) throws AuthException, GeneralException, IOException {
+		ValidateLrfcOptionsRequest settings = new ValidateLrfcOptionsRequest(getToken(), getURI(), Lrfc);
+		ValidateLrfcRequest req = new ValidateLrfcRequest();
+		return req.sendRequest(settings);
+	}
 
-        ValidateLrfcRequest req = new ValidateLrfcRequest();
-        return req.sendRequest(settings);
-    }
-    
-    public IResponse ValidateLco(String Lco) throws AuthException, GeneralException, IOException {
-
-        if (getToken()==null){
-            generateToken();
-        }
-        
-        ValidateLcoOptionsRequest settings = new ValidateLcoOptionsRequest(getToken(),getURI(), Lco);
-
-        ValidateLcoRequest req = new ValidateLcoRequest();
-        return req.sendRequest(settings);
-    }
+	public IResponse ValidateLco(String Lco) throws AuthException, GeneralException, IOException {
+		ValidateLcoOptionsRequest settings = new ValidateLcoOptionsRequest(getToken(), getURI(), Lco);
+		ValidateLcoRequest req = new ValidateLcoRequest();
+		return req.sendRequest(settings);
+	}
 }

@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>mx.com.sw.services</groupId>
     <artifactId>SW-JAVA</artifactId>
-    <version>0.0.3.4</version>
+    <version>0.0.4</version>
     <packaging>jar</packaging>
     <scm>
         <url>https://github.com/lunasoft/sw-sdk-java</url>

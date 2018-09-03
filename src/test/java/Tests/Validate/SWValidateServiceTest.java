@@ -6,11 +6,11 @@ import org.junit.Assert;
 
 import Services.Validate.SWValidateService;
 import Tests.Utils;
-import Utils.Responses.DetailData;
-import Utils.Responses.DetailNode;
-import Utils.Responses.ValidateLcoResponse;
-import Utils.Responses.ValidateLrfcResponse;
-import Utils.Responses.ValidateXmlResponse;
+import Utils.Responses.Validate.DetailData;
+import Utils.Responses.Validate.DetailNode;
+import Utils.Responses.Validate.ValidateLcoResponse;
+import Utils.Responses.Validate.ValidateLrfcResponse;
+import Utils.Responses.Validate.ValidateXmlResponse;
 import junit.framework.TestCase;
 
 public class SWValidateServiceTest extends TestCase {
@@ -35,6 +35,10 @@ public class SWValidateServiceTest extends TestCase {
         	}
         	System.out.println("\t"+node.section);
         }
+        System.out.println(response.cadenaOriginalComprobante);
+        System.out.println(response.cadenaOriginalSAT);
+        System.out.println(response.statusSat);
+        System.out.println(response.statusCodeSat);
         String expect_status = "success";
         Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
     }

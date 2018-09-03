@@ -16,7 +16,7 @@ import Exceptions.GeneralException;
 import Utils.Requests.IRequest;
 import Utils.Requests.IRequestor;
 import Utils.Responses.IResponse;
-import Utils.Responses.ValidateLrfcResponse;
+import Utils.Responses.Validate.ValidateLrfcResponse;
 
 public class ValidateLrfcRequest implements IRequestor{
 

@@ -23,9 +23,9 @@ import Exceptions.GeneralException;
 import Utils.Requests.IRequest;
 import Utils.Requests.IRequestor;
 import Utils.Responses.IResponse;
-import Utils.Responses.ValidateXmlResponse;
-import Utils.Responses.DetailData;
-import Utils.Responses.DetailNode;
+import Utils.Responses.Validate.DetailData;
+import Utils.Responses.Validate.DetailNode;
+import Utils.Responses.Validate.ValidateXmlResponse;
 
 public class ValidateXmlRequest implements IRequestor{
 

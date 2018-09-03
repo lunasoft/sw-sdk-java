@@ -21,27 +21,18 @@ public class SWPdfService extends SWService {
     }
     
     public IResponse GeneratePdf(String xml) throws AuthException, GeneralException, IOException {
-        if (getToken()==null){
-            generateToken();
-        }
         PdfOptionsRequest settings = new PdfOptionsRequest(getToken(),getURI(), xml);
         PdfRequest req = new PdfRequest();
         return req.sendRequest(settings);
     }
     
     public IResponse GeneratePdf(String xml, String extras) throws AuthException, GeneralException, IOException {
-        if (getToken()==null){
-            generateToken();
-        }
         PdfOptionsRequest settings = new PdfOptionsRequest(getToken(),getURI(), xml, extras);
         PdfRequest req = new PdfRequest();
         return req.sendRequest(settings);
     }
     
     public IResponse GeneratePdf(String xml, String extras, String templateId) throws AuthException, GeneralException, IOException {
-        if (getToken()==null){
-            generateToken();
-        }
         PdfOptionsRequest settings = new PdfOptionsRequest(getToken(),getURI(), xml, extras, templateId);
         PdfRequest req = new PdfRequest();
         return req.sendRequest(settings);

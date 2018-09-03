@@ -4,7 +4,12 @@ import Exceptions.AuthException;
 import Exceptions.GeneralException;
 import Utils.Requests.IRequest;
 import Utils.Requests.IRequestor;
-import Utils.Responses.*;
+import Utils.Responses.IResponse;
+import Utils.Responses.Stamp.SuccessV1Response;
+import Utils.Responses.Stamp.SuccessV2Response;
+import Utils.Responses.Stamp.SuccessV3Response;
+import Utils.Responses.Stamp.SuccessV4Response;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;

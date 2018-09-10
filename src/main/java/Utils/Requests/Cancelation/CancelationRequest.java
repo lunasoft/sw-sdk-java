@@ -57,7 +57,7 @@ public class CancelationRequest implements IRequestor {
 				JSONObject body = new JSONObject(responseString);
 				if (status == 200) {
 					JSONObject data = body.getJSONObject("data");
-					String uuid = ((CancelationOptionsRequest) request).getUuid();
+					String uuid = ((CancelationOptionsRequest) request).getUuid().toUpperCase();
 					JSONObject uuid_data = data.getJSONObject("uuid");
 					String uuidSC = uuid_data.getString(uuid);
 					return new CancelationResponse(status, body.getString("status"), data.getString("acuse"), uuid,
@@ -159,7 +159,7 @@ public class CancelationRequest implements IRequestor {
 				JSONObject body = new JSONObject(responseString);
 				if (status == 200) {
 					JSONObject data = body.getJSONObject("data");
-					String uuid = ((CancelationOptionsRequest) request).getUuid();
+					String uuid = ((CancelationOptionsRequest) request).getUuid().toUpperCase();
 					JSONObject uuid_data = (JSONObject) data.get("uuid");
 					String uuidSC = uuid_data.getString(uuid);
 					return new CancelationResponse(status, body.getString("status"), data.getString("acuse"), uuid,
@@ -198,7 +198,7 @@ public class CancelationRequest implements IRequestor {
 				JSONObject body = new JSONObject(responseString);
 				if (status == 200) {
 					JSONObject data = body.getJSONObject("data");
-					String uuid = ((CancelationOptionsRequest) request).getUuid();
+					String uuid = ((CancelationOptionsRequest) request).getUuid().toUpperCase();
 					JSONObject uuid_data = data.getJSONObject("uuid");
 					String uuidSC = uuid_data.getString(uuid);
 					return new CancelationResponse(status, body.getString("status"), data.getString("acuse"), uuid,

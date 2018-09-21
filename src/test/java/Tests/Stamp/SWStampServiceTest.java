@@ -8,6 +8,7 @@ import Utils.Responses.Stamp.SuccessV2Response;
 import Utils.Responses.Stamp.SuccessV3Response;
 import Utils.Responses.Stamp.SuccessV4Response;
 import junit.framework.TestCase;
+
 import org.junit.Assert;
 
 
@@ -58,7 +59,6 @@ public class SWStampServiceTest extends TestCase {
         response = (SuccessV3Response) api.Stamp(ut.StringgenBasico(),"v3");
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
-        System.out.println(response.message);
         System.out.println(response.cfdi);
         String expect_status = "success";
         String expect_error = "307. El comprobante contiene un timbre previo.";
@@ -81,6 +81,7 @@ public class SWStampServiceTest extends TestCase {
         System.out.println(response.noCertificadoSAT);
         System.out.println(response.fechaTimbrado);
         System.out.println(response.uuid);
+        System.out.println(response.messageDetail);
         String expect_status = "success";
         String expect_error = "307. El comprobante contiene un timbre previo.";
         Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status) || expect_error.equalsIgnoreCase(response.message));

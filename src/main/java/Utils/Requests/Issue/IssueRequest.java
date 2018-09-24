@@ -51,63 +51,36 @@ public class IssueRequest implements IRequestor {
                 if(status==200){
                     JSONObject data = body.getJSONObject("data");
 
-                    if (request.version.equalsIgnoreCase("v1")) {
-                        return new SuccessV1Response(status,body.getString("status"),data.getString("tfd"),"OK","OK");
+                    switch(request.version) {
+                    case "v1": return new SuccessV1Response(status,body.getString("status"),data.getString("tfd"),"OK","OK");
+                    case "v2": return new SuccessV2Response(status,body.getString("status"),data.getString("tfd"),data.getString("cfdi"),"OK","OK");
+                    case "v3": return new SuccessV3Response(status,body.getString("status"),data.getString("cfdi"),"OK","OK");
+                    case "v4": return new SuccessV4Response(status,body.getString("status"),data.getString("cfdi"),data.getString("cadenaOriginalSAT"),data.getString("noCertificadoSAT"),data.getString("noCertificadoCFDI"),data.getString("uuid"),data.getString("selloSAT"),data.getString("selloCFDI"),data.getString("fechaTimbrado"),data.getString("qrCode"),"OK","OK");
+                    default: return new SuccessV1Response(status,body.getString("status"),data.toString(),"OK","OK"); 
                     }
-                    else if(request.version.equalsIgnoreCase("v2")){
-                        return new SuccessV2Response(status,body.getString("status"),data.getString("tfd"),data.getString("cfdi"),"OK","OK");
-                    }
-                    else if(request.version.equalsIgnoreCase("v3")){
-                        return new SuccessV3Response(status,body.getString("status"),data.getString("cfdi"),"OK","OK");
-
-                    }else if(request.version.equalsIgnoreCase("v4")){
-                        return new SuccessV4Response(status,body.getString("status"),data.getString("cfdi"),data.getString("cadenaOriginalSAT"),data.getString("noCertificadoSAT"),data.getString("noCertificadoCFDI"),data.getString("uuid"),data.getString("selloSAT"),data.getString("selloCFDI"),data.getString("fechaTimbrado"),data.getString("qrCode"),"OK","OK");
-                    }
-                    else{
-                        return new SuccessV1Response(status,body.getString("status"),data.toString(),"OK","OK");
-                    }
-
-
                 }
                 else{
                     String messageDetail = "";
                     if (!body.isNull("messageDetail")){
                         messageDetail = body.getString("messageDetail");
                     }
-                    if (request.version.equalsIgnoreCase("v1")) {
-                        return new SuccessV1Response(status,body.getString("status"),"",body.getString("message"),messageDetail);
+                    switch(request.version) {
+                    case "v1": return new SuccessV1Response(status,body.getString("status"),"",body.getString("message"),messageDetail);
+                    case "v2": return new SuccessV2Response(status,body.getString("status"),"","",body.getString("message"),messageDetail);
+                    case "v3": return new SuccessV3Response(status,body.getString("status"),"",body.getString("message"),messageDetail);
+                    case "v4": return new SuccessV4Response(status,body.getString("status"),"","","","","","","","","",body.getString("message"),messageDetail);
+                    default: return new SuccessV1Response(status,body.getString("status"),"",body.getString("message"),messageDetail); 
                     }
-                    else if(request.version.equalsIgnoreCase("v2")){
-                        return new SuccessV2Response(status,body.getString("status"),"","",body.getString("message"),messageDetail);
-                    }
-                    else if(request.version.equalsIgnoreCase("v3")){
-                        return new SuccessV3Response(status,body.getString("status"),"",body.getString("message"),messageDetail);
-
-                    }else if(request.version.equalsIgnoreCase("v4")){
-                        return new SuccessV4Response(status,body.getString("status"),"","","","","","","","","",body.getString("message"),messageDetail);
-                    }
-                    else{
-                        return new SuccessV1Response(status,body.getString("status"),"",body.getString("message"),messageDetail);
-                    }
-
                 }
             }
             else{
-                if (request.version.equalsIgnoreCase("v1")) {
-                    return new SuccessV1Response(status,"error","",responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase());
-                }
-                else if(request.version.equalsIgnoreCase("v2")){
-                    return new SuccessV2Response(status,"error","","",responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase());
-                }
-                else if(request.version.equalsIgnoreCase("v3")){
-                    return new SuccessV3Response(status,"error","",responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase());
-
-                }else if(request.version.equalsIgnoreCase("v4")){
-                    return new SuccessV4Response(status,"error","","","","","","","","","",responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase());
-                }
-                else{
-                    return new SuccessV1Response(status,"error","",responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase());
-                }
+            	switch(request.version) {
+            	case "v1": return new SuccessV1Response(status,"error","",responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase());
+            	case "v2": return new SuccessV2Response(status,"error","","",responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase());
+            	case "v3": return new SuccessV3Response(status,"error","",responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase());
+            	case "v4": return new SuccessV4Response(status,"error","","","","","","","","","",responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase());
+            	default: return new SuccessV1Response(status,"error","",responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase()); 
+            	}
             }
 
         }
@@ -148,22 +121,13 @@ public class IssueRequest implements IRequestor {
                 if(statusE==200){
                     JSONObject data = body.getJSONObject("data");
 
-                    if (request.version.equalsIgnoreCase("v1")) {
-                        return new SuccessV1Response(statusE,body.getString("status"),data.getString("tfd"),"OK","OK");
+                    switch(request.version) {
+                    case "v1": return new SuccessV1Response(statusE,body.getString("status"),data.getString("tfd"),"OK","OK");
+                    case "v2": return new SuccessV2Response(statusE,body.getString("status"),data.getString("tfd"),data.getString("cfdi"),"OK","OK");
+                    case "v3": return new SuccessV3Response(statusE,body.getString("status"),data.getString("cfdi"),"OK","OK");
+                    case "v4": return new SuccessV4Response(statusE,body.getString("status"),data.getString("cfdi"),data.getString("cadenaOriginalSAT"),data.getString("noCertificadoSAT"),data.getString("noCertificadoCFDI"),data.getString("uuid"),data.getString("selloSAT"),data.getString("selloCFDI"),data.getString("fechaTimbrado"),data.getString("qrCode"),"OK","OK");
+                    default: return new SuccessV1Response(statusE,body.getString("status"),data.toString(),"OK","OK"); 
                     }
-                    else if(request.version.equalsIgnoreCase("v2")){
-                        return new SuccessV2Response(statusE,body.getString("status"),data.getString("tfd"),data.getString("cfdi"),"OK","OK");
-                    }
-                    else if(request.version.equalsIgnoreCase("v3")){
-                        return new SuccessV3Response(statusE,body.getString("status"),data.getString("cfdi"),"OK","OK");
-
-                    }else if(request.version.equalsIgnoreCase("v4")){
-                        return new SuccessV4Response(statusE,body.getString("status"),data.getString("cfdi"),data.getString("cadenaOriginalSAT"),data.getString("noCertificadoSAT"),data.getString("noCertificadoCFDI"),data.getString("uuid"),data.getString("selloSAT"),data.getString("selloCFDI"),data.getString("fechaTimbrado"),data.getString("qrCode"),"OK","OK");
-                    }
-                    else{
-                        return new SuccessV1Response(statusE,body.getString("status"),data.toString(),"OK","OK");
-                    }
-
 
                 }
                 else{
@@ -171,40 +135,24 @@ public class IssueRequest implements IRequestor {
                     if (!body.isNull("messageDetail")){
                         messageDetail = body.getString("messageDetail");
                     }
-                    if (request.version.equalsIgnoreCase("v1")) {
-                        return new SuccessV1Response(statusE,body.getString("status"),"",body.getString("message"),messageDetail);
-                    }
-                    else if(request.version.equalsIgnoreCase("v2")){
-                        return new SuccessV2Response(statusE,body.getString("status"),"","",body.getString("message"),messageDetail);
-                    }
-                    else if(request.version.equalsIgnoreCase("v3")){
-                        return new SuccessV3Response(statusE,body.getString("status"),"",body.getString("message"),messageDetail);
-
-                    }else if(request.version.equalsIgnoreCase("v4")){
-                        return new SuccessV4Response(statusE,body.getString("status"),"","","","","","","","","",body.getString("message"),messageDetail);
-                    }
-                    else{
-                        return new SuccessV1Response(statusE,body.getString("status"),"",body.getString("message"),messageDetail);
+                    switch(request.version) {
+                    case "v1": return new SuccessV1Response(statusE,body.getString("status"),"",body.getString("message"),messageDetail);
+                    case "v2": return new SuccessV2Response(statusE,body.getString("status"),"","",body.getString("message"),messageDetail);
+                    case "v3": return new SuccessV3Response(statusE,body.getString("status"),"",body.getString("message"),messageDetail);
+                    case "v4": return new SuccessV4Response(statusE,body.getString("status"),"","","","","","","","","",body.getString("message"),messageDetail);
+                    default: return new SuccessV1Response(statusE,body.getString("status"),"",body.getString("message"),messageDetail); 
                     }
 
                 }
             }
             else{
-                if (request.version.equalsIgnoreCase("v1")) {
-                    return new SuccessV1Response(statusE,"error","",responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase());
-                }
-                else if(request.version.equalsIgnoreCase("v2")){
-                    return new SuccessV2Response(statusE,"error","","",responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase());
-                }
-                else if(request.version.equalsIgnoreCase("v3")){
-                    return new SuccessV3Response(statusE,"error","",responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase());
-
-                }else if(request.version.equalsIgnoreCase("v4")){
-                    return new SuccessV4Response(statusE,"error","","","","","","","","","",responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase());
-                }
-                else{
-                    return new SuccessV1Response(statusE,"error","",responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase());
-                }
+            	switch(request.version) {
+            	case "v1": return new SuccessV1Response(statusE,"error","",responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase());
+            	case "v2": return new SuccessV2Response(statusE,"error","","",responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase());
+            	case "v3": return new SuccessV3Response(statusE,"error","",responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase());
+            	case "v4": return new SuccessV4Response(statusE,"error","","","","","","","","","",responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase());
+            	default: return new SuccessV1Response(statusE,"error","",responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase()); 
+            	}
             }
         }
         catch (JSONException e){

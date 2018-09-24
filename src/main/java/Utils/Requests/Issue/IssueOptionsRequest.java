@@ -16,5 +16,9 @@ public class IssueOptionsRequest extends IRequest {
         this.xml = xml;
         this.version = version;
     }
-
+    public IssueOptionsRequest(String token, String URI, String xml, String version, boolean isXml) {
+        super(token, URI+ Constants.ISSUE_XML_PATH+version, xml, version);
+        this.xml = xml;
+        this.version = version;
+    }
 }

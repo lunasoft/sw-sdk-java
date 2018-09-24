@@ -1,5 +1,3 @@
-
-
 [![Smarter Web](http://sw.com.mx/images/logo.png)](http://sw.com.mx/)
 
 # SDK JAVA #
@@ -49,7 +47,7 @@ Alternativamente tambien se cuenta con un archivo JAR en el que se incluyen toda
 
 
 
-**Uso rapido...**
+# Timbrar XML #
 
 ```java
 try{
@@ -327,6 +325,185 @@ try {
 }
 ```
 
+# Timbrar Json #
+Métodos mediante los cuales se envía un string o byte array de un JSON. 
+## Timbrar Json v1 ##
+Recibe un String o byte array del JSON.
+Retorna TFD de la factura.
+Ejemplo de uso
+```java
+try {
+    //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
+    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    SWIssueService api = new SWIssueService("demo", "123456789", "http://services.test.sw.com.mx");
+    //Se inicializa un objeto response, que obtendra la respuesta del api
+    SuccessV1Response response = null;
+    response = (SuccessV1Response) api.IssueJson(stringJson, "v1");
+    System.out.println(response.Status);
+    System.out.println(response.HttpStatusCode);
+    System.out.println(response.tfd);
+} catch (Exception e) {
+    System.out.println(e.getMessage());
+}
+```
+
+## Timbrar Json v2 ##
+Recibe un String o byte array del JSON.
+Retorna TFD y el CFDI.
+Ejemplo de uso
+```java
+try {
+    //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
+    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    SWIssueService api = new SWIssueService("demo", "123456789", "http://services.test.sw.com.mx");
+    //Se inicializa un objeto response, que obtendra la respuesta del api
+    SuccessV1Response response = null;
+    response = (SuccessV1Response) api.IssueJson(stringJson, "v2");
+    System.out.println(response.Status);
+    System.out.println(response.HttpStatusCode);
+    System.out.println(response.tfd);
+    System.out.println(response.cfdi);
+} catch (Exception e) {
+    System.out.println(e.getMessage());
+}
+```
+
+## Timbrar Json v3 ##
+Recibe un String o byte array del JSON.
+Retorna CFDI y el TFD ya unidos.
+Ejemplo de uso
+```java
+try {
+    //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
+    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    SWIssueService api = new SWIssueService("demo", "123456789", "http://services.test.sw.com.mx");
+    //Se inicializa un objeto response, que obtendra la respuesta del api
+    SuccessV1Response response = null;
+    response = (SuccessV1Response) api.IssueJson(stringJson, "v3");
+    System.out.println(response.Status);
+    System.out.println(response.HttpStatusCode);
+    System.out.println(response.cfdi);
+} catch (Exception e) {
+    System.out.println(e.getMessage());
+}
+```
+
+## Timbrar Json v4 ##
+Recibe un String o byte array del JSON.
+Retorna CFDI, TFD, CadenaOriginal, noCertificadoSat, noCertificadoCFDI, UUID, selloSAT, selloCFDI, fechaTimbrado y QR.
+Ejemplo de uso
+```java
+try {
+    //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
+    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    SWIssueService api = new SWIssueService("demo", "123456789", "http://services.test.sw.com.mx");
+    //Se inicializa un objeto response, que obtendra la respuesta del api
+    SuccessV1Response response = null;
+    response = (SuccessV1Response) api.IssueJson(stringJson, "v4");
+    System.out.println(response.Status);
+	System.out.println(response.cfdi);
+	System.out.println(response.qrCode);
+	System.out.println(response.cadenaOriginalSAT);
+	System.out.println(response.selloCFDI);
+	System.out.println(response.selloSAT);
+	System.out.println(response.noCertificadoCFDI);
+	System.out.println(response.noCertificadoSAT);
+	System.out.println(response.fechaTimbrado);
+	System.out.println(response.uuid);
+} catch (Exception e) {
+    System.out.println(e.getMessage());
+}
+```
+
+# Emisión Timbrado XML #
+Métodos mediante los cuales se envía un XML sin sellar. 
+## Emisión Timbrado v1 ##
+Recibe un String o byte array del XML.
+Retorna TFD de la factura.
+Ejemplo de uso
+```java
+try {
+    //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
+    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    SWIssueService api = new SWIssueService("demo", "123456789", "http://services.test.sw.com.mx");
+    //Se inicializa un objeto response, que obtendra la respuesta del api
+    SuccessV1Response response = null;
+    response = (SuccessV1Response) api.IssueXml(stringXml, "v1");
+    System.out.println(response.Status);
+    System.out.println(response.HttpStatusCode);
+    System.out.println(response.tfd);
+} catch (Exception e) {
+    System.out.println(e.getMessage());
+}
+```
+
+## Emisión Timbrado v2 ##
+Recibe un String o byte array del XML.
+Retorna TFD y el CFDI.
+Ejemplo de uso
+```java
+try {
+    //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
+    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    SWIssueService api = new SWIssueService("demo", "123456789", "http://services.test.sw.com.mx");
+    //Se inicializa un objeto response, que obtendra la respuesta del api
+    SuccessV1Response response = null;
+    response = (SuccessV1Response) api.IssueXml(stringXml, "v2");
+    System.out.println(response.Status);
+    System.out.println(response.HttpStatusCode);
+    System.out.println(response.tfd);
+    System.out.println(response.cfdi);
+} catch (Exception e) {
+    System.out.println(e.getMessage());
+}
+```
+
+## Emisión Timbrado v3 ##
+Recibe un String o byte array del XML.
+Retorna CFDI y el TFD ya unidos.
+Ejemplo de uso
+```java
+try {
+    //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
+    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    SWIssueService api = new SWIssueService("demo", "123456789", "http://services.test.sw.com.mx");
+    //Se inicializa un objeto response, que obtendra la respuesta del api
+    SuccessV1Response response = null;
+    response = (SuccessV1Response) api.IssueXml(stringXml, "v3");
+    System.out.println(response.Status);
+    System.out.println(response.HttpStatusCode);
+    System.out.println(response.cfdi);
+} catch (Exception e) {
+    System.out.println(e.getMessage());
+}
+```
+
+## Emisión Timbrado v4 ##
+Recibe un String o byte array del XML.
+Retorna CFDI, TFD, CadenaOriginal, noCertificadoSat, noCertificadoCFDI, UUID, selloSAT, selloCFDI, fechaTimbrado y QR.
+Ejemplo de uso
+```java
+try {
+    //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
+    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    SWIssueService api = new SWIssueService("demo", "123456789", "http://services.test.sw.com.mx");
+    //Se inicializa un objeto response, que obtendra la respuesta del api
+    SuccessV1Response response = null;
+    response = (SuccessV1Response) api.IssueXml(stringXml, "v4");
+    System.out.println(response.Status);
+	System.out.println(response.cfdi);
+	System.out.println(response.qrCode);
+	System.out.println(response.cadenaOriginalSAT);
+	System.out.println(response.selloCFDI);
+	System.out.println(response.selloSAT);
+	System.out.println(response.noCertificadoCFDI);
+	System.out.println(response.noCertificadoSAT);
+	System.out.println(response.fechaTimbrado);
+	System.out.println(response.uuid);
+} catch (Exception e) {
+    System.out.println(e.getMessage());
+}
+```
 
 # Cancelación #
 
@@ -435,6 +612,11 @@ for (int i = 0; i < List.size(); i++) {
     }
     System.out.println("\t" + node.section);
 }
+System.out.println(response.cadenaOriginalComprobante);
+System.out.println(response.cadenaOriginalSAT);
+System.out.println(response.uuid);
+System.out.println(response.statusSat);
+System.out.println(response.statusCodeSat);
 //En caso de obtener un error, este puede obtenerse de los campos
 System.out.println(response.message);
 System.out.println(response.messageDetail); 

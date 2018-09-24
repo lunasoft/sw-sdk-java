@@ -37,6 +37,7 @@ public class SWValidateServiceTest extends TestCase {
         }
         System.out.println(response.cadenaOriginalComprobante);
         System.out.println(response.cadenaOriginalSAT);
+        System.out.println(response.uuid);
         System.out.println(response.statusSat);
         System.out.println(response.statusCodeSat);
         String expect_status = "success";

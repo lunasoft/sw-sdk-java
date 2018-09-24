@@ -5,6 +5,7 @@ public class Constants {
     public static String AUTH_PATH = "/security/authenticate";
     public static String STAMP_PATH = "/cfdi33/stamp/";
     public static String ISSUE_JSON_PATH = "/v3/cfdi33/issue/json/";
+    public static String ISSUE_XML_PATH = "/cfdi33/issue/";
     public static String CANCELATION_CSD_PATH = "/cfdi33/cancel/csd";
     public static String CANCELATION_XML_PATH = "/cfdi33/cancel/xml";
     public static String CANCELATION_PFX_PATH = "/cfdi33/cancel/pfx";

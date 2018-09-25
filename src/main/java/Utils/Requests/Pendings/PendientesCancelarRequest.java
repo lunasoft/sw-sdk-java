@@ -22,45 +22,51 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class PendientesCancelarRequest implements IRequestor {
-    public IResponse sendRequest(IRequest request) throws GeneralException, AuthException, GeneralException, IOException {
-        try {
-        	CloseableHttpClient client = HttpClients.createDefault();
-        	HttpGet httpget = new HttpGet(request.URI);
-        	httpget.setHeader("Authorization", "bearer " + request.Token);
-        	CloseableHttpResponse responseB = client.execute(httpget);
-        	HttpEntity entity = responseB.getEntity();
-            String responseString = EntityUtils.toString(entity, "UTF-8");
-            int status = responseB.getStatusLine().getStatusCode();
-            client.close();
-            responseB.close();
-            if(!responseString.isEmpty()) {
-                JSONObject body = new JSONObject(responseString);
-                if (status == 200) {
-                    JSONObject data = body.getJSONObject("data");
-                    JSONArray uuids = new JSONArray(data.get("uuid").toString());
-                    List<String> UUIDS = new LinkedList<String>();
-					for (int i = 0; i < uuids.length(); i++) {
-						String dato = new String(uuids.get(i).toString());
-						UUIDS.add(dato);
+	public IResponse sendRequest(IRequest request)
+			throws GeneralException, AuthException, GeneralException, IOException {
+		try {
+			CloseableHttpClient client = HttpClients.createDefault();
+			HttpGet httpget = new HttpGet(request.URI);
+			httpget.setHeader("Authorization", "bearer " + request.Token);
+			CloseableHttpResponse responseB = client.execute(httpget);
+			HttpEntity entity = responseB.getEntity();
+			String responseString = EntityUtils.toString(entity, "UTF-8");
+			int status = responseB.getStatusLine().getStatusCode();
+			client.close();
+			responseB.close();
+			if (!responseString.isEmpty()) {
+				JSONObject body = new JSONObject(responseString);
+				if (status == 200) {
+					JSONObject data = body.getJSONObject("data");
+					try {
+						JSONArray uuids = new JSONArray(data.get("uuid").toString());
+						List<String> UUIDS = new LinkedList<String>();
+						for (int i = 0; i < uuids.length(); i++) {
+							String dato = new String(uuids.get(i).toString());
+							UUIDS.add(dato);
+						}
+						return new PendientesCancelarResponse(status, body.getString("status"), UUIDS, body.getString("codStatus"), body.getString("message"), "OK");
+					} catch (JSONException e) {
+						return new PendientesCancelarResponse(status, body.getString("status"), null, body.getString("codStatus"), body.getString("message"), "OK");
 					}
-                    return new PendientesCancelarResponse(status, body.getString("status"),UUIDS,body.getString("codStatus"),body.getString("message"),"OK");
-                } 
-                else {
-                    String messageDetail = "";
+				} else {
+					String messageDetail = "";
 
-                    if (!body.isNull("messageDetail")) {
-                        messageDetail = body.getString("messageDetail");
-                    }
-                    return new PendientesCancelarResponse(status, body.getString("status"), body.getString("message"), messageDetail);
-                }
-            } else {
-                return new PendientesCancelarResponse(status, "error", responseB.getStatusLine().getReasonPhrase(), responseB.getStatusLine().getReasonPhrase());
-            }
+					if (!body.isNull("messageDetail")) {
+						messageDetail = body.getString("messageDetail");
+					}
+					return new PendientesCancelarResponse(status, body.getString("status"), body.getString("message"),
+							messageDetail);
+				}
+			} else {
+				return new PendientesCancelarResponse(status, "error", responseB.getStatusLine().getReasonPhrase(),
+						responseB.getStatusLine().getReasonPhrase());
+			}
 
-        } catch (JSONException e) {
-            throw new GeneralException(500, e.getMessage());
-        }
+		} catch (JSONException e) {
+			throw new GeneralException(500, e.getMessage());
+		}
 
-    }
+	}
 
 }

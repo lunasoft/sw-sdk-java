@@ -16,6 +16,7 @@ import java.util.UUID;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
@@ -42,6 +43,13 @@ public class CfdiRelacionadosRequest implements IRequestor {
 			requestJSON.put("b64Key", ((CfdiRelacionadosOptionsRequest) request).getB64key());
 			CloseableHttpClient client = HttpClients.createDefault();
 			HttpPost httppost = new HttpPost(request.URI);
+			int timeOut = requestJSON.toString().length() * 5; 
+            RequestConfig requestConfig = RequestConfig.custom()
+					  .setSocketTimeout(timeOut)
+					  .setConnectTimeout(timeOut)
+					  .setConnectionRequestTimeout(timeOut)
+					  .build();
+			httppost.setConfig(requestConfig);
 			httppost.setHeader(new BasicHeader("Authorization", "bearer " + request.Token));
 			httppost.addHeader(new BasicHeader("Content-Type", "application/json"));
 			MultipartEntityBuilder builder = MultipartEntityBuilder.create();

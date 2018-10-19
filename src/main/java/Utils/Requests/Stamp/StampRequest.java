@@ -11,6 +11,7 @@ import Utils.Responses.Stamp.SuccessV3Response;
 import Utils.Responses.Stamp.SuccessV4Response;
 
 import org.apache.http.HttpEntity;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
@@ -36,6 +37,13 @@ public class StampRequest implements IRequestor {
 
             CloseableHttpClient client = HttpClients.createDefault();
             HttpPost httppost = new HttpPost(request.URI);
+            int timeOut = raw.length() * 5;
+			RequestConfig requestConfig = RequestConfig.custom()
+					  .setSocketTimeout(timeOut)
+					  .setConnectTimeout(timeOut)
+					  .setConnectionRequestTimeout(timeOut)
+					  .build();
+			httppost.setConfig(requestConfig);
             httppost.setHeader("Authorization", "bearer " + request.Token);
             httppost.addHeader("Content-Type", "multipart/form-data; boundary="+boundary);
             httppost.addHeader("Content-Disposition", "form-data; name=xml; filename=xml");

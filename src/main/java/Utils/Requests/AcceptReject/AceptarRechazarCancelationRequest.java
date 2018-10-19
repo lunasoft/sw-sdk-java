@@ -12,6 +12,7 @@ import javax.xml.soap.SOAPException;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
@@ -53,10 +54,16 @@ public class AceptarRechazarCancelationRequest implements IRequestor{
 		requestJSON.put("rfc", ((AceptarRechazarOptionsRequest) request).getRfc());
 		requestJSON.put("b64Cer", ((AceptarRechazarOptionsRequest) request).getB64Cer());
 		requestJSON.put("b64Key", ((AceptarRechazarOptionsRequest) request).getB64key());
-		
 		try {
 			CloseableHttpClient client = HttpClients.createDefault();
 			HttpPost httppost = new HttpPost(request.URI);
+			int timeOut = requestJSON.toString().length()*5;
+			RequestConfig requestConfig = RequestConfig.custom()
+					  .setSocketTimeout(timeOut)
+					  .setConnectTimeout(timeOut)
+					  .setConnectionRequestTimeout(timeOut)
+					  .build();
+			httppost.setConfig(requestConfig);
 			httppost.setHeader(new BasicHeader("Authorization", "bearer " + request.Token));
 			httppost.addHeader(new BasicHeader("Content-Type", "application/json"));
 			MultipartEntityBuilder builder = MultipartEntityBuilder.create();
@@ -123,6 +130,13 @@ public class AceptarRechazarCancelationRequest implements IRequestor{
 		try {
 			CloseableHttpClient client = HttpClients.createDefault();
 			HttpPost httppost = new HttpPost(request.URI);
+			int timeOut = requestJSON.toString().length()*5;
+			RequestConfig requestConfig = RequestConfig.custom()
+					  .setSocketTimeout(timeOut)
+					  .setConnectTimeout(timeOut)
+					  .setConnectionRequestTimeout(timeOut)
+					  .build();
+			httppost.setConfig(requestConfig);
 			httppost.setHeader(new BasicHeader("Authorization", "bearer " + request.Token));
 			httppost.addHeader(new BasicHeader("Content-Type", "application/json"));
 			MultipartEntityBuilder builder = MultipartEntityBuilder.create();
@@ -176,6 +190,13 @@ public class AceptarRechazarCancelationRequest implements IRequestor{
 					+ xmlStr + "\r\n--" + boundary + "--";
 			CloseableHttpClient client = HttpClients.createDefault();
 			HttpPost httppost = new HttpPost(request.URI);
+			int timeOut = raw.toString().length()*5;
+			RequestConfig requestConfig = RequestConfig.custom()
+					  .setSocketTimeout(timeOut)
+					  .setConnectTimeout(timeOut)
+					  .setConnectionRequestTimeout(timeOut)
+					  .build();
+			httppost.setConfig(requestConfig);
 			httppost.setHeader(new BasicHeader("Authorization", "bearer " + request.Token));
 			httppost.addHeader(new BasicHeader("content-type", "multipart/form-data; boundary=" + boundary));
 			MultipartEntityBuilder builder = MultipartEntityBuilder.create();
@@ -223,7 +244,13 @@ public class AceptarRechazarCancelationRequest implements IRequestor{
 	public IResponse sendRequestUUID(IRequest request) throws ClientProtocolException, IOException, GeneralException {
 		try {
 			CloseableHttpClient client = HttpClients.createDefault();
-			HttpPost httppost = new HttpPost(request.URI);
+			HttpPost httppost = new HttpPost(request.URI);			
+			RequestConfig requestConfig = RequestConfig.custom()
+					  .setSocketTimeout(10000)
+					  .setConnectTimeout(10000)
+					  .setConnectionRequestTimeout(10000)
+					  .build();
+			httppost.setConfig(requestConfig);
 			httppost.setHeader(new BasicHeader("Authorization", "bearer " + request.Token));
 
 			CloseableHttpResponse responseB = client.execute(httppost);

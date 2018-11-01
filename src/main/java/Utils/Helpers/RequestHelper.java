@@ -13,9 +13,9 @@ import Exceptions.GeneralException;
 public class RequestHelper {
 	public static void setTimeOut(HttpPost request, int time) {
 		RequestConfig requestConfig = RequestConfig.custom()
-									  .setSocketTimeout(time*7)
-									  .setConnectTimeout(time*5)
-									  .setConnectionRequestTimeout(time*5)
+									  .setSocketTimeout(time*50)
+									  .setConnectTimeout(time*40)
+									  .setConnectionRequestTimeout(time*40)
 									  .build();
 		request.setConfig(requestConfig);
 	}

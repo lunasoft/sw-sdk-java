@@ -6,7 +6,6 @@ import java.util.LinkedList;
 import java.util.UUID;
 
 import org.apache.http.HttpEntity;
-import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
@@ -21,6 +20,7 @@ import org.json.JSONObject;
 
 import Exceptions.AuthException;
 import Exceptions.GeneralException;
+import Utils.Helpers.RequestHelper;
 import Utils.Requests.IRequest;
 import Utils.Requests.IRequestor;
 import Utils.Responses.IResponse;
@@ -37,13 +37,7 @@ public class ValidateXmlRequest implements IRequestor{
             String raw = "--"+boundary+"\r\nContent-Disposition: form-data; name=xml; filename=xml\r\nContent-Type: application/xml\r\n\r\n"+xmlStr+"\r\n--"+boundary+"--";
             CloseableHttpClient client = HttpClients.createDefault();
             HttpPost httppost = new HttpPost(request.URI);
-            int timeOut = raw.length() * 5; 
-            RequestConfig requestConfig = RequestConfig.custom()
-					  .setSocketTimeout(timeOut)
-					  .setConnectTimeout(timeOut)
-					  .setConnectionRequestTimeout(timeOut)
-					  .build();
-			httppost.setConfig(requestConfig);
+            RequestHelper.setTimeOut(httppost, raw.length());
             httppost.setHeader("Authorization", "bearer " + request.Token);
             httppost.addHeader("Content-Type", "multipart/form-data; boundary="+boundary);
             MultipartEntityBuilder builder = MultipartEntityBuilder.create();

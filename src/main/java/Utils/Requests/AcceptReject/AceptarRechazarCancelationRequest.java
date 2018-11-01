@@ -12,7 +12,6 @@ import javax.xml.soap.SOAPException;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
@@ -29,6 +28,7 @@ import org.json.JSONObject;
 
 import Exceptions.AuthException;
 import Exceptions.GeneralException;
+import Utils.Helpers.RequestHelper;
 import Utils.Requests.IRequest;
 import Utils.Requests.IRequestor;
 import Utils.Responses.IResponse;
@@ -37,17 +37,8 @@ import Utils.Responses.AcceptReject.CancelationData;
 
 public class AceptarRechazarCancelationRequest implements IRequestor{
 	public IResponse sendRequest(IRequest request) throws GeneralException, AuthException, IOException {
-		JSONArray mJSONArray = new JSONArray();
 		Map<String, String> map = ((AceptarRechazarOptionsRequest) request).getUuids();
-		if(map.isEmpty()) {
-			throw new GeneralException(500, "No existen uuid --> "+map.toString());
-		}
-		for (Map.Entry<String, String> entry : map.entrySet()) {
-			JSONObject obj = new JSONObject();
-			obj.put("uuid", entry.getKey());
-			obj.put("action", entry.getValue());
-			mJSONArray.put(obj);
-		}
+		JSONArray mJSONArray = RequestHelper.buildJSONFromMap(map);
 		JSONObject requestJSON = new JSONObject();
 		requestJSON.put("uuids", mJSONArray);
 		requestJSON.put("password", ((AceptarRechazarOptionsRequest) request).getPassword_csd());
@@ -57,13 +48,7 @@ public class AceptarRechazarCancelationRequest implements IRequestor{
 		try {
 			CloseableHttpClient client = HttpClients.createDefault();
 			HttpPost httppost = new HttpPost(request.URI);
-			int timeOut = requestJSON.toString().length()*5;
-			RequestConfig requestConfig = RequestConfig.custom()
-					  .setSocketTimeout(timeOut)
-					  .setConnectTimeout(timeOut)
-					  .setConnectionRequestTimeout(timeOut)
-					  .build();
-			httppost.setConfig(requestConfig);
+			RequestHelper.setTimeOut(httppost, requestJSON.toString().length());
 			httppost.setHeader(new BasicHeader("Authorization", "bearer " + request.Token));
 			httppost.addHeader(new BasicHeader("Content-Type", "application/json"));
 			MultipartEntityBuilder builder = MultipartEntityBuilder.create();
@@ -110,17 +95,8 @@ public class AceptarRechazarCancelationRequest implements IRequestor{
 	
 	public IResponse sendRequestPFX(IRequest request) throws GeneralException, AuthException, GeneralException,
 	UnsupportedEncodingException, ClientProtocolException, IOException, SOAPException {
-		JSONArray mJSONArray = new JSONArray();
 		Map<String, String> map = ((AceptarRechazarOptionsRequest) request).getUuids();
-		if(map.isEmpty()) {
-			throw new GeneralException(500, "No existen uuid --> "+map.toString());
-		}
-		for (Map.Entry<String, String> entry : map.entrySet()) {
-			JSONObject obj = new JSONObject();
-			obj.put("uuid", entry.getKey());
-			obj.put("action", entry.getValue());
-			mJSONArray.put(obj);
-		}
+		JSONArray mJSONArray = RequestHelper.buildJSONFromMap(map);
 		JSONObject requestJSON = new JSONObject();
 		requestJSON.put("uuids", mJSONArray);
 		requestJSON.put("password", ((AceptarRechazarOptionsRequest) request).getPassword_csd());
@@ -130,13 +106,7 @@ public class AceptarRechazarCancelationRequest implements IRequestor{
 		try {
 			CloseableHttpClient client = HttpClients.createDefault();
 			HttpPost httppost = new HttpPost(request.URI);
-			int timeOut = requestJSON.toString().length()*5;
-			RequestConfig requestConfig = RequestConfig.custom()
-					  .setSocketTimeout(timeOut)
-					  .setConnectTimeout(timeOut)
-					  .setConnectionRequestTimeout(timeOut)
-					  .build();
-			httppost.setConfig(requestConfig);
+			RequestHelper.setTimeOut(httppost, requestJSON.toString().length());
 			httppost.setHeader(new BasicHeader("Authorization", "bearer " + request.Token));
 			httppost.addHeader(new BasicHeader("Content-Type", "application/json"));
 			MultipartEntityBuilder builder = MultipartEntityBuilder.create();
@@ -190,13 +160,7 @@ public class AceptarRechazarCancelationRequest implements IRequestor{
 					+ xmlStr + "\r\n--" + boundary + "--";
 			CloseableHttpClient client = HttpClients.createDefault();
 			HttpPost httppost = new HttpPost(request.URI);
-			int timeOut = raw.toString().length()*5;
-			RequestConfig requestConfig = RequestConfig.custom()
-					  .setSocketTimeout(timeOut)
-					  .setConnectTimeout(timeOut)
-					  .setConnectionRequestTimeout(timeOut)
-					  .build();
-			httppost.setConfig(requestConfig);
+			RequestHelper.setTimeOut(httppost, raw.length());
 			httppost.setHeader(new BasicHeader("Authorization", "bearer " + request.Token));
 			httppost.addHeader(new BasicHeader("content-type", "multipart/form-data; boundary=" + boundary));
 			MultipartEntityBuilder builder = MultipartEntityBuilder.create();
@@ -245,12 +209,7 @@ public class AceptarRechazarCancelationRequest implements IRequestor{
 		try {
 			CloseableHttpClient client = HttpClients.createDefault();
 			HttpPost httppost = new HttpPost(request.URI);			
-			RequestConfig requestConfig = RequestConfig.custom()
-					  .setSocketTimeout(10000)
-					  .setConnectTimeout(10000)
-					  .setConnectionRequestTimeout(10000)
-					  .build();
-			httppost.setConfig(requestConfig);
+			RequestHelper.setTimeOut(httppost, 7000);
 			httppost.setHeader(new BasicHeader("Authorization", "bearer " + request.Token));
 
 			CloseableHttpResponse responseB = client.execute(httppost);

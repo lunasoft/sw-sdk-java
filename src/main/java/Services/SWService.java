@@ -42,7 +42,11 @@ public abstract class SWService {
         this.URI = URI;
         try {
 			generateToken();
-		} catch (AuthException | GeneralException | IOException e) {
+		} catch (AuthException e) {
+			e.printStackTrace();
+		} catch (GeneralException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
     }

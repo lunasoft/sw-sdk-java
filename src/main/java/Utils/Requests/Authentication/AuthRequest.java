@@ -22,7 +22,7 @@ public class AuthRequest implements IRequestor {
     public IResponse sendRequest(IRequest request) throws GeneralException, AuthException, IOException {
 
         if (request.URI.isEmpty()){
-            throw new GeneralException(500,"URL VACIA");
+            throw new GeneralException(400,"URL VACIA");
         }
 
         String messageDetail = "";

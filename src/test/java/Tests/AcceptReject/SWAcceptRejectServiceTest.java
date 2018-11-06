@@ -74,10 +74,9 @@ public class SWAcceptRejectServiceTest extends TestCase {
 	public void testAcceptrejectCancelationService_PFX() throws Exception {
 		SWAcceptRejectService app = new SWAcceptRejectService("demo", "123456789", Utils.url_pruebas);
 		Map<String, String> uuids = new HashMap<String, String>();
-		uuids.put("06a46e4b-b154-4c12-bb77-f9a63ed55ff2", "Aceptacion");
+        uuids.put("06a46e4b-b154-4c12-bb77-f9a63ed55ff2", "Aceptacion");
 		AceptarRechazarCancelationResponse response = null;
-		response = (AceptarRechazarCancelationResponse) app.AceptarRechazarCancelacionPFX(uuids, password_csd, rfc,
-				b64Pfx);
+		response = (AceptarRechazarCancelationResponse) app.AceptarRechazarCancelacionPFX(uuids, password_csd, rfc, b64Pfx);
 		System.out.println(response.Status);
 		System.out.println(response.HttpStatusCode);
 		LinkedList<CancelationData> folios = (LinkedList<CancelationData>) response.folios;

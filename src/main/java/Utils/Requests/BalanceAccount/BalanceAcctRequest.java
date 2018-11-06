@@ -24,7 +24,6 @@ public class BalanceAcctRequest implements IRequestor {
         	CloseableHttpClient client = HttpClients.createDefault();
         	HttpGet httpget = new HttpGet(request.URI);
         	httpget.setHeader("Authorization", "bearer " + request.Token);
-        	
         	CloseableHttpResponse responseB = client.execute(httpget);
         	HttpEntity entity = responseB.getEntity();
             String responseString = EntityUtils.toString(entity, "UTF-8");

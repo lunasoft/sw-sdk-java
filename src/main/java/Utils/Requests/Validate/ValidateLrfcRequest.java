@@ -13,6 +13,7 @@ import org.json.JSONObject;
 
 import Exceptions.AuthException;
 import Exceptions.GeneralException;
+import Utils.Helpers.RequestHelper;
 import Utils.Requests.IRequest;
 import Utils.Requests.IRequestor;
 import Utils.Responses.IResponse;
@@ -23,7 +24,8 @@ public class ValidateLrfcRequest implements IRequestor{
 	public IResponse sendRequest(IRequest request) throws GeneralException, AuthException {
 		try {
 			CloseableHttpClient client = HttpClients.createDefault();
-            HttpGet http = new HttpGet(request.URI);
+            HttpGet http = new HttpGet(request.URI); 
+            RequestHelper.setTimeOut(http, 7000);
             http.setHeader("Authorization", "bearer " + request.Token);
             CloseableHttpResponse responseB = client.execute(http);
             

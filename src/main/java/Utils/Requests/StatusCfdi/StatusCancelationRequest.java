@@ -66,7 +66,7 @@ public class StatusCancelationRequest implements IRequestor{
 				}
 			}
 			if(codigoEstatus.startsWith("N -")) {
-				return new StatusCfdiResponse(400, "error", codigoEstatus, estado);
+				return new StatusCfdiResponse(400, "error", codigoEstatus, estado, esCancelable, estatusCancelacion, codigoEstatus, codigoEstatus);
 			}
 			else {
 				return new StatusCfdiResponse(200, "success", codigoEstatus, estado, esCancelable, estatusCancelacion, "OK", "OK");				

@@ -26,7 +26,7 @@ Descargas el modulo mediante Maven:
             <groupId>mx.com.sw.services</groupId>
             <artifactId>SW-JAVA</artifactId>
 
-            <version>0.0.4.0</version>
+            <version>0.0.4.1</version>
 
         </dependency>
 </dependencies>

@@ -85,10 +85,10 @@ public class Utils {
 
 
 
-    public  String toBase64(String xmlF){
+    public  String toBase64(String xmlF) throws UnsupportedEncodingException{
 
         String xml = this.signXML(xmlF);
-        byte[]   bytesEncoded = Base64.encodeBase64(xml.getBytes());
+        byte[]   bytesEncoded = Base64.encodeBase64(xml.getBytes("UTF-8"));
         return new String(bytesEncoded);
     }
 

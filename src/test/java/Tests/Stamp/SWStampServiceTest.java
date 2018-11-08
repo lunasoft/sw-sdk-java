@@ -99,8 +99,6 @@ public class SWStampServiceTest extends TestCase {
         System.out.println(response.tfd);
         String expect_error = "307. El comprobante contiene un timbre previo.";
         Assert.assertTrue(Utils.isValidB64(response.tfd) || expect_error.equalsIgnoreCase(response.message));
-
-
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_b64() throws Exception {
@@ -115,7 +113,6 @@ public class SWStampServiceTest extends TestCase {
         boolean cfdi_valid = Utils.isValidB64(response.cfdi), tfd_valid = Utils.isValidB64(response.tfd);
         String expect_error = "307. El comprobante contiene un timbre previo.";
         Assert.assertTrue(cfdi_valid && tfd_valid || expect_error.equalsIgnoreCase((response.message)));
-
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3_b64() throws Exception {

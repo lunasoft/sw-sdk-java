@@ -62,7 +62,7 @@ public class CfdiRelacionadosRequest implements IRequestor {
 			if (!responseString.isEmpty()) {
 				JSONObject body = new JSONObject(responseString);
 				if (status == 200) {
-					int codStatus = Integer.parseInt(body.getString("codStatus"));
+					int codStatus = Integer.parseInt(body.getString("codStatus").trim());
 					if (codStatus != 2000) {
 						String messageDetail = "";
 						if (!body.isNull("messageDetail")) {
@@ -137,7 +137,7 @@ public class CfdiRelacionadosRequest implements IRequestor {
 			if (!responseString.isEmpty()) {
 				JSONObject body = new JSONObject(responseString);
 				if (status == 200) {
-					int codStatus = Integer.parseInt(body.getString("codStatus"));
+					int codStatus = Integer.parseInt(body.getString("codStatus").trim());
 					if (codStatus != 2000) {
 						String messageDetail = "";
 						if (!body.isNull("messageDetail")) {
@@ -212,7 +212,7 @@ public class CfdiRelacionadosRequest implements IRequestor {
 			if (!responseString.isEmpty()) {
 				JSONObject body = new JSONObject(responseString);
 				if (status == 200) {
-					int codStatus = Integer.parseInt(body.getString("codStatus"));
+					int codStatus = Integer.parseInt(body.getString("codStatus").trim());
 					if (codStatus != 2000) {
 						String messageDetail = "";
 						if (!body.isNull("messageDetail")) {
@@ -276,7 +276,7 @@ public class CfdiRelacionadosRequest implements IRequestor {
 			if (!responseString.isEmpty()) {
 				JSONObject body = new JSONObject(responseString);
 				if (status == 200) {
-					int codStatus = Integer.parseInt(body.getString("codStatus"));
+					int codStatus = Integer.parseInt(body.getString("codStatus").trim());
 					if (codStatus != 2000) {
 						String messageDetail = "";
 						if (!body.isNull("messageDetail")) {

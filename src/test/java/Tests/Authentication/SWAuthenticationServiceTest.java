@@ -22,19 +22,4 @@ public class SWAuthenticationServiceTest extends TestCase {
             e.printStackTrace();
         }
     }
-
-    public void testAuthProxy(){
-        SWAuthenticationService auth = new SWAuthenticationService("demo","123456789","http://services.test.sw.com.mx","127.0.0.1","8888");
-        try {
-            SuccessAuthResponse res = (SuccessAuthResponse) auth.Token();
-            String expected = "success";
-            System.out.println(res.token);
-            System.out.println(res.message);
-            System.out.println(res.messageDetail);
-            Assert.assertTrue(expected.equalsIgnoreCase(res.Status));
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
-    }
 }

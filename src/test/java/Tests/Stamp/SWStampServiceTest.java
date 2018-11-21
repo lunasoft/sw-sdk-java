@@ -438,7 +438,9 @@ public class SWStampServiceTest extends TestCase {
         System.out.print(response.message);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
-        
+        String expect_status = "success";
+        String expect_error = "307. El comprobante contiene un timbre previo.";
+        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status) || expect_error.equalsIgnoreCase(response.message));
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_NOMINA12() throws Exception {
@@ -450,7 +452,9 @@ public class SWStampServiceTest extends TestCase {
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
         System.out.println(response.cfdi);
-
+        String expect_status = "success";
+        String expect_error = "307. El comprobante contiene un timbre previo.";
+        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status) || expect_error.equalsIgnoreCase(response.message));
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3_NOMINA12() throws Exception {
@@ -460,9 +464,10 @@ public class SWStampServiceTest extends TestCase {
         response = (SuccessV3Response) api.Stamp(ut.genNomina10(),"v3");
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
-
         System.out.println(response.cfdi);
-
+        String expect_status = "success";
+        String expect_error = "307. El comprobante contiene un timbre previo.";
+        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status) || expect_error.equalsIgnoreCase(response.message));
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4_NOMINA12() throws Exception {
@@ -480,8 +485,9 @@ public class SWStampServiceTest extends TestCase {
         System.out.println(response.noCertificadoSAT);
         System.out.println(response.fechaTimbrado);
         System.out.println(response.uuid);
-
-
+        String expect_status = "success";
+        String expect_error = "307. El comprobante contiene un timbre previo.";
+        Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status) || expect_error.equalsIgnoreCase(response.message));
     }
 
     public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1_b64_NOMINA12() throws Exception {

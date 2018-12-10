@@ -13,7 +13,7 @@ import Utils.Requests.AcceptReject.AceptarRechazarOptionsRequest;
 import Utils.Responses.IResponse;
 
 public class SWAcceptRejectService extends SWService{
-    public SWAcceptRejectService(String user, String password, String URI) {
+    public SWAcceptRejectService(String user, String password, String URI) throws AuthException {
         super(user, password, URI);
     }
 

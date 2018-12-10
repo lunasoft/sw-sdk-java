@@ -12,7 +12,7 @@ import Utils.Requests.Pendings.PendientesCancelarRequest;
 import Utils.Responses.IResponse;
 
 public class SWPendingsService extends SWService{
-	public SWPendingsService(String user, String password, String URI) {
+	public SWPendingsService(String user, String password, String URI) throws AuthException {
         super(user, password, URI);
     }
 

@@ -12,7 +12,7 @@ import java.nio.charset.Charset;
 
 public class SWIssueService extends SWService {
 
-	public SWIssueService(String user, String password, String URI) {
+	public SWIssueService(String user, String password, String URI) throws AuthException {
 		super(user, password, URI);
 	}
 

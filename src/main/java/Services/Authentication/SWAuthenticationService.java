@@ -10,7 +10,7 @@ import Utils.Requests.Authentication.AuthRequest;
 import Utils.Responses.IResponse;
 
 public class SWAuthenticationService extends SWService {
-    public SWAuthenticationService(String user, String password, String URI) {
+    public SWAuthenticationService(String user, String password, String URI) throws AuthException {
         super(user, password, URI);
     }
 

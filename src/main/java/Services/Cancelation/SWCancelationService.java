@@ -13,7 +13,7 @@ import Utils.Responses.IResponse;
 
 public class SWCancelationService extends SWService {
     
-    public SWCancelationService(String user, String password, String URI) {
+    public SWCancelationService(String user, String password, String URI) throws AuthException {
         super(user, password, URI);
     }
 

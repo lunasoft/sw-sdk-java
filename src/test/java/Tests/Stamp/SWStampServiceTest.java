@@ -615,7 +615,6 @@ public class SWStampServiceTest extends TestCase {
                 Utils ut = new Utils();
                 response = api.Stamp(ut.StringgenBasico(),"v1");
 
-
             }catch (Exception e){
                 System.out.println(e.getMessage());
                 System.out.println("Something bad happened");

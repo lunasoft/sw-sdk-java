@@ -36,18 +36,18 @@ public abstract class SWService {
 
     private String URI;
 
-    protected SWService(String user, String password, String URI) {
+    protected SWService(String user, String password, String URI) throws AuthException {
         User = user;
         Password = password;
         this.URI = URI;
         try {
 			generateToken();
 		} catch (AuthException e) {
-			e.printStackTrace();
+			throw new AuthException(e.getHttpStatusCode(), e.getErrorMSG());
 		} catch (GeneralException e) {
-			e.printStackTrace();
+			throw new AuthException(e.getHttpStatusCode(), e.getErrorMSG());
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new AuthException(99, e.getMessage());
 		}
     }
 
@@ -75,7 +75,7 @@ public abstract class SWService {
     
     public void generateToken() throws AuthException, GeneralException, IOException {
         if (User == null || Password == null) {
-            throw new AuthException(400, "no existen elementos de autenticaciÃ³n");
+            throw new AuthException(400, "no existen elementos de autenticación");
         }
         AuthOptionsRequest settings = new AuthOptionsRequest(URI, getUser(), getPassword());
         AuthRequest req = new AuthRequest();

@@ -12,7 +12,7 @@ import Utils.Requests.Relations.CfdiRelacionadosRequest;
 import Utils.Responses.IResponse;
 
 public class SWRelationsService extends SWService{
-	public SWRelationsService(String user, String password, String URI) {
+	public SWRelationsService(String user, String password, String URI) throws AuthException {
         super(user, password, URI);
     }
 

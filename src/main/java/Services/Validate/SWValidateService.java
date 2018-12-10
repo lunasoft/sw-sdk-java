@@ -15,7 +15,7 @@ import Utils.Responses.IResponse;
 
 public class SWValidateService extends SWService {
 
-	public SWValidateService(String user, String password, String URI) {
+	public SWValidateService(String user, String password, String URI) throws AuthException {
 		super(user, password, URI);
 	}
 

@@ -21,7 +21,7 @@ public class StatusCfdiServiceTest extends TestCase{
 		Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
 	}
 	public void testStatusCancelationService_Test() throws Exception {
-		StatusCfdiService app = new StatusCfdiService("http://consultaqrfacturaelectronicatest.sw.com.mx/ConsultaCFDIService.svc", "http://tempuri.org/IConsultaCFDIService/Consulta");
+		StatusCfdiService app = new StatusCfdiService("https://pruebacfdiconsultaqr.cloudapp.net/ConsultaCFDIService.svc", "http://tempuri.org/IConsultaCFDIService/Consulta");
 		StatusCfdiResponse response = null;
 		response = (StatusCfdiResponse) app.StatusCfdi("LAN8507268IA", "LAN7008173R5", "5800.00", "6ab07bef-4446-43ea-a3fd-04a804309457");
 		System.out.println(response.Status);

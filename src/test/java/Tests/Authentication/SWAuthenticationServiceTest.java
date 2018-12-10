@@ -8,8 +8,8 @@ import junit.framework.TestCase;
 
 public class SWAuthenticationServiceTest extends TestCase {
     public void testAuth(){
-        SWAuthenticationService auth = new SWAuthenticationService("demo","123456789","http://services.test.sw.com.mx");
         try {
+        	SWAuthenticationService auth = new SWAuthenticationService("demo","123456789","http://services.test.sw.com.mx");
             SuccessAuthResponse res = (SuccessAuthResponse) auth.Token();
             String expected = "success";
             System.out.println(res.token);

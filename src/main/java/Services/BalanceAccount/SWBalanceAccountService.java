@@ -12,7 +12,7 @@ import Utils.Responses.IResponse;
 
 public class SWBalanceAccountService extends SWService {
     
-    public SWBalanceAccountService(String user, String password, String URI) {
+    public SWBalanceAccountService(String user, String password, String URI) throws AuthException {
         super(user, password, URI);
     }
 

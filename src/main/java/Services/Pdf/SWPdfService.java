@@ -12,7 +12,7 @@ import Utils.Responses.IResponse;
 
 public class SWPdfService extends SWService {
     
-    public SWPdfService(String user, String password, String URI) {
+    public SWPdfService(String user, String password, String URI) throws AuthException {
         super(user, password, URI);
     }
 

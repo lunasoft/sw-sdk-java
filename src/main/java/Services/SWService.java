@@ -47,7 +47,7 @@ public abstract class SWService {
 		} catch (GeneralException e) {
 			throw new AuthException(e.getHttpStatusCode(), e.getErrorMSG());
 		} catch (IOException e) {
-			throw new AuthException(99, e.getMessage());
+			throw new AuthException(409, e.getMessage());
 		}
     }
 

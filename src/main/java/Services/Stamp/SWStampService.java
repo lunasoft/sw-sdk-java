@@ -40,7 +40,7 @@ public class SWStampService extends SWService {
 		}
 	}
 
-	public IResponse Stamp(byte[] xmlFile, String version, boolean isb64) 
+	public IResponse Stamp(byte[] xmlFile, String version, boolean isb64)
 			throws AuthException, GeneralException, IOException {
 		String xmlProcess = new String(xmlFile, Charset.forName("UTF-8"));
 		StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), xmlProcess, version);

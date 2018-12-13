@@ -19,7 +19,7 @@ public class SWCsdService extends SWService {
         super(token, URI);
     }
     
-    public IResponse CargarCsd(String b64Cer, String b64Key, String passwordCsd, String certificateType, boolean isActive) throws AuthException, GeneralException, IOException {
+    public IResponse UploadMyCsd(String b64Cer, String b64Key, String passwordCsd, String certificateType, boolean isActive) throws AuthException, GeneralException, IOException {
         CsdOptionsRequest settings = new CsdOptionsRequest(getToken(), getURI(), b64Cer, b64Key, passwordCsd, certificateType, isActive);
         CsdRequest req = new CsdRequest();
         return req.sendRequest(settings);

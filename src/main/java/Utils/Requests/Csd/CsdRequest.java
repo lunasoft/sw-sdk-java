@@ -23,7 +23,7 @@ import Utils.Requests.IRequest;
 import Utils.Requests.IRequestor;
 import Utils.Requests.Csd.CsdOptionsRequest;
 import Utils.Responses.IResponse;
-import Utils.Responses.Csd.CargaCsdResponse;
+import Utils.Responses.Csd.UploadCsdResponse;;
 
 public class CsdRequest implements IRequestor {
 	public IResponse sendRequest(IRequest request) throws GeneralException, AuthException, IOException {
@@ -56,17 +56,17 @@ public class CsdRequest implements IRequestor {
 				JSONObject body = new JSONObject(responseString);
 				if (status == 200) {
 					String data = body.getString("data");
-					return new CargaCsdResponse(status, body.getString("status"),data, "OK", "OK");
+					return new UploadCsdResponse(status, body.getString("status"),data, "OK", "OK");
 
 				} else {
 					String messageDetail = "";
 					if (!body.isNull("messageDetail")) {
 						messageDetail = body.getString("messageDetail");
 					}
-					return new CargaCsdResponse(status, body.getString("status"), body.getString("message"), messageDetail);
+					return new UploadCsdResponse(status, body.getString("status"), body.getString("message"), messageDetail);
 				}
 			} else {
-				return new CargaCsdResponse(status, "error", responseB.getStatusLine().getReasonPhrase(), responseB.getStatusLine().getReasonPhrase());
+				return new UploadCsdResponse(status, "error", responseB.getStatusLine().getReasonPhrase(), responseB.getStatusLine().getReasonPhrase());
 			}
 		} catch (JSONException e) {
 			throw new GeneralException(500, e.getMessage());

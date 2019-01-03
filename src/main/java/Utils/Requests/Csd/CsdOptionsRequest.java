@@ -4,18 +4,23 @@ import Utils.Constants;
 import Utils.Requests.IRequest;
 
 public class CsdOptionsRequest extends IRequest {
-	String b64Key;
-	String b64Cer;
-	String passwordCsd;
-	String certificateType;
-	boolean isActive;
-	public CsdOptionsRequest(String token, String URI, String b64Cer, String b64Key, String passwordCsd, String certificateType, boolean isActive) {
+	private String b64Key;
+	private String b64Cer;
+	private String passwordCsd;
+	private String certificateType;
+	private boolean isActive;
+	private String proxyHost;
+	private String proxyPort;
+	
+	public CsdOptionsRequest(String token, String URI, String b64Cer, String b64Key, String passwordCsd, String certificateType, boolean isActive, String proxyHost, String proxyPort) {
 		super(token, URI+ Constants.SAVE_CSD);
         this.b64Cer = b64Cer;
         this.b64Key = b64Key;
         this.passwordCsd = passwordCsd;
         this.certificateType = certificateType;
         this.isActive = isActive;
+        this.proxyHost = proxyHost;
+        this.proxyPort = proxyPort;
 	}
 	
     public String getB64Cer() {
@@ -36,5 +41,13 @@ public class CsdOptionsRequest extends IRequest {
     
     public boolean getIsActive() {
     	return isActive;
+    }
+    
+    public String getProxyHost() {
+    	return proxyHost;
+    }
+    
+    public String getProxyPort() {
+    	return proxyPort;
     }
 }

@@ -18,9 +18,17 @@ public class SWCsdService extends SWService {
     public SWCsdService(String token, String URI) {
         super(token, URI);
     }
+    public SWCsdService(String user, String password, String URI, String proxyHost, String proxyPort) throws AuthException {
+        super(user, password, URI, proxyHost, proxyPort);
+    }
+
+    public SWCsdService(String token, String URI, String proxyHost, String proxyPort) {
+        super(token, URI, proxyHost, proxyPort);
+    }
     
     public IResponse UploadMyCsd(String b64Cer, String b64Key, String passwordCsd, String certificateType, boolean isActive) throws AuthException, GeneralException, IOException {
-        CsdOptionsRequest settings = new CsdOptionsRequest(getToken(), getURI(), b64Cer, b64Key, passwordCsd, certificateType, isActive);
+    	CsdOptionsRequest settings = null;
+    	settings = new CsdOptionsRequest(getToken(), getURI(), b64Cer, b64Key, passwordCsd, certificateType, isActive, getProxyHost(), getProxyPort());
         CsdRequest req = new CsdRequest();
         return req.sendRequest(settings);
     }

@@ -36,7 +36,9 @@ public class CsdRequest implements IRequestor {
 			requestJSON.put("b64Key", ((CsdOptionsRequest) request).getB64key());
 			CloseableHttpClient client = HttpClients.createDefault();
 			HttpPost httppost = new HttpPost(request.URI);
-			RequestHelper.setTimeOut(httppost, requestJSON.toString().length());
+			RequestHelper.setTimeOut(request.options, requestJSON.toString().length());
+			RequestHelper.setProxy(request.options, ((CsdOptionsRequest) request).getProxyHost(), ((CsdOptionsRequest) request).getProxyPort());
+			httppost.setConfig(request.options.build());
 			httppost.setHeader(new BasicHeader("Authorization", "bearer " + request.Token));
 			httppost.addHeader(new BasicHeader("Content-Type", "application/json"));
 			MultipartEntityBuilder builder = MultipartEntityBuilder.create();

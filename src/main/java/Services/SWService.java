@@ -10,9 +10,12 @@ import Utils.Requests.Authentication.AuthRequest;
 import Utils.Responses.Authentication.SuccessAuthResponse;
 
 public abstract class SWService {
+	private String URI;
     private String Token = null;
     private String User = null;
     private String Password = null;
+    private String ProxyHost = null;
+    private String ProxyPort = null;
     private Date time = null;
 
     public String getToken() throws AuthException, GeneralException, IOException {
@@ -34,11 +37,34 @@ public abstract class SWService {
         return URI;
     }
 
-    private String URI;
+    public String getProxyHost() {
+    	return ProxyHost;
+    }
 
+    public String getProxyPort() {
+    	return ProxyPort;
+    }
+    
     protected SWService(String user, String password, String URI) throws AuthException {
         User = user;
         Password = password;
+        this.URI = URI;
+        try {
+			generateToken();
+		} catch (AuthException e) {
+			throw new AuthException(e.getHttpStatusCode(), e.getErrorMSG());
+		} catch (GeneralException e) {
+			throw new AuthException(e.getHttpStatusCode(), e.getErrorMSG());
+		} catch (IOException e) {
+			throw new AuthException(409, e.getMessage());
+		}
+    }
+    
+    protected SWService(String user, String password, String URI, String ProxyHost, String ProxyPort) throws AuthException {
+        User = user;
+        Password = password;
+        this.ProxyHost = ProxyHost;
+        this.ProxyPort = ProxyPort;
         this.URI = URI;
         try {
 			generateToken();
@@ -54,6 +80,14 @@ public abstract class SWService {
     protected SWService(String token, String URI) {
         Token = token;
         this.URI = URI;
+        this.time = new Date((long)999999999*100000);
+    }
+    
+    protected SWService(String token, String URI, String ProxyHost, String ProxyPort) {
+        Token = token;
+        this.URI = URI;
+        this.ProxyHost = ProxyHost;
+        this.ProxyPort = ProxyPort;
         this.time = new Date((long)999999999*100000);
     }
 

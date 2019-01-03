@@ -1,4 +1,6 @@
 package Utils.Requests;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.config.RequestConfig.Builder;
 
 public abstract class IRequest {
     public String Token;
@@ -7,6 +9,7 @@ public abstract class IRequest {
     public String Password;
     public String version;
     public String xml;
+    public Builder options = RequestConfig.custom();
 
     public IRequest(String URI, String user, String password, String version, boolean isb64) {
         this.URI = URI;

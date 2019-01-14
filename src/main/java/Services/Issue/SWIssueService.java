@@ -19,27 +19,35 @@ public class SWIssueService extends SWService {
 	public SWIssueService(String token, String URI) {
 		super(token, URI);
 	}
+	
+	public SWIssueService(String user, String password, String URI, String proxyHost, int proxyPort) throws AuthException {
+		super(user, password, URI, proxyHost, proxyPort);
+	}
+
+	public SWIssueService(String token, String URI, String proxyHost, int proxyPort) {
+		super(token, URI, proxyHost, proxyPort);
+	}
 
 	public IResponse IssueJson(String json, String version) throws AuthException, GeneralException, IOException {
-		IssueOptionsRequest settings = new IssueOptionsRequest(getToken(), getURI(), json, version);
+		IssueOptionsRequest settings = new IssueOptionsRequest(getToken(), getURI(), json, version, getProxyHost(), getProxyPort());
 		IssueRequest req = new IssueRequest();
 		return req.sendRequest(settings);
 	}
 
 	public IResponse IssueJson(byte[] jsonFile, String version) throws AuthException, GeneralException, IOException {
 		String jsonProcess = new String(jsonFile, Charset.forName("UTF-8"));
-		IssueOptionsRequest settings = new IssueOptionsRequest(getToken(), getURI(), jsonProcess, version);
+		IssueOptionsRequest settings = new IssueOptionsRequest(getToken(), getURI(), jsonProcess, version, getProxyHost(), getProxyPort());
 		IssueRequest req = new IssueRequest();
 		return req.sendRequest(settings);
 	}
 	public IResponse IssueXml(String xml, String version) throws AuthException, GeneralException, IOException {
-		IssueOptionsRequest settings = new IssueOptionsRequest(getToken(), getURI(), xml, version, true);
+		IssueOptionsRequest settings = new IssueOptionsRequest(getToken(), getURI(), xml, version, true, getProxyHost(), getProxyPort());
 		IssueRequest req = new IssueRequest();
 		return req.sendRequestXml(settings);
 	}
 	public IResponse IssueXml(byte[] xmlfile, String version) throws AuthException, GeneralException, IOException {
 		String xmlProcess = new String(xmlfile, Charset.forName("UTF-8"));
-		IssueOptionsRequest settings = new IssueOptionsRequest(getToken(), getURI(), xmlProcess, version, true);
+		IssueOptionsRequest settings = new IssueOptionsRequest(getToken(), getURI(), xmlProcess, version, true, getProxyHost(), getProxyPort());
 		IssueRequest req = new IssueRequest();
 		return req.sendRequestXml(settings);
 	}

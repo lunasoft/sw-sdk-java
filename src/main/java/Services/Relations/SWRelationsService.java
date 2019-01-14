@@ -20,26 +20,34 @@ public class SWRelationsService extends SWService{
         super(token, URI);
     }
     
+    public SWRelationsService(String user, String password, String URI, String proxyHost, int proxyPort) throws AuthException {
+        super(user, password, URI, proxyHost, proxyPort);
+    }
+
+    public SWRelationsService(String token, String URI, String proxyHost, int proxyPort) {
+        super(token, URI, proxyHost, proxyPort);
+    }
+    
     public IResponse CfdiRelacionadosCSD(String uuid,String password_csd, String rfc, String b64Cer, String b64Key) throws AuthException, GeneralException, IOException {
-        CfdiRelacionadosOptionsRequest settings = new CfdiRelacionadosOptionsRequest(getToken(),getURI(), uuid, password_csd, rfc, b64Cer, b64Key);
+        CfdiRelacionadosOptionsRequest settings = new CfdiRelacionadosOptionsRequest(getToken(),getURI(), uuid, password_csd, rfc, b64Cer, b64Key, getProxyHost(), getProxyPort());
         CfdiRelacionadosRequest req = new  CfdiRelacionadosRequest();
         return req.sendRequest(settings);
     }
     
     public IResponse CfdiRelacionadosPFX(String uuid,String password_csd, String rfc, String b64pfx) throws AuthException, GeneralException, IOException, SOAPException {
-        CfdiRelacionadosOptionsRequest settings = new CfdiRelacionadosOptionsRequest(getToken(),getURI(), uuid, password_csd, rfc, b64pfx);
+        CfdiRelacionadosOptionsRequest settings = new CfdiRelacionadosOptionsRequest(getToken(),getURI(), uuid, password_csd, rfc, b64pfx, getProxyHost(), getProxyPort());
         CfdiRelacionadosRequest req = new  CfdiRelacionadosRequest();
         return req.sendRequestPFX(settings);
     }
     
     public IResponse CfdiRelacionadosXML(String xml) throws AuthException, GeneralException, IOException, SOAPException {
-        CfdiRelacionadosOptionsRequest settings = new CfdiRelacionadosOptionsRequest(getToken(),getURI(), xml);
+        CfdiRelacionadosOptionsRequest settings = new CfdiRelacionadosOptionsRequest(getToken(),getURI(), xml, getProxyHost(), getProxyPort());
         CfdiRelacionadosRequest req = new  CfdiRelacionadosRequest();
         return req.sendRequestXML(settings);
     }
     
     public IResponse CfdiRelacionadosUUID(String uuid, String rfc) throws AuthException, GeneralException, IOException, SOAPException {
-        CfdiRelacionadosOptionsRequest settings = new CfdiRelacionadosOptionsRequest(getToken(),getURI(), uuid, rfc);
+        CfdiRelacionadosOptionsRequest settings = new CfdiRelacionadosOptionsRequest(getToken(),getURI(), uuid, rfc, getProxyHost(), getProxyPort());
         CfdiRelacionadosRequest req = new  CfdiRelacionadosRequest();
         return req.sendRequestUUID(settings);
     }

@@ -29,10 +29,10 @@ public class RequestHelper {
 		return mJSONArray;
 	}
 
-	public static void setProxy(Builder build, String host, String port) throws GeneralException {
+	public static void setProxy(Builder build, String host, int port) throws GeneralException {
 		if(host != null){
 			try {
-				HttpHost proxy = new HttpHost(host, Integer.parseInt(port));
+				HttpHost proxy = new HttpHost(host, port);
 				build.setProxy(proxy);
 			} catch (Exception e) {
 				throw new GeneralException(400, e.getMessage());

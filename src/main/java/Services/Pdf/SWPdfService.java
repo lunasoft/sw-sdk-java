@@ -20,20 +20,28 @@ public class SWPdfService extends SWService {
         super(token, URI);
     }
     
+    public SWPdfService(String user, String password, String URI, String proxyHost, int proxyPort) throws AuthException {
+        super(user, password, URI, proxyHost, proxyPort);
+    }
+
+    public SWPdfService(String token, String URI, String proxyHost, int proxyPort) {
+        super(token, URI, proxyHost, proxyPort);
+    }
+    
     public IResponse GeneratePdf(String xml) throws AuthException, GeneralException, IOException {
-        PdfOptionsRequest settings = new PdfOptionsRequest(getToken(),getURI(), xml);
+        PdfOptionsRequest settings = new PdfOptionsRequest(getToken(),getURI(), xml, getProxyHost(), getProxyPort());
         PdfRequest req = new PdfRequest();
         return req.sendRequest(settings);
     }
     
     public IResponse GeneratePdf(String xml, String extras) throws AuthException, GeneralException, IOException {
-        PdfOptionsRequest settings = new PdfOptionsRequest(getToken(),getURI(), xml, extras);
+        PdfOptionsRequest settings = new PdfOptionsRequest(getToken(),getURI(), xml, extras, getProxyHost(), getProxyPort());
         PdfRequest req = new PdfRequest();
         return req.sendRequest(settings);
     }
     
     public IResponse GeneratePdf(String xml, String extras, String templateId) throws AuthException, GeneralException, IOException {
-        PdfOptionsRequest settings = new PdfOptionsRequest(getToken(),getURI(), xml, extras, templateId);
+        PdfOptionsRequest settings = new PdfOptionsRequest(getToken(),getURI(), xml, extras, templateId, getProxyHost(), getProxyPort());
         PdfRequest req = new PdfRequest();
         return req.sendRequest(settings);
     }

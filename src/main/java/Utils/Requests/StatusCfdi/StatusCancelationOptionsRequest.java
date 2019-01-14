@@ -9,8 +9,8 @@ public class StatusCancelationOptionsRequest extends IRequest{
 	private String uuid;
 	private String action;
 	
-	public StatusCancelationOptionsRequest(String URI, String action, String rfcEmisor, String rfcReceptor, String total, String uuid) {
-		super("",URI);
+	public StatusCancelationOptionsRequest(String URI, String action, String rfcEmisor, String rfcReceptor, String total, String uuid, String proxyHost, int proxyPort) {
+		super("", URI, proxyHost, proxyPort);
         this.rfcEmisor = rfcEmisor;
         this.rfcReceptor = rfcReceptor;
         this.total = total;

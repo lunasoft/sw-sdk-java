@@ -18,11 +18,11 @@ public class SWCsdService extends SWService {
     public SWCsdService(String token, String URI) {
         super(token, URI);
     }
-    public SWCsdService(String user, String password, String URI, String proxyHost, String proxyPort) throws AuthException {
+    public SWCsdService(String user, String password, String URI, String proxyHost, int proxyPort) throws AuthException {
         super(user, password, URI, proxyHost, proxyPort);
     }
 
-    public SWCsdService(String token, String URI, String proxyHost, String proxyPort) {
+    public SWCsdService(String token, String URI, String proxyHost, int proxyPort) {
         super(token, URI, proxyHost, proxyPort);
     }
     

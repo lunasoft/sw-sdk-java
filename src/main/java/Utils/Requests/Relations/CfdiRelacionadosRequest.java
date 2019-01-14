@@ -43,7 +43,9 @@ public class CfdiRelacionadosRequest implements IRequestor {
 			requestJSON.put("b64Key", ((CfdiRelacionadosOptionsRequest) request).getB64key());
 			CloseableHttpClient client = HttpClients.createDefault();
 			HttpPost httppost = new HttpPost(request.URI);
-			RequestHelper.setTimeOut(httppost, requestJSON.toString().length());
+			RequestHelper.setTimeOut(request.options, requestJSON.toString().length());
+			RequestHelper.setProxy(request.options, request.proxyHost, request.proxyPort);
+			httppost.setConfig(request.options.build());
 			httppost.setHeader(new BasicHeader("Authorization", "bearer " + request.Token));
 			httppost.addHeader(new BasicHeader("Content-Type", "application/json"));
 			MultipartEntityBuilder builder = MultipartEntityBuilder.create();
@@ -118,7 +120,9 @@ public class CfdiRelacionadosRequest implements IRequestor {
 			requestJSON.put("b64Pfx", ((CfdiRelacionadosOptionsRequest) request).getB64Pfx());
 			CloseableHttpClient client = HttpClients.createDefault();
 			HttpPost httppost = new HttpPost(request.URI);
-			RequestHelper.setTimeOut(httppost, requestJSON.toString().length());
+			RequestHelper.setTimeOut(request.options, requestJSON.toString().length());
+			RequestHelper.setProxy(request.options, request.proxyHost, request.proxyPort);
+			httppost.setConfig(request.options.build());
 			httppost.setHeader(new BasicHeader("Authorization", "bearer " + request.Token));
 			httppost.addHeader(new BasicHeader("Content-Type", "application/json"));
 			MultipartEntityBuilder builder = MultipartEntityBuilder.create();
@@ -193,7 +197,9 @@ public class CfdiRelacionadosRequest implements IRequestor {
 					+ xmlStr + "\r\n--" + boundary + "--";
 			CloseableHttpClient client = HttpClients.createDefault();
 			HttpPost httppost = new HttpPost(request.URI);
-			RequestHelper.setTimeOut(httppost, raw.length());
+			RequestHelper.setTimeOut(request.options, raw.length());
+			RequestHelper.setProxy(request.options, request.proxyHost, request.proxyPort);
+			httppost.setConfig(request.options.build());
 			httppost.setHeader(new BasicHeader("Authorization", "bearer " + request.Token));
 			httppost.addHeader(new BasicHeader("content-type", "multipart/form-data; boundary=" + boundary));
 			MultipartEntityBuilder builder = MultipartEntityBuilder.create();
@@ -264,7 +270,9 @@ public class CfdiRelacionadosRequest implements IRequestor {
 		try {
 			CloseableHttpClient client = HttpClients.createDefault();
 			HttpPost httppost = new HttpPost(request.URI);
-			RequestHelper.setTimeOut(httppost, 7000);
+			RequestHelper.setTimeOut(request.options, 7000);
+			RequestHelper.setProxy(request.options, request.proxyHost, request.proxyPort);
+			httppost.setConfig(request.options.build());
 			httppost.setHeader(new BasicHeader("Authorization", "bearer " + request.Token));
 			CloseableHttpResponse responseB = client.execute(httppost);
 

@@ -37,7 +37,7 @@ public class StampRequest implements IRequestor {
 			CloseableHttpClient client = HttpClients.createDefault();
 			HttpPost httppost = new HttpPost(request.URI);
 			RequestHelper.setTimeOut(request.options, raw.length());
-			RequestHelper.setProxy(request.options, ((StampOptionsRequest) request).getProxyHost(), ((StampOptionsRequest) request).getProxyPort());
+			RequestHelper.setProxy(request.options, request.proxyHost, request.proxyPort);
 			httppost.setConfig(request.options.build());
 			httppost.setHeader("Authorization", "bearer " + request.Token);
 			httppost.addHeader("Content-Type", "multipart/form-data; boundary=" + boundary);

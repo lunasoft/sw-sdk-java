@@ -5,7 +5,6 @@ import java.nio.charset.Charset;
 import java.util.UUID;
 
 import org.apache.http.HttpEntity;
-import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
@@ -19,6 +18,7 @@ import org.json.JSONObject;
 
 import Exceptions.AuthException;
 import Exceptions.GeneralException;
+import Utils.Helpers.RequestHelper;
 import Utils.Requests.IRequest;
 import Utils.Requests.IRequestor;
 import Utils.Requests.Pdf.PdfOptionsRequest;
@@ -34,13 +34,9 @@ public class PdfRequest implements IRequestor{
 			String raw = "--"+boundary+"\r\nContent-Disposition: form-data; name=file; filename=file\r\nContent-Type: application/xml\r\n\r\n"+xmlStr+"\r\n--"+boundary+"--";
 			CloseableHttpClient client = HttpClients.createDefault();
             HttpPost http = new HttpPost(request.URI);
-            int timeOut = raw.length() * 5; 
-            RequestConfig requestConfig = RequestConfig.custom()
-					  .setSocketTimeout(timeOut)
-					  .setConnectTimeout(timeOut)
-					  .setConnectionRequestTimeout(timeOut)
-					  .build();
-			http.setConfig(requestConfig);
+            RequestHelper.setTimeOut(request.options, xmlStr.length());
+			RequestHelper.setProxy(request.options, request.proxyHost, request.proxyPort);
+			http.setConfig(request.options.build());
             http.setHeader("Authorization", "Bearer " + request.Token);
             http.addHeader("Content-Type", "multipart/form-data; boundary="+boundary);
             if(((PdfOptionsRequest) request).getTemplateId() != null && !((PdfOptionsRequest) request).getTemplateId().isEmpty()) {

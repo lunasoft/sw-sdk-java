@@ -48,7 +48,9 @@ public class CancelationRequest implements IRequestor {
 							+ ((CancelationOptionsRequest) request).getB64key() + "\"\r\n}");
 			httppost.setEntity(builder.build());
 			httppost.setEntity(sEntity);
-			RequestHelper.setTimeOut(httppost, (int) sEntity.getContentLength());
+			RequestHelper.setTimeOut(request.options, (int) sEntity.getContentLength());
+			RequestHelper.setProxy(request.options, request.proxyHost, request.proxyPort);
+			httppost.setConfig(request.options.build());
 			CloseableHttpResponse responseB = client.execute(httppost);
 			HttpEntity entity = responseB.getEntity();
 			String responseString = EntityUtils.toString(entity, "UTF-8");
@@ -91,7 +93,9 @@ public class CancelationRequest implements IRequestor {
 					+ xmlStr + "\r\n--" + boundary + "--";
 			CloseableHttpClient client = HttpClients.createDefault();
 			HttpPost httppost = new HttpPost(request.URI);
-			RequestHelper.setTimeOut(httppost, raw.length());
+			RequestHelper.setTimeOut(request.options, raw.length());
+			RequestHelper.setProxy(request.options, request.proxyHost, request.proxyPort);
+			httppost.setConfig(request.options.build());
 			httppost.setHeader(new BasicHeader("Authorization", "bearer " + request.Token));
 			httppost.addHeader(new BasicHeader("content-type", "multipart/form-data; boundary=" + boundary));
 			MultipartEntityBuilder builder = MultipartEntityBuilder.create();
@@ -152,7 +156,9 @@ public class CancelationRequest implements IRequestor {
 							+ ((CancelationOptionsRequest) request).getB64Pfx() + "\"\r\n}");
 			httppost.setEntity(builder.build());
 			httppost.setEntity(sEntity);
-			RequestHelper.setTimeOut(httppost, (int) sEntity.getContentLength());
+			RequestHelper.setTimeOut(request.options, (int) sEntity.getContentLength());
+			RequestHelper.setProxy(request.options, request.proxyHost, request.proxyPort);
+			httppost.setConfig(request.options.build());
 			CloseableHttpResponse responseB = client.execute(httppost);
 			HttpEntity entity = responseB.getEntity();
 			String responseString = EntityUtils.toString(entity, "UTF-8");
@@ -189,10 +195,10 @@ public class CancelationRequest implements IRequestor {
 		try {
 			CloseableHttpClient client = HttpClients.createDefault();
 			HttpPost httppost = new HttpPost(request.URI);
-			RequestHelper.setTimeOut(httppost, 3000);
-			
+			RequestHelper.setTimeOut(request.options, 4000);
+			RequestHelper.setProxy(request.options, request.proxyHost, request.proxyPort);
+			httppost.setConfig(request.options.build());
 			httppost.setHeader(new BasicHeader("Authorization", "bearer " + request.Token));
-
 			CloseableHttpResponse responseB = client.execute(httppost);
 
 			HttpEntity entity = responseB.getEntity();

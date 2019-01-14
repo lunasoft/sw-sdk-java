@@ -17,8 +17,8 @@ public class AceptarRechazarOptionsRequest extends IRequest{
     private String xml;
       
 
-    public AceptarRechazarOptionsRequest(String token, String URI, Map <String, String> uuids, String password_csd, String rfc, String b64Cer, String b64Key) {
-        super(token, URI+ Constants.ACEPTAR_RECHAZAR_CANCELACION_CSD_PATH);
+    public AceptarRechazarOptionsRequest(String token, String URI, Map <String, String> uuids, String password_csd, String rfc, String b64Cer, String b64Key, String proxyHost, int proxyPort) {
+        super(token, URI+ Constants.ACEPTAR_RECHAZAR_CANCELACION_CSD_PATH, proxyHost, proxyPort);
         this.uuids = uuids;
         this.password_csd = password_csd;
         this.rfc = rfc;
@@ -26,20 +26,20 @@ public class AceptarRechazarOptionsRequest extends IRequest{
         this.b64key = b64Key;
     }
     
-    public AceptarRechazarOptionsRequest(String token, String URI, Map <String, String> uuids, String password_csd, String rfc, String b64Pfx) {
-        super(token, URI+ Constants.ACEPTAR_RECHAZAR_CANCELACION_PFX_PATH);
+    public AceptarRechazarOptionsRequest(String token, String URI, Map <String, String> uuids, String password_csd, String rfc, String b64Pfx, String proxyHost, int proxyPort) {
+        super(token, URI+ Constants.ACEPTAR_RECHAZAR_CANCELACION_PFX_PATH, proxyHost, proxyPort);
         this.uuids = uuids;
         this.password_csd = password_csd;
         this.rfc = rfc;
         this.b64Pfx = b64Pfx;
     }
     
-    public AceptarRechazarOptionsRequest(String token, String URI, String xml) {
-        super(token, URI+ Constants.ACEPTAR_RECHAZAR_CANCELACION_XML_PATH);
+    public AceptarRechazarOptionsRequest(String token, String URI, String xml, String proxyHost, int proxyPort) {
+        super(token, URI+ Constants.ACEPTAR_RECHAZAR_CANCELACION_XML_PATH, proxyHost, proxyPort);
         this.xml = xml;
     }
-    public AceptarRechazarOptionsRequest(String token, String URI, String uuid, String rfc, String action) {
-        super(token, URI+ Constants.ACEPTAR_RECHAZAR_CANCELACION_UUID_PATH+rfc+"/"+uuid+"/"+action);
+    public AceptarRechazarOptionsRequest(String token, String URI, String uuid, String rfc, String action, String proxyHost, int proxyPort) {
+        super(token, URI+ Constants.ACEPTAR_RECHAZAR_CANCELACION_UUID_PATH+rfc+"/"+uuid+"/"+action, proxyHost, proxyPort);
         this.uuid = uuid;
         this.rfc = rfc;
     }

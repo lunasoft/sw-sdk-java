@@ -2,6 +2,7 @@ package Utils.Requests.BalanceAccount;
 
 import Exceptions.AuthException;
 import Exceptions.GeneralException;
+import Utils.Helpers.RequestHelper;
 import Utils.Requests.IRequest;
 import Utils.Requests.IRequestor;
 import Utils.Responses.IResponse;
@@ -24,6 +25,9 @@ public class BalanceAcctRequest implements IRequestor {
         	CloseableHttpClient client = HttpClients.createDefault();
         	HttpGet httpget = new HttpGet(request.URI);
         	httpget.setHeader("Authorization", "bearer " + request.Token);
+        	RequestHelper.setTimeOut(request.options, 3500);
+			RequestHelper.setProxy(request.options, request.proxyHost, request.proxyPort);
+			httpget.setConfig(request.options.build());
         	CloseableHttpResponse responseB = client.execute(httpget);
         	HttpEntity entity = responseB.getEntity();
             String responseString = EntityUtils.toString(entity, "UTF-8");

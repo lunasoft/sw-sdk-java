@@ -37,7 +37,7 @@ public class CsdRequest implements IRequestor {
 			CloseableHttpClient client = HttpClients.createDefault();
 			HttpPost httppost = new HttpPost(request.URI);
 			RequestHelper.setTimeOut(request.options, requestJSON.toString().length());
-			RequestHelper.setProxy(request.options, ((CsdOptionsRequest) request).getProxyHost(), ((CsdOptionsRequest) request).getProxyPort());
+			RequestHelper.setProxy(request.options, request.proxyHost, request.proxyPort);
 			httppost.setConfig(request.options.build());
 			httppost.setHeader(new BasicHeader("Authorization", "bearer " + request.Token));
 			httppost.addHeader(new BasicHeader("Content-Type", "application/json"));

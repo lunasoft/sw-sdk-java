@@ -11,13 +11,13 @@ public class IssueOptionsRequest extends IRequest {
         return xml;
     }
 
-    public IssueOptionsRequest(String token, String URI, String xml, String version) {
-        super(token, URI+ Constants.ISSUE_JSON_PATH+version, xml, version);
+    public IssueOptionsRequest(String token, String URI, String xml, String version, String proxyHost, int proxyPort) {
+        super(token, URI + Constants.ISSUE_JSON_PATH + version, xml, version, proxyHost, proxyPort);
         this.xml = xml;
         this.version = version;
     }
-    public IssueOptionsRequest(String token, String URI, String xml, String version, boolean isXml) {
-        super(token, URI+ Constants.ISSUE_XML_PATH+version, xml, version);
+    public IssueOptionsRequest(String token, String URI, String xml, String version, boolean isXml, String proxyHost, int proxyPort) {
+        super(token, URI + Constants.ISSUE_XML_PATH + version, xml, version, proxyHost, proxyPort);
         this.xml = xml;
         this.version = version;
     }

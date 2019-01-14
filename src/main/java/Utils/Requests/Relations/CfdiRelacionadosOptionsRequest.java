@@ -12,8 +12,8 @@ public class CfdiRelacionadosOptionsRequest extends IRequest{
     private String b64Pfx;
     private String xml;
 
-    public CfdiRelacionadosOptionsRequest(String token, String URI, String uuid, String password_csd, String rfc, String b64Cer, String b64Key) {
-        super(token, URI+ Constants.RELACIONADOS_CSD_PATH);
+    public CfdiRelacionadosOptionsRequest(String token, String URI, String uuid, String password_csd, String rfc, String b64Cer, String b64Key, String proxyHost, int proxyPort) {
+        super(token, URI + Constants.RELACIONADOS_CSD_PATH, proxyHost, proxyPort);
         this.uuid = uuid;
         this.password_csd = password_csd;
         this.rfc = rfc;
@@ -21,22 +21,22 @@ public class CfdiRelacionadosOptionsRequest extends IRequest{
         this.b64key = b64Key;
     }
     
-    public CfdiRelacionadosOptionsRequest(String token, String URI, String uuid, String password_csd, String rfc, String b64Pfx) {
-        super(token, URI+ Constants.RELACIONADOS_PFX_PATH);
+    public CfdiRelacionadosOptionsRequest(String token, String URI, String uuid, String password_csd, String rfc, String b64Pfx, String proxyHost, int proxyPort) {
+        super(token, URI + Constants.RELACIONADOS_PFX_PATH, proxyHost, proxyPort);
         this.uuid = uuid;
         this.password_csd = password_csd;
         this.rfc = rfc;
         this.b64Pfx = b64Pfx;
     }
     
-    public CfdiRelacionadosOptionsRequest(String token, String URI, String uuid, String rfc) {
-        super(token, URI+ Constants.RELACIONADOS_UUID_PATH+rfc+"/"+uuid);
+    public CfdiRelacionadosOptionsRequest(String token, String URI, String uuid, String rfc, String proxyHost, int proxyPort) {
+        super(token, URI + Constants.RELACIONADOS_UUID_PATH + rfc + "/" + uuid, proxyHost, proxyPort);
         this.uuid = uuid;
         this.rfc = rfc;
     }
     
-    public CfdiRelacionadosOptionsRequest(String token, String URI, String xml) {
-        super(token, URI+ Constants.RELACIONADOS_XML_PATH);
+    public CfdiRelacionadosOptionsRequest(String token, String URI, String xml, String proxyHost, int proxyPort) {
+        super(token, URI + Constants.RELACIONADOS_XML_PATH, proxyHost, proxyPort);
         this.xml = xml;
     }
 

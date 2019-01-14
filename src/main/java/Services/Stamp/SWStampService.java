@@ -21,11 +21,11 @@ public class SWStampService extends SWService {
 		super(token, URI);
 	}
 	
-	public SWStampService(String user, String password, String URI, String proxyHost, String proxyPort) throws AuthException {
+	public SWStampService(String user, String password, String URI, String proxyHost, int proxyPort) throws AuthException {
 		super(user, password, URI, proxyHost, proxyPort);
 	}
 
-	public SWStampService(String token, String URI, String proxyHost, String proxyPort) {
+	public SWStampService(String token, String URI, String proxyHost, int proxyPort) {
 		super(token, URI, proxyHost, proxyPort);
 	}
 

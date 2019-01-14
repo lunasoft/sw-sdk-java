@@ -35,7 +35,9 @@ public class IssueRequest implements IRequestor {
 
 			CloseableHttpClient client = HttpClients.createDefault();
 			HttpPost httppost = new HttpPost(request.URI);
-			RequestHelper.setTimeOut(httppost, xmlStr.length());
+			RequestHelper.setTimeOut(request.options, xmlStr.length());
+			RequestHelper.setProxy(request.options, request.proxyHost, request.proxyPort);
+			httppost.setConfig(request.options.build());
 			httppost.setHeader("Authorization", "bearer " + request.Token);
 			httppost.addHeader("Content-Type", "application/jsontoxml");
 			StringEntity stringEntity = new StringEntity(xmlStr,ContentType.create("application/json", Consts.UTF_8));
@@ -71,7 +73,9 @@ public class IssueRequest implements IRequestor {
 
 			CloseableHttpClient client = HttpClients.createDefault();
 			HttpPost httppost = new HttpPost(request.URI);
-			RequestHelper.setTimeOut(httppost, raw.length());
+			RequestHelper.setTimeOut(request.options, raw.length());
+			RequestHelper.setProxy(request.options, request.proxyHost, request.proxyPort);
+			httppost.setConfig(request.options.build());
 			httppost.setHeader("Authorization", "bearer " + request.Token);
 			httppost.addHeader("Content-Type", "multipart/form-data; boundary=" + boundary);
 			httppost.addHeader("Content-Disposition", "form-data; name=xml; filename=xml");

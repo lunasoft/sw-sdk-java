@@ -15,7 +15,7 @@ public abstract class SWService {
     private String User = null;
     private String Password = null;
     private String ProxyHost = null;
-    private String ProxyPort = null;
+    private int ProxyPort = 0;
     private Date time = null;
 
     public String getToken() throws AuthException, GeneralException, IOException {
@@ -41,7 +41,7 @@ public abstract class SWService {
     	return ProxyHost;
     }
 
-    public String getProxyPort() {
+    public int getProxyPort() {
     	return ProxyPort;
     }
     
@@ -60,7 +60,7 @@ public abstract class SWService {
 		}
     }
     
-    protected SWService(String user, String password, String URI, String ProxyHost, String ProxyPort) throws AuthException {
+    protected SWService(String user, String password, String URI, String ProxyHost, int ProxyPort) throws AuthException {
         User = user;
         Password = password;
         this.ProxyHost = ProxyHost;
@@ -83,7 +83,7 @@ public abstract class SWService {
         this.time = new Date((long)999999999*100000);
     }
     
-    protected SWService(String token, String URI, String ProxyHost, String ProxyPort) {
+    protected SWService(String token, String URI, String ProxyHost, int ProxyPort) {
         Token = token;
         this.URI = URI;
         this.ProxyHost = ProxyHost;
@@ -111,7 +111,7 @@ public abstract class SWService {
         if (User == null || Password == null) {
             throw new AuthException(400, "no existen elementos de autenticación");
         }
-        AuthOptionsRequest settings = new AuthOptionsRequest(URI, getUser(), getPassword());
+        AuthOptionsRequest settings = new AuthOptionsRequest(URI, getUser(), getPassword(), getProxyHost(), getProxyPort());
         AuthRequest req = new AuthRequest();
         SuccessAuthResponse res = (SuccessAuthResponse) req.sendRequest(settings);
         if (res.HttpStatusCode == 200) {

@@ -39,5 +39,10 @@ public class RequestHelper {
 			}
 		}
 	}
+	
+	public static boolean stringEmptyOrNull(String st) {
+	    return st == null || st.trim().isEmpty();
+	}
+
 
 }

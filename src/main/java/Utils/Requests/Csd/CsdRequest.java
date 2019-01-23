@@ -28,6 +28,9 @@ import Utils.Responses.Csd.UploadCsdResponse;;
 public class CsdRequest implements IRequestor {
 	public IResponse sendRequest(IRequest request) throws GeneralException, AuthException, IOException {
 		try {
+			if(RequestHelper.stringEmptyOrNull(((CsdOptionsRequest) request).getB64Cer()) || RequestHelper.stringEmptyOrNull(((CsdOptionsRequest) request).getB64key())) {
+				return new UploadCsdResponse(400, "error", "El certificado o llave proporcionados vienen vacíos", "");
+			}
 			JSONObject requestJSON = new JSONObject();
 			requestJSON.put("certificate_type", ((CsdOptionsRequest) request).getCertificateType());
 			requestJSON.put("password", ((CsdOptionsRequest) request).getPasswordCsd());

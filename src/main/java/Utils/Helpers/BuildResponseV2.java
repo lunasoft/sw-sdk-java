@@ -14,7 +14,11 @@ public class BuildResponseV2 extends ResponseStamp {
 				return new SuccessV2Response(status, body.getString("status"), data.getString("tfd"), data.getString("cfdi"), "OK", "OK");
 			}
 			else {
-				return new SuccessV2Response(status, body.getString("status"), "", "",body.getString("message"), body.getString("messageDetail"));
+				String messageDetail = "";
+                if (!body.isNull("messageDetail")){
+                    messageDetail = body.getString("messageDetail");
+                }
+				return new SuccessV2Response(status, body.getString("status"), "", "",body.getString("message"), messageDetail);
 			}
 		}
 		else {

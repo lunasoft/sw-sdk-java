@@ -14,7 +14,11 @@ public class BuildResponseV3 extends ResponseStamp {
 				return new SuccessV3Response(status, body.getString("status"), data.getString("cfdi"),reason.getReasonPhrase(), reason.getReasonPhrase());
 			}
 			else {
-				return new SuccessV3Response(status, body.getString("status"), "",body.getString("message"), body.getString("messageDetail"));
+				String messageDetail = "";
+                if (!body.isNull("messageDetail")){
+                    messageDetail = body.getString("messageDetail");
+                }
+				return new SuccessV3Response(status, body.getString("status"), "",body.getString("message"), messageDetail);
 			}
 		}
 		else {

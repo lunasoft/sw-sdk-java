@@ -14,7 +14,11 @@ public class BuildResponseV1 extends ResponseStamp {
 				return new SuccessV1Response(status, body.getString("status"), data.getString("tfd"), "OK", "OK");
 			}
 			else {
-				return new SuccessV1Response(status, body.getString("status"), "", body.getString("message"), body.getString("messageDetail"));
+				String messageDetail = "";
+                if (!body.isNull("messageDetail")){
+                    messageDetail = body.getString("messageDetail");
+                }
+				return new SuccessV1Response(status, body.getString("status"), "", body.getString("message"), messageDetail);
 			}
 		}
 		else {

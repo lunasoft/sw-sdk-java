@@ -12,7 +12,7 @@ import Utils.Responses.IResponse;
 
 public class SWBalanceAccountService extends SWService {
     
-    public SWBalanceAccountService(String user, String password, String URI) {
+    public SWBalanceAccountService(String user, String password, String URI) throws AuthException {
         super(user, password, URI);
     }
 
@@ -20,8 +20,16 @@ public class SWBalanceAccountService extends SWService {
         super(token, URI);
     }
     
+    public SWBalanceAccountService(String user, String password, String URI, String proxyHost, int proxyPort) throws AuthException {
+        super(user, password, URI, proxyHost, proxyPort);
+    }
+
+    public SWBalanceAccountService(String token, String URI, String proxyHost, int proxyPort) {
+        super(token, URI, proxyHost, proxyPort);
+    }
+    
     public IResponse GetBalanceAccount() throws AuthException, GeneralException, IOException {
-        BalanceAcctOptionsRequest settings = new BalanceAcctOptionsRequest(getToken(),getURI());
+        BalanceAcctOptionsRequest settings = new BalanceAcctOptionsRequest(getToken(), getURI(), getProxyHost(), getProxyPort());
         BalanceAcctRequest req = new BalanceAcctRequest();
         return req.sendRequest(settings);
     }

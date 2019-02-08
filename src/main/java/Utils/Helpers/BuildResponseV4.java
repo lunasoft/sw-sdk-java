@@ -19,7 +19,11 @@ public class BuildResponseV4 extends ResponseStamp {
 						data.getString("qrCode"), reason.getReasonPhrase(), reason.getReasonPhrase());
 			}
 			else {
-				return new SuccessV4Response(status, body.getString("status"), "", "", "", "", "", "", "", "", "", body.getString("message"), body.getString("messageDetail"));
+				String messageDetail = "";
+                if (!body.isNull("messageDetail")){
+                    messageDetail = body.getString("messageDetail");
+                }
+				return new SuccessV4Response(status, body.getString("status"), "", "", "", "", "", "", "", "", "", body.getString("message"), messageDetail);
 			}
 		}
 		else {

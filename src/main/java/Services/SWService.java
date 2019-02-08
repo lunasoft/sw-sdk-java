@@ -10,9 +10,12 @@ import Utils.Requests.Authentication.AuthRequest;
 import Utils.Responses.Authentication.SuccessAuthResponse;
 
 public abstract class SWService {
+	private String URI;
     private String Token = null;
     private String User = null;
     private String Password = null;
+    private String ProxyHost = null;
+    private int ProxyPort = 0;
     private Date time = null;
 
     public String getToken() throws AuthException, GeneralException, IOException {
@@ -34,26 +37,57 @@ public abstract class SWService {
         return URI;
     }
 
-    private String URI;
+    public String getProxyHost() {
+    	return ProxyHost;
+    }
 
-    protected SWService(String user, String password, String URI) {
+    public int getProxyPort() {
+    	return ProxyPort;
+    }
+    
+    protected SWService(String user, String password, String URI) throws AuthException {
         User = user;
         Password = password;
         this.URI = URI;
         try {
 			generateToken();
 		} catch (AuthException e) {
-			e.printStackTrace();
+			throw new AuthException(e.getHttpStatusCode(), e.getErrorMSG());
 		} catch (GeneralException e) {
-			e.printStackTrace();
+			throw new AuthException(e.getHttpStatusCode(), e.getErrorMSG());
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new AuthException(409, e.getMessage());
+		}
+    }
+    
+    protected SWService(String user, String password, String URI, String ProxyHost, int ProxyPort) throws AuthException {
+        User = user;
+        Password = password;
+        this.ProxyHost = ProxyHost;
+        this.ProxyPort = ProxyPort;
+        this.URI = URI;
+        try {
+			generateToken();
+		} catch (AuthException e) {
+			throw new AuthException(e.getHttpStatusCode(), e.getErrorMSG());
+		} catch (GeneralException e) {
+			throw new AuthException(e.getHttpStatusCode(), e.getErrorMSG());
+		} catch (IOException e) {
+			throw new AuthException(409, e.getMessage());
 		}
     }
 
     protected SWService(String token, String URI) {
         Token = token;
         this.URI = URI;
+        this.time = new Date((long)999999999*100000);
+    }
+    
+    protected SWService(String token, String URI, String ProxyHost, int ProxyPort) {
+        Token = token;
+        this.URI = URI;
+        this.ProxyHost = ProxyHost;
+        this.ProxyPort = ProxyPort;
         this.time = new Date((long)999999999*100000);
     }
 
@@ -75,9 +109,9 @@ public abstract class SWService {
     
     public void generateToken() throws AuthException, GeneralException, IOException {
         if (User == null || Password == null) {
-            throw new AuthException(400, "no existen elementos de autenticaciÃ³n");
+            throw new AuthException(400, "no existen elementos de autenticación");
         }
-        AuthOptionsRequest settings = new AuthOptionsRequest(URI, getUser(), getPassword());
+        AuthOptionsRequest settings = new AuthOptionsRequest(URI, getUser(), getPassword(), getProxyHost(), getProxyPort());
         AuthRequest req = new AuthRequest();
         SuccessAuthResponse res = (SuccessAuthResponse) req.sendRequest(settings);
         if (res.HttpStatusCode == 200) {

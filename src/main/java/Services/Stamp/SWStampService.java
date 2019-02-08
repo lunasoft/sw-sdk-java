@@ -13,16 +13,24 @@ import java.nio.charset.Charset;
 
 public class SWStampService extends SWService {
 
-	public SWStampService(String user, String password, String URI) {
+	public SWStampService(String user, String password, String URI) throws AuthException {
 		super(user, password, URI);
 	}
 
 	public SWStampService(String token, String URI) {
 		super(token, URI);
 	}
+	
+	public SWStampService(String user, String password, String URI, String proxyHost, int proxyPort) throws AuthException {
+		super(user, password, URI, proxyHost, proxyPort);
+	}
+
+	public SWStampService(String token, String URI, String proxyHost, int proxyPort) {
+		super(token, URI, proxyHost, proxyPort);
+	}
 
 	public IResponse Stamp(String xml, String version) throws AuthException, GeneralException, IOException {
-		StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), xml, version);
+		StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), xml, version, getProxyHost(), getProxyPort());
 		StampRequest req = new StampRequest();
 		return req.sendRequest(settings);
 	}
@@ -30,11 +38,11 @@ public class SWStampService extends SWService {
 	public IResponse Stamp(String xml, String version, boolean isb64)
 			throws AuthException, GeneralException, IOException {
 		if (isb64) {
-			StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), xml, version, isb64);
+			StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), xml, version, isb64, getProxyHost(), getProxyPort());
 			StampRequest req = new StampRequest();
 			return req.sendRequest(settings);
 		} else {
-			StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), xml, version);
+			StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), xml, version, getProxyHost(), getProxyPort());
 			StampRequest req = new StampRequest();
 			return req.sendRequest(settings);
 		}
@@ -43,14 +51,14 @@ public class SWStampService extends SWService {
 	public IResponse Stamp(byte[] xmlFile, String version, boolean isb64)
 			throws AuthException, GeneralException, IOException {
 		String xmlProcess = new String(xmlFile, Charset.forName("UTF-8"));
-		StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), xmlProcess, version);
+		StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), xmlProcess, version, getProxyHost(), getProxyPort());
 		StampRequest req = new StampRequest();
 		return req.sendRequest(settings);
 	}
 
 	public IResponse Stamp(byte[] xmlFile, String version) throws AuthException, GeneralException, IOException {
 		String xmlProcess = new String(xmlFile, Charset.forName("UTF-8"));
-		StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), xmlProcess, version);
+		StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), xmlProcess, version, getProxyHost(), getProxyPort());
 		StampRequest req = new StampRequest();
 		return req.sendRequest(settings);
 

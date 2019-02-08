@@ -15,8 +15,8 @@ public class AuthOptionsRequest extends IRequest {
         PortHost = portHost;
     }
 
-    public AuthOptionsRequest(String URI, String user, String password) {
-        super(URI+ Constants.AUTH_PATH, user, password);
+    public AuthOptionsRequest(String URI, String user, String password, String proxyHost, int proxyPort) {
+        super(URI+ Constants.AUTH_PATH, user, password, proxyHost, proxyPort);
     }
 
     public String getProxyHost() {
@@ -25,12 +25,5 @@ public class AuthOptionsRequest extends IRequest {
 
     public String getPortHost() {
         return PortHost;
-    }
-
-    public AuthOptionsRequest(String URI, String user, String password, String hostProxy, String portProxy) {
-
-        super(URI+ Constants.AUTH_PATH, user, password);
-        this.setPortHost(portProxy);
-        this.setProxyHost(hostProxy);
     }
 }

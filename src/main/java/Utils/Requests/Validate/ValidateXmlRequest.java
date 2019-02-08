@@ -37,7 +37,9 @@ public class ValidateXmlRequest implements IRequestor{
             String raw = "--"+boundary+"\r\nContent-Disposition: form-data; name=xml; filename=xml\r\nContent-Type: application/xml\r\n\r\n"+xmlStr+"\r\n--"+boundary+"--";
             CloseableHttpClient client = HttpClients.createDefault();
             HttpPost httppost = new HttpPost(request.URI);
-            RequestHelper.setTimeOut(httppost, raw.length());
+            RequestHelper.setTimeOut(request.options, raw.length());
+            RequestHelper.setProxy(request.options, request.proxyHost, request.proxyPort);
+			httppost.setConfig(request.options.build());
             httppost.setHeader("Authorization", "bearer " + request.Token);
             httppost.addHeader("Content-Type", "multipart/form-data; boundary="+boundary);
             MultipartEntityBuilder builder = MultipartEntityBuilder.create();

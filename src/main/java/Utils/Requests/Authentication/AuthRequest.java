@@ -2,6 +2,7 @@ package Utils.Requests.Authentication;
 
 import Exceptions.AuthException;
 import Exceptions.GeneralException;
+import Utils.Helpers.RequestHelper;
 import Utils.Requests.IRequest;
 import Utils.Requests.IRequestor;
 import Utils.Responses.IResponse;
@@ -31,7 +32,9 @@ public class AuthRequest implements IRequestor {
         	HttpPost httppost = new HttpPost(request.URI);
         	httppost.setHeader("user", request.User);
             httppost.addHeader("password", request.Password);
-            
+            RequestHelper.setTimeOut(request.options, 3000);
+			RequestHelper.setProxy(request.options, request.proxyHost, request.proxyPort);
+			httppost.setConfig(request.options.build());
             CloseableHttpResponse responseB = client.execute(httppost);
             HttpEntity entity = responseB.getEntity();
             String responseString = EntityUtils.toString(entity, "UTF-8");

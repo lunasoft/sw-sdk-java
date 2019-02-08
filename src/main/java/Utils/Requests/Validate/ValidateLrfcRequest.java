@@ -25,7 +25,9 @@ public class ValidateLrfcRequest implements IRequestor{
 		try {
 			CloseableHttpClient client = HttpClients.createDefault();
             HttpGet http = new HttpGet(request.URI); 
-            RequestHelper.setTimeOut(http, 7000);
+            RequestHelper.setTimeOut(request.options, 7000);
+            RequestHelper.setProxy(request.options, request.proxyHost, request.proxyPort);
+			http.setConfig(request.options.build());
             http.setHeader("Authorization", "bearer " + request.Token);
             CloseableHttpResponse responseB = client.execute(http);
             

@@ -28,7 +28,9 @@ public class PendientesCancelarRequest implements IRequestor {
 		try {
 			CloseableHttpClient client = HttpClients.createDefault();
 			HttpGet httpget = new HttpGet(request.URI);
-			RequestHelper.setTimeOut(httpget, 7000);
+			RequestHelper.setTimeOut(request.options, 7000);
+			RequestHelper.setProxy(request.options, request.proxyHost, request.proxyPort);
+			httpget.setConfig(request.options.build());
 			httpget.setHeader("Authorization", "bearer " + request.Token);
 			CloseableHttpResponse responseB = client.execute(httpget);
 			HttpEntity entity = responseB.getEntity();

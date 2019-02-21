@@ -25,4 +25,6 @@ public class Constants {
     public static String RELACIONADOS_UUID_PATH = "/relations/";
     public static String PENDIENTES_CANCELAR_PATH = "/pendings/";
     public static String SAVE_CSD = "/certificates/save";
+    public static String DISABLE_SEARCH_CSD = "/certificates/";
+    public static String LIST_CSD = "/certificates";
 }

@@ -49,13 +49,4 @@ public class CsdOptionsRequest extends IRequest {
     public boolean getIsActive() {
     	return isActive;
     }
-    /*
-    public String getCertificateNumber() {
-    	return certificateNumber;
-    }
-    
-    public String getRfc() {
-    	return rfc;
-    }
-    */
 }

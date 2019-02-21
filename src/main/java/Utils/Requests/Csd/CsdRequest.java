@@ -23,16 +23,16 @@ import Utils.Requests.IRequest;
 import Utils.Requests.IRequestor;
 import Utils.Requests.Csd.CsdOptionsRequest;
 import Utils.Responses.IResponse;
-import Utils.Responses.Csd.UploadCsdResponse;;
+import Utils.Responses.Csd.CsdResponse;;
 
 public class CsdRequest implements IRequestor {
 	public IResponse sendRequest(IRequest request) throws GeneralException, AuthException, IOException {
 		try {
 			if(RequestHelper.stringEmptyOrNull(((CsdOptionsRequest) request).getB64Cer()) || RequestHelper.stringEmptyOrNull(((CsdOptionsRequest) request).getB64key())) {
-				return new UploadCsdResponse(400, "error", "El certificado o llave proporcionados vienen vacíos", "");
+				return new CsdResponse(400, "error", "El certificado o llave proporcionados vienen vacíos", "");
 			}
 			JSONObject requestJSON = new JSONObject();
-			requestJSON.put("certificate_type", ((CsdOptionsRequest) request).getCertificateType());
+			requestJSON.put("type", ((CsdOptionsRequest) request).getCertificateType());
 			requestJSON.put("password", ((CsdOptionsRequest) request).getPasswordCsd());
 			requestJSON.put("is_active", ((CsdOptionsRequest) request).getIsActive());
 			requestJSON.put("b64Cer", ((CsdOptionsRequest) request).getB64Cer());
@@ -61,17 +61,17 @@ public class CsdRequest implements IRequestor {
 				JSONObject body = new JSONObject(responseString);
 				if (status == 200) {
 					String data = body.getString("data");
-					return new UploadCsdResponse(status, body.getString("status"),data, "OK", "OK");
+					return new CsdResponse(status, body.getString("status"),data, "OK", "OK");
 
 				} else {
 					String messageDetail = "";
 					if (!body.isNull("messageDetail")) {
 						messageDetail = body.getString("messageDetail");
 					}
-					return new UploadCsdResponse(status, body.getString("status"), body.getString("message"), messageDetail);
+					return new CsdResponse(status, body.getString("status"), body.getString("message"), messageDetail);
 				}
 			} else {
-				return new UploadCsdResponse(status, "error", responseB.getStatusLine().getReasonPhrase(), responseB.getStatusLine().getReasonPhrase());
+				return new CsdResponse(status, "error", responseB.getStatusLine().getReasonPhrase(), responseB.getStatusLine().getReasonPhrase());
 			}
 		} catch (JSONException e) {
 			throw new GeneralException(500, e.getMessage());

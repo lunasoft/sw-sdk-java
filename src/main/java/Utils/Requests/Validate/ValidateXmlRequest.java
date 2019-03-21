@@ -54,7 +54,7 @@ public class ValidateXmlRequest implements IRequestor{
             int statusE = responseB.getStatusLine().getStatusCode();
             client.close();
             responseB.close();
-            if(!responseString.isEmpty()) {
+            if(!responseString.isEmpty() && statusE < 500) {
             	JSONObject body = new JSONObject(responseString);
             	if(statusE==200){
             		LinkedList<DetailNode> List = new LinkedList<DetailNode>();
@@ -83,7 +83,7 @@ public class ValidateXmlRequest implements IRequestor{
             	}
             }
             else {
-            	return new ValidateXmlResponse(statusE,"error",responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase());
+            	return new ValidateXmlResponse(statusE,"error",responseB.getStatusLine().getReasonPhrase(), responseString);
             }
 		}
 		catch (JSONException e){

@@ -7,7 +7,7 @@ import Utils.Responses.Stamp.SuccessV4Response;
 
 public class BuildResponseV4 extends ResponseStamp {
 	public IResponse getResponse() { 
-		if(!response.trim().isEmpty()) {
+		if(!response.trim().isEmpty() && status < 500) {
 			JSONObject body = new JSONObject(response);
 			if(status == 200) {
 				JSONObject data = body.getJSONObject("data");
@@ -27,7 +27,7 @@ public class BuildResponseV4 extends ResponseStamp {
 			}
 		}
 		else {
-			return new SuccessV4Response(status, "error", "", "", "", "", "", "", "", "", "", "Error con código "+status+": "+reason.getReasonPhrase(), reason.getProtocolVersion().getProtocol());
+			return new SuccessV4Response(status, "error", "", "", "", "", "", "", "", "", "", "Error con código "+status+": "+reason.getReasonPhrase(), response);
 		}
 	}
 }

@@ -37,7 +37,7 @@ public class ValidateLcoRequest implements IRequestor{
             int statusE = responseB.getStatusLine().getStatusCode();
             client.close();
             responseB.close();
-            if(!responseString.isEmpty()) {
+            if(!responseString.isEmpty() && statusE < 500) {
             	JSONObject body = new JSONObject(responseString);
             	if(statusE==200){
             		JSONObject data = new JSONObject(body.get("data").toString());
@@ -52,7 +52,7 @@ public class ValidateLcoRequest implements IRequestor{
             	}
             }
             else {
-            	return new ValidateLcoResponse(statusE,"error",responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase());
+            	return new ValidateLcoResponse(statusE,"error",responseB.getStatusLine().getReasonPhrase(), responseString);
             }
 		}
 		catch (JSONException e){

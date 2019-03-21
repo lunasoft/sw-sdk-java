@@ -67,7 +67,7 @@ public class CsdRequest implements IRequestor {
 			int status = responseB.getStatusLine().getStatusCode();
 			client.close();
 			responseB.close();
-			if (!responseString.isEmpty()) {
+			if (!responseString.isEmpty() && status < 500) {
 				JSONObject body = new JSONObject(responseString);
 				if (status == 200) {
 					String data = body.getString("data");
@@ -82,7 +82,7 @@ public class CsdRequest implements IRequestor {
 				}
 			} else {
 				return new CsdResponse(status, "error", responseB.getStatusLine().getReasonPhrase(),
-						responseB.getStatusLine().getReasonPhrase());
+						responseString);
 			}
 		} catch (JSONException e) {
 			throw new GeneralException(500, e.getMessage());
@@ -104,7 +104,7 @@ public class CsdRequest implements IRequestor {
 			int status = responseB.getStatusLine().getStatusCode();
 			client.close();
 			responseB.close();
-			if (!responseString.isEmpty()) {
+			if (!responseString.isEmpty() && status < 500) {
 				JSONObject body = new JSONObject(responseString);
 				if (status == 200) {
 					String data = body.getString("data");
@@ -119,7 +119,7 @@ public class CsdRequest implements IRequestor {
 				}
 			} else {
 				return new CsdResponse(status, "error", responseB.getStatusLine().getReasonPhrase(),
-						responseB.getStatusLine().getReasonPhrase());
+						responseString);
 			}
 		} catch (JSONException e) {
 			throw new GeneralException(500, e.getMessage());
@@ -141,7 +141,7 @@ public class CsdRequest implements IRequestor {
 			int status = responseB.getStatusLine().getStatusCode();
 			client.close();
 			responseB.close();
-			if (!responseString.isEmpty()) {
+			if (!responseString.isEmpty() && status < 500) {
 				JSONObject body = new JSONObject(responseString);
 				if (status == 200) {
 					JSONArray data = body.getJSONArray("data");
@@ -166,7 +166,7 @@ public class CsdRequest implements IRequestor {
 				}
 			} else {
 				return new ListInfoCsdResponse(status, "error", responseB.getStatusLine().getReasonPhrase(),
-						responseB.getStatusLine().getReasonPhrase());
+						responseString);
 			}
 		} catch (JSONException e) {
 			throw new GeneralException(500, e.getMessage());
@@ -188,7 +188,7 @@ public class CsdRequest implements IRequestor {
 			int status = responseB.getStatusLine().getStatusCode();
 			client.close();
 			responseB.close();
-			if (!responseString.isEmpty()) {
+			if (!responseString.isEmpty() && status < 500) {
 				JSONObject body = new JSONObject(responseString);
 				if (status == 200) {
 					JSONObject data = body.getJSONObject("data");
@@ -208,7 +208,7 @@ public class CsdRequest implements IRequestor {
 				}
 			} else {
 				return new InfoCsdResponse(status, "error", responseB.getStatusLine().getReasonPhrase(),
-						responseB.getStatusLine().getReasonPhrase());
+						responseString);
 			}
 		} catch (JSONException e) {
 			throw new GeneralException(500, e.getMessage());

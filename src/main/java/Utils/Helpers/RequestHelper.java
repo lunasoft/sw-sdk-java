@@ -30,7 +30,7 @@ public class RequestHelper {
 	}
 
 	public static void setProxy(Builder build, String host, int port) throws GeneralException {
-		if(host != null){
+		if(!stringEmptyOrNull(host)){
 			try {
 				HttpHost proxy = new HttpHost(host, port);
 				build.setProxy(proxy);

@@ -18,6 +18,12 @@ public class BuildResponseV1 extends ResponseStamp {
                 if (!body.isNull("messageDetail")){
                     messageDetail = body.getString("messageDetail");
                 }
+                if(body.getString("message").equals("307. El comprobante contiene un timbre previo.")) {
+					if(!body.isNull("data")) {
+						JSONObject data = body.getJSONObject("data");
+						return new SuccessV1Response(status, body.getString("status"), data.getString("tfd"), body.getString("message"), messageDetail);
+					}
+				}
 				return new SuccessV1Response(status, body.getString("status"), "", body.getString("message"), messageDetail);
 			}
 		}

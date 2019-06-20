@@ -3,6 +3,7 @@ package Utils.Helpers;
 import org.json.JSONObject;
 
 import Utils.Responses.IResponse;
+import Utils.Responses.Stamp.SuccessV1Response;
 import Utils.Responses.Stamp.SuccessV2Response;
 
 public class BuildResponseV2 extends ResponseStamp {
@@ -18,7 +19,13 @@ public class BuildResponseV2 extends ResponseStamp {
                 if (!body.isNull("messageDetail")){
                     messageDetail = body.getString("messageDetail");
                 }
-				return new SuccessV2Response(status, body.getString("status"), "", "",body.getString("message"), messageDetail);
+                if(body.getString("message").equals("307. El comprobante contiene un timbre previo.")) {
+					if(!body.isNull("data")) {
+						JSONObject data = body.getJSONObject("data");
+						return new SuccessV2Response(status, body.getString("status"), data.getString("tfd"), data.getString("cfdi"), body.getString("message"), messageDetail);
+					}
+				}
+				return new SuccessV2Response(status, body.getString("status"), "", "", body.getString("message"), messageDetail);
 			}
 		}
 		else {

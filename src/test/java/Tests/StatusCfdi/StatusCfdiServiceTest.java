@@ -1,12 +1,13 @@
 package Tests.StatusCfdi;
 
 import org.junit.Assert;
+import org.junit.Test;
 
 import Services.StatusCfdi.StatusCfdiService;
 import Utils.Responses.StatusCfdi.StatusCfdiResponse;
-import junit.framework.TestCase;
 
-public class StatusCfdiServiceTest extends TestCase{
+public class StatusCfdiServiceTest {
+	@Test
 	public void testStatusCancelationService_Real() throws Exception {
 		StatusCfdiService app = new StatusCfdiService("https://consultaqr.facturaelectronica.sat.gob.mx/ConsultaCFDIService.svc", "http://tempuri.org/IConsultaCFDIService/Consulta");
 		StatusCfdiResponse response = null;

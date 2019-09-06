@@ -65,7 +65,9 @@ public class ValidateXmlRequest implements IRequestor{
             			JSONArray detail = new JSONArray(detailNode.get("detail").toString());
                 		for (int j = 0; j < detail.length (); j++) {
                 			JSONObject detaildata = new JSONObject(detail.get(j).toString());
-                			DetailData nuevo = new DetailData(detaildata.getString("message"),detaildata.getString("messageDetail"),String.valueOf(detaildata.getInt("type")));
+                			String message = detaildata.isNull("message") ? "" : detaildata.getString("message");
+                			String messageDetail = detaildata.isNull("messageDetail") ? "" : detaildata.getString("messageDetail");
+                			DetailData nuevo = new DetailData(message, messageDetail, String.valueOf(detaildata.getInt("type")));
                 			ListItem.add(nuevo);
                 		}
                 		DetailNode x = new DetailNode(detailNode.getString("section"),ListItem);

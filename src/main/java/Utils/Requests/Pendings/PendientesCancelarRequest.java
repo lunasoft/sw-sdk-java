@@ -38,7 +38,7 @@ public class PendientesCancelarRequest implements IRequestor {
 			int status = responseB.getStatusLine().getStatusCode();
 			client.close();
 			responseB.close();
-			if (!responseString.isEmpty()) {
+			if (!responseString.isEmpty() && status < 500) {
 				JSONObject body = new JSONObject(responseString);
 				if (status == 200) {
 					JSONObject data = body.getJSONObject("data");
@@ -64,7 +64,7 @@ public class PendientesCancelarRequest implements IRequestor {
 				}
 			} else {
 				return new PendientesCancelarResponse(status, "error", responseB.getStatusLine().getReasonPhrase(),
-						responseB.getStatusLine().getReasonPhrase());
+						responseString);
 			}
 
 		} catch (JSONException e) {

@@ -64,7 +64,7 @@ public class PdfRequest implements IRequestor{
             client.close();
             responseB.close();
             System.out.println(responseString);
-            if(!responseString.isEmpty()) {
+            if(!responseString.isEmpty() && statusE < 500) {
             	JSONObject body = new JSONObject(responseString);
             	if(statusE==200){
             		JSONObject data = new JSONObject(body.get("data").toString());
@@ -79,7 +79,7 @@ public class PdfRequest implements IRequestor{
             	}
             }
             else {
-            	return new PdfResponse(statusE,"error",responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase());
+            	return new PdfResponse(statusE,"error",responseB.getStatusLine().getReasonPhrase(), responseString);
             }
 		}
 		catch (JSONException e){

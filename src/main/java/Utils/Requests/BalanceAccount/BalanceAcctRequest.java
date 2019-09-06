@@ -34,7 +34,7 @@ public class BalanceAcctRequest implements IRequestor {
             int status = responseB.getStatusLine().getStatusCode();
             client.close();
             responseB.close();
-            if(!responseString.isEmpty()) {
+            if(!responseString.isEmpty() && status < 500) {
                 JSONObject body = new JSONObject(responseString);
                 if (status == 200) {
                     JSONObject data = body.getJSONObject("data");
@@ -52,7 +52,7 @@ public class BalanceAcctRequest implements IRequestor {
                     return new BalanceAcctResponse(status, body.getString("status"), body.getString("message"), messageDetail);
                 }
             } else {
-                return new BalanceAcctResponse(status, "error", responseB.getStatusLine().getReasonPhrase(), responseB.getStatusLine().getReasonPhrase());
+                return new BalanceAcctResponse(status, "error", responseB.getStatusLine().getReasonPhrase(), responseString);
             }
 
         } catch (JSONException e) {

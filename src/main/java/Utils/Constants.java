@@ -4,8 +4,10 @@ public class Constants {
     public static String BASE_PATH = "http://services.test.sw.com.mx";
     public static String AUTH_PATH = "/security/authenticate";
     public static String STAMP_PATH = "/cfdi33/stamp/";
+    public static String STAMP_V2_PATH = "/cfdi33/v2/stamp/";
     public static String ISSUE_JSON_PATH = "/v3/cfdi33/issue/json/";
     public static String ISSUE_XML_PATH = "/cfdi33/issue/";
+    public static String ISSUE_XML_V2_PATH = "/cfdi33/v2/issue/";
     public static String CANCELATION_CSD_PATH = "/cfdi33/cancel/csd";
     public static String CANCELATION_XML_PATH = "/cfdi33/cancel/xml";
     public static String CANCELATION_PFX_PATH = "/cfdi33/cancel/pfx";
@@ -24,5 +26,7 @@ public class Constants {
     public static String RELACIONADOS_XML_PATH = "/relations/xml";
     public static String RELACIONADOS_UUID_PATH = "/relations/";
     public static String PENDIENTES_CANCELAR_PATH = "/pendings/";
-    public static String SAVE_CSD = "/csd/save";
+    public static String SAVE_CSD = "/certificates/save";
+    public static String DISABLE_SEARCH_CSD = "/certificates/";
+    public static String LIST_CSD = "/certificates";
 }

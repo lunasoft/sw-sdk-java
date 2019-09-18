@@ -1,7 +1,8 @@
 package Utils.Requests.Taxpayer;
 
 import java.io.IOException;
-
+import java.util.LinkedList;
+import java.util.List;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -13,14 +14,12 @@ import org.apache.http.message.BasicHeader;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import Exceptions.GeneralException;
 import Utils.Helpers.RequestHelper;
 import Utils.Requests.IRequest;
-import Utils.Requests.Cancelation.CancelationOptionsRequest;
 import Utils.Responses.IResponse;
-import Utils.Responses.Cancelation.CancelationResponse;
-import Utils.Responses.Taxplayer.TaxplayerResponse;
+import Utils.Responses.Taxpayer.TaxpayerData;
+import Utils.Responses.Taxpayer.TaxpayerResponse;
 import Utils.Requests.Taxpayer.TaxpayerOptionsRequest;
 
 public class TaxpayerRequest {
@@ -43,33 +42,38 @@ public class TaxpayerRequest {
 			if (!responseString.isEmpty() && status < 500) {
 				JSONObject body = new JSONObject(responseString);
 				if (status == 200) {
-					JSONObject data = body.getJSONObject("data");		
-					return new TaxplayerResponse(status, body.getString("status"),data.getString("id"),
-							data.getString("rfc"), 
-                            data.getString("nombre_Contribuyente"),
-							data.getString("situacion_del_contribuyente"),
-							data.getString("numero_y_fecha_oficio_global_presuncion"),
-							data.getString("publicacion_pagina_SAT_presuntos"),
-							data.getString("publicacion_DOF_presuntos"),
-							data.getString("publicacion_pagina_SAT_desvirtuados"),
-							data.getString("numero_fecha_oficio_global_contribuyentes_que_desvirtuaron"),
-							data.getString("publicacion_DOF_desvirtuados"),
-							data.getString("numero_fecha_oficio_global_definitivos"),
-							data.getString("publicacion_pagina_SAT_definitivos"),
-                            data.getString("publicacion_DOF_definitivos"),
-							data.getString("numero_fecha_oficio_global_sentencia_favorable"),
-							data.getString("publicacion_pagina_SAT_sentencia_favorable"),
-							data.getString("publicacion_DOF_sentencia_favorable"), "OK", "OK");
+					JSONObject data = body.getJSONObject("data");
+					List<TaxpayerData> TaxpayerList = new LinkedList<TaxpayerData>();
+					TaxpayerData Taxpayer = new TaxpayerData();
+
+					Taxpayer.setId(data.getString("id"));
+					Taxpayer.setRfc(data.getString("rfc"));
+					Taxpayer.setNombre_Contribuyente(data.getString("nombre_Contribuyente"));
+					Taxpayer.setSituacion_del_contribuyente(data.getString("situacion_del_contribuyente"));
+					Taxpayer.setNumero_y_fecha_oficio_global_presuncion(data.getString("numero_y_fecha_oficio_global_presuncion"));
+					Taxpayer.setPublicacion_pagina_SAT_presuntos(data.getString("publicacion_pagina_SAT_presuntos"));
+					Taxpayer.setPublicacion_DOF_presuntos(data.getString("publicacion_DOF_presuntos"));
+					Taxpayer.setPublicacion_pagina_SAT_desvirtuados(data.getString("publicacion_pagina_SAT_desvirtuados"));
+					Taxpayer.setNumero_fecha_oficio_global_contribuyentes_que_desvirtuaron(data.getString("numero_fecha_oficio_global_contribuyentes_que_desvirtuaron"));
+					Taxpayer.setPublicacion_DOF_desvirtuados(data.getString("publicacion_DOF_desvirtuados"));
+					Taxpayer.setNumero_fecha_oficio_global_definitivos(data.getString("numero_fecha_oficio_global_definitivos"));
+					Taxpayer.setPublicacion_pagina_SAT_definitivos(data.getString("publicacion_pagina_SAT_definitivos"));
+					Taxpayer.setPublicacion_DOF_definitivos(data.getString("publicacion_DOF_definitivos"));
+					Taxpayer.setNumero_fecha_oficio_global_sentencia_favorable(data.getString("numero_fecha_oficio_global_sentencia_favorable"));
+					Taxpayer.setPublicacion_pagina_SAT_sentencia_favorable(data.getString("publicacion_pagina_SAT_sentencia_favorable"));
+					Taxpayer.setPublicacion_DOF_sentencia_favorable(data.getString("publicacion_DOF_sentencia_favorable"));
+					TaxpayerList.add(Taxpayer);
+					return new TaxpayerResponse(status, body.getString("status"), TaxpayerList, "OK", "OK");
 				} else {
 					String messageDetail = "";
 					if (!body.isNull("messageDetail")) {
 						messageDetail = body.getString("messageDetail");
 					}
-					return new TaxplayerResponse(status, body.getString("status"), body.getString("message"),
+					return new TaxpayerResponse(status, body.getString("status"), body.getString("message"),
 							messageDetail);
 				}
 			} else {
-				return new TaxplayerResponse(status, "error", responseB.getStatusLine().getReasonPhrase(),
+				return new TaxpayerResponse(status, "error", responseB.getStatusLine().getReasonPhrase(),
 						responseString);
 			}
 		} catch (JSONException e) {

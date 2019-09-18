@@ -1,12 +1,9 @@
 package Services.Taxpayer;
 
 import java.io.IOException;
-
 import Exceptions.AuthException;
 import Exceptions.GeneralException;
 import Services.SWService;
-import Utils.Requests.Cancelation.CancelationOptionsRequest;
-import Utils.Requests.Cancelation.CancelationRequest;
 import Utils.Requests.Taxpayer.TaxpayerOptionsRequest;
 import Utils.Requests.Taxpayer.TaxpayerRequest;
 import Utils.Responses.IResponse;

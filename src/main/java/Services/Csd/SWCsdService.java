@@ -32,5 +32,47 @@ public class SWCsdService extends SWService {
         CsdRequest req = new CsdRequest();
         return req.sendRequest(settings);
     }
+    
+    public IResponse DisableMyCsd(String certificateNumber) throws AuthException, GeneralException, IOException {
+    	CsdOptionsRequest settings = null;
+    	settings = new CsdOptionsRequest(getToken(), getURI(), certificateNumber, getProxyHost(), getProxyPort());
+    	CsdRequest req = new CsdRequest();
+    	return req.DisableCsdRequest(settings);
+    }
+    
+    public IResponse GetListCsd() throws AuthException, GeneralException, IOException {
+    	CsdOptionsRequest settings = null;
+    	settings = new CsdOptionsRequest(getToken(), getURI(), getProxyHost(), getProxyPort());
+    	CsdRequest req = new CsdRequest();
+    	return req.GetListCsdRequest(settings);
+    }
+    
+    public IResponse GetListCsdByType(String type) throws AuthException, GeneralException, IOException {
+    	CsdOptionsRequest settings = null;
+    	settings = new CsdOptionsRequest(getToken(), getURI(), "type/" + type, getProxyHost(), getProxyPort());
+    	CsdRequest req = new CsdRequest();
+    	return req.GetListCsdRequest(settings);
+    }
+    
+    public IResponse GetListCsdByRfc(String rfc) throws AuthException, GeneralException, IOException {
+    	CsdOptionsRequest settings = null;
+    	settings = new CsdOptionsRequest(getToken(), getURI(), "rfc/" + rfc, getProxyHost(), getProxyPort());
+    	CsdRequest req = new CsdRequest();
+    	return req.GetListCsdRequest(settings);
+    }
+    
+    public IResponse SearchMyCsd(String certificateNumber) throws AuthException, GeneralException, IOException {
+    	CsdOptionsRequest settings = null;
+    	settings = new CsdOptionsRequest(getToken(), getURI(), certificateNumber, getProxyHost(), getProxyPort());
+    	CsdRequest req = new CsdRequest();
+    	return req.GetInfoCsdRequest(settings);
+    }
+    
+    public IResponse SearchActiveCsd(String rfc, String type) throws AuthException, GeneralException, IOException {
+    	CsdOptionsRequest settings = null;
+    	settings = new CsdOptionsRequest(getToken(), getURI(), "rfc/" + rfc, type, getProxyHost(), getProxyPort());
+    	CsdRequest req = new CsdRequest();
+    	return req.GetInfoCsdRequest(settings);
+    }
 }
 

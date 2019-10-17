@@ -19,6 +19,17 @@ public class CsdOptionsRequest extends IRequest {
         this.isActive = isActive;
 	}
 	
+	public CsdOptionsRequest(String token, String URI, String CertificateNumber, String proxyHost, int proxyPort) {
+		super(token, URI + Constants.DISABLE_SEARCH_CSD + CertificateNumber, proxyHost, proxyPort);
+	}
+	public CsdOptionsRequest(String token, String URI, String CertificateNumber, String type, String proxyHost, int proxyPort) {
+		super(token, URI + Constants.DISABLE_SEARCH_CSD + CertificateNumber + "/" + type, proxyHost, proxyPort);
+	}
+	
+	public CsdOptionsRequest(String token, String URI, String proxyHost, int proxyPort) {
+		super(token, URI + Constants.LIST_CSD, proxyHost, proxyPort);
+	}
+	
     public String getB64Cer() {
         return b64Cer;
     }

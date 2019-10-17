@@ -1,39 +1,19 @@
 package Tests;
 
-
 import Tests.assets.Sign;
-import jdk.nashorn.internal.runtime.regexp.RegExp;
-import jdk.nashorn.internal.runtime.regexp.RegExpMatcher;
 import org.apache.commons.codec.binary.Base64;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.mime.HttpMultipartMode;
-import org.apache.http.entity.mime.MultipartEntity;
-import org.apache.http.entity.mime.content.StringBody;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
+import org.json.JSONObject;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
-import sun.misc.BASE64Decoder;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.util.JAXBSource;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import javax.xml.transform.stream.StreamSource;
 import java.io.*;
-import java.net.URL;
-import java.nio.charset.Charset;
-
-import java.security.cert.X509Certificate;
 import java.text.Normalizer;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -47,13 +27,12 @@ public class Utils {
 
     public static String pagos10_b64 = "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48Y2ZkaTpDb21wcm9iYW50ZSB4c2k6c2NoZW1hTG9jYXRpb249Imh0dHA6Ly93d3cuc2F0LmdvYi5teC9jZmQvMyBodHRwOi8vd3d3LnNhdC5nb2IubXgvc2l0aW9faW50ZXJuZXQvY2ZkLzMvY2ZkdjMzLnhzZCBodHRwOi8vd3d3LnNhdC5nb2IubXgvUGFnb3MgaHR0cDovL3d3dy5zYXQuZ29iLm14L3NpdGlvX2ludGVybmV0L2NmZC9QYWdvcy9QYWdvczEwLnhzZCIgeG1sbnM6cGFnbzEwPSJodHRwOi8vd3d3LnNhdC5nb2IubXgvUGFnb3MiIFZlcnNpb249IjMuMyIgRmVjaGE9IjIwMTctMDUtMTRUMTI6NTU6MDkiIFNlbGxvPSJlb2NFWEVYajJCWkdwWkNlTWdtL2k5bWJyTlFDM0lSUHJpOU1tbnZYb0Q3cVVGQnNqVVgvWnlPZWZuQjcwRFk5Vnk1OG5yeDB6QllQMGFMTWQ2cmdOV2tlejBmVGo1WU9HeEVJN1VOTXA3ajVBYkJQenZZc0QxaTFSWFh4ZkVIcFJZWVRXRVRqYmZ1VGNwN3ZlS0dOdmVyS0h4MjVWa005blgzSHhOOXJiTHlkTVRwSXA1Q2ljSCtCQnYzaUFCUVdZWmMySUpiek9zanhadndGaWljK2xTZWtSbjR2bG5zTzRaVkErbXBIcG1GcXRZd3JRTnBPOHF1QUh5cVZRSS8zbzZuMXMyVlU0UjIrQW1LNmVYYTJ1TlVaRDlwb2JFNW1zQmF6K1lIby95ZFNnSFlIalp4ZEczL0hFM3lnOERpNUtuamlSaWNBVTRwcnlKaWFmVUJJbFE9PSIgTm9DZXJ0aWZpY2Fkbz0iMjAwMDEwMDAwMDAzMDAwMjI4MTUiIENlcnRpZmljYWRvPSJNSUlGeFRDQ0E2MmdBd0lCQWdJVU1qQXdNREV3TURBd01EQXpNREF3TWpJNE1UVXdEUVlKS29aSWh2Y05BUUVMQlFBd2dnRm1NU0F3SGdZRFZRUUREQmRCTGtNdUlESWdaR1VnY0hKMVpXSmhjeWcwTURrMktURXZNQzBHQTFVRUNnd21VMlZ5ZG1samFXOGdaR1VnUVdSdGFXNXBjM1J5WVdOcHc3TnVJRlJ5YVdKMWRHRnlhV0V4T0RBMkJnTlZCQXNNTDBGa2JXbHVhWE4wY21GamFjT3piaUJrWlNCVFpXZDFjbWxrWVdRZ1pHVWdiR0VnU1c1bWIzSnRZV05wdzdOdU1Ta3dKd1lKS29aSWh2Y05BUWtCRmhwaGMybHpibVYwUUhCeWRXVmlZWE11YzJGMExtZHZZaTV0ZURFbU1DUUdBMVVFQ1F3ZFFYWXVJRWhwWkdGc1oyOGdOemNzSUVOdmJDNGdSM1ZsY25KbGNtOHhEakFNQmdOVkJCRU1CVEEyTXpBd01Rc3dDUVlEVlFRR0V3Sk5XREVaTUJjR0ExVUVDQXdRUkdsemRISnBkRzhnUm1Wa1pYSmhiREVTTUJBR0ExVUVCd3dKUTI5NWIyRmp3NkZ1TVJVd0V3WURWUVF0RXd4VFFWUTVOekEzTURGT1RqTXhJVEFmQmdrcWhraUc5dzBCQ1FJTUVsSmxjM0J2Ym5OaFlteGxPaUJCUTBSTlFUQWVGdzB4TmpFd01qVXlNVFV5TVRGYUZ3MHlNREV3TWpVeU1UVXlNVEZhTUlHeE1Sb3dHQVlEVlFRREV4RkRTVTVFUlUxRldDQlRRU0JFUlNCRFZqRWFNQmdHQTFVRUtSTVJRMGxPUkVWTlJWZ2dVMEVnUkVVZ1ExWXhHakFZQmdOVkJBb1RFVU5KVGtSRlRVVllJRk5CSUVSRklFTldNU1V3SXdZRFZRUXRFeHhNUVU0M01EQTRNVGN6VWpVZ0x5QkdWVUZDTnpjd01URTNRbGhCTVI0d0hBWURWUVFGRXhVZ0x5QkdWVUZDTnpjd01URTNUVVJHVWs1T01Ea3hGREFTQmdOVkJBc1VDMUJ5ZFdWaVlWOURSa1JKTUlJQklqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FROEFNSUlCQ2dLQ0FRRUFndnZDaUNGREZWYVlYN3hkVlJocC8zOFVMV3RvL0xLRFNaeTF5clhLcGFxRlhxRVJKV0Y3OFlIS2YzTjVHQm9YZ3p3RlB1RFgrNWt2WTV3dFlOeHgvT3d1MnNoTlpxRkZoNkVLc3lzUU1lUDVyejZrRTFnRlllbmFQRVVQOXpqK2gwYkwzeFI1YXFvVHNxR0YyNG1LQkxvaWFLNDRwWEJ6R3pnc3haaXNoVkpWTTZYYnpOSlZvbkVVTmJJMjVEaGdXQWQ4NmYyYVUzQm1PSDJLMVJaeDQxZHRUVDU2VXNzekpsczR0UEZPRHIvY2FXdVpFdVV2THAxTTNuajdEeXU4OG1oRDJmKzFmQS9nN2t6Y1UvMXRjcEZYRi9ySXk5M0FQdmtVNzJqd3Zrcm5wcnpzK1NuRzgxKy9GMTZhaHVHc2IyRVo4OGRLSHdxeEVrd3poTXlUYlFJREFRQUJveDB3R3pBTUJnTlZIUk1CQWY4RUFqQUFNQXNHQTFVZER3UUVBd0lHd0RBTkJna3Foa2lHOXcwQkFRc0ZBQU9DQWdFQUoveGtMOEkrZnBpbFpQKzlhTzhuOTMrMjBYeFZvbUxKamVTTCtOZzJFckwyR2dhdHBMdU41SmtuRkJrWkFoeFZJZ01hVFMyM3p6azFSTHRSYVl2SDgzbEJINUUrTStrRWpGR3AxNEZuZTFpVjJQbTN2TDRqZUxtekhnWTFLZjVIbWVWcnJwNFBVN1dRZzE2VnB5SGFKL2VvblBOaUVCVWpjeVExaUZma3pKbW5TSnZER3RmUUsyVGlFb2xESkFwWXYwT1dkbTRpczlCc2ZpOWo2bEk5L1Q2TU5aKy9MTTJML3Q3MlZhdTRyN205NEpERXphTzNBMHdIQXRROTdmakJmQmlPNU04QUVJU0FWN2VaaWRJbDNpYUpKSGtRYkJZaWlXMmdpa3JlVVpLUFVYMEhtbG5JcXFRY0JKaFdLUnU2TnFrNmFaQlRFVExMcEdydkY5T0FyVjFKU3NiZHcvWkgrUDg4UkF0NWVtNS9nand3dEZsTkh5aUtHNXcrVUZwYVpPSzNnWlAwc3Uwc2E2ZGxQZVE5RUw0SmxGa0dxUUNnU1ErTk9zWHFhT2F2Z29QNVZMeWtMd3VHbndJVW51aEJUVmVEYnpwZ3JnOUx1RjVkWXAvenMrWTlTY0pxZTVWTUFhZ0xTWVRTaE50TjhsdVY3THZ4RjlwZ1d3WmRjTTdsVXdxSm1VZGRDaVpxZG5nZzN2elRhY3RNVG9HMTZnWkE0Q1duTWdiVTRFK3I1NDErRk5NcGdBWk52czJDaVcvZUFwZmFhUW9qc1pFQUhEc0R2NEw1bjNNMUNDN2ZZakUvZDYxYVNuZzFMYU82VDFtaCtkRWZQdkx6cDd6eXp6K1VnV01oaTVDczRwY1h4MWVpYzVyN3V4UG9Cd2NDVHQzWUkxaktWVm5WNy93PSIgU3ViVG90YWw9IjEiIE1vbmVkYT0iTVhOIiBUaXBvQ2FtYmlvPSIxIiBUb3RhbD0iMS4xNiIgVGlwb0RlQ29tcHJvYmFudGU9IkkiIEx1Z2FyRXhwZWRpY2lvbj0iNDUxMDAiIHhtbG5zOmNmZGk9Imh0dHA6Ly93d3cuc2F0LmdvYi5teC9jZmQvMyIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSI+PGNmZGk6RW1pc29yIFJmYz0iTEFONzAwODE3M1I1IiBOb21icmU9IkNJTkRFTUVYIFNBIERFIENWIiBSZWdpbWVuRmlzY2FsPSI2MDEiIC8+PGNmZGk6UmVjZXB0b3IgUmZjPSJYRVhYMDEwMTAxMDAwIiBOb21icmU9ImNsaWVudGUgYWwgcHVibGljbyIgUmVzaWRlbmNpYUZpc2NhbD0iVVNBIiBVc29DRkRJPSJQMDEiIC8+PGNmZGk6Q29uY2VwdG9zPjxjZmRpOkNvbmNlcHRvIENsYXZlUHJvZFNlcnY9IjEwMTUxNzAxIiBDYW50aWRhZD0iMSIgQ2xhdmVVbmlkYWQ9IktHTSIgVW5pZGFkPSJraWxvcyIgRGVzY3JpcGNpb249ImFycm96IiBWYWxvclVuaXRhcmlvPSIxIiBJbXBvcnRlPSIxIj48Y2ZkaTpJbXB1ZXN0b3M+PGNmZGk6VHJhc2xhZG9zPjxjZmRpOlRyYXNsYWRvIEJhc2U9IjEiIEltcHVlc3RvPSIwMDIiIFRpcG9GYWN0b3I9IlRhc2EiIFRhc2FPQ3VvdGE9IjAuMTYwMDAwIiBJbXBvcnRlPSIwLjE2IiAvPjwvY2ZkaTpUcmFzbGFkb3M+PC9jZmRpOkltcHVlc3Rvcz48L2NmZGk6Q29uY2VwdG8+PC9jZmRpOkNvbmNlcHRvcz48Y2ZkaTpJbXB1ZXN0b3MgVG90YWxJbXB1ZXN0b3NUcmFzbGFkYWRvcz0iMC4xNiI+PGNmZGk6VHJhc2xhZG9zPjxjZmRpOlRyYXNsYWRvIEltcHVlc3RvPSIwMDIiIFRpcG9GYWN0b3I9IlRhc2EiIFRhc2FPQ3VvdGE9IjAuMTYwMDAwIiBJbXBvcnRlPSIwLjE2IiAvPjwvY2ZkaTpUcmFzbGFkb3M+PC9jZmRpOkltcHVlc3Rvcz48Y2ZkaTpDb21wbGVtZW50bz48cGFnbzEwOlBhZ29zIFZlcnNpb249IjEuMCI+PHBhZ28xMDpQYWdvIEZlY2hhUGFnbz0iMjAxNy0wMy0xNVQwMDowMDowMCIgRm9ybWFEZVBhZ29QPSIwMyIgTW9uZWRhUD0iTVhOIiBNb250bz0iMS4xMSIgTnVtT3BlcmFjaW9uPSJOdW1PcGVyYWNpb24xIiBSZmNFbWlzb3JDdGFPcmQ9IkFBQTAxMDEwMUFBQSIgTm9tQmFuY29PcmRFeHQ9Ik5vbUJhbmNvT3JkRXh0MSIgQ3RhT3JkZW5hbnRlPSIxMjM0NTY3ODkwIiBSZmNFbWlzb3JDdGFCZW49IkFBQTAxMDEwMUFBQSIgQ3RhQmVuZWZpY2lhcmlvPSIxMjM0NTY3ODkwIiBUaXBvQ2FkUGFnbz0iMDEiIENlcnRQYWdvPSJJQT09IiBDYWRQYWdvPSJDYWRQYWdvMSIgU2VsbG9QYWdvPSJJQT09Ij48cGFnbzEwOkRvY3RvUmVsYWNpb25hZG8gSWREb2N1bWVudG89IjEyMzQ1Njc4LTEyMzQtMTIzNC0xMjM0LTEyMzQ1Njc4OTAxMiIgTW9uZWRhRFI9Ik1YTiIgTWV0b2RvRGVQYWdvRFI9IlBVRSIgSW1wU2FsZG9BbnQ9IjEiIEltcFBhZ2Fkbz0iMS4xMSIgLz48cGFnbzEwOkltcHVlc3RvcyBUb3RhbEltcHVlc3Rvc1JldGVuaWRvcz0iMS4xMSIgVG90YWxJbXB1ZXN0b3NUcmFzbGFkYWRvcz0iMSI+PHBhZ28xMDpSZXRlbmNpb25lcz48cGFnbzEwOlJldGVuY2lvbiBJbXB1ZXN0bz0iMDAyIiBJbXBvcnRlPSIxLjExIiAvPjwvcGFnbzEwOlJldGVuY2lvbmVzPjxwYWdvMTA6VHJhc2xhZG9zPjxwYWdvMTA6VHJhc2xhZG8gSW1wdWVzdG89IjAwMyIgVGlwb0ZhY3Rvcj0iQ3VvdGEiIFRhc2FPQ3VvdGE9IjAuMDAwMDAwIiBJbXBvcnRlPSIxIiAvPjwvcGFnbzEwOlRyYXNsYWRvcz48L3BhZ28xMDpJbXB1ZXN0b3M+PC9wYWdvMTA6UGFnbz48L3BhZ28xMDpQYWdvcz48L2NmZGk6Q29tcGxlbWVudG8+PC9jZmRpOkNvbXByb2JhbnRlPg==";
 
-
     public static String url_pruebas = "http://services.test.sw.com.mx";
     public  static  String url_prod = "https://services.sw.com.mx";
     public  static  String url_dev = "http://services.development.sw.com.mx";
 
     public  String genc10(){
-        return signXML("<?xml version=\"1.0\" encoding=\"UTF-8\"?><cfdi:Comprobante xmlns:cfdi=\"http://www.sat.gob.mx/cfd/3\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd http://www.sat.gob.mx/ComercioExterior11 http://www.sat.gob.mx/sitio_internet/cfd/ComercioExterior11/ComercioExterior11.xsd\" Version=\"3.3\" Sello=\"Dgs9JkB0r7wHKGrTDz22j7j58ZQqSpFYEGOPjME7GEYQNo2W9d/Uur7YazAbdwEgF2WCpLsywQphgxOBlPgbJ0NRGAFC7l3mTcq51hOBs9zFDhCXSd8QldyGfh/htcTIkaJkP2QetPtJw+ZuoVJjMjHTQI6AEk+O9JNnoLZm9dIsJdMjDsZXcaie4XXQhTGS8g2URyjxry8UrdaXTurvbLo8W2WAb2f6dcMI05h/49muTUs+pjvu/dJ+GQe4SBLrjoliNObmnWekTbHmP3ZKhd6eMx0NqgFd6PS0CQ2QwWgQ1Z9kTLsGj8O573IZntvjVqxOQuroB/TaJoFwwUGrCg==\" Fecha=\"2018-09-17T11:43:24\" LugarExpedicion=\"52000\" FormaPago=\"03\" NoCertificado=\"20001000000300022815\" Certificado=\"MIIFxTCCA62gAwIBAgIUMjAwMDEwMDAwMDAzMDAwMjI4MTUwDQYJKoZIhvcNAQELBQAwggFmMSAwHgYDVQQDDBdBLkMuIDIgZGUgcHJ1ZWJhcyg0MDk2KTEvMC0GA1UECgwmU2VydmljaW8gZGUgQWRtaW5pc3RyYWNpw7NuIFRyaWJ1dGFyaWExODA2BgNVBAsML0FkbWluaXN0cmFjacOzbiBkZSBTZWd1cmlkYWQgZGUgbGEgSW5mb3JtYWNpw7NuMSkwJwYJKoZIhvcNAQkBFhphc2lzbmV0QHBydWViYXMuc2F0LmdvYi5teDEmMCQGA1UECQwdQXYuIEhpZGFsZ28gNzcsIENvbC4gR3VlcnJlcm8xDjAMBgNVBBEMBTA2MzAwMQswCQYDVQQGEwJNWDEZMBcGA1UECAwQRGlzdHJpdG8gRmVkZXJhbDESMBAGA1UEBwwJQ295b2Fjw6FuMRUwEwYDVQQtEwxTQVQ5NzA3MDFOTjMxITAfBgkqhkiG9w0BCQIMElJlc3BvbnNhYmxlOiBBQ0RNQTAeFw0xNjEwMjUyMTUyMTFaFw0yMDEwMjUyMTUyMTFaMIGxMRowGAYDVQQDExFDSU5ERU1FWCBTQSBERSBDVjEaMBgGA1UEKRMRQ0lOREVNRVggU0EgREUgQ1YxGjAYBgNVBAoTEUNJTkRFTUVYIFNBIERFIENWMSUwIwYDVQQtExxMQU43MDA4MTczUjUgLyBGVUFCNzcwMTE3QlhBMR4wHAYDVQQFExUgLyBGVUFCNzcwMTE3TURGUk5OMDkxFDASBgNVBAsUC1BydWViYV9DRkRJMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAgvvCiCFDFVaYX7xdVRhp/38ULWto/LKDSZy1yrXKpaqFXqERJWF78YHKf3N5GBoXgzwFPuDX+5kvY5wtYNxx/Owu2shNZqFFh6EKsysQMeP5rz6kE1gFYenaPEUP9zj+h0bL3xR5aqoTsqGF24mKBLoiaK44pXBzGzgsxZishVJVM6XbzNJVonEUNbI25DhgWAd86f2aU3BmOH2K1RZx41dtTT56UsszJls4tPFODr/caWuZEuUvLp1M3nj7Dyu88mhD2f+1fA/g7kzcU/1tcpFXF/rIy93APvkU72jwvkrnprzs+SnG81+/F16ahuGsb2EZ88dKHwqxEkwzhMyTbQIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQsFAAOCAgEAJ/xkL8I+fpilZP+9aO8n93+20XxVomLJjeSL+Ng2ErL2GgatpLuN5JknFBkZAhxVIgMaTS23zzk1RLtRaYvH83lBH5E+M+kEjFGp14Fne1iV2Pm3vL4jeLmzHgY1Kf5HmeVrrp4PU7WQg16VpyHaJ/eonPNiEBUjcyQ1iFfkzJmnSJvDGtfQK2TiEolDJApYv0OWdm4is9Bsfi9j6lI9/T6MNZ+/LM2L/t72Vau4r7m94JDEzaO3A0wHAtQ97fjBfBiO5M8AEISAV7eZidIl3iaJJHkQbBYiiW2gikreUZKPUX0HmlnIqqQcBJhWKRu6Nqk6aZBTETLLpGrvF9OArV1JSsbdw/ZH+P88RAt5em5/gjwwtFlNHyiKG5w+UFpaZOK3gZP0su0sa6dlPeQ9EL4JlFkGqQCgSQ+NOsXqaOavgoP5VLykLwuGnwIUnuhBTVeDbzpgrg9LuF5dYp/zs+Y9ScJqe5VMAagLSYTShNtN8luV7LvxF9pgWwZdcM7lUwqJmUddCiZqdngg3vzTactMToG16gZA4CWnMgbU4E+r541+FNMpgAZNvs2CiW/eApfaaQojsZEAHDsDv4L5n3M1CC7fYjE/d61aSng1LaO6T1mh+dEfPvLzp7zyzz+UgWMhi5Cs4pcXx1eic5r7uxPoBwcCTt3YI1jKVVnV7/w=\" SubTotal=\"2319.91\" Total=\"2319.91\" MetodoPago=\"PPD\" TipoCambio=\"18.6511\" TipoDeComprobante=\"I\" Serie=\"8\" Folio=\"9\" CondicionesDePago=\"30 dias\" Moneda=\"USD\"><cfdi:Emisor Rfc=\"LAN7008173R5\" Nombre=\"Test Name\" RegimenFiscal=\"601\" /><cfdi:Receptor Rfc=\"XEXX010101000\" Nombre=\"Empresa 2,\" UsoCFDI=\"P01\" ResidenciaFiscal=\"USA\" NumRegIdTrib=\"121585958\" /><cfdi:Conceptos><cfdi:Concepto ClaveProdServ=\"31391703\" Cantidad=\"5040.00\" ClaveUnidad=\"H87\" Descripcion=\"Part_No._3263.201.3050\" NoIdentificacion=\"Part_No._3263.201.305\" ValorUnitario=\"0.4603\" Importe=\"2319.9100\"><cfdi:Impuestos><cfdi:Traslados><cfdi:Traslado Base=\"2319.9100\" Impuesto=\"002\" TipoFactor=\"Tasa\" TasaOCuota=\"0.000000\" Importe=\"0\" /></cfdi:Traslados></cfdi:Impuestos></cfdi:Concepto></cfdi:Conceptos><cfdi:Impuestos TotalImpuestosTrasladados=\"0.00\"><cfdi:Traslados><cfdi:Traslado Impuesto=\"002\" TipoFactor=\"Tasa\" TasaOCuota=\"0.000000\" Importe=\"0.00\" /></cfdi:Traslados></cfdi:Impuestos><cfdi:Complemento><cce11:ComercioExterior xmlns:cce11=\"http://www.sat.gob.mx/ComercioExterior11\" Version=\"1.1\" TipoOperacion=\"2\" ClaveDePedimento=\"A1\" Incoterm=\"EXW\" TotalUSD=\"2319.91\" TipoCambioUSD=\"18.6511\" CertificadoOrigen=\"0\" Subdivision=\"0\"><cce11:Emisor><cce11:Domicilio Calle=\"Calle\" Municipio=\"051\" Estado=\"MEX\" Pais=\"MEX\" CodigoPostal=\"52000\" NumeroExterior=\"5598\" Colonia=\"1563\" /></cce11:Emisor><cce11:Receptor><cce11:Domicilio Pais=\"USA\" Calle=\"Calle 5465\" NumeroExterior=\"ZIP 16555\" Colonia=\"Fort Lauderdale, United States\" Municipio=\"33310\" Estado=\"FL\" CodigoPostal=\"33310\" /></cce11:Receptor><cce11:Mercancias><cce11:Mercancia NoIdentificacion=\"Part_No._3263.201.305\" ValorDolares=\"2319.91\" FraccionArancelaria=\"87084099\" UnidadAduana=\"06\" ValorUnitarioAduana=\"0.46\" CantidadAduana=\"5040\" /></cce11:Mercancias></cce11:ComercioExterior><tfd:TimbreFiscalDigital xsi:schemaLocation=\"http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigitalv11.xsd\" Version=\"1.1\" UUID=\"db5ed27c-7beb-4736-8811-976ce8b1b10d\" FechaTimbrado=\"2018-09-18T11:32:35\" RfcProvCertif=\"AAA010101AAA\" SelloCFD=\"Dgs9JkB0r7wHKGrTDz22j7j58ZQqSpFYEGOPjME7GEYQNo2W9d/Uur7YazAbdwEgF2WCpLsywQphgxOBlPgbJ0NRGAFC7l3mTcq51hOBs9zFDhCXSd8QldyGfh/htcTIkaJkP2QetPtJw+ZuoVJjMjHTQI6AEk+O9JNnoLZm9dIsJdMjDsZXcaie4XXQhTGS8g2URyjxry8UrdaXTurvbLo8W2WAb2f6dcMI05h/49muTUs+pjvu/dJ+GQe4SBLrjoliNObmnWekTbHmP3ZKhd6eMx0NqgFd6PS0CQ2QwWgQ1Z9kTLsGj8O573IZntvjVqxOQuroB/TaJoFwwUGrCg==\" NoCertificadoSAT=\"20001000000300022323\" SelloSAT=\"bowvMDnPhs0A52PiejCzf66ZjkEVSjqZywOda02jchhBZjtQIkNvrdtJb9xwKnILwWuQDbLDMXaCstuSwxmZ4rTg43cv1BXPb/P7kY8dxl/It7hdeWw3BYXBkJRLmkfaWXdQojNaTwaWEPl+ywkFlsTECpZ2gw2heOO3bedrkJjePlIm34AXhTuWNIxpneO6O/kxYYHlxwIzpIX29lSmqeHX1gFOtASP7SLPucTyI+GsHJ6L66F5rDF9tuJgCrPBj3/54mrIUaZHtKdz9dLrL5Irw8V6biFvkBHZVU4OusLsjel2rs9sAUuTxBtUL4xUXPh0TgGkrILwNkAT4EEgUg==\" xmlns:tfd=\"http://www.sat.gob.mx/TimbreFiscalDigital\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" /></cfdi:Complemento></cfdi:Comprobante>");
+        return signXML("<?xml version=\"1.0\" encoding=\"UTF-8\"?><cfdi:Comprobante xmlns:cfdi=\"http://www.sat.gob.mx/cfd/3\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd http://www.sat.gob.mx/ComercioExterior11 http://www.sat.gob.mx/sitio_internet/cfd/ComercioExterior11/ComercioExterior11.xsd\" Version=\"3.3\" Sello=\"Dgs9JkB0r7wHKGrTDz22j7j58ZQqSpFYEGOPjME7GEYQNo2W9d/Uur7YazAbdwEgF2WCpLsywQphgxOBlPgbJ0NRGAFC7l3mTcq51hOBs9zFDhCXSd8QldyGfh/htcTIkaJkP2QetPtJw+ZuoVJjMjHTQI6AEk+O9JNnoLZm9dIsJdMjDsZXcaie4XXQhTGS8g2URyjxry8UrdaXTurvbLo8W2WAb2f6dcMI05h/49muTUs+pjvu/dJ+GQe4SBLrjoliNObmnWekTbHmP3ZKhd6eMx0NqgFd6PS0CQ2QwWgQ1Z9kTLsGj8O573IZntvjVqxOQuroB/TaJoFwwUGrCg==\" Fecha=\"2018-09-17T11:43:24\" LugarExpedicion=\"52000\" FormaPago=\"03\" NoCertificado=\"20001000000300022815\" Certificado=\"MIIFxTCCA62gAwIBAgIUMjAwMDEwMDAwMDAzMDAwMjI4MTUwDQYJKoZIhvcNAQELBQAwggFmMSAwHgYDVQQDDBdBLkMuIDIgZGUgcHJ1ZWJhcyg0MDk2KTEvMC0GA1UECgwmU2VydmljaW8gZGUgQWRtaW5pc3RyYWNpw7NuIFRyaWJ1dGFyaWExODA2BgNVBAsML0FkbWluaXN0cmFjacOzbiBkZSBTZWd1cmlkYWQgZGUgbGEgSW5mb3JtYWNpw7NuMSkwJwYJKoZIhvcNAQkBFhphc2lzbmV0QHBydWViYXMuc2F0LmdvYi5teDEmMCQGA1UECQwdQXYuIEhpZGFsZ28gNzcsIENvbC4gR3VlcnJlcm8xDjAMBgNVBBEMBTA2MzAwMQswCQYDVQQGEwJNWDEZMBcGA1UECAwQRGlzdHJpdG8gRmVkZXJhbDESMBAGA1UEBwwJQ295b2Fjw6FuMRUwEwYDVQQtEwxTQVQ5NzA3MDFOTjMxITAfBgkqhkiG9w0BCQIMElJlc3BvbnNhYmxlOiBBQ0RNQTAeFw0xNjEwMjUyMTUyMTFaFw0yMDEwMjUyMTUyMTFaMIGxMRowGAYDVQQDExFDSU5ERU1FWCBTQSBERSBDVjEaMBgGA1UEKRMRQ0lOREVNRVggU0EgREUgQ1YxGjAYBgNVBAoTEUNJTkRFTUVYIFNBIERFIENWMSUwIwYDVQQtExxMQU43MDA4MTczUjUgLyBGVUFCNzcwMTE3QlhBMR4wHAYDVQQFExUgLyBGVUFCNzcwMTE3TURGUk5OMDkxFDASBgNVBAsUC1BydWViYV9DRkRJMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAgvvCiCFDFVaYX7xdVRhp/38ULWto/LKDSZy1yrXKpaqFXqERJWF78YHKf3N5GBoXgzwFPuDX+5kvY5wtYNxx/Owu2shNZqFFh6EKsysQMeP5rz6kE1gFYenaPEUP9zj+h0bL3xR5aqoTsqGF24mKBLoiaK44pXBzGzgsxZishVJVM6XbzNJVonEUNbI25DhgWAd86f2aU3BmOH2K1RZx41dtTT56UsszJls4tPFODr/caWuZEuUvLp1M3nj7Dyu88mhD2f+1fA/g7kzcU/1tcpFXF/rIy93APvkU72jwvkrnprzs+SnG81+/F16ahuGsb2EZ88dKHwqxEkwzhMyTbQIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQsFAAOCAgEAJ/xkL8I+fpilZP+9aO8n93+20XxVomLJjeSL+Ng2ErL2GgatpLuN5JknFBkZAhxVIgMaTS23zzk1RLtRaYvH83lBH5E+M+kEjFGp14Fne1iV2Pm3vL4jeLmzHgY1Kf5HmeVrrp4PU7WQg16VpyHaJ/eonPNiEBUjcyQ1iFfkzJmnSJvDGtfQK2TiEolDJApYv0OWdm4is9Bsfi9j6lI9/T6MNZ+/LM2L/t72Vau4r7m94JDEzaO3A0wHAtQ97fjBfBiO5M8AEISAV7eZidIl3iaJJHkQbBYiiW2gikreUZKPUX0HmlnIqqQcBJhWKRu6Nqk6aZBTETLLpGrvF9OArV1JSsbdw/ZH+P88RAt5em5/gjwwtFlNHyiKG5w+UFpaZOK3gZP0su0sa6dlPeQ9EL4JlFkGqQCgSQ+NOsXqaOavgoP5VLykLwuGnwIUnuhBTVeDbzpgrg9LuF5dYp/zs+Y9ScJqe5VMAagLSYTShNtN8luV7LvxF9pgWwZdcM7lUwqJmUddCiZqdngg3vzTactMToG16gZA4CWnMgbU4E+r541+FNMpgAZNvs2CiW/eApfaaQojsZEAHDsDv4L5n3M1CC7fYjE/d61aSng1LaO6T1mh+dEfPvLzp7zyzz+UgWMhi5Cs4pcXx1eic5r7uxPoBwcCTt3YI1jKVVnV7/w=\" SubTotal=\"2319.91\" Total=\"2319.91\" MetodoPago=\"PPD\" TipoCambio=\"18.6511\" TipoDeComprobante=\"I\" Serie=\"8\" Folio=\"9\" CondicionesDePago=\"30 dias\" Moneda=\"USD\"><cfdi:Emisor Rfc=\"LAN7008173R5\" Nombre=\"Test Name\" RegimenFiscal=\"601\" /><cfdi:Receptor Rfc=\"XEXX010101000\" Nombre=\"Empresa 2,\" UsoCFDI=\"P01\" ResidenciaFiscal=\"USA\" NumRegIdTrib=\"121585958\" /><cfdi:Conceptos><cfdi:Concepto ClaveProdServ=\"31391703\" Cantidad=\"5040.00\" ClaveUnidad=\"H87\" Descripcion=\"Part_No._3263.201.3050\" NoIdentificacion=\"Part_No._3263.201.305\" ValorUnitario=\"0.4603\" Importe=\"2319.9100\"><cfdi:Impuestos><cfdi:Traslados><cfdi:Traslado Base=\"2319.9100\" Impuesto=\"002\" TipoFactor=\"Tasa\" TasaOCuota=\"0.000000\" Importe=\"0\" /></cfdi:Traslados></cfdi:Impuestos></cfdi:Concepto></cfdi:Conceptos><cfdi:Impuestos TotalImpuestosTrasladados=\"0.00\"><cfdi:Traslados><cfdi:Traslado Impuesto=\"002\" TipoFactor=\"Tasa\" TasaOCuota=\"0.000000\" Importe=\"0.00\" /></cfdi:Traslados></cfdi:Impuestos><cfdi:Complemento><cce11:ComercioExterior xmlns:cce11=\"http://www.sat.gob.mx/ComercioExterior11\" Version=\"1.1\" TipoOperacion=\"2\" ClaveDePedimento=\"A1\" Incoterm=\"EXW\" TotalUSD=\"2319.91\" TipoCambioUSD=\"18.6511\" CertificadoOrigen=\"0\" Subdivision=\"0\"><cce11:Emisor><cce11:Domicilio Calle=\"Calle\" Municipio=\"051\" Estado=\"MEX\" Pais=\"MEX\" CodigoPostal=\"52000\" NumeroExterior=\"5598\" Colonia=\"1563\" /></cce11:Emisor><cce11:Receptor><cce11:Domicilio Pais=\"USA\" Calle=\"Calle 5465\" NumeroExterior=\"ZIP 16555\" Colonia=\"Fort Lauderdale, United States\" Municipio=\"33310\" Estado=\"FL\" CodigoPostal=\"33310\" /></cce11:Receptor><cce11:Mercancias><cce11:Mercancia NoIdentificacion=\"Part_No._3263.201.305\" ValorDolares=\"2319.91\" FraccionArancelaria=\"87084099\" UnidadAduana=\"06\" ValorUnitarioAduana=\"0.46\" CantidadAduana=\"5040\" /></cce11:Mercancias></cce11:ComercioExterior></cfdi:Complemento></cfdi:Comprobante>");
     }
 
     public  String genPagos10(){
@@ -67,13 +46,25 @@ public class Utils {
     public  String StringgenBasico(){
         return signXML("<?xml version=\"1.0\" encoding=\"utf-8\"?><cfdi:Comprobante xsi:schemaLocation=\"http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd\" Version=\"3.3\" Serie=\"RogueOne\" Folio=\"HNFK231\" Fecha=\"2017-11-30T12:24:46\" Sello=\"CEaQ3HYLPqWevAU+iK4uN7JgXLSGLtV4QvMdCHi16pAGwyFiWD3SRbtcnBUUV4TXUr+PYUaiuigZTgc+rQR5ga9J5tumQIQMwPv7dO0vQXo3kjqGCCr8RBhPJHNZezHxS8tsTvubj3RLOp86XSDVpR21znl+NkdjjlLKo9Bcoe8eAVArn8YWAMwsJNNsa3gD5YC8no5mOZzpFY0xEh52Ojfi3KJOZIlNmpeqSvgyGPkLwrVLqN8Ta+9jbJjP+G5Po8NEGGdfWF8jBHQLqKxkawnXWWnJv1A++P9H5hZfDzD8d3HP6t68oOcsmpjh5PUOcHTnfpqW3SI+gs/dzLYO0A==\" FormaPago=\"01\" NoCertificado=\"20001000000300022815\" Certificado=\"MIIFxTCCA62gAwIBAgIUMjAwMDEwMDAwMDAzMDAwMjI4MTUwDQYJKoZIhvcNAQELBQAwggFmMSAwHgYDVQQDDBdBLkMuIDIgZGUgcHJ1ZWJhcyg0MDk2KTEvMC0GA1UECgwmU2VydmljaW8gZGUgQWRtaW5pc3RyYWNpw7NuIFRyaWJ1dGFyaWExODA2BgNVBAsML0FkbWluaXN0cmFjacOzbiBkZSBTZWd1cmlkYWQgZGUgbGEgSW5mb3JtYWNpw7NuMSkwJwYJKoZIhvcNAQkBFhphc2lzbmV0QHBydWViYXMuc2F0LmdvYi5teDEmMCQGA1UECQwdQXYuIEhpZGFsZ28gNzcsIENvbC4gR3VlcnJlcm8xDjAMBgNVBBEMBTA2MzAwMQswCQYDVQQGEwJNWDEZMBcGA1UECAwQRGlzdHJpdG8gRmVkZXJhbDESMBAGA1UEBwwJQ295b2Fjw6FuMRUwEwYDVQQtEwxTQVQ5NzA3MDFOTjMxITAfBgkqhkiG9w0BCQIMElJlc3BvbnNhYmxlOiBBQ0RNQTAeFw0xNjEwMjUyMTUyMTFaFw0yMDEwMjUyMTUyMTFaMIGxMRowGAYDVQQDExFDSU5ERU1FWCBTQSBERSBDVjEaMBgGA1UEKRMRQ0lOREVNRVggU0EgREUgQ1YxGjAYBgNVBAoTEUNJTkRFTUVYIFNBIERFIENWMSUwIwYDVQQtExxMQU43MDA4MTczUjUgLyBGVUFCNzcwMTE3QlhBMR4wHAYDVQQFExUgLyBGVUFCNzcwMTE3TURGUk5OMDkxFDASBgNVBAsUC1BydWViYV9DRkRJMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAgvvCiCFDFVaYX7xdVRhp/38ULWto/LKDSZy1yrXKpaqFXqERJWF78YHKf3N5GBoXgzwFPuDX+5kvY5wtYNxx/Owu2shNZqFFh6EKsysQMeP5rz6kE1gFYenaPEUP9zj+h0bL3xR5aqoTsqGF24mKBLoiaK44pXBzGzgsxZishVJVM6XbzNJVonEUNbI25DhgWAd86f2aU3BmOH2K1RZx41dtTT56UsszJls4tPFODr/caWuZEuUvLp1M3nj7Dyu88mhD2f+1fA/g7kzcU/1tcpFXF/rIy93APvkU72jwvkrnprzs+SnG81+/F16ahuGsb2EZ88dKHwqxEkwzhMyTbQIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQsFAAOCAgEAJ/xkL8I+fpilZP+9aO8n93+20XxVomLJjeSL+Ng2ErL2GgatpLuN5JknFBkZAhxVIgMaTS23zzk1RLtRaYvH83lBH5E+M+kEjFGp14Fne1iV2Pm3vL4jeLmzHgY1Kf5HmeVrrp4PU7WQg16VpyHaJ/eonPNiEBUjcyQ1iFfkzJmnSJvDGtfQK2TiEolDJApYv0OWdm4is9Bsfi9j6lI9/T6MNZ+/LM2L/t72Vau4r7m94JDEzaO3A0wHAtQ97fjBfBiO5M8AEISAV7eZidIl3iaJJHkQbBYiiW2gikreUZKPUX0HmlnIqqQcBJhWKRu6Nqk6aZBTETLLpGrvF9OArV1JSsbdw/ZH+P88RAt5em5/gjwwtFlNHyiKG5w+UFpaZOK3gZP0su0sa6dlPeQ9EL4JlFkGqQCgSQ+NOsXqaOavgoP5VLykLwuGnwIUnuhBTVeDbzpgrg9LuF5dYp/zs+Y9ScJqe5VMAagLSYTShNtN8luV7LvxF9pgWwZdcM7lUwqJmUddCiZqdngg3vzTactMToG16gZA4CWnMgbU4E+r541+FNMpgAZNvs2CiW/eApfaaQojsZEAHDsDv4L5n3M1CC7fYjE/d61aSng1LaO6T1mh+dEfPvLzp7zyzz+UgWMhi5Cs4pcXx1eic5r7uxPoBwcCTt3YI1jKVVnV7/w=\" SubTotal=\"200.00\" Moneda=\"MXN\" TipoCambio=\"1\" Total=\"603.20\" TipoDeComprobante=\"I\" MetodoPago=\"PUE\" LugarExpedicion=\"06300\" xmlns:cfdi=\"http://www.sat.gob.mx/cfd/3\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"><cfdi:Emisor Rfc=\"LAN7008173R5\" Nombre=\"CINDEMEX SA DE CV\" RegimenFiscal=\"601\" /><cfdi:Receptor Rfc=\"AAA010101AAA\" Nombre=\"SW SMARTERWEB canch�n\" UsoCFDI=\"G03\" /><cfdi:Conceptos><cfdi:Concepto ClaveProdServ=\"50211503\" NoIdentificacion=\"UT421511\" Cantidad=\"1\" ClaveUnidad=\"H87\" Unidad=\"Pieza\" Descripcion=\"Cigarros\" ValorUnitario=\"200.00\" Importe=\"200.00\"><cfdi:Impuestos><cfdi:Traslados><cfdi:Traslado Base=\"200.00\" Impuesto=\"002\" TipoFactor=\"Tasa\" TasaOCuota=\"0.160000\" Importe=\"32.00\" /><cfdi:Traslado Base=\"232.00\" Impuesto=\"003\" TipoFactor=\"Tasa\" TasaOCuota=\"1.600000\" Importe=\"371.20\" /></cfdi:Traslados></cfdi:Impuestos></cfdi:Concepto></cfdi:Conceptos><cfdi:Impuestos TotalImpuestosTrasladados=\"403.20\"><cfdi:Traslados><cfdi:Traslado Impuesto=\"002\" TipoFactor=\"Tasa\" TasaOCuota=\"0.160000\" Importe=\"32.00\" /><cfdi:Traslado Impuesto=\"003\" TipoFactor=\"Tasa\" TasaOCuota=\"1.600000\" Importe=\"371.20\" /></cfdi:Traslados></cfdi:Impuestos></cfdi:Comprobante>");
     }
+    
+    public String JsonGenBasico() {
+    	return changeDateJson("{ \"Complemento\": null, \"Addenda\": null, \"Version\": \"3.3\", \"Serie\": \"RogueOne\", \"Folio\": \"HNFK231\", \"Fecha\": \"2019-01-22T10:44:54\", \"Sello\": \"\", \"FormaPago\": \"01\", \"NoCertificado\": \"20001000000300022816\", \"Certificado\": \"\", \"CondicionesDePago\": null, \"SubTotal\": \"200.00\", \"Moneda\": \"MXN\", \"TipoCambio\": \"1\", \"Total\": \"603.20\", \"TipoDeComprobante\": \"I\", \"MetodoPago\": \"PUE\", \"LugarExpedicion\": \"06300\", \"CfdiRelacionados\": null, \"Emisor\": { \"Rfc\": \"LAN8507268IA\", \"Nombre\": \"MB IDEAS DIGITALES SC\", \"RegimenFiscal\": \"601\" }, \"Receptor\": { \"Rfc\": \"AAA010101AAA\", \"Nombre\": \"SW SMARTERWEB\", \"NumRegIdTrib\": null, \"UsoCFDI\": \"G03\" }, \"Conceptos\": [ { \"Impuestos\": { \"Traslados\": [ { \"Base\": \"200.00\", \"Impuesto\": \"002\", \"TipoFactor\": \"Tasa\", \"TasaOCuota\": \"0.160000\", \"Importe\": \"32.00\" }, { \"Base\": \"232.00\", \"Impuesto\": \"003\", \"TipoFactor\": \"Tasa\", \"TasaOCuota\": \"1.600000\", \"Importe\": \"371.20\" } ], \"Retenciones\": null }, \"InformacionAduanera\": null, \"CuentaPredial\": null, \"ComplementoConcepto\": null, \"Parte\": null, \"ClaveProdServ\": \"50211503\", \"NoIdentificacion\": \"UT421511\", \"Cantidad\": 1, \"ClaveUnidad\": \"H87\", \"Unidad\": \"Pieza\", \"Descripcion\": \"Cigarros\", \"ValorUnitario\": \"200.00\", \"Importe\": \"200.00\" } ], \"Impuestos\": { \"Retenciones\": null, \"Traslados\": [ { \"Impuesto\": \"002\", \"TipoFactor\": \"Tasa\", \"TasaOCuota\": \"0.160000\", \"Importe\": \"32.00\" }, { \"Impuesto\": \"003\", \"TipoFactor\": \"Tasa\", \"TasaOCuota\": \"1.600000\", \"Importe\": \"371.20\" } ], \"TotalImpuestosTrasladados\": \"403.20\" } }");
+    }
 
     public boolean getRandomBoolean() {
         Random random = new Random();
         return random.nextBoolean();
     }
 
-
+    public String changeDateJson(String json) {
+    	JSONObject data = new JSONObject(json);
+    	Random random = new Random();
+    	SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+    	formater.setTimeZone(TimeZone.getTimeZone("America/Mexico_City"));
+    	data.put("Fecha", formater.format(new Date()));
+    	data.put("Folio", String.valueOf(random.nextInt()));
+    	return data.toString();
+    }
 
     public static String remove2(String input) {
         // Descomposición canónica
@@ -83,28 +74,27 @@ public class Utils {
         return pattern.matcher(normalized).replaceAll("");
     }
 
+    public String encodeBase64(String text) throws UnsupportedEncodingException {
+    	byte[] bytesEncoded = Base64.encodeBase64(text.getBytes("UTF-8"));
+        return new String(bytesEncoded);
+    }
 
-
-    public  String toBase64(String xmlF) throws UnsupportedEncodingException{
-
+    public String toBase64(String xmlF) throws UnsupportedEncodingException{
         String xml = this.signXML(xmlF);
-        byte[]   bytesEncoded = Base64.encodeBase64(xml.getBytes("UTF-8"));
+        byte[] bytesEncoded = Base64.encodeBase64(xml.getBytes("UTF-8"));
         return new String(bytesEncoded);
     }
 
     public String changeDate(String xml) {
-        SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
         date.setTimeZone(TimeZone.getTimeZone("America/Mexico_City"));
-        SimpleDateFormat time = new SimpleDateFormat("HH:mm:ss");
-        time.setTimeZone(TimeZone.getTimeZone("America/Mexico_City"));
         String datetime;
-        datetime = date.format(new Date())+"T"+time.format(new Date());
+        datetime = date.format(new Date());
 
         DocumentBuilderFactory factory = newInstance();
         DocumentBuilder builder;
         TransformerFactory tf = TransformerFactory.newInstance();
         Transformer transformer;
-        Sign si = new Sign();
         try
     {       UUID uuid = UUID.randomUUID();
             String randomUUIDString = uuid.toString().replace("-","");
@@ -149,8 +139,6 @@ public class Utils {
     public  String putsSign(String xml, String sello){
 
         try{
-
-
             DocumentBuilderFactory factory = newInstance();
             DocumentBuilder builder;
             TransformerFactory tf = TransformerFactory.newInstance();
@@ -163,8 +151,6 @@ public class Utils {
             StringWriter writer = new StringWriter();
             transformer.transform(new DOMSource(doc), new StreamResult(writer));
             String output = writer.getBuffer().toString();
-
-
             return  output;
 
         }catch (Exception e){
@@ -211,10 +197,6 @@ public class Utils {
            return false;
         }
     }
-
-
-
-
 
     public static String removeBadChars(String s) {
         if (s == null) return null;

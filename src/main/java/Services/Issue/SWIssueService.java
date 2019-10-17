@@ -41,13 +41,13 @@ public class SWIssueService extends SWService {
 		return req.sendRequest(settings);
 	}
 	public IResponse IssueXml(String xml, String version) throws AuthException, GeneralException, IOException {
-		IssueOptionsRequest settings = new IssueOptionsRequest(getToken(), getURI(), xml, version, true, getProxyHost(), getProxyPort());
+		IssueOptionsRequest settings = new IssueOptionsRequest(getToken(), getURI(), xml, version, true, getProxyHost(), getProxyPort(), false);
 		IssueRequest req = new IssueRequest();
 		return req.sendRequestXml(settings);
 	}
 	public IResponse IssueXml(byte[] xmlfile, String version) throws AuthException, GeneralException, IOException {
 		String xmlProcess = new String(xmlfile, Charset.forName("UTF-8"));
-		IssueOptionsRequest settings = new IssueOptionsRequest(getToken(), getURI(), xmlProcess, version, true, getProxyHost(), getProxyPort());
+		IssueOptionsRequest settings = new IssueOptionsRequest(getToken(), getURI(), xmlProcess, version, true, getProxyHost(), getProxyPort(), false);
 		IssueRequest req = new IssueRequest();
 		return req.sendRequestXml(settings);
 	}

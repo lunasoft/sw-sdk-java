@@ -61,7 +61,7 @@ public class CfdiRelacionadosRequest implements IRequestor {
 			int status = responseB.getStatusLine().getStatusCode();
 			client.close();
 			responseB.close();
-			if (!responseString.isEmpty()) {
+			if (!responseString.isEmpty() && status < 500) {
 				JSONObject body = new JSONObject(responseString);
 				if (status == 200) {
 					int codStatus = Integer.parseInt(body.getString("codStatus").trim());
@@ -104,7 +104,7 @@ public class CfdiRelacionadosRequest implements IRequestor {
 				}
 			} else {
 				return new CfdiRelacionadosResponse(status, "error", responseB.getStatusLine().getReasonPhrase(),
-						responseB.getStatusLine().getReasonPhrase());
+						responseString);
 			}
 		} catch (JSONException e) {
 			throw new GeneralException(500, e.getMessage());
@@ -138,7 +138,7 @@ public class CfdiRelacionadosRequest implements IRequestor {
 			int status = responseB.getStatusLine().getStatusCode();
 			client.close();
 			responseB.close();
-			if (!responseString.isEmpty()) {
+			if (!responseString.isEmpty() && status < 500) {
 				JSONObject body = new JSONObject(responseString);
 				if (status == 200) {
 					int codStatus = Integer.parseInt(body.getString("codStatus").trim());
@@ -181,7 +181,7 @@ public class CfdiRelacionadosRequest implements IRequestor {
 				}
 			} else {
 				return new CfdiRelacionadosResponse(status, "error", responseB.getStatusLine().getReasonPhrase(),
-						responseB.getStatusLine().getReasonPhrase());
+						responseString);
 			}
 		} catch (JSONException e) {
 			throw new GeneralException(500, e.getMessage());
@@ -215,7 +215,7 @@ public class CfdiRelacionadosRequest implements IRequestor {
 			int status = responseB.getStatusLine().getStatusCode();
 			client.close();
 			responseB.close();
-			if (!responseString.isEmpty()) {
+			if (!responseString.isEmpty() && status < 500) {
 				JSONObject body = new JSONObject(responseString);
 				if (status == 200) {
 					int codStatus = Integer.parseInt(body.getString("codStatus").trim());
@@ -258,7 +258,7 @@ public class CfdiRelacionadosRequest implements IRequestor {
 				}
 			} else {
 				return new CfdiRelacionadosResponse(status, "error", responseB.getStatusLine().getReasonPhrase(),
-						responseB.getStatusLine().getReasonPhrase());
+						responseString);
 			}
 		} catch (JSONException e) {
 			throw new GeneralException(500, e.getMessage());
@@ -281,7 +281,7 @@ public class CfdiRelacionadosRequest implements IRequestor {
 			int status = responseB.getStatusLine().getStatusCode();
 			client.close();
 			responseB.close();
-			if (!responseString.isEmpty()) {
+			if (!responseString.isEmpty() && status < 500) {
 				JSONObject body = new JSONObject(responseString);
 				if (status == 200) {
 					int codStatus = Integer.parseInt(body.getString("codStatus").trim());
@@ -324,7 +324,7 @@ public class CfdiRelacionadosRequest implements IRequestor {
 				}
 			} else {
 				return new CfdiRelacionadosResponse(status, "error", responseB.getStatusLine().getReasonPhrase(),
-						responseB.getStatusLine().getReasonPhrase());
+						responseString);
 			}
 		} catch (JSONException e) {
 			throw new GeneralException(500, e.getMessage());

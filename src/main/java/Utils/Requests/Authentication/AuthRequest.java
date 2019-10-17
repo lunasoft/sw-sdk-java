@@ -41,7 +41,7 @@ public class AuthRequest implements IRequestor {
             int status = responseB.getStatusLine().getStatusCode();
             client.close();
             responseB.close();
-            if(!responseString.isEmpty()) {
+            if(!responseString.isEmpty() && status < 500) {
                     JSONObject body = new JSONObject(responseString);
                     if(!body.isNull("messageDetail")){
                         messageDetail = body.getString("messageDetail");
@@ -57,7 +57,7 @@ public class AuthRequest implements IRequestor {
                     }
             }
             else{
-                return new SuccessAuthResponse(status,"error","",0,responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase());
+                return new SuccessAuthResponse(status,"error","",0,responseB.getStatusLine().getReasonPhrase(), responseString);
 
             }
 

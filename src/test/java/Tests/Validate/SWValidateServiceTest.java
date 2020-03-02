@@ -80,9 +80,10 @@ public class SWValidateServiceTest extends TestCase {
         SWValidateService api = new SWValidateService("demo","123456789",Utils.url_pruebas);
         ValidateLrfcResponse response = null;
         response = (ValidateLrfcResponse) api.ValidateLrfc(null);
+        System.out.println(response.message);
+        System.out.println(response.messageDetail);
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
-        System.out.println(response.message);
         String expect_status = "error";
         Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
     }

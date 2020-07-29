@@ -41,7 +41,7 @@ public class BalanceAcctRequest implements IRequestor {
 
                     return new BalanceAcctResponse(status, body.getString("status"),
                             data.getString("idSaldoCliente"), data.getString("idClienteUsuario"), data.getInt("saldoTimbres"), data.getInt("timbresUtilizados"),
-                            data.getString("fechaExpiracion"), data.getBoolean("unlimited"), data.getInt("timbresAsignados"),"OK","OK");
+                            data.get("fechaExpiracion").toString(), data.getBoolean("unlimited"), data.getInt("timbresAsignados"),"OK","OK");
                 } 
                 else {
                     String messageDetail = "";

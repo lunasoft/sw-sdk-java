@@ -3,8 +3,6 @@ package Services.AcceptReject;
 import java.io.IOException;
 import java.util.Map;
 
-import javax.xml.soap.SOAPException;
-
 import Exceptions.AuthException;
 import Exceptions.GeneralException;
 import Services.SWService;
@@ -35,7 +33,7 @@ public class SWAcceptRejectService extends SWService{
         return req.sendRequest(settings);
     }
     
-    public IResponse AceptarRechazarCancelacionPFX(Map<String,String> uuids,String password_csd, String rfc, String b64pfx) throws AuthException, GeneralException, IOException, SOAPException {
+    public IResponse AceptarRechazarCancelacionPFX(Map<String,String> uuids,String password_csd, String rfc, String b64pfx) throws AuthException, GeneralException, IOException {
         AceptarRechazarOptionsRequest settings = new AceptarRechazarOptionsRequest(getToken(),getURI(), uuids, password_csd, rfc, b64pfx, getProxyHost(), getProxyPort());
         AceptarRechazarCancelationRequest req = new  AceptarRechazarCancelationRequest();
         return req.sendRequestPFX(settings);
@@ -47,7 +45,7 @@ public class SWAcceptRejectService extends SWService{
         return req.sendRequestXML(settings);
     }
     
-    public IResponse AceptarRechazarCancelacionUUID(String uuid, String rfc, String action) throws AuthException, GeneralException, IOException, SOAPException {
+    public IResponse AceptarRechazarCancelacionUUID(String uuid, String rfc, String action) throws AuthException, GeneralException, IOException {
         AceptarRechazarOptionsRequest settings = new AceptarRechazarOptionsRequest(getToken(),getURI(), uuid, rfc, action, getProxyHost(), getProxyPort());
         AceptarRechazarCancelationRequest req = new  AceptarRechazarCancelationRequest();
         return req.sendRequestUUID(settings);

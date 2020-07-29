@@ -8,8 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import javax.xml.soap.SOAPException;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -96,7 +94,7 @@ public class AceptarRechazarCancelationRequest implements IRequestor{
 	}
 	
 	public IResponse sendRequestPFX(IRequest request) throws GeneralException, AuthException, GeneralException,
-	UnsupportedEncodingException, ClientProtocolException, IOException, SOAPException {
+	UnsupportedEncodingException, ClientProtocolException, IOException {
 		Map<String, String> map = ((AceptarRechazarOptionsRequest) request).getUuids();
 		JSONArray mJSONArray = RequestHelper.buildJSONFromMap(map);
 		JSONObject requestJSON = new JSONObject();

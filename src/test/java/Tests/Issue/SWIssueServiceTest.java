@@ -103,7 +103,7 @@ public class SWIssueServiceTest {
 	@Test
 	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3() throws Exception {
 		SWIssueService api = new SWIssueService("demo", "123456789", Utils.url_pruebas);
-		String normalXml = ut.genNomina10();
+		String normalXml = ut.StringgenBasico();
 		SuccessV3Response response = null;
 		response = (SuccessV3Response) api.IssueXml(normalXml, "v3");
 		System.out.println(response.Status);

@@ -3,6 +3,7 @@ package Tests.Validate;
 import java.util.LinkedList;
 
 import org.junit.Assert;
+import org.junit.Test;
 
 import Services.Validate.SWValidateService;
 import Tests.Utils;
@@ -14,6 +15,7 @@ import Utils.Responses.Validate.ValidateXmlResponse;
 import junit.framework.TestCase;
 
 public class SWValidateServiceTest extends TestCase {
+    @Test
 	public void testValidateREAL_XML_STRING_USER_PASSWORD() throws Exception {
         SWValidateService api = new SWValidateService("demo","123456789",Utils.url_pruebas);
         ValidateXmlResponse response = null;
@@ -43,6 +45,7 @@ public class SWValidateServiceTest extends TestCase {
         String expect_status = "success";
         Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
     }
+    @Test
 	public void testValidateNULL_XML_STRING_USER_PASSWORD() throws Exception {
         SWValidateService api = new SWValidateService("demo","123456789",Utils.url_pruebas);
         ValidateXmlResponse response = null;
@@ -53,6 +56,7 @@ public class SWValidateServiceTest extends TestCase {
         String expect_status = "error";
         Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
     }
+    @Test
 	public void testValidateEMPTY_XML_STRING_USER_PASSWORD() throws Exception {
         SWValidateService api = new SWValidateService("demo","123456789",Utils.url_pruebas);
         ValidateXmlResponse response = null;
@@ -63,6 +67,7 @@ public class SWValidateServiceTest extends TestCase {
         String expect_status = "error";
         Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
     }
+    @Test
 	public void testValidateREAL_LRFC_STRING_USER_PASSWORD() throws Exception {
         SWValidateService api = new SWValidateService("demo","123456789",Utils.url_pruebas);
         ValidateLrfcResponse response = null;
@@ -76,6 +81,7 @@ public class SWValidateServiceTest extends TestCase {
         String expect_status = "success";
         Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
     }
+    @Test
 	public void testValidateNULL_LRFC_STRING_USER_PASSWORD() throws Exception {
         SWValidateService api = new SWValidateService("demo","123456789",Utils.url_pruebas);
         ValidateLrfcResponse response = null;
@@ -86,6 +92,7 @@ public class SWValidateServiceTest extends TestCase {
         String expect_status = "error";
         Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
     }
+    @Test
 	public void testValidateFAKE_LRFC_STRING_USER_PASSWORD() throws Exception {
         SWValidateService api = new SWValidateService("demo","123456789",Utils.url_pruebas);
         ValidateLrfcResponse response = null;
@@ -96,6 +103,7 @@ public class SWValidateServiceTest extends TestCase {
         String expect_status = "error";
         Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
     }
+    @Test
 	public void testValidateFAKE_Lco_STRING_USER_PASSWORD() throws Exception {
         SWValidateService api = new SWValidateService("demo","123456789",Utils.url_pruebas);
         ValidateLcoResponse response = null;
@@ -106,6 +114,7 @@ public class SWValidateServiceTest extends TestCase {
         String expect_status = "error";
         Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
     }
+    @Test
 	public void testValidateREAL_LCO_STRING_USER_PASSWORD() throws Exception {
         SWValidateService api = new SWValidateService("demo","123456789",Utils.url_pruebas);
         ValidateLcoResponse response = null;

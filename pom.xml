@@ -184,5 +184,15 @@
             <artifactId>org.apache.servicemix.bundles.not-yet-commons-ssl</artifactId>
             <version>0.3.11_1</version>
         </dependency>
+        <dependency>
+            <groupId>jakarta.xml.ws</groupId>
+            <artifactId>jakarta.xml.ws-api</artifactId>
+            <version>2.3.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.messaging.saaj</groupId>
+            <artifactId>saaj-impl</artifactId>
+            <version>1.5.1</version>
+        </dependency>
     </dependencies>
 </project>

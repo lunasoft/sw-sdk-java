@@ -1,23 +1,22 @@
 package Tests.Authentication;
 
+import Services.Authentication.SWAuthenticationService;
+import Utils.Responses.Authentication.SuccessAuthResponse;
+import java.io.IOException;
+import org.junit.Assert;
+import org.junit.Test;
 import Exceptions.AuthException;
 import Exceptions.GeneralException;
-import Services.Authentication.SWAuthenticationService;
-import Utils.Responses.IResponse;
-import Utils.Responses.SuccessAuthResponse;
-import junit.framework.Assert;
-import junit.framework.TestCase;
 
-/**
- * Created by asalvio on 18/07/2017.
- */
-public class SWAuthenticationServiceTest extends TestCase {
+public class SWAuthenticationServiceTest {
+	@Test
     public void testAuth(){
-        SWAuthenticationService auth = new SWAuthenticationService("demo","123456789","http://services.test.sw.com.mx");
         try {
+        	SWAuthenticationService auth = new SWAuthenticationService("demo","123456789","http://services.test.sw.com.mx");
             SuccessAuthResponse res = (SuccessAuthResponse) auth.Token();
             String expected = "success";
             System.out.println(res.token);
+            System.out.println(res.expires_in);
             System.out.println(res.message);
             System.out.println(res.messageDetail);
             Assert.assertTrue(expected.equalsIgnoreCase(res.Status));
@@ -26,19 +25,19 @@ public class SWAuthenticationServiceTest extends TestCase {
             e.printStackTrace();
         }
     }
-
-    public void testAuthProxy(){
-        SWAuthenticationService auth = new SWAuthenticationService("demo","123456789","http://services.test.sw.com.mx","127.0.0.1","8888");
+	@Test
+    public void testBadAuth(){
         try {
+        	SWAuthenticationService auth = new SWAuthenticationService("user","password","http://services.test.sw.com.mx");
             SuccessAuthResponse res = (SuccessAuthResponse) auth.Token();
-            String expected = "success";
-            System.out.println(res.token);
-            System.out.println(res.message);
-            System.out.println(res.messageDetail);
-            Assert.assertTrue(expected.equalsIgnoreCase(res.Status));
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
+        } catch (AuthException e) {
+            System.out.println(e.getErrorMSG());
+            System.out.println(e.getHttpStatusCode());
+            Assert.assertTrue(true);
+        } catch (GeneralException e) {
+        	Assert.fail();
+		} catch (IOException e) {
+			Assert.fail();
+		}
     }
 }

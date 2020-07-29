@@ -2,35 +2,46 @@ package Utils.Requests.BalanceAccount;
 
 import Exceptions.AuthException;
 import Exceptions.GeneralException;
+import Utils.Helpers.RequestHelper;
 import Utils.Requests.IRequest;
 import Utils.Requests.IRequestor;
-import Utils.Responses.BalanceAcctResponse;
 import Utils.Responses.IResponse;
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.Unirest;
-import com.mashape.unirest.http.exceptions.UnirestException;
+import Utils.Responses.BalanceAccount.BalanceAcctResponse;
+
+import java.io.IOException;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-//@author: Lupita ALvarado
 public class BalanceAcctRequest implements IRequestor {
-
-    @Override
-    public IResponse sendRequest(IRequest request) throws GeneralException, AuthException, GeneralException {
+    public IResponse sendRequest(IRequest request) throws GeneralException, AuthException, GeneralException, IOException {
         try {
-
-            HttpResponse<String> response = Unirest.get(request.URI)
-                    .header("Authorization", "bearer " + request.Token).asString();
-
-            if (!response.getBody().equalsIgnoreCase("{}") && !response.getBody().equalsIgnoreCase("")) {
-                JSONObject body = new JSONObject(response.getBody());
-
-                if (response.getStatus() == 200) {
+        	CloseableHttpClient client = HttpClients.createDefault();
+        	HttpGet httpget = new HttpGet(request.URI);
+        	httpget.setHeader("Authorization", "bearer " + request.Token);
+        	RequestHelper.setTimeOut(request.options, 3500);
+			RequestHelper.setProxy(request.options, request.proxyHost, request.proxyPort);
+			httpget.setConfig(request.options.build());
+        	CloseableHttpResponse responseB = client.execute(httpget);
+        	HttpEntity entity = responseB.getEntity();
+            String responseString = EntityUtils.toString(entity, "UTF-8");
+            int status = responseB.getStatusLine().getStatusCode();
+            client.close();
+            responseB.close();
+            if(!responseString.isEmpty() && status < 500) {
+                JSONObject body = new JSONObject(responseString);
+                if (status == 200) {
                     JSONObject data = body.getJSONObject("data");
 
-                    return new BalanceAcctResponse(response.getStatus(), body.getString("status"),
+                    return new BalanceAcctResponse(status, body.getString("status"),
                             data.getString("idSaldoCliente"), data.getString("idClienteUsuario"), data.getInt("saldoTimbres"), data.getInt("timbresUtilizados"),
-                            data.getString("fechaExpiracion"), data.getBoolean("unlimited"), data.getInt("timbresAsignados"),"OK","OK");
+                            data.get("fechaExpiracion").toString(), data.getBoolean("unlimited"), data.getInt("timbresAsignados"),"OK","OK");
                 } 
                 else {
                     String messageDetail = "";
@@ -38,15 +49,12 @@ public class BalanceAcctRequest implements IRequestor {
                     if (!body.isNull("messageDetail")) {
                         messageDetail = body.getString("messageDetail");
                     }
-                    return new BalanceAcctResponse(response.getStatus(), body.getString("status"), body.getString("message"), messageDetail);
+                    return new BalanceAcctResponse(status, body.getString("status"), body.getString("message"), messageDetail);
                 }
             } else {
-                return new BalanceAcctResponse(response.getStatus(), "error", response.getStatusText(), response.getStatusText());
+                return new BalanceAcctResponse(status, "error", responseB.getStatusLine().getReasonPhrase(), responseString);
             }
 
-        } catch (UnirestException e) {
-
-            throw new GeneralException(404, "HOST DESCONOCIDO");
         } catch (JSONException e) {
             throw new GeneralException(500, e.getMessage());
         }

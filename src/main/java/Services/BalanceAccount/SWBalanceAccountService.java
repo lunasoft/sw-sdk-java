@@ -1,13 +1,10 @@
 package Services.BalanceAccount;
 
-//@author: Lupita Alvarado
+import java.io.IOException;
 
 import Exceptions.AuthException;
 import Exceptions.GeneralException;
 import Services.SWService;
-import Utils.Constants;
-import Utils.Requests.Authentication.AuthOptionsRequest;
-import Utils.Requests.Authentication.AuthRequest;
 import Utils.Requests.BalanceAccount.BalanceAcctOptionsRequest;
 import Utils.Requests.BalanceAccount.BalanceAcctRequest;
 import Utils.Responses.IResponse;
@@ -15,7 +12,7 @@ import Utils.Responses.IResponse;
 
 public class SWBalanceAccountService extends SWService {
     
-    public SWBalanceAccountService(String user, String password, String URI) {
+    public SWBalanceAccountService(String user, String password, String URI) throws AuthException {
         super(user, password, URI);
     }
 
@@ -23,19 +20,17 @@ public class SWBalanceAccountService extends SWService {
         super(token, URI);
     }
     
-    public IResponse GetBalanceAccount() throws AuthException, GeneralException {
+    public SWBalanceAccountService(String user, String password, String URI, String proxyHost, int proxyPort) throws AuthException {
+        super(user, password, URI, proxyHost, proxyPort);
+    }
 
-        if (getToken()==null){
-
-            generateToken();
-        }
-        
-        //MAKE GET BALANCE ACCOUNT PROCESS, CUSTOMER ALREADY HAS TOKEN
-
-        BalanceAcctOptionsRequest settings = new BalanceAcctOptionsRequest(getToken(),getURI());
-
+    public SWBalanceAccountService(String token, String URI, String proxyHost, int proxyPort) {
+        super(token, URI, proxyHost, proxyPort);
+    }
+    
+    public IResponse GetBalanceAccount() throws AuthException, GeneralException, IOException {
+        BalanceAcctOptionsRequest settings = new BalanceAcctOptionsRequest(getToken(), getURI(), getProxyHost(), getProxyPort());
         BalanceAcctRequest req = new BalanceAcctRequest();
         return req.sendRequest(settings);
-
     }
 }

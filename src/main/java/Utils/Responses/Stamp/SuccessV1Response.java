@@ -1,8 +1,7 @@
-package Utils.Responses;
+package Utils.Responses.Stamp;
 
-/**
- * Created by asalvio on 19/07/2017.
- */
+import Utils.Responses.IResponse;
+
 public class SuccessV1Response extends IResponse {
     public String tfd;
     public SuccessV1Response(int httpStatusCode, String status, String _tfd, String msg, String msgDetail) {

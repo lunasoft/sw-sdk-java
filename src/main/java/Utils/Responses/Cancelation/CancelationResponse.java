@@ -1,4 +1,6 @@
-package Utils.Responses;
+package Utils.Responses.Cancelation;
+
+import Utils.Responses.IResponse;
 
 public class CancelationResponse extends IResponse {
     

@@ -1,8 +1,7 @@
-package Utils.Responses;
+package Utils.Responses.Stamp;
 
-/**
- * Created by asalvio on 19/07/2017.
- */
+import Utils.Responses.IResponse;
+
 public class SuccessV2Response extends IResponse {
     public String tfd;
     public String cfdi;

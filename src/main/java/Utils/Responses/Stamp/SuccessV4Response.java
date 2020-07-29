@@ -1,8 +1,7 @@
-package Utils.Responses;
+package Utils.Responses.Stamp;
 
-/**
- * Created by asalvio on 09/05/2017.
- */
+import Utils.Responses.IResponse;
+
 public class SuccessV4Response extends IResponse {
     public String cadenaOriginalSAT;
     public String noCertificadoSAT;

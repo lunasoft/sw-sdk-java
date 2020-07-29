@@ -2,90 +2,66 @@ package Utils.Requests.Authentication;
 
 import Exceptions.AuthException;
 import Exceptions.GeneralException;
+import Utils.Helpers.RequestHelper;
 import Utils.Requests.IRequest;
 import Utils.Requests.IRequestor;
-import Utils.Requests.Stamp.StampOptionsRequest;
-import Utils.Responses.*;
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
-import com.mashape.unirest.http.Unirest;
-import com.mashape.unirest.http.exceptions.UnirestException;
-import org.apache.http.HttpHost;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.config.RequestConfig;
+import Utils.Responses.IResponse;
+import Utils.Responses.Authentication.SuccessAuthResponse;
+
+import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.util.Scanner;
 
 public class AuthRequest implements IRequestor {
-
-
-    @Override
-    public IResponse sendRequest(IRequest request) throws GeneralException, AuthException {
+    public IResponse sendRequest(IRequest request) throws GeneralException, AuthException, IOException {
 
         if (request.URI.isEmpty()){
-            throw new GeneralException(500,"URL VACIA");
+            throw new GeneralException(400,"URL VACIA");
         }
 
         String messageDetail = "";
         try {
-            String hostProxy = ((AuthOptionsRequest) request).getProxyHost();
-            String portProxy = ((AuthOptionsRequest) request).getPortHost();
-
-            CloseableHttpClient client = HttpClients.createDefault();
-            HttpPost httppost = new HttpPost(request.URI);
-            httppost.setHeader("user", request.User);
-            httppost.setHeader("password", request.Password);
-            if( hostProxy !=null && portProxy != null){
-                HttpHost proxy = new HttpHost(hostProxy, Integer.parseInt(portProxy));
-                RequestConfig config = RequestConfig.custom()
-                        .setProxy(proxy)
-                        .build();
-                httppost.setConfig(config);
-            }
+        	CloseableHttpClient client = HttpClients.createDefault();
+        	HttpPost httppost = new HttpPost(request.URI);
+        	httppost.setHeader("user", request.User);
+            httppost.addHeader("password", request.Password);
+            RequestHelper.setTimeOut(request.options, 3000);
+			RequestHelper.setProxy(request.options, request.proxyHost, request.proxyPort);
+			httppost.setConfig(request.options.build());
             CloseableHttpResponse responseB = client.execute(httppost);
-
-            InputStream inputStream = responseB.getEntity().getContent();
-
-            Scanner s = new Scanner(inputStream).useDelimiter("\\A");
-            String responseString = s.hasNext() ? s.next() : "";
-
-            int statusE = responseB.getStatusLine().getStatusCode();
+            HttpEntity entity = responseB.getEntity();
+            String responseString = EntityUtils.toString(entity, "UTF-8");
+            int status = responseB.getStatusLine().getStatusCode();
             client.close();
-
-            if(!responseString.isEmpty()) {
-                JSONObject body = new JSONObject(responseString);
-                if(statusE==200){
-                    JSONObject data = body.getJSONObject("data");
-                    return new SuccessAuthResponse(statusE,body.getString("status"),data.getString("token"),"OK","OK");
-                }
-                else{
+            responseB.close();
+            if(!responseString.isEmpty() && status < 500) {
+                    JSONObject body = new JSONObject(responseString);
                     if(!body.isNull("messageDetail")){
                         messageDetail = body.getString("messageDetail");
                     }
-                    return new SuccessAuthResponse(statusE,body.getString("status"),"",body.getString("message"),messageDetail);
-                }
+
+                    if(status==200){
+                        JSONObject data = body.getJSONObject("data");
+                        return new SuccessAuthResponse(status,body.getString("status"),data.getString("token"),data.getInt("expires_in"),"OK","OK");
+                    }
+                    else{
+                        return new SuccessAuthResponse(status,body.getString("status"),"",0,body.getString("message"),messageDetail);
+
+                    }
             }
             else{
-                return new SuccessAuthResponse(statusE,"error","",responseB.getStatusLine().getReasonPhrase(),responseB.getStatusLine().getReasonPhrase());
+                return new SuccessAuthResponse(status,"error","",0,responseB.getStatusLine().getReasonPhrase(), responseString);
 
             }
 
-
-        }
-        catch(JSONException e){
-            throw new GeneralException(500,e.getMessage());
-        } catch (ClientProtocolException e) {
-            throw new GeneralException(500,e.getMessage());
-        } catch (IOException e) {
+        } catch(JSONException e){
             throw new GeneralException(500,e.getMessage());
         }
 

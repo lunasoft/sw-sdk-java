@@ -48,7 +48,7 @@ public class ValidateLrfcRequest implements IRequestor{
             		if (!body.isNull("messageDetail")) {
                         messageDetail = body.getString("messageDetail");
                     }
-                    return new ValidateLrfcResponse(statusE, body.getString("status"), "", messageDetail);
+                    return new ValidateLrfcResponse(statusE, body.getString("status"), body.getString("message"), messageDetail);
             	}
             }
             else {

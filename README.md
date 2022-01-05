@@ -508,13 +508,19 @@ try {
 # Cancelación #
 
 ## Cancelacion CSD ##
-Recibe los archivos CSD y KEY en Base64, password, asi como el rfc emisor y el UUID del CFDI a cancelar
+Se deberán incluir los siguientes elementos en la solicitud del servicio: 
+- Archivos CSD y KEY en Base64. 
+- Password.
+- RFC emisor. 
+- UUID del CFDI a cancelar.
+- Motivo de cancelacion.
+- Folio de Sustitución.
 
 
 ```java
 SWCancelationService app = new SWCancelationService("demo", "123456789", "http://services.test.sw.com.mx");
 CancelationResponse response = null;
-response = (CancelationResponse) app.Cancelation(uuid, password_csd, rfc, b64Cer, b64Key);
+response = (CancelationResponse) app.Cancelation(uuid, password_csd, rfc, b64Cer, b64Key, motivo, foliosustitucion);
 
 System.out.println(response.Status);
 System.out.println(response.HttpStatusCode);
@@ -547,13 +553,19 @@ System.out.println(response.messageDetail);
 ```
 
 ## Cancelacion Pfx ##
-Recibe el Pfx (.pfx, password), asi como el rfc emisor y el UUID del CFDI a cancelar
+Se deberán incluir los siguientes elementos en la solicitud del servicio:  
+- PFX. 
+- RFC emisor. 
+- Password.
+- UUID del CFDI a cancelar.
+- Motivo de cancelacion.
+- Folio de Sustitución. 
 
 
 ```java
 SWCancelationService app = new SWCancelationService("demo", "123456789", Utils.url_pruebas);
 CancelationResponse response = null;
-response = (CancelationResponse) app.Cancelation(uuid, password_csd, rfc, b64Pfx);
+response = (CancelationResponse) app.Cancelation(uuid, password_csd, rfc, b64Pfx, motivo, foliosustitucion);
 System.out.println(response.Status);
 System.out.println(response.HttpStatusCode);
 System.out.println(response.acuse);
@@ -566,13 +578,16 @@ System.out.println(response.messageDetail);
 
 
 ## Cancelacion Uuid ##
-Recibe el rfc emisor y el UUID del CFDI a cancelar (Los archivos .Cer y .Key deben estar en tu administrador de timbres).
-
+Se deberán incluir los siguientes elementos en la solicitud del servicio:
+- RFC emisor. 
+- UUID del CFDI a cancelar.
+- Motivo de cancelacion.
+- Folio de Sustitución. 
 
 ```java
 SWCancelationService app = new SWCancelationService("demo", "123456789", Utils.url_pruebas);
 CancelationResponse response = null;
-response = (CancelationResponse) app.Cancelation(uuid, rfc);
+response = (CancelationResponse) app.Cancelation(uuid, rfc, motivo, foliosustitucion);
 System.out.println(response.Status);
 System.out.println(response.HttpStatusCode);
 System.out.println(response.acuse);
@@ -689,12 +704,18 @@ System.out.println(response.messageDetail);
 
 # Status CFDI #
 Método necesario para conocer el estado de un CFDI a través del servicio de consulta del SAT.
-Será necesario conocer el RFC emisor, RFC receptor, total de la factura, y UUID de la factura que vamos a consultar. [Este servicio es consumido directamente del SAT].
+Se deberán incluir los siguientes elementos en la solicitud del servicio:  
+- RFC emisor.
+- RFC receptor.
+- Total de la factura.
+- UUID de la factura.
+- Últimos ocho caracteres del sello digital del emisor del comprobante.
+
 ```java
 StatusCfdiService app = new StatusCfdiService("https://consultaqr.facturaelectronica.sat.gob.mx/ConsultaCFDIService.svc", "http://tempuri.org/IConsultaCFDIService/Consulta");
 
 StatusCfdiResponse response = null;
-response = (StatusCfdiResponse) app.StatusCfdi("LSO1306189R5", "LSO1306189R5", "1.16", "E0AAE6B3-43CC-4B9C-B229-7E221000E2BB");
+response = (StatusCfdiResponse) app.StatusCfdi("LSO1306189R5", "LSO1306189R5", "1.16", "E0AAE6B3-43CC-4B9C-B229-7E221000E2BB", U8CSello);
 System.out.println(response.Status);
 System.out.println(response.HttpStatusCode);
 System.out.println(response.codigoEstatus);

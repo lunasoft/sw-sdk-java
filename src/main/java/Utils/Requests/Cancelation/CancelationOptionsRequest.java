@@ -11,33 +11,41 @@ public class CancelationOptionsRequest extends IRequest{
     private String b64key;
     private String b64Pfx;
     private String xml;
+    private String motivo;
+    private String foliosustitucion;
       
 
-    public CancelationOptionsRequest(String token, String URI, String uuid, String password_csd, String rfc, String b64Cer, String b64Key, String proxyHost, int proxyPort) {
+    public CancelationOptionsRequest(String token, String URI, String uuid, String password_csd, String rfc, String b64Cer, String b64Key, String motivo, String foliosustitucion, String proxyHost, int proxyPort) {
         super(token, URI+ Constants.CANCELATION_CSD_PATH, proxyHost, proxyPort);
         this.uuid = uuid;
         this.password_csd = password_csd;
         this.rfc = rfc;
         this.b64Cer = b64Cer;
         this.b64key = b64Key;
+        this.motivo=motivo;
+        this.foliosustitucion=foliosustitucion;
     }
     
-    public CancelationOptionsRequest(String token, String URI, String uuid, String password_csd, String rfc, String b64Pfx, String proxyHost, int proxyPort) {
+    public CancelationOptionsRequest(String token, String URI, String uuid, String password_csd, String rfc, String b64Pfx, String motivo, String foliosustitucion, String proxyHost, int proxyPort) {
         super(token, URI+ Constants.CANCELATION_PFX_PATH, proxyHost, proxyPort);
         this.uuid = uuid;
         this.password_csd = password_csd;
         this.rfc = rfc;
         this.b64Pfx = b64Pfx;
+        this.motivo=motivo;
+        this.foliosustitucion=foliosustitucion;
     }
     
     public CancelationOptionsRequest(String token, String URI, String xml, String proxyHost, int proxyPort) {
         super(token, URI+ Constants.CANCELATION_XML_PATH, proxyHost, proxyPort);
         this.xml = xml;
     }
-    public CancelationOptionsRequest(String token, String URI, String uuid, String rfc, String proxyHost, int proxyPort) {
-        super(token, URI + Constants.CANCELATION_UUID_PATH + rfc + "/" + uuid, proxyHost, proxyPort);
+    public CancelationOptionsRequest(String token, String URI, String uuid, String rfc, String motivo, String foliosustitucion, String proxyHost, int proxyPort) {
+        super(token, URI + Constants.CANCELATION_UUID_PATH + rfc + "/" + uuid + "/" + "01" + "/" + "0e4c30b8-11d8-40d8-894d-ef8b32eb4bdf", proxyHost, proxyPort);
         this.uuid = uuid;
         this.rfc = rfc;
+        this.motivo=motivo;
+        this.foliosustitucion=foliosustitucion;
     }
 
     public String getUuid() {
@@ -65,6 +73,12 @@ public class CancelationOptionsRequest extends IRequest{
     }
     public String getB64Pfx() {
         return b64Pfx;
+    }
+    public String getmotivo() {
+        return motivo;
+    }
+    public String getfoliosust() {
+        return foliosustitucion;
     }
 
 }

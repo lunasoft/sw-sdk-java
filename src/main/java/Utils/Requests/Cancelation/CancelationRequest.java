@@ -43,7 +43,9 @@ public class CancelationRequest implements IRequestor {
 			StringEntity sEntity = new StringEntity(
 					"{\r\n \"uuid\": \"" + ((CancelationOptionsRequest) request).getUuid() + "\",\r\n \"password\": \""
 							+ ((CancelationOptionsRequest) request).getPassword_csd() + "\",\r\n \"rfc\": \""
-							+ ((CancelationOptionsRequest) request).getRfc() + "\",\r\n \"b64Cer\": \""
+							+ ((CancelationOptionsRequest) request).getRfc()+ "\",\r\n \"motivo\": \""
+                                                        + ((CancelationOptionsRequest) request).getmotivo()+ "\",\r\n \"foliosustitucion\": \""
+                                                        + ((CancelationOptionsRequest) request).getfoliosust()+ "\",\r\n \"b64Cer\": \""
 							+ ((CancelationOptionsRequest) request).getB64Cer() + "\",\r\n \"b64Key\": \""
 							+ ((CancelationOptionsRequest) request).getB64key() + "\"\r\n}");
 			httppost.setEntity(builder.build());
@@ -83,7 +85,7 @@ public class CancelationRequest implements IRequestor {
 		}
 	}
 
-	public IResponse sendRequest(IRequest request, boolean isXml) throws GeneralException, AuthException, IOException {
+	public IResponse sendRequestxml(IRequest request, boolean isXml) throws GeneralException, AuthException, IOException {
 
 		try {
 			String xmlStr = ((CancelationOptionsRequest) request).getXml();
@@ -116,7 +118,7 @@ public class CancelationRequest implements IRequestor {
 				if (status == 200) {
 					JSONObject data = body.getJSONObject("data");
 					String xml = ((CancelationOptionsRequest) request).getXml();
-					String uuid = xml.substring(xml.indexOf("<UUID>") + 6, xml.indexOf("</UUID>")).toUpperCase();
+					String uuid = xml.substring(xml.indexOf("<Folio UUID=") +13, xml.indexOf("Motivo")-2).toUpperCase();
 					JSONObject uuid_data = data.getJSONObject("uuid");
 					String uuidSC = uuid_data.getString(uuid);
 					return new CancelationResponse(status, body.getString("status"), data.getString("acuse"), uuid,
@@ -152,7 +154,9 @@ public class CancelationRequest implements IRequestor {
 			StringEntity sEntity = new StringEntity(
 					"{\r\n \"uuid\": \"" + ((CancelationOptionsRequest) request).getUuid() + "\",\r\n \"password\": \""
 							+ ((CancelationOptionsRequest) request).getPassword_csd() + "\",\r\n \"rfc\": \""
-							+ ((CancelationOptionsRequest) request).getRfc() + "\",\r\n \"b64Pfx\": \""
+                                                        + ((CancelationOptionsRequest) request).getRfc() + "\",\r\n \"motivo\": \""
+                                                        + ((CancelationOptionsRequest) request).getmotivo()+ "\",\r\n \"foliosustitucion\": \""
+							+ ((CancelationOptionsRequest) request).getfoliosust() + "\",\r\n \"b64Pfx\": \""
 							+ ((CancelationOptionsRequest) request).getB64Pfx() + "\"\r\n}");
 			httppost.setEntity(builder.build());
 			httppost.setEntity(sEntity);

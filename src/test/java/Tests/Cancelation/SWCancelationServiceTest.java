@@ -22,7 +22,7 @@ public class SWCancelationServiceTest {
 	//csd
 	@Test
 	public void testCancelationServiceCSD_authUser() throws Exception {
-		SWCancelationService app = new SWCancelationService("martin.flores@sw.com.mx", "c142536c", Utils.url_pruebas);
+		SWCancelationService app = new SWCancelationService("usuario", "contraseña",  Utils.url_pruebas);
 		CancelationResponse response = null;
 		response = (CancelationResponse) app.Cancelation(uuid, password_csd, rfc, b64Cer, b64Key, motivo, foliosustitucion);
 		System.out.println(response.Status);
@@ -87,7 +87,7 @@ public class SWCancelationServiceTest {
 	}
 	@Test
 	public void testCancelationServiceCSD_emptyCancelationParams() throws Exception {
-		SWCancelationService app = new SWCancelationService("martin.flores@sw.com.mx", "c142536c", Utils.url_pruebas);
+		SWCancelationService app = new SWCancelationService("usuario", "contraseña",  Utils.url_pruebas);
 		CancelationResponse response = null;
 		response = (CancelationResponse) app.Cancelation("", "", "", "", "", "", "");
 		System.out.println(response.Status);
@@ -102,7 +102,7 @@ public class SWCancelationServiceTest {
 	//XML
 	@Test
 	public void testCancelationServiceXML_validXML() throws Exception {
-		SWCancelationService app = new SWCancelationService("martin.flores@sw.com.mx", "c142536c", Utils.url_pruebas);
+		SWCancelationService app = new SWCancelationService("usuario", "contraseña",  Utils.url_pruebas);
 		CancelationResponse response = null;
 		response = (CancelationResponse) app.Cancelation(xml);
 		System.out.println(response.Status);
@@ -117,7 +117,7 @@ public class SWCancelationServiceTest {
 	}
 	@Test
 	public void testCancelationServiceXML_invalidXML() throws Exception {
-		SWCancelationService app = new SWCancelationService("martin.flores@sw.com.mx", "c142536c", Utils.url_pruebas);
+		SWCancelationService app = new SWCancelationService("usuario", "contraseña",  Utils.url_pruebas);
 		CancelationResponse response = null;
 		response = (CancelationResponse) app.Cancelation("wrong xml");
 		System.out.println(response.Status);
@@ -130,7 +130,7 @@ public class SWCancelationServiceTest {
 	}
 	@Test
 	public void testCancelationServiceXML_nullXML() throws Exception {
-		SWCancelationService app = new SWCancelationService("martin.flores@sw.com.mx", "c142536c", Utils.url_pruebas);
+		SWCancelationService app = new SWCancelationService("usuario", "contraseña",  Utils.url_pruebas);
 		CancelationResponse response = null;
 		response = (CancelationResponse) app.Cancelation("");
 		System.out.println(response.Status);
@@ -145,7 +145,7 @@ public class SWCancelationServiceTest {
 	// Pfx
 	@Test
 	public void testCancelationServicePfx_authUser() throws Exception {
-		SWCancelationService app = new SWCancelationService("martin.flores@sw.com.mx", "c142536c", Utils.url_pruebas);
+		SWCancelationService app = new SWCancelationService("usuario", "contraseña",  Utils.url_pruebas);
 		CancelationResponse response = null;
 		response = (CancelationResponse) app.Cancelation(uuid, password_csd, rfc, b64Pfx,motivo, foliosustitucion);
 		System.out.println(response.Status);
@@ -210,7 +210,7 @@ public class SWCancelationServiceTest {
 	}
 	@Test
 	public void testCancelationServicePfx_emptyCancelationParams() throws Exception {
-		SWCancelationService app = new SWCancelationService("martin.flores@sw.com.mx", "c142536c", Utils.url_pruebas);
+		SWCancelationService app = new SWCancelationService("usuario", "contraseña",  Utils.url_pruebas);
 		CancelationResponse response = null;
 		response = (CancelationResponse) app.Cancelation("", "", "", "", "", "");
 		System.out.println(response.Status);
@@ -225,7 +225,7 @@ public class SWCancelationServiceTest {
 	// Uuid
 	@Test
 	public void testCancelationServiceUuid_authUser() throws Exception {
-		SWCancelationService app = new SWCancelationService("martin.flores@sw.com.mx", "c142536c", Utils.url_pruebas);
+		SWCancelationService app = new SWCancelationService("usuario", "contraseña",  Utils.url_pruebas);
 		CancelationResponse response = null;
 		response = (CancelationResponse) app.Cancelationuuid(uuid, rfc, motivo, foliosustitucion);
 		System.out.println(response.Status);
@@ -290,7 +290,7 @@ public class SWCancelationServiceTest {
 	}
 	@Test
 	public void testCancelationServiceUuid_emptyCancelationParams() throws Exception {
-		SWCancelationService app = new SWCancelationService("martin.flores@sw.com.mx", "c142536c", Utils.url_pruebas);
+		SWCancelationService app = new SWCancelationService("usuario", "contraseña",  Utils.url_pruebas);
 		CancelationResponse response = null;
 		response = (CancelationResponse) app.Cancelationuuid("", "", "", "");
 		System.out.println(response.Status);

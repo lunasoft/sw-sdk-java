@@ -41,7 +41,8 @@ public class CancelationOptionsRequest extends IRequest{
         this.xml = xml;
     }
     public CancelationOptionsRequest(String token, String URI, String uuid, String rfc, String motivo, String foliosustitucion, String proxyHost, int proxyPort) {
-        super(token, URI + Constants.CANCELATION_UUID_PATH + rfc + "/" + uuid + "/" + "01" + "/" + "0e4c30b8-11d8-40d8-894d-ef8b32eb4bdf", proxyHost, proxyPort);
+        //super(token, URI + Constants.CANCELATION_UUID_PATH + rfc + "/" + uuid + "/" + motivo + "/" + foliosustitucion, proxyHost, proxyPort);
+        super(token, URI + Constants.CANCELATION_UUID_PATH + String.format("%s/%s/%s/%s", rfc, uuid,  motivo, foliosustitucion ), proxyHost, proxyPort);
         this.uuid = uuid;
         this.rfc = rfc;
         this.motivo=motivo;

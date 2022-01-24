@@ -6,7 +6,7 @@
     	<project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
     </properties>
     <artifactId>SW-JAVA</artifactId>
-    <version>1.0.6.2${rcsuffix}</version>
+    <version>1.0.6.3${rcsuffix}</version>
     <packaging>jar</packaging>
     <scm>
         <url>https://github.com/lunasoft/sw-sdk-java</url>

@@ -1,16 +1,12 @@
 package Utils.Requests.Validate;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.util.LinkedList;
 import java.util.UUID;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.ContentType;
-import org.apache.http.entity.mime.HttpMultipartMode;
-import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
@@ -27,6 +23,7 @@ import Utils.Responses.IResponse;
 import Utils.Responses.Validate.DetailData;
 import Utils.Responses.Validate.DetailNode;
 import Utils.Responses.Validate.ValidateXmlResponse;
+import org.apache.http.entity.StringEntity;
 
 public class ValidateXmlRequest implements IRequestor{
 
@@ -34,7 +31,7 @@ public class ValidateXmlRequest implements IRequestor{
 		try {
 			String xmlStr = ((ValidateXmlOptionsRequest) request).getXml();
 			String boundary = UUID.randomUUID().toString();
-            String raw = "--"+boundary+"\r\nContent-Disposition: form-data; name=xml; filename=xml\r\nContent-Type: application/xml\r\n\r\n"+xmlStr+"\r\n--"+boundary+"--";
+            String raw = "--"+boundary+"\r\nContent-Disposition: form-data; name=xml; filename=xml\r\nContent-Transfer-Encoding: binary\r\nContent-Type: text/xml\r\n\r\n"+xmlStr+"\r\n--"+boundary+"--";
             CloseableHttpClient client = HttpClients.createDefault();
             HttpPost httppost = new HttpPost(request.URI);
             RequestHelper.setTimeOut(request.options, raw.length());
@@ -42,17 +39,12 @@ public class ValidateXmlRequest implements IRequestor{
 			httppost.setConfig(request.options.build());
             httppost.setHeader("Authorization", "bearer " + request.Token);
             httppost.addHeader("Content-Type", "multipart/form-data; boundary="+boundary);
-            MultipartEntityBuilder builder = MultipartEntityBuilder.create();
-            Charset chars = Charset.forName("UTF-8");
-        	builder.setCharset(chars);
-        	builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
-            builder.addTextBody("xml", raw, ContentType.DEFAULT_BINARY);
-            httppost.setEntity(builder.build());
+            httppost.setEntity(new StringEntity(raw, "UTF-8"));
             CloseableHttpResponse responseB = client.execute(httppost);
             HttpEntity entity = responseB.getEntity();
             String responseString = EntityUtils.toString(entity, "UTF-8");
             int statusE = responseB.getStatusLine().getStatusCode();
-            client.close();
+            client.close();  
             responseB.close();
             if(!responseString.isEmpty() && statusE < 500) {
             	JSONObject body = new JSONObject(responseString);

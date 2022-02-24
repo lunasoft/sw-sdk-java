@@ -15,7 +15,7 @@ import junit.framework.TestCase;
 public class SWValidateServiceTest extends TestCase {
     @Test
 	public void testValidateREAL_XML_STRING_USER_PASSWORD() throws Exception {
-        SWValidateService api = new SWValidateService("usuario","contraseña",Utils.url_pruebas);
+        SWValidateService api = new SWValidateService("user","password",Utils.url_pruebas);
         ValidateXmlResponse response = null;
         Utils ut = new Utils();
         System.out.println(ut.StringgenBasico());
@@ -45,7 +45,7 @@ public class SWValidateServiceTest extends TestCase {
     }
     @Test
 	public void testValidateNULL_XML_STRING_USER_PASSWORD() throws Exception {
-        SWValidateService api = new SWValidateService("usuario","contraseña",Utils.url_pruebas);
+        SWValidateService api = new SWValidateService("user","password",Utils.url_pruebas);
         ValidateXmlResponse response = null;
         response = (ValidateXmlResponse) api.ValidateXml(null);
         System.out.println(response.Status);

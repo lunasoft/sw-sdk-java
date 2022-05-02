@@ -34,11 +34,11 @@ public class InstitucionesEducativasPrivadasTest {
             Assert.assertNotNull(response.tfd);
             Assert.assertTrue("success".equalsIgnoreCase(response.Status));
         } catch (AuthException ex) {
-            Assert.assertNotNull(ex);
+            Assert.fail(ex.getMessage());
         } catch (GeneralException ex) {
-            Assert.assertNotNull(ex);
+            Assert.fail(ex.getMessage());
         } catch (IOException ex) {
-            Assert.assertNotNull(ex);
+            Assert.fail(ex.getMessage());
         }
     }
 
@@ -55,11 +55,11 @@ public class InstitucionesEducativasPrivadasTest {
             Assert.assertNotNull(response.cfdi);
             Assert.assertTrue("success".equalsIgnoreCase(response.Status));
         } catch (AuthException ex) {
-            Assert.assertNotNull(ex);
+            Assert.fail(ex.getMessage());
         } catch (GeneralException ex) {
-            Assert.assertNotNull(ex);
+            Assert.fail(ex.getMessage());
         } catch (IOException ex) {
-            Assert.assertNotNull(ex);
+            Assert.fail(ex.getMessage());
         }
     }
     
@@ -75,11 +75,11 @@ public class InstitucionesEducativasPrivadasTest {
             Assert.assertNotNull(response.cfdi);
             Assert.assertTrue("success".equalsIgnoreCase(response.Status));
         } catch (AuthException ex) {
-            Assert.assertNotNull(ex);
+            Assert.fail(ex.getMessage());
         } catch (GeneralException ex) {
-            Assert.assertNotNull(ex);
+            Assert.fail(ex.getMessage());
         } catch (IOException ex) {
-            Assert.assertNotNull(ex);
+            Assert.fail(ex.getMessage());
         }
     }
     
@@ -95,11 +95,11 @@ public class InstitucionesEducativasPrivadasTest {
             Assert.assertNotNull(response.cfdi);
             Assert.assertTrue("success".equalsIgnoreCase(response.Status));
         } catch (AuthException ex) {
-            Assert.assertNotNull(ex);
+            Assert.fail(ex.getMessage());
         } catch (GeneralException ex) {
-            Assert.assertNotNull(ex);
+            Assert.fail(ex.getMessage());
         } catch (IOException ex) {
-            Assert.assertNotNull(ex);
+            Assert.fail(ex.getMessage());
         }
     }
     
@@ -115,11 +115,11 @@ public class InstitucionesEducativasPrivadasTest {
             Assert.assertNotNull(response.cfdi);
             Assert.assertTrue("success".equalsIgnoreCase(response.Status));
         } catch (AuthException ex) {
-            Assert.assertNotNull(ex);
+            Assert.fail(ex.getMessage());
         } catch (GeneralException ex) {
-            Assert.assertNotNull(ex);
+            Assert.fail(ex.getMessage());
         } catch (IOException ex) {
-            Assert.assertNotNull(ex);
+            Assert.fail(ex.getMessage());
         }
     }
 }

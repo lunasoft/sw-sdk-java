@@ -1,0 +1,213 @@
+{
+	"Version": "4.0",
+	"Serie": "CFDI",
+	"Folio": "Folio",
+	"Fecha": "2022-04-06T00:18:00",
+	"Sello": "e",
+	"FormaPago": "03",
+	"FormaPagoSpecified": true,
+	"NoCertificado": null,
+	"Certificado": null,
+	"CondicionesDePago": "CondicionesDePago",
+	"SubTotal": 26232.75,
+	"Descuento": 0,
+	"DescuentoSpecified": false,
+	"Moneda": "MXN",
+	"TipoCambio": "1",
+	"TipoCambioSpecified": true,
+	"Total": 29380.68,
+	"TipoDeComprobante": "I",
+	"Exportacion": "01",
+	"MetodoPago": "PUE",
+	"MetodoPagoSpecified": true,
+	"LugarExpedicion": "25350",
+	"Emisor": {
+		"Rfc": "EKU9003173C9",
+		"Nombre": "ESCUELA KEMPER URGATE",
+		"RegimenFiscal": "601",
+		"FacAtrAdquirente": null
+	},
+	"Receptor": {
+		"Rfc": "URE180429TM6",
+		"Nombre": "UNIVERSIDAD ROBOTICA ESPAÑOLA",
+		"DomicilioFiscalReceptor": "65000",
+		"RegimenFiscalReceptor": "601",
+		"UsoCFDI": "G01"
+	},
+	"Conceptos": [
+		{
+			"Impuestos": {
+				"Traslados": [
+					{
+						"Base": 26232.75,
+						"Impuesto": "002",
+						"TipoFactor": "Tasa",
+						"TasaOCuota": 0.16,
+						"TasaOCuotaSpecified": true,
+						"Importe": 4197.24,
+						"ImporteSpecified": true
+					}
+				],
+				"Retenciones": [
+					{
+						"Base": 26232.75,
+						"Impuesto": "002",
+						"TipoFactor": "Tasa",
+						"TasaOCuota": 0.04,
+						"TasaOCuotaSpecified": true,
+						"Importe": 1049.31,
+						"ImporteSpecified": true
+					}
+				]
+			},
+			"ClaveProdServ": "78121603",
+			"NoIdentificacion": "78121603",
+			"Cantidad": 1,
+			"ClaveUnidad": "H78",
+			"Unidad": "Pieza",
+			"Descripcion": "TONERS",
+			"ValorUnitario": 26232.75,
+			"Importe": 26232.75,
+			"Descuento": 0,
+			"DescuentoSpecified": false,
+			"ObjetoImp": "02"
+		}
+	],
+	"Impuestos": {
+		"Traslados": [
+			{
+				"Base": 26232.75,
+				"Impuesto": "002",
+				"TipoFactor": "Tasa",
+				"TasaOCuota": 0.16,
+				"Importe": 4197.24,
+				"TasaOCuotaSpecified": true,
+				"ImporteSpecified": true
+			}
+		],
+		"Retenciones": [
+			{
+				"Impuesto": "002",
+				"Importe": 1049.31
+			}
+		],
+		"TotalImpuestosRetenidosSpecified": true,
+		"TotalImpuestosRetenidos": 1049.31,
+		"TotalImpuestosTrasladados": 4197.24,
+		"TotalImpuestosTrasladadosSpecified": true
+	},
+	"Complemento": {
+		"Any": [
+			{
+				"CartaPorte20:CartaPorte": {
+					"Version": "2.0",
+					"FiguraTransporte": [
+						{
+							"Domicilio": {
+								"Calle": "PRUEBA1",
+								"CodigoPostal": "25350",
+								"Estado": "COA",
+								"NumeroExterior": "1111",
+								"Pais": "MEX"
+							},
+							"NombreFigura": "TRNASPORTISTA RUBEN",
+							"NumLicencia": "SON12221111",
+							"RFCFigura": "FUNK671228PH6",
+							"TipoFigura": "01"
+						}
+					],
+					"Mercancias": {
+						"Autotransporte": {
+							"IdentificacionVehicular": {
+								"AnioModeloVM": "2013",
+								"ConfigVehicular": "T3S2R2",
+								"PlacaVM": "123456"
+							},
+							"NumPermisoSCT": "1234567",
+							"PermSCT": "TPAF08",
+							"Remolques": [
+								{
+									"Placa": "123451",
+									"SubTipoRem": "CTR021"
+								},
+								{
+									"Placa": "123458",
+									"SubTipoRem": "CTR021"
+								}
+							],
+							"Seguros": {
+								"AseguraRespCivil": "EL SEGURO",
+								"PolizaRespCivil": "1234567891",
+								"PrimaSeguro": "5000"
+							}
+						},
+						"Mercancia": [
+							{
+								"BienesTransp": "30111601",
+								"Cantidad": "56",
+								"CantidadTransporta": [
+									{
+										"Cantidad": "56",
+										"IDDestino": "DE000002",
+										"IDOrigen": "OR000001"
+									}
+								],
+								"ValorMercancia": "2222",
+								"ClaveUnidad": "TNE",
+								"Descripcion": "PRUEBA DESCRIPCION",
+								"Moneda": "MXN",
+								"MonedaSpecified": "true",
+								"PesoEnKg": 56000,
+								"Unidad": "BT"
+							}
+						],
+						"NumTotalMercancias": "1",
+						"NumberOfNodesTransports": "1",
+						"PesoBrutoTotal": 56000,
+						"PesoNetoTotal": 56000,
+						"PesoNetoTotalSpecified": true,
+						"UnidadPeso": "KGM"
+					},
+					"TotalDistRec": "278",
+					"TotalDistRecSpecified": "true",
+					"TranspInternac": "No",
+					"TranspInternacSpecified": true,
+					"Ubicaciones": [
+						{
+							"DistanciaRecorrida": "278",
+							"DistanciaRecorridaSpecified": true,
+							"Domicilio": {
+								"Calle": "DIRECCION DESTINO.",
+								"CodigoPostal": "25350",
+								"Estado": "COA",
+								"NumeroExterior": "123",
+								"Pais": "MEX",
+								"Referencia": "sin referencias"
+							},
+							"FechaHoraSalidaLlegada": "2022-03-05T13:23",
+							"IDUbicacion": "DE000002",
+							"NombreRemitenteDestinatario": "UNIVERSIDAD ROBOTICA ESPAÑOLA",
+							"RFCRemitenteDestinatario": "URE180429TM6",
+							"TipoUbicacion": "Destino"
+						},
+						{
+							"Domicilio": {
+								"Calle": "DIRECCION ORIGEN",
+								"CodigoPostal": "25350",
+								"Estado": "COA",
+								"NumeroExterior": "1234",
+								"Pais": "MEX",
+								"Referencia": "Sin referencia"
+							},
+							"FechaHoraSalidaLlegada": "2022-03-04T13:23",
+							"IDUbicacion": "OR000001",
+							"NombreRemitenteDestinatario": "INGRID XODAR JIMENEZ",
+							"RFCRemitenteDestinatario": "XOJI740919U48",
+							"TipoUbicacion": "Origen"
+						}
+					]
+				}
+			}
+		]
+	}
+}

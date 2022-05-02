@@ -1,0 +1,59 @@
+{
+  "Version": "4.0",
+  "Serie": "FNCS",
+  "Folio": "005575",
+  "Fecha": "2022-04-04T01:16:48",
+  "Sello": "",
+  "NoCertificado": "",
+  "Certificado": "",
+  "CondicionesDePago": "120 d\\u00edas",
+  "SubTotal": "10164.53",
+  "Moneda": "MXN",
+  "TipoCambio": "1",
+  "Total": "10164.53",
+  "TipoDeComprobante": "I",
+  "Exportacion": "01",
+  "LugarExpedicion": "38160",
+  "Emisor": {
+    "Rfc": "EKU9003173C9",
+    "Nombre": "ESCUELA KEMPER URGATE",
+    "RegimenFiscal": "603"
+  },
+  "Receptor": {
+    "Rfc": "EKU9003173C9",
+    "Nombre": "ESCUELA KEMPER URGATE",
+    "DomicilioFiscalReceptor": "26015",
+    "RegimenFiscalReceptor": "601",
+    "UsoCFDI": "P01"
+  },
+  "Conceptos": [
+    {
+      "ClaveProdServ": "73151500",
+      "NoIdentificacion": "CG0141-80291491",
+      "Cantidad": 15840,
+      "ClaveUnidad": "E48",
+      "Descripcion": "SERVICIO DE MANUFACTURA (80291491)",
+      "ValorUnitario": 0.6417,
+      "Importe": 10164.53,
+      "ObjetoImp": "01"
+    }
+  ],
+  "AddendaSpecified": true,
+  "FormaPago": "99",
+  "MetodoPago": "PPD",
+  "Complemento": {
+    "Any": [
+      {
+        "leyendasFisc:LeyendasFiscales": {
+          "@xmlns:leyendasFisc": "http://www.sat.gob.mx/leyendasFiscales",
+          "@version": "1.0",
+          "leyendasFisc:Leyenda": {
+            "@disposicionFiscal": "ISR",
+            "@norma": "133",
+            "@textoLeyenda": "Efectos fiscales al pago"
+          }
+        }
+      }
+    ]
+  }
+}

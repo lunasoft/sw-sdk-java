@@ -1,0 +1,99 @@
+{
+  "Version": "4.0",
+  "Serie": "SW",
+  "Folio": "123456",
+  "Fecha": "2022-03-29T00:00:00",
+  "Sello": "",
+  "NoCertificado": "",
+  "Certificado": "",
+  "CondicionesDePago": "CondicionesDePago",
+  "SubTotal": "10000.00",
+  "Descuento": "0",
+  "Moneda": "MXN",
+  "TipoCambio": "1",
+  "Total": "10000.00",
+  "TipoDeComprobante": "N",
+  "Exportacion": "01",
+  "MetodoPago": "PPD",
+  "LugarExpedicion": "45610",
+  "Emisor": {
+    "Rfc": "EKU9003173C9",
+    "Nombre": "ESCUELA KEMPER URGATE",
+    "RegimenFiscal": "603"
+  },
+  "Receptor": {
+    "Rfc": "XOJI740919U48",
+    "Nombre": "INGRID XODAR JIMENEZ",
+    "DomicilioFiscalReceptor": "88965",
+    "RegimenFiscalReceptor": "605",
+    "UsoCFDI": "CN01"
+  },
+  "Conceptos": [
+    {
+      "ClaveProdServ": "84111505",
+      "Cantidad": "1",
+      "ClaveUnidad": "ACT",
+      "Descripcion": "Pago de nómina",
+      "ValorUnitario": "10000.00",
+      "Importe": "10000.00",
+      "Descuento": "0",
+      "ObjetoImp": "01"
+    }
+  ],
+  "Complemento": {
+    "Any": [
+      {
+        "Nomina12:Nomina": {
+          "Version": "1.2",
+          "TipoNomina": "E",
+          "FechaPago": "2022-02-01",
+          "FechaInicialPago": "2022-02-01",
+          "FechaFinalPago": "2022-02-01",
+          "NumDiasPagados": "30",
+          "TotalPercepciones": "10000.00",
+          "Emisor": {
+            "RegistroPatronal": "B5510768108",
+            "RfcPatronOrigen": "EKU9003173C9"
+          },
+          "Receptor": {
+            "Curp": "BADD110313HCMLNS09",
+            "NumSeguridadSocial": "000000",
+            "FechaInicioRelLaboral": "2015-01-01",
+            "Antigüedad": "P364W",
+            "TipoContrato": "01",
+            "TipoJornada": "01",
+            "TipoRegimen": "03",
+            "NumEmpleado": "120",
+            "Departamento": "Desarrollo",
+            "Puesto": "Ingeniero de Software",
+            "RiesgoPuesto": "1",
+            "PeriodicidadPago": "99",
+            "CuentaBancaria": "072320002084170154",
+            "SalarioDiarioIntegrado": "146.47",
+            "ClaveEntFed": "JAL"
+          },
+          "Percepciones": {
+            "TotalJubilacionPensionRetiro": "10000.00",
+            "TotalGravado": "0",
+            "TotalExento": "10000.00",
+            "Percepcion": [
+              {
+                "TipoPercepcion": "044",
+                "Clave": "00500",
+                "Concepto": "Jubilaciones, pensiones o haberes de retiro",
+                "ImporteGravado": "0.00",
+                "ImporteExento": "10000.00"
+              }
+            ],
+            "JubilacionPensionRetiro": {
+              "IngresoAcumulable": "10000.00",
+              "IngresoNoAcumulable": "0.00",
+              "TotalParcialidad": "3000.00",
+              "MontoDiario": "100.00"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

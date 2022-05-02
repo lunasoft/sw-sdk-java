@@ -1,0 +1,323 @@
+{
+  "Version": "4.0",
+  "Serie": "Serie",
+  "Folio": "Folio",
+  "Fecha": "2022-04-06T00:18:00",
+  "Sello": "e",
+  "FormaPago": "99",
+  "FormaPagoSpecified": true,
+  "NoCertificado": null,
+  "Certificado": null,
+  "CondicionesDePago": "CondicionesDePago",
+  "SubTotal": 200,
+  "Descuento": 1,
+  "DescuentoSpecified": true,
+  "Moneda": "MXN",
+  "TipoCambio": "1",
+  "TipoCambioSpecified": true,
+  "Total": 199.16,
+  "TipoDeComprobante": "I",
+  "Exportacion": "01",
+  "MetodoPago": "PPD",
+  "MetodoPagoSpecified": true,
+  "LugarExpedicion": "20000",
+  "Emisor": {
+    "Rfc": "EKU9003173C9",
+    "Nombre": "ESCUELA KEMPER URGATE",
+    "RegimenFiscal": "601",
+    "FacAtrAdquirente": null
+  },
+  "Receptor": {
+    "Rfc": "URE180429TM6",
+    "Nombre": "UNIVERSIDAD ROBOTICA ESPAÑOLA",
+    "DomicilioFiscalReceptor": "65000",
+    "RegimenFiscalReceptor": "601",
+    "UsoCFDI": "G01"
+  },
+  "Conceptos": [
+    {
+      "Impuestos": {
+        "Traslados": [
+          {
+            "Base": 1,
+            "Impuesto": "002",
+            "TipoFactor": "Tasa",
+            "TasaOCuota": 0.16,
+            "TasaOCuotaSpecified": true,
+            "Importe": 0.16,
+            "ImporteSpecified": true
+          }
+        ]
+      },
+      "ClaveProdServ": "78101500",
+      "Cantidad": 1,
+      "ClaveUnidad": "H87",
+      "Unidad": "Pieza",
+      "Descripcion": "Cigarros",
+      "ValorUnitario": 200,
+      "Importe": 200,
+      "Descuento": 1,
+      "DescuentoSpecified": true,
+      "ObjetoImp": "02"
+    }
+  ],
+  "Impuestos": {
+    "Traslados": [
+      {
+        "Base": 1,
+        "Impuesto": "002",
+        "TipoFactor": "Tasa",
+        "TasaOCuota": 0.16,
+        "Importe": 0.16,
+        "TasaOCuotaSpecified": true,
+        "ImporteSpecified": true
+      }
+    ],
+    "TotalImpuestosTrasladados": 0.16,
+    "TotalImpuestosTrasladadosSpecified": true
+  },
+  "Complemento": {
+    "Any": [
+      {
+        "CartaPorte20:CartaPorte": {
+          "TotalDistRec": "50",
+          "TranspInternac": "Sí",
+          "Version": "2.0",
+          "EntradaSalidaMerc": "Entrada",
+          "PaisOrigenDestino": "MEX",
+          "Ubicaciones": [
+            {
+              "FechaHoraSalidaLlegada": "2021-11-09T14:29:52",
+              "IDUbicacion": "OR123457",
+              "NombreEstacion": "PARACUARO",
+              "NombreRemitenteDestinatario": "NombreRemitenteDestinatario",
+              "NumEstacion": "N618.8",
+              "NumRegIdTrib": "NumRegIdTrib",
+              "RFCRemitenteDestinatario": "XAXX010101000",
+              "ResidenciaFiscal": "USA",
+              "TipoEstacion": "01",
+              "TipoUbicacion": "Origen",
+              "Domicilio": {
+                "Calle": "calle",
+                "CodigoPostal": "99056",
+                "Colonia": "002",
+                "Estado": "AL",
+                "Localidad": "0002",
+                "Municipio": "000005",
+                "NumeroExterior": "211",
+                "Pais": "USA",
+                "Referencia": "casa blanca"
+              }
+            },
+            {
+              "DistanciaRecorrida": "10",
+              "FechaHoraSalidaLlegada": "2021-11-09T14:29:52",
+              "IDUbicacion": "DE123457",
+              "NombreEstacion": "PARACUARO",
+              "NombreRemitenteDestinatario": "NombreRemitenteDestinatario",
+              "NumEstacion": "N618.8",
+              "NumRegIdTrib": "NumRegIdTrib",
+              "RFCRemitenteDestinatario": "URE180429TM6",
+              "ResidenciaFiscal": "USA",
+              "TipoEstacion": "01",
+              "TipoUbicacion": "Destino",
+              "Domicilio": {
+                "Calle": "calle",
+                "CodigoPostal": "99056",
+                "Colonia": "002",
+                "Estado": "AL",
+                "Localidad": "0002",
+                "Municipio": "000005",
+                "NumeroExterior": "211",
+                "Pais": "USA",
+                "Referencia": "casa blanca"
+              }
+            },
+            {
+              "DistanciaRecorrida": "10",
+              "FechaHoraSalidaLlegada": "2021-11-09T14:29:52",
+              "IDUbicacion": "DE123457",
+              "NombreEstacion": "PARACUARO",
+              "NombreRemitenteDestinatario": "NombreRemitenteDestinatario",
+              "NumEstacion": "N618.8",
+              "NumRegIdTrib": "NumRegIdTrib",
+              "RFCRemitenteDestinatario": "URE180429TM6",
+              "ResidenciaFiscal": "USA",
+              "TipoEstacion": "01",
+              "TipoUbicacion": "Destino",
+              "Domicilio": {
+                "Calle": "calle",
+                "CodigoPostal": "99056",
+                "Colonia": "002",
+                "Estado": "AL",
+                "Localidad": "0002",
+                "Municipio": "000005",
+                "NumeroExterior": "211",
+                "Pais": "USA",
+                "Referencia": "casa blanca"
+              }
+            },
+            {
+              "DistanciaRecorrida": "10",
+              "FechaHoraSalidaLlegada": "2021-11-09T14:29:52",
+              "IDUbicacion": "DE123457",
+              "NombreEstacion": "PARACUARO",
+              "NombreRemitenteDestinatario": "NombreRemitenteDestinatario",
+              "NumEstacion": "N618.8",
+              "NumRegIdTrib": "NumRegIdTrib",
+              "RFCRemitenteDestinatario": "URE180429TM6",
+              "ResidenciaFiscal": "USA",
+              "TipoEstacion": "01",
+              "TipoUbicacion": "Destino",
+              "Domicilio": {
+                "Calle": "calle",
+                "CodigoPostal": "99056",
+                "Colonia": "002",
+                "Estado": "AL",
+                "Localidad": "0002",
+                "Municipio": "000005",
+                "NumeroExterior": "211",
+                "Pais": "USA",
+                "Referencia": "casa blanca"
+              }
+            },
+            {
+              "DistanciaRecorrida": "10",
+              "FechaHoraSalidaLlegada": "2021-11-09T14:29:52",
+              "IDUbicacion": "DE123457",
+              "NombreEstacion": "PARACUARO",
+              "NombreRemitenteDestinatario": "NombreRemitenteDestinatario",
+              "NumEstacion": "N618.8",
+              "NumRegIdTrib": "NumRegIdTrib",
+              "RFCRemitenteDestinatario": "URE180429TM6",
+              "ResidenciaFiscal": "USA",
+              "TipoEstacion": "01",
+              "TipoUbicacion": "Destino",
+              "Domicilio": {
+                "Calle": "calle",
+                "CodigoPostal": "99056",
+                "Colonia": "002",
+                "Estado": "AL",
+                "Localidad": "0002",
+                "Municipio": "000005",
+                "NumeroExterior": "211",
+                "Pais": "USA",
+                "Referencia": "casa blanca"
+              }
+            },
+            {
+              "DistanciaRecorrida": "10",
+              "FechaHoraSalidaLlegada": "2021-11-09T14:29:52",
+              "IDUbicacion": "DE123457",
+              "NombreEstacion": "PARACUARO",
+              "NombreRemitenteDestinatario": "NombreRemitenteDestinatario",
+              "NumEstacion": "N618.8",
+              "NumRegIdTrib": "NumRegIdTrib",
+              "RFCRemitenteDestinatario": "URE180429TM6",
+              "ResidenciaFiscal": "USA",
+              "TipoEstacion": "01",
+              "TipoUbicacion": "Destino",
+              "Domicilio": {
+                "Calle": "calle",
+                "CodigoPostal": "99056",
+                "Colonia": "002",
+                "Estado": "AL",
+                "Localidad": "0002",
+                "Municipio": "000005",
+                "NumeroExterior": "211",
+                "Pais": "USA",
+                "Referencia": "casa blanca"
+              }
+            }
+          ],
+          "Mercancias": {
+            "CargoPorTasacion": "1",
+            "NumTotalMercancias": "1",
+            "PesoBrutoTotal": "1",
+            "PesoNetoTotal": "1",
+            "UnidadPeso": "A44",
+            "Mercancia": [
+              {
+                "BienesTransp": "01010101",
+                "Cantidad": "1",
+                "ClaveSTCC": "123456",
+                "ClaveUnidad": "A1",
+                "DescripEmbalaje": "DescripEmbalaje",
+                "Descripcion": "Descripcion",
+                "Dimensiones": "18/62/31cm",
+                "MaterialPeligroso": "No",
+                "PesoEnKg": "1",
+                "UUIDComercioExt": "59AB274B-6CBC-4176-9BD7-BB67B28D3EA4",
+                "Unidad": "Unidad",
+                "FraccionArancelaria": "3923100301",
+                "Pedimentos": [
+                  {
+                    "Pedimento": "21  47  3807  8003832"
+                  }
+                ],
+                "CantidadTransporta": [
+                  {
+                    "Cantidad": "1",
+                    "IDDestino": "DE123457",
+                    "IDOrigen": "OR123457"
+                  }
+                ]
+              }
+            ],
+            "TransporteFerroviario": {
+              "NombreAseg": "nombreaseg",
+              "NumPolizaSeguro": "numpolizaseguro",
+              "TipoDeServicio": "TS02",
+              "TipoDeTrafico": "TT02",
+              "DerechosDePaso": [
+                {
+                  "KilometrajePagado": "1",
+                  "TipoDerechoDePaso": "CDP002"
+                }
+              ],
+              "Carro": [
+                {
+                  "GuiaCarro": "guiacarro",
+                  "MatriculaCarro": "matriculacarro",
+                  "TipoCarro": "TC03",
+                  "ToneladasNetasCarro": "1",
+                  "Contenedor": [
+                    {
+                      "PesoContenedorVacio": "1",
+                      "PesoNetoMercancia": "1",
+                      "TipoContenedor": "TC02"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "FiguraTransporte": [
+            {
+              "NombreFigura": "NombreFigura",
+              "RFCFigura": "URE180429TM6",
+              "TipoFigura": "03",
+              "PartesTransporte": [
+                {
+                  "ParteTransporte": "PT02"
+                }
+              ],
+              "Domicilio": {
+                "Calle": "Calle",
+                "CodigoPostal": "CodigoPostal",
+                "Colonia": "Colonia",
+                "Estado": "AL",
+                "Localidad": "Localidad",
+                "Municipio": "Municipio",
+                "NumeroExterior": "NumeroExterior",
+                "NumeroInterior": "NumeroInterior",
+                "Pais": "USA",
+                "Referencia": "Referencia"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

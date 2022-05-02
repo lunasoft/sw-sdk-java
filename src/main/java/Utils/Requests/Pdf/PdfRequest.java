@@ -21,7 +21,6 @@ import Exceptions.GeneralException;
 import Utils.Helpers.RequestHelper;
 import Utils.Requests.IRequest;
 import Utils.Requests.IRequestor;
-import Utils.Requests.Pdf.PdfOptionsRequest;
 import Utils.Responses.IResponse;
 import Utils.Responses.Pdf.PdfResponse;
 

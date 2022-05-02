@@ -1,0 +1,152 @@
+{
+  "Version": "4.0",
+  "Serie": "Serie",
+  "Folio": "Folio",
+  "Fecha": "2022-04-11T00:18:00",
+  "Sello": "",
+  "FormaPago": "99",
+  "FormaPagoSpecified": true,
+  "NoCertificado": "",
+  "Certificado": "",
+  "CondicionesDePago": "CondicionesDePago",
+  "SubTotal": "200",
+  "Descuento": "1",
+  "DescuentoSpecified": true,
+  "Moneda": "AMD",
+  "TipoCambio": "1",
+  "TipoCambioSpecified": true,
+  "Total": "199.16",
+  "TipoDeComprobante": "I",
+  "Exportacion": "01",
+  "MetodoPago": "PPD",
+  "MetodoPagoSpecified": true,
+  "LugarExpedicion": "20000",
+  "Emisor": {
+    "Rfc": "EKU9003173C9",
+    "Nombre": "ESCUELA KEMPER URGATE",
+    "RegimenFiscal": "601"
+  },
+  "Receptor": {
+    "Rfc": "URE180429TM6",
+    "Nombre": "UNIVERSIDAD ROBOTICA ESPAÑOLA",
+    "DomicilioFiscalReceptor": "65000",
+    "ResidenciaFiscalSpecified": false,
+    "RegimenFiscalReceptor": "601",
+    "UsoCFDI": "G01"
+  },
+  "Conceptos": [
+    {
+      "Impuestos": {
+        "Traslados": [
+          {
+            "Base": "1",
+            "Impuesto": "002",
+            "TipoFactor": "Tasa",
+            "TasaOCuota": "0.16",
+            "TasaOCuotaSpecified": true,
+            "Importe": "0.16",
+            "ImporteSpecified": true
+          }
+        ],
+        "Retenciones": [
+          {
+            "Base": "1",
+            "Impuesto": "001",
+            "TipoFactor": "Tasa",
+            "TasaOCuota": "0.1",
+            "Importe": "0"
+          },
+          {
+            "Base": "1",
+            "Impuesto": "002",
+            "TipoFactor": "Tasa",
+            "TasaOCuota": "0.106666",
+            "Importe": "0"
+          }
+        ]
+      },
+      "ClaveProdServ": "50211503",
+      "Cantidad": "1",
+      "ClaveUnidad": "H87",
+      "Unidad": "Pieza",
+      "Descripcion": "Cigarros",
+      "ValorUnitario": "200",
+      "Importe": "200",
+      "Descuento": "1",
+      "DescuentoSpecified": true,
+      "ObjetoImp": "02"
+    }
+  ],
+  "Impuestos": {
+    "Retenciones": [
+      {
+        "Impuesto": "001",
+        "Importe": "0"
+      },
+      {
+        "Impuesto": "002",
+        "Importe": "0"
+      }
+    ],
+    "Traslados": [
+      {
+        "Base": "1",
+        "Impuesto": "002",
+        "TipoFactor": "Tasa",
+        "TasaOCuota": "0.16",
+        "Importe": "0.16",
+        "TasaOCuotaSpecified": true,
+        "ImporteSpecified": true
+      }
+    ],
+    "TotalImpuestosRetenidos": "0",
+    "TotalImpuestosRetenidosSpecified": true,
+    "TotalImpuestosTrasladados": "0.16",
+    "TotalImpuestosTrasladadosSpecified": true
+  },
+  "Complemento": {
+    "Any": [
+      {
+        "detallista:detallista": {
+          "@xmlns:detallista": "http://www.sat.gob.mx/detallista",
+          "@contentVersion": "1.3.1",
+          "@documentStructureVersion": "AMC8.1",
+          "@type": "SimpleInvoiceType",
+          "@documentStatus": "ORIGINAL",
+          "detallista:requestForPaymentIdentification": {
+            "detallista:entityType": "INVOICE"
+          },
+          "detallista:specialInstruction": {
+            "@code": "ZZZ",
+            "detallista:text": "Dosciento sesenta pesos 00/100 m.n."
+          },
+          "detallista:orderIdentification": {
+            "detallista:referenceIdentification": {
+              "@type": "ON",
+              "#text": "3"
+            },
+            "detallista:ReferenceDate": "2012-01-01"
+          },
+          "detallista:AdditionalInformation": {
+            "detallista:referenceIdentification": {
+              "@type": "ATZ",
+              "#text": "2"
+            }
+          },
+          "detallista:DeliveryNote": {
+            "detallista:referenceIdentification": "1",
+            "detallista:ReferenceDate": "2022-01-01"
+          },
+          "detallista:buyer": {
+            "detallista:gln": "7504000107903",
+            "detallista:contactInformation": {
+              "detallista:personOrDepartmentName": {
+                "detallista:text": "0101"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

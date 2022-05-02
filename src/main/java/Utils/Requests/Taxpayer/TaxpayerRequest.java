@@ -7,7 +7,6 @@ import org.apache.http.HttpEntity;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicHeader;
@@ -20,7 +19,6 @@ import Utils.Requests.IRequest;
 import Utils.Responses.IResponse;
 import Utils.Responses.Taxpayer.TaxpayerData;
 import Utils.Responses.Taxpayer.TaxpayerResponse;
-import Utils.Requests.Taxpayer.TaxpayerOptionsRequest;
 
 public class TaxpayerRequest {
 

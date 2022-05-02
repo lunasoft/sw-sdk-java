@@ -1,0 +1,55 @@
+{
+  "Version": "4.0",
+  "Serie": "1230978ACB",
+  "Folio": "26480",
+  "Fecha": "2022-04-11T00:00:00",
+  "FormaPago": "01",
+  "FormaPagoSpecified": true,
+  "SubTotal": "1",
+  "Moneda": "MXN",
+  "Total": "1",
+  "TipoDeComprobante": "I",
+  "Exportacion": "01",
+  "MetodoPago": "PUE",
+  "MetodoPagoSpecified": true,
+  "LugarExpedicion": "03100",
+  "Emisor": {
+    "Rfc": "EKU9003173C9",
+    "Nombre": "ESCUELA KEMPER URGATE",
+    "RegimenFiscal": "603"
+  },
+  "Receptor": {
+    "Rfc": "CACX7605101P8",
+    "Nombre": "XOCHILT CASAS CHAVEZ",
+    "DomicilioFiscalReceptor": "10740",
+    "RegimenFiscalReceptor": "612",
+    "UsoCFDI": "G03"
+  },
+  "Conceptos": [
+    {
+      "ComplementoConcepto": {
+        "Any": [
+          {
+            "iedu:instEducativas": {
+              "@xmlns:iedu": "http://www.sat.gob.mx/iedu",
+              "@rfcPago": "CACX7605101P8",
+              "@autRVOE": "118141",
+              "@nivelEducativo": "Primaria",
+              "@CURP": "RULO100120HDFBTDA4",
+              "@nombreAlumno": "RUBINHO LOPEZ ADILENE",
+              "@version": "1.0"
+            }
+          }
+        ]
+      },
+      "ClaveProdServ": "86121500",
+      "NoIdentificacion": "292295",
+      "Cantidad": "1",
+      "ClaveUnidad": "E48",
+      "Descripcion": "PAGO DE INSCRIPCIÓN",
+      "ValorUnitario": "1",
+      "Importe": "1",
+      "ObjetoImp": "01"
+    }
+  ]
+}

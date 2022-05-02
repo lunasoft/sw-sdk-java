@@ -3,7 +3,6 @@ package Utils.Helpers;
 import org.json.JSONObject;
 
 import Utils.Responses.IResponse;
-import Utils.Responses.Stamp.SuccessV3Response;
 import Utils.Responses.Stamp.SuccessV4Response;
 
 public class BuildResponseV4 extends ResponseStamp {
@@ -39,7 +38,7 @@ public class BuildResponseV4 extends ResponseStamp {
 			}
 		}
 		else {
-			return new SuccessV4Response(status, "error", "", "", "", "", "", "", "", "", "", "Error con código "+status+": "+reason.getReasonPhrase(), response);
+			return new SuccessV4Response(status, "error", "", "", "", "", "", "", "", "", "", "Error con cÃ³digo "+status+": "+reason.getReasonPhrase(), response);
 		}
 	}
 }

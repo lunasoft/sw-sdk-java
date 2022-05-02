@@ -1,10 +1,8 @@
 package Tests.Validate;
 
 import java.util.LinkedList;
-
 import org.junit.Assert;
 import org.junit.Test;
-
 import Services.Validate.SWValidateService;
 import Tests.Utils;
 import Utils.Responses.Validate.DetailData;
@@ -15,11 +13,11 @@ import junit.framework.TestCase;
 public class SWValidateServiceTest extends TestCase {
     @Test
 	public void testValidateREAL_XML_STRING_USER_PASSWORD() throws Exception {
-        SWValidateService api = new SWValidateService("user","password",Utils.url_pruebas);
+        SWValidateService api = new SWValidateService(Utils.userSW, Utils.passwordSW,Utils.urlSW);
         ValidateXmlResponse response = null;
         Utils ut = new Utils();
-        System.out.println(ut.StringgenBasico());
-        response = (ValidateXmlResponse) api.ValidateXml(ut.StringgenBasico());
+        System.out.println(ut.StringgenBasico(false));
+        response = (ValidateXmlResponse) api.ValidateXml(ut.StringgenBasico(false));
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.message);
@@ -45,7 +43,7 @@ public class SWValidateServiceTest extends TestCase {
     }
     @Test
 	public void testValidateNULL_XML_STRING_USER_PASSWORD() throws Exception {
-        SWValidateService api = new SWValidateService("user","password",Utils.url_pruebas);
+        SWValidateService api = new SWValidateService(Utils.userSW, Utils.passwordSW,Utils.urlSW);
         ValidateXmlResponse response = null;
         response = (ValidateXmlResponse) api.ValidateXml(null);
         System.out.println(response.Status);
@@ -56,7 +54,7 @@ public class SWValidateServiceTest extends TestCase {
     }
     @Test
 	public void testValidateEMPTY_XML_STRING_USER_PASSWORD() throws Exception {
-        SWValidateService api = new SWValidateService("usuario","contraseña",Utils.url_pruebas);
+        SWValidateService api = new SWValidateService(Utils.userSW, Utils.passwordSW,Utils.urlSW);
         ValidateXmlResponse response = null;
         response = (ValidateXmlResponse) api.ValidateXml("");
         System.out.println(response.Status);
@@ -65,5 +63,4 @@ public class SWValidateServiceTest extends TestCase {
         String expect_status = "error";
         Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
     }
-
 }

@@ -1,0 +1,71 @@
+{
+  "Version": "4.0",
+  "Fecha": "2022-03-30T16:26:19",
+  "SubTotal": "0",
+  "Moneda": "XXX",
+  "Total": "0",
+  "TipoDeComprobante": "P",
+  "LugarExpedicion": "64530",
+  "NoCertificado": "",
+  "Certificado": "",
+  "Exportacion": "01",
+  "Emisor": {
+    "Rfc": "EKU9003173C9",
+    "Nombre": "ESCUELA KEMPER URGATE",
+    "RegimenFiscal": "601"
+  },
+  "Receptor": {
+	"Rfc": "URE180429TM6",
+	"Nombre": "UNIVERSIDAD ROBOTICA ESPAÑOLA",
+	"DomicilioFiscalReceptor": "65000",
+	"RegimenFiscalReceptor": "601",
+	"UsoCFDI": "CP01"
+  },
+  "Conceptos": [
+    {
+      "ClaveProdServ": "84111506",
+      "Cantidad": "1",
+      "ClaveUnidad": "ACT",
+      "Descripcion": "Pago",
+      "ValorUnitario": "0",
+      "Importe": "0",
+      "ObjetoImp": "01"
+    }
+  ],
+  "Complemento": {
+    "Any": [
+      {
+        "Pago20:Pagos": {
+          "Version":"2.0",
+          "Totales": {
+            "MontoTotalPagos": "1.00"
+          },
+          "Pago": [
+            {
+              "FechaPago": "2022-02-19T00:00:00",
+              "FormaDePagoP": "03",
+              "MonedaP": "MXN",
+              "Monto": "1.00",
+              "TipoCambioP": "1",
+              "DoctoRelacionado": [
+                {
+                  "IdDocumento": "daca5d85-b8cd-463b-a056-b021fe33c2f9",
+                  "Serie": "CG",
+                  "Folio": "2200004",
+                  "MonedaDR": "MXN",
+                  "MetodoDePagoDR": "PUE",
+                  "NumParcialidad": "1",
+                  "ImpSaldoAnt": "500.00",
+                  "ImpPagado": "1.00",
+                  "ImpSaldoInsoluto": "499.00",
+                  "EquivalenciaDR": "1",
+                  "ObjetoImpDR":"01"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

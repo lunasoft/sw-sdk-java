@@ -1,0 +1,95 @@
+{
+  "Version": "4.0",
+  "Serie": "S101",
+  "Folio": "BS/2022/01/0002",
+  "Fecha": "2022-04-07T11:00:44",
+  "Sello": "",
+  "NoCertificado": "30001000000400002434",
+  "Certificado": "",
+  "SubTotal": "0",
+  "Moneda": "XXX",
+  "Total": "0",
+  "TipoDeComprobante": "P",
+  "Exportacion": "01",
+  "LugarExpedicion": "42060",
+  "Emisor": {
+    "Rfc": "EKU9003173C9",
+    "Nombre": "ESCUELA KEMPER URGATE",
+    "RegimenFiscal": "601"
+  },
+  "Receptor": {
+    "Rfc": "URE180429TM6",
+    "Nombre": "UNIVERSIDAD ROBOTICA ESPAÑOLA",
+    "DomicilioFiscalReceptor": "65000",
+    "RegimenFiscalReceptor": "601",
+    "UsoCFDI": "CP01"
+  },
+  "Conceptos": [
+    {
+      "ClaveProdServ": "84111506",
+      "Cantidad": "1",
+      "ClaveUnidad": "ACT",
+      "Descripcion": "Pago",
+      "ValorUnitario": "0",
+      "Importe": "0",
+      "ObjetoImp": "01"
+    }
+  ],
+  "Complemento": {
+    "Any": [
+      {
+        "Pago20:Pagos": {
+          "Version": "2.0",
+          "Totales": {
+            "MontoTotalPagos": "2500.00",
+            "TotalTrasladosBaseIVA16": "21.6",
+            "TotalTrasladosImpuestoIVA16": "3.4"
+          },
+          "Pago": [
+            {
+              "FechaPago": "2022-01-31T17:49:04",
+              "FormaDePagoP": "03",
+              "MonedaP": "EUR",
+              "Monto": "100.00",
+              "TipoCambioP": "25.00",
+              "DoctoRelacionado": [
+                {
+                  "ImpSaldoInsoluto": "0.00",
+                  "ImpPagado": "1160.00",
+                  "ImpSaldoAnt": "1160.00",
+                  "NumParcialidad": "1",
+                  "IdDocumento": "4a5d025b-813a-4acf-9f32-8fb61f4918ac",
+                  "MonedaDR": "USD",
+                  "ObjetoImpDR": "02",
+                  "EquivalenciaDR": "11.60",
+                  "ImpuestosDR": {
+                    "TrasladosDR": [
+                      {
+                        "BaseDR": "10.00",
+                        "ImpuestoDR": "002",
+                        "TipoFactorDR": "Tasa",
+                        "TasaOCuotaDR": "0.160000",
+                        "ImporteDR": "1.60"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "ImpuestosP": {
+                "TrasladosP": [
+                  {
+                    "BaseP": "0.862068",
+                    "ImpuestoP": "002",
+                    "TipoFactorP": "Tasa",
+                    "TasaOCuotaP": "0.160000",
+                    "ImporteP": "0.137931"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

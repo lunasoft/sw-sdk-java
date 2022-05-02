@@ -1,0 +1,153 @@
+{
+  "Version": "4.0",
+  "Serie": "CFDI",
+  "Folio": 78,
+  "Fecha": "2022-03-08T13:24:30",
+  "Moneda": "XXX",
+  "TipoDeComprobante": "T",
+  "LugarExpedicion": "25350",
+  "Exportacion": "01",
+  "Descuento": "0",
+  "SubTotal": "0",
+  "Total": "0",
+  "Emisor": {
+    "Rfc": "EKU9003173C9",
+    "Nombre": "ESCUELA KEMPER URGATE",
+    "RegimenFiscal": "601"
+  },
+  "Receptor": {
+    "Rfc": "EKU9003173C9",
+    "Nombre": "ESCUELA KEMPER URGATE",
+    "DomicilioFiscalReceptor": "26015",
+    "RegimenFiscalReceptor": "601",
+    "UsoCFDI": "S01"
+  },
+  "Conceptos": [
+    {
+      "ClaveProdServ": "78121603",
+      "NoIdentificacion": "78121603",
+      "Cantidad": "1",
+      "ClaveUnidad": "H78",
+      "Unidad": "PIEZA",
+      "Descripcion": "TONERS",
+      "Descuento": "0",
+      "ValorUnitario": "26232.75",
+      "Importe": "26232.75",
+      "ObjetoImp": "01"
+    }
+  ],  
+  "Complemento": {
+    "Any": [
+      {
+        "cartaporte20:CartaPorte": {
+          "Version": "2.0",
+          "FiguraTransporte": [
+            {
+              "Domicilio": {
+                "Calle": "PRUEBA1",
+                "CodigoPostal": "85000",
+                "Estado": "SON",
+                "NumeroExterior": "1111",
+                "Pais": "MEX"
+              },
+              "NombreFigura": "TRNASPORTISTA RUBEN",
+              "NumLicencia": "SON12221111",
+              "RFCFigura": "FUNK671228PH6",
+              "TipoFigura": "01"
+            }
+          ],
+          "Mercancias": {
+            "Autotransporte": {
+              "IdentificacionVehicular": {
+                "AnioModeloVM": "2013",
+                "ConfigVehicular": "T3S2R2",
+                "PlacaVM": "123456"
+              },
+              "NumPermisoSCT": "1234567",
+              "PermSCT": "TPAF08",
+              "Remolques": [
+                {
+                  "Placa": "123451",
+                  "SubTipoRem": "CTR021"
+                },
+                {
+                  "Placa": "123458",
+                  "SubTipoRem": "CTR021"
+                }
+              ],
+              "Seguros": {
+                "AseguraRespCivil": "EL SEGURO",
+                "PolizaRespCivil": "1234567891",
+                "PrimaSeguro": "5000"
+              }
+            },
+            "Mercancia": [
+              {
+                "BienesTransp": "30111601",
+                "Cantidad": "56",
+                "CantidadTransporta": [
+                  {
+                    "Cantidad": "56",
+                    "IDDestino": "DE000002",
+                    "IDOrigen": "OR000001"
+                  }
+                ],
+                "ValorMercancia": "2222",
+                "ClaveUnidad": "TNE",
+                "Descripcion": "PRUEBA DESCRIPCION",
+                "Moneda": "MXN",
+                "MonedaSpecified": "true",
+                "PesoEnKg": 56000,
+                "Unidad": "BT"
+              }
+            ],
+            "NumTotalMercancias": "1",
+            "NumberOfNodesTransports": "1",
+            "PesoBrutoTotal": 56000,
+            "PesoNetoTotal": 56000,
+            "PesoNetoTotalSpecified": true,
+            "UnidadPeso": "KGM"
+          },
+          "TotalDistRec": "278",
+          "TotalDistRecSpecified": "true",
+          "TranspInternac": "No",
+          "TranspInternacSpecified": true,
+          "Ubicaciones": [
+            {
+              "DistanciaRecorrida": "278",
+              "DistanciaRecorridaSpecified": true,
+              "Domicilio": {
+                "Calle": "DIRECCION DESTINO.",
+                "CodigoPostal": "83000",
+                "Estado": "SON",
+                "NumeroExterior": "123",
+                "Pais": "MEX",
+                "Referencia": "sin referencias"
+              },
+              "FechaHoraSalidaLlegada": "2022-03-05T13:23",
+              "IDUbicacion": "DE000002",
+              "NombreRemitenteDestinatario": "UNIVERSIDAD ROBOTICA ESPAÑOLA",
+              "RFCRemitenteDestinatario": "URE180429TM6",
+              "TipoUbicacion": "Destino"
+            },
+            {
+              "Domicilio": {
+                "Calle": "DIRECCION ORIGEN",
+                "CodigoPostal": "85000",
+                "Estado": "SON",
+                "NumeroExterior": "1234",
+                "Pais": "MEX",
+                "Referencia": "Sin referencia"
+              },
+              "FechaHoraSalidaLlegada": "2022-03-04T13:23",
+              "IDUbicacion": "OR000001",
+              "NombreRemitenteDestinatario": "INGRID XODAR JIMENEZ",
+              "RFCRemitenteDestinatario": "XOJI740919U48",
+              "TipoUbicacion": "Origen"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

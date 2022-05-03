@@ -14,8 +14,8 @@ public class SWIssueServiceTest {
 	static Utils ut = new Utils();
 	@Test
 	public void testStampREAL_JSON_STRING_USER_PASSWORD_AUTH_V1() throws Exception {
-		SWIssueService api = new SWIssueService("demo", "123456789", Utils.url_pruebas);
-		String testJson = ut.JsonGenBasico();
+		SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
+		String testJson = ut.JsonGenBasico(false);
 		SuccessV1Response response = null;
 		response = (SuccessV1Response) api.IssueJson(testJson, "v1");
 		System.out.println(response.Status);
@@ -27,8 +27,8 @@ public class SWIssueServiceTest {
 	}
 	@Test
 	public void testStampREAL_JSON_STRING_USER_PASSWORD_AUTH_V2() throws Exception {
-		SWIssueService api = new SWIssueService("demo", "123456789", Utils.url_pruebas);
-		String testJson = ut.JsonGenBasico();
+		SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
+		String testJson = ut.JsonGenBasico(false);
 		SuccessV2Response response = null;
 		response = (SuccessV2Response) api.IssueJson(testJson, "v2");
 		System.out.println(response.Status);
@@ -41,8 +41,8 @@ public class SWIssueServiceTest {
 	}
 	@Test
 	public void testStampREAL_JSON_STRING_USER_PASSWORD_AUTH_V3() throws Exception {
-		SWIssueService api = new SWIssueService("demo", "123456789", Utils.url_pruebas);
-		String testJson = ut.JsonGenBasico();
+		SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
+		String testJson = ut.JsonGenBasico(false);
 		SuccessV3Response response = null;
 		response = (SuccessV3Response) api.IssueJson(testJson, "v3");
 		System.out.println(response.Status);
@@ -55,8 +55,8 @@ public class SWIssueServiceTest {
 	}
 	@Test
 	public void testStampREAL_JSON_STRING_USER_PASSWORD_AUTH_V4() throws Exception {
-		SWIssueService api = new SWIssueService("demo", "123456789", Utils.url_pruebas);
-		String testJson = ut.JsonGenBasico();
+		SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
+		String testJson = ut.JsonGenBasico(false);
 		SuccessV4Response response = null;
 		response = (SuccessV4Response) api.IssueJson(testJson, "v4");
 		System.out.println(response.message);
@@ -75,10 +75,9 @@ public class SWIssueServiceTest {
 	}
 	@Test
 	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1() throws Exception {
-		SWIssueService api = new SWIssueService("demo", "123456789", Utils.url_pruebas);
-		String normalXml = ut.StringgenBasico();
+		SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV1Response response = null;
-		response = (SuccessV1Response) api.IssueXml(normalXml, "v1");
+		response = (SuccessV1Response) api.IssueXml(ut.StringgenBasico(false), "v1");
 		System.out.println(response.Status);
 		System.out.println(response.HttpStatusCode);
 		System.out.println(response.tfd);
@@ -88,10 +87,9 @@ public class SWIssueServiceTest {
 	}
 	@Test
 	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2() throws Exception {
-		SWIssueService api = new SWIssueService("demo", "123456789", Utils.url_pruebas);
-		String normalXml = ut.genc10();
+		SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV2Response response = null;
-		response = (SuccessV2Response) api.IssueXml(normalXml, "v2");
+		response = (SuccessV2Response) api.IssueXml(ut.StringgenBasico(false), "v2");
 		System.out.println(response.Status);
 		System.out.println(response.HttpStatusCode);
 		System.out.println(response.tfd);
@@ -102,10 +100,9 @@ public class SWIssueServiceTest {
 	}
 	@Test
 	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3() throws Exception {
-		SWIssueService api = new SWIssueService("demo", "123456789", Utils.url_pruebas);
-		String normalXml = ut.StringgenBasico();
+		SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV3Response response = null;
-		response = (SuccessV3Response) api.IssueXml(normalXml, "v3");
+		response = (SuccessV3Response) api.IssueXml(ut.StringgenBasico(false), "v3");
 		System.out.println(response.Status);
 		System.out.println(response.HttpStatusCode);
 		System.out.println(response.message);
@@ -115,10 +112,9 @@ public class SWIssueServiceTest {
 	}
 	@Test
 	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4() throws Exception {
-		SWIssueService api = new SWIssueService("demo", "123456789", Utils.url_pruebas);
-		String normalXml = ut.genPagos10();
+		SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV4Response response = null;
-		response = (SuccessV4Response) api.IssueXml(normalXml, "v4");
+		response = (SuccessV4Response) api.IssueXml(ut.StringgenBasico(false), "v4");
 		System.out.println(response.message);
 		System.out.println(response.Status);
 		System.out.println(response.cfdi);

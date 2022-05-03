@@ -1,11 +1,10 @@
 package Tests.StatusCfdi;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
-
 import Services.StatusCfdi.StatusCfdiService;
 import Utils.Responses.StatusCfdi.StatusCfdiResponse;
-import org.junit.Ignore;
 
 public class StatusCfdiServiceTest {
 	@Test
@@ -22,7 +21,7 @@ public class StatusCfdiServiceTest {
 		String expect_status = "success";
 		Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
 	}
-        @Test
+	@Ignore
 	public void testStatusCancelationService_Test() throws Exception {
 		StatusCfdiService app = new StatusCfdiService("https://pruebacfdiconsultaqr.cloudapp.net/ConsultaCFDIService.svc", "http://tempuri.org/IConsultaCFDIService/Consulta");
 		StatusCfdiResponse response = null;

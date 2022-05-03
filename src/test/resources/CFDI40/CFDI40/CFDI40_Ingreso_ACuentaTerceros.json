@@ -1,0 +1,70 @@
+{
+  "Version": "4.0",
+  "Serie": "SW",
+  "Folio": "123456",
+  "Fecha": "2022-02-21T00:00:02",
+  "Sello": "",
+  "NoCertificado": "",
+  "Certificado": "",
+  "CondicionesDePago": "CondicionesDePago",
+  "SubTotal": "200.00",
+  "Descuento": "0.00",
+  "Moneda": "AMD",
+  "TipoCambio": "1",
+  "Total": "180.00",
+  "TipoDeComprobante": "I",
+  "Exportacion": "01",
+  "LugarExpedicion": "45610",
+  "Emisor": {
+    "Rfc": "EKU9003173C9",
+    "Nombre": "ESCUELA KEMPER URGATE",
+    "RegimenFiscal": "603"
+  },
+  "Receptor": {
+    "Rfc": "URE180429TM6",
+    "Nombre": "UNIVERSIDAD ROBOTICA ESPAÑOLA",
+    "DomicilioFiscalReceptor": "65000",
+    "RegimenFiscalReceptor": "601",
+    "UsoCFDI": "P01"
+  },
+  "Conceptos": [
+    {
+      "ClaveProdServ": "50211503",
+      "NoIdentificacion": "None",
+      "Cantidad": "1.0",
+      "ClaveUnidad": "H87",
+      "Unidad": "Pieza",
+      "Descripcion": "Cigarros",
+      "ValorUnitario": "200.00",
+      "Importe": "200.00",
+      "Descuento": "0.00",
+      "ObjetoImp": "02",
+      "Impuestos": {
+        "Retenciones": [
+          {
+            "Base": "200.00",
+            "Impuesto": "001",
+            "TipoFactor": "Tasa",
+            "TasaOCuota": "0.100000",
+            "Importe": "20.00"
+          }
+        ]
+      },
+      "ACuentaTerceros": {
+        "RfcACuentaTerceros": "CACX7605101P8",
+        "NombreACuentaTerceros": "XOCHILT CASAS CHAVEZ",
+        "RegimenFiscalACuentaTerceros": "601",
+        "DomicilioFiscalACuentaTerceros": "10740"
+      }
+    }
+  ],
+  "Impuestos": {
+    "TotalImpuestosRetenidos": "20.00",
+    "Retenciones": [
+      {
+        "Impuesto": "001",
+        "Importe": "20.00"
+      }
+    ]
+  }
+}

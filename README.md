@@ -53,7 +53,7 @@ Alternativamente tambien se cuenta con un archivo JAR en el que se incluyen toda
 try{
 	//Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
     //Se especifica el base path, esto para consumir el api de pruebas o productivo
-    SWStampService sdk = new SWStampService("demo","123456789","http://services.test.sw.com.mx");
+    SWStampService sdk = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
     //Si deseas utilizar un proxy customizado, debes agregar dos parametros mas
     //Se inicializa un objeto response, que obtendra la respuesta del api
     SuccessV1Response response = null;
@@ -93,7 +93,7 @@ TimbrarV1 Recibe el contenido de un XML ya emitido (sellado) en formato String �
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
     //Se especifica el base path, esto para consumir el api de pruebas o productivo
-    SWStampService sdk = new SWStampService("demo", "123456789", "http://services.test.sw.com.mx");
+    SWStampService sdk = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
     //Se inicializa un objeto response, que obtendra la respuesta del api
     SuccessV1Response response = null;
     //Se asigna el resultado de la respuesta a dicho objeto
@@ -151,7 +151,7 @@ TimbrarV2 Recibe el contenido de un XML ya emitido (sellado) en formato String ,
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
     //Se especifica el base path, esto para consumir el api de pruebas o productivo
-    SWStampService sdk = new SWStampService("demo", "123456789", "http://services.test.sw.com.mx");
+    SWStampService sdk = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
     //Se inicializa un objeto response, que obtendra la respuesta del api
     SuccessV2Response response = null;
     //Se asigna el resultado de la respuesta a dicho objeto
@@ -207,7 +207,7 @@ TimbrarV3 Recibe el contenido de un XML ya emitido (sellado) en formato String ,
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
     //Se especifica el base path, esto para consumir el api de pruebas o productivo
-    SWStampService sdk = new SWStampService("demo", "123456789", "http://services.test.sw.com.mx");
+    SWStampService sdk = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
     //Se inicializa un objeto response, que obtendra la respuesta del api
     SuccessV3Response response = null;
     //Se asigna el resultado de la respuesta a dicho objeto
@@ -262,7 +262,7 @@ TimbrarV4 Recibe el contenido de un XML ya emitido (sellado) en formato String ,
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
     //Se especifica el base path, esto para consumir el api de pruebas o productivo
-    SWStampService sdk = new SWStampService("demo", "123456789", "http://services.test.sw.com.mx");
+    SWStampService sdk = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
     //Se inicializa un objeto response, que obtendra la respuesta del api
     SuccessV4Response response = null;
     //Se asigna el resultado de la respuesta a dicho objeto
@@ -335,7 +335,7 @@ Ejemplo de uso
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
     //Se especifica el base path, esto para consumir el api de pruebas o productivo
-    SWIssueService api = new SWIssueService("demo", "123456789", "http://services.test.sw.com.mx");
+    SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
     //Se inicializa un objeto response, que obtendra la respuesta del api
     SuccessV1Response response = null;
     response = (SuccessV1Response) api.IssueJson(stringJson, "v1");
@@ -355,7 +355,7 @@ Ejemplo de uso
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
     //Se especifica el base path, esto para consumir el api de pruebas o productivo
-    SWIssueService api = new SWIssueService("demo", "123456789", "http://services.test.sw.com.mx");
+    SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
     //Se inicializa un objeto response, que obtendra la respuesta del api
     SuccessV1Response response = null;
     response = (SuccessV1Response) api.IssueJson(stringJson, "v2");
@@ -376,7 +376,7 @@ Ejemplo de uso
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
     //Se especifica el base path, esto para consumir el api de pruebas o productivo
-    SWIssueService api = new SWIssueService("demo", "123456789", "http://services.test.sw.com.mx");
+    SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
     //Se inicializa un objeto response, que obtendra la respuesta del api
     SuccessV1Response response = null;
     response = (SuccessV1Response) api.IssueJson(stringJson, "v3");
@@ -396,7 +396,7 @@ Ejemplo de uso
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
     //Se especifica el base path, esto para consumir el api de pruebas o productivo
-    SWIssueService api = new SWIssueService("demo", "123456789", "http://services.test.sw.com.mx");
+    SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
     //Se inicializa un objeto response, que obtendra la respuesta del api
     SuccessV1Response response = null;
     response = (SuccessV1Response) api.IssueJson(stringJson, "v4");
@@ -425,7 +425,7 @@ Ejemplo de uso
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
     //Se especifica el base path, esto para consumir el api de pruebas o productivo
-    SWIssueService api = new SWIssueService("demo", "123456789", "http://services.test.sw.com.mx");
+    SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
     //Se inicializa un objeto response, que obtendra la respuesta del api
     SuccessV1Response response = null;
     response = (SuccessV1Response) api.IssueXml(stringXml, "v1");
@@ -445,7 +445,7 @@ Ejemplo de uso
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
     //Se especifica el base path, esto para consumir el api de pruebas o productivo
-    SWIssueService api = new SWIssueService("demo", "123456789", "http://services.test.sw.com.mx");
+    SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
     //Se inicializa un objeto response, que obtendra la respuesta del api
     SuccessV1Response response = null;
     response = (SuccessV1Response) api.IssueXml(stringXml, "v2");
@@ -466,7 +466,7 @@ Ejemplo de uso
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
     //Se especifica el base path, esto para consumir el api de pruebas o productivo
-    SWIssueService api = new SWIssueService("demo", "123456789", "http://services.test.sw.com.mx");
+    SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
     //Se inicializa un objeto response, que obtendra la respuesta del api
     SuccessV1Response response = null;
     response = (SuccessV1Response) api.IssueXml(stringXml, "v3");
@@ -486,7 +486,7 @@ Ejemplo de uso
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
     //Se especifica el base path, esto para consumir el api de pruebas o productivo
-    SWIssueService api = new SWIssueService("demo", "123456789", "http://services.test.sw.com.mx");
+    SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
     //Se inicializa un objeto response, que obtendra la respuesta del api
     SuccessV1Response response = null;
     response = (SuccessV1Response) api.IssueXml(stringXml, "v4");
@@ -512,7 +512,7 @@ Recibe los archivos CSD y KEY en Base64, password, asi como el rfc emisor y el U
 
 
 ```java
-SWCancelationService app = new SWCancelationService("demo", "123456789", "http://services.test.sw.com.mx");
+SWCancelationService app = new SWCancelationService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 CancelationResponse response = null;
 response = (CancelationResponse) app.Cancelation(uuid, password_csd, rfc, b64Cer, b64Key);
 
@@ -530,7 +530,7 @@ System.out.println(response.messageDetail);
 Recibe el XML de cancelacion
 
 ```java
-SWCancelationService app = new SWCancelationService("demo", "123456789", Utils.url_pruebas);
+SWCancelationService app = new SWCancelationService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 CancelationResponse response = null;
 
 response = (CancelationResponse) app.Cancelation(xml);
@@ -551,7 +551,7 @@ Recibe el Pfx (.pfx, password), asi como el rfc emisor y el UUID del CFDI a canc
 
 
 ```java
-SWCancelationService app = new SWCancelationService("demo", "123456789", Utils.url_pruebas);
+SWCancelationService app = new SWCancelationService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 CancelationResponse response = null;
 response = (CancelationResponse) app.Cancelation(uuid, password_csd, rfc, b64Pfx);
 System.out.println(response.Status);
@@ -570,7 +570,7 @@ Recibe el rfc emisor y el UUID del CFDI a cancelar (Los archivos .Cer y .Key deb
 
 
 ```java
-SWCancelationService app = new SWCancelationService("demo", "123456789", Utils.url_pruebas);
+SWCancelationService app = new SWCancelationService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 CancelationResponse response = null;
 response = (CancelationResponse) app.Cancelation(uuid, rfc);
 System.out.println(response.Status);
@@ -594,7 +594,7 @@ Recibe el Xml del CFDI a validar.
 Ejemplo de uso
 
 ```java
-SWValidateService api = new SWValidateService("demo", "123456789", Utils.url_pruebas);
+SWValidateService api = new SWValidateService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 ValidateXmlResponse response = null;
 response = (ValidateXmlResponse) api.ValidateXml(xml);
 System.out.println(response.Status);
@@ -628,7 +628,7 @@ Recibe el número de certificado a validar.
 Ejemplo de uso
 
 ```java
-SWValidateService api = new SWValidateService("demo", "123456789", Utils.url_pruebas);
+SWValidateService api = new SWValidateService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 ValidateLcoResponse response = null;
 response = (ValidateLcoResponse) api.ValidateLco("20001000000300022815");
 System.out.println(response.Status);
@@ -651,7 +651,7 @@ Recibe el rfc a validar.
 Ejemplo de uso
 
 ```java
-SWValidateService api = new SWValidateService("demo", "123456789", Utils.url_pruebas);
+SWValidateService api = new SWValidateService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 ValidateLrfcResponse response = null;
 response = (ValidateLrfcResponse) api.ValidateLrfc("LAN7008173R5");
 System.out.println(response.Status);
@@ -670,7 +670,7 @@ System.out.println(response.messageDetail);
 # Consulta de Saldos #
 Se obtiene el balance de nuestra cuenta con respecto a los timbres
 ```java
-SWBalanceAccountService app = new SWBalanceAccountService("demo", "123456789", Utils.url_pruebas);
+SWBalanceAccountService app = new SWBalanceAccountService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 BalanceAcctResponse response = null;
 response = (BalanceAcctResponse) app.GetBalanceAccount();
 System.out.println(response.Status);
@@ -712,7 +712,7 @@ Método necesario para conocer los CFDI relacionados que existen a una factura. 
 ## CFDI Relacionados por CSD ##
 Para el consumo a través de este método necesitaremos el UUID de la factura, RFC emisor, Certificado en base64, Llave en base64 y Password del Certificado.
 ```java
-SWRelationsService app = new SWRelationsService("demo", "123456789", Utils.url_pruebas);
+SWRelationsService app = new SWRelationsService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 CfdiRelacionadosResponse response = null;
 response = (CfdiRelacionadosResponse) app.CfdiRelacionadosCSD(uuid, password_csd, rfc, b64Cer, b64Key);
 System.out.println(response.Status);
@@ -744,7 +744,7 @@ System.out.println(response.messageDetail);
 ## CFDI Relacionados por PFX ##
 Para el consumo a través de este método necesitaremos el UUID de la factura, RFC emisor, PFX en base64 y Password del Certificado.
 ```java
-SWRelationsService app = new SWRelationsService("demo", "123456789", Utils.url_pruebas);
+SWRelationsService app = new SWRelationsService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 CfdiRelacionadosResponse response = null;
 response = (CfdiRelacionadosResponse) app.CfdiRelacionadosPFX(uuid, password_csd, rfc, b64Pfx);
 System.out.println(response.Status);
@@ -776,7 +776,7 @@ System.out.println(response.messageDetail);
 ## CFDI Relacionados por XML ##
 Para el consumo a través de este método necesitaremos el XML. 
 ```java
-SWRelationsService app = new SWRelationsService("demo", "123456789", Utils.url_pruebas);
+SWRelationsService app = new SWRelationsService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 CfdiRelacionadosResponse response = null;
 response = (CfdiRelacionadosResponse) app.CfdiRelacionadosXML(xmlRelacionados);
 System.out.println(response.Status);
@@ -808,7 +808,7 @@ System.out.println(response.messageDetail);
 ## CFDI Relacionados por UUID ##
 Para el consumo a través de este método necesitaremos el UUID de la factura, así como el RFC del Emisor. 
 ```java
-SWRelationsService app = new SWRelationsService("demo", "123456789", Utils.url_pruebas);
+SWRelationsService app = new SWRelationsService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 CfdiRelacionadosResponse response = null;
 response = (CfdiRelacionadosResponse) app.CfdiRelacionadosUUID(uuid, rfc);
 System.out.println(response.Status);
@@ -841,7 +841,7 @@ System.out.println(response.messageDetail);
 Este servicio devuelve una lista con los UUID que tiene pendientes por Aceptación/Rechazo un RFC.
 Para el consumo de este método necesitaremos el RFC del cual consultaremos las facturas que tiene por Aceptar/Rechazar.
 ```java
-SWPendingsService app = new SWPendingsService("demo", "123456789", Utils.url_pruebas);
+SWPendingsService app = new SWPendingsService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 String rfc = "LAN7008173R5";
 PendientesCancelarResponse response = null;
 response = (PendientesCancelarResponse) app.PendientesPorCancelar(rfc);
@@ -868,7 +868,7 @@ Método para Aceptar o Rechazar una o más facturas.
 Para el consumo a través de este método necesitaremos el un **Map** con los UUID y la acción a realizar, **password** del certificado, **RFC** emisor, certificado en base64, llave en base64.
 
 ```java
-SWAcceptRejectService app = new SWAcceptRejectService("demo", "123456789", Utils.url_pruebas);
+SWAcceptRejectService app = new SWAcceptRejectService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 Map < String, String > uuids = new HashMap < String, String > ();
 uuids.put("06a46e4b-b154-4c12-bb77-f9a63ed55ff2", "Aceptacion");
 AceptarRechazarCancelationResponse response = null;
@@ -894,7 +894,7 @@ System.out.println(response.messageDetail);
 Para el consumo a través de este método necesitaremos el un **Map** con los UUID y la acción a realizar, **password** del certificado, **RFC** emisor, **PFX** en base64.
 
 ```java
-SWAcceptRejectService app = new SWAcceptRejectService("demo", "123456789", Utils.url_pruebas);
+SWAcceptRejectService app = new SWAcceptRejectService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 Map < String, String > uuids = new HashMap < String, String > ();
 uuids.put("06a46e4b-b154-4c12-bb77-f9a63ed55ff2", "Aceptacion");
 AceptarRechazarCancelationResponse response = null;
@@ -920,7 +920,7 @@ System.out.println(response.messageDetail);
 Para el consumo a través de este método necesitaremos el XML para la Aceptación/Rechazo.
 
 ```java
-SWAcceptRejectService app = new SWAcceptRejectService("demo", "123456789", Utils.url_pruebas);
+SWAcceptRejectService app = new SWAcceptRejectService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 AceptarRechazarCancelationResponse response = null;
 response = (AceptarRechazarCancelationResponse) app.AceptarRechazarCancelacionXML(xml);
 System.out.println(response.Status);
@@ -944,7 +944,7 @@ System.out.println(response.messageDetail);
 Para el consumo a través de este método necesitaremos el un **String** con el UUID y la acción a realizar, así como el **RFC** emisor.
 
 ```java
-SWAcceptRejectService app = new SWAcceptRejectService("demo", "123456789", Utils.url_pruebas);
+SWAcceptRejectService app = new SWAcceptRejectService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 AceptarRechazarCancelationResponse response = null;
 response = (AceptarRechazarCancelationResponse) app.AceptarRechazarCancelacionUUID(uuid, rfc, "Aceptacion");//Acción → "Aceptacion" o "Rechazo"
 System.out.println(response.Status);

@@ -1,0 +1,121 @@
+{
+  "Version": "4.0",
+  "Serie": "Serie",
+  "Folio": "Folio",
+  "Fecha": "2022-04-11T00:00:10",
+  "Sello": "",
+  "FormaPago": "99",
+  "FormaPagoSpecified": true,
+  "NoCertificado": "",
+  "Certificado": "",
+  "CondicionesDePago": "CondicionesDePago",
+  "SubTotal": "1230",
+  "Moneda": "EUR",
+  "TipoCambio": "21.77",
+  "TipoCambioSpecified": true,
+  "Total": "1230",
+  "TipoDeComprobante": "I",
+  "Exportacion": "02",
+  "MetodoPago": "PPD",
+  "MetodoPagoSpecified": true,
+  "LugarExpedicion": "20000",
+  "Emisor": {
+    "Rfc": "EKU9003173C9",
+    "Nombre": "ESCUELA KEMPER URGATE",
+    "RegimenFiscal": "601"
+  },
+  "Receptor": {
+    "Rfc": "URE180429TM6",
+    "Nombre": "UNIVERSIDAD ROBOTICA ESPAÑOLA",
+    "DomicilioFiscalReceptor": "65000",
+    "RegimenFiscalReceptor": "601",
+    "UsoCFDI": "G01"
+  },
+  "Conceptos": [
+    {
+      "Impuestos": {
+        "Traslados": [
+          {
+            "Base": "1230",
+            "Impuesto": "002",
+            "TipoFactor": "Tasa",
+            "TasaOCuota": "0",
+            "TasaOCuotaSpecified": true,
+            "Importe": "0",
+            "ImporteSpecified": true
+          }
+        ]
+      },
+      "ClaveProdServ": "50151500",
+      "NoIdentificacion": "000000000000600019",
+      "Cantidad": "50",
+      "ClaveUnidad": "H87",
+      "Unidad": "PEIZA",
+      "Descripcion": "MANTECA VEGETAL PW20",
+      "ValorUnitario": "24.6",
+      "Importe": "1230",
+      "ObjetoImp": "02"
+    }
+  ],
+  "Impuestos": {
+    "Traslados": [
+      {
+        "Base": "1230",
+        "Impuesto": "002",
+        "TipoFactor": "Tasa",
+        "TasaOCuota": "0",
+        "Importe": "0",
+        "TasaOCuotaSpecified": true,
+        "ImporteSpecified": true
+      }
+    ],
+    "TotalImpuestosTrasladados": "0",
+    "TotalImpuestosTrasladadosSpecified": true
+  },
+  "Complemento": {
+    "Any": [
+      {
+        "CCE11:ComercioExterior": {
+          "Version": "1.1",
+          "TipoOperacion": "2",
+          "ClaveDePedimento": "A1",
+          "CertificadoOrigen": "0",
+          "Incoterm": "FOB",
+          "Subdivision": "0",
+          "TipoCambioUSD": "20.02",
+          "TotalUSD": "1337.51",
+          "Emisor": {
+            "Domicilio": {
+              "Calle": "Limón",
+              "NumeroExterior": "1139",
+              "Colonia": "0472",
+              "Localidad": "03",
+              "Municipio": "039",
+              "Estado": "JAL",
+              "Pais": "MEX",
+              "CodigoPostal": "44900"
+            }
+          },
+          "Receptor": {
+            "Domicilio": {
+              "Calle": "20 AVENIDA A",
+              "Estado": "TX",
+              "Pais": "USA",
+              "CodigoPostal": "78384"
+            }
+          },
+          "Mercancias": [
+            {
+              "NoIdentificacion": "000000000000600019",
+              "FraccionArancelaria": "9704000200",
+              "CantidadAduana": "50.000",
+              "UnidadAduana": "06",
+              "ValorDolares": "1337.51",
+              "ValorUnitarioAduana": "26.75"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

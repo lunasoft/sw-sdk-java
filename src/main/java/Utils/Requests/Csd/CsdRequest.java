@@ -27,7 +27,6 @@ import Exceptions.GeneralException;
 import Utils.Helpers.RequestHelper;
 import Utils.Requests.IRequest;
 import Utils.Requests.IRequestor;
-import Utils.Requests.Csd.CsdOptionsRequest;
 import Utils.Responses.IResponse;
 import Utils.Responses.Csd.CsdResponse;
 import Utils.Responses.Csd.InfoCsd;
@@ -39,7 +38,7 @@ public class CsdRequest implements IRequestor {
 		try {
 			if (RequestHelper.stringEmptyOrNull(((CsdOptionsRequest) request).getB64Cer())
 					|| RequestHelper.stringEmptyOrNull(((CsdOptionsRequest) request).getB64key())) {
-				return new CsdResponse(400, "error", "El certificado o llave proporcionados vienen vacíos", "");
+				return new CsdResponse(400, "error", "El certificado o llave proporcionados vienen vacÃ­os", "");
 			}
 			JSONObject requestJSON = new JSONObject();
 			requestJSON.put("type", ((CsdOptionsRequest) request).getCertificateType());

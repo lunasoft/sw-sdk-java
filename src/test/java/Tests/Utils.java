@@ -29,9 +29,9 @@ import javax.xml.parsers.ParserConfigurationException;
 */
 public class Utils {
     public static String urlSW = "http://services.test.sw.com.mx";
-    public static String userSW = System.getenv("SdkTestCFDI40_User");
-    public static String passwordSW = System.getenv("SdkTestCFDI40_Password");
-    public static String tokenSW = System.getenv("SdkTestCFDI40_Token");
+    public static String userSW = System.getenv("SDKTEST_USER");
+    public static String passwordSW = System.getenv("SDKTEST_PASSWORD");
+    public static String tokenSW = System.getenv("SDKTEST_TOKEN");
            
     /**
     * Genera un CFDI especifico y lo sella en caso de indicarse.

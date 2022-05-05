@@ -5,6 +5,7 @@ import java.io.IOException;
 import Exceptions.AuthException;
 import Exceptions.GeneralException;
 import Services.Stamp.SWStampService;
+import Utils.Enums.StampVersions;
 import Utils.Responses.Stamp.SuccessV1Response;
 import Utils.Responses.Stamp.SuccessV2Response;
 import Utils.Responses.Stamp.SuccessV3Response;
@@ -35,24 +36,24 @@ public class StampV1 extends BaseStamp{
     
     public SuccessV1Response StampResponseV1(String fileName, String stampVersion, boolean signed,
             boolean isBase64) throws AuthException, GeneralException, IOException {
-                return (SuccessV1Response) stamp.Stamp(settings.getCFDI(fileName, true, "4.0", isBase64), "v1", isBase64);
+                return (SuccessV1Response) stamp.Stamp(settings.getCFDI(fileName, true, "4.0", isBase64), StampVersions.v1, isBase64);
     }
 
     @Override
     public SuccessV2Response StampResponseV2(String fileName, String stampVersion, boolean signed,
             boolean isBase64) throws AuthException, GeneralException, IOException {
-                return (SuccessV2Response) stamp.Stamp(settings.getCFDI(fileName, true, "4.0", isBase64), "v2", isBase64);
+                return (SuccessV2Response) stamp.Stamp(settings.getCFDI(fileName, true, "4.0", isBase64), StampVersions.v2, isBase64);
     }
 
     @Override
     public SuccessV3Response StampResponseV3(String fileName, String stampVersion, boolean signed,
             boolean isBase64) throws AuthException, GeneralException, IOException {
-                return (SuccessV3Response) stamp.Stamp(settings.getCFDI(fileName, true, "4.0", isBase64), "v3", isBase64);
+                return (SuccessV3Response) stamp.Stamp(settings.getCFDI(fileName, true, "4.0", isBase64), StampVersions.v3, isBase64);
     }
 
     @Override
     public SuccessV4Response StampResponseV4(String fileName, String stampVersion, boolean signed,
             boolean isBase64) throws AuthException, GeneralException, IOException {
-                return (SuccessV4Response) stamp.Stamp(settings.getCFDI(fileName, true, "4.0", isBase64), "v4", isBase64);
-    }    
+                return (SuccessV4Response) stamp.Stamp(settings.getCFDI(fileName, true, "4.0", isBase64), StampVersions.v4, isBase64);
+    }
 }

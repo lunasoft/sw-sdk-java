@@ -30,37 +30,28 @@ public class SWStampService extends SWService {
 	}
 
 	public IResponse Stamp(String xml, String version) throws AuthException, GeneralException, IOException {
-		StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), xml, version, getProxyHost(), getProxyPort(), false);
-		StampRequest req = new StampRequest();
-		return req.sendRequest(settings);
+		return this.Stamp(xml, version, false);
 	}
 
 	public IResponse Stamp(String xml, String version, boolean isb64)
 			throws AuthException, GeneralException, IOException {
-		if (isb64) {
-			StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), xml, version, isb64, getProxyHost(), getProxyPort(), false);
-			StampRequest req = new StampRequest();
-			return req.sendRequest(settings);
-		} else {
-			StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), xml, version, getProxyHost(), getProxyPort(), false);
-			StampRequest req = new StampRequest();
-			return req.sendRequest(settings);
-		}
+		StampRequest req = new StampRequest();
+		return req.sendRequest(this.getOptions(xml, version, isb64));
 	}
 
 	public IResponse Stamp(byte[] xmlFile, String version, boolean isb64)
 			throws AuthException, GeneralException, IOException {
 		String xmlProcess = new String(xmlFile, Charset.forName("UTF-8"));
-		StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), xmlProcess, version, getProxyHost(), getProxyPort(), false);
-		StampRequest req = new StampRequest();
-		return req.sendRequest(settings);
+		return this.Stamp(xmlProcess, version, isb64);
 	}
 
 	public IResponse Stamp(byte[] xmlFile, String version) throws AuthException, GeneralException, IOException {
-		String xmlProcess = new String(xmlFile, Charset.forName("UTF-8"));
-		StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), xmlProcess, version, getProxyHost(), getProxyPort(), false);
-		StampRequest req = new StampRequest();
-		return req.sendRequest(settings);
+		return this.Stamp(xmlFile, version, false);
+	}
 
+	private StampOptionsRequest getOptions(String xml, String version, boolean isBase64) throws AuthException,
+			GeneralException, IOException {
+		return new StampOptionsRequest(super.getToken(), super.getURI(), xml, version, isBase64,
+				super.getProxyHost(), super.getProxyPort(), false);
 	}
 }

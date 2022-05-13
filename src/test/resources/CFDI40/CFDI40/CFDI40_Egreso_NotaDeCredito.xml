@@ -4,7 +4,7 @@
         <cfdi:CfdiRelacionado UUID="1fac4464-1111-0000-1111-cd37179db12e" />
     </cfdi:CfdiRelacionados>
     <cfdi:Emisor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="601" />
-    <cfdi:Receptor Rfc="URE180429TM6" Nombre="UNIVERSIDAD ROBOTICA ESPAÑOLA" DomicilioFiscalReceptor="65000" RegimenFiscalReceptor="601" UsoCFDI="P01" />
+    <cfdi:Receptor Rfc="URE180429TM6" Nombre="UNIVERSIDAD ROBOTICA ESPAÑOLA" DomicilioFiscalReceptor="65000" RegimenFiscalReceptor="601" UsoCFDI="CP01" />
     <cfdi:Conceptos>
         <cfdi:Concepto ClaveProdServ="84111506" Cantidad="1.0" ClaveUnidad="ACT" Descripcion="NC por devolucion" ValorUnitario="10.00" Importe="10.00" Descuento="0.00" ObjetoImp="02">
             <cfdi:Impuestos>

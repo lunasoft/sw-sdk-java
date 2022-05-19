@@ -117,12 +117,10 @@ public class CancelationRequest implements IRequestor {
 				JSONObject body = new JSONObject(responseString);
 				if (status == 200) {
 					JSONObject data = body.getJSONObject("data");
-					String xml = ((CancelationOptionsRequest) request).getXml();
-					String uuid = xml.substring(xml.indexOf("<Folio UUID=") +13, xml.indexOf("Motivo")-2).toUpperCase();
-					JSONObject uuid_data = data.getJSONObject("uuid");
-					String uuidSC = uuid_data.getString(uuid);
-					return new CancelationResponse(status, body.getString("status"), data.getString("acuse"), uuid,
-							Integer.parseInt(uuidSC), "OK", "OK");
+					JSONObject uuid = data.getJSONObject("uuid");
+					String uuidData = uuid.toString();
+					return new CancelationResponse(status, body.getString("status"), data.getString("acuse"), uuidData,
+						201, "OK", "OK");
 				} else {
 					String messageDetail = null;
 					if (!body.isNull("messageDetail")) {

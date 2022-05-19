@@ -81,5 +81,4 @@ public class CancelationOptionsRequest extends IRequest{
     public String getFolioSustitucion() {
         return folioSustitucion;
     }
-
 }

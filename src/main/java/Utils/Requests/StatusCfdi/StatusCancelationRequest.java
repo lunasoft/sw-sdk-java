@@ -34,9 +34,9 @@ public class StatusCancelationRequest implements IRequestor{
         String rfcReceptor = ((StatusCancelationOptionsRequest) request).getRfcReceptor();
         String total = ((StatusCancelationOptionsRequest) request).getTotal();
         String uuid = ((StatusCancelationOptionsRequest) request).getUuid();
-        String  caract_sello = ((StatusCancelationOptionsRequest) request).getCSello();
+        String sello = ((StatusCancelationOptionsRequest) request).getSello();
         
-        SOAPMessage Response = callSoapWebService(soapEndpointUrl, soapAction, rfcEmisor, rfcReceptor, total, uuid, caract_sello);
+        SOAPMessage Response = callSoapWebService(soapEndpointUrl, soapAction, rfcEmisor, rfcReceptor, total, uuid, sello);
         SOAPBody body = Response.getSOAPBody();
         SOAPFault error = body.getFault();
 		if (error != null) {

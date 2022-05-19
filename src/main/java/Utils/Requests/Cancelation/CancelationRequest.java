@@ -42,10 +42,10 @@ public class CancelationRequest implements IRequestor {
 			builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
 			StringEntity sEntity = new StringEntity(
 					"{\r\n \"uuid\": \"" + ((CancelationOptionsRequest) request).getUuid() + "\",\r\n \"password\": \""
-							+ ((CancelationOptionsRequest) request).getPassword_csd() + "\",\r\n \"rfc\": \""
+							+ ((CancelationOptionsRequest) request).getPassword() + "\",\r\n \"rfc\": \""
 							+ ((CancelationOptionsRequest) request).getRfc()+ "\",\r\n \"motivo\": \""
-                                                        + ((CancelationOptionsRequest) request).getmotivo()+ "\",\r\n \"foliosustitucion\": \""
-                                                        + ((CancelationOptionsRequest) request).getfoliosust()+ "\",\r\n \"b64Cer\": \""
+                                                        + ((CancelationOptionsRequest) request).getMotivo()+ "\",\r\n \"foliosustitucion\": \""
+                                                        + ((CancelationOptionsRequest) request).getFolioSustitucion()+ "\",\r\n \"b64Cer\": \""
 							+ ((CancelationOptionsRequest) request).getB64Cer() + "\",\r\n \"b64Key\": \""
 							+ ((CancelationOptionsRequest) request).getB64key() + "\"\r\n}");
 			httppost.setEntity(builder.build());
@@ -153,10 +153,10 @@ public class CancelationRequest implements IRequestor {
 			builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
 			StringEntity sEntity = new StringEntity(
 					"{\r\n \"uuid\": \"" + ((CancelationOptionsRequest) request).getUuid() + "\",\r\n \"password\": \""
-							+ ((CancelationOptionsRequest) request).getPassword_csd() + "\",\r\n \"rfc\": \""
+							+ ((CancelationOptionsRequest) request).getPassword() + "\",\r\n \"rfc\": \""
                                                         + ((CancelationOptionsRequest) request).getRfc() + "\",\r\n \"motivo\": \""
-                                                        + ((CancelationOptionsRequest) request).getmotivo()+ "\",\r\n \"foliosustitucion\": \""
-							+ ((CancelationOptionsRequest) request).getfoliosust() + "\",\r\n \"b64Pfx\": \""
+                                                        + ((CancelationOptionsRequest) request).getMotivo()+ "\",\r\n \"foliosustitucion\": \""
+							+ ((CancelationOptionsRequest) request).getFolioSustitucion() + "\",\r\n \"b64Pfx\": \""
 							+ ((CancelationOptionsRequest) request).getB64Pfx() + "\"\r\n}");
 			httppost.setEntity(builder.build());
 			httppost.setEntity(sEntity);

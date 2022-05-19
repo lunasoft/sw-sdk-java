@@ -15,6 +15,7 @@
   "TipoDeComprobante": "E",
   "Exportacion": "01",
   "LugarExpedicion": "45610",
+  "FormaPago": "99",
   "CfdiRelacionados": [
     {
       "TipoRelacion": "01",

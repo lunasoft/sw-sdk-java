@@ -85,7 +85,7 @@ public class CancelationRequest implements IRequestor {
 		}
 	}
 
-	public IResponse sendRequestxml(IRequest request, boolean isXml) throws GeneralException, AuthException, IOException {
+	public IResponse sendRequestXml(IRequest request, boolean isXml) throws GeneralException, AuthException, IOException {
 
 		try {
 			String xmlStr = ((CancelationOptionsRequest) request).getXml();

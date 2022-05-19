@@ -225,7 +225,7 @@ public class SWCancelationServiceTest {
 	public void testCancelationServiceUuid_authUser() throws Exception {
 		SWCancelationService app = new SWCancelationService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		CancelationResponse response = null;
-		response = (CancelationResponse) app.Cancelationuuid(uuid, rfc, motivo, foliosustitucion);
+		response = (CancelationResponse) app.Cancelation(uuid, rfc, motivo, foliosustitucion);
 		System.out.println(response.Status);
 		System.out.println(response.HttpStatusCode);
 		System.out.println(response.acuse);
@@ -238,7 +238,7 @@ public class SWCancelationServiceTest {
 	public void testCancelationServiceUuid_authToken() throws Exception {
 		SWCancelationService app = new SWCancelationService(Utils.tokenSW, Utils.urlSW);
 		CancelationResponse response = null;
-		response = (CancelationResponse) app.Cancelationuuid(uuid, rfc, motivo, foliosustitucion);
+		response = (CancelationResponse) app.Cancelation(uuid, rfc, motivo, foliosustitucion);
 		System.out.println(response.Status);
 		System.out.println(response.HttpStatusCode);
 		System.out.println(response.acuse);
@@ -251,7 +251,7 @@ public class SWCancelationServiceTest {
 	public void testCancelationServiceUuid_incorrectParams() throws Exception {
 		SWCancelationService app = new SWCancelationService(Utils.tokenSW, Utils.urlSW);
 		CancelationResponse response = null;
-		response = (CancelationResponse) app.Cancelationuuid("123456", "123456","12345", "123456");
+		response = (CancelationResponse) app.Cancelation("123456", "123456","12345", "123456");
 		System.out.println(response.Status);
 		System.out.println(response.HttpStatusCode);
 		System.out.println(response.message);
@@ -263,7 +263,7 @@ public class SWCancelationServiceTest {
 	public void testCancelationServiceUuid_incorrectToken() throws Exception {
 		SWCancelationService app = new SWCancelationService("wrong token", Utils.urlSW);
 		CancelationResponse response = null;
-		response = (CancelationResponse) app.Cancelationuuid(uuid, rfc, motivo, foliosustitucion);
+		response = (CancelationResponse) app.Cancelation(uuid, rfc, motivo, foliosustitucion);
 		System.out.println(response.Status);
 		System.out.println(response.HttpStatusCode);
 		System.out.println(response.message);
@@ -275,7 +275,7 @@ public class SWCancelationServiceTest {
 		try {
 			SWCancelationService app = new SWCancelationService("", "", "");
 			CancelationResponse response = null;
-			response = (CancelationResponse) app.Cancelationuuid(uuid, rfc, motivo, foliosustitucion);
+			response = (CancelationResponse) app.Cancelation(uuid, rfc, motivo, foliosustitucion);
 			System.out.println(response.Status);
 			System.out.println(response.HttpStatusCode);
 			System.out.println(response.message);
@@ -290,7 +290,7 @@ public class SWCancelationServiceTest {
 	public void testCancelationServiceUuid_emptyCancelationParams() throws Exception {
 		SWCancelationService app = new SWCancelationService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		CancelationResponse response = null;
-		response = (CancelationResponse) app.Cancelationuuid("", "", "", "");
+		response = (CancelationResponse) app.Cancelation("", "", "", "");
 		System.out.println(response.Status);
 		System.out.println(response.HttpStatusCode);
 		System.out.println(response.message);

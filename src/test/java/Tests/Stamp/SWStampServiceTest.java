@@ -2,6 +2,7 @@ package Tests.Stamp;
 
 import Services.Stamp.SWStampService;
 import Tests.Utils;
+import Utils.Enums.StampVersions;
 import Utils.Responses.*;
 import Utils.Responses.Stamp.SuccessV1Response;
 import Utils.Responses.Stamp.SuccessV2Response;
@@ -17,7 +18,7 @@ public class SWStampServiceTest {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV1Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV1Response) api.Stamp(ut.StringgenBasico(false), "v1");
+		response = (SuccessV1Response) api.Stamp(ut.StringgenBasico(false), StampVersions.v1);
 		System.out.println(response.Status);
 		System.out.println(response.HttpStatusCode);
 		System.out.println(response.tfd);
@@ -30,7 +31,7 @@ public class SWStampServiceTest {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV2Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV2Response) api.Stamp(ut.StringgenBasico(false), "v2");
+		response = (SuccessV2Response) api.Stamp(ut.StringgenBasico(false), StampVersions.v2);
 
 		System.out.println(response.message);
 		System.out.println(response.Status);
@@ -45,7 +46,7 @@ public class SWStampServiceTest {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV3Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV3Response) api.Stamp(ut.StringgenBasico(false), "v3");
+		response = (SuccessV3Response) api.Stamp(ut.StringgenBasico(false), StampVersions.v3);
 		System.out.println(response.Status);
 		System.out.println(response.HttpStatusCode);
 		System.out.println(response.cfdi);
@@ -57,7 +58,7 @@ public class SWStampServiceTest {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV4Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV4Response) api.Stamp(ut.StringgenBasico(false), "V4");
+		response = (SuccessV4Response) api.Stamp(ut.StringgenBasico(false), StampVersions.v4);
 		System.out.println(response.message);
 		System.out.println(response.Status);
 		System.out.println(response.cfdi);
@@ -80,7 +81,7 @@ public class SWStampServiceTest {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV1Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV1Response) api.Stamp(ut.StringgenBasico(true), "v1", true);
+		response = (SuccessV1Response) api.Stamp(ut.StringgenBasico(true), StampVersions.v1, true);
 		System.out.println(response.Status);
 		System.out.println(response.message);
 		System.out.println(response.HttpStatusCode);
@@ -92,7 +93,7 @@ public class SWStampServiceTest {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV2Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV2Response) api.Stamp(ut.StringgenBasico(true), "v2", true);
+		response = (SuccessV2Response) api.Stamp(ut.StringgenBasico(true), StampVersions.v2, true);
 		System.out.println(response.Status);
 		System.out.println(response.HttpStatusCode);
 		System.out.println(response.tfd);
@@ -105,7 +106,7 @@ public class SWStampServiceTest {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV3Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV3Response) api.Stamp(ut.StringgenBasico(true), "v3", true);
+		response = (SuccessV3Response) api.Stamp(ut.StringgenBasico(true), StampVersions.v3, true);
 		System.out.println(response.message);
 		System.out.println(response.Status);
 		System.out.println(response.HttpStatusCode);
@@ -118,7 +119,7 @@ public class SWStampServiceTest {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV4Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV4Response) api.Stamp(ut.StringgenBasico(true), "V4", true);
+		response = (SuccessV4Response) api.Stamp(ut.StringgenBasico(true), StampVersions.v4, true);
 		System.out.println(response.message);
 		System.out.println(response.Status);
 		System.out.println(response.cfdi);
@@ -142,7 +143,7 @@ public class SWStampServiceTest {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV1Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV1Response) api.Stamp(ut.genComercioExterior(false), "v1");
+		response = (SuccessV1Response) api.Stamp(ut.genComercioExterior(false), StampVersions.v1);
 		System.out.println(response.message);
 		System.out.println(response.Status);
 		System.out.println(response.HttpStatusCode);
@@ -155,7 +156,7 @@ public class SWStampServiceTest {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV2Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV2Response) api.Stamp(ut.genComercioExterior(false), "v2");
+		response = (SuccessV2Response) api.Stamp(ut.genComercioExterior(false), StampVersions.v2);
 		System.out.println(response.Status);
 		System.out.println(response.message);
 		System.out.println(response.HttpStatusCode);
@@ -169,7 +170,7 @@ public class SWStampServiceTest {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV3Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV3Response) api.Stamp(ut.genComercioExterior(false), "v3");
+		response = (SuccessV3Response) api.Stamp(ut.genComercioExterior(false), StampVersions.v3);
 		System.out.println(response.Status);
 		System.out.println(response.HttpStatusCode);
 		System.out.println(response.cfdi);
@@ -181,7 +182,7 @@ public class SWStampServiceTest {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV4Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV4Response) api.Stamp(ut.genComercioExterior(false), "V4");
+		response = (SuccessV4Response) api.Stamp(ut.genComercioExterior(false), StampVersions.v4);
 		System.out.println(response.Status);
 
 		System.out.println(response.qrCode);
@@ -201,7 +202,7 @@ public class SWStampServiceTest {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV1Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV1Response) api.Stamp(ut.genComercioExterior(true), "v1", true);
+		response = (SuccessV1Response) api.Stamp(ut.genComercioExterior(true), StampVersions.v1, true);
 		System.out.println(response.Status);
 		System.out.println(response.HttpStatusCode);
 		System.out.println(response.tfd);
@@ -212,7 +213,7 @@ public class SWStampServiceTest {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV2Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV2Response) api.Stamp(ut.genComercioExterior(true), "v2", true);
+		response = (SuccessV2Response) api.Stamp(ut.genComercioExterior(true), StampVersions.v2, true);
 		System.out.println(response.Status);
 		System.out.println(response.HttpStatusCode);
 		System.out.println(response.tfd);
@@ -225,7 +226,7 @@ public class SWStampServiceTest {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV3Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV3Response) api.Stamp(ut.genComercioExterior(true), "v3", true);
+		response = (SuccessV3Response) api.Stamp(ut.genComercioExterior(true), StampVersions.v3, true);
 		System.out.println(response.Status);
 		System.out.println(response.HttpStatusCode);
 		System.out.println(response.cfdi);
@@ -236,7 +237,7 @@ public class SWStampServiceTest {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV4Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV4Response) api.Stamp(ut.genComercioExterior(true), "V4", true);
+		response = (SuccessV4Response) api.Stamp(ut.genComercioExterior(true), StampVersions.v4, true);
 		System.out.println(response.Status);
 		System.out.println(response.cfdi);
 		System.out.println(response.qrCode);
@@ -261,7 +262,7 @@ public class SWStampServiceTest {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV1Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV1Response) api.Stamp(ut.genPagos10(false), "v1");
+		response = (SuccessV1Response) api.Stamp(ut.genPagos10(false), StampVersions.v1);
 		System.out.println(response.Status);
 		System.out.println(response.message);
 		System.out.println(response.HttpStatusCode);
@@ -275,7 +276,7 @@ public class SWStampServiceTest {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV2Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV2Response) api.Stamp(ut.genPagos10(false), "v2");
+		response = (SuccessV2Response) api.Stamp(ut.genPagos10(false), StampVersions.v2);
 		System.out.println(response.Status);
 		System.out.println(response.message);
 		System.out.println(response.HttpStatusCode);
@@ -289,7 +290,7 @@ public class SWStampServiceTest {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV3Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV3Response) api.Stamp(ut.genPagos10(false), "v3");
+		response = (SuccessV3Response) api.Stamp(ut.genPagos10(false), StampVersions.v3);
 		System.out.println(response.Status);
 		System.out.println(response.message);
 		System.out.println(response.HttpStatusCode);
@@ -303,7 +304,7 @@ public class SWStampServiceTest {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV4Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV4Response) api.Stamp(ut.genPagos10(false), "V4");
+		response = (SuccessV4Response) api.Stamp(ut.genPagos10(false), StampVersions.v4);
 		System.out.println(response.Status);
 		System.out.println(response.cfdi);
 		System.out.println(response.qrCode);
@@ -323,7 +324,7 @@ public class SWStampServiceTest {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV1Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV1Response) api.Stamp(ut.genPagos10(true), "v1", true);
+		response = (SuccessV1Response) api.Stamp(ut.genPagos10(true), StampVersions.v1, true);
 		System.out.println(response.Status);
 		System.out.println(response.message);
 		System.out.println(response.HttpStatusCode);
@@ -335,7 +336,7 @@ public class SWStampServiceTest {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV2Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV2Response) api.Stamp(ut.genPagos10(true), "v2", true);
+		response = (SuccessV2Response) api.Stamp(ut.genPagos10(true), StampVersions.v2, true);
 		System.out.println(response.Status);
 		System.out.println(response.message);
 		System.out.println(response.HttpStatusCode);
@@ -350,7 +351,7 @@ public class SWStampServiceTest {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV3Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV3Response) api.Stamp(ut.genPagos10(true), "v3", true);
+		response = (SuccessV3Response) api.Stamp(ut.genPagos10(true), StampVersions.v3, true);
 		System.out.println(response.Status);
 		System.out.println(response.message);
 		System.out.println(response.HttpStatusCode);
@@ -362,7 +363,7 @@ public class SWStampServiceTest {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV4Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV4Response) api.Stamp(ut.genPagos10(true), "V4", true);
+		response = (SuccessV4Response) api.Stamp(ut.genPagos10(true), StampVersions.v4, true);
 		System.out.println(response.Status);
 		System.out.println(response.message);
 		System.out.println(response.cfdi);
@@ -389,7 +390,7 @@ public class SWStampServiceTest {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV1Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV1Response) api.Stamp(ut.genNomina12(false), "v1");
+		response = (SuccessV1Response) api.Stamp(ut.genNomina12(false), StampVersions.v1);
 		System.out.println(response.Status);
 		System.out.print(response.message);
 		System.out.println(response.HttpStatusCode);
@@ -402,7 +403,7 @@ public class SWStampServiceTest {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV2Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV2Response) api.Stamp(ut.genNomina12(false), "v2");
+		response = (SuccessV2Response) api.Stamp(ut.genNomina12(false), StampVersions.v2);
 		System.out.println(response.Status);
 		System.out.println(response.HttpStatusCode);
 		System.out.println(response.tfd);
@@ -415,7 +416,7 @@ public class SWStampServiceTest {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV3Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV3Response) api.Stamp(ut.genNomina12(false), "v3");
+		response = (SuccessV3Response) api.Stamp(ut.genNomina12(false), StampVersions.v3);
 		System.out.println(response.Status);
 		System.out.println(response.HttpStatusCode);
 		System.out.println(response.cfdi);
@@ -427,7 +428,7 @@ public class SWStampServiceTest {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV4Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV4Response) api.Stamp(ut.genNomina12(false), "V4");
+		response = (SuccessV4Response) api.Stamp(ut.genNomina12(false), StampVersions.v4);
 		System.out.println(response.Status);
 		System.out.println(response.cfdi);
 		System.out.println(response.qrCode);
@@ -446,7 +447,7 @@ public class SWStampServiceTest {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV1Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV1Response) api.Stamp(ut.genNomina12(true), "v1", true);
+		response = (SuccessV1Response) api.Stamp(ut.genNomina12(true), StampVersions.v1, true);
 		System.out.println(response.Status);
 		System.out.println(response.HttpStatusCode);
 		System.out.println(response.message);
@@ -460,7 +461,7 @@ public class SWStampServiceTest {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV2Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV2Response) api.Stamp(ut.genNomina12(true), "v2", true);
+		response = (SuccessV2Response) api.Stamp(ut.genNomina12(true), StampVersions.v2, true);
 		System.out.println(response.Status);
 		System.out.println(response.HttpStatusCode);
 		System.out.println(response.tfd);
@@ -474,7 +475,7 @@ public class SWStampServiceTest {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV3Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV3Response) api.Stamp(ut.genNomina12(true), "v3", true);
+		response = (SuccessV3Response) api.Stamp(ut.genNomina12(true), StampVersions.v3, true);
 		System.out.println(response.Status);
 		System.out.println(response.HttpStatusCode);
 		System.out.println(response.cfdi);
@@ -485,7 +486,7 @@ public class SWStampServiceTest {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV4Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV4Response) api.Stamp(ut.genNomina12(true), "V4", true);
+		response = (SuccessV4Response) api.Stamp(ut.genNomina12(true), StampVersions.v4, true);
 		System.out.println(response.Status);
 		System.out.println(response.cfdi);
 		System.out.println(response.qrCode);
@@ -508,7 +509,7 @@ public class SWStampServiceTest {
 			SWStampService api = new SWStampService("", "", "");
 			IResponse response = null;
 			Utils ut = new Utils();
-			response = api.Stamp(ut.StringgenBasico(false), "v1");
+			response = api.Stamp(ut.StringgenBasico(false), StampVersions.v1);
 			System.out.println(response.Status);
 			System.out.println(response.HttpStatusCode);
 		} catch (Exception e) {
@@ -523,7 +524,7 @@ public class SWStampServiceTest {
 			SWStampService api = new SWStampService("USER_BAD", "PASSWORD_BAD", "BAD_URI");
 			IResponse response = null;
 			Utils ut = new Utils();
-			response = api.Stamp(ut.StringgenBasico(false), "v1");
+			response = api.Stamp(ut.StringgenBasico(false), StampVersions.v1);
 			System.out.println(response.Status);
 			System.out.println(response.HttpStatusCode);
 		} catch (Exception e) {
@@ -548,7 +549,7 @@ public class SWStampServiceTest {
 				api.setPassword(null);			}
 			try {
 				Utils ut = new Utils();
-				api.Stamp(ut.StringgenBasico(false), "v1");
+				api.Stamp(ut.StringgenBasico(false), StampVersions.v1);
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 				System.out.println("Something bad happened");

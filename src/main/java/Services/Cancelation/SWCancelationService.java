@@ -29,8 +29,8 @@ public class SWCancelationService extends SWService {
         super(token, URI, proxyHost, proxyPort);
     }
     
-    public IResponse Cancelation(String uuid, String password_csd, String rfc, String b64Cer, String b64Key, String motivo, String foliosustitucion) throws AuthException, GeneralException, IOException {
-        CancelationOptionsRequest settings = new CancelationOptionsRequest(getToken(), getURI(), uuid, password_csd, rfc, b64Cer, b64Key, motivo, foliosustitucion, getProxyHost(), getProxyPort());
+    public IResponse Cancelation(String uuid, String password, String rfc, String b64Cer, String b64Key, String motivo, String folioSustitucion) throws AuthException, GeneralException, IOException {
+        CancelationOptionsRequest settings = new CancelationOptionsRequest(getToken(), getURI(), uuid, password, rfc, b64Cer, b64Key, motivo, folioSustitucion, getProxyHost(), getProxyPort());
         CancelationRequest req = new CancelationRequest();
         return req.sendRequest(settings);
     }
@@ -38,17 +38,17 @@ public class SWCancelationService extends SWService {
     public IResponse Cancelation(String xml) throws AuthException, GeneralException, IOException {
         CancelationOptionsRequest settings = new CancelationOptionsRequest(getToken(), getURI(), xml, getProxyHost(), getProxyPort());
         CancelationRequest req = new CancelationRequest();
-        return req.sendRequestxml(settings, true);
+        return req.sendRequestXml(settings, true);
     }
     
-    public IResponse Cancelation(String uuid, String password_csd, String rfc, String b64Pfx, String motivo, String foliosustitucion) throws AuthException, GeneralException, IOException {
-        CancelationOptionsRequest settings = new CancelationOptionsRequest(getToken(), getURI(), uuid, password_csd, rfc, b64Pfx, motivo, foliosustitucion, getProxyHost(), getProxyPort());
+    public IResponse Cancelation(String uuid, String password, String rfc, String b64Pfx, String motivo, String folioSustitucion) throws AuthException, GeneralException, IOException {
+        CancelationOptionsRequest settings = new CancelationOptionsRequest(getToken(), getURI(), uuid, password, rfc, b64Pfx, motivo, folioSustitucion, getProxyHost(), getProxyPort());
         CancelationRequest req = new CancelationRequest();
         return req.sendRequestPfx(settings);
     }
     
-    public IResponse Cancelationuuid(String uuid, String rfc, String motivo, String foliosustitucion) throws AuthException, GeneralException, IOException {
-        CancelationOptionsRequest settings = new CancelationOptionsRequest(getToken(), getURI(), uuid, rfc, motivo, foliosustitucion, getProxyHost(), getProxyPort());
+    public IResponse Cancelation(String uuid, String rfc, String motivo, String folioSustitucion) throws AuthException, GeneralException, IOException {
+        CancelationOptionsRequest settings = new CancelationOptionsRequest(getToken(), getURI(), uuid, rfc, motivo, folioSustitucion, getProxyHost(), getProxyPort());
         CancelationRequest req = new CancelationRequest();
         return req.sendRequestUuid(settings);
     }

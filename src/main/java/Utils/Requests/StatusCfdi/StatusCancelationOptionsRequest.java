@@ -7,16 +7,16 @@ public class StatusCancelationOptionsRequest extends IRequest{
 	private String rfcReceptor;
 	private String total;
 	private String uuid;
-        private String caract_sello;
+    private String sello;
 	private String action;
 	
-	public StatusCancelationOptionsRequest(String URI, String action, String rfcEmisor, String rfcReceptor, String total, String uuid, String caract_sello, String proxyHost, int proxyPort) {
+	public StatusCancelationOptionsRequest(String URI, String action, String rfcEmisor, String rfcReceptor, String total, String uuid, String sello, String proxyHost, int proxyPort) {
 		super("", URI, proxyHost, proxyPort);
         this.rfcEmisor = rfcEmisor;
         this.rfcReceptor = rfcReceptor;
         this.total = total;
         this.uuid = uuid;
-        this.caract_sello = caract_sello;
+        this.sello = sello;
         this.action = action;
     }
 	
@@ -32,8 +32,8 @@ public class StatusCancelationOptionsRequest extends IRequest{
 	public String getUuid() {
 		return uuid;
 	}
-        public String getCSello() {
-		return caract_sello;
+        public String getSello() {
+		return sello;
 	}
 	public String getAction() {
 		return action;

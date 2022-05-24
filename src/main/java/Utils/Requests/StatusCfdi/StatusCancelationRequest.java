@@ -34,9 +34,9 @@ public class StatusCancelationRequest implements IRequestor{
         String rfcReceptor = ((StatusCancelationOptionsRequest) request).getRfcReceptor();
         String total = ((StatusCancelationOptionsRequest) request).getTotal();
         String uuid = ((StatusCancelationOptionsRequest) request).getUuid();
-        String  caract_sello = ((StatusCancelationOptionsRequest) request).getCSello();
+        String sello = ((StatusCancelationOptionsRequest) request).getSello();
         
-        SOAPMessage Response = callSoapWebService(soapEndpointUrl, soapAction, rfcEmisor, rfcReceptor, total, uuid, caract_sello);
+        SOAPMessage Response = callSoapWebService(soapEndpointUrl, soapAction, rfcEmisor, rfcReceptor, total, uuid, sello);
         SOAPBody body = Response.getSOAPBody();
         SOAPFault error = body.getFault();
 		if (error != null) {
@@ -75,7 +75,7 @@ public class StatusCancelationRequest implements IRequestor{
 		}
 	}
 	
-	private static void createSoapEnvelope(SOAPMessage soapMessage, String rfcEmisor, String rfcReceptor, String total, String uuid, String caract_sello) throws SOAPException {
+	private static void createSoapEnvelope(SOAPMessage soapMessage, String rfcEmisor, String rfcReceptor, String total, String uuid, String sello) throws SOAPException {
         SOAPPart soapPart = soapMessage.getSOAPPart();
         String myNamespace = "tem";
         String myNamespaceURI = "http://tempuri.org/";
@@ -84,13 +84,13 @@ public class StatusCancelationRequest implements IRequestor{
         SOAPBody soapBody = envelope.getBody();
         SOAPElement soapBodyElem = soapBody.addChildElement("Consulta", myNamespace);
         SOAPElement soapExpresionImpresa = soapBodyElem.addChildElement("expresionImpresa", myNamespace);
-        soapExpresionImpresa.addTextNode("<![CDATA[?re="+rfcEmisor+"&rr="+rfcReceptor+"&tt="+total+"&id="+uuid+"&fe"+caract_sello+"]]>");
+        soapExpresionImpresa.addTextNode("<![CDATA[?re="+rfcEmisor+"&rr="+rfcReceptor+"&tt="+total+"&id="+uuid+"&fe"+sello+"]]>");
     }
-	private SOAPMessage callSoapWebService(String soapEndpointUrl, String soapAction, String rfcEmisor, String rfcReceptor, String total, String uuid, String caract_sello) {
+	private SOAPMessage callSoapWebService(String soapEndpointUrl, String soapAction, String rfcEmisor, String rfcReceptor, String total, String uuid, String sello) {
         try {
             SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
             SOAPConnection soapConnection = soapConnectionFactory.createConnection();
-            SOAPMessage soapRequest = createSOAPRequest(soapAction, rfcEmisor, rfcReceptor, total, uuid, caract_sello);
+            SOAPMessage soapRequest = createSOAPRequest(soapAction, rfcEmisor, rfcReceptor, total, uuid, sello);
             SOAPMessage soapResponse = soapConnection.call(soapRequest, soapEndpointUrl);
             return soapResponse;
         } catch (Exception e) {
@@ -100,15 +100,13 @@ public class StatusCancelationRequest implements IRequestor{
 		return null;
     }
 
-    private static SOAPMessage createSOAPRequest(String soapAction, String rfcEmisor, String rfcReceptor, String total, String uuid, String caract_sello) throws Exception {
+    private static SOAPMessage createSOAPRequest(String soapAction, String rfcEmisor, String rfcReceptor, String total, String uuid, String sello) throws Exception {
         MessageFactory messageFactory = MessageFactory.newInstance();
         SOAPMessage soapMessage = messageFactory.createMessage();
-        createSoapEnvelope(soapMessage, rfcEmisor, rfcReceptor, total, uuid, caract_sello );
+        createSoapEnvelope(soapMessage, rfcEmisor, rfcReceptor, total, uuid, sello );
         MimeHeaders headers = soapMessage.getMimeHeaders();
         headers.addHeader("SOAPAction", soapAction);
         soapMessage.saveChanges();
         return soapMessage;
     }
-	
-
 }

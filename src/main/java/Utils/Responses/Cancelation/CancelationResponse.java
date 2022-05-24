@@ -13,7 +13,7 @@ public class CancelationResponse extends IResponse {
         super(httpStatusCode, status, msg, msgDetail);
         this.acuse = acuse;
         this.uuid = uuid;
-        this.msgDetail=msgDetail;
+        this.msgDetail = msgDetail;
         this.uuidStatusCode = uuidStatusCode;
     }
     public CancelationResponse(int httpStatusCode, String status, String msg, String msgDetail) {

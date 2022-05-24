@@ -18,8 +18,8 @@ public class StatusCfdiService {
         this.Action = Action;
     }
     
-    public IResponse StatusCfdi(String rfcEmisor, String rfcReceptor, String total, String uuid, String caract_sello) throws AuthException, GeneralException, IOException, SOAPException {
-        StatusCancelationOptionsRequest settings = new StatusCancelationOptionsRequest(URL, Action, rfcEmisor, rfcReceptor, total, uuid, caract_sello, null, 0);
+    public IResponse StatusCfdi(String rfcEmisor, String rfcReceptor, String total, String uuid, String sello) throws AuthException, GeneralException, IOException, SOAPException {
+        StatusCancelationOptionsRequest settings = new StatusCancelationOptionsRequest(URL, Action, rfcEmisor, rfcReceptor, total, uuid, sello, null, 0);
         StatusCancelationRequest req = new StatusCancelationRequest();
         return req.sendRequest(settings);
     }

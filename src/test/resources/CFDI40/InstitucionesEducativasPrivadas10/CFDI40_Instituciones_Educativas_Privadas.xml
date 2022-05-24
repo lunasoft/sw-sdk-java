@@ -10,7 +10,7 @@
         </cfdi:Traslados>
       </cfdi:Impuestos>
       <cfdi:ComplementoConcepto>
-        <iedu:instEducativas xmlns:iedu="http://www.sat.gob.mx/iedu" rfcPago="CACX7605101P8" autRVOE="118141" nivelEducativo="Primaria" CURP="RULO100120HDFBTDA4" nombreAlumno="RUBINHO LOPEZ ADILENE" version="1.0" />
+        <iedu:instEducativas xmlns:iedu="http://www.sat.gob.mx/iedu" rfcPago="CACX7605101P8" autRVOE="118141" nivelEducativo="Primaria" CURP="XEXX010101HNEXXXA4" nombreAlumno="RUBINHO LOPEZ ADILENE" version="1.0" />
       </cfdi:ComplementoConcepto>
     </cfdi:Concepto>
   </cfdi:Conceptos>

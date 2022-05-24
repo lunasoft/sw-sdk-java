@@ -1,0 +1,132 @@
+{
+  "Version": "4.0",
+  "Serie": "SW",
+  "Folio": "123456",
+  "Fecha": "2022-02-14T00:00:00",
+  "Sello": "",
+  "NoCertificado": "",
+  "Certificado": "",
+  "CondicionesDePago": "CondicionesDePago",
+  "SubTotal": "400.00",
+  "Descuento": "0.00",
+  "Moneda": "AMD",
+  "TipoCambio": "1",
+  "Total": "399.16",
+  "TipoDeComprobante": "I",
+  "Exportacion": "02",
+  "FormaPago": "99",
+  "LugarExpedicion": "45610",
+  "Emisor": {
+    "Rfc": "EKU9003173C9",
+    "Nombre": "ESCUELA KEMPER URGATE",
+    "RegimenFiscal": "603"
+  },
+  "Receptor": {
+    "Rfc": "EKU9003173C9",
+    "Nombre": "ESCUELA KEMPER URGATE",
+    "DomicilioFiscalReceptor": "26015",
+    "RegimenFiscalReceptor": "601",
+    "UsoCFDI": "CP01"
+  },
+  "Conceptos": [
+    {
+      "ClaveProdServ": "50211503",
+      "NoIdentificacion": "131494-1055",
+      "Cantidad": "2.0",
+      "ClaveUnidad": "H87",
+      "Unidad": "Pieza",
+      "Descripcion": "Cigarros",
+      "ValorUnitario": "200.00",
+      "Importe": "400.00",
+      "Descuento": "0.00",
+      "ObjetoImp": "02",
+      "Impuestos": {
+        "Traslados": [
+          {
+            "Base": "1",
+            "Importe": "0.16",
+            "Impuesto": "002",
+            "TasaOCuota": "0.160000",
+            "TipoFactor": "Tasa"
+          }
+        ],
+        "Retenciones": [
+          {
+            "Base": "1",
+            "Importe": "1",
+            "Impuesto": "002",
+            "TasaOCuota": "0.040000",
+            "TipoFactor": "Tasa"
+          }
+        ]
+      }
+    }
+  ],
+  "Impuestos": {
+    "TotalImpuestosTrasladados": "0.16",
+    "TotalImpuestosRetenidos": "1.00",
+    "Retenciones": [
+      {
+        "Importe": "1.00",
+        "Impuesto": "002"
+      }
+    ],
+    "Traslados": [
+      {
+        "Base": "1.00",
+        "Importe": "0.16",
+        "Impuesto": "002",
+        "TasaOCuota": "0.160000",
+        "TipoFactor": "Tasa"
+      }
+    ]
+  },
+  "Complemento": {
+    "Any": [
+      {
+        "CCE11:ComercioExterior": {
+          "Version": "1.1",
+          "TipoOperacion": "2",
+          "ClaveDePedimento": "A1",
+          "CertificadoOrigen": "0",
+          "Incoterm": "FOB",
+          "Subdivision": "0",
+          "TipoCambioUSD": "15.6446",
+          "TotalUSD": "25.56",
+          "Emisor": {
+            "Domicilio": {
+              "Calle": "CALLE DEL PAPEL",
+              "Colonia": "0214",
+              "Localidad": "01",
+              "Municipio": "014",
+              "Estado": "QUE",
+              "Pais": "MEX",
+              "CodigoPostal": "76199"
+            }
+          },
+          "Receptor": {
+            "Domicilio": {
+              "Calle": "CALLE DEL PAPEL",
+              "Colonia": "0214",
+              "Localidad": "01",
+              "Municipio": "014",
+              "Estado": "QUE",
+              "Pais": "MEX",
+              "CodigoPostal": "76199"
+            }
+          },
+          "Mercancias": [
+            {
+              "NoIdentificacion": "131494-1055",
+              "ValorUnitarioAduana": "12.78",
+              "CantidadAduana": "117.64",
+              "FraccionArancelaria": "2402200100",
+              "UnidadAduana": "01",
+              "ValorDolares": "25.56"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

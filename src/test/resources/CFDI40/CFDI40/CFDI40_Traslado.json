@@ -1,0 +1,44 @@
+{
+  "Version": "4.0",
+  "Serie": "SW",
+  "Folio": "123456",
+  "Fecha": "2022-01-12T00:00:00",
+  "Sello": "",
+  "NoCertificado": "",
+  "Certificado": "",
+  "CondicionesDePago": "CondicionesDePago",
+  "SubTotal": "0.00",
+  "Descuento": "0.00",
+  "Moneda": "AMD",
+  "TipoCambio": "1",
+  "Total": "0.00",
+  "TipoDeComprobante": "T",
+  "Exportacion": "01",
+  "LugarExpedicion": "45610",
+  "Emisor": {
+    "Rfc": "EKU9003173C9",
+    "Nombre": "ESCUELA KEMPER URGATE",
+    "RegimenFiscal": "603"
+  },
+  "Receptor": {
+    "Rfc": "EKU9003173C9",
+    "Nombre": "ESCUELA KEMPER URGATE",
+    "DomicilioFiscalReceptor": "26015",
+    "RegimenFiscalReceptor": "601",
+    "UsoCFDI": "CP01"
+  },
+  "Conceptos": [
+    {
+      "ClaveProdServ": "50211503",
+      "NoIdentificacion": "None",
+      "Cantidad": "1.0",
+      "ClaveUnidad": "H87",
+      "Unidad": "Pieza",
+      "Descripcion": "Cigarros",
+      "ValorUnitario": "0.00",
+      "Importe": "0.00",
+      "Descuento": "0.00",
+      "ObjetoImp": "01"
+    }
+  ]
+}

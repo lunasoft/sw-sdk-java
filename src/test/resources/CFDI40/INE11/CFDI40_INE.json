@@ -1,0 +1,123 @@
+{
+  "Version": "4.0",
+  "Fecha": "2022-03-10T09:57:43",
+  "Serie": "Cava tequilera",
+  "Folio": 79,
+  "FormaPago": "01",
+  "CondicionesDePago": "30 días",
+  "SubTotal": "200.00",
+  "Moneda": "MXN",
+  "Exportacion": "01",
+  "TipoCambio": "1",
+  "Total": "228.00",
+  "TipoDeComprobante": "I",
+  "MetodoPago": "PUE",
+  "LugarExpedicion": "45070",
+  "Certificado": "",
+  "NoCertificado": "",
+  "Sello": "",
+  "Emisor": {
+    "Rfc": "EKU9003173C9",
+    "Nombre": "ESCUELA KEMPER URGATE",
+    "RegimenFiscal": "603"
+  },
+  "Receptor": {
+    "Rfc": "URE180429TM6",
+    "Nombre": "UNIVERSIDAD ROBOTICA ESPAÑOLA",
+    "UsoCFDI": "G03",
+    "DomicilioFiscalReceptor": "65000",
+    "RegimenFiscalReceptor": "601"
+  },
+  "Conceptos": [
+    {
+      "Cantidad": "1.000000",
+      "Unidad": "PZA",
+      "Descripcion": "TEST",
+      "ValorUnitario": "100.00",
+      "Importe": "100.00",
+      "ClaveProdServ": "01010101",
+      "ClaveUnidad": "EA",
+      "ObjetoImp": "02",
+      "Impuestos": {
+        "Traslados": [
+          {
+            "Base": "100.00",
+            "Impuesto": "002",
+            "TipoFactor": "Tasa",
+            "TasaOCuota": "0.160000",
+            "Importe": "16.00"
+          }
+        ],
+        "Retenciones": [
+          {
+            "Base": "100.00",
+            "Impuesto": "002",
+            "TipoFactor": "Tasa",
+            "TasaOCuota": "0.020000",
+            "Importe": "2.00"
+          }
+        ]
+      }
+    },
+    {
+      "Cantidad": "1.000000",
+      "Unidad": "PZA",
+      "Descripcion": "TEST",
+      "ValorUnitario": "100.00",
+      "Importe": "100.00",
+      "ClaveProdServ": "01010101",
+      "ClaveUnidad": "EA",
+      "ObjetoImp": "02",
+      "Impuestos": {
+        "Traslados": [
+          {
+            "Base": "100.00",
+            "Impuesto": "002",
+            "TipoFactor": "Tasa",
+            "TasaOCuota": "0.160000",
+            "Importe": "16.00"
+          }
+        ],
+        "Retenciones": [
+          {
+            "Base": "100.00",
+            "Impuesto": "002",
+            "TipoFactor": "Tasa",
+            "TasaOCuota": "0.020000",
+            "Importe": "2.00"
+          }
+        ]
+      }
+    }
+  ],
+  "Impuestos": {
+    "TotalImpuestosRetenidos": "4.00",
+    "TotalImpuestosTrasladados": "32.00",
+    "Retenciones": [
+      {
+        "Impuesto": "002",
+        "Importe": "4.00"
+      }
+    ],
+    "Traslados": [
+      {
+        "Base": "200.00",
+        "Impuesto": "002",
+        "Importe": "32.00",
+        "TasaOCuota": "0.160000",
+        "TipoFactor": "Tasa"
+      }
+    ]
+  },
+  "Complemento": {
+    "Any": [
+      {
+        "ine:INE": {
+          "Version": "1.1",
+          "TipoProceso": "Ordinario",
+          "TipoComite": "Ejecutivo Nacional"
+        }
+      }
+    ]
+  }
+}

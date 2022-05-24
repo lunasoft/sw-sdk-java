@@ -1,0 +1,223 @@
+{
+  "Version": "4.0",
+  "Folio": "271",
+  "Fecha": "2022-04-11T00:33:58",
+  "Sello": "",
+  "FormaPago": "01",
+  "FormaPagoSpecified": true,
+  "NoCertificado": "",
+  "Certificado": "",
+  "SubTotal": 645.79,
+  "Moneda": "MXN",
+  "Total": 673.6,
+  "TipoDeComprobante": "I",
+  "Exportacion": "01",
+  "MetodoPago": "PUE",
+  "MetodoPagoSpecified": true,
+  "LugarExpedicion": "30140",
+  "InformacionGlobal": {
+    "Periodicidad": "01",
+    "Meses": "01",
+    "Año": "2022"
+  },
+  "Emisor": {
+    "Rfc": "EKU9003173C9",
+    "Nombre": "ESCUELA KEMPER URGATE",
+    "RegimenFiscal": "601"
+  },
+  "Receptor": {
+    "Rfc": "XAXX010101000",
+    "Nombre": "PUBLICO EN GENERAL",
+    "DomicilioFiscalReceptor": "30140",
+    "RegimenFiscalReceptor": "616",
+    "UsoCFDI": "S01"
+  },
+  "Conceptos": [
+    {
+      "Impuestos": {
+        "Traslados": [
+          {
+            "Base": 50,
+            "Impuesto": "002",
+            "TipoFactor": "Tasa",
+            "TasaOCuota": 0.16,
+            "TasaOCuotaSpecified": true,
+            "Importe": 8,
+            "ImporteSpecified": true
+          }
+        ]
+      },
+      "ClaveProdServ": "01010101",
+      "NoIdentificacion": "000",
+      "Cantidad": 1,
+      "ClaveUnidad": "ACT",
+      "Unidad": "ACT",
+      "Descripcion": "[#]Venta TK00025",
+      "ValorUnitario": 50,
+      "Importe": 50,
+      "DescuentoSpecified": false,
+      "ObjetoImp": "02"
+    },
+    {
+      "Impuestos": {
+        "Traslados": [
+          {
+            "Base": 250,
+            "Impuesto": "002",
+            "TipoFactor": "Tasa",
+            "TasaOCuota": 0,
+            "TasaOCuotaSpecified": true,
+            "Importe": 0,
+            "ImporteSpecified": true
+          }
+        ]
+      },
+      "ClaveProdServ": "01010101",
+      "NoIdentificacion": "001",
+      "Cantidad": 1,
+      "ClaveUnidad": "ACT",
+      "Unidad": "ACT",
+      "Descripcion": "[#]Venta TK00026",
+      "ValorUnitario": 250,
+      "Importe": 250,
+      "ObjetoImp": "02"
+    },
+    {
+      "Impuestos": {
+        "Traslados": [
+          {
+            "Base": 10,
+            "Impuesto": "002",
+            "TipoFactor": "Tasa",
+            "TasaOCuota": 0.16,
+            "TasaOCuotaSpecified": true,
+            "Importe": 1.6,
+            "ImporteSpecified": true
+          }
+        ]
+      },
+      "ClaveProdServ": "01010101",
+      "NoIdentificacion": "002",
+      "Cantidad": 1,
+      "ClaveUnidad": "ACT",
+      "Unidad": "ACT",
+      "Descripcion": "[#]Venta TK00027",
+      "ValorUnitario": 10,
+      "Importe": 10,
+      "ObjetoImp": "02"
+    },
+    {
+      "ClaveProdServ": "01010101",
+      "NoIdentificacion": "003",
+      "Cantidad": 1,
+      "ClaveUnidad": "ACT",
+      "Unidad": "ACT",
+      "Descripcion": "[#]Venta TK00028",
+      "ValorUnitario": 123,
+      "Importe": 123,
+      "ObjetoImp": "03"
+    },
+    {
+      "Impuestos": {
+        "Traslados": [
+          {
+            "Base": 55.55,
+            "Impuesto": "002",
+            "TipoFactor": "Tasa",
+            "TasaOCuota": 0.16,
+            "TasaOCuotaSpecified": true,
+            "Importe": 8.89,
+            "ImporteSpecified": true
+          }
+        ]
+      },
+      "ClaveProdServ": "01010101",
+      "NoIdentificacion": "004",
+      "Cantidad": 1,
+      "ClaveUnidad": "ACT",
+      "Unidad": "ACT",
+      "Descripcion": "[#]Venta TK00029",
+      "ValorUnitario": 55.55,
+      "Importe": 55.55,
+      "ObjetoImp": "02"
+    },
+    {
+      "Impuestos": {
+        "Traslados": [
+          {
+            "Base": 98.99,
+            "Impuesto": "002",
+            "TipoFactor": "Exento"
+          }
+        ]
+      },
+      "ClaveProdServ": "01010101",
+      "NoIdentificacion": "005",
+      "Cantidad": 1,
+      "ClaveUnidad": "ACT",
+      "Unidad": "ACT",
+      "Descripcion": "[#]Venta TK00030",
+      "ValorUnitario": 98.99,
+      "Importe": 98.99,
+      "ObjetoImp": "02"
+    },
+    {
+      "Impuestos": {
+        "Traslados": [
+          {
+            "Base": 58.25,
+            "Impuesto": "002",
+            "TipoFactor": "Tasa",
+            "TasaOCuota": 0.16,
+            "TasaOCuotaSpecified": true,
+            "Importe": 9.32,
+            "ImporteSpecified": true
+          }
+        ]
+      },
+      "ClaveProdServ": "01010101",
+      "NoIdentificacion": "006",
+      "Cantidad": 1,
+      "ClaveUnidad": "ACT",
+      "Unidad": "ACT",
+      "Descripcion": "[#]Venta TK00031",
+      "ValorUnitario": 58.25,
+      "Importe": 58.25,
+      "DescuentoSpecified": false,
+      "ObjetoImp": "02"
+    }
+  ],
+  "Impuestos": {
+    "Traslados": [
+      {
+        "Base": 173.8,
+        "Impuesto": "002",
+        "TipoFactor": "Tasa",
+        "TasaOCuota": 0.16,
+        "Importe": 27.81,
+        "TasaOCuotaSpecified": true,
+        "ImporteSpecified": true
+      },
+      {
+        "Base": 250,
+        "Impuesto": "002",
+        "TipoFactor": "Tasa",
+        "TasaOCuota": 0,
+        "Importe": 0,
+        "TasaOCuotaSpecified": true,
+        "ImporteSpecified": true
+      },
+      {
+        "Base": 98.99,
+        "Impuesto": "002",
+        "TipoFactor": "Exento",
+        "TasaOCuota": 0,
+        "Importe": 0,
+        "TasaOCuotaSpecified": true,
+        "ImporteSpecified": true
+      }
+    ],
+    "TotalImpuestosTrasladados": 27.81,
+    "TotalImpuestosTrasladadosSpecified": true
+  }
+}

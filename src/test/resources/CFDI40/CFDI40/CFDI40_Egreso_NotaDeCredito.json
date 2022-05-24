@@ -1,0 +1,78 @@
+{
+  "Version": "4.0",
+  "Serie": "NC",
+  "Folio": "123456",
+  "Fecha": "2022-01-25T00:00:00",
+  "Sello": "",
+  "NoCertificado": "",
+  "Certificado": "",
+  "CondicionesDePago": null,
+  "SubTotal": "10.00",
+  "Descuento": "0.00",
+  "Moneda": "MXN",
+  "TipoCambio": "1",
+  "Total": "11.00",
+  "TipoDeComprobante": "E",
+  "Exportacion": "01",
+  "LugarExpedicion": "45610",
+  "FormaPago": "99",
+  "CfdiRelacionados": [
+    {
+      "TipoRelacion": "01",
+      "CfdiRelacionado": [
+        {
+          "UUID": "1fac4464-1111-0000-1111-cd37179db12e"
+        }
+      ]
+    }
+  ],
+  "Emisor": {
+    "Rfc": "EKU9003173C9",
+    "Nombre": "ESCUELA KEMPER URGATE",
+    "RegimenFiscal": "603"
+  },
+  "Receptor": {
+    "Rfc": "EKU9003173C9",
+    "Nombre": "ESCUELA KEMPER URGATE",
+    "DomicilioFiscalReceptor": "26015",
+    "RegimenFiscalReceptor": "601",
+    "UsoCFDI": "CP01"
+  },
+  "Conceptos": [
+    {
+      "ClaveProdServ": "84111506",
+      "NoIdentificacion": null,
+      "Cantidad": "1.0",
+      "ClaveUnidad": "ACT",
+      "Unidad": null,
+      "Descripcion": "NC por devolución",
+      "ValorUnitario": "10.00",
+      "Importe": "10.00",
+      "Descuento": "0.00",
+      "ObjetoImp": "02",
+      "Impuestos": {
+        "Traslados": [
+          {
+            "Base": "1",
+            "Importe": "1",
+            "Impuesto": "002",
+            "TasaOCuota": "0.160000",
+            "TipoFactor": "Tasa"
+          }
+        ]
+      }
+    }
+  ],
+  "Impuestos": {
+    "TotalImpuestosTrasladados": "1.00",
+    "Traslados": [
+      {
+        "Base": "1.00",
+        "Importe": "1.00",
+        "Impuesto": "002",
+        "TasaOCuota": "0.160000",
+        "TipoFactor": "Tasa"
+      }
+    ]
+  }
+}

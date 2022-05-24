@@ -2,14 +2,10 @@ package Utils.Requests;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-
 import javax.xml.soap.SOAPException;
-
 import org.apache.http.client.ClientProtocolException;
-
 import Exceptions.AuthException;
 import Exceptions.GeneralException;
-import Utils.Requests.IRequest;
 import Utils.Responses.IResponse;
 
 public interface IRequestor {

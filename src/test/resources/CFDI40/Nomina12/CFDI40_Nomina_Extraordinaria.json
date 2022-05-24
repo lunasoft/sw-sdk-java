@@ -56,7 +56,7 @@
             "RfcPatronOrigen": "EKU9003173C9"
           },
           "Receptor": {
-            "Curp": "BADD110313HCMLNS09",
+            "Curp": "XEXX010101HNEXXXA4",
             "NumSeguridadSocial": "000000",
             "FechaInicioRelLaboral": "2015-01-01",
             "Antigüedad": "P364W",
@@ -68,7 +68,8 @@
             "Puesto": "Ingeniero de Software",
             "RiesgoPuesto": "1",
             "PeriodicidadPago": "99",
-            "CuentaBancaria": "072320002084170154",
+            "CuentaBancaria": "1111111111",
+            "Banco": "062",
             "SalarioDiarioIntegrado": "146.47",
             "ClaveEntFed": "JAL"
           },

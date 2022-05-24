@@ -8,7 +8,7 @@
     <cfdi:Complemento>
         <nomina12:Nomina Version="1.2" TipoNomina="E" FechaPago="2022-02-04" FechaInicialPago="2022-02-04" FechaFinalPago="2022-02-04" NumDiasPagados="30" TotalPercepciones="10000.0">
             <nomina12:Emisor RegistroPatronal="B5510768108" RfcPatronOrigen="URE180429TM6" />
-            <nomina12:Receptor Curp="BADD110313HCMLNS09" NumSeguridadSocial="000000" FechaInicioRelLaboral="2015-01-01" Antigüedad="P364W" TipoContrato="01" TipoJornada="01" TipoRegimen="03" NumEmpleado="120" Departamento="Desarrollo" Puesto="Ingeniero de Software" RiesgoPuesto="1" PeriodicidadPago="99" CuentaBancaria="072320002084170154" SalarioDiarioIntegrado="146.47" ClaveEntFed="JAL" />
+            <nomina12:Receptor Curp="XEXX010101HNEXXXA4" NumSeguridadSocial="000000" FechaInicioRelLaboral="2015-01-01" Antigüedad="P364W" TipoContrato="01" TipoJornada="01" TipoRegimen="03" NumEmpleado="120" Departamento="Desarrollo" Puesto="Ingeniero de Software" RiesgoPuesto="1" PeriodicidadPago="99" CuentaBancaria="1111111111" Banco="062" SalarioDiarioIntegrado="146.47" ClaveEntFed="JAL" />
             <nomina12:Percepciones TotalJubilacionPensionRetiro="10000.00" TotalGravado="0.00" TotalExento="10000.00" >
                 <nomina12:Percepcion TipoPercepcion="039" Clave="00500" Concepto="Jubilaciones, pensiones o haberes de retiro" ImporteGravado="0.00" ImporteExento="10000.00" />
                 <nomina12:JubilacionPensionRetiro IngresoAcumulable="10000.00" IngresoNoAcumulable="0.00" TotalUnaExhibicion="10000.00"/>

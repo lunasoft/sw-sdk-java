@@ -2,7 +2,7 @@
   "Version": "4.0",
   "Serie": "Serie",
   "Folio": "Folio",
-  "Fecha": "2022-04-11T00:00:10",
+  "Fecha": "2022-05-27T00:00:10",
   "Sello": "",
   "FormaPago": "99",
   "FormaPagoSpecified": true,
@@ -82,8 +82,8 @@
           "CertificadoOrigen": "0",
           "Incoterm": "FOB",
           "Subdivision": "0",
-          "TipoCambioUSD": "20.02",
-          "TotalUSD": "1337.51",
+          "TipoCambioUSD": "19.7933",
+          "TotalUSD": "1351.63",
           "Emisor": {
             "Domicilio": {
               "Calle": "Limón",
@@ -110,8 +110,8 @@
               "FraccionArancelaria": "9704000200",
               "CantidadAduana": "50.000",
               "UnidadAduana": "06",
-              "ValorDolares": "1337.51",
-              "ValorUnitarioAduana": "26.75"
+              "ValorDolares": "1351.63",
+              "ValorUnitarioAduana": "27.03"
             }
           ]
         }

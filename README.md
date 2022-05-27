@@ -621,52 +621,6 @@ System.out.println(response.statusCodeSat);
 System.out.println(response.message);
 System.out.println(response.messageDetail); 
 ```
-
-## Validación Lco ##
-Recibe el número de certificado a validar.
-
-Ejemplo de uso
-
-```java
-SWValidateService api = new SWValidateService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
-ValidateLcoResponse response = null;
-response = (ValidateLcoResponse) api.ValidateLco("20001000000300022815");
-System.out.println(response.Status);
-System.out.println(response.HttpStatusCode);
-System.out.println(response.message);
-System.out.println(response.noCertificado);
-System.out.println(response.rfc);
-System.out.println(response.validezObligaciones);
-System.out.println(response.estatusCertificado);
-System.out.println(response.fechaInicio);
-System.out.println(response.fechaFinal);
-//En caso de obtener un error, este puede obtenerse de los campos
-System.out.println(response.message);
-System.out.println(response.messageDetail); 
-```
-
-## Validación Lrfc ##
-Recibe el rfc a validar.
-
-Ejemplo de uso
-
-```java
-SWValidateService api = new SWValidateService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
-ValidateLrfcResponse response = null;
-response = (ValidateLrfcResponse) api.ValidateLrfc("LAN7008173R5");
-System.out.println(response.Status);
-System.out.println(response.HttpStatusCode);
-System.out.println(response.message);
-System.out.println(response.contribuyenteRFC);
-System.out.println(response.sncf);
-System.out.println(response.subcontratacion);
-//En caso de obtener un error, este puede obtenerse de los campos
-System.out.println(response.message);
-System.out.println(response.messageDetail); 
-```
-
-
-
 # Consulta de Saldos #
 Se obtiene el balance de nuestra cuenta con respecto a los timbres
 ```java

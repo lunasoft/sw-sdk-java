@@ -85,7 +85,7 @@ public class Utils {
         if (data != null) {
             UUID uuid = UUID.randomUUID();
             String randomUUIDString = uuid.toString().replace("-", "");
-            data.put("Folio", randomUUIDString + "sdk-java");
+            data.put("Folio", randomUUIDString + "sdkjava");
             data.put("Fecha", getDateCFDI());
         }
         

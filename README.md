@@ -917,3 +917,44 @@ System.out.println(response.acuse);
 System.out.println(response.message);
 System.out.println(response.messageDetail);
 ```
+
+# Servicio PDF #
+Servicio para generar PDF de un XML previamente timbrado. 
+Se permite especificar una de las plantillas genericas o una plantilla personalizada en caso de contar con una.
+
+### Crear instancia de la clase.
+* Usuario y contraseña.
+    ```java
+    SWPdfService app = new SWPdfService(Utils.userSW, Utils.passwordSW, "http://api.test.sw.com.mx", "http://services.test.sw.com.mx");
+    ```
+* Token
+    ```java
+    SWPdfService app = new SWPdfService(Utils.tokenSW, "http://api.test.sw.com.mx");
+    ```
+## Generar PDF Default 
+Generar PDF con plantilla por defecto CFDI 4.0.
+```java
+PdfResponse response = null;
+response = (PdfResponse) app.GeneratePdf(stamp.cfdi, this.logoB64);
+```
+## Generar PDF Default Extras
+Generar PDF con plantilla por defecto CFDI 4.0 con datos adicionales.
+```java
+HashMap<String, String> extras = new HashMap<String,String>();
+PdfResponse response = null;
+response = (PdfResponse) app.GeneratePdf(stamp.cfdi, this.logoB64, extras);
+```
+## Generar PDF Plantilla Generica.
+Generar PDF con plantilla generica.
+```java
+HashMap<String, String> extras = new HashMap<String,String>();
+PdfResponse response = null;
+response = (PdfResponse) app.GeneratePdf(stamp.cfdi, PdfTemplates.payment20, this.logoB64, extras);
+```
+## Generar PDF Plantilla Personalizada
+Generar PDF especificando una plantilla como string.
+```java
+HashMap<String, String> extras = new HashMap<String,String>();
+PdfResponse response = null;
+response = (PdfResponse) app.GeneratePdf(stamp.cfdi, "cfdi40", this.logoB64, extras);
+```

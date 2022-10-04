@@ -16,6 +16,8 @@ import java.net.URISyntaxException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.transform.dom.DOMSource;
 import org.apache.commons.codec.binary.Base64;
+import org.junit.rules.TestName;
+
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -29,6 +31,7 @@ import javax.xml.parsers.ParserConfigurationException;
 */
 public class Utils {
     public static String urlSW = "http://services.test.sw.com.mx";
+    public static String urlApiSW = "http://api.test.sw.com.mx";
     public static String userSW = System.getenv("SDKTEST_USER");
     public static String passwordSW = System.getenv("SDKTEST_PASSWORD");
     public static String tokenSW = System.getenv("SDKTEST_TOKEN");
@@ -82,7 +85,7 @@ public class Utils {
         if (data != null) {
             UUID uuid = UUID.randomUUID();
             String randomUUIDString = uuid.toString().replace("-", "");
-            data.put("Folio", randomUUIDString + "sdk-java");
+            data.put("Folio", randomUUIDString + "sdkjava");
             data.put("Fecha", getDateCFDI());
         }
         
@@ -235,5 +238,21 @@ public class Utils {
         }
 
         return "";        
-    } 
+    }
+
+    public String getResource(String fileName){
+        byte[] fileContent;
+        try {
+            fileContent = Files.readAllBytes(Paths.get("src/test/resources/Extras/" + fileName));
+            return encodeBase64(new String(fileContent, "UTF-8"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return "";   
+    }
+    public static void showTestLog(TestName testName, String status){
+        System.out.println(testName.getMethodName());
+        System.out.println(status + "\n");
+    }
 }

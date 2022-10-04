@@ -1,25 +1,34 @@
 package Utils.Requests.Pdf;
 
+import java.util.Map;
+
 import Utils.Constants;
+import Utils.Helpers.PdfTemplates;
 import Utils.Requests.IRequest;
 
 public class PdfOptionsRequest extends IRequest {
 	private String xml;
 	private String templateId;
-	private String extras;
+	private String b64Logo;
+	private Map<String,String> extras;
 	
-	public PdfOptionsRequest(String token, String URI, String xml, String proxyHost, int proxyPort) {
+	public PdfOptionsRequest(String token, String URI, String xml, String b64Logo, String proxyHost, int proxyPort) {
         super(token, URI + Constants.GENERATE_PDF_PATH, proxyHost, proxyPort);
         this.xml = xml;
+		this.b64Logo = b64Logo;
+		this.templateId = PdfTemplates.cfdi40.toString();
     }
-	public PdfOptionsRequest(String token, String URI, String xml, String extras, String proxyHost, int proxyPort) {
+	public PdfOptionsRequest(String token, String URI, String xml, String b64Logo, Map<String,String> extras, String proxyHost, int proxyPort) {
         super(token, URI + Constants.GENERATE_PDF_PATH, proxyHost, proxyPort);
         this.xml = xml;
+		this.b64Logo = b64Logo;
         this.extras = extras;
+		this.templateId = PdfTemplates.cfdi40.toString();
     }
-	public PdfOptionsRequest(String token, String URI, String xml, String extras, String templateId, String proxyHost, int proxyPort) {
+	public PdfOptionsRequest(String token, String URI, String xml, String templateId, String b64Logo, Map<String,String> extras, String proxyHost, int proxyPort) {
         super(token, URI + Constants.GENERATE_PDF_PATH, proxyHost, proxyPort);
         this.xml = xml;
+		this.b64Logo = b64Logo;
         this.extras = extras;
         this.templateId = templateId;
     }
@@ -27,11 +36,12 @@ public class PdfOptionsRequest extends IRequest {
 	public String getTemplateId() {
 		return templateId;
 	}
-	
-	public String getExtras() {
+	public Map<String,String> getExtras() {
 		return extras;
 	}
-	
+	public String getB64Logo() {
+		return b64Logo;
+	}	
 	public String getXml() {
 		return xml;
 	}

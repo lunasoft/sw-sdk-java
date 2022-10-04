@@ -104,13 +104,16 @@ public class SWPdfServiceTest {
 
     @Test
     public void GeneratePdf_TemplateAsEnum_Success() throws AuthException, GeneralException, IOException {
+        HashMap<String, String> extras = new HashMap<String,String>();
+        extras.put("Observaciones", "Observaciones ejemplo");
+        extras.put("DatosExtras", "Tel. 0000000000, Empresas SW");
         SuccessV3Response stamp = (SuccessV3Response) issue
                 .IssueXml(settings.getCFDI(baseDir + "CFDI40/CFDI40_Ingreso.xml",
                         false, "v3", false), "v3");
         if (stamp.Status.equals("success")) {
             SWPdfService app = new SWPdfService(Utils.tokenSW, Utils.urlApiSW);
             PdfResponse response = null;
-            response = (PdfResponse) app.GeneratePdf(stamp.cfdi, this.logoB64);
+            response = (PdfResponse) app.GeneratePdf(stamp.cfdi, PdfTemplates.cfdi40, this.logoB64, extras);
             Utils.showTestLog(testName, response.Status);
             Assert.assertEquals(response.Status, "success");
             Assert.assertTrue(!response.contentB64.isEmpty());
@@ -136,7 +139,7 @@ public class SWPdfServiceTest {
         if (stamp.Status.equals("success")) {
             SWPdfService app = new SWPdfService(Utils.tokenSW, Utils.urlApiSW);
             PdfResponse response = null;
-            response = (PdfResponse) app.GeneratePdf(stamp.cfdi, PdfTemplates.cfdi40, this.logoB64, null);
+            response = (PdfResponse) app.GeneratePdf(stamp.cfdi, "cfdi40", this.logoB64, null);
             Utils.showTestLog(testName, response.Status);
             Assert.assertEquals(response.Status, "success");
             Assert.assertTrue(!response.contentB64.isEmpty());

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<cfdi:Comprobante xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd http://www.sat.gob.mx/CartaPorte20 http://www.sat.gob.mx/sitio_internet/cfd/CartaPorte/CartaPorte20.xsd" xmlns:cartaporte20="http://www.sat.gob.mx/CartaPorte20" Version="4.0" Serie="Serie" Folio="Folio" Fecha="2022-01-31T00:18:10" Sello="e" CondicionesDePago="CondicionesDePago" SubTotal="200" Descuento="1" Moneda="AMD" TipoCambio="1" Total="199.16" TipoDeComprobante="I" Exportacion="01" MetodoPago="PPD" FormaPago="99" LugarExpedicion="20000" xmlns:cfdi="http://www.sat.gob.mx/cfd/4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" NoCertificado="30001000000400002434" Certificado="MIIFuzCCA6OgAwIBAgIUMzAwMDEwMDAwMDA0MDAwMDI0MzQwDQYJKoZIhvcNAQELBQAwggErMQ8wDQYDVQQDDAZBQyBVQVQxLjAsBgNVBAoMJVNFUlZJQ0lPIERFIEFETUlOSVNUUkFDSU9OIFRSSUJVVEFSSUExGjAYBgNVBAsMEVNBVC1JRVMgQXV0aG9yaXR5MSgwJgYJKoZIhvcNAQkBFhlvc2Nhci5tYXJ0aW5lekBzYXQuZ29iLm14MR0wGwYDVQQJDBQzcmEgY2VycmFkYSBkZSBjYWRpejEOMAwGA1UEEQwFMDYzNzAxCzAJBgNVBAYTAk1YMRkwFwYDVQQIDBBDSVVEQUQgREUgTUVYSUNPMREwDwYDVQQHDAhDT1lPQUNBTjERMA8GA1UELRMIMi41LjQuNDUxJTAjBgkqhkiG9w0BCQITFnJlc3BvbnNhYmxlOiBBQ0RNQS1TQVQwHhcNMTkwNjE3MTk0NDE0WhcNMjMwNjE3MTk0NDE0WjCB4jEnMCUGA1UEAxMeRVNDVUVMQSBLRU1QRVIgVVJHQVRFIFNBIERFIENWMScwJQYDVQQpEx5FU0NVRUxBIEtFTVBFUiBVUkdBVEUgU0EgREUgQ1YxJzAlBgNVBAoTHkVTQ1VFTEEgS0VNUEVSIFVSR0FURSBTQSBERSBDVjElMCMGA1UELRMcRUtVOTAwMzE3M0M5IC8gWElRQjg5MTExNlFFNDEeMBwGA1UEBRMVIC8gWElRQjg5MTExNk1HUk1aUjA1MR4wHAYDVQQLExVFc2N1ZWxhIEtlbXBlciBVcmdhdGUwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCN0peKpgfOL75iYRv1fqq+oVYsLPVUR/GibYmGKc9InHFy5lYF6OTYjnIIvmkOdRobbGlCUxORX/tLsl8Ya9gm6Yo7hHnODRBIDup3GISFzB/96R9K/MzYQOcscMIoBDARaycnLvy7FlMvO7/rlVnsSARxZRO8Kz8Zkksj2zpeYpjZIya/369+oGqQk1cTRkHo59JvJ4Tfbk/3iIyf4H/Ini9nBe9cYWo0MnKob7DDt/vsdi5tA8mMtA953LapNyCZIDCRQQlUGNgDqY9/8F5mUvVgkcczsIgGdvf9vMQPSf3jjCiKj7j6ucxl1+FwJWmbvgNmiaUR/0q4m2rm78lFAgMBAAGjHTAbMAwGA1UdEwEB/wQCMAAwCwYDVR0PBAQDAgbAMA0GCSqGSIb3DQEBCwUAA4ICAQBcpj1TjT4jiinIujIdAlFzE6kRwYJCnDG08zSp4kSnShjxADGEXH2chehKMV0FY7c4njA5eDGdA/G2OCTPvF5rpeCZP5Dw504RZkYDl2suRz+wa1sNBVpbnBJEK0fQcN3IftBwsgNFdFhUtCyw3lus1SSJbPxjLHS6FcZZ51YSeIfcNXOAuTqdimusaXq15GrSrCOkM6n2jfj2sMJYM2HXaXJ6rGTEgYmhYdwxWtil6RfZB+fGQ/H9I9WLnl4KTZUS6C9+NLHh4FPDhSk19fpS2S/56aqgFoGAkXAYt9Fy5ECaPcULIfJ1DEbsXKyRdCv3JY89+0MNkOdaDnsemS2o5Gl08zI4iYtt3L40gAZ60NPh31kVLnYNsmvfNxYyKp+AeJtDHyW9w7ftM0Hoi+BuRmcAQSKFV3pk8j51la+jrRBrAUv8blbRcQ5BiZUwJzHFEKIwTsRGoRyEx96sNnB03n6GTwjIGz92SmLdNl95r9rkvp+2m4S6q1lPuXaFg7DGBrXWC8iyqeWE2iobdwIIuXPTMVqQb12m1dAkJVRO5NdHnP/MpqOvOgLqoZBNHGyBg4Gqm4sCJHCxA1c8Elfa2RQTCk0tAzllL4vOnI1GHkGJn65xokGsaU4B4D36xh7eWrfj4/pgWHmtoDAYa8wzSwo2GVCZOs+mtEgOQB91/g==">
+<cfdi:Comprobante xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd http://www.sat.gob.mx/CartaPorte20 http://www.sat.gob.mx/sitio_internet/cfd/CartaPorte/CartaPorte20.xsd"
+    xmlns:cartaporte20="http://www.sat.gob.mx/CartaPorte20" NoCertificado="30001000000400002434" Certificado="MIIFuzCCA6OgAwIBAgIUMzAwMDEwMDAwMDA0MDAwMDI0MzQwDQYJKoZIhvcNAQELBQAwggErMQ8wDQYDVQQDDAZBQyBVQVQxLjAsBgNVBAoMJVNFUlZJQ0lPIERFIEFETUlOSVNUUkFDSU9OIFRSSUJVVEFSSUExGjAYBgNVBAsMEVNBVC1JRVMgQXV0aG9yaXR5MSgwJgYJKoZIhvcNAQkBFhlvc2Nhci5tYXJ0aW5lekBzYXQuZ29iLm14MR0wGwYDVQQJDBQzcmEgY2VycmFkYSBkZSBjYWRpejEOMAwGA1UEEQwFMDYzNzAxCzAJBgNVBAYTAk1YMRkwFwYDVQQIDBBDSVVEQUQgREUgTUVYSUNPMREwDwYDVQQHDAhDT1lPQUNBTjERMA8GA1UELRMIMi41LjQuNDUxJTAjBgkqhkiG9w0BCQITFnJlc3BvbnNhYmxlOiBBQ0RNQS1TQVQwHhcNMTkwNjE3MTk0NDE0WhcNMjMwNjE3MTk0NDE0WjCB4jEnMCUGA1UEAxMeRVNDVUVMQSBLRU1QRVIgVVJHQVRFIFNBIERFIENWMScwJQYDVQQpEx5FU0NVRUxBIEtFTVBFUiBVUkdBVEUgU0EgREUgQ1YxJzAlBgNVBAoTHkVTQ1VFTEEgS0VNUEVSIFVSR0FURSBTQSBERSBDVjElMCMGA1UELRMcRUtVOTAwMzE3M0M5IC8gWElRQjg5MTExNlFFNDEeMBwGA1UEBRMVIC8gWElRQjg5MTExNk1HUk1aUjA1MR4wHAYDVQQLExVFc2N1ZWxhIEtlbXBlciBVcmdhdGUwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCN0peKpgfOL75iYRv1fqq+oVYsLPVUR/GibYmGKc9InHFy5lYF6OTYjnIIvmkOdRobbGlCUxORX/tLsl8Ya9gm6Yo7hHnODRBIDup3GISFzB/96R9K/MzYQOcscMIoBDARaycnLvy7FlMvO7/rlVnsSARxZRO8Kz8Zkksj2zpeYpjZIya/369+oGqQk1cTRkHo59JvJ4Tfbk/3iIyf4H/Ini9nBe9cYWo0MnKob7DDt/vsdi5tA8mMtA953LapNyCZIDCRQQlUGNgDqY9/8F5mUvVgkcczsIgGdvf9vMQPSf3jjCiKj7j6ucxl1+FwJWmbvgNmiaUR/0q4m2rm78lFAgMBAAGjHTAbMAwGA1UdEwEB/wQCMAAwCwYDVR0PBAQDAgbAMA0GCSqGSIb3DQEBCwUAA4ICAQBcpj1TjT4jiinIujIdAlFzE6kRwYJCnDG08zSp4kSnShjxADGEXH2chehKMV0FY7c4njA5eDGdA/G2OCTPvF5rpeCZP5Dw504RZkYDl2suRz+wa1sNBVpbnBJEK0fQcN3IftBwsgNFdFhUtCyw3lus1SSJbPxjLHS6FcZZ51YSeIfcNXOAuTqdimusaXq15GrSrCOkM6n2jfj2sMJYM2HXaXJ6rGTEgYmhYdwxWtil6RfZB+fGQ/H9I9WLnl4KTZUS6C9+NLHh4FPDhSk19fpS2S/56aqgFoGAkXAYt9Fy5ECaPcULIfJ1DEbsXKyRdCv3JY89+0MNkOdaDnsemS2o5Gl08zI4iYtt3L40gAZ60NPh31kVLnYNsmvfNxYyKp+AeJtDHyW9w7ftM0Hoi+BuRmcAQSKFV3pk8j51la+jrRBrAUv8blbRcQ5BiZUwJzHFEKIwTsRGoRyEx96sNnB03n6GTwjIGz92SmLdNl95r9rkvp+2m4S6q1lPuXaFg7DGBrXWC8iyqeWE2iobdwIIuXPTMVqQb12m1dAkJVRO5NdHnP/MpqOvOgLqoZBNHGyBg4Gqm4sCJHCxA1c8Elfa2RQTCk0tAzllL4vOnI1GHkGJn65xokGsaU4B4D36xh7eWrfj4/pgWHmtoDAYa8wzSwo2GVCZOs+mtEgOQB91/g==" Version="4.0" Serie="Serie" Folio="Folio123" Fecha="2022-10-03T00:18:10" Sello="e" CondicionesDePago="CondicionesDePago" SubTotal="200" Descuento="1" Moneda="AMD" TipoCambio="1" Total="199.16" TipoDeComprobante="I" Exportacion="01" MetodoPago="PPD" FormaPago="99" LugarExpedicion="20000"
+    xmlns:cfdi="http://www.sat.gob.mx/cfd/4"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <cfdi:Emisor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="601" />
     <cfdi:Receptor Rfc="URE180429TM6" Nombre="UNIVERSIDAD ROBOTICA ESPAÑOLA" DomicilioFiscalReceptor="65000" RegimenFiscalReceptor="601" UsoCFDI="G01" />
     <cfdi:Conceptos>
@@ -9,8 +12,8 @@
                     <cfdi:Traslado Base="1" Importe="0.16" Impuesto="002" TasaOCuota="0.160000" TipoFactor="Tasa" />
                 </cfdi:Traslados>
                 <cfdi:Retenciones>
-                    <cfdi:Retencion Base="1" Impuesto="001" TipoFactor="Tasa" TasaOCuota="0.100000" Importe="0.00" />
-                    <cfdi:Retencion Base="1" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.106666" Importe="0.00" />
+                    <cfdi:Retencion Base="1" Impuesto="001" TipoFactor="Tasa" TasaOCuota="0.100000" Importe="0" />
+                    <cfdi:Retencion Base="1" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.106666" Importe="0" />
                 </cfdi:Retenciones>
             </cfdi:Impuestos>
         </cfdi:Concepto>
@@ -25,31 +28,31 @@
         </cfdi:Traslados>
     </cfdi:Impuestos>
     <cfdi:Complemento>
-    <cartaporte20:CartaPorte TranspInternac="No" Version="2.0">
-      <cartaporte20:Ubicaciones>
-        <cartaporte20:Ubicacion FechaHoraSalidaLlegada="2021-11-09T14:29:52" NavegacionTrafico="Altura" NombreRemitenteDestinatario="NombreRemitenteDestinatario" NombreEstacion="Rosarito" NumEstacion="PM001" RFCRemitenteDestinatario="URE180429TM6" TipoEstacion="01" IDUbicacion="OR123457" TipoUbicacion="Origen">
-          <cartaporte20:Domicilio Calle="calle" CodigoPostal="99080" Colonia="0814" Estado="ZAC" Localidad="01" Municipio="010" NumeroExterior="211" Pais="MEX" Referencia="casa blanca"/>
-        </cartaporte20:Ubicacion>
-        <cartaporte20:Ubicacion FechaHoraSalidaLlegada="2021-11-09T14:29:52" NavegacionTrafico="Altura" NombreEstacion="Rosarito" NombreRemitenteDestinatario="NombreRemitenteDestinatario" NumEstacion="PM001" NumRegIdTrib="NumRegIdTrib" RFCRemitenteDestinatario="XAXX010101000" ResidenciaFiscal="USA" TipoEstacion="02" IDUbicacion="DE123457" TipoUbicacion="Destino">
-          <cartaporte20:Domicilio Calle="calle" CodigoPostal="99080" Colonia="0814" Estado="ZAC" Localidad="01" Municipio="010" NumeroExterior="211" Pais="MEX" Referencia="casa blanca"/>
-        </cartaporte20:Ubicacion>
-      </cartaporte20:Ubicaciones>
-      <cartaporte20:Mercancias CargoPorTasacion="1" NumTotalMercancias="1" PesoBrutoTotal="1" PesoNetoTotal="1" UnidadPeso="A44">
-        <cartaporte20:Mercancia BienesTransp="01010101" Cantidad="1" ClaveSTCC="123456" ClaveUnidad="A1" Descripcion="Descripcion" Dimensiones="18/62/31cm" MaterialPeligroso="No" PesoEnKg="1" UUIDComercioExt="59AB274B-6CBC-4176-9BD7-BB67B28D3EA4" Unidad="Unidad" >
-          <cartaporte20:CantidadTransporta Cantidad="1" IDDestino="DE123457" IDOrigen="OR123457"/>
-          <cartaporte20:DetalleMercancia NumPiezas="1" PesoBruto="1" PesoNeto="1" PesoTara="1" UnidadPesoMerc="A44"/>
-        </cartaporte20:Mercancia>
-        <cartaporte20:TransporteMaritimo AnioEmbarcacion="2021" Calado="10" Eslora="10" LineaNaviera="lineanavera" Manga="10" Matricula="1234567" NacionalidadEmbarc="MEX" NombreAgenteNaviero="nombreAgente" NombreAseg="nombreAseg" NombreEmbarc="nombreEnbc" NumAutorizacionNaviero="SCT418/020/2016" NumCertITC="numcert" NumConocEmbarc="numconceembarc" NumPermisoSCT="1" NumPolizaSeguro="numpolisa" NumViaje="numviaje" NumeroOMI="IMO1234567" PermSCT="TPAF01" TipoCarga="CGS" TipoEmbarcacion="B02" UnidadesDeArqBruto="10">
-          <cartaporte20:Contenedor MatriculaContenedor="12345678901" NumPrecinto="numprecinto" TipoContenedor="CM001"/>
-        </cartaporte20:TransporteMaritimo>      
-      </cartaporte20:Mercancias>
-      <cartaporte20:FiguraTransporte>
-        <cartaporte20:TiposFigura NombreFigura="NombreFigura" RFCFigura="URE180429TM6" TipoFigura="02">
-          <cartaporte20:PartesTransporte ParteTransporte="PT02">
-          </cartaporte20:PartesTransporte>
-          <cartaporte20:Domicilio Calle="calle" CodigoPostal="99080" Colonia="0814" Estado="ZAC" Localidad="01" Municipio="010" NumeroExterior="211" Pais="MEX" Referencia="casa blanca"/>
-        </cartaporte20:TiposFigura>
-      </cartaporte20:FiguraTransporte>
-    </cartaporte20:CartaPorte>
-  </cfdi:Complemento>
+        <cartaporte20:CartaPorte TranspInternac="No" Version="2.0">
+            <cartaporte20:Ubicaciones>
+                <cartaporte20:Ubicacion FechaHoraSalidaLlegada="2021-11-09T14:29:52" NavegacionTrafico="Altura" NombreRemitenteDestinatario="NombreRemitenteDestinatario" NombreEstacion="Rosarito" NumEstacion="PM001" RFCRemitenteDestinatario="URE180429TM6" TipoEstacion="01" IDUbicacion="OR123457" TipoUbicacion="Origen">
+                    <cartaporte20:Domicilio Calle="calle" CodigoPostal="99080" Colonia="0814" Estado="ZAC" Localidad="01" Municipio="010" NumeroExterior="211" Pais="MEX" Referencia="casa blanca"/>
+                </cartaporte20:Ubicacion>
+                <cartaporte20:Ubicacion FechaHoraSalidaLlegada="2021-11-09T14:29:52" NavegacionTrafico="Altura" NombreEstacion="Rosarito" NombreRemitenteDestinatario="NombreRemitenteDestinatario" NumEstacion="PM001" NumRegIdTrib="NumRegIdTrib" RFCRemitenteDestinatario="XAXX010101000" ResidenciaFiscal="USA" TipoEstacion="02" IDUbicacion="DE123457" TipoUbicacion="Destino">
+                    <cartaporte20:Domicilio Calle="calle" CodigoPostal="99080" Colonia="0814" Estado="ZAC" Localidad="01" Municipio="010" NumeroExterior="211" Pais="MEX" Referencia="casa blanca"/>
+                </cartaporte20:Ubicacion>
+            </cartaporte20:Ubicaciones>
+            <cartaporte20:Mercancias CargoPorTasacion="1" NumTotalMercancias="1" PesoBrutoTotal="1" PesoNetoTotal="1" UnidadPeso="A44">
+                <cartaporte20:Mercancia BienesTransp="01010101" Cantidad="1" ClaveSTCC="123456" ClaveUnidad="A1" Descripcion="Descripcion" Dimensiones="18/62/31cm" MaterialPeligroso="No" PesoEnKg="1" UUIDComercioExt="59AB274B-6CBC-4176-9BD7-BB67B28D3EA4" Unidad="Unidad">
+                    <cartaporte20:CantidadTransporta Cantidad="1" IDDestino="DE123457" IDOrigen="OR123457"/>
+                    <cartaporte20:DetalleMercancia NumPiezas="1" PesoBruto="1" PesoNeto="1" PesoTara="1" UnidadPesoMerc="A44"/>
+                </cartaporte20:Mercancia>
+                <cartaporte20:TransporteMaritimo AnioEmbarcacion="2021" Calado="10" Eslora="10" LineaNaviera="lineanavera" Manga="10" Matricula="1234567" NacionalidadEmbarc="MEX" NombreAgenteNaviero="nombreAgente" NombreAseg="nombreAseg" NombreEmbarc="nombreEnbc" NumAutorizacionNaviero="SCT418/020/2021" NumCertITC="numcert" NumConocEmbarc="numconceembarc" NumPermisoSCT="1" NumPolizaSeguro="numpolisa" NumViaje="numviaje" NumeroOMI="IMO1234567" PermSCT="TPAF01" TipoCarga="CGS" TipoEmbarcacion="B02" UnidadesDeArqBruto="10">
+                    <cartaporte20:Contenedor MatriculaContenedor="12345678901" NumPrecinto="numprecinto" TipoContenedor="CM001"/>
+                </cartaporte20:TransporteMaritimo>
+            </cartaporte20:Mercancias>
+            <cartaporte20:FiguraTransporte>
+                <cartaporte20:TiposFigura NombreFigura="NombreFigura" RFCFigura="URE180429TM6" TipoFigura="02">
+                    <cartaporte20:PartesTransporte ParteTransporte="PT02">
+                    </cartaporte20:PartesTransporte>
+                    <cartaporte20:Domicilio Calle="calle" CodigoPostal="99080" Colonia="0814" Estado="ZAC" Localidad="01" Municipio="010" NumeroExterior="211" Pais="MEX" Referencia="casa blanca"/>
+                </cartaporte20:TiposFigura>
+            </cartaporte20:FiguraTransporte>
+        </cartaporte20:CartaPorte>
+    </cfdi:Complemento>
 </cfdi:Comprobante>

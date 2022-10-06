@@ -14,9 +14,7 @@ public class Constants {
     public static String CANCELATION_UUID_PATH = "/cfdi33/cancel/";
     public static String BALANCE_ACCOUNT_PATH = "/account/balance/";
     public static String VALIDATE_XML_PATH = "/validate/cfdi33";
-    public static String VALIDATE_LRFC_PATH = "/lrfc/";
-    public static String VALIDATE_LCO_PATH = "/lco/";
-    public static String GENERATE_PDF_PATH = "/pdf/v1/generate";
+    public static String GENERATE_PDF_PATH = "/pdf/v1/api/GeneratePdf";
     public static String ACEPTAR_RECHAZAR_CANCELACION_CSD_PATH = "/acceptreject/csd";
     public static String ACEPTAR_RECHAZAR_CANCELACION_XML_PATH = "/acceptreject/xml";
     public static String ACEPTAR_RECHAZAR_CANCELACION_PFX_PATH = "/acceptreject/pfx";

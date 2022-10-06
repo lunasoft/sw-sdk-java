@@ -16,6 +16,7 @@
   "Exportacion": "01",
   "LugarExpedicion": "45610",
   "FormaPago": "99",
+	"MetodoPago": "PUE",
   "Emisor": {
     "Rfc": "EKU9003173C9",
     "Nombre": "ESCUELA KEMPER URGATE",

@@ -12,8 +12,8 @@
 					<cfdi:Traslado Base="1" Importe="0.16" Impuesto="002" TasaOCuota="0.160000" TipoFactor="Tasa" />
 				</cfdi:Traslados>
 				<cfdi:Retenciones>
-					<cfdi:Retencion Base="1" Impuesto="001" TipoFactor="Tasa" TasaOCuota="0.100000" Importe="0.00" />
-					<cfdi:Retencion Base="1" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.106666" Importe="0.00" />
+					<cfdi:Retencion Base="1" Impuesto="001" TipoFactor="Tasa" TasaOCuota="0.100000" Importe="0" />
+					<cfdi:Retencion Base="1" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.106666" Importe="0" />
 				</cfdi:Retenciones>
 			</cfdi:Impuestos>
 		</cfdi:Concepto>

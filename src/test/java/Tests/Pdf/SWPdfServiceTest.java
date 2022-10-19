@@ -269,4 +269,36 @@ public class SWPdfServiceTest {
             Assert.assertTrue(false);
         }
     }
+    @Test
+    public void RegeneratePdf_Success() throws GeneralException, AuthException, IOException {
+        SWPdfService pdf = new SWPdfService(Utils.tokenSW, Utils.urlApiSW);
+        PdfResponse response = (PdfResponse)pdf.RegeneratePdf("08e29b74-3fdf-419b-ae3d-e7d24373d6fc");
+        Assert.assertNotNull(response);
+        Assert.assertTrue(response.Status.equals("success"));
+        Assert.assertTrue(!response.message.isEmpty());
+    }
+    @Test
+    public void RegeneratePdf_Auth_Success() throws AuthException, GeneralException, IOException{
+        SWPdfService pdf = new SWPdfService(Utils.userSW, Utils.passwordSW, Utils.urlApiSW, Utils.urlSW);
+        PdfResponse response = (PdfResponse)pdf.RegeneratePdf("08e29b74-3fdf-419b-ae3d-e7d24373d6fc");
+        Assert.assertNotNull(response);
+        Assert.assertTrue(response.Status.equals("success"));
+        Assert.assertTrue(!response.message.isEmpty());
+    }
+    @Test
+    public void RegeneratePdf_Error() throws GeneralException, AuthException, IOException{
+        SWPdfService pdf = new SWPdfService(Utils.tokenSW, Utils.urlApiSW);
+        PdfResponse response = (PdfResponse)pdf.RegeneratePdf(null);
+        Assert.assertNotNull(response);
+        Assert.assertTrue(response.Status.equals("error"));
+        Assert.assertTrue(!response.message.isEmpty());
+    }
+    @Test
+    public void RegeneratePdf_Auth_Error() throws AuthException, GeneralException, IOException{
+        SWPdfService pdf = new SWPdfService(Utils.userSW, Utils.passwordSW, Utils.urlApiSW, Utils.urlSW);
+        PdfResponse response = (PdfResponse)pdf.RegeneratePdf("496c20ab-5e0a-47d8-85ac-9a82dd89f4b4");
+        Assert.assertNotNull(response);
+        Assert.assertTrue(response.Status.equals("error"));
+        Assert.assertTrue(!response.message.isEmpty());
+    }
 }

@@ -28,4 +28,5 @@ public class Constants {
     public static String SAVE_CSD = "/certificates/save";
     public static String DISABLE_SEARCH_CSD = "/certificates/";
     public static String LIST_CSD = "/certificates";
+    public static String REGENERATE_PDF = "/pdf/v1/api/regeneratepdf/";
 }

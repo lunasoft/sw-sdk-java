@@ -10,10 +10,12 @@ import Utils.Responses.IResponse;
 import Utils.Responses.Pdf.PdfResponse;
 import Utils.Responses.Stamp.SuccessV3Response;
 
+import java.io.Console;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.logging.Log;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
@@ -274,6 +276,7 @@ public class SWPdfServiceTest {
         SWPdfService pdf = new SWPdfService(Utils.tokenSW, Utils.urlApiSW);
         PdfResponse response = (PdfResponse)pdf.RegeneratePdf("08e29b74-3fdf-419b-ae3d-e7d24373d6fc");
         Assert.assertNotNull(response);
+        System.out.println(response.message);
         Assert.assertTrue(response.Status.equals("success"));
         Assert.assertTrue(!response.message.isEmpty());
     }
@@ -282,6 +285,7 @@ public class SWPdfServiceTest {
         SWPdfService pdf = new SWPdfService(Utils.userSW, Utils.passwordSW, Utils.urlApiSW, Utils.urlSW);
         PdfResponse response = (PdfResponse)pdf.RegeneratePdf("08e29b74-3fdf-419b-ae3d-e7d24373d6fc");
         Assert.assertNotNull(response);
+        System.out.println(response.message);
         Assert.assertTrue(response.Status.equals("success"));
         Assert.assertTrue(!response.message.isEmpty());
     }

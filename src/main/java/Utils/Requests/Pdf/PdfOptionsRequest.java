@@ -11,6 +11,7 @@ public class PdfOptionsRequest extends IRequest {
 	private String templateId;
 	private String b64Logo;
 	private Map<String,String> extras;
+	private String uuid;
 	
 	public PdfOptionsRequest(String token, String URI, String xml, String b64Logo, String proxyHost, int proxyPort) {
         super(token, URI + Constants.GENERATE_PDF_PATH, proxyHost, proxyPort);
@@ -32,6 +33,11 @@ public class PdfOptionsRequest extends IRequest {
         this.extras = extras;
         this.templateId = templateId;
     }
+	public PdfOptionsRequest(String token, String uuid, String URI, String proxyHost, int proxyPort)
+	{
+		super(token, URI + Constants.REGENERATE_PDF, proxyHost, proxyPort);
+		this.uuid = uuid;
+	}
 	
 	public String getTemplateId() {
 		return templateId;
@@ -44,5 +50,8 @@ public class PdfOptionsRequest extends IRequest {
 	}	
 	public String getXml() {
 		return xml;
+	}
+	public String getUuid(){
+		return uuid;
 	}
 }

@@ -117,9 +117,9 @@ public class SWPdfService extends SWService {
         return req.sendRequest(settings);
     }
     /**
-     * 
-     * @param uuid
-     * @return
+     * Servicio para regenerar el PDF de un comprobante previamente timbrado.
+     * @param uuid UUID del comprobante a regenerar el PDF.
+     * @return {@link} Utils.Responses.Pdf.PdfResponse
      * @throws GeneralException
      * @throws AuthException
      * @throws IOException

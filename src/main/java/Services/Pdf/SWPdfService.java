@@ -116,4 +116,17 @@ public class SWPdfService extends SWService {
         PdfRequest req = new PdfRequest();
         return req.sendRequest(settings);
     }
+    /**
+     * 
+     * @param uuid
+     * @return
+     * @throws GeneralException
+     * @throws AuthException
+     * @throws IOException
+     */
+    public IResponse RegeneratePdf(String uuid) throws GeneralException, AuthException, IOException{
+        PdfOptionsRequest settings = new PdfOptionsRequest(getToken(), uuid, RequestHelper.stringEmptyOrNull(getURIAPI()) ? getURI() : getURIAPI(), getProxyHost(), getProxyPort());
+        PdfRequest request = new PdfRequest();
+        return request.sendRequestUuid(settings);
+    }
 }

@@ -114,7 +114,7 @@ public abstract class SWService {
     
     protected SWService(String token, String URI, String ProxyHost, int ProxyPort) {
         Token = token;
-        this.URI = URI;
+        this.URIAPI = URI;
         this.ProxyHost = ProxyHost;
         this.ProxyPort = ProxyPort;
         this.time = new Date((long)999999999*100000);

@@ -918,6 +918,20 @@ System.out.println(response.message);
 System.out.println(response.messageDetail);
 ```
 
+## Recuperar XML por UUID ##
+Método para recuperar la información de un XML enviando el UUID de la factura, así como el token de la cuenta en la cual fue timbrada.
+
+```java
+SWStorageService storage = new SWStorageService(Utils.tokenSW, Utils.urlApiSW, null, 0);
+StorageResponse response = (StorageResponse) storage.getXml(UUID.fromString("c75f87db-e059-4a7c-a922-e4b9c871e8c1"));
+System.out.println(response.Status);
+System.out.println(response.HttpStatusCode);
+System.out.println(response.getData);
+//En caso de obtener un error, este puede obtenerse de los campos
+System.out.println(response.message);
+System.out.println(response.messageDetail); 
+```
+
 # Servicio PDF #
 Servicio para generar PDF de un XML previamente timbrado. 
 Se permite especificar una de las plantillas genericas o una plantilla personalizada en caso de contar con una.

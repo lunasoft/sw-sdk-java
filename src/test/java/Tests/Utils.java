@@ -23,39 +23,41 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 /**
-* Utils
-* Clase auxiliar de UT con datos comunes.
-* @author  Eduardo Mares
-* @version 0.0.0.2
-* @since   2022-04-30
-*/
+ * Utils
+ * Clase auxiliar de UT con datos comunes.
+ * 
+ * @author Eduardo Mares
+ * @version 0.0.0.2
+ * @since 2022-04-30
+ */
 public class Utils {
     public static String urlSW = "http://services.test.sw.com.mx";
     public static String urlApiSW = "http://api.test.sw.com.mx";
     public static String userSW = System.getenv("SDKTEST_USER");
     public static String passwordSW = System.getenv("SDKTEST_PASSWORD");
     public static String tokenSW = System.getenv("SDKTEST_TOKEN");
-           
+
     /**
-    * Genera un CFDI especifico y lo sella en caso de indicarse.
-    * @param fileName
-    * @param signed
-    * @param version
-    * @param isBase64
-    * @return String
-    */
-    public String getCFDI(String fileName, boolean signed, String version, boolean isBase64){
-        
+     * Genera un CFDI especifico y lo sella en caso de indicarse.
+     * 
+     * @param fileName
+     * @param signed
+     * @param version
+     * @param isBase64
+     * @return String
+     */
+    public String getCFDI(String fileName, boolean signed, String version, boolean isBase64) {
+
         String xml = "";
         try {
             xml = new String(Files.readAllBytes(Paths.get(fileName)), "UTF-8");
-        }  catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        
+
         String cfdi = changeDateAndSign(xml, signed, version);
 
-        if(isBase64){
+        if (isBase64) {
             try {
                 return encodeBase64(cfdi);
             } catch (UnsupportedEncodingException e) {
@@ -65,22 +67,23 @@ public class Utils {
 
         return cfdi;
     }
-    
+
     /**
-    * Genera un CFDI especifico.
-    * @param fileName
-    * @param isBase64
-    * @return String
-    */
-    public String getJsonCFDI(String fileName, boolean isBase64) {        
+     * Genera un CFDI especifico.
+     * 
+     * @param fileName
+     * @param isBase64
+     * @return String
+     */
+    public String getJsonCFDI(String fileName, boolean isBase64) {
         Gson gson = new Gson();
         String xml = "";
         try {
             xml = new String(Files.readAllBytes(Paths.get(fileName)), "UTF-8");
-        }  catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
-                
+
         Map<String, Object> data = gson.fromJson(xml, Map.class);
         if (data != null) {
             UUID uuid = UUID.randomUUID();
@@ -88,8 +91,8 @@ public class Utils {
             data.put("Folio", randomUUIDString + "sdkjava");
             data.put("Fecha", getDateCFDI());
         }
-        
-        if(isBase64){
+
+        if (isBase64) {
             try {
                 return encodeBase64(gson.toJson(data));
             } catch (UnsupportedEncodingException e) {
@@ -101,11 +104,12 @@ public class Utils {
     }
 
     /**
-    * Genera un CFDI Ãºnico y lo sella en caso de indicarse.
-    * @param xml
-    * @param signed
-    * @return String
-    */
+     * Genera un CFDI Ãºnico y lo sella en caso de indicarse.
+     * 
+     * @param xml
+     * @param signed
+     * @return String
+     */
     private String changeDateAndSign(String xml, boolean signed, String version) {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         factory.setNamespaceAware(true);
@@ -149,17 +153,19 @@ public class Utils {
     }
 
     /**
-    * Obtiene la fecha actual en formato necesario para CFDI.
-    * @return String
-    */
+     * Obtiene la fecha actual en formato necesario para CFDI.
+     * 
+     * @return String
+     */
     private String getDateCFDI() {
         SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
         date.setTimeZone(TimeZone.getTimeZone("America/Mexico_City"));
         return date.format(new Date());
     }
 
-    private String GenerateCadena(Document xml, String version) throws TransformerConfigurationException, TransformerException, URISyntaxException {
-        
+    private String GenerateCadena(Document xml, String version)
+            throws TransformerConfigurationException, TransformerException, URISyntaxException {
+
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = null;
         transformer = transformerFactory.newTransformer();
@@ -172,51 +178,51 @@ public class Utils {
     }
 
     private String encodeBase64(String text) throws UnsupportedEncodingException {
-    	byte[] bytesEncoded = Base64.encodeBase64(text.getBytes("UTF-8"));
+        byte[] bytesEncoded = Base64.encodeBase64(text.getBytes("UTF-8"));
         return new String(bytesEncoded);
     }
 
-    public String genComercioExterior(boolean isBase64){
+    public String genComercioExterior(boolean isBase64) {
         return getCFDI("src/test/resources/CFDI33/ComercioExterior11.xml", true, "3.3", isBase64);
     }
 
-    public String genComercioExteriorTimbrePrevio(boolean isBase64){
+    public String genComercioExteriorTimbrePrevio(boolean isBase64) {
         return getCFDI("src/test/resources/CFDI33/ComercioExterior11TimbrePrevio.xml", true, "3.3", isBase64);
     }
 
-    public String genPagos10(boolean isBase64){
+    public String genPagos10(boolean isBase64) {
         return getCFDI("src/test/resources/CFDI33/Pago10.xml", true, "3.3", isBase64);
     }
 
-    public String genPagos10TimbrePrevio(boolean isBase64){
+    public String genPagos10TimbrePrevio(boolean isBase64) {
         return getCFDI("src/test/resources/CFDI33/Pago10TimbrePrevio.xml", true, "3.3", isBase64);
     }
-    
-    public String genNomina12(boolean isBase64){
+
+    public String genNomina12(boolean isBase64) {
         return getCFDI("src/test/resources/CFDI33/Nomina12.xml", true, "3.3", isBase64);
     }
 
-    public String genNomina12TimbrePrevio(boolean isBase64){
+    public String genNomina12TimbrePrevio(boolean isBase64) {
         return getCFDI("src/test/resources/CFDI33/Nomina12TimbrePrevio.xml", true, "3.3", isBase64);
     }
 
-    public String StringgenBasico(boolean isBase64){
+    public String StringgenBasico(boolean isBase64) {
         return getCFDI("src/test/resources/CFDI33/CFDI33.xml", true, "3.3", isBase64);
     }
-    
-    public String StringgenBasicoTimbrePrevio(boolean isBase64){
+
+    public String StringgenBasicoTimbrePrevio(boolean isBase64) {
         return getCFDI("src/test/resources/CFDI33/CFDI33TimbrePrevio.xml", true, "3.3", isBase64);
     }
-    
+
     public String JsonGenBasico(boolean isBase64) {
         return getJsonCFDI("src/test/resources/CFDI33/CFDI33.json", isBase64);
     }
 
-    public static boolean isValidB64(String value){
+    public static boolean isValidB64(String value) {
         return Base64.isBase64(value.getBytes());
     }
 
-    public static String getCertificadoB64(){
+    public static String getCertificadoB64() {
         byte[] fileContent;
         try {
             fileContent = Files.readAllBytes(Paths.get("src/test/resources/CertificadosDePrueba/CSD_EKU9003173C9.key"));
@@ -226,9 +232,9 @@ public class Utils {
         }
 
         return "";
-    } 
+    }
 
-    public static String getLlaveB64(){
+    public static String getLlaveB64() {
         byte[] fileContent;
         try {
             fileContent = Files.readAllBytes(Paths.get("src/test/resources/CertificadosDePrueba/CSD_EKU9003173C9.key"));
@@ -237,10 +243,10 @@ public class Utils {
             e.printStackTrace();
         }
 
-        return "";        
+        return "";
     }
 
-    public String getResource(String fileName){
+    public String getResource(String fileName) {
         byte[] fileContent;
         try {
             fileContent = Files.readAllBytes(Paths.get("src/test/resources/Extras/" + fileName));
@@ -249,9 +255,10 @@ public class Utils {
             e.printStackTrace();
         }
 
-        return "";   
+        return "";
     }
-    public static void showTestLog(TestName testName, String status){
+
+    public static void showTestLog(TestName testName, String status) {
         System.out.println(testName.getMethodName());
         System.out.println(status + "\n");
     }

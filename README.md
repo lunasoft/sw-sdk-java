@@ -927,7 +927,7 @@ StorageResponse response = (StorageResponse) storage.getXml(UUID.fromString("c75
 System.out.println(response.Status);
 System.out.println(response.HttpStatusCode);
 System.out.println(response.getData);
-//En caso de obtener un error, este puede obtenerse de los siguientes campos
+//En caso de obtener un error, este puede obtenerse de los campos
 System.out.println(response.message);
 System.out.println(response.messageDetail); 
 ```

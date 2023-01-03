@@ -39,7 +39,7 @@ public abstract class IResponse {
     /**
      * En caso de requerirlo se puede modificar el Codigo de respuesta Http..
      * 
-     * @parameter int
+     * @return int
      */
     public void setHttpStatusCode(int value) {
         this.HttpStatusCode = value;

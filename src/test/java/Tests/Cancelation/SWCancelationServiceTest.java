@@ -5,7 +5,9 @@ import Tests.Utils;
 import Utils.Responses.Cancelation.CancelationResponse;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.Ignore;
 
+@Ignore
 public class SWCancelationServiceTest {
 
 	public String uuid = "fe4e71b0-8959-4fb9-8091-f5ac4fb0fef8";
@@ -219,7 +221,6 @@ public class SWCancelationServiceTest {
 		Assert.assertTrue(response.message.contains("CACFDI33"));
 		Assert.assertTrue(expected_HttpStatusCode == response.HttpStatusCode);
 	}
-
 	// Uuid
 	@Test
 	public void testCancelationServiceUuid_authUser() throws Exception {

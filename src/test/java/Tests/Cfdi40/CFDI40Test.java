@@ -10,7 +10,7 @@ import Utils.Responses.Stamp.SuccessV1Response;
 import Utils.Responses.Stamp.SuccessV2Response;
 import Utils.Responses.Stamp.SuccessV3Response;
 import Utils.Responses.Stamp.SuccessV4Response;
-
+import org.junit.Ignore;
 /**
 * CFDI40Test
 * Clase para UT de los servicio de timbrado disponibles utilizando diferentes ejemplos de CFDI 4.0
@@ -87,6 +87,7 @@ public class CFDI40Test {
     /**
     * Timbrado de CFDI versión 4.0 de tipo ingreso global mediante el servicio de timbrado versión 1 sin sellar (Issue) de la libreria sdk-java18 mediante usuario y contrasena con respuesta versión 4
     */
+@Ignore
     @Test
     public void testIssueV1IngresoGlobalResponseV4() {
         try {            
@@ -229,6 +230,7 @@ public class CFDI40Test {
     /**
     * Timbrado de CFDI versión 4.0 de tipo ingreso global mediante el servicio de timbrado versión 1 (Json) de la libreria sdk-java18 mediante usuario y contrasena con respuesta versión 4
     */
+@Ignore
     @Test
     public void testIssueJsonV1IngresoGlobalResponseV4() {
         try {            

@@ -6,7 +6,7 @@
         <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
     </properties>
     <artifactId>SW-JAVA</artifactId>
-    <version>1.0.8.2</version>
+    <version>1.0.9.1</version>
     <packaging>jar</packaging>
     <scm>
         <url>https://github.com/lunasoft/sw-sdk-java</url>
@@ -107,8 +107,8 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <skip>true</skip>
                     <gpgArguments>
-                        <skip>true</skip>
                         <arg>--batch</arg>
                         <arg>--pinentry-mode</arg>
                         <arg>loopback</arg>
@@ -151,6 +151,11 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <detectOfflineLinks>false</detectOfflineLinks>
+                    <detectJavaApiLink>false</detectJavaApiLink>
+                    <failOnError>false</failOnError>
+                </configuration>
             </plugin>
         </plugins>
     </build>

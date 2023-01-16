@@ -220,7 +220,6 @@ public class SWCancelationServiceTest {
 		Assert.assertTrue(response.message.contains("CACFDI33"));
 		Assert.assertTrue(expected_HttpStatusCode == response.HttpStatusCode);
 	}
-
 	// Uuid
 	@Test
 	public void testCancelationServiceUuid_authUser() throws Exception {

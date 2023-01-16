@@ -2,8 +2,6 @@ package Utils.Requests.Pdf;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.util.UUID;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -17,7 +15,6 @@ import org.apache.http.message.BasicHeader;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import Exceptions.AuthException;
 import Exceptions.GeneralException;
 import Utils.Helpers.RequestHelper;

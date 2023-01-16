@@ -107,8 +107,8 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <skip>true</skip>
                     <gpgArguments>
-                        <skip>true</skip>
                         <arg>--batch</arg>
                         <arg>--pinentry-mode</arg>
                         <arg>loopback</arg>
@@ -151,6 +151,11 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <detectOfflineLinks>false</detectOfflineLinks>
+                    <detectJavaApiLink>false</detectJavaApiLink>
+                    <failOnError>false</failOnError>
+                </configuration>
             </plugin>
         </plugins>
     </build>

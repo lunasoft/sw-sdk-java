@@ -1,7 +1,7 @@
 {
   "Version": "4.0",
   "Folio": "271",
-  "Fecha": "2022-04-11T00:33:58",
+  "Fecha": "2023-02-16T00:33:58",
   "Sello": "",
   "FormaPago": "01",
   "FormaPagoSpecified": true,
@@ -40,7 +40,7 @@
             "Base": 50,
             "Impuesto": "002",
             "TipoFactor": "Tasa",
-            "TasaOCuota": 0.16,
+            "TasaOCuota": 0.160000,
             "TasaOCuotaSpecified": true,
             "Importe": 8,
             "ImporteSpecified": true
@@ -65,7 +65,7 @@
             "Base": 250,
             "Impuesto": "002",
             "TipoFactor": "Tasa",
-            "TasaOCuota": 0,
+            "TasaOCuota": 0.000000,
             "TasaOCuotaSpecified": true,
             "Importe": 0,
             "ImporteSpecified": true
@@ -89,7 +89,7 @@
             "Base": 10,
             "Impuesto": "002",
             "TipoFactor": "Tasa",
-            "TasaOCuota": 0.16,
+            "TasaOCuota": 0.160000,
             "TasaOCuotaSpecified": true,
             "Importe": 1.6,
             "ImporteSpecified": true
@@ -124,7 +124,7 @@
             "Base": 55.55,
             "Impuesto": "002",
             "TipoFactor": "Tasa",
-            "TasaOCuota": 0.16,
+            "TasaOCuota": 0.160000,
             "TasaOCuotaSpecified": true,
             "Importe": 8.89,
             "ImporteSpecified": true
@@ -168,7 +168,7 @@
             "Base": 58.25,
             "Impuesto": "002",
             "TipoFactor": "Tasa",
-            "TasaOCuota": 0.16,
+            "TasaOCuota": 0.160000,
             "TasaOCuotaSpecified": true,
             "Importe": 9.32,
             "ImporteSpecified": true
@@ -193,7 +193,7 @@
         "Base": 173.8,
         "Impuesto": "002",
         "TipoFactor": "Tasa",
-        "TasaOCuota": 0.16,
+        "TasaOCuota": 0.160000,
         "Importe": 27.81,
         "TasaOCuotaSpecified": true,
         "ImporteSpecified": true
@@ -202,7 +202,7 @@
         "Base": 250,
         "Impuesto": "002",
         "TipoFactor": "Tasa",
-        "TasaOCuota": 0,
+        "TasaOCuota": 0.000000,
         "Importe": 0,
         "TasaOCuotaSpecified": true,
         "ImporteSpecified": true
@@ -211,7 +211,7 @@
         "Base": 98.99,
         "Impuesto": "002",
         "TipoFactor": "Exento",
-        "TasaOCuota": 0,
+        "TasaOCuota": 0.000000,
         "Importe": 0,
         "TasaOCuotaSpecified": true,
         "ImporteSpecified": true

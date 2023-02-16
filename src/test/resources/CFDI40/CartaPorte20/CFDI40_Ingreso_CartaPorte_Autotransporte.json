@@ -2,7 +2,7 @@
 	"Version": "4.0",
 	"Serie": "CFDI",
 	"Folio": "Folio",
-	"Fecha": "2022-04-06T00:18:00",
+	"Fecha": "2023-02-16T00:18:00",
 	"Sello": "e",
 	"FormaPago": "03",
 	"FormaPagoSpecified": true,
@@ -42,7 +42,7 @@
 						"Base": 26232.75,
 						"Impuesto": "002",
 						"TipoFactor": "Tasa",
-						"TasaOCuota": 0.16,
+						"TasaOCuota": 0.160000,
 						"TasaOCuotaSpecified": true,
 						"Importe": 4197.24,
 						"ImporteSpecified": true
@@ -53,7 +53,7 @@
 						"Base": 26232.75,
 						"Impuesto": "002",
 						"TipoFactor": "Tasa",
-						"TasaOCuota": 0.04,
+						"TasaOCuota": 0.040000,
 						"TasaOCuotaSpecified": true,
 						"Importe": 1049.31,
 						"ImporteSpecified": true
@@ -79,7 +79,7 @@
 				"Base": 26232.75,
 				"Impuesto": "002",
 				"TipoFactor": "Tasa",
-				"TasaOCuota": 0.16,
+				"TasaOCuota": 0.160000,
 				"Importe": 4197.24,
 				"TasaOCuotaSpecified": true,
 				"ImporteSpecified": true

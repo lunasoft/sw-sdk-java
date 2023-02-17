@@ -40,14 +40,15 @@ public class CancelationRequest implements IRequestor {
 			Charset chars = Charset.forName("UTF-8");
 			builder.setCharset(chars);
 			builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
-			StringEntity sEntity = new StringEntity(
-					"{\r\n \"uuid\": \"" + ((CancelationOptionsRequest) request).getUuid() + "\",\r\n \"password\": \""
-							+ ((CancelationOptionsRequest) request).getPassword() + "\",\r\n \"rfc\": \""
-							+ ((CancelationOptionsRequest) request).getRfc()+ "\",\r\n \"motivo\": \""
-                                                        + ((CancelationOptionsRequest) request).getMotivo()+ "\",\r\n \"foliosustitucion\": \""
-                                                        + ((CancelationOptionsRequest) request).getFolioSustitucion()+ "\",\r\n \"b64Cer\": \""
-							+ ((CancelationOptionsRequest) request).getB64Cer() + "\",\r\n \"b64Key\": \""
-							+ ((CancelationOptionsRequest) request).getB64key() + "\"\r\n}");
+			JSONObject obj  =   new JSONObject();
+                        obj.put("uuid", ((CancelationOptionsRequest) request).getUuid());
+                        obj.put("password", ((CancelationOptionsRequest) request).getPassword());
+                        obj.put("rfc", ((CancelationOptionsRequest) request).getRfc());
+                        obj.put("motivo", ((CancelationOptionsRequest) request).getMotivo());
+                        obj.put("foliosustitucion", (((CancelationOptionsRequest) request).getFolioSustitucion()) != null ? (((CancelationOptionsRequest) request).getFolioSustitucion()) : null);
+                        obj.put("b64Cer", ((CancelationOptionsRequest) request).getB64Cer());
+                        obj.put("b64Key", ((CancelationOptionsRequest) request).getB64key());
+			StringEntity sEntity = new StringEntity(obj.toString());
 			httppost.setEntity(builder.build());
 			httppost.setEntity(sEntity);
 			RequestHelper.setTimeOut(request.options, (int) sEntity.getContentLength());
@@ -149,13 +150,14 @@ public class CancelationRequest implements IRequestor {
 			Charset chars = Charset.forName("UTF-8");
 			builder.setCharset(chars);
 			builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
-			StringEntity sEntity = new StringEntity(
-					"{\r\n \"uuid\": \"" + ((CancelationOptionsRequest) request).getUuid() + "\",\r\n \"password\": \""
-							+ ((CancelationOptionsRequest) request).getPassword() + "\",\r\n \"rfc\": \""
-                                                        + ((CancelationOptionsRequest) request).getRfc() + "\",\r\n \"motivo\": \""
-                                                        + ((CancelationOptionsRequest) request).getMotivo()+ "\",\r\n \"foliosustitucion\": \""
-							+ ((CancelationOptionsRequest) request).getFolioSustitucion() + "\",\r\n \"b64Pfx\": \""
-							+ ((CancelationOptionsRequest) request).getB64Pfx() + "\"\r\n}");
+			JSONObject obj  =   new JSONObject();
+                        obj.put("uuid", ((CancelationOptionsRequest) request).getUuid());
+                        obj.put("password", ((CancelationOptionsRequest) request).getPassword());
+                        obj.put("rfc", ((CancelationOptionsRequest) request).getRfc());
+                        obj.put("motivo", ((CancelationOptionsRequest) request).getMotivo());
+                        obj.put("foliosustitucion", (((CancelationOptionsRequest) request).getFolioSustitucion()) != null ? (((CancelationOptionsRequest) request).getFolioSustitucion()) : null);
+                        obj.put("b64Pfx", ((CancelationOptionsRequest) request).getB64Pfx());
+			StringEntity sEntity = new StringEntity(obj.toString());
 			httppost.setEntity(builder.build());
 			httppost.setEntity(sEntity);
 			RequestHelper.setTimeOut(request.options, (int) sEntity.getContentLength());

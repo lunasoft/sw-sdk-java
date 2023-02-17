@@ -6,7 +6,7 @@ import Utils.Responses.Cancelation.CancelationResponse;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.Ignore;
-@Ignore
+
 public class SWCancelationServiceTest {
 
 	public String uuid = "fe4e71b0-8959-4fb9-8091-f5ac4fb0fef8";
@@ -37,6 +37,33 @@ public class SWCancelationServiceTest {
 		SWCancelationService app = new SWCancelationService(Utils.tokenSW, Utils.urlSW);
 		CancelationResponse response = null;
 		response = (CancelationResponse) app.Cancelation(uuid, password_csd, rfc, b64Cer, b64Key, motivo, foliosustitucion);
+		System.out.println(response.Status);
+		System.out.println(response.HttpStatusCode);
+		System.out.println(response.acuse);
+		System.out.println(response.uuid);
+		System.out.println(response.uuidStatusCode);
+		String expect_status = "success";
+		Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
+	}
+        @Test
+	public void testCancelationServiceCSD_FolioSustitionNull() throws Exception {
+		SWCancelationService app = new SWCancelationService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
+		CancelationResponse response = null;
+		response = (CancelationResponse) app.Cancelation(uuid, password_csd, rfc, b64Cer, b64Key, "02", null);
+		System.out.println(response.Status);
+		System.out.println(response.HttpStatusCode);
+		System.out.println(response.acuse);
+		System.out.println(response.uuid);
+		System.out.println(response.uuidStatusCode);
+                System.out.println(response.messageDetail);
+		String expect_status = "success";
+		Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
+	}
+        @Test
+	public void testCancelationServiceCsd_FolioSustitionStringEmpty() throws Exception {
+		SWCancelationService app = new SWCancelationService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
+		CancelationResponse response = null;
+		response = (CancelationResponse) app.Cancelation(uuid, password_csd, rfc, b64Cer, b64Key, "02", "");
 		System.out.println(response.Status);
 		System.out.println(response.HttpStatusCode);
 		System.out.println(response.acuse);
@@ -160,6 +187,33 @@ public class SWCancelationServiceTest {
 		SWCancelationService app = new SWCancelationService(Utils.tokenSW, Utils.urlSW);
 		CancelationResponse response = null;
 		response = (CancelationResponse) app.Cancelation(uuid, password_csd, rfc, b64Pfx, motivo, foliosustitucion);
+		System.out.println(response.Status);
+		System.out.println(response.HttpStatusCode);
+		System.out.println(response.acuse);
+		System.out.println(response.uuid);
+		System.out.println(response.uuidStatusCode);
+		String expect_status = "success";
+		Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
+	}
+        @Test
+	public void testCancelationServicePfx_FolioSustitionNull() throws Exception {
+		SWCancelationService app = new SWCancelationService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
+		CancelationResponse response = null;
+		response = (CancelationResponse) app.Cancelation(uuid, password_csd, rfc, b64Pfx, "02", null);
+		System.out.println(response.Status);
+		System.out.println(response.HttpStatusCode);
+		System.out.println(response.acuse);
+		System.out.println(response.uuid);
+		System.out.println(response.uuidStatusCode);
+                System.out.println(response.messageDetail);
+		String expect_status = "success";
+		Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
+	}
+        @Test
+	public void testCancelationServicePfx_FolioSustitionStringEmpty() throws Exception {
+		SWCancelationService app = new SWCancelationService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
+		CancelationResponse response = null;
+		response = (CancelationResponse) app.Cancelation(uuid, password_csd, rfc, b64Pfx, "02", "");
 		System.out.println(response.Status);
 		System.out.println(response.HttpStatusCode);
 		System.out.println(response.acuse);

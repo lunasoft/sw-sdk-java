@@ -2,7 +2,7 @@
   "Version": "4.0",
   "Serie": "Serie",
   "Folio": "Folio",
-  "Fecha": "2022-04-11T00:18:00",
+  "Fecha": "2023-02-16T00:18:00",
   "Sello": "",
   "FormaPago": "99",
   "FormaPagoSpecified": true,
@@ -42,7 +42,7 @@
             "Base": "1",
             "Impuesto": "002",
             "TipoFactor": "Tasa",
-            "TasaOCuota": "0.16",
+            "TasaOCuota": "0.160000",
             "TasaOCuotaSpecified": true,
             "Importe": "0.16",
             "ImporteSpecified": true
@@ -53,7 +53,7 @@
             "Base": "1",
             "Impuesto": "001",
             "TipoFactor": "Tasa",
-            "TasaOCuota": "0.1",
+            "TasaOCuota": "0.100000",
             "Importe": "0"
           },
           {
@@ -93,7 +93,7 @@
         "Base": "1",
         "Impuesto": "002",
         "TipoFactor": "Tasa",
-        "TasaOCuota": "0.16",
+        "TasaOCuota": "0.160000",
         "Importe": "0.16",
         "TasaOCuotaSpecified": true,
         "ImporteSpecified": true

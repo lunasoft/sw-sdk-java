@@ -42,7 +42,7 @@
             "Base": 1,
             "Impuesto": "002",
             "TipoFactor": "Tasa",
-            "TasaOCuota": 0.160000,
+            "TasaOCuota": "0.160000",
             "TasaOCuotaSpecified": true,
             "Importe": 0.16,
             "ImporteSpecified": true
@@ -67,7 +67,7 @@
         "Base": 1,
         "Impuesto": "002",
         "TipoFactor": "Tasa",
-        "TasaOCuota": 0.160000,
+        "TasaOCuota": "0.160000",
         "Importe": 0.16,
         "TasaOCuotaSpecified": true,
         "ImporteSpecified": true

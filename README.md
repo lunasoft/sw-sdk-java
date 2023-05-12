@@ -523,13 +523,13 @@ try {
 Este servicio se utiliza para cancelar documentos xml y se puede hacer mediante varios metodos Cancelación CSD, Cancelación PFX, Cancelacion por XML y Cancelación UUID.
 
 ## Cancelacion CSD ##
-Recibe los archivos CSD y KEY en Base64, password, así como el RFC emisor y el UUID del CFDI a cancelar
+Recibe los archivos CSD y KEY en Base64, password, así como el RFC Emisor, el motivo, el folio de sustitución y el UUID del CFDI a cancelar
 
 
 ```java
 SWCancelationService app = new SWCancelationService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 CancelationResponse response = null;
-response = (CancelationResponse) app.Cancelation(uuid, password_csd, rfc, b64Cer, b64Key);
+response = (CancelationResponse) app.Cancelation(uuid, password_csd, rfc, b64Cer, b64Key, motivo, foliosustitucion);
 
 System.out.println(response.Status);
 System.out.println(response.HttpStatusCode);
@@ -562,13 +562,13 @@ System.out.println(response.messageDetail);
 ```
 
 ## Cancelacion PFX ##
-Recibe el Pfx (.pfx, password), así como el RFC emisor y el UUID del CFDI a cancelar
+Recibe el Pfx (.pfx, password), así como el RFC Emisor, el motivo, el folio de sustitución y el UUID del CFDI a cancelar
 
 
 ```java
 SWCancelationService app = new SWCancelationService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 CancelationResponse response = null;
-response = (CancelationResponse) app.Cancelation(uuid, password_csd, rfc, b64Pfx);
+response = (CancelationResponse) app.Cancelation(uuid, password_csd, rfc, b64Pfx, motivo, foliosustitucion);
 System.out.println(response.Status);
 System.out.println(response.HttpStatusCode);
 System.out.println(response.acuse);
@@ -581,13 +581,13 @@ System.out.println(response.messageDetail);
 
 
 ## Cancelacion UUID ##
-Recibe el rfc emisor y el UUID del CFDI a cancelar (Los archivos .Cer y .Key deben estar en tu administrador de timbres).
+Recibe el RFC Emisor, el motivo, el folio de sustitución y el UUID del CFDI a cancelar (Los archivos .Cer y .Key deben estar en tu administrador de timbres).
 
 
 ```java
 SWCancelationService app = new SWCancelationService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 CancelationResponse response = null;
-response = (CancelationResponse) app.Cancelation(uuid, rfc);
+response = (CancelationResponse) app.Cancelation(uuid, rfc, motivo, foliosustitucion);
 System.out.println(response.Status);
 System.out.println(response.HttpStatusCode);
 System.out.println(response.acuse);

@@ -2,7 +2,7 @@
   "Version": "4.0",
   "Serie": "SW",
   "Folio": "123456",
-  "Fecha": "2022-02-14T00:00:00",
+  "Fecha": "2023-05-12T00:00:00",
   "Sello": "",
   "NoCertificado": "",
   "Certificado": "",
@@ -14,6 +14,7 @@
   "Total": "399.16",
   "TipoDeComprobante": "I",
   "Exportacion": "02",
+  "MetodoPago": "PPD",
   "FormaPago": "99",
   "LugarExpedicion": "45610",
   "Emisor": {
@@ -91,7 +92,7 @@
           "CertificadoOrigen": "0",
           "Incoterm": "FOB",
           "Subdivision": "0",
-          "TipoCambioUSD": "19.7933",
+          "TipoCambioUSD": "17.5845",
           "TotalUSD": "25.56",
           "Emisor": {
             "Domicilio": {

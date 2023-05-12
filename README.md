@@ -1,6 +1,8 @@
-[![Smarter Web](http://sw.com.mx/images/logo.png)](http://sw.com.mx/)
+[![Smarter Web](https://sw.com.mx/hubfs/Webpage/logo-swsapien.svg)](http://sw.com.mx/)
 
 # SDK JAVA #
+
+Librería JAVA para el consumo de los servicios de SW sapien®.
 
 Registrate en sw.com.mx
 
@@ -25,10 +27,9 @@ Descargas el modulo mediante Maven:
         <dependency>
             <groupId>mx.com.sw.services</groupId>
             <artifactId>SW-JAVA</artifactId>
-
             <version>0.0.4.1</version>
-
         </dependency>
+
 </dependencies>
 ```
 ## Instalación manual (sin Maven) ##
@@ -37,13 +38,13 @@ Descargar el modulo directamente de los siguientes links:
 * [Relase Github](https://github.com/lunasoft/sw-sdk-java/releases)
 * [Maven](https://oss.sonatype.org/service/local/artifact/maven/redirect?r=releases&g=mx.com.sw.services&a=SW-JAVA&v=0.0.3.4&e=jar)
 
-Asi como instalar manualmente cada una de las dependencias:
+Así como instalar manualmente cada una de las dependencias:
 * [org.json](http://www.json.org/java)
 * [httpclient 4.3.6](http://hc.apache.org/downloads.cgi)
 * [httpmime 4.3.6](http://hc.apache.org/downloads.cgi)
 * [httpasyncclient 4.0.2](http://hc.apache.org/downloads.cgi)
 
-Alternativamente tambien se cuenta con un archivo JAR en el que se incluyen todas las dependencias, este se encuentra en la carpeta [Relase Github](https://github.com/lunasoft/sw-sdk-java/releases),  con el sufijo _"jar-with-dependencies.jar"_
+Alternativamente, tambin se cuenta con un archivo JAR en el que se incluyen todas las dependencias, este se encuentra en la carpeta [Relase Github](https://github.com/lunasoft/sw-sdk-java/releases),  con el sufijo _"jar-with-dependencies.jar"_
 
 
 
@@ -52,18 +53,18 @@ Alternativamente tambien se cuenta con un archivo JAR en el que se incluyen toda
 ```java
 try{
 	//Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
-    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    //Se especifica el base path, esto para consumir el API de pruebas o productivo
     SWStampService sdk = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
-    //Si deseas utilizar un proxy customizado, debes agregar dos parametros mas
-    //Se inicializa un objeto response, que obtendra la respuesta del api
+    //Si deseas utilizar un proxy customizado, debes agregar dos parametros más
+    //Se inicializa un objeto response, que obtendrá la respuesta del API
     SuccessV1Response response = null;
     //Se asigna el resultado de la respuesta a dicho objeto
-    //Se ejecuta el metodo "Stamp", que timbrara nuestro comprobante posteriormente sellado, asi como la versión del servicio de timbrado,
-    //puede ver mas de estas versiones en el apartado "Versiones de timbrado"
+    //Se ejecuta el método "Stamp", que timbrara nuestro comprobante posteriormente sellado, así como la versión del servicio de timbrado,
+    //puede ver más de estas versiones en el apartado "Versiones de timbrado"
     response = (SuccessV1Response)sdk.Stamp("String o File XML","v1");
-    //El objeto response tendra así los atributos:
-    // Status: estado de la petición procesada, puede ser : "success", "fail", "error"
-    // HttpStatusCode: Codigo de respuesta HTTP del servidor: eg. 200, 400, 500
+    //El objeto response tendrá así los atributos:
+    // Status: estado de la petición procesada, puede ser:  "success", "fail", "error"
+    // HttpStatusCode: Código de respuesta HTTP del servidor: eg. 200, 400, 500
     // tfd: El campo donde se encuentra el timbre fiscal digital
     if(response.Status.equals("success")){
 	    System.out.println(response.Status);
@@ -75,7 +76,7 @@ try{
         //Se puede identificar el error en los campos message, messageDetail
         System.out.println(response.message);
         System.out.println(response.messageDetail);
-        // ***Como observacion***
+        // ***Como observación***
         //El campo messageDetail puede no incluirse en ciertos errores                        
     }
 }
@@ -85,26 +86,38 @@ catch(Exception e){
             
 ```
 
+:pushpin: ***NOTA:*** Existen varias versiones de respuesta, las cuales son las siguientes:
+
+| Version |                         Respuesta                             | 
+|---------|---------------------------------------------------------------|
+|  V1     | Devuelve el timbre fiscal digital                             | 
+|  V2     | Devuelve el timbre fiscal digital y el CFDI timbrado          | 
+|  V3     | Devuelve el CFDI timbrado                                     | 
+|  V4     | Devuelve todos los datos del timbrado                         |
+
+Para mayor referencia de estas versiones de respuesta, favor de visitar el siguiente [link](https://developers.sw.com.mx/knowledge-base/versiones-de-respuesta-timbrado/).
+
+
 ## Timbrar CFDI V1 ##
-TimbrarV1 Recibe el contenido de un XML ya emitido (sellado) en formato String ó tambien puede ser en Base64, posteriormente si la factura y el token son correctos devuelve el complemento timbre en un string (TFD), en caso contrario lanza una excepción.
+TimbrarV1 Recibe el contenido de un XML ya emitido (sellado) en formato String ó también puede ser en Base64, posteriormente si la factura y el token son correctos devuelve el complemento timbre en un string (TFD), en caso contrario lanza una excepción.
 
 **Timbrar XML en formato string utilizando usuario y contraseña**
 ```java
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
-    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    //Se especifica el base path, esto para consumir el API de pruebas o productivo
     SWStampService sdk = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
-    //Se inicializa un objeto response, que obtendra la respuesta del api
+    //Se inicializa un objeto response, que obtendrá la respuesta del API
     SuccessV1Response response = null;
     //Se asigna el resultado de la respuesta a dicho objeto
-    //Se ejecuta el metodo "Stamp", que timbrara nuestro comprobante posteriormente sellado, asi como la versión del servicio de timbrado,
-    //puede ver mas de estas versiones en el apartado "Versiones de timbrado"
+    //Se ejecuta el método "Stamp", que timbrara nuestro comprobante posteriormente sellado, así como la versión del servicio de timbrado,
+    //puede ver más de estas versiones en el apartado "Versiones de timbrado"
     response = (SuccessV1Response) sdk.Stamp(stringXML, "v1");
-    //El objeto response tendra así los atributos:
-    // Status: estado de la petición procesada, puede ser : "success", "fail", "error"
-    // HttpStatusCode: Codigo de respuesta HTTP del servidor: eg. 200, 400, 500
+    //El objeto response tendrá así los atributos:
+    // Status: estado de la petición procesada, puede ser: "success", "fail", "error"
+    // HttpStatusCode: Código  de respuesta HTTP del servidor: eg. 200, 400, 500
     // Data: Cuerpo de la respuesta que arroja el servidor
-    //En este caso arrojara el complemento timbre: {"tfd":"<Complemento>"}
+    //En este caso arrojará el complemento timbre: {"tfd":"<Complemento>"}
     System.out.println(response.Status);
     System.out.println(response.HttpStatusCode);
     System.out.println(response.tfd);
@@ -118,19 +131,19 @@ try {
 ```java
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
-    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    //Se especifica el base path, esto para consumir el API de pruebas o productivo
     SWStampService sdk = new SWStampService("T2lYQ0t4L0R....", "http://services.test.sw.com.mx");
-    //Se inicializa un objeto response, que obtendra la respuesta del api
+    //Se inicializa un objeto response, que obtendrá la respuesta del API
     SuccessV1Response response = null;
     //Se asigna el resultado de la respuesta a dicho objeto
-    //Se ejecuta el metodo "Stamp", que timbrara nuestro comprobante posteriormente sellado, asi como la versión del servicio de timbrado,
-    //puede ver mas de estas versiones en el apartado "Versiones de timbrado"
+    //Se ejecuta el método "Stamp", que timbrara nuestro comprobante posteriormente sellado, así como la versión del servicio de timbrado,
+    //puede ver más de estas versiones en el apartado "Versiones de timbrado"
     response = (SuccessV1Response) sdk.Stamp(stringXML, "v1");
-    //El objeto response tendra así los atributos:
-    // Status: estado de la petición procesada, puede ser : "success", "fail", "error"
-    // HttpStatusCode: Codigo de respuesta HTTP del servidor: eg. 200, 400, 500
+    //El objeto response tendrá así los atributos:
+    // Status: estado de la petición procesada, puede ser:  "success", "fail", "error"
+    // HttpStatusCode: Código  de respuesta HTTP del servidor: eg. 200, 400, 500
     // Data: Cuerpo de la respuesta que arroja el servidor
-    //En este caso arrojara el complemento timbre: {"tfd":"<Complemento>"}
+    //En este caso arrojará el complemento timbre: {"tfd":"<Complemento>"}
     System.out.println(response.Status);
     System.out.println(response.HttpStatusCode);
     System.out.println(response.tfd);
@@ -144,23 +157,23 @@ try {
 
 
 ## Timbrar CFDI V2 ##
-TimbrarV2 Recibe el contenido de un XML ya emitido (sellado) en formato String , posteriormente si la factura y el token son correctos devuelve el CFDI ya tibrado, en caso contrario lanza una excepción.
+TimbrarV2 Recibe el contenido de un XML ya emitido (sellado) en formato String , posteriormente si la factura y el token son correctos devuelve el CFDI ya timbrado, en caso contrario lanza una excepción.
 
 **Timbrar XML en formato string utilizando usuario y contraseña**
 ```java
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
-    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    //Se especifica el base path, esto para consumir el API de pruebas o productivo
     SWStampService sdk = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
-    //Se inicializa un objeto response, que obtendra la respuesta del api
+    //Se inicializa un objeto response, que obtendrá la respuesta del API
     SuccessV2Response response = null;
     //Se asigna el resultado de la respuesta a dicho objeto
-    //Se ejecuta el metodo "Stamp", que timbrara nuestro comprobante posteriormente sellado, asi como la versión del servicio de timbrado,
-    //puede ver mas de estas versiones en el apartado "Versiones de timbrado"
+    //Se ejecuta el método "Stamp", que timbrara nuestro comprobante posteriormente sellado, así como la versión del servicio de timbrado,
+    //puede ver más de estas versiones en el apartado "Versiones de timbrado"
     response = (SuccessV2Response) sdk.Stamp(stringXML, "v2");
-    //El objeto response tendra así los atributos:
-    // Status: estado de la petición procesada, puede ser : "success", "fail", "error"
-    // HttpStatusCode: Codigo de respuesta HTTP del servidor: eg. 200, 400, 500
+    //El objeto response tendrá así los atributos:
+    // Status: estado de la petición procesada, puede ser: "success", "fail", "error"
+    // HttpStatusCode: Código de respuesta HTTP del servidor: eg. 200, 400, 500
     // Data: Cuerpo de la respuesta que arroja el servidor
 
     System.out.println(response.Status);
@@ -177,17 +190,17 @@ try {
 ```java
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
-    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    //Se especifica el base path, esto para consumir el API de pruebas o productivo
     SWStampService sdk = new SWStampService("T2lYQ0t4L0R....", "http://services.test.sw.com.mx");
-    //Se inicializa un objeto response, que obtendra la respuesta del api
+    //Se inicializa un objeto response, que obtendrá la respuesta del API
     SuccessV2Response response = null;
     //Se asigna el resultado de la respuesta a dicho objeto
-    //Se ejecuta el metodo "Stamp", que timbrara nuestro comprobante posteriormente sellado, asi como la versión del servicio de timbrado,
-    //puede ver mas de estas versiones en el apartado "Versiones de timbrado"
+    //Se ejecuta el método "Stamp", que timbrara nuestro comprobante posteriormente sellado, así como la versión del servicio de timbrado,
+    //puede ver más de estas versiones en el apartado "Versiones de timbrado"
     response = (SuccessV2Response) sdk.Stamp(stringXML, "v2");
-    //El objeto response tendra así los atributos:
-    // Status: estado de la petición procesada, puede ser : "success", "fail", "error"
-    // HttpStatusCode: Codigo de respuesta HTTP del servidor: eg. 200, 400, 500
+    //El objeto response tendrá así los atributos:
+    // Status: estado de la petición procesada, puede ser:  "success", "fail", "error"
+    // HttpStatusCode: Código de respuesta HTTP del servidor: eg. 200, 400, 500
     // Data: Cuerpo de la respuesta que arroja el servidor
 
     System.out.println(response.Status);
@@ -200,23 +213,23 @@ try {
 ```
 
 ## Timbrar CFDI V3 ##
-TimbrarV3 Recibe el contenido de un XML ya emitido (sellado) en formato String , posteriormente si la factura y el token son correctos devuelve el CFDI ya tibrado, en caso contrario lanza una excepción.
+TimbrarV3 Recibe el contenido de un XML ya emitido (sellado) en formato String , posteriormente si la factura y el token son correctos devuelve el CFDI ya timbrado, en caso contrario lanza una excepción.
 
 **Timbrar XML en formato string utilizando usuario y contraseña**
 ```java
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
-    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    //Se especifica el base path, esto para consumir el API de pruebas o productivo
     SWStampService sdk = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
-    //Se inicializa un objeto response, que obtendra la respuesta del api
+    //Se inicializa un objeto response, que obtendrá la respuesta del API
     SuccessV3Response response = null;
     //Se asigna el resultado de la respuesta a dicho objeto
-    //Se ejecuta el metodo "Stamp", que timbrara nuestro comprobante posteriormente sellado, asi como la versión del servicio de timbrado,
-    //puede ver mas de estas versiones en el apartado "Versiones de timbrado"
+    //Se ejecuta el método "Stamp", que timbrara nuestro comprobante posteriormente sellado, así como la versión del servicio de timbrado,
+    //puede ver más de estas versiones en el apartado "Versiones de timbrado"
     response = (SuccessV3Response) sdk.Stamp(stringXML, "v3");
     //El objeto response tendra así los atributos:
-    // Status: estado de la petición procesada, puede ser : "success", "fail", "error"
-    // HttpStatusCode: Codigo de respuesta HTTP del servidor: eg. 200, 400, 500
+    // Status: estado de la petición procesada, puede ser: "success", "fail", "error"
+    // HttpStatusCode: Código de respuesta HTTP del servidor: eg. 200, 400, 500
     // Data: Cuerpo de la respuesta que arroja el servidor
 
     System.out.println(response.Status);
@@ -233,17 +246,17 @@ try {
 ```java
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
-    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    //Se especifica el base path, esto para consumir el API de pruebas o productivo
     SWStampService sdk = new SWStampService("T2lYQ0t4L0R....", "http://services.test.sw.com.mx");
-    //Se inicializa un objeto response, que obtendra la respuesta del api
+    //Se inicializa un objeto response, que obtendrá la respuesta del API
     SuccessV3Response response = null;
     //Se asigna el resultado de la respuesta a dicho objeto
-    //Se ejecuta el metodo "Stamp", que timbrara nuestro comprobante posteriormente sellado, asi como la versión del servicio de timbrado,
-    //puede ver mas de estas versiones en el apartado "Versiones de timbrado"
+    //Se ejecuta el método "Stamp", que timbrara nuestro comprobante posteriormente sellado, así como la versión del servicio de timbrado,
+    //puede ver más de estas versiones en el apartado "Versiones de timbrado"
     response = (SuccessV3Response) sdk.Stamp(stringXML, "v3");
-    //El objeto response tendra así los atributos:
-    // Status: estado de la petición procesada, puede ser : "success", "fail", "error"
-    // HttpStatusCode: Codigo de respuesta HTTP del servidor: eg. 200, 400, 500
+    //El objeto response tendrá así los atributos:
+    // Status: estado de la petición procesada, puede ser: "success", "fail", "error"
+    // HttpStatusCode: Código de respuesta HTTP del servidor: eg. 200, 400, 500
     // Data: Cuerpo de la respuesta que arroja el servidor
 
     System.out.println(response.Status);
@@ -255,23 +268,23 @@ try {
 ```
 
 ## Timbrar CFDI V4 ##
-TimbrarV4 Recibe el contenido de un XML ya emitido (sellado) en formato String , posteriormente si la factura y el token son correctos devuelve el cfdi ya timbrado, y campos extras como qr en formato base64, entre otros.
+TimbrarV4 Recibe el contenido de un XML ya emitido (sellado) en formato String , posteriormente si la factura y el token son correctos devuelve el CFDI ya timbrado, y campos extras como qr en formato base64, entre otros.
 
 **Timbrar XML en formato string utilizando usuario y contraseña**
 ```java
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
-    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    //Se especifica el base path, esto para consumir el API de pruebas o productivo
     SWStampService sdk = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
-    //Se inicializa un objeto response, que obtendra la respuesta del api
+    //Se inicializa un objeto response, que obtendrá la respuesta del api
     SuccessV4Response response = null;
     //Se asigna el resultado de la respuesta a dicho objeto
-    //Se ejecuta el metodo "Stamp", que timbrara nuestro comprobante posteriormente sellado, asi como la versión del servicio de timbrado,
-    //puede ver mas de estas versiones en el apartado "Versiones de timbrado"
+    //Se ejecuta el método "Stamp", que timbrara nuestro comprobante posteriormente sellado, así como la versión del servicio de timbrado,
+    //puede ver más de estas versiones en el apartado "Versiones de timbrado"
     response = (SuccessV4Response) sdk.Stamp(stringXML, "v4");
     //El objeto response tendra así los atributos:
-    // Status: estado de la petición procesada, puede ser : "success", "fail", "error"
-    // HttpStatusCode: Codigo de respuesta HTTP del servidor: eg. 200, 400, 500
+    // Status: estado de la petición procesada, puede ser:  "success", "fail", "error"
+    // HttpStatusCode: Código  de respuesta HTTP del servidor: eg. 200, 400, 500
     // Data: Cuerpo de la respuesta que arroja el servidor
 
     System.out.println(response.message);
@@ -296,17 +309,17 @@ try {
 ```java
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
-    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    //Se especifica el base path, esto para consumir el API de pruebas o productivo
     SWStampService sdk = new SWStampService("T2lYQ0t4L0R....", "http://services.test.sw.com.mx");
-    //Se inicializa un objeto response, que obtendra la respuesta del api
+    //Se inicializa un objeto response, que obtendrá la respuesta del API
     SuccessV4Response response = null;
     //Se asigna el resultado de la respuesta a dicho objeto
-    //Se ejecuta el metodo "Stamp", que timbrara nuestro comprobante posteriormente sellado, asi como la versión del servicio de timbrado,
-    //puede ver mas de estas versiones en el apartado "Versiones de timbrado"
+    //Se ejecuta el método "Stamp", que timbrara nuestro comprobante posteriormente sellado, así como la versión del servicio de timbrado,
+    //puede ver más de estas versiones en el apartado "Versiones de timbrado"
     response = (SuccessV4Response) sdk.Stamp(stringXML, "v4");
     //El objeto response tendra así los atributos:
-    // Status: estado de la petición procesada, puede ser : "success", "fail", "error"
-    // HttpStatusCode: Codigo de respuesta HTTP del servidor: eg. 200, 400, 500
+    // Status: estado de la petición procesada, puede ser:  "success", "fail", "error"
+    // HttpStatusCode: Código  de respuesta HTTP del servidor: eg. 200, 400, 500
     // Data: Cuerpo de la respuesta que arroja el servidor
 
     System.out.println(response.message);
@@ -334,9 +347,9 @@ Ejemplo de uso
 ```java
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
-    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    //Se especifica el base path, esto para consumir el API de pruebas o productivo
     SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
-    //Se inicializa un objeto response, que obtendra la respuesta del api
+    //Se inicializa un objeto response, que obtendrá la respuesta del API
     SuccessV1Response response = null;
     response = (SuccessV1Response) api.IssueJson(stringJson, "v1");
     System.out.println(response.Status);
@@ -354,9 +367,9 @@ Ejemplo de uso
 ```java
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
-    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    //Se especifica el base path, esto para consumir el API de pruebas o productivo
     SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
-    //Se inicializa un objeto response, que obtendra la respuesta del api
+    //Se inicializa un objeto response, que obtendrá la respuesta del API
     SuccessV1Response response = null;
     response = (SuccessV1Response) api.IssueJson(stringJson, "v2");
     System.out.println(response.Status);
@@ -375,9 +388,9 @@ Ejemplo de uso
 ```java
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
-    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    //Se especifica el base path, esto para consumir el API de pruebas o productivo
     SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
-    //Se inicializa un objeto response, que obtendra la respuesta del api
+    //Se inicializa un objeto response, que obtendrá la respuesta del API
     SuccessV1Response response = null;
     response = (SuccessV1Response) api.IssueJson(stringJson, "v3");
     System.out.println(response.Status);
@@ -395,9 +408,9 @@ Ejemplo de uso
 ```java
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
-    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    //Se especifica el base path, esto para consumir el API de pruebas o productivo
     SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
-    //Se inicializa un objeto response, que obtendra la respuesta del api
+    //Se inicializa un objeto response, que obtendrá la respuesta del API
     SuccessV1Response response = null;
     response = (SuccessV1Response) api.IssueJson(stringJson, "v4");
     System.out.println(response.Status);
@@ -424,9 +437,9 @@ Ejemplo de uso
 ```java
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
-    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    //Se especifica el base path, esto para consumir el API de pruebas o productivo
     SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
-    //Se inicializa un objeto response, que obtendra la respuesta del api
+    //Se inicializa un objeto response, que obtendrá la respuesta del API
     SuccessV1Response response = null;
     response = (SuccessV1Response) api.IssueXml(stringXml, "v1");
     System.out.println(response.Status);
@@ -444,9 +457,9 @@ Ejemplo de uso
 ```java
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
-    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    //Se especifica el base path, esto para consumir el API de pruebas o productivo
     SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
-    //Se inicializa un objeto response, que obtendra la respuesta del api
+    //Se inicializa un objeto response, que obtendrá la respuesta del API
     SuccessV1Response response = null;
     response = (SuccessV1Response) api.IssueXml(stringXml, "v2");
     System.out.println(response.Status);
@@ -465,9 +478,9 @@ Ejemplo de uso
 ```java
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
-    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    //Se especifica el base path, esto para consumir el API de pruebas o productivo
     SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
-    //Se inicializa un objeto response, que obtendra la respuesta del api
+    //Se inicializa un objeto response, que obtendrá la respuesta del API
     SuccessV1Response response = null;
     response = (SuccessV1Response) api.IssueXml(stringXml, "v3");
     System.out.println(response.Status);
@@ -485,9 +498,9 @@ Ejemplo de uso
 ```java
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
-    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    //Se especifica el base path, esto para consumir el API de pruebas o productivo
     SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
-    //Se inicializa un objeto response, que obtendra la respuesta del api
+    //Se inicializa un objeto response, que obtendrá la respuesta del API
     SuccessV1Response response = null;
     response = (SuccessV1Response) api.IssueXml(stringXml, "v4");
     System.out.println(response.Status);
@@ -507,8 +520,10 @@ try {
 
 # Cancelación #
 
+Este servicio se utiliza para cancelar documentos xml y se puede hacer mediante varios metodos Cancelación CSD, Cancelación PFX, Cancelacion por XML y Cancelación UUID.
+
 ## Cancelacion CSD ##
-Recibe los archivos CSD y KEY en Base64, password, asi como el rfc emisor y el UUID del CFDI a cancelar
+Recibe los archivos CSD y KEY en Base64, password, así como el RFC emisor y el UUID del CFDI a cancelar
 
 
 ```java
@@ -546,8 +561,8 @@ System.out.println(response.message);
 System.out.println(response.messageDetail);  
 ```
 
-## Cancelacion Pfx ##
-Recibe el Pfx (.pfx, password), asi como el rfc emisor y el UUID del CFDI a cancelar
+## Cancelacion PFX ##
+Recibe el Pfx (.pfx, password), así como el RFC emisor y el UUID del CFDI a cancelar
 
 
 ```java
@@ -565,7 +580,7 @@ System.out.println(response.messageDetail);
 ```
 
 
-## Cancelacion Uuid ##
+## Cancelacion UUID ##
 Recibe el rfc emisor y el UUID del CFDI a cancelar (Los archivos .Cer y .Key deben estar en tu administrador de timbres).
 
 
@@ -585,6 +600,8 @@ System.out.println(response.messageDetail);
 
 
 # Validación #
+
+Este servicio recibe un comprobante CFDI 3.3 ó 4.0 en formato XML mediante el cual se valida integridad, sello, errores de estructura, matriz de errores del SAT incluyendo complementos, se valida que exista en el SAT, así como el estatus en el SAT.
 
 ## Validación Xml ##
 Recibe el Xml del CFDI a validar.

@@ -44,7 +44,7 @@ Así como instalar manualmente cada una de las dependencias:
 * [httpmime 4.3.6](http://hc.apache.org/downloads.cgi)
 * [httpasyncclient 4.0.2](http://hc.apache.org/downloads.cgi)
 
-Alternativamente, tambin se cuenta con un archivo JAR en el que se incluyen todas las dependencias, este se encuentra en la carpeta [Relase Github](https://github.com/lunasoft/sw-sdk-java/releases),  con el sufijo _"jar-with-dependencies.jar"_
+Alternativamente, tambien se cuenta con un archivo JAR en el que se incluyen todas las dependencias, este se encuentra en la carpeta [Relase Github](https://github.com/lunasoft/sw-sdk-java/releases),  con el sufijo _"jar-with-dependencies.jar"_
 
 
 

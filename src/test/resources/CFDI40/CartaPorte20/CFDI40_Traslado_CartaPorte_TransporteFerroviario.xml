@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <cfdi:Comprobante xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd http://www.sat.gob.mx/CartaPorte20 http://www.sat.gob.mx/sitio_internet/cfd/CartaPorte/CartaPorte20.xsd"
-    xmlns:cartaporte20="http://www.sat.gob.mx/CartaPorte20" Version="4.0" Serie="Serie" Folio="Folio" Fecha="2022-07-21T00:18:10" Sello="e" SubTotal="0" Moneda="XXX" Total="0" TipoDeComprobante="T" Exportacion="01" LugarExpedicion="20000"
+    xmlns:cartaporte20="http://www.sat.gob.mx/CartaPorte20" Version="4.0" Serie="Serie" Folio="Folio" Fecha="2023-05-12T00:18:10" Sello="e" SubTotal="0" Moneda="XXX" Total="0" TipoDeComprobante="T" Exportacion="01" LugarExpedicion="20000"
     xmlns:cfdi="http://www.sat.gob.mx/cfd/4"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <cfdi:Emisor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="601" />

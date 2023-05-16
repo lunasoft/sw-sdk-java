@@ -173,7 +173,7 @@ public class SWCancelationServiceTest {
 	public void testCancelationServicePfx_authUser() throws Exception {
 		SWCancelationService app = new SWCancelationService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		CancelationResponse response = null;
-		response = (CancelationResponse) app.Cancelation(uuid, password_csd, rfc, b64Pfx,motivo, foliosustitucion);
+		response = (CancelationResponse) app.Cancelation(uuid, password_csd, rfc, b64Pfx, motivo, foliosustitucion);
 		System.out.println(response.Status);
 		System.out.println(response.HttpStatusCode);
 		System.out.println(response.acuse);
@@ -305,7 +305,7 @@ public class SWCancelationServiceTest {
 	public void testCancelationServiceUuid_incorrectParams() throws Exception {
 		SWCancelationService app = new SWCancelationService(Utils.tokenSW, Utils.urlSW);
 		CancelationResponse response = null;
-		response = (CancelationResponse) app.Cancelation("123456", "123456","12345", "123456");
+		response = (CancelationResponse) app.Cancelation("123456", "123456", "12345", "123456");
 		System.out.println(response.Status);
 		System.out.println(response.HttpStatusCode);
 		System.out.println(response.message);

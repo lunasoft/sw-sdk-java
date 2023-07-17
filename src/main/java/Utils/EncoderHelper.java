@@ -56,8 +56,6 @@ public class EncoderHelper {
             } else {
                 System.out.println("No encoding detected.");
             }
-
-// (5)
             detector.reset();
             return true;
         } catch (FileNotFoundException e) {
@@ -67,7 +65,6 @@ public class EncoderHelper {
             e.printStackTrace();
             return true;
         }
-
     }
 
     public static String getDetectedEncoding(File file) throws IOException {
@@ -98,5 +95,4 @@ public class EncoderHelper {
     public static boolean detectBadCharacters(String s) {
         return (s == null) ? false : s.matches("[^A-Za-z0-9 ]");
     }
-
 }

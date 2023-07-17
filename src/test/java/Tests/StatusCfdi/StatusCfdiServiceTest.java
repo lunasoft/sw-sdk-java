@@ -21,6 +21,7 @@ public class StatusCfdiServiceTest {
 		String expect_status = "success";
 		Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
 	}
+	
 	@Ignore
 	public void testStatusCancelationService_Test() throws Exception {
 		StatusCfdiService app = new StatusCfdiService("https://pruebacfdiconsultaqr.cloudapp.net/ConsultaCFDIService.svc", "http://tempuri.org/IConsultaCFDIService/Consulta");

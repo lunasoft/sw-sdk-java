@@ -101,7 +101,7 @@ public class Utils {
     }
 
     /**
-    * Genera un CFDI Ãºnico y lo sella en caso de indicarse.
+    * Genera un CFDI y lo sella en caso de indicarse.
     * @param xml
     * @param signed
     * @return String

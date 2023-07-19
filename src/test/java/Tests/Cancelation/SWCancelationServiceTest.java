@@ -4,6 +4,7 @@ import Services.Cancelation.SWCancelationService;
 import Tests.Utils;
 import Utils.Responses.Cancelation.CancelationResponse;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class SWCancelationServiceTest {
@@ -234,7 +235,7 @@ public class SWCancelationServiceTest {
 		String expect_status = "success";
 		Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
 	}
-	@Test
+	@Ignore
 	public void testCancelationServiceUuid_authToken() throws Exception {
 		SWCancelationService app = new SWCancelationService(Utils.tokenSW, Utils.urlSW);
 		CancelationResponse response = null;

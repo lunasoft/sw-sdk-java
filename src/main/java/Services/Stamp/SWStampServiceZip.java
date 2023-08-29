@@ -4,6 +4,7 @@ import Exceptions.AuthException;
 import Exceptions.GeneralException;
 import Services.SWService;
 import Utils.Requests.Stamp.StampOptionsRequest;
+import Utils.Requests.Stamp.StampRequest;
 import Utils.Requests.Stamp.StampRequestXML;
 import Utils.Requests.Stamp.StampRequestZIP;
 import Utils.Responses.IResponse;
@@ -30,10 +31,10 @@ public class SWStampServiceZip extends SWService{
 		super(token, URI, proxyHost, proxyPort);
 	}
 	
-	public IResponse Stamp(String zipFile) throws AuthException, GeneralException, IOException {
+	public IResponse Stamp(String zipFile, String version) throws AuthException, GeneralException, IOException {
 		byte[] zipData = Files.readAllBytes(Paths.get(zipFile));
-		StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), zipData, getProxyHost(), getProxyPort(), false, true);
-		StampRequestZIP req = new StampRequestZIP();
-		return req.sendRequest(settings);
+		StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), zipData, version, getProxyHost(), getProxyPort(), false, true);
+		StampRequest req = new StampRequest();
+		return req.sendRequestZip(settings);
 	}
 }

@@ -10,6 +10,8 @@ import Utils.Responses.IResponse;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class SWStampService extends SWService {
 
@@ -61,6 +63,11 @@ public class SWStampService extends SWService {
 		StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), xmlProcess, version, getProxyHost(), getProxyPort(), false);
 		StampRequest req = new StampRequest();
 		return req.sendRequest(settings);
-
+	}
+	public IResponse StampZip(String zipFile, String version) throws AuthException, GeneralException, IOException {
+		byte[] zipData = Files.readAllBytes(Paths.get(zipFile));
+		StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), zipData, version, getProxyHost(), getProxyPort(), false, true);
+		StampRequest req = new StampRequest();
+		return req.sendRequestZip(settings);
 	}
 }

@@ -5,7 +5,6 @@ import Utils.Requests.IRequest;
 
 public class StampOptionsRequest extends IRequest {
     private String xml;
-    private byte[] xmlData; 
     private byte[] zipData; 
 
     
@@ -18,12 +17,6 @@ public class StampOptionsRequest extends IRequest {
     public StampOptionsRequest(String token, String URI, String xml, String version, String proxyHost, int proxyPort, boolean isV2) {
         super(token, URI + (isV2 ? Constants.STAMP_V2_PATH : Constants.STAMP_PATH) + version, xml, version, proxyHost, proxyPort);
         this.xml = xml;
-        this.version = version;
-    }
-
-    public StampOptionsRequest(String token, String URI, byte[] xmlData, String version, String proxyHost, int proxyPort, boolean isV2) {
-        super(token, URI + (isV2 ? Constants.STAMP_V2_PATH : Constants.STAMP_PATH) + version, xmlData, version, proxyHost, proxyPort);
-        this.xmlData = xmlData;
         this.version = version;
     }
 

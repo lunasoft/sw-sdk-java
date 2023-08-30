@@ -25,8 +25,10 @@ public class Constants {
     public static String RELACIONADOS_XML_PATH = "/relations/xml";
     public static String RELACIONADOS_UUID_PATH = "/relations/";
     public static String PENDIENTES_CANCELAR_PATH = "/pendings/";
+    public static String STORAGE_PATH = "/datawarehouse/v1/live/";
     public static String TAXPAYERS_PATH = "/taxpayers/";
     public static String SAVE_CSD = "/certificates/save";
     public static String DISABLE_SEARCH_CSD = "/certificates/";
     public static String LIST_CSD = "/certificates";
+    public static String REGENERATE_PDF = "/pdf/v1/api/regeneratepdf/";
 }

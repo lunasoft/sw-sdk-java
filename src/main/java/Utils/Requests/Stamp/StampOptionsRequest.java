@@ -36,12 +36,7 @@ public class StampOptionsRequest extends IRequest {
     public String getXml() {
         return xml;
     }
-
-    public byte[] getXML() {
-        return XML;
-    }
-    
-    // Función para obtener los datos del archivo ZIP
+ 
     public byte[] getZipData() {
         return zipData;
     }

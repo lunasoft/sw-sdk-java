@@ -52,18 +52,10 @@ public abstract class IRequest {
         this.proxyPort = proxyPort;
     }
 
-    public IRequest(String token, String URI, byte[]  xml, String version, String proxyHost, int proxyPort) {
+    public IRequest(String token, String URI, byte[] xml, String version, String proxyHost, int proxyPort) {
         Token = token;
         this.URI = URI;
         this.version = version;
-        this.XML = xml;
-        this.proxyHost = proxyHost;
-        this.proxyPort = proxyPort;
-    }
-    
-    public IRequest(String token, String URI, byte[]  xml, String proxyHost, int proxyPort) {
-        Token = token;
-        this.URI = URI;
         this.XML = xml;
         this.proxyHost = proxyHost;
         this.proxyPort = proxyPort;

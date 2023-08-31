@@ -14,7 +14,7 @@ import java.nio.file.Paths;
 
 public class SWStampsServiceZipTest {
 	// STANDARD XML
-	@Ignore
+	@Test
 	public void testStamp_ZipXML() throws Exception {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV1Response response = null;
@@ -28,7 +28,7 @@ public class SWStampsServiceZipTest {
 		Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
 	}
 
-	@Ignore
+	@Test
 	public void testStamp_ZipXML_NoSellado() throws Exception {
         SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV1Response response = null;
@@ -45,7 +45,7 @@ public class SWStampsServiceZipTest {
 		
 	}
 
-	@Ignore
+	@Test
 	public void testStamp_ZipXML_FueraRango() throws Exception {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV1Response response = null;

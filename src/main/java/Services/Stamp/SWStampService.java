@@ -22,7 +22,7 @@ public class SWStampService extends SWService {
 	public SWStampService(String token, String URI) {
 		super(token, URI);
 	}
-
+	
 	public SWStampService(String user, String password, String URI, String proxyHost, int proxyPort)
 			throws AuthException {
 		super(user, password, URI, proxyHost, proxyPort);
@@ -70,11 +70,9 @@ public class SWStampService extends SWService {
 		StampRequest req = new StampRequest();
 		return req.sendRequest(settings);
 	}
-
 	public IResponse StampZip(byte[] zipFile, String version) throws AuthException, GeneralException, IOException {
-		StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), zipFile, version, getProxyHost(),
-				getProxyPort(), false, true);
-		StampRequest req = new StampRequest();
-		return req.sendRequestZip(settings);
-	}
+    StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), zipFile, version, getProxyHost(), getProxyPort());
+    StampRequest req = new StampRequest();
+    return req.sendRequestZip(settings);
+}
 }

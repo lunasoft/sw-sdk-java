@@ -20,8 +20,8 @@ public class StampOptionsRequest extends IRequest {
         this.version = version;
     }
 
-    public StampOptionsRequest(String token, String URI, byte[] zipData, String version, String proxyHost, int proxyPort, boolean isV2, boolean isZip) {
-        super(token, URI + (isV2 ? Constants.STAMP_V2_PATH : Constants.STAMP_ZIP_PATH) + version, zipData, version, proxyHost, proxyPort);
+    public StampOptionsRequest(String token, String URI, byte[] zipData, String version, String proxyHost, int proxyPort) {
+        super(token, URI + (Constants.STAMP_ZIP_PATH) + version, zipData, version, proxyHost, proxyPort);
         this.zipData = zipData;
     }
     

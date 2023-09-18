@@ -20,7 +20,7 @@
 	<cfdi:Receptor Rfc="JUFA7608212V6"
 	               Nombre="ADRIANA JUAREZ FERNANDEZ"
 	               UsoCFDI="CP01"
-	               DomicilioFiscalReceptor="29133"
+	               DomicilioFiscalReceptor="01160"
 	               RegimenFiscalReceptor="616"/>
 	<cfdi:Conceptos>
 		<cfdi:Concepto ClaveProdServ="84111506"

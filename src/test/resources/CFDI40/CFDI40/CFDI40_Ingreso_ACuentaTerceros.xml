@@ -11,7 +11,7 @@
                     <cfdi:Retencion Base="200" Impuesto="001" TipoFactor="Tasa" TasaOCuota="0.100000" Importe="20" />
                 </cfdi:Retenciones>
             </cfdi:Impuestos>
-            <cfdi:ACuentaTerceros RfcACuentaTerceros="JUFA7608212V6" NombreACuentaTerceros="ADRIANA JUAREZ FERNANDEZ" RegimenFiscalACuentaTerceros="601" DomicilioFiscalACuentaTerceros="29133" />
+            <cfdi:ACuentaTerceros RfcACuentaTerceros="CACX7605101P8" NombreACuentaTerceros="XOCHILT CASAS CHAVEZ" RegimenFiscalACuentaTerceros="601" DomicilioFiscalACuentaTerceros="36257" />
         </cfdi:Concepto>
     </cfdi:Conceptos>
     <cfdi:Impuestos TotalImpuestosRetenidos="20">

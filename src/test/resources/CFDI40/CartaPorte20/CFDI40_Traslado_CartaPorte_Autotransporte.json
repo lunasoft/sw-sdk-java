@@ -2,7 +2,7 @@
   "Version": "4.0",
   "Serie": "CFDI",
   "Folio": 78,
-  "Fecha": "2023-05-12T03:24:30",
+  "Fecha": "2023-09-19T03:24:30",
   "Moneda": "XXX",
   "TipoDeComprobante": "T",
   "LugarExpedicion": "25350",
@@ -17,7 +17,7 @@
   "Receptor": {
     "Rfc": "EKU9003173C9",
     "Nombre": "ESCUELA KEMPER URGATE",
-    "DomicilioFiscalReceptor": "86991",
+    "DomicilioFiscalReceptor": "42501",
     "RegimenFiscalReceptor": "601",
     "UsoCFDI": "S01"
   },
@@ -34,7 +34,7 @@
       "Importe": "26232.75",
       "ObjetoImp": "01"
     }
-  ],  
+  ],
   "Complemento": {
     "Any": [
       {

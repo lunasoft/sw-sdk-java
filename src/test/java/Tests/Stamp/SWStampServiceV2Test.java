@@ -32,7 +32,7 @@ public class SWStampServiceV2Test {
 		response = (SuccessV3Response) api.Stamp(ut.genComercioExterior(false), "v3");
 		Assert.assertNotNull(response.cfdi);
 		Assert.assertTrue(!response.cfdi.equalsIgnoreCase(""));
-		response = (SuccessV3Response) api.Stamp(ut.genPagos10(false), "v3");
+		response = (SuccessV3Response) api.Stamp(ut.genPagos20(false), "v3");
 		Assert.assertNotNull(response.cfdi);
 		Assert.assertTrue(!response.cfdi.equalsIgnoreCase(""));
 	}
@@ -282,10 +282,10 @@ public class SWStampServiceV2Test {
 
 	////////////////////////////////////////// PAGOS10/////////////////////////////////////////////////////////////////////////////////////////
 	@Test
-	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1_PAGOS10() throws Exception {
+	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1_PAGOS20() throws Exception {
 		SWStampServiceV2 api = new SWStampServiceV2(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV1Response response = null;
-		response = (SuccessV1Response) api.Stamp(ut.genPagos10(false), "v1");
+		response = (SuccessV1Response) api.Stamp(ut.genPagos20(false), "v1");
 		System.out.println(response.Status);
 		System.out.println(response.message);
 		System.out.println(response.HttpStatusCode);
@@ -295,10 +295,10 @@ public class SWStampServiceV2Test {
 		Assert.assertTrue((!response.tfd.equalsIgnoreCase("") && expect_error.equalsIgnoreCase(response.message)) || response.Status.equalsIgnoreCase("success"));
 	}
 	@Test
-	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_PAGOS10() throws Exception {
+	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_PAGOS20() throws Exception {
 		SWStampServiceV2 api = new SWStampServiceV2(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV2Response response = null;
-		response = (SuccessV2Response) api.Stamp(ut.genPagos10(false), "v2");
+		response = (SuccessV2Response) api.Stamp(ut.genPagos20(false), "v2");
 		System.out.println(response.Status);
 		System.out.println(response.message);
 		System.out.println(response.HttpStatusCode);
@@ -309,10 +309,10 @@ public class SWStampServiceV2Test {
 		Assert.assertTrue((!response.tfd.equalsIgnoreCase("") && expect_error.equalsIgnoreCase(response.message)) || response.Status.equalsIgnoreCase("success"));
 	}
 	@Test
-	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3_PAGOS10() throws Exception {
+	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3_PAGOS20() throws Exception {
 		SWStampServiceV2 api = new SWStampServiceV2(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV3Response response = null;
-		response = (SuccessV3Response) api.Stamp(ut.genPagos10(false), "v3");
+		response = (SuccessV3Response) api.Stamp(ut.genPagos20(false), "v3");
 		System.out.println(response.Status);
 		System.out.println(response.message);
 		System.out.println(response.HttpStatusCode);
@@ -323,10 +323,10 @@ public class SWStampServiceV2Test {
 		Assert.assertTrue((!response.cfdi.equalsIgnoreCase("") && expect_error.equalsIgnoreCase(response.message)) || response.Status.equalsIgnoreCase("success"));
 	}
 	@Test
-	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4_PAGOS10() throws Exception {
+	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4_PAGOS20() throws Exception {
 		SWStampServiceV2 api = new SWStampServiceV2(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV4Response response = null;
-		response = (SuccessV4Response) api.Stamp(ut.genPagos10(false), "V4");
+		response = (SuccessV4Response) api.Stamp(ut.genPagos20(false), "V4");
 		System.out.println(response.Status);
 		System.out.println(response.cfdi);
 		System.out.println(response.qrCode);
@@ -342,10 +342,10 @@ public class SWStampServiceV2Test {
 		Assert.assertTrue((!response.cfdi.equalsIgnoreCase("") && expect_error.equalsIgnoreCase(response.message)) || response.Status.equalsIgnoreCase("success"));
 	}
 	@Test
-	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1_b64_PAGOS10() throws Exception {
+	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1_b64_PAGOS20() throws Exception {
 		SWStampServiceV2 api = new SWStampServiceV2(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV1Response response = null;
-		response = (SuccessV1Response) api.Stamp(ut.genPagos10TimbrePrevio(true), "v1", true);
+		response = (SuccessV1Response) api.Stamp(ut.genPagos20TimbrePrevio(true), "v1", true);
 		System.out.println(response.Status);
 		System.out.println(response.message);
 		System.out.println(response.HttpStatusCode);
@@ -354,10 +354,10 @@ public class SWStampServiceV2Test {
 		Assert.assertTrue(Utils.isValidB64(response.tfd) && expect_error.equalsIgnoreCase(response.message));
 	}
 	@Test
-	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_b64_PAGOS10() throws Exception {
+	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_b64_PAGOS20() throws Exception {
 		SWStampServiceV2 api = new SWStampServiceV2(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV2Response response = null;
-		response = (SuccessV2Response) api.Stamp(ut.genPagos10TimbrePrevio(true), "v2", true);
+		response = (SuccessV2Response) api.Stamp(ut.genPagos20TimbrePrevio(true), "v2", true);
 		System.out.println(response.Status);
 		System.out.println(response.message);
 		System.out.println(response.HttpStatusCode);
@@ -369,10 +369,10 @@ public class SWStampServiceV2Test {
 
 	}
 	@Test
-	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3_b64_PAGOS10() throws Exception {
+	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3_b64_PAGOS20() throws Exception {
 		SWStampServiceV2 api = new SWStampServiceV2(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV3Response response = null;
-		response = (SuccessV3Response) api.Stamp(ut.genPagos10TimbrePrevio(true), "v3", true);
+		response = (SuccessV3Response) api.Stamp(ut.genPagos20TimbrePrevio(true), "v3", true);
 		System.out.println(response.Status);
 		System.out.println(response.message);
 		System.out.println(response.HttpStatusCode);
@@ -381,10 +381,10 @@ public class SWStampServiceV2Test {
 		Assert.assertTrue(Utils.isValidB64(response.cfdi) && expect_error.equalsIgnoreCase(response.message));
 	}
 	@Test
-	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4_b64_PAGOS10() throws Exception {
+	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4_b64_PAGOS20() throws Exception {
 		SWStampServiceV2 api = new SWStampServiceV2(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV4Response response = null;
-		response = (SuccessV4Response) api.Stamp(ut.genPagos10TimbrePrevio(true), "V4", true);
+		response = (SuccessV4Response) api.Stamp(ut.genPagos20TimbrePrevio(true), "V4", true);
 		System.out.println(response.Status);
 		System.out.println(response.message);
 		System.out.println(response.cfdi);

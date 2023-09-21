@@ -49,7 +49,7 @@ public class CFDI40Test {
     @Test
     public void testStampV2IngresoKitParteResponseV2() {
         try {            
-            SuccessV2Response response = stampServiceToken.StampResponseV2("src/test/resources/CFDI40/CFDI40/CFDI40_Ingreso_KitParte.xml", "V2", true, false);
+            SuccessV2Response response = stampServiceToken.StampResponseV2("src/test/resources/CFDI40/CFDI40/CFDI40_Ingreso_KitParte.xml", "V2", true, false);        
             Assert.assertNotNull(response);
             Assert.assertNotNull(response.Status);
             Assert.assertNotNull(response.tfd);
@@ -87,7 +87,6 @@ public class CFDI40Test {
     /**
     * Timbrado de CFDI versión 4.0 de tipo ingreso global mediante el servicio de timbrado versión 1 sin sellar (Issue) de la libreria sdk-java18 mediante usuario y contrasena con respuesta versión 4
     */
-@Ignore
     @Test
     public void testIssueV1IngresoGlobalResponseV4() {
         try {            
@@ -230,7 +229,6 @@ public class CFDI40Test {
     /**
     * Timbrado de CFDI versión 4.0 de tipo ingreso global mediante el servicio de timbrado versión 1 (Json) de la libreria sdk-java18 mediante usuario y contrasena con respuesta versión 4
     */
-@Ignore
     @Test
     public void testIssueJsonV1IngresoGlobalResponseV4() {
         try {            
@@ -254,7 +252,7 @@ public class CFDI40Test {
     @Test
     public void testIssueJsonV1IngresoGlobalExtranjeroResponseV4() {
         try {            
-            SuccessV4Response response = stampServiceToken.StampResponseV4("src/test/resources/CFDI40/CFDI40/CFDI40_Ingreso_GlobalExtranjero.json", "IssueJsonV1", false, false);
+            SuccessV4Response response = stampServiceToken.StampResponseV4("src/test/resources/CFDI40/CFDI40/CFDI40_Ingreso_GlobalExtranjero.json", "IssueJsonV1", true, false);
             Assert.assertNotNull(response);
             Assert.assertNotNull(response.Status);
             Assert.assertNotNull(response.cfdi);

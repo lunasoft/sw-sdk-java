@@ -35,8 +35,16 @@ public class Utils {
     public static String userSW = System.getenv("SDKTEST_USER");
     public static String passwordSW = System.getenv("SDKTEST_PASSWORD");
     public static String tokenSW = System.getenv("SDKTEST_TOKEN");
-    public static String b64Cer = "MIIFsDCCA5igAwIBAgIUMzAwMDEwMDAwMDA1MDAwMDM0MTYwDQYJKoZIhvcNAQELBQAwggErMQ8wDQYDVQQDDAZBQyBVQVQxLjAsBgNVBAoMJVNFUlZJQ0lPIERFIEFETUlOSVNUUkFDSU9OIFRSSUJVVEFSSUExGjAYBgNVBAsMEVNBVC1JRVMgQXV0aG9yaXR5MSgwJgYJKoZIhvcNAQkBFhlvc2Nhci5tYXJ0aW5lekBzYXQuZ29iLm14MR0wGwYDVQQJDBQzcmEgY2VycmFkYSBkZSBjYWxpejEOMAwGA1UEEQwFMDYzNzAxCzAJBgNVBAYTAk1YMRkwFwYDVQQIDBBDSVVEQUQgREUgTUVYSUNPMREwDwYDVQQHDAhDT1lPQUNBTjERMA8GA1UELRMIMi41LjQuNDUxJTAjBgkqhkiG9w0BCQITFnJlc3BvbnNhYmxlOiBBQ0RNQS1TQVQwHhcNMjMwNTE4MTE0MzUxWhcNMjcwNTE4MTE0MzUxWjCB1zEnMCUGA1UEAxMeRVNDVUVMQSBLRU1QRVIgVVJHQVRFIFNBIERFIENWMScwJQYDVQQpEx5FU0NVRUxBIEtFTVBFUiBVUkdBVEUgU0EgREUgQ1YxJzAlBgNVBAoTHkVTQ1VFTEEgS0VNUEVSIFVSR0FURSBTQSBERSBDVjElMCMGA1UELRMcRUtVOTAwMzE3M0M5IC8gVkFEQTgwMDkyN0RKMzEeMBwGA1UEBRMVIC8gVkFEQTgwMDkyN0hTUlNSTDA1MRMwEQYDVQQLEwpTdWN1cnNhbCAxMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtmecO6n2GS0zL025gbHGQVxznPDICoXzR2uUngz4DqxVUC/w9cE6FxSiXm2ap8Gcjg7wmcZfm85EBaxCx/0J2u5CqnhzIoGCdhBPuhWQnIh5TLgj/X6uNquwZkKChbNe9aeFirU/JbyN7Egia9oKH9KZUsodiM/pWAH00PCtoKJ9OBcSHMq8Rqa3KKoBcfkg1ZrgueffwRLws9yOcRWLb02sDOPzGIm/jEFicVYt2Hw1qdRE5xmTZ7AGG0UHs+unkGjpCVeJ+BEBn0JPLWVvDKHZAQMj6s5Bku35+d/MyATkpOPsGT/VTnsouxekDfikJD1f7A1ZpJbqDpkJnss3vQIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQsFAAOCAgEAFaUgj5PqgvJigNMgtrdXZnbPfVBbukAbW4OGnUhNrA7SRAAfv2BSGk16PI0nBOr7qF2mItmBnjgEwk+DTv8Zr7w5qp7vleC6dIsZFNJoa6ZndrE/f7KO1CYruLXr5gwEkIyGfJ9NwyIagvHHMszzyHiSZIA850fWtbqtythpAliJ2jF35M5pNS+YTkRB+T6L/c6m00ymN3q9lT1rB03YywxrLreRSFZOSrbwWfg34EJbHfbFXpCSVYdJRfiVdvHnewN0r5fUlPtR9stQHyuqewzdkyb5jTTw02D2cUfL57vlPStBj7SEi3uOWvLrsiDnnCIxRMYJ2UA2ktDKHk+zWnsDmaeleSzonv2CHW42yXYPCvWi88oE1DJNYLNkIjua7MxAnkNZbScNw01A6zbLsZ3y8G6eEYnxSTRfwjd8EP4kdiHNJftm7Z4iRU7HOVh79/lRWB+gd171s3d/mI9kte3MRy6V8MMEMCAnMboGpaooYwgAmwclI2XZCczNWXfhaWe0ZS5PmytD/GDpXzkX0oEgY9K/uYo5V77NdZbGAjmyi8cE2B2ogvyaN2XfIInrZPgEffJ4AB7kFA2mwesdLOCh0BLD9itmCve3A1FGR4+stO2ANUoiI3w3Tv2yQSg4bjeDlJ08lXaaFCLW2peEXMXjQUk7fmpb5MNuOUTW6BE=";
-	
+    public static String cerb64 = loadResouceAsB64("src/test/resources/CertificadosDePrueba/CSD_EKU9003173C9.cer");
+    public static String keyb64 = loadResouceAsB64("src/test/resources/CertificadosDePrueba/CSD_EKU9003173C9.key");
+    public static String pfxb64 = loadResouceAsB64("src/test/resources/CertificadosDePrueba/EKU9003173C9.pfx");
+    public static String noCer = "30001000000500003416";
+    public static String passwordCsd = "12345678a";
+    public static String passwordPfx = "swpass";
+    public static String rfc = "EKU9003173C9";
+    public static String cancelacionXml = loadResourceAsString("src/test/resources/Extras/CancelacionXML.xml");
+    public static String uuid = "fe4e71b0-8959-4fb9-8091-f5ac4fb0fef8";
+	public static String foliosustitucion = "0e4c30b8-11d8-40d8-894d-ef8b32eb4bdf";
 
     /**
      * Genera un CFDI especifico y lo sella en caso de indicarse.
@@ -124,8 +132,8 @@ public class Utils {
             Document doc = builder.parse(new InputSource(new StringReader(xml)));
             doc.getDocumentElement().setAttribute("Fecha", getDateCFDI());
             doc.getDocumentElement().setAttribute("Folio", randomUUIDString + "sdk-java");
-            doc.getDocumentElement().setAttribute("Certificado", b64Cer);
-            doc.getDocumentElement().setAttribute("NoCertificado", "30001000000500003416");
+            doc.getDocumentElement().setAttribute("Certificado", cerb64);
+            doc.getDocumentElement().setAttribute("NoCertificado", noCer);
             if (signed) {
                 Sign sign = new Sign();
                 String cadena = GenerateCadena(doc, version);
@@ -270,5 +278,23 @@ public class Utils {
     public static void showTestLog(TestName testName, String status) {
         System.out.println(testName.getMethodName());
         System.out.println(status + "\n");
+    }
+
+    private static String loadResouceAsB64(String path) {
+        try {
+            byte[] binaryData = Files.readAllBytes(Paths.get(path));
+            return java.util.Base64.getEncoder().encodeToString(binaryData);
+        } catch (IOException e) {
+            return "";
+        }
+    }
+
+    private static String loadResourceAsString(String path) {
+        try {
+            byte[] binaryData = Files.readAllBytes(Paths.get(path));
+            return new String(binaryData, "UTF-8").trim();
+        } catch (IOException e) {
+            return "";
+        }
     }
 }

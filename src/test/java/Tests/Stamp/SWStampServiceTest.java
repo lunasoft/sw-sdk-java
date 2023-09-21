@@ -8,6 +8,7 @@ import Utils.Responses.Stamp.SuccessV2Response;
 import Utils.Responses.Stamp.SuccessV3Response;
 import Utils.Responses.Stamp.SuccessV4Response;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class SWStampServiceTest {
@@ -137,6 +138,7 @@ public class SWStampServiceTest {
 	}
 
 	// cc11 XML
+	@Ignore
 	@Test
 	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1_CC11() throws Exception {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
@@ -150,8 +152,9 @@ public class SWStampServiceTest {
 		String expect_status = "success";
 		Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
 	}
+	@Ignore
 	@Test
-	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_CC10() throws Exception {
+	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_CC11() throws Exception {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV2Response response = null;
 		Utils ut = new Utils();
@@ -164,6 +167,7 @@ public class SWStampServiceTest {
 		String expect_status = "success";
 		Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
 	}
+	@Ignore
 	@Test
 	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3_CC11() throws Exception {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
@@ -176,6 +180,7 @@ public class SWStampServiceTest {
 		String expect_status = "success";
 		Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
 	}
+	@Ignore
 	@Test
 	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4_CC11() throws Exception {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);

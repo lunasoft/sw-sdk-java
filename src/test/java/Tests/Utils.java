@@ -43,8 +43,9 @@ public class Utils {
     public static String passwordPfx = "swpass";
     public static String rfc = "EKU9003173C9";
     public static String cancelacionXml = loadResourceAsString("src/test/resources/Extras/CancelacionXML.xml");
+    public static String aceptacionRechazoXml = loadResourceAsString("src/test/resources/Extras/AceptacionRechazo.xml");
     public static String uuid = "fe4e71b0-8959-4fb9-8091-f5ac4fb0fef8";
-	public static String foliosustitucion = "0e4c30b8-11d8-40d8-894d-ef8b32eb4bdf";
+    public static String foliosustitucion = "0e4c30b8-11d8-40d8-894d-ef8b32eb4bdf";
 
     /**
      * Genera un CFDI especifico y lo sella en caso de indicarse.

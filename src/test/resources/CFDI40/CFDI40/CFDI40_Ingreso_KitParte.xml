@@ -3,7 +3,7 @@
     xmlns:cfdi="http://www.sat.gob.mx/cfd/4"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" NoCertificado="30001000000400002434">
     <cfdi:Emisor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="601" />
-    <cfdi:Receptor Rfc="URE180429TM6" Nombre="UNIVERSIDAD ROBOTICA ESPAÑOLA" DomicilioFiscalReceptor="65000" RegimenFiscalReceptor="601" UsoCFDI="G01" />
+    <cfdi:Receptor Rfc="URE180429TM6" Nombre="UNIVERSIDAD ROBOTICA ESPAÑOLA" DomicilioFiscalReceptor="86991" RegimenFiscalReceptor="601" UsoCFDI="G01" />
     <cfdi:Conceptos>
         <cfdi:Concepto ClaveProdServ="51241200" NoIdentificacion="137381" Cantidad="1" ClaveUnidad="H87" Unidad="Pieza" Descripcion="FORMULA MAGISTRAL" ValorUnitario="200.00" Importe="200.00" ObjetoImp="01">
             <cfdi:Parte ClaveProdServ="51241200" NoIdentificacion="IM050" Cantidad="1" Unidad="PIEZA" Descripcion="25311FM00239 (LUARIL ETER SULFATO DE SODIO VEHICULO CBP 300ML), ACEITE AJONJOLI 150CC, ACEITE DE ALMENDRAS DULCES 150CC, TALCO 10GR, OXIDO DE ZINC 10GR." ValorUnitario="736.89" Importe="736.89" />

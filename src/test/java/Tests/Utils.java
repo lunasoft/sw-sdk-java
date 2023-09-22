@@ -17,7 +17,6 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.transform.dom.DOMSource;
 import org.apache.commons.codec.binary.Base64;
 import org.junit.rules.TestName;
-
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -36,6 +35,17 @@ public class Utils {
     public static String userSW = System.getenv("SDKTEST_USER");
     public static String passwordSW = System.getenv("SDKTEST_PASSWORD");
     public static String tokenSW = System.getenv("SDKTEST_TOKEN");
+    public static String cerb64 = loadResouceAsB64("src/test/resources/CertificadosDePrueba/CSD_EKU9003173C9.cer");
+    public static String keyb64 = loadResouceAsB64("src/test/resources/CertificadosDePrueba/CSD_EKU9003173C9.key");
+    public static String pfxb64 = loadResouceAsB64("src/test/resources/CertificadosDePrueba/EKU9003173C9.pfx");
+    public static String noCer = "30001000000500003416";
+    public static String passwordCsd = "12345678a";
+    public static String passwordPfx = "swpass";
+    public static String rfc = "EKU9003173C9";
+    public static String cancelacionXml = loadResourceAsString("src/test/resources/Extras/CancelacionXML.xml");
+    public static String aceptacionRechazoXml = loadResourceAsString("src/test/resources/Extras/AceptacionRechazo.xml");
+    public static String uuid = "fe4e71b0-8959-4fb9-8091-f5ac4fb0fef8";
+    public static String foliosustitucion = "0e4c30b8-11d8-40d8-894d-ef8b32eb4bdf";
 
     /**
      * Genera un CFDI especifico y lo sella en caso de indicarse.
@@ -123,6 +133,8 @@ public class Utils {
             Document doc = builder.parse(new InputSource(new StringReader(xml)));
             doc.getDocumentElement().setAttribute("Fecha", getDateCFDI());
             doc.getDocumentElement().setAttribute("Folio", randomUUIDString + "sdk-java");
+            doc.getDocumentElement().setAttribute("Certificado", cerb64);
+            doc.getDocumentElement().setAttribute("NoCertificado", noCer);
             if (signed) {
                 Sign sign = new Sign();
                 String cadena = GenerateCadena(doc, version);
@@ -158,9 +170,14 @@ public class Utils {
      * @return String
      */
     private String getDateCFDI() {
-        SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-        date.setTimeZone(TimeZone.getTimeZone("America/Mexico_City"));
-        return date.format(new Date());
+        Date date = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.HOUR_OF_DAY, -1); // Restar una hora
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        sdf.setTimeZone(TimeZone.getTimeZone("America/Mexico_City"));
+        String realDate = sdf.format(calendar.getTime());
+        return realDate;
     }
 
     private String GenerateCadena(Document xml, String version)
@@ -183,39 +200,40 @@ public class Utils {
     }
 
     public String genComercioExterior(boolean isBase64) {
-        return getCFDI("src/test/resources/CFDI33/ComercioExterior11.xml", true, "3.3", isBase64);
+        return getCFDI("src/test/resources/CFDI40/ComercioExterior11/CFDI40_ComercioExterior.xml", true, "4.0",
+                isBase64);
     }
 
     public String genComercioExteriorTimbrePrevio(boolean isBase64) {
-        return getCFDI("src/test/resources/CFDI33/ComercioExterior11TimbrePrevio.xml", true, "3.3", isBase64);
+        return getCFDI("src/test/resources/Extras/ComercioExterior_Timbrado.xml", true, "4.0", isBase64);
     }
 
-    public String genPagos10(boolean isBase64) {
-        return getCFDI("src/test/resources/CFDI33/Pago10.xml", true, "3.3", isBase64);
+    public String genPagos20(boolean isBase64) {
+        return getCFDI("src/test/resources/CFDI40/Pagos20/CFDI40_Pago.xml", true, "4.0", isBase64);
     }
 
-    public String genPagos10TimbrePrevio(boolean isBase64) {
-        return getCFDI("src/test/resources/CFDI33/Pago10TimbrePrevio.xml", true, "3.3", isBase64);
+    public String genPagos20TimbrePrevio(boolean isBase64) {
+        return getCFDI("src/test/resources/Extras/Pagos20_Timbrado.xml", true, "4.0", isBase64);
     }
 
     public String genNomina12(boolean isBase64) {
-        return getCFDI("src/test/resources/CFDI33/Nomina12.xml", true, "3.3", isBase64);
+        return getCFDI("src/test/resources/CFDI40/Nomina12/CFDI40_Nomina.xml", true, "4.0", isBase64);
     }
 
     public String genNomina12TimbrePrevio(boolean isBase64) {
-        return getCFDI("src/test/resources/CFDI33/Nomina12TimbrePrevio.xml", true, "3.3", isBase64);
+        return getCFDI("src/test/resources/Extras/Nomina12_Timbrado.xml", true, "4.0", isBase64);
     }
 
     public String StringgenBasico(boolean isBase64) {
-        return getCFDI("src/test/resources/CFDI33/CFDI33.xml", true, "3.3", isBase64);
+        return getCFDI("src/test/resources/CFDI40/CFDI40/CFDI40_Ingreso.xml", true, "4.0", isBase64);
     }
 
     public String StringgenBasicoTimbrePrevio(boolean isBase64) {
-        return getCFDI("src/test/resources/CFDI33/CFDI33TimbrePrevio.xml", true, "3.3", isBase64);
+        return getCFDI("src/test/resources/Extras/CFDI40_Ingreso_Timbrado.xml", true, "4.0", isBase64);
     }
 
     public String JsonGenBasico(boolean isBase64) {
-        return getJsonCFDI("src/test/resources/CFDI33/CFDI33.json", isBase64);
+        return getJsonCFDI("src/test/resources/CFDI40/CFDI40/CFDI40_Ingreso.json", isBase64);
     }
 
     public static boolean isValidB64(String value) {
@@ -225,7 +243,7 @@ public class Utils {
     public static String getCertificadoB64() {
         byte[] fileContent;
         try {
-            fileContent = Files.readAllBytes(Paths.get("src/test/resources/CertificadosDePrueba/CSD_EKU9003173C9.key"));
+            fileContent = Files.readAllBytes(Paths.get("src/test/resources/CertificadosDePrueba/CSD_EKU9003173C9.cer"));
             return new String(fileContent, "UTF-8");
         } catch (IOException e) {
             e.printStackTrace();
@@ -261,5 +279,23 @@ public class Utils {
     public static void showTestLog(TestName testName, String status) {
         System.out.println(testName.getMethodName());
         System.out.println(status + "\n");
+    }
+
+    private static String loadResouceAsB64(String path) {
+        try {
+            byte[] binaryData = Files.readAllBytes(Paths.get(path));
+            return java.util.Base64.getEncoder().encodeToString(binaryData);
+        } catch (IOException e) {
+            return "";
+        }
+    }
+
+    private static String loadResourceAsString(String path) {
+        try {
+            byte[] binaryData = Files.readAllBytes(Paths.get(path));
+            return new String(binaryData, "UTF-8").trim();
+        } catch (IOException e) {
+            return "";
+        }
     }
 }

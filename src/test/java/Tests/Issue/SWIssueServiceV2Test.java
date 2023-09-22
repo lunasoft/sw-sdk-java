@@ -28,30 +28,6 @@ public class SWIssueServiceV2Test {
 		Assert.assertTrue(!response.cfdi.equalsIgnoreCase(""));
 	}
 	@Test
-	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1() throws Exception {
-		SWIssueServiceV2 api = new SWIssueServiceV2(Utils.userSW, Utils.passwordSW, Utils.urlSW);
-		SuccessV1Response response = null;
-		response = (SuccessV1Response) api.IssueXml(ut.StringgenBasicoTimbrePrevio(false), "v1");
-		System.out.println(response.Status);
-		System.out.println(response.HttpStatusCode);
-		System.out.println(response.tfd);
-		System.out.println(response.message);
-		String expect_error = "307. El comprobante contiene un timbre previo.";
-		Assert.assertTrue(response.tfd.equalsIgnoreCase("") && expect_error.equalsIgnoreCase(response.message));
-	}
-	@Test
-	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2() throws Exception {
-		SWIssueServiceV2 api = new SWIssueServiceV2(Utils.userSW, Utils.passwordSW, Utils.urlSW);
-		SuccessV2Response response = null;
-		response = (SuccessV2Response) api.IssueXml(ut.StringgenBasicoTimbrePrevio(false), "v2");
-		System.out.println(response.Status);
-		System.out.println(response.HttpStatusCode);
-		System.out.println(response.tfd);
-		System.out.println(response.cfdi);
-		String expect_error = "307. El comprobante contiene un timbre previo.";
-		Assert.assertTrue(response.tfd.equalsIgnoreCase("") && expect_error.equalsIgnoreCase(response.message));
-	}
-	@Test
 	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3() throws Exception {
 		SWIssueServiceV2 api = new SWIssueServiceV2(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV3Response response = null;

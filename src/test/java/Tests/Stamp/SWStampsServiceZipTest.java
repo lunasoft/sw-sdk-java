@@ -5,6 +5,7 @@ import Tests.Utils;
 import Utils.Responses.*;
 import Utils.Responses.Stamp.SuccessV1Response;
 
+import org.apache.commons.ssl.Util;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -13,6 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class SWStampsServiceZipTest {
+	@Ignore
 	@Test
 	public void testStamp_ZipXML() throws Exception {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);

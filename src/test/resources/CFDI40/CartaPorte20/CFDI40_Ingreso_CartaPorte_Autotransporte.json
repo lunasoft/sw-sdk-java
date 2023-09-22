@@ -2,7 +2,7 @@
 	"Version": "4.0",
 	"Serie": "CFDI",
 	"Folio": "Folio",
-	"Fecha": "2023-05-12T01:01:01",
+	"Fecha": "2023-09-19T01:01:01",
 	"Sello": "e",
 	"FormaPago": "03",
 	"FormaPagoSpecified": true,
@@ -30,7 +30,7 @@
 	"Receptor": {
 		"Rfc": "URE180429TM6",
 		"Nombre": "UNIVERSIDAD ROBOTICA ESPAÑOLA",
-		"DomicilioFiscalReceptor": "65000",
+		"DomicilioFiscalReceptor": "86991",
 		"RegimenFiscalReceptor": "601",
 		"UsoCFDI": "G01"
 	},

@@ -22,7 +22,7 @@ public class SWStorageServiceTest {
                 StorageResponse res = (StorageResponse) storage
                                 .getXml(UUID.fromString("4714f6f7-ccb4-4eb5-8ba6-3a523092e2b4"));
                 Assert.assertNotNull(res);
-                Assert.assertEquals(res.Status, "success");
+                Assert.assertEquals(res.message, "success", res.Status);
                 Assert.assertNotNull(res.getData());
         }
         /**
@@ -35,7 +35,7 @@ public class SWStorageServiceTest {
                 StorageResponse res = (StorageResponse) storage
                                 .getXml(UUID.fromString("4714f6f7-ccb4-4eb5-8ba6-3a523092e2b4"));
                 Assert.assertNotNull(res);
-                Assert.assertEquals(res.Status, "success");
+                Assert.assertEquals(res.message, "success", res.Status);
                 // Assert.assertNotNull(res.getData());
                 // Assert.assertTrue(res.getData().getRecords().size() > 0);
         }

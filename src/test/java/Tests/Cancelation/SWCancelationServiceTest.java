@@ -3,8 +3,6 @@ package Tests.Cancelation;
 import Services.Cancelation.SWCancelationService;
 import Tests.Utils;
 import Utils.Responses.Cancelation.CancelationResponse;
-
-import org.apache.commons.ssl.Util;
 import org.junit.Assert;
 import org.junit.Test;
 

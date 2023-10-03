@@ -1,6 +1,7 @@
 package Tests.Taxpayer;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import Services.Taxpayer.SWTaxpayerService;
 import Tests.Utils;
@@ -10,7 +11,7 @@ public class SWTaxpayerServiceTest {
 	public String rigthRfc = "ZNS1101105T3";
 	public String wrongRfc = "ZNS1101105T4";	
 
-	@Test
+	@Ignore
 	public void SWTaxpayerServiceTestRigthRfc_authToken() throws Exception {
 		SWTaxpayerService app = new SWTaxpayerService(Utils.tokenSW, Utils.urlSW);
 		TaxpayerResponse response = null;

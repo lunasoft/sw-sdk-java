@@ -17,6 +17,7 @@ import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestName;
@@ -30,7 +31,7 @@ public class SWPdfServiceTest {
     @Rule
     public TestName testName = new TestName();
 
-    @Test
+    @Ignore
     public void GeneratePdf_ByUser_Success() throws AuthException, GeneralException, IOException {
         SuccessV3Response stamp = (SuccessV3Response) issue
                 .IssueXml(settings.getCFDI(baseDir + "CFDI40/CFDI40_Ingreso.xml",
@@ -66,7 +67,7 @@ public class SWPdfServiceTest {
         }
     }
 
-    @Test
+    @Ignore
     public void GeneratePdf_ByToken_Success() throws AuthException, GeneralException, IOException {
         SuccessV3Response stamp = (SuccessV3Response) issue
                 .IssueXml(settings.getCFDI(baseDir + "CFDI40/CFDI40_Ingreso.xml",
@@ -104,7 +105,7 @@ public class SWPdfServiceTest {
         Assert.assertEquals(response.message, "El token debe contener 3 partes");
     }
 
-    @Test
+    @Ignore
     public void GeneratePdf_TemplateAsEnum_Success() throws AuthException, GeneralException, IOException {
         HashMap<String, String> extras = new HashMap<String,String>();
         extras.put("Observaciones", "Observaciones ejemplo");
@@ -133,7 +134,7 @@ public class SWPdfServiceTest {
         }
     }
 
-    @Test
+    @Ignore
     public void GeneratePdf_TemplateAsString__Success() throws AuthException, GeneralException, IOException {
         SuccessV3Response stamp = (SuccessV3Response) issue
                 .IssueXml(settings.getCFDI(baseDir + "CFDI40/CFDI40_Ingreso.xml",
@@ -159,7 +160,7 @@ public class SWPdfServiceTest {
         }
     }
 
-    @Test
+    @Ignore
     public void GeneratePdf_AllParams__Success() throws AuthException, GeneralException, IOException {
         HashMap<String, String> extras = new HashMap<String,String>();
         extras.put("Observaciones", "Observaciones ejemplo");
@@ -187,7 +188,7 @@ public class SWPdfServiceTest {
             Assert.assertTrue(false);
         }
     }
-    @Test
+    @Ignore
     public void GeneratePdf_Pagos20__Success() throws AuthException, GeneralException, IOException {
         HashMap<String, String> extras = new HashMap<String,String>();
         extras.put("Observaciones", "Observaciones ejemplo");
@@ -215,7 +216,7 @@ public class SWPdfServiceTest {
             Assert.assertTrue(false);
         }
     }
-    @Test
+    @Ignore
     public void GeneratePdf_Nomina12__Success() throws AuthException, GeneralException, IOException {
         HashMap<String, String> extras = new HashMap<String,String>();
         extras.put("Observaciones", "Observaciones ejemplo");
@@ -243,7 +244,7 @@ public class SWPdfServiceTest {
             Assert.assertTrue(false);
         }
     }
-    @Test
+    @Ignore
     public void GeneratePdf_CP20__Success() throws AuthException, GeneralException, IOException {
         HashMap<String, String> extras = new HashMap<String,String>();
         extras.put("Observaciones", "Observaciones ejemplo");

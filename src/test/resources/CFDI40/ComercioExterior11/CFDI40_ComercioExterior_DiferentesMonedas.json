@@ -2,7 +2,7 @@
   "Version": "4.0",
   "Serie": "Serie",
   "Folio": "Folio",
-  "Fecha": "2022-05-27T00:00:10",
+  "Fecha": "2023-05-12T00:00:10",
   "Sello": "",
   "FormaPago": "99",
   "FormaPagoSpecified": true,
@@ -11,7 +11,7 @@
   "CondicionesDePago": "CondicionesDePago",
   "SubTotal": "1230",
   "Moneda": "EUR",
-  "TipoCambio": "21.77",
+  "TipoCambio": "19.3245",
   "TipoCambioSpecified": true,
   "Total": "1230",
   "TipoDeComprobante": "I",
@@ -27,7 +27,7 @@
   "Receptor": {
     "Rfc": "URE180429TM6",
     "Nombre": "UNIVERSIDAD ROBOTICA ESPAÑOLA",
-    "DomicilioFiscalReceptor": "65000",
+    "DomicilioFiscalReceptor": "86991",
     "RegimenFiscalReceptor": "601",
     "UsoCFDI": "G01"
   },
@@ -39,7 +39,7 @@
             "Base": "1230",
             "Impuesto": "002",
             "TipoFactor": "Tasa",
-            "TasaOCuota": "0",
+            "TasaOCuota": "0.000000",
             "TasaOCuotaSpecified": true,
             "Importe": "0",
             "ImporteSpecified": true
@@ -63,7 +63,7 @@
         "Base": "1230",
         "Impuesto": "002",
         "TipoFactor": "Tasa",
-        "TasaOCuota": "0",
+        "TasaOCuota": "0.000000",
         "Importe": "0",
         "TasaOCuotaSpecified": true,
         "ImporteSpecified": true
@@ -82,7 +82,7 @@
           "CertificadoOrigen": "0",
           "Incoterm": "FOB",
           "Subdivision": "0",
-          "TipoCambioUSD": "19.7933",
+          "TipoCambioUSD": "17.5845",
           "TotalUSD": "1351.63",
           "Emisor": {
             "Domicilio": {

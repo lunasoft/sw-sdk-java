@@ -116,4 +116,17 @@ public class SWPdfService extends SWService {
         PdfRequest req = new PdfRequest();
         return req.sendRequest(settings);
     }
+    /**
+     * Servicio para regenerar el PDF de un comprobante previamente timbrado.
+     * @param uuid UUID del comprobante a regenerar el PDF.
+     * @return {@link} Utils.Responses.Pdf.PdfResponse
+     * @throws GeneralException
+     * @throws AuthException
+     * @throws IOException
+     */
+    public IResponse RegeneratePdf(String uuid) throws GeneralException, AuthException, IOException{
+        PdfOptionsRequest settings = new PdfOptionsRequest(getToken(), uuid, RequestHelper.stringEmptyOrNull(getURIAPI()) ? getURI() : getURIAPI(), getProxyHost(), getProxyPort());
+        PdfRequest request = new PdfRequest();
+        return request.sendRequestUuid(settings);
+    }
 }

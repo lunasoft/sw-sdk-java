@@ -10,10 +10,12 @@ import Utils.Responses.IResponse;
 import Utils.Responses.Pdf.PdfResponse;
 import Utils.Responses.Stamp.SuccessV3Response;
 
+import java.io.Console;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.logging.Log;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Rule;
@@ -269,5 +271,39 @@ public class SWPdfServiceTest {
         } else {
             Assert.assertTrue(false);
         }
+    }
+    @Test
+    public void RegeneratePdf_Success() throws GeneralException, AuthException, IOException {
+        SWPdfService pdf = new SWPdfService(Utils.tokenSW, Utils.urlApiSW);
+        PdfResponse response = (PdfResponse)pdf.RegeneratePdf("4714f6f7-ccb4-4eb5-8ba6-3a523092e2b4");
+        Assert.assertNotNull(response);
+        System.out.println(response.message);
+        Assert.assertTrue(response.Status.equals("success"));
+        Assert.assertTrue(!response.message.isEmpty());
+    }
+    @Test
+    public void RegeneratePdf_Auth_Success() throws AuthException, GeneralException, IOException{
+        SWPdfService pdf = new SWPdfService(Utils.userSW, Utils.passwordSW, Utils.urlApiSW, Utils.urlSW);
+        PdfResponse response = (PdfResponse)pdf.RegeneratePdf("4714f6f7-ccb4-4eb5-8ba6-3a523092e2b4");
+        Assert.assertNotNull(response);
+        System.out.println(response.message);
+        Assert.assertTrue(response.Status.equals("success"));
+        Assert.assertTrue(!response.message.isEmpty());
+    }
+    @Test
+    public void RegeneratePdf_Error() throws GeneralException, AuthException, IOException{
+        SWPdfService pdf = new SWPdfService(Utils.tokenSW, Utils.urlApiSW);
+        PdfResponse response = (PdfResponse)pdf.RegeneratePdf(null);
+        Assert.assertNotNull(response);
+        Assert.assertTrue(response.Status.equals("error"));
+        Assert.assertTrue(!response.message.isEmpty());
+    }
+    @Test
+    public void RegeneratePdf_Auth_Error() throws AuthException, GeneralException, IOException{
+        SWPdfService pdf = new SWPdfService(Utils.userSW, Utils.passwordSW, Utils.urlApiSW, Utils.urlSW);
+        PdfResponse response = (PdfResponse)pdf.RegeneratePdf("496c20ab-5e0a-47d8-85ac-9a82dd89f4b4");
+        Assert.assertNotNull(response);
+        Assert.assertTrue(response.Status.equals("error"));
+        Assert.assertTrue(!response.message.isEmpty());
     }
 }

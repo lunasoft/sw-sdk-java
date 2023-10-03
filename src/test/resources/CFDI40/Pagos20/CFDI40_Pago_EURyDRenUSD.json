@@ -2,7 +2,7 @@
   "Version": "4.0",
   "Serie": "S101",
   "Folio": "BS/2022/01/0002",
-  "Fecha": "2022-04-07T11:00:44",
+  "Fecha": "2023-05-12T11:00:44",
   "Sello": "",
   "NoCertificado": "30001000000400002434",
   "Certificado": "",
@@ -20,7 +20,7 @@
   "Receptor": {
     "Rfc": "URE180429TM6",
     "Nombre": "UNIVERSIDAD ROBOTICA ESPAÑOLA",
-    "DomicilioFiscalReceptor": "65000",
+    "DomicilioFiscalReceptor": "86991",
     "RegimenFiscalReceptor": "601",
     "UsoCFDI": "CP01"
   },

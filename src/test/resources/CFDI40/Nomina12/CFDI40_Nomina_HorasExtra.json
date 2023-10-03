@@ -2,7 +2,7 @@
   "Version": "4.0",
   "Serie": "SW",
   "Folio": "123456",
-  "Fecha": "2022-10-03T00:00:00",
+  "Fecha": "2023-05-12T00:00:00",
   "Sello": "",
   "NoCertificado": "",
   "Certificado": "",
@@ -23,7 +23,7 @@
   "Receptor": {
     "Rfc": "XOJI740919U48",
     "Nombre": "INGRID XODAR JIMENEZ",
-    "DomicilioFiscalReceptor": "88965",
+    "DomicilioFiscalReceptor": "76028",
     "RegimenFiscalReceptor": "605",
     "UsoCFDI": "CN01"
   },

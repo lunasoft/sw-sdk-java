@@ -53,7 +53,7 @@
         <cfdi:Traslados>
             <cfdi:Traslado Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Base="173.80" Importe="27.81" />
             <cfdi:Traslado Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.000000" Base="250" Importe="0.00" />
-            <cfdi:Traslado Impuesto="002" TipoFactor="Exento" TasaOCuota="0.000000" Base="98.99" Importe="0.00" />
+            <cfdi:Traslado Impuesto="002" TipoFactor="Exento" Base="98.99" />
         </cfdi:Traslados>
     </cfdi:Impuestos>
 </cfdi:Comprobante>

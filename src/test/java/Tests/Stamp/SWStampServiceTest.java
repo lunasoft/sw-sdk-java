@@ -137,9 +137,10 @@ public class SWStampServiceTest {
 		Assert.assertTrue(valid_cfdi && valid_qr && valid_sellocfdi && valid_sellosat);
 	}
 
-	// cc10 XML
+	// cc11 XML
 	@Ignore
-	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1_CC10() throws Exception {
+	@Test
+	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1_CC11() throws Exception {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV1Response response = null;
 		Utils ut = new Utils();
@@ -152,7 +153,8 @@ public class SWStampServiceTest {
 		Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
 	}
 	@Ignore
-	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_CC10() throws Exception {
+	@Test
+	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_CC11() throws Exception {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV2Response response = null;
 		Utils ut = new Utils();
@@ -166,7 +168,8 @@ public class SWStampServiceTest {
 		Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
 	}
 	@Ignore
-	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3_CC10() throws Exception {
+	@Test
+	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3_CC11() throws Exception {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV3Response response = null;
 		Utils ut = new Utils();
@@ -178,7 +181,8 @@ public class SWStampServiceTest {
 		Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
 	}
 	@Ignore
-	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4_CC10() throws Exception {
+	@Test
+	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4_CC11() throws Exception {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV4Response response = null;
 		Utils ut = new Utils();
@@ -198,7 +202,7 @@ public class SWStampServiceTest {
 
 	}
 	@Test
-	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1_b64_CC10() throws Exception {
+	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1_b64_CC11() throws Exception {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV1Response response = null;
 		Utils ut = new Utils();
@@ -209,7 +213,7 @@ public class SWStampServiceTest {
 		Assert.assertTrue(Utils.isValidB64(response.tfd));
 	}
 	@Test
-	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_b64_CC10() throws Exception {
+	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_b64_CC11() throws Exception {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV2Response response = null;
 		Utils ut = new Utils();
@@ -222,7 +226,7 @@ public class SWStampServiceTest {
 		Assert.assertTrue(cfdi_valid && tfd_valid);
 	}
 	@Test
-	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3_b64_CC10() throws Exception {
+	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3_b64_CC11() throws Exception {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV3Response response = null;
 		Utils ut = new Utils();
@@ -233,7 +237,7 @@ public class SWStampServiceTest {
 		Assert.assertTrue(Utils.isValidB64(response.cfdi));
 	}
 	@Test
-	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4_b64_CC10() throws Exception {
+	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4_b64_CC11() throws Exception {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV4Response response = null;
 		Utils ut = new Utils();
@@ -256,13 +260,13 @@ public class SWStampServiceTest {
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	////////////////////////////////////////// PAGOS10/////////////////////////////////////////////////////////////////////////////////////////
-	@Ignore
-	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1_PAGOS10() throws Exception {
+	////////////////////////////////////////// PAGOS20/////////////////////////////////////////////////////////////////////////////////////////
+	@Test
+	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1_PAGOS20() throws Exception {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV1Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV1Response) api.Stamp(ut.genPagos10(false), "v1");
+		response = (SuccessV1Response) api.Stamp(ut.genPagos20(false), "v1");
 		System.out.println(response.Status);
 		System.out.println(response.message);
 		System.out.println(response.HttpStatusCode);
@@ -271,12 +275,12 @@ public class SWStampServiceTest {
 		Assert.assertTrue(
 				expect_status.equalsIgnoreCase(response.Status));
 	}
-	@Ignore
-	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_PAGOS10() throws Exception {
+	@Test
+	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_PAGOS20() throws Exception {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV2Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV2Response) api.Stamp(ut.genPagos10(false), "v2");
+		response = (SuccessV2Response) api.Stamp(ut.genPagos20(false), "v2");
 		System.out.println(response.Status);
 		System.out.println(response.message);
 		System.out.println(response.HttpStatusCode);
@@ -285,12 +289,12 @@ public class SWStampServiceTest {
 		String expect_status = "success";
 		Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
 	}
-	@Ignore
-	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3_PAGOS10() throws Exception {
+	@Test
+	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3_PAGOS20() throws Exception {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV3Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV3Response) api.Stamp(ut.genPagos10(false), "v3");
+		response = (SuccessV3Response) api.Stamp(ut.genPagos20(false), "v3");
 		System.out.println(response.Status);
 		System.out.println(response.message);
 		System.out.println(response.HttpStatusCode);
@@ -299,12 +303,12 @@ public class SWStampServiceTest {
 		String expect_status = "success";
 		Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
 	}
-	@Ignore
-	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4_PAGOS10() throws Exception {
+	@Test
+	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4_PAGOS20() throws Exception {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV4Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV4Response) api.Stamp(ut.genPagos10(false), "V4");
+		response = (SuccessV4Response) api.Stamp(ut.genPagos20(false), "V4");
 		System.out.println(response.Status);
 		System.out.println(response.cfdi);
 		System.out.println(response.qrCode);
@@ -320,11 +324,11 @@ public class SWStampServiceTest {
 
 	}
 	@Test
-	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1_b64_PAGOS10() throws Exception {
+	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1_b64_PAGOS20() throws Exception {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV1Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV1Response) api.Stamp(ut.genPagos10(true), "v1", true);
+		response = (SuccessV1Response) api.Stamp(ut.genPagos20(true), "v1", true);
 		System.out.println(response.Status);
 		System.out.println(response.message);
 		System.out.println(response.HttpStatusCode);
@@ -332,11 +336,11 @@ public class SWStampServiceTest {
 		Assert.assertTrue(Utils.isValidB64(response.tfd));
 	}
 	@Test
-	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_b64_PAGOS10() throws Exception {
+	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2_b64_PAGOS20() throws Exception {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV2Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV2Response) api.Stamp(ut.genPagos10(true), "v2", true);
+		response = (SuccessV2Response) api.Stamp(ut.genPagos20(true), "v2", true);
 		System.out.println(response.Status);
 		System.out.println(response.message);
 		System.out.println(response.HttpStatusCode);
@@ -347,11 +351,11 @@ public class SWStampServiceTest {
 
 	}
 	@Test
-	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3_b64_PAGOS10() throws Exception {
+	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3_b64_PAGOS20() throws Exception {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV3Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV3Response) api.Stamp(ut.genPagos10(true), "v3", true);
+		response = (SuccessV3Response) api.Stamp(ut.genPagos20(true), "v3", true);
 		System.out.println(response.Status);
 		System.out.println(response.message);
 		System.out.println(response.HttpStatusCode);
@@ -359,11 +363,11 @@ public class SWStampServiceTest {
 		Assert.assertTrue(Utils.isValidB64(response.cfdi));
 	}
 	@Test
-	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4_b64_PAGOS10() throws Exception {
+	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4_b64_PAGOS20() throws Exception {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV4Response response = null;
 		Utils ut = new Utils();
-		response = (SuccessV4Response) api.Stamp(ut.genPagos10(true), "V4", true);
+		response = (SuccessV4Response) api.Stamp(ut.genPagos20(true), "V4", true);
 		System.out.println(response.Status);
 		System.out.println(response.message);
 		System.out.println(response.cfdi);

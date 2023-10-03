@@ -2,8 +2,6 @@ package Utils.Requests.Pdf;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.util.UUID;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -13,10 +11,10 @@ import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.message.BasicHeader;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import Exceptions.AuthException;
 import Exceptions.GeneralException;
 import Utils.Helpers.RequestHelper;
@@ -80,5 +78,37 @@ public class PdfRequest implements IRequestor{
 		} catch (ClientProtocolException e) {
             throw new GeneralException(500, e.getMessage());
         }
+	}
+	public IResponse sendRequestUuid(IRequest request) throws ClientProtocolException, IOException, GeneralException {
+		try {
+			CloseableHttpClient client = HttpClients.createDefault();
+			HttpPost httppost = new HttpPost(request.URI + ((PdfOptionsRequest) request).getUuid());
+			RequestHelper.setTimeOut(request.options, 4000);
+			RequestHelper.setProxy(request.options, request.proxyHost, request.proxyPort);
+			httppost.setConfig(request.options.build());
+			httppost.setHeader(new BasicHeader("Authorization", "bearer " + request.Token));
+			CloseableHttpResponse responseB = client.execute(httppost);
+
+			HttpEntity entity = responseB.getEntity();
+			String responseString = EntityUtils.toString(entity, "UTF-8");
+			int status = responseB.getStatusLine().getStatusCode();
+			client.close();
+			responseB.close();
+			if (!responseString.isEmpty() && status < 500) {
+				JSONObject body = new JSONObject(responseString);
+				String messageDetail = "";
+				if (status == 200) {
+					return new PdfResponse(status, "success", body.getString("message"), messageDetail);
+				} else {
+					return new PdfResponse(status, "error", body.getString("message"),
+							messageDetail);
+				}
+			} else {
+				return new PdfResponse(status, "error", responseB.getStatusLine().getReasonPhrase(),
+						responseString);
+			}
+		} catch (JSONException e) {
+			throw new GeneralException(500, e.getMessage());
+		}
 	}
 }

@@ -1,6 +1,8 @@
-[![Smarter Web](http://sw.com.mx/images/logo.png)](http://sw.com.mx/)
+[![Smarter Web](https://sw.com.mx/hubfs/Webpage/logo-swsapien.svg)](http://sw.com.mx/)
 
 # SDK JAVA #
+
+Librería JAVA para el consumo de los servicios de SW sapien®.
 
 Registrate en sw.com.mx
 
@@ -25,10 +27,9 @@ Descargas el modulo mediante Maven:
         <dependency>
             <groupId>mx.com.sw.services</groupId>
             <artifactId>SW-JAVA</artifactId>
-
             <version>0.0.4.1</version>
-
         </dependency>
+
 </dependencies>
 ```
 ## Instalación manual (sin Maven) ##
@@ -37,74 +38,40 @@ Descargar el modulo directamente de los siguientes links:
 * [Relase Github](https://github.com/lunasoft/sw-sdk-java/releases)
 * [Maven](https://oss.sonatype.org/service/local/artifact/maven/redirect?r=releases&g=mx.com.sw.services&a=SW-JAVA&v=0.0.3.4&e=jar)
 
-Asi como instalar manualmente cada una de las dependencias:
+Así como instalar manualmente cada una de las dependencias:
 * [org.json](http://www.json.org/java)
 * [httpclient 4.3.6](http://hc.apache.org/downloads.cgi)
 * [httpmime 4.3.6](http://hc.apache.org/downloads.cgi)
 * [httpasyncclient 4.0.2](http://hc.apache.org/downloads.cgi)
 
-Alternativamente tambien se cuenta con un archivo JAR en el que se incluyen todas las dependencias, este se encuentra en la carpeta [Relase Github](https://github.com/lunasoft/sw-sdk-java/releases),  con el sufijo _"jar-with-dependencies.jar"_
+Alternativamente, tambien se cuenta con un archivo JAR en el que se incluyen todas las dependencias, este se encuentra en la carpeta [Relase Github](https://github.com/lunasoft/sw-sdk-java/releases),  con el sufijo _"jar-with-dependencies.jar"_
 
 
-
-# Timbrar XML #
-
-```java
-try{
-	//Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
-    //Se especifica el base path, esto para consumir el api de pruebas o productivo
-    SWStampService sdk = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
-    //Si deseas utilizar un proxy customizado, debes agregar dos parametros mas
-    //Se inicializa un objeto response, que obtendra la respuesta del api
-    SuccessV1Response response = null;
-    //Se asigna el resultado de la respuesta a dicho objeto
-    //Se ejecuta el metodo "Stamp", que timbrara nuestro comprobante posteriormente sellado, asi como la versión del servicio de timbrado,
-    //puede ver mas de estas versiones en el apartado "Versiones de timbrado"
-    response = (SuccessV1Response)sdk.Stamp("String o File XML","v1");
-    //El objeto response tendra así los atributos:
-    // Status: estado de la petición procesada, puede ser : "success", "fail", "error"
-    // HttpStatusCode: Codigo de respuesta HTTP del servidor: eg. 200, 400, 500
-    // tfd: El campo donde se encuentra el timbre fiscal digital
-    if(response.Status.equals("success")){
-	    System.out.println(response.Status);
-        System.out.println(response.HttpStatusCode);
-        System.out.println(response.tfd);
-    }
-    else{
-	    //En caso de obtener estatus "fail", "error"
-        //Se puede identificar el error en los campos message, messageDetail
-        System.out.println(response.message);
-        System.out.println(response.messageDetail);
-        // ***Como observacion***
-        //El campo messageDetail puede no incluirse en ciertos errores                        
-    }
-}
-catch(Exception e){
-	System.out.println(e.getMessage());
-}
-            
-```
-
-## Timbrar CFDI V1 ##
-TimbrarV1 Recibe el contenido de un XML ya emitido (sellado) en formato String ó tambien puede ser en Base64, posteriormente si la factura y el token son correctos devuelve el complemento timbre en un string (TFD), en caso contrario lanza una excepción.
+# Timbrado #
+<details>
+<summary><b>Timbrado</b></summary>
+Métodos mediante los cuales se envía un XML previamente sellado.
+<details><summary><b>Timbrado CFDI V1</b></summary>
+    
+<br>El método **TimbrarV1** recibe el contenido de un **XML** ya emitido (sellado) en formato **String**  o tambien puede ser en **Base64**, posteriormente si la factura y el token son correctos devuelve el complemento timbre en un string (**TFD**), en caso contrario lanza una excepción.
 
 **Timbrar XML en formato string utilizando usuario y contraseña**
 ```java
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
-    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    //Se especifica el base path, esto para consumir el API de pruebas o productivo
     SWStampService sdk = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
-    //Se inicializa un objeto response, que obtendra la respuesta del api
+    //Se inicializa un objeto response, que obtendrá la respuesta del API
     SuccessV1Response response = null;
     //Se asigna el resultado de la respuesta a dicho objeto
-    //Se ejecuta el metodo "Stamp", que timbrara nuestro comprobante posteriormente sellado, asi como la versión del servicio de timbrado,
-    //puede ver mas de estas versiones en el apartado "Versiones de timbrado"
+    //Se ejecuta el método "Stamp", que timbrara nuestro comprobante posteriormente sellado, así como la versión del servicio de timbrado,
+    //puede ver más de estas versiones en el apartado "Versiones de timbrado"
     response = (SuccessV1Response) sdk.Stamp(stringXML, "v1");
-    //El objeto response tendra así los atributos:
-    // Status: estado de la petición procesada, puede ser : "success", "fail", "error"
-    // HttpStatusCode: Codigo de respuesta HTTP del servidor: eg. 200, 400, 500
+    //El objeto response tendrá así los atributos:
+    // Status: estado de la petición procesada, puede ser: "success", "fail", "error"
+    // HttpStatusCode: Código  de respuesta HTTP del servidor: eg. 200, 400, 500
     // Data: Cuerpo de la respuesta que arroja el servidor
-    //En este caso arrojara el complemento timbre: {"tfd":"<Complemento>"}
+    //En este caso arrojará el complemento timbre: {"tfd":"<Complemento>"}
     System.out.println(response.Status);
     System.out.println(response.HttpStatusCode);
     System.out.println(response.tfd);
@@ -118,19 +85,19 @@ try {
 ```java
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
-    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    //Se especifica el base path, esto para consumir el API de pruebas o productivo
     SWStampService sdk = new SWStampService("T2lYQ0t4L0R....", "http://services.test.sw.com.mx");
-    //Se inicializa un objeto response, que obtendra la respuesta del api
+    //Se inicializa un objeto response, que obtendrá la respuesta del API
     SuccessV1Response response = null;
     //Se asigna el resultado de la respuesta a dicho objeto
-    //Se ejecuta el metodo "Stamp", que timbrara nuestro comprobante posteriormente sellado, asi como la versión del servicio de timbrado,
-    //puede ver mas de estas versiones en el apartado "Versiones de timbrado"
+    //Se ejecuta el método "Stamp", que timbrara nuestro comprobante posteriormente sellado, así como la versión del servicio de timbrado,
+    //puede ver más de estas versiones en el apartado "Versiones de timbrado"
     response = (SuccessV1Response) sdk.Stamp(stringXML, "v1");
-    //El objeto response tendra así los atributos:
-    // Status: estado de la petición procesada, puede ser : "success", "fail", "error"
-    // HttpStatusCode: Codigo de respuesta HTTP del servidor: eg. 200, 400, 500
+    //El objeto response tendrá así los atributos:
+    // Status: estado de la petición procesada, puede ser:  "success", "fail", "error"
+    // HttpStatusCode: Código  de respuesta HTTP del servidor: eg. 200, 400, 500
     // Data: Cuerpo de la respuesta que arroja el servidor
-    //En este caso arrojara el complemento timbre: {"tfd":"<Complemento>"}
+    //En este caso arrojará el complemento timbre: {"tfd":"<Complemento>"}
     System.out.println(response.Status);
     System.out.println(response.HttpStatusCode);
     System.out.println(response.tfd);
@@ -138,29 +105,30 @@ try {
     System.out.println(e.getMessage());
 }
 ```
+</details>
 
 
-
-
-
-## Timbrar CFDI V2 ##
-TimbrarV2 Recibe el contenido de un XML ya emitido (sellado) en formato String , posteriormente si la factura y el token son correctos devuelve el CFDI ya tibrado, en caso contrario lanza una excepción.
+<details>
+<summary>
+Timbrado CFDI V2
+</summary>
+<br>TimbrarV2 Recibe el contenido de un XML ya emitido (sellado) en formato String , posteriormente si la factura y el token son correctos devuelve el CFDI ya timbrado, en caso contrario lanza una excepción.
 
 **Timbrar XML en formato string utilizando usuario y contraseña**
 ```java
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
-    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    //Se especifica el base path, esto para consumir el API de pruebas o productivo
     SWStampService sdk = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
-    //Se inicializa un objeto response, que obtendra la respuesta del api
+    //Se inicializa un objeto response, que obtendrá la respuesta del API
     SuccessV2Response response = null;
     //Se asigna el resultado de la respuesta a dicho objeto
-    //Se ejecuta el metodo "Stamp", que timbrara nuestro comprobante posteriormente sellado, asi como la versión del servicio de timbrado,
-    //puede ver mas de estas versiones en el apartado "Versiones de timbrado"
+    //Se ejecuta el método "Stamp", que timbrara nuestro comprobante posteriormente sellado, así como la versión del servicio de timbrado,
+    //puede ver más de estas versiones en el apartado "Versiones de timbrado"
     response = (SuccessV2Response) sdk.Stamp(stringXML, "v2");
-    //El objeto response tendra así los atributos:
-    // Status: estado de la petición procesada, puede ser : "success", "fail", "error"
-    // HttpStatusCode: Codigo de respuesta HTTP del servidor: eg. 200, 400, 500
+    //El objeto response tendrá así los atributos:
+    // Status: estado de la petición procesada, puede ser: "success", "fail", "error"
+    // HttpStatusCode: Código de respuesta HTTP del servidor: eg. 200, 400, 500
     // Data: Cuerpo de la respuesta que arroja el servidor
 
     System.out.println(response.Status);
@@ -177,17 +145,17 @@ try {
 ```java
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
-    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    //Se especifica el base path, esto para consumir el API de pruebas o productivo
     SWStampService sdk = new SWStampService("T2lYQ0t4L0R....", "http://services.test.sw.com.mx");
-    //Se inicializa un objeto response, que obtendra la respuesta del api
+    //Se inicializa un objeto response, que obtendrá la respuesta del API
     SuccessV2Response response = null;
     //Se asigna el resultado de la respuesta a dicho objeto
-    //Se ejecuta el metodo "Stamp", que timbrara nuestro comprobante posteriormente sellado, asi como la versión del servicio de timbrado,
-    //puede ver mas de estas versiones en el apartado "Versiones de timbrado"
+    //Se ejecuta el método "Stamp", que timbrara nuestro comprobante posteriormente sellado, así como la versión del servicio de timbrado,
+    //puede ver más de estas versiones en el apartado "Versiones de timbrado"
     response = (SuccessV2Response) sdk.Stamp(stringXML, "v2");
-    //El objeto response tendra así los atributos:
-    // Status: estado de la petición procesada, puede ser : "success", "fail", "error"
-    // HttpStatusCode: Codigo de respuesta HTTP del servidor: eg. 200, 400, 500
+    //El objeto response tendrá así los atributos:
+    // Status: estado de la petición procesada, puede ser:  "success", "fail", "error"
+    // HttpStatusCode: Código de respuesta HTTP del servidor: eg. 200, 400, 500
     // Data: Cuerpo de la respuesta que arroja el servidor
 
     System.out.println(response.Status);
@@ -198,25 +166,29 @@ try {
     System.out.println(e.getMessage());
 }
 ```
+</details>
 
-## Timbrar CFDI V3 ##
-TimbrarV3 Recibe el contenido de un XML ya emitido (sellado) en formato String , posteriormente si la factura y el token son correctos devuelve el CFDI ya tibrado, en caso contrario lanza una excepción.
+<details>
+<summary>
+Timbrado CFDI V3
+</summary>
+<br>TimbrarV3 Recibe el contenido de un XML ya emitido (sellado) en formato String , posteriormente si la factura y el token son correctos devuelve el CFDI ya timbrado, en caso contrario lanza una excepción.
 
 **Timbrar XML en formato string utilizando usuario y contraseña**
 ```java
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
-    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    //Se especifica el base path, esto para consumir el API de pruebas o productivo
     SWStampService sdk = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
-    //Se inicializa un objeto response, que obtendra la respuesta del api
+    //Se inicializa un objeto response, que obtendrá la respuesta del API
     SuccessV3Response response = null;
     //Se asigna el resultado de la respuesta a dicho objeto
-    //Se ejecuta el metodo "Stamp", que timbrara nuestro comprobante posteriormente sellado, asi como la versión del servicio de timbrado,
-    //puede ver mas de estas versiones en el apartado "Versiones de timbrado"
+    //Se ejecuta el método "Stamp", que timbrara nuestro comprobante posteriormente sellado, así como la versión del servicio de timbrado,
+    //puede ver más de estas versiones en el apartado "Versiones de timbrado"
     response = (SuccessV3Response) sdk.Stamp(stringXML, "v3");
     //El objeto response tendra así los atributos:
-    // Status: estado de la petición procesada, puede ser : "success", "fail", "error"
-    // HttpStatusCode: Codigo de respuesta HTTP del servidor: eg. 200, 400, 500
+    // Status: estado de la petición procesada, puede ser: "success", "fail", "error"
+    // HttpStatusCode: Código de respuesta HTTP del servidor: eg. 200, 400, 500
     // Data: Cuerpo de la respuesta que arroja el servidor
 
     System.out.println(response.Status);
@@ -233,17 +205,17 @@ try {
 ```java
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
-    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    //Se especifica el base path, esto para consumir el API de pruebas o productivo
     SWStampService sdk = new SWStampService("T2lYQ0t4L0R....", "http://services.test.sw.com.mx");
-    //Se inicializa un objeto response, que obtendra la respuesta del api
+    //Se inicializa un objeto response, que obtendrá la respuesta del API
     SuccessV3Response response = null;
     //Se asigna el resultado de la respuesta a dicho objeto
-    //Se ejecuta el metodo "Stamp", que timbrara nuestro comprobante posteriormente sellado, asi como la versión del servicio de timbrado,
-    //puede ver mas de estas versiones en el apartado "Versiones de timbrado"
+    //Se ejecuta el método "Stamp", que timbrara nuestro comprobante posteriormente sellado, así como la versión del servicio de timbrado,
+    //puede ver más de estas versiones en el apartado "Versiones de timbrado"
     response = (SuccessV3Response) sdk.Stamp(stringXML, "v3");
-    //El objeto response tendra así los atributos:
-    // Status: estado de la petición procesada, puede ser : "success", "fail", "error"
-    // HttpStatusCode: Codigo de respuesta HTTP del servidor: eg. 200, 400, 500
+    //El objeto response tendrá así los atributos:
+    // Status: estado de la petición procesada, puede ser: "success", "fail", "error"
+    // HttpStatusCode: Código de respuesta HTTP del servidor: eg. 200, 400, 500
     // Data: Cuerpo de la respuesta que arroja el servidor
 
     System.out.println(response.Status);
@@ -253,25 +225,29 @@ try {
     System.out.println(e.getMessage());
 }
 ```
+</details>
 
-## Timbrar CFDI V4 ##
-TimbrarV4 Recibe el contenido de un XML ya emitido (sellado) en formato String , posteriormente si la factura y el token son correctos devuelve el cfdi ya timbrado, y campos extras como qr en formato base64, entre otros.
+<details>
+<summary>
+Timbrado CFDI V4
+</summary>
+<br>TimbrarV4 Recibe el contenido de un XML ya emitido (sellado) en formato String , posteriormente si la factura y el token son correctos devuelve el CFDI ya timbrado, y campos extras como qr en formato base64, entre otros.
 
 **Timbrar XML en formato string utilizando usuario y contraseña**
 ```java
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
-    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    //Se especifica el base path, esto para consumir el API de pruebas o productivo
     SWStampService sdk = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
-    //Se inicializa un objeto response, que obtendra la respuesta del api
+    //Se inicializa un objeto response, que obtendrá la respuesta del api
     SuccessV4Response response = null;
     //Se asigna el resultado de la respuesta a dicho objeto
-    //Se ejecuta el metodo "Stamp", que timbrara nuestro comprobante posteriormente sellado, asi como la versión del servicio de timbrado,
-    //puede ver mas de estas versiones en el apartado "Versiones de timbrado"
+    //Se ejecuta el método "Stamp", que timbrara nuestro comprobante posteriormente sellado, así como la versión del servicio de timbrado,
+    //puede ver más de estas versiones en el apartado "Versiones de timbrado"
     response = (SuccessV4Response) sdk.Stamp(stringXML, "v4");
     //El objeto response tendra así los atributos:
-    // Status: estado de la petición procesada, puede ser : "success", "fail", "error"
-    // HttpStatusCode: Codigo de respuesta HTTP del servidor: eg. 200, 400, 500
+    // Status: estado de la petición procesada, puede ser:  "success", "fail", "error"
+    // HttpStatusCode: Código  de respuesta HTTP del servidor: eg. 200, 400, 500
     // Data: Cuerpo de la respuesta que arroja el servidor
 
     System.out.println(response.message);
@@ -296,17 +272,17 @@ try {
 ```java
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
-    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    //Se especifica el base path, esto para consumir el API de pruebas o productivo
     SWStampService sdk = new SWStampService("T2lYQ0t4L0R....", "http://services.test.sw.com.mx");
-    //Se inicializa un objeto response, que obtendra la respuesta del api
+    //Se inicializa un objeto response, que obtendrá la respuesta del API
     SuccessV4Response response = null;
     //Se asigna el resultado de la respuesta a dicho objeto
-    //Se ejecuta el metodo "Stamp", que timbrara nuestro comprobante posteriormente sellado, asi como la versión del servicio de timbrado,
-    //puede ver mas de estas versiones en el apartado "Versiones de timbrado"
+    //Se ejecuta el método "Stamp", que timbrara nuestro comprobante posteriormente sellado, así como la versión del servicio de timbrado,
+    //puede ver más de estas versiones en el apartado "Versiones de timbrado"
     response = (SuccessV4Response) sdk.Stamp(stringXML, "v4");
     //El objeto response tendra así los atributos:
-    // Status: estado de la petición procesada, puede ser : "success", "fail", "error"
-    // HttpStatusCode: Codigo de respuesta HTTP del servidor: eg. 200, 400, 500
+    // Status: estado de la petición procesada, puede ser:  "success", "fail", "error"
+    // HttpStatusCode: Código  de respuesta HTTP del servidor: eg. 200, 400, 500
     // Data: Cuerpo de la respuesta que arroja el servidor
 
     System.out.println(response.message);
@@ -324,19 +300,30 @@ try {
     System.out.println(e.getMessage());
 }
 ```
+</details>
+</details>
+<br>
+<details>
+<summary>
+<b>Emision Timbrado JSON<b>
+</summary>
 
-# Timbrar Json #
 Métodos mediante los cuales se envía un string o byte array de un JSON. 
-## Timbrar Json v1 ##
-Recibe un String o byte array del JSON.
-Retorna TFD de la factura.
-Ejemplo de uso
+<details>
+<summary>
+Timbrado JSON V1
+</summary>
+
+* Recibe un String o byte array del JSON.
+* Retorna TFD de la factura.
+* Ejemplo de uso
+
 ```java
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
-    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    //Se especifica el base path, esto para consumir el API de pruebas o productivo
     SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
-    //Se inicializa un objeto response, que obtendra la respuesta del api
+    //Se inicializa un objeto response, que obtendrá la respuesta del API
     SuccessV1Response response = null;
     response = (SuccessV1Response) api.IssueJson(stringJson, "v1");
     System.out.println(response.Status);
@@ -346,17 +333,23 @@ try {
     System.out.println(e.getMessage());
 }
 ```
+</details>
 
-## Timbrar Json v2 ##
-Recibe un String o byte array del JSON.
-Retorna TFD y el CFDI.
-Ejemplo de uso
+<details>
+<summary>
+Timbrado JSON V2
+</summary>
+
+* Recibe un String o byte array del JSON.
+* Retorna TFD de la factura.
+* Ejemplo de uso
+
 ```java
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
-    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    //Se especifica el base path, esto para consumir el API de pruebas o productivo
     SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
-    //Se inicializa un objeto response, que obtendra la respuesta del api
+    //Se inicializa un objeto response, que obtendrá la respuesta del API
     SuccessV1Response response = null;
     response = (SuccessV1Response) api.IssueJson(stringJson, "v2");
     System.out.println(response.Status);
@@ -367,17 +360,22 @@ try {
     System.out.println(e.getMessage());
 }
 ```
+</details>
+<details>
+<summary>
+Timbrado JSON V3
+</summary>
 
-## Timbrar Json v3 ##
-Recibe un String o byte array del JSON.
-Retorna CFDI y el TFD ya unidos.
-Ejemplo de uso
+* Recibe un String o byte array del JSON.
+* Retorna CFDI y el TFD ya unidos.
+* Ejemplo de uso
+
 ```java
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
-    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    //Se especifica el base path, esto para consumir el API de pruebas o productivo
     SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
-    //Se inicializa un objeto response, que obtendra la respuesta del api
+    //Se inicializa un objeto response, que obtendrá la respuesta del API
     SuccessV1Response response = null;
     response = (SuccessV1Response) api.IssueJson(stringJson, "v3");
     System.out.println(response.Status);
@@ -387,17 +385,23 @@ try {
     System.out.println(e.getMessage());
 }
 ```
+</details>
 
-## Timbrar Json v4 ##
-Recibe un String o byte array del JSON.
-Retorna CFDI, TFD, CadenaOriginal, noCertificadoSat, noCertificadoCFDI, UUID, selloSAT, selloCFDI, fechaTimbrado y QR.
-Ejemplo de uso
+<details>
+<summary>
+Timbrado JSON V4
+</summary>
+
+* Recibe un String o byte array del JSON.
+* Retorna CFDI, TFD, CadenaOriginal, noCertificadoSat, noCertificadoCFDI, UUID, selloSAT, selloCFDI, fechaTimbrado y QR.
+* Ejemplo de uso
+
 ```java
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
-    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    //Se especifica el base path, esto para consumir el API de pruebas o productivo
     SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
-    //Se inicializa un objeto response, que obtendra la respuesta del api
+    //Se inicializa un objeto response, que obtendrá la respuesta del API
     SuccessV1Response response = null;
     response = (SuccessV1Response) api.IssueJson(stringJson, "v4");
     System.out.println(response.Status);
@@ -414,19 +418,30 @@ try {
     System.out.println(e.getMessage());
 }
 ```
+</details>
+</details>
+<br>
+<details>
+<summary>
+Emisión Timbrado
+</summary>
 
-# Emisión Timbrado XML #
 Métodos mediante los cuales se envía un XML sin sellar. 
-## Emisión Timbrado v1 ##
-Recibe un String o byte array del XML.
-Retorna TFD de la factura.
-Ejemplo de uso
+
+<details>
+<summary>
+Emision Timbrado V1
+</summary>
+
+* Recibe un String o byte array del XML.
+* Retorna TFD de la factura.
+* Ejemplo de uso
 ```java
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
-    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    //Se especifica el base path, esto para consumir el API de pruebas o productivo
     SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
-    //Se inicializa un objeto response, que obtendra la respuesta del api
+    //Se inicializa un objeto response, que obtendrá la respuesta del API
     SuccessV1Response response = null;
     response = (SuccessV1Response) api.IssueXml(stringXml, "v1");
     System.out.println(response.Status);
@@ -436,17 +451,23 @@ try {
     System.out.println(e.getMessage());
 }
 ```
+</details>
 
-## Emisión Timbrado v2 ##
-Recibe un String o byte array del XML.
-Retorna TFD y el CFDI.
-Ejemplo de uso
+<details>
+<summary>
+Emisión Timbrado V2
+</summary>
+
+* Recibe un String o byte array del XML.
+* Retorna TFD y el CFDI.
+* Ejemplo de uso
+
 ```java
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
-    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    //Se especifica el base path, esto para consumir el API de pruebas o productivo
     SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
-    //Se inicializa un objeto response, que obtendra la respuesta del api
+    //Se inicializa un objeto response, que obtendrá la respuesta del API
     SuccessV1Response response = null;
     response = (SuccessV1Response) api.IssueXml(stringXml, "v2");
     System.out.println(response.Status);
@@ -457,17 +478,23 @@ try {
     System.out.println(e.getMessage());
 }
 ```
+</details>
 
-## Emisión Timbrado v3 ##
-Recibe un String o byte array del XML.
-Retorna CFDI y el TFD ya unidos.
-Ejemplo de uso
+<details>
+<summary>
+Emisión Timbrado V3
+</summary> 
+
+* Recibe un String o byte array del XML.
+* Retorna CFDI y el TFD ya unidos.
+* Ejemplo de uso
+
 ```java
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
-    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    //Se especifica el base path, esto para consumir el API de pruebas o productivo
     SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
-    //Se inicializa un objeto response, que obtendra la respuesta del api
+    //Se inicializa un objeto response, que obtendrá la respuesta del API
     SuccessV1Response response = null;
     response = (SuccessV1Response) api.IssueXml(stringXml, "v3");
     System.out.println(response.Status);
@@ -477,17 +504,23 @@ try {
     System.out.println(e.getMessage());
 }
 ```
+</details>
 
-## Emisión Timbrado v4 ##
-Recibe un String o byte array del XML.
-Retorna CFDI, TFD, CadenaOriginal, noCertificadoSat, noCertificadoCFDI, UUID, selloSAT, selloCFDI, fechaTimbrado y QR.
-Ejemplo de uso
+<details>
+<summary>
+Emisión Timbrado V4
+</summary> 
+
+* Recibe un String o byte array del XML.
+* Retorna CFDI, TFD, CadenaOriginal, noCertificadoSat, noCertificadoCFDI, UUID, selloSAT, selloCFDI, fechaTimbrado y QR.
+* Ejemplo de uso
+
 ```java
 try {
     //Es preferible inicializar el objeto con el usuario y password de nuestra cuenta, en caso contrario se puede incluir solamente el token de acceso
-    //Se especifica el base path, esto para consumir el api de pruebas o productivo
+    //Se especifica el base path, esto para consumir el API de pruebas o productivo
     SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
-    //Se inicializa un objeto response, que obtendra la respuesta del api
+    //Se inicializa un objeto response, que obtendrá la respuesta del API
     SuccessV1Response response = null;
     response = (SuccessV1Response) api.IssueXml(stringXml, "v4");
     System.out.println(response.Status);
@@ -504,17 +537,37 @@ try {
     System.out.println(e.getMessage());
 }
 ```
+</details>
+</details>
+
+:pushpin: ***NOTA:*** Existen varias versiones de respuesta, las cuales son las siguientes:
+
+| Version |                         Respuesta                             | 
+|---------|---------------------------------------------------------------|
+|  V1     | Devuelve el timbre fiscal digital                             | 
+|  V2     | Devuelve el timbre fiscal digital y el CFDI timbrado          | 
+|  V3     | Devuelve el CFDI timbrado                                     | 
+|  V4     | Devuelve todos los datos del timbrado                         |
+
+Para mayor referencia de estas versiones de respuesta, favor de visitar el siguiente [link](https://developers.sw.com.mx/knowledge-base/versiones-de-respuesta-timbrado/).
+
 
 # Cancelación #
 
-## Cancelacion CSD ##
-Recibe los archivos CSD y KEY en Base64, password, asi como el rfc emisor y el UUID del CFDI a cancelar
+Este servicio se utiliza para cancelar CFDI, aquí los métodos que se ofrecen:
 
+
+<details>
+<summary>
+Cancelacion CSD
+</summary>
+
+- Recibe los archivos CSD y KEY en Base64, password, así como el RFC Emisor, el motivo, el folio de sustitución y el UUID del CFDI a cancelar
 
 ```java
 SWCancelationService app = new SWCancelationService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 CancelationResponse response = null;
-response = (CancelationResponse) app.Cancelation(uuid, password_csd, rfc, b64Cer, b64Key);
+response = (CancelationResponse) app.Cancelation(uuid, password_csd, rfc, b64Cer, b64Key, motivo, foliosustitucion);
 
 System.out.println(response.Status);
 System.out.println(response.HttpStatusCode);
@@ -525,9 +578,13 @@ System.out.println(response.uuidStatusCode);
 System.out.println(response.message);
 System.out.println(response.messageDetail);
 ```
+</details>
+<details>
+<summary>
+Cancelacion XML
+</summary>
 
-## Cancelación XML ##
-Recibe el XML de cancelacion
+- Recibe el XML de cancelacion
 
 ```java
 SWCancelationService app = new SWCancelationService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
@@ -545,15 +602,20 @@ System.out.println(response.uuidStatusCode);
 System.out.println(response.message);
 System.out.println(response.messageDetail);  
 ```
+</details>
 
-## Cancelacion Pfx ##
-Recibe el Pfx (.pfx, password), asi como el rfc emisor y el UUID del CFDI a cancelar
+<details>
+<summary>
+Cancelacion PFX
+</summary> 
+
+- Recibe el Pfx (.pfx, password), así como el RFC Emisor, el motivo, el folio de sustitución y el UUID del CFDI a cancelar
 
 
 ```java
 SWCancelationService app = new SWCancelationService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 CancelationResponse response = null;
-response = (CancelationResponse) app.Cancelation(uuid, password_csd, rfc, b64Pfx);
+response = (CancelationResponse) app.Cancelation(uuid, password_csd, rfc, b64Pfx, motivo, foliosustitucion);
 System.out.println(response.Status);
 System.out.println(response.HttpStatusCode);
 System.out.println(response.acuse);
@@ -563,16 +625,19 @@ System.out.println(response.uuidStatusCode);
 System.out.println(response.message);
 System.out.println(response.messageDetail);  
 ```
+</details>
+<details>
+<summary>
+Cancelacion UUID
+</summary> 
 
-
-## Cancelacion Uuid ##
-Recibe el rfc emisor y el UUID del CFDI a cancelar (Los archivos .Cer y .Key deben estar en tu administrador de timbres).
+- Recibe el RFC Emisor, el motivo, el folio de sustitución y el UUID del CFDI a cancelar (Los archivos .Cer y .Key deben estar en tu administrador de timbres).
 
 
 ```java
 SWCancelationService app = new SWCancelationService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 CancelationResponse response = null;
-response = (CancelationResponse) app.Cancelation(uuid, rfc);
+response = (CancelationResponse) app.Cancelation(uuid, rfc, motivo, foliosustitucion);
 System.out.println(response.Status);
 System.out.println(response.HttpStatusCode);
 System.out.println(response.acuse);
@@ -582,16 +647,22 @@ System.out.println(response.uuidStatusCode);
 System.out.println(response.message);
 System.out.println(response.messageDetail); 
 ```
+</details>
 
 
 # Validación #
 
-## Validación Xml ##
-Recibe el Xml del CFDI a validar.
+Este servicio recibe un comprobante CFDI 4.0 en formato XML mediante el cual se valida integridad, sello, errores de estructura, matriz de errores del SAT incluyendo complementos, se valida su validez ante el SAT.
 
->La respuesta vendrá representada con datos planos y un par de listas anidadas. Para obtener la información de las mismas se iterará.
-
+<details>
+<summary>
 Ejemplo de uso
+</summary> 
+
+- Recibe el XML del CFDI a validar.
+- La respuesta vendrá representada con datos planos y un par de listas anidadas. Para obtener la información de las mismas se iterará.
+
+- Ejemplo de uso
 
 ```java
 SWValidateService api = new SWValidateService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
@@ -621,8 +692,15 @@ System.out.println(response.statusCodeSat);
 System.out.println(response.message);
 System.out.println(response.messageDetail); 
 ```
+</details>
+
 # Consulta de Saldos #
 Se obtiene el balance de nuestra cuenta con respecto a los timbres
+<details>
+<summary>
+Ejemplo de uso
+</summary> 
+
 ```java
 SWBalanceAccountService app = new SWBalanceAccountService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 BalanceAcctResponse response = null;
@@ -640,15 +718,21 @@ System.out.println(response.unlimited);
 System.out.println(response.message);
 System.out.println(response.messageDetail);
 ```
+</details>
 
-# Status CFDI #
+# Estatus CFDI #
 Método necesario para conocer el estado de un CFDI a través del servicio de consulta del SAT.
 Será necesario conocer el RFC emisor, RFC receptor, total de la factura, y UUID de la factura que vamos a consultar. [Este servicio es consumido directamente del SAT].
+<details>
+<summary>
+Ejemplo de uso
+</summary> 
+
 ```java
 StatusCfdiService app = new StatusCfdiService("https://consultaqr.facturaelectronica.sat.gob.mx/ConsultaCFDIService.svc", "http://tempuri.org/IConsultaCFDIService/Consulta");
 
 StatusCfdiResponse response = null;
-response = (StatusCfdiResponse) app.StatusCfdi("LSO1306189R5", "LSO1306189R5", "1.16", "E0AAE6B3-43CC-4B9C-B229-7E221000E2BB");
+response = (StatusCfdiResponse) app.StatusCfdi("rfcEmisor", "rfcReceptor", "0.0", "E0AAE6B3-43CC-4B9C-B229-7E221000E2BB");
 System.out.println(response.Status);
 System.out.println(response.HttpStatusCode);
 System.out.println(response.codigoEstatus);
@@ -659,12 +743,18 @@ System.out.println(response.estatusCancelacion);
 System.out.println(response.message);
 System.out.println(response.messageDetail);
 ```
+</details>
 
 # CFDI  Relacionados #
 Método necesario para conocer los CFDI relacionados que existen a una factura. Con el nuevo método de cancelación, no se podrá cancelar una factura si existen CFDI que lo relacionen.
 
-## CFDI Relacionados por CSD ##
+<details>
+<summary>
+CFDI Relacionados por CSD
+</summary> 
+
 Para el consumo a través de este método necesitaremos el UUID de la factura, RFC emisor, Certificado en base64, Llave en base64 y Password del Certificado.
+* Ejemplo de uso: 
 ```java
 SWRelationsService app = new SWRelationsService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 CfdiRelacionadosResponse response = null;
@@ -694,9 +784,15 @@ for (int i = 0; i < hijos.size(); i++) {
 System.out.println(response.message);
 System.out.println(response.messageDetail);
 ```
+</details>
+<details>
+<summary>
+CFDI Relacionados por PFX
+</summary> 
 
-## CFDI Relacionados por PFX ##
 Para el consumo a través de este método necesitaremos el UUID de la factura, RFC emisor, PFX en base64 y Password del Certificado.
+* Ejemplo de uso
+
 ```java
 SWRelationsService app = new SWRelationsService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 CfdiRelacionadosResponse response = null;
@@ -726,77 +822,20 @@ if (hijos != null) {
 System.out.println(response.message);
 System.out.println(response.messageDetail);
 ```
+</details>
 
-## CFDI Relacionados por XML ##
-Para el consumo a través de este método necesitaremos el XML. 
-```java
-SWRelationsService app = new SWRelationsService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
-CfdiRelacionadosResponse response = null;
-response = (CfdiRelacionadosResponse) app.CfdiRelacionadosXML(xmlRelacionados);
-System.out.println(response.Status);
-System.out.println(response.HttpStatusCode);
-System.out.println(response.resultado);
-LinkedList < RelacionData > padres = (LinkedList < RelacionData > ) response.uuidsRelacionadosPadres;
-if (padres != null) {
-    for (int i = 0; i < padres.size(); i++) {
-        RelacionData datos = padres.get(i);
-        System.out.println(datos.uuid);
-        System.out.println(datos.rfcEmisor);
-        System.out.println(datos.rfcReceptor);
-    }
-}
-LinkedList < RelacionData > hijos = (LinkedList < RelacionData > ) response.uuidsRelacionadosHijos;
-if (hijos != null) {
-    for (int i = 0; i < hijos.size(); i++) {
-        RelacionData datos = hijos.get(i);
-        System.out.println(datos.uuid);
-        System.out.println(datos.rfcEmisor);
-        System.out.println(datos.rfcReceptor);
-    }
-}
-//En caso de obtener error, este puede obtenerse de los siguientes campos
-System.out.println(response.message);
-System.out.println(response.messageDetail);
-```
-
-## CFDI Relacionados por UUID ##
-Para el consumo a través de este método necesitaremos el UUID de la factura, así como el RFC del Emisor. 
-```java
-SWRelationsService app = new SWRelationsService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
-CfdiRelacionadosResponse response = null;
-response = (CfdiRelacionadosResponse) app.CfdiRelacionadosUUID(uuid, rfc);
-System.out.println(response.Status);
-System.out.println(response.HttpStatusCode);
-System.out.println(response.resultado);
-LinkedList < RelacionData > padres = (LinkedList < RelacionData > ) response.uuidsRelacionadosPadres;
-if (padres != null) {
-    for (int i = 0; i < padres.size(); i++) {
-        RelacionData datos = padres.get(i);
-        System.out.println(datos.uuid);
-        System.out.println(datos.rfcEmisor);
-        System.out.println(datos.rfcReceptor);
-    }
-}
-LinkedList < RelacionData > hijos = (LinkedList < RelacionData > ) response.uuidsRelacionadosHijos;
-if (hijos != null) {
-    for (int i = 0; i < hijos.size(); i++) {
-        RelacionData datos = hijos.get(i);
-        System.out.println(datos.uuid);
-        System.out.println(datos.rfcEmisor);
-        System.out.println(datos.rfcReceptor);
-    }
-}
-//En caso de obtener error, este puede obtenerse de los siguientes campos
-System.out.println(response.message);
-System.out.println(response.messageDetail);
-```
 
 # Consulta Pendientes por Aceptar/Rechazar #
 Este servicio devuelve una lista con los UUID que tiene pendientes por Aceptación/Rechazo un RFC.
 Para el consumo de este método necesitaremos el RFC del cual consultaremos las facturas que tiene por Aceptar/Rechazar.
+<details>
+<summary>
+Ejemplo de uso 
+</summary>
+
 ```java
 SWPendingsService app = new SWPendingsService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
-String rfc = "LAN7008173R5";
+String rfc = "CACX7605101P8";
 PendientesCancelarResponse response = null;
 response = (PendientesCancelarResponse) app.PendientesPorCancelar(rfc);
 System.out.println(response.Status);
@@ -814,11 +853,15 @@ if (uuids != null) {
 System.out.println(response.message);
 System.out.println(response.messageDetail);
 ```
+</details>
 
-# Aceptar/Rechazar #
+## Aceptar/Rechazar ##
 Método para Aceptar o Rechazar una o más facturas.
 
-## Aceptar/Rechazar CSD #
+<details>
+<summary>
+Aceptar/Rechazar por CSD
+</summary> 
 Para el consumo a través de este método necesitaremos el un **Map** con los UUID y la acción a realizar, **password** del certificado, **RFC** emisor, certificado en base64, llave en base64.
 
 ```java
@@ -843,8 +886,13 @@ System.out.println(response.acuse);
 System.out.println(response.message);
 System.out.println(response.messageDetail);
 ```
+</details>
 
-## Aceptar/Rechazar PFX #
+<details>
+<summary>
+Aceptar/Rechazar por PFX
+</summary> 
+
 Para el consumo a través de este método necesitaremos el un **Map** con los UUID y la acción a realizar, **password** del certificado, **RFC** emisor, **PFX** en base64.
 
 ```java
@@ -869,8 +917,12 @@ System.out.println(response.acuse);
 System.out.println(response.message);
 System.out.println(response.messageDetail);
 ```
+</details>
 
-## Aceptar/Rechazar XML #
+<details>
+<summary>
+Aceptar/Rechazar por XML
+</summary> 
 Para el consumo a través de este método necesitaremos el XML para la Aceptación/Rechazo.
 
 ```java
@@ -893,8 +945,13 @@ System.out.println(response.acuse);
 System.out.println(response.message);
 System.out.println(response.messageDetail);
 ```
+</details>
 
-## Aceptar/Rechazar UUID #
+<details>
+<summary>
+Aceptar/Rechazar por UUID
+</summary> 
+
 Para el consumo a través de este método necesitaremos el un **String** con el UUID y la acción a realizar, así como el **RFC** emisor.
 
 ```java
@@ -917,6 +974,26 @@ System.out.println(response.acuse);
 System.out.println(response.message);
 System.out.println(response.messageDetail);
 ```
+</details>
+
+# Recuperar XML por UUID #
+Método para recuperar la información de un XML enviando el UUID de la factura, así como el token de la cuenta en la cual fue timbrada.
+<details>
+<summary>
+Ejemplo de uso
+</summary> 
+
+```java
+SWStorageService storage = new SWStorageService(Utils.tokenSW, Utils.urlApiSW, null, 0);
+StorageResponse response = (StorageResponse) storage.getXml(UUID.fromString("c75f87db-e059-4a7c-a922-e4b9c871e8c1"));
+System.out.println(response.Status);
+System.out.println(response.HttpStatusCode);
+System.out.println(response.getData);
+//En caso de obtener un error, este puede obtenerse de los campos
+System.out.println(response.message);
+System.out.println(response.messageDetail); 
+```
+</details>
 
 # Servicio PDF #
 Servicio para generar PDF de un XML previamente timbrado. 
@@ -931,27 +1008,47 @@ Se permite especificar una de las plantillas genericas o una plantilla personali
     ```java
     SWPdfService app = new SWPdfService(Utils.tokenSW, "http://api.test.sw.com.mx");
     ```
-## Generar PDF Default 
+    
+<details>
+<summary>
+Generar PDF Default 
+</summary> 
+
 Generar PDF con plantilla por defecto CFDI 4.0.
 ```java
 PdfResponse response = null;
 response = (PdfResponse) app.GeneratePdf(stamp.cfdi, this.logoB64);
 ```
-## Generar PDF Default Extras
+</details>
+<details>
+<summary>
+Generar PDF Default Extras
+</summary> 
+
 Generar PDF con plantilla por defecto CFDI 4.0 con datos adicionales.
 ```java
 HashMap<String, String> extras = new HashMap<String,String>();
 PdfResponse response = null;
 response = (PdfResponse) app.GeneratePdf(stamp.cfdi, this.logoB64, extras);
 ```
-## Generar PDF Plantilla Generica.
+</details>
+<details>
+<summary>
+Generar PDF Plantilla Generica.
+</summary> 
+
 Generar PDF con plantilla generica.
 ```java
 HashMap<String, String> extras = new HashMap<String,String>();
 PdfResponse response = null;
 response = (PdfResponse) app.GeneratePdf(stamp.cfdi, PdfTemplates.payment20, this.logoB64, extras);
 ```
-## Generar PDF Plantilla Personalizada
+</details>
+<details>
+<summary>
+Generar PDF Plantilla Personalizada
+</summary> 
+
 Generar PDF especificando una plantilla como string.
 ```java
 HashMap<String, String> extras = new HashMap<String,String>();

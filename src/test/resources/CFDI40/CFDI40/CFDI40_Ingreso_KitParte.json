@@ -2,7 +2,7 @@
   "Version": "4.0",
   "Serie": "SW",
   "Folio": "123456",
-  "Fecha": "2022-03-29T00:00:00",
+  "Fecha": "2023-05-12T00:00:00",
   "Sello": "",
   "NoCertificado": "",
   "Certificado": "",
@@ -35,7 +35,7 @@
   "Receptor": {
     "Rfc": "CACX7605101P8",
     "Nombre": "XOCHILT CASAS CHAVEZ",
-    "DomicilioFiscalReceptor": "10740",
+    "DomicilioFiscalReceptor": "36257",
     "RegimenFiscalReceptor": "612",
     "UsoCFDI": "CP01"
   },

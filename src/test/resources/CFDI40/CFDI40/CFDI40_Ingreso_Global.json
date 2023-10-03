@@ -2,7 +2,7 @@
   "Version": "4.0",
   "Serie": "Serie",
   "Folio": "2080427802",
-  "Fecha": "2022-04-10T18:31:50",
+  "Fecha": "2023-05-12T00:31:50",
   "Sello": "",
   "FormaPago": "99",
   "FormaPagoSpecified": true,
@@ -22,7 +22,7 @@
   "InformacionGlobal": {
     "Periodicidad": "01",
     "Meses": "01",
-    "Año": "2021"
+    "Año": "2022"
   },
   "Emisor": {
     "Rfc": "EKU9003173C9",

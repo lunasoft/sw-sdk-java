@@ -1,6 +1,6 @@
 {
     "Folio": "BANUS/2022/01/0002",
-    "Fecha": "2022-03-29T10:00:45",
+    "Fecha": "2023-05-12T10:00:45",
     "Sello": "",
     "NoCertificado": "30001000000400002434",
     "Certificado": "",
@@ -19,7 +19,7 @@
     "Receptor": {
         "Rfc": "URE180429TM6",
         "Nombre": "UNIVERSIDAD ROBOTICA ESPAÑOLA",
-        "DomicilioFiscalReceptor": "65000",
+        "DomicilioFiscalReceptor": "86991",
         "RegimenFiscalReceptor": "601",
         "UsoCFDI": "CP01"
     },

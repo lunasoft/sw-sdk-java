@@ -2,7 +2,7 @@
   "Version": "4.0",
   "Serie": "SW",
   "Folio": "123456",
-  "Fecha": "2022-01-12T00:00:00",
+  "Fecha": "2023-05-12T00:00:00",
   "Sello": "",
   "NoCertificado": "",
   "Certificado": "",
@@ -25,7 +25,7 @@
   "Receptor": {
     "Rfc": "EKU9003173C9",
     "Nombre": "ESCUELA KEMPER URGATE",
-    "DomicilioFiscalReceptor": "26015",
+    "DomicilioFiscalReceptor": "42501",
     "RegimenFiscalReceptor": "601",
     "UsoCFDI": "CP01"
   },

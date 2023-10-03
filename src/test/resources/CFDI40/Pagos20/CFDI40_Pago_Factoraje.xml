@@ -2,7 +2,7 @@
 <cfdi:Comprobante Version="4.0"
                   Serie="VDP4"
                   Folio="1217819"
-                  Fecha="2022-03-28T17:08:29"
+                  Fecha="2023-05-12T07:08:29"
                   SubTotal="0"
                   Moneda="XXX"
                   Total="0"
@@ -20,7 +20,7 @@
 	<cfdi:Receptor Rfc="JUFA7608212V6"
 	               Nombre="ADRIANA JUAREZ FERNANDEZ"
 	               UsoCFDI="CP01"
-	               DomicilioFiscalReceptor="29133"
+	               DomicilioFiscalReceptor="01160"
 	               RegimenFiscalReceptor="616"/>
 	<cfdi:Conceptos>
 		<cfdi:Concepto ClaveProdServ="84111506"

@@ -9,6 +9,7 @@ public abstract class IRequest {
     public String Password;
     public String version;
     public String xml;
+    public byte[] XML;
 	public boolean isb64;
     public Builder options = RequestConfig.custom();
     public String proxyHost;
@@ -50,7 +51,16 @@ public abstract class IRequest {
         this.proxyHost = proxyHost;
         this.proxyPort = proxyPort;
     }
-    
+
+    public IRequest(String token, String URI, byte[] xml, String version, String proxyHost, int proxyPort) {
+        Token = token;
+        this.URI = URI;
+        this.version = version;
+        this.XML = xml;
+        this.proxyHost = proxyHost;
+        this.proxyPort = proxyPort;
+    }
+
     public IRequest(String token, String URI, String proxyHost, int proxyPort) {
         Token = token;
         this.URI = URI;

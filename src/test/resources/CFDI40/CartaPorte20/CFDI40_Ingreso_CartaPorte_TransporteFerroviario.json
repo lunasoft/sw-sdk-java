@@ -22,10 +22,9 @@
   "MetodoPagoSpecified": true,
   "LugarExpedicion": "20000",
   "Emisor": {
-    "Rfc": "EKU9003173C9",
-    "Nombre": "ESCUELA KEMPER URGATE",
-    "RegimenFiscal": "601",
-    "FacAtrAdquirente": null
+      "Rfc": "EKU9003173C9",
+      "Nombre": "ESCUELA KEMPER URGATE",
+      "RegimenFiscal": "601"
   },
   "Receptor": {
     "Rfc": "URE180429TM6",
@@ -83,6 +82,7 @@
           "TotalDistRec": "50",
           "TranspInternac": "Sí",
           "Version": "2.0",
+          "ViaEntradaSalida":"04",
           "EntradaSalidaMerc": "Entrada",
           "PaisOrigenDestino": "MEX",
           "Ubicaciones": [

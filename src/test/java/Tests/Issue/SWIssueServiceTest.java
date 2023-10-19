@@ -6,14 +6,13 @@ import Utils.Responses.Stamp.SuccessV2Response;
 import Utils.Responses.Stamp.SuccessV3Response;
 import Utils.Responses.Stamp.SuccessV4Response;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import Services.Issue.SWIssueService;
 
 public class SWIssueServiceTest {
 	static Utils ut = new Utils();
-	@Ignore
+	@Test
 	public void testStampREAL_JSON_STRING_USER_PASSWORD_AUTH_V1() throws Exception {
 		SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		String testJson = ut.JsonGenBasico(false);
@@ -26,7 +25,7 @@ public class SWIssueServiceTest {
 		String expect_status = "success";
 		Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
 	}
-	@Ignore
+	@Test
 	public void testStampREAL_JSON_STRING_USER_PASSWORD_AUTH_V2() throws Exception {
 		SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		String testJson = ut.JsonGenBasico(false);
@@ -40,7 +39,7 @@ public class SWIssueServiceTest {
 		String expect_status = "success";
 		Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
 	}
-	@Ignore
+	@Test
 	public void testStampREAL_JSON_STRING_USER_PASSWORD_AUTH_V3() throws Exception {
 		SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		String testJson = ut.JsonGenBasico(false);
@@ -54,7 +53,7 @@ public class SWIssueServiceTest {
 		Assert.assertTrue(
 				expect_status.equalsIgnoreCase(response.Status));
 	}
-	@Ignore
+	@Test
 	public void testStampREAL_JSON_STRING_USER_PASSWORD_AUTH_V4() throws Exception {
 		SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		String testJson = ut.JsonGenBasico(false);
@@ -74,7 +73,7 @@ public class SWIssueServiceTest {
 		String expect_status = "success";
 		Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
 	}
-	@Ignore
+	@Test
 	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V1() throws Exception {
 		SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV1Response response = null;
@@ -86,7 +85,7 @@ public class SWIssueServiceTest {
 		String expect_status = "success";
 		Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
 	}
-	@Ignore
+	@Test
 	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V2() throws Exception {
 		SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV2Response response = null;
@@ -99,7 +98,7 @@ public class SWIssueServiceTest {
 		String expect_status = "success";
 		Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
 	}
-	@Ignore
+	@Test
 	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V3() throws Exception {
 		SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV3Response response = null;
@@ -111,7 +110,7 @@ public class SWIssueServiceTest {
 		String expect_status = "success";
 		Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
 	}
-	@Ignore
+	@Test
 	public void testStampREAL_XML_STRING_USER_PASSWORD_AUTH_V4() throws Exception {
 		SWIssueService api = new SWIssueService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
 		SuccessV4Response response = null;

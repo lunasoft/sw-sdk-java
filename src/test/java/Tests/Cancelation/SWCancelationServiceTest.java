@@ -4,7 +4,6 @@ import Services.Cancelation.SWCancelationService;
 import Tests.Utils;
 import Utils.Responses.Cancelation.CancelationResponse;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class SWCancelationServiceTest {

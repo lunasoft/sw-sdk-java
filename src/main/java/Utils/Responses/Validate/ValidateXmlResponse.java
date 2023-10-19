@@ -1,6 +1,7 @@
 package Utils.Responses.Validate;
 
 import java.util.List;
+
 import Utils.Responses.IResponse;
 
 public class ValidateXmlResponse extends IResponse{
@@ -24,4 +25,5 @@ public class ValidateXmlResponse extends IResponse{
     public ValidateXmlResponse(int httpStatusCode, String status, String msg, String msgDetail) {
         super(httpStatusCode, status, msg, msgDetail);
     }
+    
 }

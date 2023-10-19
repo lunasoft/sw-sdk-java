@@ -2,8 +2,6 @@ package Tests.Cfdi40;
 
 import org.junit.Test;
 import org.junit.Assert;
-import org.junit.Ignore;
-
 import java.io.IOException;
 import Exceptions.AuthException;
 import Tests.helpers.StampService;

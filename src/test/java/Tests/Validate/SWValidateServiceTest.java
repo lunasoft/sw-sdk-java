@@ -41,7 +41,6 @@ public class SWValidateServiceTest extends TestCase {
         String expect_status = "success";
         Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
     }
-
     @Test
 	public void testValidateNULL_XML_STRING_USER_PASSWORD() throws Exception {
         SWValidateService api = new SWValidateService(Utils.userSW, Utils.passwordSW,Utils.urlSW);
@@ -53,7 +52,6 @@ public class SWValidateServiceTest extends TestCase {
         String expect_status = "error";
         Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
     }
-    
     @Test
 	public void testValidateEMPTY_XML_STRING_USER_PASSWORD() throws Exception {
         SWValidateService api = new SWValidateService(Utils.userSW, Utils.passwordSW,Utils.urlSW);

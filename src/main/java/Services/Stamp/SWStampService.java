@@ -5,7 +5,7 @@ import Exceptions.GeneralException;
 import Services.SWService;
 import Utils.Requests.Stamp.StampOptionsRequest;
 import Utils.Requests.Stamp.StampRequest;
-
+import Utils.Requests.Stamp.StampRequestZip;
 import Utils.Responses.IResponse;
 
 import java.io.IOException;
@@ -74,7 +74,7 @@ public class SWStampService extends SWService {
 	public IResponse StampZip(byte[] zipFile, String version) throws AuthException, GeneralException, IOException {
 		StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), zipFile, version, getProxyHost(),
 				getProxyPort());
-		StampRequest req = new StampRequest();
+		StampRequestZip req = new StampRequestZip();
 		return req.sendRequestZip(settings);
 	}
 }

@@ -37,7 +37,6 @@ public class SWAcceptRejectServiceTest {
 		String expect_status = "success";
 		Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
 	}
-	
 	@Ignore
 	public void testAcceptrejectCancelationService_XML() throws Exception {
 		SWAcceptRejectService app = new SWAcceptRejectService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
@@ -60,7 +59,6 @@ public class SWAcceptRejectServiceTest {
 		String expect_status = "success";
 		Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
 	}
-	
 	@Ignore
 	public void testAcceptrejectCancelationService_PFX() throws Exception {
 		SWAcceptRejectService app = new SWAcceptRejectService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
@@ -85,7 +83,6 @@ public class SWAcceptRejectServiceTest {
 		String expect_status = "success";
 		Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
 	}
-	
 	@Ignore
 	public void testAcceptrejectCancelationService_UUID() throws Exception {
 		SWAcceptRejectService app = new SWAcceptRejectService(Utils.userSW, Utils.passwordSW, Utils.urlSW);

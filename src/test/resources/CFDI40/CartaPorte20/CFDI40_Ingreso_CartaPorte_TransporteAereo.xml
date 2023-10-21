@@ -1,53 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <cfdi:Comprobante xsi:schemaLocation="http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd http://www.sat.gob.mx/CartaPorte20 http://www.sat.gob.mx/sitio_internet/cfd/CartaPorte/CartaPorte20.xsd"
-  xmlns:cartaporte20="http://www.sat.gob.mx/CartaPorte20" Version="4.0" Serie="Serie" Folio="Folio" Fecha="2023-09-19T01:01:01" Sello="rGpfMmwxUrt7Crm8WhsKrKypqHJgEtOpIqj2uXi0LxblCI3FMXv8KR4n6/Rqt5pRmK4hbNLmLytkZyU86JgvPLFwZ2q8Khx0CrxIXaA4ybFWSdxA3Gw/84EL/MvyJGrSepGHHDhBDm3Z/Y1tBhxSUZ0DIgHmP0wvwa18qK7W1fhawEluB+fPbUSVHCe4PZTVKdkdCjfAGewhLwPOVnCkeWULAxcCpsVt0eJX4/hZcr58+Kpa9F+Uh7ZqUfxOqnTz2RRlkdAbPZNatEhJXo7SlKCuIViBQX9vhhD8ool5bj6rXtAeroOb0uEccWEgq4VN4/eTOz13jIM8Aut1JBPWzA==" CondicionesDePago="CondicionesDePago" SubTotal="200" Descuento="1" Moneda="AMD" TipoCambio="1" Total="199.16" TipoDeComprobante="I" Exportacion="01" MetodoPago="PPD" FormaPago="99" LugarExpedicion="20000"
+  xmlns:cartaporte20="http://www.sat.gob.mx/CartaPorte20" Version="4.0" Serie="CFDI" Folio="78" Fecha="2023-10-17T00:00:55" FormaPago="03" SubTotal="26232.75" Moneda="MXN" Total="29380.68" TipoDeComprobante="I" Exportacion="01" MetodoPago="PUE" LugarExpedicion="85000"
   xmlns:cfdi="http://www.sat.gob.mx/cfd/4"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" NoCertificado="30001000000500003416" Certificado="MIIFsDCCA5igAwIBAgIUMzAwMDEwMDAwMDA1MDAwMDM0MTYwDQYJKoZIhvcNAQELBQAwggErMQ8wDQYDVQQDDAZBQyBVQVQxLjAsBgNVBAoMJVNFUlZJQ0lPIERFIEFETUlOSVNUUkFDSU9OIFRSSUJVVEFSSUExGjAYBgNVBAsMEVNBVC1JRVMgQXV0aG9yaXR5MSgwJgYJKoZIhvcNAQkBFhlvc2Nhci5tYXJ0aW5lekBzYXQuZ29iLm14MR0wGwYDVQQJDBQzcmEgY2VycmFkYSBkZSBjYWxpejEOMAwGA1UEEQwFMDYzNzAxCzAJBgNVBAYTAk1YMRkwFwYDVQQIDBBDSVVEQUQgREUgTUVYSUNPMREwDwYDVQQHDAhDT1lPQUNBTjERMA8GA1UELRMIMi41LjQuNDUxJTAjBgkqhkiG9w0BCQITFnJlc3BvbnNhYmxlOiBBQ0RNQS1TQVQwHhcNMjMwNTE4MTE0MzUxWhcNMjcwNTE4MTE0MzUxWjCB1zEnMCUGA1UEAxMeRVNDVUVMQSBLRU1QRVIgVVJHQVRFIFNBIERFIENWMScwJQYDVQQpEx5FU0NVRUxBIEtFTVBFUiBVUkdBVEUgU0EgREUgQ1YxJzAlBgNVBAoTHkVTQ1VFTEEgS0VNUEVSIFVSR0FURSBTQSBERSBDVjElMCMGA1UELRMcRUtVOTAwMzE3M0M5IC8gVkFEQTgwMDkyN0RKMzEeMBwGA1UEBRMVIC8gVkFEQTgwMDkyN0hTUlNSTDA1MRMwEQYDVQQLEwpTdWN1cnNhbCAxMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtmecO6n2GS0zL025gbHGQVxznPDICoXzR2uUngz4DqxVUC/w9cE6FxSiXm2ap8Gcjg7wmcZfm85EBaxCx/0J2u5CqnhzIoGCdhBPuhWQnIh5TLgj/X6uNquwZkKChbNe9aeFirU/JbyN7Egia9oKH9KZUsodiM/pWAH00PCtoKJ9OBcSHMq8Rqa3KKoBcfkg1ZrgueffwRLws9yOcRWLb02sDOPzGIm/jEFicVYt2Hw1qdRE5xmTZ7AGG0UHs+unkGjpCVeJ+BEBn0JPLWVvDKHZAQMj6s5Bku35+d/MyATkpOPsGT/VTnsouxekDfikJD1f7A1ZpJbqDpkJnss3vQIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQsFAAOCAgEAFaUgj5PqgvJigNMgtrdXZnbPfVBbukAbW4OGnUhNrA7SRAAfv2BSGk16PI0nBOr7qF2mItmBnjgEwk+DTv8Zr7w5qp7vleC6dIsZFNJoa6ZndrE/f7KO1CYruLXr5gwEkIyGfJ9NwyIagvHHMszzyHiSZIA850fWtbqtythpAliJ2jF35M5pNS+YTkRB+T6L/c6m00ymN3q9lT1rB03YywxrLreRSFZOSrbwWfg34EJbHfbFXpCSVYdJRfiVdvHnewN0r5fUlPtR9stQHyuqewzdkyb5jTTw02D2cUfL57vlPStBj7SEi3uOWvLrsiDnnCIxRMYJ2UA2ktDKHk+zWnsDmaeleSzonv2CHW42yXYPCvWi88oE1DJNYLNkIjua7MxAnkNZbScNw01A6zbLsZ3y8G6eEYnxSTRfwjd8EP4kdiHNJftm7Z4iRU7HOVh79/lRWB+gd171s3d/mI9kte3MRy6V8MMEMCAnMboGpaooYwgAmwclI2XZCczNWXfhaWe0ZS5PmytD/GDpXzkX0oEgY9K/uYo5V77NdZbGAjmyi8cE2B2ogvyaN2XfIInrZPgEffJ4AB7kFA2mwesdLOCh0BLD9itmCve3A1FGR4+stO2ANUoiI3w3Tv2yQSg4bjeDlJ08lXaaFCLW2peEXMXjQUk7fmpb5MNuOUTW6BE=">
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" NoCertificado="30001000000500003416" Certificado="MIIFsDCCA5igAwIBAgIUMzAwMDEwMDAwMDA1MDAwMDM0MTYwDQYJKoZIhvcNAQELBQAwggErMQ8wDQYDVQQDDAZBQyBVQVQxLjAsBgNVBAoMJVNFUlZJQ0lPIERFIEFETUlOSVNUUkFDSU9OIFRSSUJVVEFSSUExGjAYBgNVBAsMEVNBVC1JRVMgQXV0aG9yaXR5MSgwJgYJKoZIhvcNAQkBFhlvc2Nhci5tYXJ0aW5lekBzYXQuZ29iLm14MR0wGwYDVQQJDBQzcmEgY2VycmFkYSBkZSBjYWxpejEOMAwGA1UEEQwFMDYzNzAxCzAJBgNVBAYTAk1YMRkwFwYDVQQIDBBDSVVEQUQgREUgTUVYSUNPMREwDwYDVQQHDAhDT1lPQUNBTjERMA8GA1UELRMIMi41LjQuNDUxJTAjBgkqhkiG9w0BCQITFnJlc3BvbnNhYmxlOiBBQ0RNQS1TQVQwHhcNMjMwNTE4MTE0MzUxWhcNMjcwNTE4MTE0MzUxWjCB1zEnMCUGA1UEAxMeRVNDVUVMQSBLRU1QRVIgVVJHQVRFIFNBIERFIENWMScwJQYDVQQpEx5FU0NVRUxBIEtFTVBFUiBVUkdBVEUgU0EgREUgQ1YxJzAlBgNVBAoTHkVTQ1VFTEEgS0VNUEVSIFVSR0FURSBTQSBERSBDVjElMCMGA1UELRMcRUtVOTAwMzE3M0M5IC8gVkFEQTgwMDkyN0RKMzEeMBwGA1UEBRMVIC8gVkFEQTgwMDkyN0hTUlNSTDA1MRMwEQYDVQQLEwpTdWN1cnNhbCAxMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtmecO6n2GS0zL025gbHGQVxznPDICoXzR2uUngz4DqxVUC/w9cE6FxSiXm2ap8Gcjg7wmcZfm85EBaxCx/0J2u5CqnhzIoGCdhBPuhWQnIh5TLgj/X6uNquwZkKChbNe9aeFirU/JbyN7Egia9oKH9KZUsodiM/pWAH00PCtoKJ9OBcSHMq8Rqa3KKoBcfkg1ZrgueffwRLws9yOcRWLb02sDOPzGIm/jEFicVYt2Hw1qdRE5xmTZ7AGG0UHs+unkGjpCVeJ+BEBn0JPLWVvDKHZAQMj6s5Bku35+d/MyATkpOPsGT/VTnsouxekDfikJD1f7A1ZpJbqDpkJnss3vQIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQsFAAOCAgEAFaUgj5PqgvJigNMgtrdXZnbPfVBbukAbW4OGnUhNrA7SRAAfv2BSGk16PI0nBOr7qF2mItmBnjgEwk+DTv8Zr7w5qp7vleC6dIsZFNJoa6ZndrE/f7KO1CYruLXr5gwEkIyGfJ9NwyIagvHHMszzyHiSZIA850fWtbqtythpAliJ2jF35M5pNS+YTkRB+T6L/c6m00ymN3q9lT1rB03YywxrLreRSFZOSrbwWfg34EJbHfbFXpCSVYdJRfiVdvHnewN0r5fUlPtR9stQHyuqewzdkyb5jTTw02D2cUfL57vlPStBj7SEi3uOWvLrsiDnnCIxRMYJ2UA2ktDKHk+zWnsDmaeleSzonv2CHW42yXYPCvWi88oE1DJNYLNkIjua7MxAnkNZbScNw01A6zbLsZ3y8G6eEYnxSTRfwjd8EP4kdiHNJftm7Z4iRU7HOVh79/lRWB+gd171s3d/mI9kte3MRy6V8MMEMCAnMboGpaooYwgAmwclI2XZCczNWXfhaWe0ZS5PmytD/GDpXzkX0oEgY9K/uYo5V77NdZbGAjmyi8cE2B2ogvyaN2XfIInrZPgEffJ4AB7kFA2mwesdLOCh0BLD9itmCve3A1FGR4+stO2ANUoiI3w3Tv2yQSg4bjeDlJ08lXaaFCLW2peEXMXjQUk7fmpb5MNuOUTW6BE=" Sello="RBUtpP0n5thlZ6Y62Uil45orXl2n6ih+p6wP9+tGfaH8u5G2gS0TlyQZdRtnCxaC0gR4stjhDDtjuRuHHGDaZS9UJRS62kQ0PZgAYUagKG2YwaGNv2+k+oiFcdAeH8mCv9QKJXHlUZ+IftAsBvjXNeL2yvfzwMqaAhtxgxCE5i9vsBZ0D8rhwv+HfgAZe/kWLPCd0RFmO5aKWPaW8r4M18Ffrkd+MkZHxaunyM9TFg39SOO+hZeQof433z3hzcvcDXN4+cMHSa6OKnALnB+UZHVVJsR7ci9/QfulGhZ/3OB1PXgXZG8xGU6zQHF5nG2bB2rf+CjQTSB3ccz+mIGGdg==">
   <cfdi:Emisor Rfc="EKU9003173C9" Nombre="ESCUELA KEMPER URGATE" RegimenFiscal="601" />
-  <cfdi:Receptor Rfc="URE180429TM6" Nombre="UNIVERSIDAD ROBOTICA ESPAÑOLA" DomicilioFiscalReceptor="86991" RegimenFiscalReceptor="601" UsoCFDI="G01" />
+  <cfdi:Receptor Rfc="URE180429TM6" Nombre="UNIVERSIDAD ROBOTICA ESPAÑOLA" DomicilioFiscalReceptor="86991" RegimenFiscalReceptor="601" UsoCFDI="G03" />
   <cfdi:Conceptos>
-    <cfdi:Concepto ClaveProdServ="78101500" Cantidad="1" ClaveUnidad="H87" Unidad="Pieza" Descripcion="Cigarros" ValorUnitario="200.00" Descuento="1" Importe="200.00" ObjetoImp="02">
+    <cfdi:Concepto ClaveProdServ="78121603" NoIdentificacion="78121603" Cantidad="1" ClaveUnidad="E48" Unidad="Unidad de servicio" Descripcion="Servicio de traslado de toners" ValorUnitario="26232.75" Importe="26232.75" ObjetoImp="02">
       <cfdi:Impuestos>
         <cfdi:Traslados>
-          <cfdi:Traslado Base="1" Importe="0.16" Impuesto="002" TasaOCuota="0.160000" TipoFactor="Tasa" />
+          <cfdi:Traslado Base="26232.75" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="4197.24" />
         </cfdi:Traslados>
         <cfdi:Retenciones>
-          <cfdi:Retencion Base="1" Impuesto="001" TipoFactor="Tasa" TasaOCuota="0.100000" Importe="0" />
-          <cfdi:Retencion Base="1" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.106666" Importe="0" />
+          <cfdi:Retencion Base="26232.75" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.040000" Importe="1049.31" />
         </cfdi:Retenciones>
       </cfdi:Impuestos>
     </cfdi:Concepto>
   </cfdi:Conceptos>
-  <cfdi:Impuestos TotalImpuestosRetenidos="0.00" TotalImpuestosTrasladados="0.16">
+  <cfdi:Impuestos TotalImpuestosRetenidos="1049.31" TotalImpuestosTrasladados="4197.24">
     <cfdi:Retenciones>
-      <cfdi:Retencion Impuesto="001" Importe="0.00" />
-      <cfdi:Retencion Impuesto="002" Importe="0.00" />
+      <cfdi:Retencion Impuesto="002" Importe="1049.31" />
     </cfdi:Retenciones>
     <cfdi:Traslados>
-      <cfdi:Traslado Base="1" Importe="0.16" Impuesto="002" TasaOCuota="0.160000" TipoFactor="Tasa" />
+      <cfdi:Traslado Base="26232.75" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="4197.24" />
     </cfdi:Traslados>
   </cfdi:Impuestos>
   <cfdi:Complemento>
-    <cartaporte20:CartaPorte TranspInternac="Sí" Version="2.0" EntradaSalidaMerc="Entrada" PaisOrigenDestino="MEX">
+    <cartaporte20:CartaPorte Version="2.0" TranspInternac="No"
+      xmlns:cartaporte20="http://www.sat.gob.mx/CartaPorte20">
       <cartaporte20:Ubicaciones>
-        <cartaporte20:Ubicacion IDUbicacion="DE123457" FechaHoraSalidaLlegada="2021-11-09T14:29:52" NombreRemitenteDestinatario="NombreRemitenteDestinatario" NombreEstacion="Loreto" NumEstacion="EA0417" RFCRemitenteDestinatario="URE180429TM6" TipoUbicacion="Destino" TipoEstacion="01">
-          <cartaporte20:Domicilio Calle="calle" CodigoPostal="98057" Colonia="0002" Estado="ZAC" Localidad="03" Municipio="056" NumeroExterior="211" Pais="MEX" Referencia="casa blanca" />
+        <cartaporte20:Ubicacion TipoUbicacion="Destino" IDUbicacion="DE000002" RFCRemitenteDestinatario="URE180429TM6" NombreRemitenteDestinatario="UNIVERSIDAD ROBOTICA ESPAÑOLA" FechaHoraSalidaLlegada="2022-03-05T13:23:00">
+          <cartaporte20:Domicilio Calle="DIRECCION DESTINO." NumeroExterior="123" Referencia="sin referencias" Estado="SON" Pais="MEX" CodigoPostal="83000" />
         </cartaporte20:Ubicacion>
-        <cartaporte20:Ubicacion IDUbicacion="OR123457" FechaHoraSalidaLlegada="2021-11-09T14:29:52" NombreEstacion="Loreto" NombreRemitenteDestinatario="NombreRemitenteDestinatario" NumEstacion="EA0417" RFCRemitenteDestinatario="XAXX010101000" TipoEstacion="02" TipoUbicacion="Origen">
-          <cartaporte20:Domicilio Calle="calle" CodigoPostal="98057" Colonia="0002" Estado="ZAC" Localidad="03" Municipio="056" NumeroExterior="211" Pais="MEX" Referencia="casa blanca" />
+        <cartaporte20:Ubicacion TipoUbicacion="Origen" IDUbicacion="OR000001" RFCRemitenteDestinatario="XOJI740919U48" NombreRemitenteDestinatario="INGRID XODAR JIMENEZ" FechaHoraSalidaLlegada="2022-03-04T13:23:00">
+          <cartaporte20:Domicilio Calle="DIRECCION ORIGEN" NumeroExterior="1234" Referencia="Sin referencia" Estado="SON" Pais="MEX" CodigoPostal="85000" />
         </cartaporte20:Ubicacion>
       </cartaporte20:Ubicaciones>
-      <cartaporte20:Mercancias CargoPorTasacion="1" NumTotalMercancias="1" PesoBrutoTotal="1" PesoNetoTotal="1" UnidadPeso="A44">
-        <cartaporte20:Mercancia BienesTransp="01010101" Cantidad="1" ClaveSTCC="123456" ClaveUnidad="A1" Descripcion="Descripcion" Dimensiones="18/62/31cm" MaterialPeligroso="No" Moneda="MXN" PesoEnKg="1" UUIDComercioExt="59AB274B-6CBC-4176-9BD7-BB67B28D3EA4" Unidad="Unidad" ValorMercancia="1" FraccionArancelaria="3923100301">
-          <cartaporte20:Pedimentos Pedimento="21  47  3807  8003832" />
-          <cartaporte20:CantidadTransporta Cantidad="1" IDDestino="DE123457" IDOrigen="OR123457" />
+      <cartaporte20:Mercancias PesoBrutoTotal="56000" UnidadPeso="KGM" PesoNetoTotal="56000" NumTotalMercancias="1">
+        <cartaporte20:Mercancia BienesTransp="30111601" Descripcion="PRUEBA DESCRIPCION" Cantidad="56" ClaveUnidad="TNE" Unidad="BT" PesoEnKg="56000" ValorMercancia="2222" Moneda="MXN">
+          <cartaporte20:CantidadTransporta Cantidad="56" IDOrigen="OR000001" IDDestino="DE000002" />
         </cartaporte20:Mercancia>
-        <cartaporte20:TransporteAereo CodigoTransportista="CA001" LugarContrato="LugarContrato" MatriculaAeronave="61E5-WZ" NombreAseg="NombreAseg" NombreEmbarcador="Embarcador" NumPermisoSCT="Demo" NumPolizaSeguro="NumPolizaSeguro" NumRegIdTribEmbarc="NumRegIdTribEmbarc" NumeroGuia="acUbYlBVTmlzx" PermSCT="TPAF01" ResidenciaFiscalEmbarc="CAN" />
+        <cartaporte20:TransporteAereo PermSCT="TPAF01" NumPermisoSCT="Demo" MatriculaAeronave="61E5-WZ" NombreAseg="NombreAseg" NumPolizaSeguro="NumPolizaSeguro" NumeroGuia="acUbYlBVTmlzx" LugarContrato="LugarContrato" CodigoTransportista="CA001" RFCEmbarcador="MELR721216EA1" NombreEmbarcador="Embarcador" />
       </cartaporte20:Mercancias>
       <cartaporte20:FiguraTransporte>
-        <cartaporte20:TiposFigura NombreFigura="NombreFigura" RFCFigura="URE180429TM6" TipoFigura="02">
-          <cartaporte20:PartesTransporte ParteTransporte="PT02"></cartaporte20:PartesTransporte>
-          <cartaporte20:Domicilio Calle="calle" CodigoPostal="98057" Colonia="0002" Estado="ZAC" Localidad="03" Municipio="056" NumeroExterior="211" Pais="MEX" Referencia="casa blanca" />
+        <cartaporte20:TiposFigura TipoFigura="01" RFCFigura="FUNK671228PH6" NumLicencia="SON12221111" NombreFigura="TRNASPORTISTA RUBEN">
+          <cartaporte20:Domicilio Calle="PRUEBA1" NumeroExterior="1111" Estado="SON" Pais="MEX" CodigoPostal="85000" />
         </cartaporte20:TiposFigura>
       </cartaporte20:FiguraTransporte>
     </cartaporte20:CartaPorte>

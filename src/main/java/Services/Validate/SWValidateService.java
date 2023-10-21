@@ -1,6 +1,7 @@
 package Services.Validate;
 
 import java.io.IOException;
+
 import Exceptions.AuthException;
 import Exceptions.GeneralException;
 import Services.SWService;
@@ -31,4 +32,5 @@ public class SWValidateService extends SWService {
 		ValidateXmlRequest req = new ValidateXmlRequest();
 		return req.sendRequest(settings);
 	}
+
 }

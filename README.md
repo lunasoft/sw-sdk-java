@@ -1224,7 +1224,196 @@ Puedes encontrar más informacion en nuestro artículo [Plantillas PDF](https://
 
 
 </details>
------------------------------------------------------------------------
+
+# Certificados # 
+Servicio para gestionar los certificados CSD de tu cuenta, será posible cargar, consultar y eliminar los certificados. Para administrar los certificados de manera gráfica, puede hacerlo desde el [Administrador de timbres](https://portal.sw.com.mx/).   
+<details>
+<summary>
+Cargar certificado
+</summary> 
+Método para cargar un certificado en la cuenta.
+
+Este metodo recibe los siguientes parametros:
+- CSD (.cer) en Base64
+- Llave privada (.key) en Base64
+- Contraseña del certificado
+
+**Ejemplo de consumo de la libreria para Cargar CSD**
+
+```java
+package com.mycompany.examplereadme;
+
+import Exceptions.AuthException;
+import Exceptions.GeneralException;
+import Services.Csd.SWCsdService;
+import Utils.Responses.Csd.CsdResponse;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class ExampleReadme {
+
+    public static void main(String[] args) {
+        try {
+        //Creamos la instancia del servicio y no autenticamos con user y password   
+		SWCsdService app = new SWCsdService("user", "password", "https://services.test.sw.com.mx");
+		CsdResponse response = null;
+		response = (CsdResponse) app.UploadMyCsd("cerB64", "keyB64", "password_csd", "stamp", true);
+		//Imprimimos los datos de la consulta
+        System.out.println(response.HttpStatusCode);
+		System.out.println(response.data);
+		System.out.println(response.Status);
+        //En caso de obtener un error, este puede obtenerse de los campos
+		System.out.println(response.message);
+		System.out.println(response.messageDetail);
+        } catch (AuthException | GeneralException | IOException ex) {
+            Logger.getLogger(ExampleReadme.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+}
+```
+</details>
+
+<details>
+<summary>
+Consultar todos los certificados
+</summary> 
+Método para consultar todos los certificados cargados en la cuenta.
+
+Este metodo solo requiere de accesar con usuario y contraseña o con token
+
+**Ejemplo de consumo de la libreria para Consultar todos los Certificados**
+
+```java
+package com.mycompany.examplereadme;
+
+import Exceptions.AuthException;
+import Exceptions.GeneralException;
+import Services.Csd.SWCsdService;
+import Utils.Responses.Csd.CsdResponse;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class ExampleReadme {
+
+    public static void main(String[] args) {
+        try {
+            //Creamos la instancia del servicio y no autenticamos con user y password  
+            SWCsdService app = new SWCsdService("user", "password", "https://services.test.sw.com.mx");
+            CsdResponse response = null;
+            //Llamamos el metodo para mostrar la lista de certificados
+            response = (CsdResponse) app.GetListCsd();
+            //Imprimimos los datos de la consulta
+            System.out.println(response.HttpStatusCode);
+            System.out.println(response.data);
+            System.out.println(response.Status);
+            //En caso de obtener un error, este puede obtenerse de los campos
+            System.out.println(response.message);
+            System.out.println(response.messageDetail);
+        } catch (AuthException | GeneralException | IOException ex) {
+            Logger.getLogger(ExampleReadme.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+}
+```
+</details>
+
+<details>
+<summary>
+Consultar certificados por NoCertificado
+</summary> 
+Método para obtener un certificado cargado enviando como parámetro el número de certificado.
+
+Este metodo solo recibe el parametro:
+
+- Número de certificado a obtener
+
+**Ejemplo de consumo de la libreria para Consultar un certificado por su numero**
+
+```java
+package com.mycompany.examplereadme;
+
+import Exceptions.AuthException;
+import Exceptions.GeneralException;
+import Services.Csd.SWCsdService;
+import Utils.Responses.Csd.CsdResponse;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class ExampleReadme {
+
+    public static void main(String[] args) {
+        try {
+        //Creamos la instancia del servicio y no autenticamos con user y password  
+		SWCsdService app = new SWCsdService("user", "password", "https://services.test.sw.com.mx");
+		CsdResponse response = null;
+        //Pasamos como parametro del numero de certificado que deseamos encontrar
+		response = (CsdResponse) app.SearchMyCsd("30001000000400002321");
+		//Imprimimos los datos de la consulta
+        System.out.println(response.HttpStatusCode);
+		System.out.println(response.data);
+		System.out.println(response.Status);
+        //En caso de obtener un error, este puede obtenerse de los campos
+		System.out.println(response.message);
+		System.out.println(response.messageDetail);
+        } catch (AuthException | GeneralException | IOException ex) {
+            Logger.getLogger(ExampleReadme.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+}
+```
+</details>
+
+<details>
+<summary>
+Eliminar certificado
+</summary> 
+Método para eliminar un certificado de la cuenta.
+
+Este metodo solo recibe el parametro:
+- Número de certificado a eliminar
+
+**Ejemplo de consumo de la libreria para Eliminar un certificado por su numero**
+
+```java
+package com.mycompany.examplereadme;
+
+import Exceptions.AuthException;
+import Exceptions.GeneralException;
+import Services.Csd.SWCsdService;
+import Utils.Responses.Csd.CsdResponse;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class ExampleReadme {
+
+    public static void main(String[] args) {
+        try {
+        //Creamos la instancia del servicio y no autenticamos con user y password  
+		SWCsdService app = new SWCsdService("user", "password", "https://services.test.sw.com.mx");
+		CsdResponse response = null;
+         //Pasamos como parametro del numero de certificado que deseamos eliminar
+		response = (CsdResponse) app.DisableMyCsd("30001000000400002321");
+		//Imprimimos los datos de la consulta
+        System.out.println(response.HttpStatusCode);
+		System.out.println(response.data);
+		System.out.println(response.Status);
+        //En caso de obtener un error, este puede obtenerse de los campos
+		System.out.println(response.message);
+		System.out.println(response.messageDetail);
+        } catch (AuthException | GeneralException | IOException ex) {
+            Logger.getLogger(ExampleReadme.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+}
+```
+</details>
+
+---
+
 
 Para mayor referencia de un listado completo de los servicios favor de visitar nuestro [sitio developers](https://developers.sw.com.mx/).
 

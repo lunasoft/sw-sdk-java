@@ -11,7 +11,7 @@ Registrate en sw.com.mx
 Java 1.6 o superior
 
 ## Dependencias ##
-* [org.json](http://www.json.org/java)
+* [org.json](https://mavenlibs.com/jar/file/org.json/json)
 * [httpclient 4.3.6](http://hc.apache.org/downloads.cgi)
 * [httpmime 4.3.6](http://hc.apache.org/downloads.cgi)
 * [httpasyncclient 4.0.2](http://hc.apache.org/downloads.cgi)

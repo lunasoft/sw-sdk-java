@@ -197,10 +197,10 @@ public class ExampleReadme {
 
 | Version |                         Respuesta                             | 
 |---------|---------------------------------------------------------------|
-|  v1     | Devuelve el timbre fiscal digital                             | 
-|  v2     | Devuelve el timbre fiscal digital y el CFDI timbrado          | 
-|  v3     | Devuelve el CFDI timbrado                                     | 
-|  v4     | Devuelve todos los datos del timbrado                         |
+|  V1     | Devuelve el timbre fiscal digital                             | 
+|  V2     | Devuelve el timbre fiscal digital y el CFDI timbrado          | 
+|  V3     | Devuelve el CFDI timbrado                                     | 
+|  V4     | Devuelve todos los datos del timbrado                         |
 
 Para mayor referencia de estas versiones de respuesta, favor de visitar el siguiente [link](https://developers.sw.com.mx/knowledge-base/versiones-de-respuesta-timbrado/).
 

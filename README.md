@@ -1290,8 +1290,10 @@ package com.mycompany.examplereadme;
 import Exceptions.AuthException;
 import Exceptions.GeneralException;
 import Services.Csd.SWCsdService;
-import Utils.Responses.Csd.CsdResponse;
+import Utils.Responses.Csd.InfoCsd;
+import Utils.Responses.Csd.ListInfoCsdResponse;
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -1301,14 +1303,25 @@ public class ExampleReadme {
         try {
             //Creamos la instancia del servicio y no autenticamos con user y password  
             SWCsdService app = new SWCsdService("user", "password", "https://services.test.sw.com.mx");
-            CsdResponse response = null;
+            ListInfoCsdResponse response = null;
             //Llamamos el metodo para mostrar la lista de certificados
-            response = (CsdResponse) app.GetListCsd();
+            response = (ListInfoCsdResponse) app.GetListCsd();
             //Imprimimos los datos de la consulta
             System.out.println(response.HttpStatusCode);
-            System.out.println(response.data);
+            List<InfoCsd> lista = response.data;
+            if (lista != null) {
+                for (int i = 0; i < lista.size(); i++) {
+                    InfoCsd dato = lista.get(i);
+                    System.out.println("Número certificado: " + dato.certificateNumber);
+                    System.out.println("Tipo certificado: " + dato.certificateType);
+                    System.out.println("Está activo?: " + dato.isActive);
+                    System.out.println("Razón social: " + dato.issuerBussinesName);
+                    System.out.println("Rfc: " + dato.issuerRfc);
+                    System.out.println("Valido desde: " + dato.validFrom);
+                    System.out.println("Valido hasta: " + dato.validTo + "\n");
+                }
+            }
             System.out.println(response.Status);
-            //En caso de obtener un error, este puede obtenerse de los campos
             System.out.println(response.message);
             System.out.println(response.messageDetail);
         } catch (AuthException | GeneralException | IOException ex) {
@@ -1316,6 +1329,7 @@ public class ExampleReadme {
         }
     }
 }
+
 ```
 </details>
 
@@ -1337,7 +1351,8 @@ package com.mycompany.examplereadme;
 import Exceptions.AuthException;
 import Exceptions.GeneralException;
 import Services.Csd.SWCsdService;
-import Utils.Responses.Csd.CsdResponse;
+import Utils.Responses.Csd.InfoCsd;
+import Utils.Responses.Csd.InfoCsdResponse;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -1346,18 +1361,24 @@ public class ExampleReadme {
 
     public static void main(String[] args) {
         try {
-        //Creamos la instancia del servicio y no autenticamos con user y password  
-		SWCsdService app = new SWCsdService("user", "password", "https://services.test.sw.com.mx");
-		CsdResponse response = null;
-        //Pasamos como parametro del numero de certificado que deseamos encontrar
-		response = (CsdResponse) app.SearchMyCsd("30001000000400002321");
-		//Imprimimos los datos de la consulta
-        System.out.println(response.HttpStatusCode);
-		System.out.println(response.data);
-		System.out.println(response.Status);
-        //En caso de obtener un error, este puede obtenerse de los campos
-		System.out.println(response.message);
-		System.out.println(response.messageDetail);
+            //Creamos la instancia del servicio y no autenticamos con user y password  
+            SWCsdService app = new SWCsdService("user", "password", "https://services.test.sw.com.mx");
+            InfoCsdResponse response = null;
+            //Pasamos el numero de certificado a buscar
+            response = (InfoCsdResponse) app.SearchMyCsd("30001000000500003416");
+            //Imprimimos los datos de la consulta
+            InfoCsd dato = (InfoCsd) response.data;
+            System.out.println(response.HttpStatusCode);
+            System.out.println("Número certificado: " + dato.certificateNumber);
+            System.out.println("Tipo certificado: " + dato.certificateType);
+            System.out.println("Está activo?: " + dato.isActive);
+            System.out.println("Razón social: " + dato.issuerBussinesName);
+            System.out.println("Rfc: " + dato.issuerRfc);
+            System.out.println("Valido desde: " + dato.validFrom);
+            System.out.println("Valido hasta: " + dato.validTo);
+            System.out.println(response.Status);
+            System.out.println(response.message);
+            System.out.println(response.messageDetail);
         } catch (AuthException | GeneralException | IOException ex) {
             Logger.getLogger(ExampleReadme.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -546,7 +546,7 @@ Este método recibe los siguientes parametros:
 - RFC receptor
 - Total de la factura
 - UUID
-- 8 ultimos digitos sello SAT 
+- 8 ultimos digitos sello del Emisor
 <details>
 <summary>
 Ejemplo de consumo del servicio para consultar estatus del CFDI

@@ -5,6 +5,7 @@ import org.apache.http.client.config.RequestConfig.Builder;
 public abstract class IRequest {
     public String Token;
     public String URI;
+    public String URIAPI;
     public String User;
     public String Password;
     public String version;
@@ -67,4 +68,5 @@ public abstract class IRequest {
         this.proxyHost = proxyHost;
         this.proxyPort = proxyPort;
     }
+    
 }

@@ -1389,6 +1389,68 @@ public class ExampleReadme {
 
 <details>
 <summary>
+Consultar certificados por RFC
+</summary> 
+Método para obtener los certificados cargados en la cuenta,  enviando como parámetro el RFC.
+
+Este metodo solo recibe el parametro:
+
+- RFC de los certificados a obtener
+
+**Ejemplo de consumo de la libreria para Consultar un certificado por el RFC ligado a él**
+
+```java
+package com.mycompany.examplereadme;
+
+import Exceptions.AuthException;
+import Exceptions.GeneralException;
+import Services.Csd.SWCsdService;
+import Utils.Responses.Csd.InfoCsd;
+import Utils.Responses.Csd.ListInfoCsdResponse;
+import java.io.IOException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class ExampleReadme {
+
+    public static void main(String[] args) {
+        try {
+        //Creamos la instancia del servicio y no autenticamos con user y password  
+        SWCsdService app = new SWCsdService("user", "password", "https://services.test.sw.com.mx");
+        //Obtenemos la respuesta del servicio GetListCsdByRfc enviandole un parametro
+		ListInfoCsdResponse response = null;
+		response = (ListInfoCsdResponse) app.GetListCsdByRfc("EKU9003173C9");
+        //Mostramos el codigo que obtuvimos en la solicitud
+		System.out.println(response.HttpStatusCode);
+        //Mostramos los datos obtenidos de la respuesta
+		List<InfoCsd> lista = response.data;
+		if(lista != null) {
+			for(int i=0; i<lista.size(); i++) {
+				InfoCsd dato = lista.get(i);
+				System.out.println("Número certificado: " + dato.certificateNumber);
+				System.out.println("Tipo certificado: " + dato.certificateType);
+				System.out.println("Está activo?: " + dato.isActive);
+				System.out.println("Razón social: " + dato.issuerBussinesName);
+				System.out.println("Rfc: " + dato.issuerRfc);
+				System.out.println("Valido desde: " + dato.validFrom);
+				System.out.println("Valido hasta: " + dato.validTo + "\n");
+			}
+		}
+        //Mostramos los demas datos de la respuesta
+		System.out.println(response.Status);
+		System.out.println(response.message);
+		System.out.println(response.messageDetail);
+        } catch (AuthException | GeneralException | IOException ex) {
+            Logger.getLogger(ExampleReadme.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+}
+```
+</details>
+
+<details>
+<summary>
 Eliminar certificado
 </summary> 
 Método para eliminar un certificado de la cuenta.

@@ -1255,7 +1255,7 @@ public class ExampleReadme {
 
     public static void main(String[] args) {
         try {
-        //Creamos la instancia del servicio y no autenticamos con user y password   
+        //Creamos la instancia del servicio y nos autenticamos con user y password   
 		SWCsdService app = new SWCsdService("user", "password", "https://services.test.sw.com.mx");
 		CsdResponse response = null;
 		response = (CsdResponse) app.UploadMyCsd("cerB64", "keyB64", "password_csd", "stamp", true);
@@ -1301,7 +1301,7 @@ public class ExampleReadme {
 
     public static void main(String[] args) {
         try {
-            //Creamos la instancia del servicio y no autenticamos con user y password  
+            //Creamos la instancia del servicio y nos autenticamos con user y password  
             SWCsdService app = new SWCsdService("user", "password", "https://services.test.sw.com.mx");
             ListInfoCsdResponse response = null;
             //Llamamos el metodo para mostrar la lista de certificados
@@ -1361,7 +1361,7 @@ public class ExampleReadme {
 
     public static void main(String[] args) {
         try {
-            //Creamos la instancia del servicio y no autenticamos con user y password  
+            //Creamos la instancia del servicio y nos autenticamos con user y password  
             SWCsdService app = new SWCsdService("user", "password", "https://services.test.sw.com.mx");
             InfoCsdResponse response = null;
             //Pasamos el numero de certificado a buscar
@@ -1416,7 +1416,7 @@ public class ExampleReadme {
 
     public static void main(String[] args) {
         try {
-        //Creamos la instancia del servicio y no autenticamos con user y password  
+        //Creamos la instancia del servicio y nos autenticamos con user y password  
         SWCsdService app = new SWCsdService("user", "password", "https://services.test.sw.com.mx");
         //Obtenemos la respuesta del servicio GetListCsdByRfc enviandole un parametro
 		ListInfoCsdResponse response = null;
@@ -1475,7 +1475,7 @@ public class ExampleReadme {
 
     public static void main(String[] args) {
         try {
-        //Creamos la instancia del servicio y no autenticamos con user y password  
+        //Creamos la instancia del servicio y nos autenticamos con user y password  
 		SWCsdService app = new SWCsdService("user", "password", "https://services.test.sw.com.mx");
 		CsdResponse response = null;
          //Pasamos como parametro del numero de certificado que deseamos eliminar
@@ -1494,6 +1494,331 @@ public class ExampleReadme {
 }
 ```
 </details>
+
+# Administración de Usuarios # 
+API para gestionar y consultar los usuarios cliente de una cuenta.
+<details>
+<summary>
+Crear Usuario
+</summary> 
+Método para crear un nuevo usuario.
+
+Este metodo recibe los siguientes parametros:
+- Email
+- Nombre
+- Password
+- RFC
+- Profile
+- Stamps
+- Unlimited
+- Active
+
+**Ejemplo de consumo de la libreria para crear una cuenta nueva**
+
+```java
+package com.mycompany.examplereadme;
+
+import Exceptions.AuthException;
+import Exceptions.GeneralException;
+import Services.Account.AccountUser.SWAccountUserService;
+import Utils.Helpers.EnumAccountUser.AccountUserProfiles;
+import Utils.Responses.Account.AccountUser.AccountUserResponse;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class ExampleReadme {
+
+    public static void main(String[] args) {
+        try {
+        //Creamos la instancia del servicio y nos autenticamos con user y password   
+        SWAccountUserService app = new SWAccountUserService ("user", "password", "https://services.test.sw.com.mx","https://api.test.sw.com.mx",null, 0)
+		AccountUserResponse response = null;
+		response = (AccountUserResponse) app.CrearUsuario("usuario_nuevo", "password_nuevo", "Prueba SW Java 1.6", "CACX7605101P8", 20, AccountUserProfiles.Hijo, false, true);
+		//Imprimimos los datos de la solicitud
+        System.out.println(response.HttpStatusCode);
+		System.out.println(response.data);
+		System.out.println(response.Status);
+        //En caso de obtener un error, este puede obtenerse de los campos
+		System.out.println(response.message);
+		System.out.println(response.messageDetail);
+        } catch (AuthException | GeneralException | IOException ex) {
+            Logger.getLogger(ExampleReadme.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+}
+```
+</details>
+<details>
+<summary>
+Actualizar Usuario
+</summary> 
+Método para actualizar datos de un usuario.
+
+Este metodo recibe los siguientes parametros:
+- Id Usuario
+- Nombre
+- RFC
+- Unlimited
+- Active
+
+**Ejemplo de consumo de la libreria para modificar una cuenta**
+
+```java
+package com.mycompany.examplereadme;
+
+import Exceptions.AuthException;
+import Exceptions.GeneralException;
+import Services.Account.AccountUser.SWAccountUserService;
+import Utils.Responses.Account.AccountUser.AccountUserResponse;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class ExampleReadme {
+
+    public static void main(String[] args) {
+        try {
+        //Creamos la instancia del servicio y nos autenticamos con user y password   
+        SWAccountUserService app = new SWAccountUserService ("user", "password", "https://services.test.sw.com.mx","https://api.test.sw.com.mx",null, 0)
+		AccountUserResponse response = null;
+		response = (AccountUserResponse) app.ActualizarUsuario(UUID.fromString("be2a859c-cd5f-42b5-b35d-f065b3dfecac4"),
+				"Prueba", "RAQÑ7701212M3", false, true);
+		//Imprimimos los datos de la solicitud
+        System.out.println(response.HttpStatusCode);
+		System.out.println(response.data);
+		System.out.println(response.Status);
+        //En caso de obtener un error, este puede obtenerse de los campos
+		System.out.println(response.message);
+		System.out.println(response.messageDetail);
+        } catch (AuthException | GeneralException | IOException ex) {
+            Logger.getLogger(ExampleReadme.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+}
+```
+</details>
+<details>
+<summary>
+Eliminar usuario
+</summary> 
+Método para eliminar un usuario.
+
+Este metodo solo recibe el parametro:
+- ID Usuario
+
+**Ejemplo de consumo de la libreria para Eliminar un usuario por su numero de identificacion**
+
+```java
+package com.mycompany.examplereadme;
+
+import Exceptions.AuthException;
+import Exceptions.GeneralException;
+import Services.Account.AccountUser.SWAccountUserService;
+import Utils.Responses.Account.AccountUser.AccountUserResponse;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class ExampleReadme {
+
+    public static void main(String[] args) {
+        try {
+        //Creamos la instancia del servicio y nos autenticamos con user y password   
+        SWAccountUserService app = new SWAccountUserService ("user", "password", "https://services.test.sw.com.mx","https://api.test.sw.com.mx",null, 0)
+		AccountUserResponse response = null;
+		response = (AccountUserResponse) app.EliminarUsuario(UUID.fromString("be2a859c-cd5f-42b5-b35d-f065b3dfecac4"));
+		//Imprimimos los datos de la solicitud
+        System.out.println(response.HttpStatusCode);
+		System.out.println(response.data);
+		System.out.println(response.Status);
+        //En caso de obtener un error, este puede obtenerse de los campos
+		System.out.println(response.message);
+		System.out.println(response.messageDetail);
+        } catch (AuthException | GeneralException | IOException ex) {
+            Logger.getLogger(ExampleReadme.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+}
+```
+</details>
+<details>
+<summary>
+Consultar todos los usuarios de una cuenta
+</summary> 
+Método para consultar todos las cuentas hijas.
+
+Este metodo muestra los datos de la consulta de forma paginada, por ello se debe agregar:
+- Page (numero de página a consultar)
+- PageSize (numero de registros por página)
+
+**Ejemplo de consumo de la libreria para Consultar todos los Certificados**
+
+```java
+package com.mycompany.examplereadme;
+
+import Exceptions.AuthException;
+import Exceptions.GeneralException;
+import Services.Account.AccountUser.SWAccountUserService;
+import Utils.Responses.Account.AccountUser.DataAccountUser;
+import Utils.Responses.Account.AccountUser.ListDataAccountUserResponse;
+import java.io.IOException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class ExampleReadme {
+
+    public static void main(String[] args) {
+        try {
+        //Creamos la instancia del servicio y nos autenticamos con user y password   
+        SWAccountUserService app = new SWAccountUserService ("user", "password", "https://services.test.sw.com.mx","https://api.test.sw.com.mx",null, 0)
+		ListDataAccountUserResponse response = null;
+		response = (ListDataAccountUserResponse) app.ObtenerUsuarios(1, 10);
+		System.out.println(response.HttpStatusCode);
+		List<DataAccountUser> lista = response.data;
+		if (lista != null) {
+			for (int i = 0; i < lista.size(); i++) {
+				DataAccountUser dato = lista.get(i);
+				System.out.println("Email: " + dato.email);
+				System.out.println("Password: " + dato.password);
+				System.out.println("Nombre: " + dato.name);
+				System.out.println("Perfil: " + dato.profile);
+				System.out.println("Stamps: " + dato.stamps);
+				System.out.println("idUsuario: " + dato.idUsuario);
+				System.out.println("Rfc: " + dato.apellidoPaterno);
+				System.out.println("Ilimitado: " + dato.unlimited);
+				System.out.println("Activo: " + dato.activo + "\n");
+			}
+		}
+		//Imprimimos los datos de la solicitud
+        System.out.println(response.HttpStatusCode);
+		System.out.println(response.Status);
+        //En caso de obtener un error, este puede obtenerse de los campos
+		System.out.println(response.message);
+		System.out.println(response.messageDetail);
+        } catch (AuthException | GeneralException | IOException ex) {
+            Logger.getLogger(ExampleReadme.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+}
+
+```
+</details>
+
+<details>
+<summary>
+Consultar certificados por ID Usuario
+</summary> 
+Método para consultar la informacion de una cuenta.
+
+Este metodo requiere sólo un parametro:
+- Id Usuario
+
+**Ejemplo de consumo de la libreria para Consultar la informacion de una cuenta**
+
+```java
+package com.mycompany.examplereadme;
+
+import Exceptions.AuthException;
+import Exceptions.GeneralException;
+import Services.Account.AccountUser.SWAccountUserService;
+import Utils.Responses.Account.AccountUser.DataAccountUser;
+import Utils.Responses.Account.AccountUserDataAccountUserResponse;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class ExampleReadme {
+
+    public static void main(String[] args) {
+        try {
+        //Creamos la instancia del servicio y nos autenticamos con user y password   
+        SWAccountUserService app = new SWAccountUserService ("user", "password", "https://services.test.sw.com.mx","https://api.test.sw.com.mx",null, 0)
+		DataAccountUserResponse response = null;
+		response = (DataAccountUserResponse) app.ObtenerInfoUsuarioId(UUID.fromString("be2a859c-cd5f-42b5-b35d-f058b3a9aac4"));
+		DataAccountUser usuario = response.data;
+		if (usuario != null) {
+			System.out.println("Email: " + usuario.email);
+			System.out.println("Password: " + usuario.password);
+			System.out.println("Nombre: " + usuario.name);
+			System.out.println("Perfil: " + usuario.profile);
+			System.out.println("Stamps: " + usuario.stamps);
+			System.out.println("idUsuario: " + usuario.idUsuario);
+			System.out.println("Rfc: " + usuario.apellidoPaterno);
+			System.out.println("Ilimitado: " + usuario.unlimited);
+			System.out.println("Activo: " + usuario.activo + "\n");
+		}
+		//Imprimimos los datos de la solicitud
+        System.out.println(response.HttpStatusCode);
+		System.out.println(response.Status);
+        //En caso de obtener un error, este puede obtenerse de los campos
+		System.out.println(response.message);
+		System.out.println(response.messageDetail);
+        } catch (AuthException | GeneralException | IOException ex) {
+            Logger.getLogger(ExampleReadme.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+}
+
+```
+</details>
+
+<details>
+<summary>
+Consultar certificados por token
+</summary> 
+Método para obtener la informacion de una cuenta por el medio de autenticacion ya sea por token o usuario y contraseña.
+
+
+**Ejemplo de consumo de la libreria para Consultar la informacion de una cuenta**
+
+```java
+package com.mycompany.examplereadme;
+
+import Exceptions.AuthException;
+import Exceptions.GeneralException;
+import Services.Account.AccountUser.SWAccountUserService;
+import Utils.Responses.Account.AccountUser.DataAccountUser;
+import Utils.Responses.Account.AccountUserDataAccountUserResponse;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class ExampleReadme {
+
+    public static void main(String[] args) {
+        try {
+        //Creamos la instancia del servicio y nos autenticamos con user y password   
+        SWAccountUserService app = new SWAccountUserService ("user", "password", "https://services.test.sw.com.mx","https://api.test.sw.com.mx",null, 0)
+		DataAccountUserResponse response = null;
+		response = (DataAccountUserResponse) app.ObtenerInfoUsuario();
+		DataAccountUser usuario = response.data;
+		if (usuario != null) {
+			System.out.println("Email: " + usuario.email);
+			System.out.println("Password: " + usuario.password);
+			System.out.println("Nombre: " + usuario.name);
+			System.out.println("Perfil: " + usuario.profile);
+			System.out.println("Stamps: " + usuario.stamps);
+			System.out.println("idUsuario: " + usuario.idUsuario);
+			System.out.println("Rfc: " + usuario.apellidoPaterno);
+			System.out.println("Ilimitado: " + usuario.unlimited);
+			System.out.println("Activo: " + usuario.activo + "\n");
+		}
+		//Imprimimos los datos de la solicitud
+        System.out.println(response.HttpStatusCode);
+		System.out.println(response.Status);
+        //En caso de obtener un error, este puede obtenerse de los campos
+		System.out.println(response.message);
+		System.out.println(response.messageDetail);
+        } catch (AuthException | GeneralException | IOException ex) {
+            Logger.getLogger(ExampleReadme.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+}
+```
+</details>
+
 
 ---
 

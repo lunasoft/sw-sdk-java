@@ -144,7 +144,6 @@ public class SWAccountUserServiceTest {
 				null, 0);
 		ListDataAccountUserResponse response = null;
 		response = (ListDataAccountUserResponse) app.ObtenerUsuarios(1, 10);
-		System.out.println(response.HttpStatusCode);
 		List<DataAccountUser> lista = response.data;
 		if (lista != null) {
 			for (int i = 0; i < lista.size(); i++) {

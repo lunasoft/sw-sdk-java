@@ -9,8 +9,6 @@ import Services.SWService;
 import Utils.Helpers.EnumAccountUser.AccountUserProfiles;
 import Utils.Requests.Account.AccountUser.AccountUserOptionsRequest;
 import Utils.Requests.Account.AccountUser.AccountUserRequest;
-import Utils.Requests.Csd.CsdOptionsRequest;
-import Utils.Requests.Csd.CsdRequest;
 import Utils.Responses.IResponse;
 
 public class SWAccountUserService extends SWService {
@@ -30,69 +28,45 @@ public class SWAccountUserService extends SWService {
 		AccountUserOptionsRequest settings = new AccountUserOptionsRequest(getToken(), getURIAPI(), email, passwordUser,
 				name, rfc, stamps, profile, unlimited, active, getProxyHost(), getProxyPort());
 		AccountUserRequest req = new AccountUserRequest();
-		return req.sendRequest(settings);
+		return req.createUserRequest(settings);
 	}
 
-	public IResponse ActualizarUsuario(UUID idUser, String name, String rfc, boolean unlimited, boolean active) throws AuthException,GeneralException, IOException {
-	
-		AccountUserOptionsRequest settings = new AccountUserOptionsRequest(getToken(), getURIAPI(), idUser,name, rfc,
+	public IResponse ActualizarUsuario(UUID idUser, String name, String rfc, boolean unlimited, boolean active)
+			throws AuthException, GeneralException, IOException {
+
+		AccountUserOptionsRequest settings = new AccountUserOptionsRequest(getToken(), getURIAPI(), idUser, name, rfc,
 				unlimited, active, getProxyHost(), getProxyPort());
 		AccountUserRequest req = new AccountUserRequest();
-		return req.UpdateUser(settings, idUser);
+		return req.updateUser(settings, idUser);
 	}
-	/*
-	 * public IResponse DeleteUser(String certificateNumber) throws AuthException,
-	 * GeneralException, IOException {
-	 * CsdOptionsRequest settings = null;
-	 * settings = new CsdOptionsRequest(getToken(), getURI(), certificateNumber,
-	 * getProxyHost(), getProxyPort());
-	 * CsdRequest req = new CsdRequest();
-	 * return req.DisableCsdRequest(settings);
-	 * }
-	 * 
-	 * public IResponse GetAllUsers() throws AuthException, GeneralException,
-	 * IOException {
-	 * CsdOptionsRequest settings = null;
-	 * settings = new CsdOptionsRequest(getToken(), getURI(), getProxyHost(),
-	 * getProxyPort());
-	 * CsdRequest req = new CsdRequest();
-	 * return req.GetListCsdRequest(settings);
-	 * }
-	 * 
-	 * public IResponse GetUserByToken() throws AuthException, GeneralException,
-	 * IOException {
-	 * CsdOptionsRequest settings = null;
-	 * settings = new CsdOptionsRequest(getToken(), getURI(), "type/" + type,
-	 * getProxyHost(), getProxyPort());
-	 * CsdRequest req = new CsdRequest();
-	 * return req.GetListCsdRequest(settings);
-	 * }
-	 * 
-	 * public IResponse GetUserById(UUID idUser) throws AuthException,
-	 * GeneralException, IOException {
-	 * CsdOptionsRequest settings = null;
-	 * settings = new CsdOptionsRequest(getToken(), getURI(), "rfc/" + rfc,
-	 * getProxyHost(), getProxyPort());
-	 * CsdRequest req = new CsdRequest();
-	 * return req.GetListCsdRequest(settings);
-	 * }
-	 * 
-	 * public IResponse SearchMyCsd(String certificateNumber) throws AuthException,
-	 * GeneralException, IOException {
-	 * CsdOptionsRequest settings = null;
-	 * settings = new CsdOptionsRequest(getToken(), getURI(), certificateNumber,
-	 * getProxyHost(), getProxyPort());
-	 * CsdRequest req = new CsdRequest();
-	 * return req.GetInfoCsdRequest(settings);
-	 * }
-	 * 
-	 * public IResponse SearchActiveCsd(String rfc, String type) throws
-	 * AuthException, GeneralException, IOException {
-	 * CsdOptionsRequest settings = null;
-	 * settings = new CsdOptionsRequest(getToken(), getURI(), "rfc/" + rfc, type,
-	 * getProxyHost(), getProxyPort());
-	 * CsdRequest req = new CsdRequest();
-	 * return req.GetInfoCsdRequest(settings);
-	 * }
-	 */
+
+	public IResponse EliminarUsuario(UUID idUser) throws AuthException, GeneralException, IOException {
+
+		AccountUserOptionsRequest settings = new AccountUserOptionsRequest(getToken(), getURIAPI(), idUser,
+				getProxyHost(), getProxyPort());
+		AccountUserRequest req = new AccountUserRequest();
+		return req.deleteUserRequest(settings, idUser);
+	}
+
+	public IResponse ObtenerUsuarios(int page, int pageSize) throws AuthException, GeneralException, IOException {
+
+		AccountUserOptionsRequest settings = new AccountUserOptionsRequest(getToken(), getURIAPI(), page, pageSize,
+				getProxyHost(), getProxyPort());
+		AccountUserRequest req = new AccountUserRequest();
+		return req.getAllUsersRequest(settings, page, pageSize);
+	}
+
+	public IResponse ObtenerInfoUsuario() throws AuthException, GeneralException, IOException {
+		AccountUserOptionsRequest settings = new AccountUserOptionsRequest(getToken(), getURIAPI(), getProxyHost(),
+				getProxyPort());
+		AccountUserRequest req = new AccountUserRequest();
+		return req.getUserRequest(settings);
+	}
+
+	public IResponse ObtenerInfoUsuarioId(UUID idUser) throws AuthException, GeneralException, IOException {
+		AccountUserOptionsRequest settings = new AccountUserOptionsRequest(getToken(), getURIAPI(), idUser,
+				getProxyHost(), getProxyPort());
+		AccountUserRequest req = new AccountUserRequest();
+		return req.getUserIdRequest(settings, idUser);
+	}
 }

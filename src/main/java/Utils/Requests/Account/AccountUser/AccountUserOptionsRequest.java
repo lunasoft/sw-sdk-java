@@ -2,7 +2,6 @@ package Utils.Requests.Account.AccountUser;
 
 import java.util.UUID;
 
-
 import Utils.Constants;
 import Utils.Helpers.EnumAccountUser.AccountUserProfiles;
 import Utils.Requests.IRequest;
@@ -44,17 +43,20 @@ public class AccountUserOptionsRequest extends IRequest {
     }
 
     // ELIMINAR USUARIO Y OBTENER USUARIO POR ID
-    public AccountUserOptionsRequest(String token, String URIAPI, UUID idUsuario, String type,
-            String proxyHost,
-            int proxyPort) {
+    public AccountUserOptionsRequest(String token, String URIAPI, UUID idUsuario, String proxyHost, int proxyPort) {
         super(token, URIAPI + Constants.USUARIOS_ID + idUsuario.toString(), proxyHost, proxyPort);
     }
-    
-    //LISTA DE TODOS LOS USUARIOS Y PARA OBTENER USUARIO POR TOKEN
+
+    // LISTA DE TODOS LOS USUARIOS
+    public AccountUserOptionsRequest(String token, String URIAPI, int page, int pageSize, String proxyHost,
+            int proxyPort) {
+        super(token, URIAPI + Constants.USUARIOS + "?page=" + page + "&pageSize=" + pageSize, proxyHost, proxyPort);
+    }
+
+    // PARA OBTENER USUARIO POR TOKEN
     public AccountUserOptionsRequest(String token, String URIAPI, String proxyHost, int proxyPort) {
         super(token, URIAPI + Constants.USUARIOS, proxyHost, proxyPort);
     }
-    //
 
     public String getEmail() {
         return email;

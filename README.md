@@ -1533,8 +1533,8 @@ public class ExampleReadme {
         try {
         //Creamos la instancia del servicio y nos autenticamos con user y password   
         SWAccountUserService app = new SWAccountUserService ("user", "password", "https://services.test.sw.com.mx","https://api.test.sw.com.mx",null, 0)
-		AccountUserResponse response = null;
-		response = (AccountUserResponse) app.CrearUsuario("usuario_nuevo", "password_nuevo", "Prueba SW Java 1.6", "CACX7605101P8", 20, AccountUserProfiles.Hijo, false, true);
+		ccountUserResponse<String> response = null;
+			response = (AccountUserResponse<String>) app.CrearUsuario("usuario_nuevo", "password_nuevo", "Prueba SW Java 1.6", "CACX7605101P8", 20, AccountUserProfiles.Hijo, false, true);
 		//Imprimimos los datos de la solicitud
         System.out.println(response.HttpStatusCode);
 		System.out.println(response.data);
@@ -1581,8 +1581,8 @@ public class ExampleReadme {
         try {
         //Creamos la instancia del servicio y nos autenticamos con user y password   
         SWAccountUserService app = new SWAccountUserService ("user", "password", "https://services.test.sw.com.mx","https://api.test.sw.com.mx",null, 0)
-		AccountUserResponse response = null;
-		response = (AccountUserResponse) app.ActualizarUsuario(UUID.fromString("be2a859c-cd5f-42b5-b35d-f065b3dfecac4"),
+		ccountUserResponse<String> response = null;
+			response = (AccountUserResponse<String>) app.ActualizarUsuario(UUID.fromString("be2a859c-cd5f-42b5-b35d-f065b3dfecac4"),
 				"Prueba", "RAQÑ7701212M3", false, true);
 		//Imprimimos los datos de la solicitud
         System.out.println(response.HttpStatusCode);
@@ -1626,8 +1626,8 @@ public class ExampleReadme {
         try {
         //Creamos la instancia del servicio y nos autenticamos con user y password   
         SWAccountUserService app = new SWAccountUserService ("user", "password", "https://services.test.sw.com.mx","https://api.test.sw.com.mx",null, 0)
-		AccountUserResponse response = null;
-		response = (AccountUserResponse) app.EliminarUsuario(UUID.fromString("be2a859c-cd5f-42b5-b35d-f065b3dfecac4"));
+		ccountUserResponse<String> response = null;
+			response = (AccountUserResponse<String>) app.EliminarUsuario(UUID.fromString("be2a859c-cd5f-42b5-b35d-f065b3dfecac4"));
 		//Imprimimos los datos de la solicitud
         System.out.println(response.HttpStatusCode);
 		System.out.println(response.data);
@@ -1673,8 +1673,8 @@ public class ExampleReadme {
         try {
         //Creamos la instancia del servicio y nos autenticamos con user y password   
         SWAccountUserService app = new SWAccountUserService ("user", "password", "https://services.test.sw.com.mx","https://api.test.sw.com.mx",null, 0)
-		ListDataAccountUserResponse response = null;
-		response = (ListDataAccountUserResponse) app.ObtenerUsuarios(1, 10);
+		AccountUserResponse<List<DataAccountUser>> response = null;
+		response = (AccountUserResponse<List<DataAccountUser>>) app.ObtenerUsuarios(1, 10);
 		System.out.println(response.HttpStatusCode);
 		List<DataAccountUser> lista = response.data;
 		if (lista != null) {
@@ -1735,8 +1735,8 @@ public class ExampleReadme {
         try {
         //Creamos la instancia del servicio y nos autenticamos con user y password   
         SWAccountUserService app = new SWAccountUserService ("user", "password", "https://services.test.sw.com.mx","https://api.test.sw.com.mx",null, 0)
-		DataAccountUserResponse response = null;
-		response = (DataAccountUserResponse) app.ObtenerInfoUsuarioId(UUID.fromString("be2a859c-cd5f-42b5-b35d-f058b3a9aac4"));
+		AccountUserResponse<DataAccountUser> response = null;
+		response = (AccountUserResponse<DataAccountUser>) app.ObtenerInfoUsuarioId(UUID.fromString("be2a859c-cd5f-42b5-b35d-f058b3a9aac4"));
 		DataAccountUser usuario = response.data;
 		if (usuario != null) {
 			System.out.println("Email: " + usuario.email);
@@ -1791,8 +1791,8 @@ public class ExampleReadme {
         try {
         //Creamos la instancia del servicio y nos autenticamos con user y password   
         SWAccountUserService app = new SWAccountUserService ("user", "password", "https://services.test.sw.com.mx","https://api.test.sw.com.mx",null, 0)
-		DataAccountUserResponse response = null;
-		response = (DataAccountUserResponse) app.ObtenerInfoUsuario();
+		AccountUserResponse<DataAccountUser> response = null;
+		response = (AccountUserResponse<DataAccountUser>) app.ObtenerInfoUsuario();
 		DataAccountUser usuario = response.data;
 		if (usuario != null) {
 			System.out.println("Email: " + usuario.email);

@@ -15,5 +15,4 @@ public class ListInfoCsdResponse extends IResponse {
 		super(httpStatusCode, status, message, messageDetail);
 		data = lista;
 	}
-
 }

@@ -1,6 +1,10 @@
 package Utils.Responses.Account.AccountUser;
 
+/**
+ * Clase que representa la información de una cuenta.
+ */
 public class DataAccountUser {
+    // Atributos que representan la información de una cuenta
     public String email;
     public String password;
     public String name;
@@ -21,7 +25,11 @@ public class DataAccountUser {
     public boolean eliminado;
     public String tokenAccess;
     public String tokenAccessHash;
-    
+
+    /**
+     * Constructor que inicializa una instancia de DataAccountUser con la información de la cuenta.
+     */
+
     public DataAccountUser(String email, String password, String name, String apellidoPaterno,
             String apellidoMaterno, String username, String fechaUltimoPassword, String telefono,
             boolean administrador, String profileValue, String idUsuario, String idCliente, String stamps,

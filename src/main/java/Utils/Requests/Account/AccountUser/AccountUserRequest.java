@@ -20,6 +20,12 @@ import Utils.Requests.IRequest;
 import Utils.Responses.IResponse;
 import Utils.Responses.Account.AccountUser.DataAccountUser;
 
+/**
+ * La clase AccountUserRequest maneja las solicitudes relacionadas con las
+ * operaciones de usuario de cuentas.
+ * Utiliza la biblioteca Apache HttpClient para realizar solicitudes HTTP.
+ */
+
 public class AccountUserRequest {
     public IResponse createUserRequest(IRequest request) throws GeneralException, AuthException, IOException {
         try {
@@ -29,14 +35,15 @@ public class AccountUserRequest {
             AccountUserRequestHelper.configureHttpRequest(request, httpPost, requestJSON);
 
             try (CloseableHttpResponse responseB = client.execute(httpPost)) {
-                return AccountUserRequestHelper.handleResponse(responseB,String.class);
+                return AccountUserRequestHelper.handleResponse(responseB, String.class);
             }
         } catch (JSONException e) {
             throw new GeneralException(500, "Error en la construcción de la solicitud JSON: " + e.getMessage());
         }
     }
 
-    public IResponse updateUser(IRequest request, UUID idUser) throws GeneralException, AuthException, IOException {
+    public IResponse updateUserRequest(IRequest request, UUID idUser)
+            throws GeneralException, AuthException, IOException {
         try {
             JSONObject requestJSON = AccountUserRequestHelper.buildUserUpdateJson((AccountUserOptionsRequest) request);
             CloseableHttpClient client = HttpClients.createDefault();
@@ -96,7 +103,7 @@ public class AccountUserRequest {
         try (CloseableHttpClient client = HttpClients.createDefault();
                 CloseableHttpResponse response = client.execute(httpGet)) {
 
-            return AccountUserRequestHelper.handleResponse(response,DataAccountUser.class);
+            return AccountUserRequestHelper.handleResponse(response, DataAccountUser.class);
         }
     }
 }

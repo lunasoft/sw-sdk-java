@@ -16,7 +16,8 @@ import Utils.Requests.Account.AccountUser.AccountUserRequest;
 import Utils.Responses.IResponse;
 
 /**
- * SWAccountUserService proporciona servicios para gestionar usuarios de cuentas.
+ * SWAccountUserService proporciona servicios para gestionar usuarios de
+ * cuentas.
  */
 public class SWAccountUserService extends SWService {
 
@@ -32,7 +33,7 @@ public class SWAccountUserService extends SWService {
      * @throws AuthException Si la autenticación falla.
      */
     public SWAccountUserService(String user, String password, String URI, String URIAPI, String proxyHost,
-                                int proxyPort) throws AuthException {
+            int proxyPort) throws AuthException {
         super(user, password, URI, URIAPI, proxyHost, proxyPort);
     }
 
@@ -51,23 +52,25 @@ public class SWAccountUserService extends SWService {
     /**
      * Crea un nuevo usuario de cuenta con la información proporcionada.
      *
-     * @param email       Correo electrónico del nuevo usuario.
+     * @param email        Correo electrónico del nuevo usuario.
      * @param passwordUser Contraseña del nuevo usuario.
-     * @param name        Nombre del nuevo usuario.
-     * @param rfc         RFC del nuevo usuario.
-     * @param stamps      Número de timbres del nuevo usuario.
-     * @param profile     Perfil del nuevo usuario.
-     * @param unlimited   Indica si el usuario tiene acceso ilimitado.
-     * @param active      Indica si el usuario está activo.
+     * @param name         Nombre del nuevo usuario.
+     * @param rfc          RFC del nuevo usuario.
+     * @param stamps       Número de timbres del nuevo usuario.
+     * @param profile      Perfil del nuevo usuario.
+     * @param unlimited    Indica si el usuario tiene acceso ilimitado.
+     * @param active       Indica si el usuario está activo.
      * @return IResponse con el resultado de la operación.
      * @throws AuthException    Si la autenticación falla.
      * @throws GeneralException Si ocurre un error general.
      * @throws IOException      Si hay un error de entrada/salida.
      */
+
     public IResponse CrearUsuario(String email, String passwordUser, String name, String rfc, int stamps,
-                                  AccountUserProfiles profile, boolean unlimited, boolean active)
+            AccountUserProfiles profile, boolean unlimited, boolean active)
             throws AuthException, GeneralException, IOException {
-        AccountUserOptionsRequest settings = new AccountUserOptionsRequest(getToken(), getURIAPI(), email, passwordUser,
+        AccountUserOptionsRequest settings = AccountUserOptionsRequest.crearUsuarioRequest(getToken(), getURIAPI(),
+                email, passwordUser,
                 name, rfc, stamps, profile, unlimited, active, getProxyHost(), getProxyPort());
         AccountUserRequest req = new AccountUserRequest();
         return req.createUserRequest(settings);
@@ -89,10 +92,11 @@ public class SWAccountUserService extends SWService {
     public IResponse ActualizarUsuario(UUID idUser, String name, String rfc, boolean unlimited, boolean active)
             throws AuthException, GeneralException, IOException {
 
-        AccountUserOptionsRequest settings = new AccountUserOptionsRequest(getToken(), getURIAPI(), idUser, name, rfc,
+        AccountUserOptionsRequest settings = AccountUserOptionsRequest.actualizarUsuarioRequest(getToken(), getURIAPI(),
+                idUser, name, rfc,
                 unlimited, active, getProxyHost(), getProxyPort());
         AccountUserRequest req = new AccountUserRequest();
-        return req.updateUser(settings, idUser);
+        return req.updateUserRequest(settings, idUser);
     }
 
     /**
@@ -106,7 +110,7 @@ public class SWAccountUserService extends SWService {
      */
     public IResponse EliminarUsuario(UUID idUser) throws AuthException, GeneralException, IOException {
 
-        AccountUserOptionsRequest settings = new AccountUserOptionsRequest(getToken(), getURIAPI(), idUser,
+        AccountUserOptionsRequest settings = AccountUserOptionsRequest.usuarioIdRequest(getToken(), getURIAPI(), idUser,
                 getProxyHost(), getProxyPort());
         AccountUserRequest req = new AccountUserRequest();
         return req.deleteUserRequest(settings, idUser);
@@ -124,7 +128,8 @@ public class SWAccountUserService extends SWService {
      */
     public IResponse ObtenerUsuarios(int page, int pageSize) throws AuthException, GeneralException, IOException {
 
-        AccountUserOptionsRequest settings = new AccountUserOptionsRequest(getToken(), getURIAPI(), page, pageSize,
+        AccountUserOptionsRequest settings = AccountUserOptionsRequest.obtenerUsuariosRequest(getToken(), getURIAPI(),
+                page, pageSize,
                 getProxyHost(), getProxyPort());
         AccountUserRequest req = new AccountUserRequest();
         return req.getAllUsersRequest(settings, page, pageSize);
@@ -139,14 +144,16 @@ public class SWAccountUserService extends SWService {
      * @throws IOException      Si hay un error de entrada/salida.
      */
     public IResponse ObtenerInfoUsuario() throws AuthException, GeneralException, IOException {
-        AccountUserOptionsRequest settings = new AccountUserOptionsRequest(getToken(), getURIAPI(), getProxyHost(),
+        AccountUserOptionsRequest settings = AccountUserOptionsRequest.obtenerUsuarioPorTokenRequest(getToken(),
+                getURIAPI(), getProxyHost(),
                 getProxyPort());
         AccountUserRequest req = new AccountUserRequest();
         return req.getUserRequest(settings);
     }
 
     /**
-     * Obtiene la información de un usuario específico por su identificador único.
+     * Obtiene la información de un usuario específico por su identificador ú
+     * ico.
      *
      * @param idUser Identificador único del usuario.
      * @return IResponse con la información del usuario.
@@ -155,7 +162,7 @@ public class SWAccountUserService extends SWService {
      * @throws IOException      Si hay un error de entrada/salida.
      */
     public IResponse ObtenerInfoUsuarioId(UUID idUser) throws AuthException, GeneralException, IOException {
-        AccountUserOptionsRequest settings = new AccountUserOptionsRequest(getToken(), getURIAPI(), idUser,
+        AccountUserOptionsRequest settings = AccountUserOptionsRequest.usuarioIdRequest(getToken(), getURIAPI(), idUser,
                 getProxyHost(), getProxyPort());
         AccountUserRequest req = new AccountUserRequest();
         return req.getUserIdRequest(settings, idUser);

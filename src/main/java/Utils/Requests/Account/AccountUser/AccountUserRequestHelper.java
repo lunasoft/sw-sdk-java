@@ -23,7 +23,24 @@ import Utils.Requests.IRequest;
 import Utils.Responses.Account.AccountUser.AccountUserResponse;
 import Utils.Responses.Account.AccountUser.DataAccountUser;
 
+/**
+ * Clase de utilidad que proporciona métodos auxiliares para manejar solicitudes
+ * y respuestas
+ * relacionadas con usuarios de cuentas.
+ */
 public class AccountUserRequestHelper {
+    /**
+     * Maneja la respuesta HTTP y la convierte en un objeto AccountUserResponse con
+     * el tipo especificado.
+     *
+     * @param response     La respuesta HTTP recibida.
+     * @param responseType El tipo de datos esperado en la respuesta.
+     * @param <T>          Tipo genérico para la respuesta.
+     * @return Un objeto AccountUserResponse que contiene la información de la
+     *         respuesta.
+     * @throws IOException      Si hay un error de entrada/salida.
+     * @throws GeneralException Si hay un error general.
+     */
     public static <T> AccountUserResponse<T> handleResponse(CloseableHttpResponse response, Class<T> responseType)
             throws IOException, GeneralException {
         int status = response.getStatusLine().getStatusCode();
@@ -65,6 +82,13 @@ public class AccountUserRequestHelper {
         return null;
     }
 
+    /**
+     * Construye un objeto JSON para la creación de un usuario basado en la
+     * información proporcionada.
+     *
+     * @param accountUserOptionsRequest Información del usuario para la creación.
+     * @return Objeto JSON representando la solicitud de creación de usuario.
+     */
     public static JSONObject buildUserCreateJson(AccountUserOptionsRequest accountUserOptionsRequest) {
         JSONObject requestJSON = new JSONObject();
         requestJSON.put("email", accountUserOptionsRequest.getEmail());
@@ -78,6 +102,15 @@ public class AccountUserRequestHelper {
         return requestJSON;
     }
 
+    /**
+     * Construye un objeto JSON para la actualización de un usuario basado en la
+     * información proporcionada.
+     *
+     * @param accountUserOptionsRequest Información del usuario para la
+     *                                  actualización.
+     * @return Objeto JSON representando la solicitud de actualización de usuario.
+     */
+
     public static JSONObject buildUserUpdateJson(AccountUserOptionsRequest accountUserOptionsRequest) {
         JSONObject requestJSON = new JSONObject();
         requestJSON.put("name", accountUserOptionsRequest.getName());
@@ -86,6 +119,13 @@ public class AccountUserRequestHelper {
         requestJSON.put("active", accountUserOptionsRequest.isActive());
         return requestJSON;
     }
+
+    /**
+     * Construye un objeto DataAccountUser a partir de un objeto JSON.
+     *
+     * @param userData Objeto JSON que representa la información del usuario.
+     * @return Objeto DataAccountUser creado a partir del JSON.
+     */
 
     public static DataAccountUser UserData(JSONObject userData) {
         String email = userData.optString("email", null);
@@ -115,6 +155,15 @@ public class AccountUserRequestHelper {
                 idCliente, stamps, unlimited, profile, activo, registeredDate,
                 eliminado, tokenAccess, tokenAccessHash);
     }
+
+    /**
+     * Configura la solicitud HTTP con la información proporcionada en la IRequest y
+     * el JSON de la solicitud.
+     *
+     * @param request     Información de la solicitud.
+     * @param httpRequest Solicitud HTTP que se configurará.
+     * @param requestJSON Objeto JSON que contiene la información de la solicitud.
+     */
 
     public static void configureHttpRequest(IRequest request, HttpRequestBase httpRequest, JSONObject requestJSON) {
         try {

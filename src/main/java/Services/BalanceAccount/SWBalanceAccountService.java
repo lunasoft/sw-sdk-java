@@ -16,6 +16,10 @@ public class SWBalanceAccountService extends SWService {
         super(user, password, URI);
     }
 
+    public SWBalanceAccountService(String user, String password, String URI, String URIAPI) throws AuthException {
+        super(user, password, URI, URIAPI);
+    }
+
     public SWBalanceAccountService(String token, String URI) {
         super(token, URI);
     }
@@ -32,5 +36,17 @@ public class SWBalanceAccountService extends SWService {
         BalanceAcctOptionsRequest settings = new BalanceAcctOptionsRequest(getToken(), getURI(), getProxyHost(), getProxyPort());
         BalanceAcctRequest req = new BalanceAcctRequest();
         return req.sendRequest(settings);
+    }
+
+    public IResponse AddStamp(String idUser, int stamps, String comment) throws AuthException, GeneralException, IOException {
+        BalanceAcctOptionsRequest settings = new BalanceAcctOptionsRequest(getToken(), getURI(), idUser, stamps, comment, getProxyHost(), getProxyPort());
+        BalanceAcctRequest req = new BalanceAcctRequest();
+        return req.AddStamp(settings);
+    }
+
+    public IResponse RemoveStamp(String idUser, int stamps, String comment) throws AuthException, GeneralException, IOException {
+        BalanceAcctOptionsRequest settings = new BalanceAcctOptionsRequest(getToken(), getURI(), idUser, stamps, comment, getProxyHost(), getProxyPort());
+        BalanceAcctRequest req = new BalanceAcctRequest();
+        return req.RemoveStamp(settings);
     }
 }

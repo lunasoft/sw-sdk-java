@@ -10,6 +10,9 @@ public abstract class IRequest {
     public String Password;
     public String version;
     public String xml;
+    public String idUser;
+    public String comment;
+    public int stamps;
     public byte[] XML;
 	public boolean isb64;
     public Builder options = RequestConfig.custom();
@@ -68,5 +71,14 @@ public abstract class IRequest {
         this.proxyHost = proxyHost;
         this.proxyPort = proxyPort;
     }
-    
+
+    public IRequest(String token, String URI, String idUser, int stamps, String comment, String proxyHost, int proxyPort) {
+        Token = token;
+        this.URI = URI;
+        this.idUser = idUser;
+        this.stamps = stamps;
+        this.comment = comment;
+        this.proxyHost = proxyHost;
+        this.proxyPort = proxyPort;
+    }
 }

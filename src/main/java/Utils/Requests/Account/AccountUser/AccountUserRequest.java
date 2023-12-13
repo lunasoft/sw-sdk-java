@@ -27,7 +27,36 @@ import Utils.Responses.Account.AccountUser.DataAccountUser;
  */
 
 public class AccountUserRequest {
-    public IResponse createUserRequest(IRequest request) throws GeneralException, AuthException, IOException {
+    public static IResponse createCreateUserRequest(IRequest request)
+            throws GeneralException, AuthException, IOException {
+        return new AccountUserRequest().createUserRequest(request);
+    }
+
+    public static IResponse createUpdateUserRequest(IRequest request, UUID idUser)
+            throws GeneralException, AuthException, IOException {
+        return new AccountUserRequest().updateUserRequest(request, idUser);
+    }
+
+    public static IResponse createDeleteUserRequest(IRequest request, UUID idUser)
+            throws GeneralException, AuthException, IOException {
+        return new AccountUserRequest().deleteUserRequest(request, idUser);
+    }
+
+    public static IResponse createGetAllUsersRequest(IRequest request, int page, int pageSize)
+            throws GeneralException, AuthException, IOException {
+        return new AccountUserRequest().getAllUsersRequest(request, page, pageSize);
+    }
+
+    public static IResponse createGetUserRequest(IRequest request) throws GeneralException, AuthException, IOException {
+        return new AccountUserRequest().getUserRequest(request);
+    }
+
+    public static IResponse createGetUserIdRequest(IRequest request, UUID idUser)
+            throws GeneralException, AuthException, IOException {
+        return new AccountUserRequest().getUserIdRequest(request, idUser);
+    }
+
+    private IResponse createUserRequest(IRequest request) throws GeneralException, AuthException, IOException {
         try {
             JSONObject requestJSON = AccountUserRequestHelper.buildUserCreateJson((AccountUserOptionsRequest) request);
             CloseableHttpClient client = HttpClients.createDefault();
@@ -42,7 +71,7 @@ public class AccountUserRequest {
         }
     }
 
-    public IResponse updateUserRequest(IRequest request, UUID idUser)
+    private IResponse updateUserRequest(IRequest request, UUID idUser)
             throws GeneralException, AuthException, IOException {
         try {
             JSONObject requestJSON = AccountUserRequestHelper.buildUserUpdateJson((AccountUserOptionsRequest) request);
@@ -58,7 +87,7 @@ public class AccountUserRequest {
         }
     }
 
-    public IResponse deleteUserRequest(IRequest request, UUID IdUser)
+    private IResponse deleteUserRequest(IRequest request, UUID IdUser)
             throws GeneralException, AuthException, IOException {
         try {
             CloseableHttpClient client = HttpClients.createDefault();
@@ -73,7 +102,7 @@ public class AccountUserRequest {
         }
     }
 
-    public IResponse getAllUsersRequest(IRequest request, int page, int pageSize)
+    private IResponse getAllUsersRequest(IRequest request, int page, int pageSize)
             throws GeneralException, AuthException, IOException {
         HttpGet httpGet = new HttpGet(request.URI);
         AccountUserRequestHelper.configureHttpRequest(request, httpGet, new JSONObject());
@@ -84,7 +113,7 @@ public class AccountUserRequest {
         }
     }
 
-    public IResponse getUserRequest(IRequest request) throws GeneralException, AuthException, IOException {
+    private IResponse getUserRequest(IRequest request) throws GeneralException, AuthException, IOException {
         HttpGet httpGet = new HttpGet(request.URI + "/info");
         AccountUserRequestHelper.configureHttpRequest(request, httpGet, new JSONObject());
 
@@ -95,7 +124,7 @@ public class AccountUserRequest {
         }
     }
 
-    public IResponse getUserIdRequest(IRequest request, UUID idUser)
+    private IResponse getUserIdRequest(IRequest request, UUID idUser)
             throws GeneralException, AuthException, IOException {
         HttpGet httpGet = new HttpGet(request.URI);
         AccountUserRequestHelper.configureHttpRequest(request, httpGet, new JSONObject());

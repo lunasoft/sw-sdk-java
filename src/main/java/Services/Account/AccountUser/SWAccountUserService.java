@@ -72,8 +72,7 @@ public class SWAccountUserService extends SWService {
         AccountUserOptionsRequest settings = AccountUserOptionsRequest.crearUsuarioRequest(getToken(), getURIAPI(),
                 email, passwordUser,
                 name, rfc, stamps, profile, unlimited, active, getProxyHost(), getProxyPort());
-        AccountUserRequest req = new AccountUserRequest();
-        return req.createUserRequest(settings);
+        return AccountUserRequest.createCreateUserRequest(settings);
     }
 
     /**
@@ -95,8 +94,7 @@ public class SWAccountUserService extends SWService {
         AccountUserOptionsRequest settings = AccountUserOptionsRequest.actualizarUsuarioRequest(getToken(), getURIAPI(),
                 idUser, name, rfc,
                 unlimited, active, getProxyHost(), getProxyPort());
-        AccountUserRequest req = new AccountUserRequest();
-        return req.updateUserRequest(settings, idUser);
+        return AccountUserRequest.createUpdateUserRequest(settings, idUser);
     }
 
     /**
@@ -109,11 +107,9 @@ public class SWAccountUserService extends SWService {
      * @throws IOException      Si hay un error de entrada/salida.
      */
     public IResponse EliminarUsuario(UUID idUser) throws AuthException, GeneralException, IOException {
-
         AccountUserOptionsRequest settings = AccountUserOptionsRequest.usuarioIdRequest(getToken(), getURIAPI(), idUser,
                 getProxyHost(), getProxyPort());
-        AccountUserRequest req = new AccountUserRequest();
-        return req.deleteUserRequest(settings, idUser);
+        return AccountUserRequest.createDeleteUserRequest(settings, idUser);
     }
 
     /**
@@ -131,8 +127,7 @@ public class SWAccountUserService extends SWService {
         AccountUserOptionsRequest settings = AccountUserOptionsRequest.obtenerUsuariosRequest(getToken(), getURIAPI(),
                 page, pageSize,
                 getProxyHost(), getProxyPort());
-        AccountUserRequest req = new AccountUserRequest();
-        return req.getAllUsersRequest(settings, page, pageSize);
+        return AccountUserRequest.createGetAllUsersRequest(settings, page, pageSize);
     }
 
     /**
@@ -147,8 +142,7 @@ public class SWAccountUserService extends SWService {
         AccountUserOptionsRequest settings = AccountUserOptionsRequest.obtenerUsuarioPorTokenRequest(getToken(),
                 getURIAPI(), getProxyHost(),
                 getProxyPort());
-        AccountUserRequest req = new AccountUserRequest();
-        return req.getUserRequest(settings);
+        return AccountUserRequest.createGetUserRequest(settings);
     }
 
     /**
@@ -164,7 +158,6 @@ public class SWAccountUserService extends SWService {
     public IResponse ObtenerInfoUsuarioId(UUID idUser) throws AuthException, GeneralException, IOException {
         AccountUserOptionsRequest settings = AccountUserOptionsRequest.usuarioIdRequest(getToken(), getURIAPI(), idUser,
                 getProxyHost(), getProxyPort());
-        AccountUserRequest req = new AccountUserRequest();
-        return req.getUserIdRequest(settings, idUser);
+        return AccountUserRequest.createGetUserIdRequest(settings, idUser);
     }
 }

@@ -41,7 +41,7 @@ public class AccountUserRequestHelper {
      * @throws IOException      Si hay un error de entrada/salida.
      * @throws GeneralException Si hay un error general.
      */
-    public static <T> AccountUserResponse<T> handleResponse(CloseableHttpResponse response, Class<T> responseType)
+    protected static <T> AccountUserResponse<T> handleResponse(CloseableHttpResponse response, Class<T> responseType)
             throws IOException, GeneralException {
         int status = response.getStatusLine().getStatusCode();
         String responseString = EntityUtils.toString(response.getEntity(), "UTF-8");
@@ -89,7 +89,7 @@ public class AccountUserRequestHelper {
      * @param accountUserOptionsRequest Información del usuario para la creación.
      * @return Objeto JSON representando la solicitud de creación de usuario.
      */
-    public static JSONObject buildUserCreateJson(AccountUserOptionsRequest accountUserOptionsRequest) {
+    protected static JSONObject buildUserCreateJson(AccountUserOptionsRequest accountUserOptionsRequest) {
         JSONObject requestJSON = new JSONObject();
         requestJSON.put("email", accountUserOptionsRequest.getEmail());
         requestJSON.put("password", accountUserOptionsRequest.getPassword());
@@ -111,7 +111,7 @@ public class AccountUserRequestHelper {
      * @return Objeto JSON representando la solicitud de actualización de usuario.
      */
 
-    public static JSONObject buildUserUpdateJson(AccountUserOptionsRequest accountUserOptionsRequest) {
+     protected static JSONObject buildUserUpdateJson(AccountUserOptionsRequest accountUserOptionsRequest) {
         JSONObject requestJSON = new JSONObject();
         requestJSON.put("name", accountUserOptionsRequest.getName());
         requestJSON.put("rfc", accountUserOptionsRequest.getRfc());
@@ -127,7 +127,7 @@ public class AccountUserRequestHelper {
      * @return Objeto DataAccountUser creado a partir del JSON.
      */
 
-    public static DataAccountUser UserData(JSONObject userData) {
+     protected static DataAccountUser UserData(JSONObject userData) {
         String email = userData.optString("email", null);
         String password = userData.optString("password", null);
         String nombre = userData.optString("nombre", null);
@@ -165,7 +165,7 @@ public class AccountUserRequestHelper {
      * @param requestJSON Objeto JSON que contiene la información de la solicitud.
      */
 
-    public static void configureHttpRequest(IRequest request, HttpRequestBase httpRequest, JSONObject requestJSON) {
+     protected static void configureHttpRequest(IRequest request, HttpRequestBase httpRequest, JSONObject requestJSON) {
         try {
             RequestHelper.setTimeOut(request.options, 5000);
             RequestHelper.setProxy(request.options, request.proxyHost, request.proxyPort);

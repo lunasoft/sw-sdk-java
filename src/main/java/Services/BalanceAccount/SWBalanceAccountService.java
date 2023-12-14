@@ -20,10 +20,6 @@ public class SWBalanceAccountService extends SWService {
         super(user, password, URI, URIAPI);
     }
 
-        public SWBalanceAccountService(String user, String password, String URI, String URIAPI, String action) throws AuthException {
-        super(user, password, URI, URIAPI, action);
-    }
-
     public SWBalanceAccountService(String token, String URI) {
         super(token, URI);
     }
@@ -43,13 +39,13 @@ public class SWBalanceAccountService extends SWService {
     }
 
     public IResponse AddStamp(UUID idUser, int stamps, String comment) throws AuthException, GeneralException, IOException {
-        BalanceAcctOptionsRequest settings = new BalanceAcctOptionsRequest(getToken(), getURI(), idUser, stamps, comment, getProxyHost(), getProxyPort());
+        BalanceAcctOptionsRequest settings = new BalanceAcctOptionsRequest(getToken(),  getURIAPI() == null ? getURI() : getURIAPI(), idUser, stamps, comment, getProxyHost(), getProxyPort());
         BalanceAcctRequest req = new BalanceAcctRequest();
         return req.AddStamp(settings);
     }
 
     public IResponse RemoveStamp(UUID idUser, int stamps, String comment) throws AuthException, GeneralException, IOException {
-        BalanceAcctOptionsRequest settings = new BalanceAcctOptionsRequest(getToken(), getURI(), idUser, stamps, comment, getProxyHost(), getProxyPort());
+        BalanceAcctOptionsRequest settings = new BalanceAcctOptionsRequest(getToken(), getURIAPI() == null ? getURI() : getURIAPI(), idUser, stamps, comment, getProxyHost(), getProxyPort());
         BalanceAcctRequest req = new BalanceAcctRequest();
         return req.RemoveStamp(settings);
     }

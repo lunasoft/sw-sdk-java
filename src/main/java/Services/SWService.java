@@ -72,25 +72,7 @@ public abstract class SWService {
 		} catch (IOException e) {
 			throw new AuthException(409, e.getMessage());
 		}
-    }
-    protected SWService(String user, String password, String URI, String URIAPI, String action) throws AuthException {
-        User = user;
-        Password = password;
-        this.URI = URIAPI;
-        this.URIAPI = URI;
-        try {
-            generateToken();
-            this.URI = URI;
-            this.URIAPI = URIAPI;
-        } catch (AuthException e) {
-            throw new AuthException(e.getHttpStatusCode(), e.getErrorMSG());
-        } catch (GeneralException e) {
-            throw new AuthException(e.getHttpStatusCode(), e.getErrorMSG());
-        } catch (IOException e) {
-            throw new AuthException(409, e.getMessage());
-        }
-    } 
-    
+    }    
     protected SWService(String user, String password, String URI, String ProxyHost, int ProxyPort) throws AuthException {
         User = user;
         Password = password;

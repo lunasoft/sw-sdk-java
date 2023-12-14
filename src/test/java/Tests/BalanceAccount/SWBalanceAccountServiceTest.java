@@ -107,7 +107,7 @@ public class SWBalanceAccountServiceTest {
     @Test
     public void testAddStampsByAuth_Sucess(){
         try {
-        	SWBalanceAccountService app = new SWBalanceAccountService(Utils.userSW, Utils.passwordSW, Utils.urlApiSW, Utils.urlSW, "add");
+        	SWBalanceAccountService app = new SWBalanceAccountService(Utils.userSW, Utils.passwordSW, Utils.urlSW, Utils.urlApiSW);
             BalanceAcctResponse response = (BalanceAcctResponse) app.AddStamp(UUID.fromString("828f19b1-77dc-48bc-9cfa-d48b5cf7e30c"), 1, "PruebaJava16");
             Assert.assertNotNull(response);
             String expect_status = "success";
@@ -210,7 +210,7 @@ public class SWBalanceAccountServiceTest {
     @Test
     public void testRemoveStampsByAuth_Sucess() {
         try {
-        	SWBalanceAccountService app = new SWBalanceAccountService(Utils.userSW, Utils.passwordSW, Utils.urlApiSW, Utils.urlSW, "remove");
+        	SWBalanceAccountService app = new SWBalanceAccountService(Utils.userSW, Utils.passwordSW, Utils.urlSW, Utils.urlApiSW);
             BalanceAcctResponse response = (BalanceAcctResponse) app.RemoveStamp(UUID.fromString("828f19b1-77dc-48bc-9cfa-d48b5cf7e30c"), 1, "PruebaJava16");
             Assert.assertNotNull(response);
             String expect_status = "success";

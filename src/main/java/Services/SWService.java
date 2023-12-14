@@ -72,7 +72,7 @@ public abstract class SWService {
 		} catch (IOException e) {
 			throw new AuthException(409, e.getMessage());
 		}
-    }   
+    }
     protected SWService(String user, String password, String URI, String ProxyHost, int ProxyPort) throws AuthException {
         User = user;
         Password = password;

@@ -610,7 +610,6 @@ Agregar timbres
 * IdUser
 * Número de timbres
 * Comentario
-* Acción
 
 **Ejemplo de consumo de la libreria para agregar timbres utilizando Token**
 
@@ -634,7 +633,7 @@ public class ExampleReadme {
             //Intancia del servicio para agregar timbres y autenticación
             SWBalanceAccountService sdk = new SWBalanceAccountService("T2lYQ0t4L0R...", "http://api.test.sw.com.mx");
             BalanceAcctResponse response = null;
-            response = (BalanceAcctResponse) sdk.BalanceAccountStamp(UUID.fromString("828f19b1-77dc-48bc-9cfa-d48b5cf7e30c"), 1, "PruebaJava16", AccountBalanceAction.Add);
+            response = (BalanceAcctResponse) sdk.AddBalanceAccountStamp(UUID.fromString("828f19b1-77dc-48bc-9cfa-d48b5cf7e30c"), 1, "PruebaJava16");
 
             //Imprimimos los datos de la respuesta que se obtuvo
             System.out.println(response.Status);
@@ -669,7 +668,6 @@ Eliminar timbres
 * IdUser
 * Número de timbres
 * Comentario
-* Acción
 
 **Ejemplo de consumo de la libreria para eliminar timbres utilizando Token**
 
@@ -693,7 +691,7 @@ public class ExampleReadme {
             //Intancia del servicio para agregar timbres y autenticación
             SWBalanceAccountService sdk = new SWBalanceAccountService("T2lYQ0t4L0R...", "http://api.test.sw.com.mx");
             BalanceAcctResponse response = null;
-            response = (BalanceAcctResponse) sdk.RemoveStamp(UUID.fromString("828f19b1-77dc-48bc-9cfa-d48b5cf7e30c"), 1, "PruebaJava16", AccountBalanceAction.Remove);
+            response = (BalanceAcctResponse) sdk.RemoveBalanceAccountStamp(UUID.fromString("828f19b1-77dc-48bc-9cfa-d48b5cf7e30c"), 1, "PruebaJava16");
             
             //Imprimimos los datos de la respuesta que se obtuvo
             System.out.println(response.Status);

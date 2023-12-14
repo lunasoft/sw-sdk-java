@@ -91,18 +91,34 @@ public class SWBalanceAccountService extends SWService {
     }
 
     /**
-     * Realiza un movimiento de saldo en la cuenta.
+     * Realiza un movimiento de agregar saldo en la cuenta.
      * @param idUser            ID del usuario.
      * @param stamps            Número de timbres a agregar o remover.
      * @param comment           Comentario del movimiento.
-     * @param action            Tipo de movimiento (add o remove).
+     * @param action            Tipo de movimiento (add).
      * @return                  IResponse con el resultado de la operación.
      * @throws AuthException    Si la autenticación falla.
      * @throws GeneralException Si ocurre un error general.
      * @throws IOException      Si hay un error de entrada/salida.
      */
-    public IResponse BalanceAccountStamp(UUID idUser, int stamps, String comment, AccountBalanceAction action) throws AuthException, GeneralException, IOException {
-        BalanceAcctOptionsRequest settings = BalanceAcctOptionsRequest.balanceAccountStamp(getToken(), getURIAPI() == null ? getURI() : getURIAPI(), idUser, stamps, comment, action, getProxyHost(), getProxyPort());
+    public IResponse AddBalanceAccountStamp(UUID idUser, int stamps, String comment) throws AuthException, GeneralException, IOException {
+        BalanceAcctOptionsRequest settings = BalanceAcctOptionsRequest.balanceAccountStamp(getToken(), getURIAPI() == null ? getURI() : getURIAPI(), idUser, stamps, comment, AccountBalanceAction.Add, getProxyHost(), getProxyPort());
+        return BalanceAcctRequest.createBalanceStampRequest(settings, comment);
+    }
+
+    /**
+     * Realiza un movimiento de elimnar saldo en la cuenta.
+     * @param idUser            ID del usuario.
+     * @param stamps            Número de timbres a agregar o remover.
+     * @param comment           Comentario del movimiento.
+     * @param action            Tipo de movimiento (remove).
+     * @return                  IResponse con el resultado de la operación.
+     * @throws AuthException    Si la autenticación falla.
+     * @throws GeneralException Si ocurre un error general.
+     * @throws IOException      Si hay un error de entrada/salida.
+     */
+    public IResponse RemoveBalanceAccountStamp(UUID idUser, int stamps, String comment) throws AuthException, GeneralException, IOException {
+        BalanceAcctOptionsRequest settings = BalanceAcctOptionsRequest.balanceAccountStamp(getToken(), getURIAPI() == null ? getURI() : getURIAPI(), idUser, stamps, comment, AccountBalanceAction.Add, getProxyHost(), getProxyPort());
         return BalanceAcctRequest.createBalanceStampRequest(settings, comment);
     }
 }

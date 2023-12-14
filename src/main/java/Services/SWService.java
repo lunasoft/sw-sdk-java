@@ -65,8 +65,6 @@ public abstract class SWService {
         this.URIAPI = URI;
         try {
 			generateToken();
-            this.URI = URI;
-            this.URIAPI = URIAPI;
 		} catch (AuthException e) {
 			throw new AuthException(e.getHttpStatusCode(), e.getErrorMSG());
 		} catch (GeneralException e) {

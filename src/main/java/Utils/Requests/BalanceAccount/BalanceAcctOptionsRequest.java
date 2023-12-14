@@ -14,5 +14,5 @@ public class BalanceAcctOptionsRequest extends IRequest {
     public BalanceAcctOptionsRequest(String token, String URI, UUID idUser, int stamps, String comment, String proxyHost, int proxyPort) {
         super(token, URI+ Constants.BALANCE_ACCOUNT_MANAGEMENT_PATH, idUser, stamps, comment, proxyHost, proxyPort);
     }
-    
+
 }

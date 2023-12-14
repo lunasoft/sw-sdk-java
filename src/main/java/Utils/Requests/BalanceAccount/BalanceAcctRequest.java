@@ -60,7 +60,6 @@ public class BalanceAcctRequest implements IRequestor {
         } catch (JSONException e) {
             throw new GeneralException(500, e.getMessage());
         }
-
     }
 
     public IResponse AddStamp(IRequest request) throws GeneralException, AuthException, GeneralException, IOException {
@@ -102,7 +101,6 @@ public class BalanceAcctRequest implements IRequestor {
         } catch (JSONException e) {
             throw new GeneralException(500, e.getMessage());
         }
-
     }
     
     public IResponse RemoveStamp (IRequest request) throws GeneralException, AuthException, GeneralException, IOException {
@@ -141,6 +139,7 @@ public class BalanceAcctRequest implements IRequestor {
                 return new BalanceAcctResponse(status, body.getString("status"), body.getString("message"),
                         messageDetail);
             }
+
         } catch (JSONException e) {
             throw new GeneralException(500, e.getMessage());
         }

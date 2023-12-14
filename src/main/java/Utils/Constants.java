@@ -33,6 +33,6 @@ public class Constants {
     public static String REGENERATE_PDF = "/pdf/v1/api/regeneratepdf/";
     public static String USUARIOS = "/management/api/users";
     public static String USUARIOS_ID = "/management/api/users/";
-     public static String USUARIOS_TOKEN = "/management/api/users/info";
-
+    public static String USUARIOS_TOKEN = "/management/api/users/info";
+    public static String RESEND = "/comprobante/resendemail";
 }

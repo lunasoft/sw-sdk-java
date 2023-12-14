@@ -21,6 +21,11 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * La clase BalanceAcctRequest maneja las solicitudes relacionadas con las
+ * operaciones de saldo de cuentas.
+ * Utiliza la biblioteca Apache HttpClient para realizar solicitudes HTTP.
+ */
 public class BalanceAcctRequest {
     public static IResponse createBalanceAcctRequest(IRequest request) throws GeneralException, AuthException, IOException {
         return new BalanceAcctRequest().balanceAcctRequest(request);

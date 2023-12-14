@@ -1,4 +1,5 @@
 package Utils.Requests;
+import java.util.UUID;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.config.RequestConfig.Builder;
 
@@ -10,7 +11,7 @@ public abstract class IRequest {
     public String Password;
     public String version;
     public String xml;
-    public String idUser;
+    public UUID idUser;
     public String comment;
     public int stamps;
     public byte[] XML;
@@ -72,7 +73,7 @@ public abstract class IRequest {
         this.proxyPort = proxyPort;
     }
 
-    public IRequest(String token, String URI, String idUser, int stamps, String comment, String proxyHost, int proxyPort) {
+    public IRequest(String token, String URI, UUID idUser, int stamps, String comment, String proxyHost, int proxyPort) {
         Token = token;
         this.URI = URI;
         this.idUser = idUser;

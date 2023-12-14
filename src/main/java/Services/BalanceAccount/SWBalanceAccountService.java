@@ -1,7 +1,7 @@
 package Services.BalanceAccount;
 
 import java.io.IOException;
-
+import java.util.UUID;
 import Exceptions.AuthException;
 import Exceptions.GeneralException;
 import Services.SWService;
@@ -42,13 +42,13 @@ public class SWBalanceAccountService extends SWService {
         return req.sendRequest(settings);
     }
 
-    public IResponse AddStamp(String idUser, int stamps, String comment) throws AuthException, GeneralException, IOException {
+    public IResponse AddStamp(UUID idUser, int stamps, String comment) throws AuthException, GeneralException, IOException {
         BalanceAcctOptionsRequest settings = new BalanceAcctOptionsRequest(getToken(), getURI(), idUser, stamps, comment, getProxyHost(), getProxyPort());
         BalanceAcctRequest req = new BalanceAcctRequest();
         return req.AddStamp(settings);
     }
 
-    public IResponse RemoveStamp(String idUser, int stamps, String comment) throws AuthException, GeneralException, IOException {
+    public IResponse RemoveStamp(UUID idUser, int stamps, String comment) throws AuthException, GeneralException, IOException {
         BalanceAcctOptionsRequest settings = new BalanceAcctOptionsRequest(getToken(), getURI(), idUser, stamps, comment, getProxyHost(), getProxyPort());
         BalanceAcctRequest req = new BalanceAcctRequest();
         return req.RemoveStamp(settings);

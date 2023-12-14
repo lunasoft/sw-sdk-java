@@ -1,7 +1,6 @@
 package Utils.Requests.BalanceAccount;
 
 import java.util.UUID;
-
 import Utils.Constants;
 import Utils.Requests.IRequest;
 import Utils.Helpers.EnumBalanceStamp.AccountBalanceAction;
@@ -23,30 +22,21 @@ public class BalanceAcctOptionsRequest extends IRequest {
      * Utilizado por los métodos estáticos de creación de solicitudes.
      */
     private BalanceAcctOptionsRequest(String token, String URI, String proxyHost, int proxyPort) {
-        super(token, URI + Constants.BALANCE_ACCOUNT_PATH, proxyHost, proxyPort);
-    }
-
-    /**
-     * Constructor privado para crear una instancia de BalanceAcctOptionsRequest.
-     * Utilizado por los métodos estáticos de creación de solicitudes.
-     */
-    private BalanceAcctOptionsRequest(String token, String URI, UUID idUser, int stamps, String comment, AccountBalanceAction action, String proxyHost, int proxyPort) {
-        super(token, URI + Constants.BALANCE_ACCOUNT_MANAGEMENT_PATH, idUser, stamps, comment, action, proxyHost, proxyPort);
-        
+        super(token, URI, proxyHost, proxyPort);
     }
 
     /**
      * Método estático para crear una solicitud de obtención de saldo de cuenta.
      */
     public static BalanceAcctOptionsRequest sendRequest(String token, String URI, String proxyHost, int proxyPort) {
-        return new BalanceAcctOptionsRequest(token, URI, proxyHost, proxyPort);
+        return new BalanceAcctOptionsRequest(token, URI + Constants.BALANCE_ACCOUNT_PATH, proxyHost, proxyPort);
     }
 
     /**
      * Método estático para crear una solicitud de movimiento de saldo de cuenta.
      */
-    public static BalanceAcctOptionsRequest BalanceAccountStamp(String token, String URI, UUID idUser, int stamps, String comment, AccountBalanceAction action, String proxyHost, int proxyPort) {
-        return new BalanceAcctOptionsRequest(token, URI, idUser, stamps, comment, action, proxyHost, proxyPort);
+    public static BalanceAcctOptionsRequest balanceAccountStamp(String token, String URI, UUID idUser, int stamps, String comment, AccountBalanceAction action, String proxyHost, int proxyPort) {
+        return new BalanceAcctOptionsRequest(token, URI + Constants.BALANCE_ACCOUNT_MANAGEMENT_PATH + "/" + idUser + "/" + action + "/" + stamps , proxyHost, proxyPort);
     }
 
     /**

@@ -75,14 +75,4 @@ public abstract class IRequest {
         this.proxyPort = proxyPort;
     }
 
-    public IRequest(String token, String URI, UUID idUser, int stamps, String comment, AccountBalanceAction action, String proxyHost, int proxyPort) {
-        Token = token;
-        this.URI = URI;
-        this.idUser = idUser;
-        this.stamps = stamps;
-        this.comment = comment;
-        this.action = action;
-        this.proxyHost = proxyHost;
-        this.proxyPort = proxyPort;
-    }
 }

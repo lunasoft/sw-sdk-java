@@ -21,8 +21,16 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class BalanceAcctRequest implements IRequestor {
-    public IResponse sendRequest(IRequest request) throws GeneralException, AuthException, GeneralException, IOException {
+public class BalanceAcctRequest {
+    public static IResponse createBalanceAcctRequest(IRequest request) throws GeneralException, AuthException, IOException {
+        return new BalanceAcctRequest().balanceAcctRequest(request);
+    }
+
+    public static IResponse createBalanceStampRequest(IRequest request, String comment) throws GeneralException, AuthException, IOException {
+        return new BalanceAcctRequest().balanceAcctStampRequest(request, comment);
+    }
+
+    private IResponse balanceAcctRequest(IRequest request) throws GeneralException, AuthException, IOException {
         try {
         	CloseableHttpClient client = HttpClients.createDefault();
         	HttpGet httpget = new HttpGet(request.URI);
@@ -62,10 +70,10 @@ public class BalanceAcctRequest implements IRequestor {
         }
     }
 
-    public IResponse BalanceStampRequest(IRequest request) throws GeneralException, AuthException, GeneralException, IOException {
+    private IResponse balanceAcctStampRequest (IRequest request, String comment) throws GeneralException, AuthException, IOException {
         try {
         	CloseableHttpClient client = HttpClients.createDefault();
-            HttpPost httpPost = new HttpPost(request.URI + request.idUser + "/" +request.action + "/" + request.stamps);
+            HttpPost httpPost = new HttpPost(request.URI);
             httpPost.setHeader("Authorization", "Bearer " + request.Token);
             httpPost.setHeader("Content-Type", "application/json");
             RequestHelper.setTimeOut(request.options, 3500);
@@ -73,7 +81,7 @@ public class BalanceAcctRequest implements IRequestor {
             httpPost.setConfig(request.options.build());
 
             JSONObject json = new JSONObject();
-            json.put("Comentario", request.comment);
+            json.put("Comentario", comment);
             
             StringEntity entity = new StringEntity(json.toString());
             httpPost.setEntity(entity);

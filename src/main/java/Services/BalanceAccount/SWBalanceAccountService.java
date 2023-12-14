@@ -87,8 +87,7 @@ public class SWBalanceAccountService extends SWService {
      */
     public IResponse GetBalanceAccount() throws AuthException, GeneralException, IOException {
         BalanceAcctOptionsRequest settings = BalanceAcctOptionsRequest.sendRequest(getToken(), getURI(), getProxyHost(), getProxyPort());
-        BalanceAcctRequest req = new BalanceAcctRequest();
-        return req.sendRequest(settings);
+        return BalanceAcctRequest.createBalanceAcctRequest(settings);
     }
 
     /**
@@ -103,8 +102,7 @@ public class SWBalanceAccountService extends SWService {
      * @throws IOException      Si hay un error de entrada/salida.
      */
     public IResponse BalanceAccountStamp(UUID idUser, int stamps, String comment, AccountBalanceAction action) throws AuthException, GeneralException, IOException {
-        BalanceAcctOptionsRequest settings = BalanceAcctOptionsRequest.BalanceAccountStamp(getToken(), getURIAPI() == null ? getURI() : getURIAPI(), idUser, stamps, comment, action, getProxyHost(), getProxyPort());
-        BalanceAcctRequest req = new BalanceAcctRequest();
-        return req.BalanceStampRequest(settings);
+        BalanceAcctOptionsRequest settings = BalanceAcctOptionsRequest.balanceAccountStamp(getToken(), getURIAPI() == null ? getURI() : getURIAPI(), idUser, stamps, comment, action, getProxyHost(), getProxyPort());
+        return BalanceAcctRequest.createBalanceStampRequest(settings, comment);
     }
 }

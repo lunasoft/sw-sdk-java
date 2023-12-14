@@ -32,7 +32,7 @@ public class SWBalanceAccountServiceTest {
     }
     @Test
     public void testBalanceAccountService_authToken() throws Exception {
-        SWBalanceAccountService app = new SWBalanceAccountService(Utils.tokenSW,Utils.urlSW);
+        SWBalanceAccountService app = new SWBalanceAccountService(Utils.tokenSW, Utils.urlSW);
         BalanceAcctResponse response = (BalanceAcctResponse) app.GetBalanceAccount();
 
         System.out.println(response.Status);

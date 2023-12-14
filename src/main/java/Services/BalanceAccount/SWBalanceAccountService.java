@@ -20,6 +20,10 @@ public class SWBalanceAccountService extends SWService {
         super(user, password, URI, URIAPI);
     }
 
+        public SWBalanceAccountService(String user, String password, String URI, String URIAPI, String action) throws AuthException {
+        super(user, password, URI, URIAPI, action);
+    }
+
     public SWBalanceAccountService(String token, String URI) {
         super(token, URI);
     }

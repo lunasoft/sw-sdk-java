@@ -610,6 +610,7 @@ Agregar timbres
 * IdUser
 * Número de timbres
 * Comentario
+* Action
 
 **Ejemplo de consumo de la libreria para agregar timbres utilizando Token**
 
@@ -630,7 +631,7 @@ public class ExampleReadme {
 
         try {
             //Intancia del servicio para agregar timbres y autenticación
-            SWBalanceAccountService sdk = new SWBalanceAccountService("T2lYQ0t4L0R...", "http://api.test.sw.com.mx");
+            SWBalanceAccountService sdk = new SWBalanceAccountService("T2lYQ0t4L0R...", "http://api.test.sw.com.mx", "add");
             BalanceAcctResponse response = null;
             response = (BalanceAcctResponse) sdk.AddStamp("32701CF2-DC63-4370-B47D-25024C44E131", 1, "PruebaJava16");
 
@@ -667,6 +668,7 @@ Eliminar timbres
 * IdUser
 * Número de timbres
 * Comentario
+* Action
 
 **Ejemplo de consumo de la libreria para eliminar timbres utilizando Token**
 
@@ -687,7 +689,7 @@ public class ExampleReadme {
 
         try {
             //Intancia del servicio para agregar timbres y autenticación
-            SWBalanceAccountService sdk = new SWBalanceAccountService("T2lYQ0t4L0R...", "http://api.test.sw.com.mx");
+            SWBalanceAccountService sdk = new SWBalanceAccountService("T2lYQ0t4L0R...", "http://api.test.sw.com.mx", "remove");
             BalanceAcctResponse response = null;
             response = (BalanceAcctResponse) sdk.RemoveStamp("32701CF2-DC63-4370-B47D-25024C44E131", 1, "PruebaJava16");
             

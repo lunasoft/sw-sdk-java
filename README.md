@@ -537,6 +537,181 @@ public class ExampleReadme {
 ```
 </details>
 
+# Consulta y Asignación de Timbres #
+Métodos para realizar la consulta de saldo así como la asignación y eliminación de timbres a un usuario.
+<details>
+<summary>
+Consulta de timbres
+</summary> 
+
+<br>Este método recibe los siguientes parametros:
+* Usuario y contraseña o Token
+* Url Servicios SW
+
+**Ejemplo de consumo de la libreria para consultar el saldo utilizando Token**
+
+```java
+package com.mycompany.examplereadme;
+
+import Exceptions.AuthException;
+import Exceptions.GeneralException;
+import Services.BalanceAccount.SWBalanceAccountService;
+import Utils.Responses.BalanceAccount.BalanceAcctResponse;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class ExampleReadme {
+
+    public static void main(String[] args) {
+
+        try {
+            //Intancia del servicio de Consulta de saldo y autenticación
+            SWBalanceAccountService sdk = new SWBalanceAccountService("T2lYQ0t4L0R...", "https://services.test.sw.com.mx");
+            BalanceAcctResponse response = null;
+            response = (BalanceAcctResponse) sdk.GetBalanceAccount();
+
+            //Imprimimos los datos de la respuesta que se obtuvo
+            System.out.println(response.Status);
+            System.out.println(response.timbresAsignados);
+            System.out.println(response.HttpStatusCode);
+            System.out.println(response.fechaExpiracion);
+            System.out.println(response.idClienteUsuario);
+            System.out.println(response.idSaldoCliente);
+            System.out.println(response.saldoTimbres);
+            System.out.println(response.timbresUtilizados);
+            System.out.println(response.unlimited);
+
+            //En caso de obtener error, este puede obtenerse de los siguientes campos
+            System.out.println(response.message);
+            System.out.println(response.messageDetail);
+        } catch (AuthException ex) {
+            System.out.println(ex);
+        } catch (GeneralException ex) {
+            Logger.getLogger(ExampleReadme.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ExampleReadme.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+}
+
+```
+</details>
+
+<details>
+<summary>
+Agregar timbres
+</summary> 
+
+<br>Este método recibe los siguientes parametros:
+* Usuario y contraseña o Token
+* Url Servicios SW
+* Url Api
+* IdUser
+* Número de timbres
+* Comentario
+
+**Ejemplo de consumo de la libreria para agregar timbres utilizando Token**
+
+```java
+package com.mycompany.examplereadme;
+
+import Exceptions.AuthException;
+import Exceptions.GeneralException;
+import Services.BalanceAccount.SWBalanceAccountService;
+import Utils.Responses.BalanceAccount.BalanceAcctResponse;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class ExampleReadme {
+
+    public static void main(String[] args) {
+
+        try {
+            //Intancia del servicio para agregar timbres y autenticación
+            SWBalanceAccountService sdk = new SWBalanceAccountService("T2lYQ0t4L0R...", "http://api.test.sw.com.mx");
+            BalanceAcctResponse response = null;
+            response = (BalanceAcctResponse) sdk.AddStamp("32701CF2-DC63-4370-B47D-25024C44E131", 1, "PruebaJava16");
+
+            //Imprimimos los datos de la respuesta que se obtuvo
+            System.out.println(response.Status);
+            System.out.println(response.HttpStatusCode);
+            System.out.println(response.message);
+            
+            //En caso de obtener error, este puede obtenerse de los siguientes campos
+            System.out.println(response.message);
+            System.out.println(response.messageDetail);
+        } catch (AuthException ex) {
+            System.out.println(ex);
+        } catch (GeneralException ex) {
+            Logger.getLogger(ExampleReadme.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ExampleReadme.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+}
+
+```
+</details>
+
+<details>
+<summary>
+Eliminar timbres
+</summary> 
+
+<br>Este método recibe los siguientes parametros:
+* Usuario y contraseña o Token
+* Url Servicios SW
+* Url Api
+* IdUser
+* Número de timbres
+* Comentario
+
+**Ejemplo de consumo de la libreria para eliminar timbres utilizando Token**
+
+```java
+package com.mycompany.examplereadme;
+
+import Exceptions.AuthException;
+import Exceptions.GeneralException;
+import Services.BalanceAccount.SWBalanceAccountService;
+import Utils.Responses.BalanceAccount.BalanceAcctResponse;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class ExampleReadme {
+
+    public static void main(String[] args) {
+
+        try {
+            //Intancia del servicio para agregar timbres y autenticación
+            SWBalanceAccountService sdk = new SWBalanceAccountService("T2lYQ0t4L0R...", "http://api.test.sw.com.mx");
+            BalanceAcctResponse response = null;
+            response = (BalanceAcctResponse) sdk.RemoveStamp("32701CF2-DC63-4370-B47D-25024C44E131", 1, "PruebaJava16");
+            
+            //Imprimimos los datos de la respuesta que se obtuvo
+            System.out.println(response.Status);
+            System.out.println(response.HttpStatusCode);
+            System.out.println(response.message);
+            
+            //En caso de obtener error, este puede obtenerse de los siguientes campos
+            System.out.println(response.message);
+            System.out.println(response.messageDetail);
+        } catch (AuthException ex) {
+            System.out.println(ex);
+        } catch (GeneralException ex) {
+            Logger.getLogger(ExampleReadme.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ExampleReadme.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+}
+
+```
+</details>
+
 # Estatus CFDI #
 Método necesario para conocer el estado de un CFDI a través del servicio de consulta del SAT.[Este servicio es consumido directamente del SAT].
 

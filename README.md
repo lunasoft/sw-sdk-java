@@ -1211,6 +1211,52 @@ public class ExampleReadme {
 }
 ```
 </details>
+<details>
+<summary>
+Reenviar Email PDF y/o XML
+</summary> 
+Servicio mediante el cual puedes realizar el reenvío de un xml y/o pdf existente mediante su UUID a través de correo electrónico.
+
+Este método recibe como parametros:
+- UUID del CFDI a reenviar
+- Correos (Máximo 5 separado por comas: "example1@gmail.com,example2@hotmail.com")
+
+**Ejemplo de consumo de la libreria para Regenerar PDF**
+
+```java
+package com.mycompany.examplereadme;
+
+import Exceptions.AuthException;
+import Exceptions.GeneralException;
+import Exceptions.ValidationException;
+import Services.Resend.SWResendService;
+import Utils.Responses.Resend.ResendResponse;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class ExampleReadme {
+
+    public static void main(String[] args) {
+        try {
+            //Creamos una instancia de tipo Resend y realizamos autenticación
+            SWResendService app = new SWResendService("user", "password", "https://services.test.sw.com.mx", "http://api.test.sw.com.mx");
+            ResendResponse response = null;
+            response = (ResendResponse) app.ResendEmail(UUID.fromString("4714f6f7-ccb4-4eb5-8ba6-3a523092e2b4"),
+                                "ex1@gmail.com,ex2@gmail.com,ex3@gmail.com,ex4@gmail.com,ex5@gmail.com");
+            //Imprimimos el resultado de la solicitud
+            System.out.println(response.Status);
+            System.out.println(response.data);
+            //En caso de obtener un error, este puede obtenerse de los campos
+            System.out.println(response.message);
+            System.out.println(response.messageDetail);
+        } catch (AuthException | GeneralException | IOException ex) {
+            Logger.getLogger(ExampleReadme.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+}
+```
+</details>
 
 :pushpin: ***NOTA:*** Existen varias plantillas genéricas que puedes usar
 | TemplateID     |             CFDI                | 

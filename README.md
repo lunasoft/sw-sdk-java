@@ -610,6 +610,7 @@ Agregar timbres
 * IdUser
 * Número de timbres
 * Comentario
+* Acción
 
 **Ejemplo de consumo de la libreria para agregar timbres utilizando Token**
 
@@ -620,6 +621,7 @@ import Exceptions.AuthException;
 import Exceptions.GeneralException;
 import Services.BalanceAccount.SWBalanceAccountService;
 import Utils.Responses.BalanceAccount.BalanceAcctResponse;
+import Utils.Helpers.EnumBalanceStamp.AccountBalanceAction;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -632,7 +634,7 @@ public class ExampleReadme {
             //Intancia del servicio para agregar timbres y autenticación
             SWBalanceAccountService sdk = new SWBalanceAccountService("T2lYQ0t4L0R...", "http://api.test.sw.com.mx");
             BalanceAcctResponse response = null;
-            response = (BalanceAcctResponse) sdk.AddStamp(UUID.fromString("828f19b1-77dc-48bc-9cfa-d48b5cf7e30c"), 1, "PruebaJava16");
+            response = (BalanceAcctResponse) sdk.BalanceAccountStamp(UUID.fromString("828f19b1-77dc-48bc-9cfa-d48b5cf7e30c"), 1, "PruebaJava16", AccountBalanceAction.Add);
 
             //Imprimimos los datos de la respuesta que se obtuvo
             System.out.println(response.Status);
@@ -667,6 +669,7 @@ Eliminar timbres
 * IdUser
 * Número de timbres
 * Comentario
+* Acción
 
 **Ejemplo de consumo de la libreria para eliminar timbres utilizando Token**
 
@@ -677,6 +680,7 @@ import Exceptions.AuthException;
 import Exceptions.GeneralException;
 import Services.BalanceAccount.SWBalanceAccountService;
 import Utils.Responses.BalanceAccount.BalanceAcctResponse;
+import Utils.Helpers.EnumBalanceStamp.AccountBalanceAction;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -689,7 +693,7 @@ public class ExampleReadme {
             //Intancia del servicio para agregar timbres y autenticación
             SWBalanceAccountService sdk = new SWBalanceAccountService("T2lYQ0t4L0R...", "http://api.test.sw.com.mx");
             BalanceAcctResponse response = null;
-            response = (BalanceAcctResponse) sdk.RemoveStamp(UUID.fromString("828f19b1-77dc-48bc-9cfa-d48b5cf7e30c"), 1, "PruebaJava16");
+            response = (BalanceAcctResponse) sdk.RemoveStamp(UUID.fromString("828f19b1-77dc-48bc-9cfa-d48b5cf7e30c"), 1, "PruebaJava16", AccountBalanceAction.Remove);
             
             //Imprimimos los datos de la respuesta que se obtuvo
             System.out.println(response.Status);

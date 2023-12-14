@@ -5,6 +5,7 @@ import Exceptions.GeneralException;
 import Services.BalanceAccount.SWBalanceAccountService;
 import Tests.Utils;
 import Utils.Responses.BalanceAccount.BalanceAcctResponse;
+import Utils.Helpers.EnumBalanceStamp.AccountBalanceAction;
 import java.io.IOException;
 import java.util.UUID;
 
@@ -91,7 +92,7 @@ public class SWBalanceAccountServiceTest {
     public void testAddStampsByToken_Sucess(){
         try {
         	SWBalanceAccountService app = new SWBalanceAccountService(Utils.tokenSW, Utils.urlApiSW);
-            BalanceAcctResponse response = (BalanceAcctResponse) app.AddStamp(UUID.fromString("828f19b1-77dc-48bc-9cfa-d48b5cf7e30c"), 1, "PruebaJava16");
+            BalanceAcctResponse response = (BalanceAcctResponse) app.BalanceAccountStamp(UUID.fromString("828f19b1-77dc-48bc-9cfa-d48b5cf7e30c"), 1, "PruebaJava16", AccountBalanceAction.Add);
             Assert.assertNotNull(response);
             String expect_status = "success";
             Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
@@ -108,7 +109,7 @@ public class SWBalanceAccountServiceTest {
     public void testAddStampsByAuth_Sucess(){
         try {
         	SWBalanceAccountService app = new SWBalanceAccountService(Utils.userSW, Utils.passwordSW, Utils.urlSW, Utils.urlApiSW);
-            BalanceAcctResponse response = (BalanceAcctResponse) app.AddStamp(UUID.fromString("828f19b1-77dc-48bc-9cfa-d48b5cf7e30c"), 1, "PruebaJava16");
+            BalanceAcctResponse response = (BalanceAcctResponse) app.BalanceAccountStamp(UUID.fromString("828f19b1-77dc-48bc-9cfa-d48b5cf7e30c"), 1, "PruebaJava16", AccountBalanceAction.Add);
             Assert.assertNotNull(response);
             String expect_status = "success";
             Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
@@ -126,7 +127,7 @@ public class SWBalanceAccountServiceTest {
     public void testAddStampsByToken_emptyToken(){
         try {
         	SWBalanceAccountService app = new SWBalanceAccountService("", Utils.urlApiSW);
-            BalanceAcctResponse response = (BalanceAcctResponse) app.AddStamp(UUID.fromString("828f19b1-77dc-48bc-9cfa-d48b5cf7e30c"), 1, "PruebaJava16");
+            BalanceAcctResponse response = (BalanceAcctResponse) app.BalanceAccountStamp(UUID.fromString("828f19b1-77dc-48bc-9cfa-d48b5cf7e30c"), 1, "PruebaJava16", AccountBalanceAction.Add);
             Assert.assertNotNull(response);
             String expect_status = "error";
             Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
@@ -143,7 +144,7 @@ public class SWBalanceAccountServiceTest {
     public void testAddStampsByAuth_emptyUser(){
         try {
         	SWBalanceAccountService app = new SWBalanceAccountService("", "", Utils.urlApiSW);
-            BalanceAcctResponse response = (BalanceAcctResponse) app.AddStamp(UUID.fromString("828f19b1-77dc-48bc-9cfa-d48b5cf7e30c"), 1, "PruebaJava16");
+            BalanceAcctResponse response = (BalanceAcctResponse) app.BalanceAccountStamp(UUID.fromString("828f19b1-77dc-48bc-9cfa-d48b5cf7e30c"), 1, "PruebaJava16", AccountBalanceAction.Add);
             Assert.assertNotNull(response);
             String expect_status = "error";
             Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
@@ -160,7 +161,7 @@ public class SWBalanceAccountServiceTest {
     public void testAddStampsByToken_incorrectToken(){
         try {
         	SWBalanceAccountService app = new SWBalanceAccountService("empty.token.sw", Utils.urlApiSW);
-            BalanceAcctResponse response = (BalanceAcctResponse)app.AddStamp(UUID.fromString("828f19b1-77dc-48bc-9cfa-d48b5cf7e30c"), 1, "PruebaJava16");
+            BalanceAcctResponse response = (BalanceAcctResponse)app.BalanceAccountStamp(UUID.fromString("828f19b1-77dc-48bc-9cfa-d48b5cf7e30c"), 1, "PruebaJava16", AccountBalanceAction.Add);
             Assert.assertNotNull(response);
             String expect_status = "error";
             Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
@@ -177,7 +178,7 @@ public class SWBalanceAccountServiceTest {
     public void testAddStampsByAuth_incorrectUser(){
         try {
         	SWBalanceAccountService app = new SWBalanceAccountService("wronguser@mail.com", "12345678a", Utils.urlApiSW);
-            BalanceAcctResponse response = (BalanceAcctResponse) app.AddStamp(UUID.fromString("828f19b1-77dc-48bc-9cfa-d48b5cf7e30c"), 1, "PruebaJava16");
+            BalanceAcctResponse response = (BalanceAcctResponse) app.BalanceAccountStamp(UUID.fromString("828f19b1-77dc-48bc-9cfa-d48b5cf7e30c"), 1, "PruebaJava16", AccountBalanceAction.Add);
             Assert.assertNotNull(response);
             String expect_status = "error";
             Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
@@ -194,7 +195,7 @@ public class SWBalanceAccountServiceTest {
     public void testRemoveStampsByToken_Sucess() {
         try {
         	SWBalanceAccountService app = new SWBalanceAccountService(Utils.tokenSW, Utils.urlApiSW);
-            BalanceAcctResponse response = (BalanceAcctResponse) app.RemoveStamp(UUID.fromString("828f19b1-77dc-48bc-9cfa-d48b5cf7e30c"), 1, "PruebaJava16");
+            BalanceAcctResponse response = (BalanceAcctResponse) app.BalanceAccountStamp(UUID.fromString("828f19b1-77dc-48bc-9cfa-d48b5cf7e30c"), 1, "PruebaJava16", AccountBalanceAction.Remove);
             Assert.assertNotNull(response);
             String expect_status = "success";
             Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
@@ -211,7 +212,7 @@ public class SWBalanceAccountServiceTest {
     public void testRemoveStampsByAuth_Sucess() {
         try {
         	SWBalanceAccountService app = new SWBalanceAccountService(Utils.userSW, Utils.passwordSW, Utils.urlSW, Utils.urlApiSW);
-            BalanceAcctResponse response = (BalanceAcctResponse) app.RemoveStamp(UUID.fromString("828f19b1-77dc-48bc-9cfa-d48b5cf7e30c"), 1, "PruebaJava16");
+            BalanceAcctResponse response = (BalanceAcctResponse) app.BalanceAccountStamp(UUID.fromString("828f19b1-77dc-48bc-9cfa-d48b5cf7e30c"), 1, "PruebaJava16", AccountBalanceAction.Remove);
             Assert.assertNotNull(response);
             String expect_status = "success";
             Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
@@ -228,7 +229,7 @@ public class SWBalanceAccountServiceTest {
     public void testRemoveStampsByToken_emptyToken() {
         try {
         	SWBalanceAccountService app = new SWBalanceAccountService("", Utils.urlApiSW);
-            BalanceAcctResponse response = (BalanceAcctResponse) app.RemoveStamp(UUID.fromString("828f19b1-77dc-48bc-9cfa-d48b5cf7e30c"), 1, "PruebaJava16");
+            BalanceAcctResponse response = (BalanceAcctResponse) app.BalanceAccountStamp(UUID.fromString("828f19b1-77dc-48bc-9cfa-d48b5cf7e30c"), 1, "PruebaJava16", AccountBalanceAction.Remove);
             Assert.assertNotNull(response);
             String expect_status = "error";
             Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
@@ -245,7 +246,7 @@ public class SWBalanceAccountServiceTest {
     public void testRemoveStampsByAuth_emptyUser() {
         try {
         	SWBalanceAccountService app = new SWBalanceAccountService("", "", Utils.urlApiSW);
-            BalanceAcctResponse response = (BalanceAcctResponse) app.RemoveStamp(UUID.fromString("828f19b1-77dc-48bc-9cfa-d48b5cf7e30c"), 1, "PruebaJava16");
+            BalanceAcctResponse response = (BalanceAcctResponse) app.BalanceAccountStamp(UUID.fromString("828f19b1-77dc-48bc-9cfa-d48b5cf7e30c"), 1, "PruebaJava16", AccountBalanceAction.Remove);
             Assert.assertNotNull(response);
             String expect_status = "error";
             Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
@@ -262,7 +263,7 @@ public class SWBalanceAccountServiceTest {
     public void testRemoveStampsByToken_incorrectToken() {
         try {
         	SWBalanceAccountService app = new SWBalanceAccountService("empty.token.sw", Utils.urlApiSW);
-            BalanceAcctResponse response = (BalanceAcctResponse) app.RemoveStamp(UUID.fromString("828f19b1-77dc-48bc-9cfa-d48b5cf7e30c"), 1, "PruebaJava16");
+            BalanceAcctResponse response = (BalanceAcctResponse) app.BalanceAccountStamp(UUID.fromString("828f19b1-77dc-48bc-9cfa-d48b5cf7e30c"), 1, "PruebaJava16", AccountBalanceAction.Remove);
             Assert.assertNotNull(response);
             String expect_status = "error";
             Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
@@ -279,7 +280,7 @@ public class SWBalanceAccountServiceTest {
     public void testRemoveStampsByAuth_incorrectUser() {
         try {
         	SWBalanceAccountService app = new SWBalanceAccountService("wronguser@mail.com", "12345678a", Utils.urlApiSW);
-            BalanceAcctResponse response = (BalanceAcctResponse) app.RemoveStamp(UUID.fromString("828f19b1-77dc-48bc-9cfa-d48b5cf7e30c"), 1, "PruebaJava16");
+            BalanceAcctResponse response = (BalanceAcctResponse) app.BalanceAccountStamp(UUID.fromString("828f19b1-77dc-48bc-9cfa-d48b5cf7e30c"), 1, "PruebaJava16", AccountBalanceAction.Remove);
             Assert.assertNotNull(response);
             String expect_status = "error";
             Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));

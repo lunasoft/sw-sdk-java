@@ -7,6 +7,7 @@ import Exceptions.GeneralException;
 import Services.SWService;
 import Utils.Requests.BalanceAccount.BalanceAcctOptionsRequest;
 import Utils.Requests.BalanceAccount.BalanceAcctRequest;
+import Utils.Helpers.EnumBalanceStamp.AccountBalanceAction;
 import Utils.Responses.IResponse;
 
 
@@ -38,15 +39,9 @@ public class SWBalanceAccountService extends SWService {
         return req.sendRequest(settings);
     }
 
-    public IResponse AddStamp(UUID idUser, int stamps, String comment) throws AuthException, GeneralException, IOException {
-        BalanceAcctOptionsRequest settings = new BalanceAcctOptionsRequest(getToken(),  getURIAPI() == null ? getURI() : getURIAPI(), idUser, stamps, comment, getProxyHost(), getProxyPort());
+    public IResponse BalanceAccountStamp(UUID idUser, int stamps, String comment, AccountBalanceAction action) throws AuthException, GeneralException, IOException {
+        BalanceAcctOptionsRequest settings = new BalanceAcctOptionsRequest(getToken(),  getURIAPI() == null ? getURI() : getURIAPI(), idUser, stamps, comment, action, getProxyHost(), getProxyPort());
         BalanceAcctRequest req = new BalanceAcctRequest();
-        return req.AddStamp(settings);
-    }
-
-    public IResponse RemoveStamp(UUID idUser, int stamps, String comment) throws AuthException, GeneralException, IOException {
-        BalanceAcctOptionsRequest settings = new BalanceAcctOptionsRequest(getToken(), getURIAPI() == null ? getURI() : getURIAPI(), idUser, stamps, comment, getProxyHost(), getProxyPort());
-        BalanceAcctRequest req = new BalanceAcctRequest();
-        return req.RemoveStamp(settings);
+        return req.BalanceStampRequest(settings);
     }
 }

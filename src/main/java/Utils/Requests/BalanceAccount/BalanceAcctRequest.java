@@ -62,10 +62,10 @@ public class BalanceAcctRequest implements IRequestor {
         }
     }
 
-    public IResponse AddStamp(IRequest request) throws GeneralException, AuthException, GeneralException, IOException {
+    public IResponse BalanceStampRequest(IRequest request) throws GeneralException, AuthException, GeneralException, IOException {
         try {
         	CloseableHttpClient client = HttpClients.createDefault();
-            HttpPost httpPost = new HttpPost(request.URI + request.idUser + "/add/" + request.stamps);
+            HttpPost httpPost = new HttpPost(request.URI + request.idUser + "/" +request.action + "/" + request.stamps);
             httpPost.setHeader("Authorization", "Bearer " + request.Token);
             httpPost.setHeader("Content-Type", "application/json");
             RequestHelper.setTimeOut(request.options, 3500);
@@ -98,48 +98,6 @@ public class BalanceAcctRequest implements IRequestor {
                 return new BalanceAcctResponse(status, body.getString("status"), body.getString("message"), messageDetail);
             }
                               
-        } catch (JSONException e) {
-            throw new GeneralException(500, e.getMessage());
-        }
-    }
-    
-    public IResponse RemoveStamp (IRequest request) throws GeneralException, AuthException, GeneralException, IOException {
-        try {
-            CloseableHttpClient client = HttpClients.createDefault();
-            HttpPost httpPost = new HttpPost(request.URI + request.idUser + "/remove/" + request.stamps);
-            httpPost.setHeader("Authorization", "Bearer " + request.Token);
-            httpPost.setHeader("Content-Type", "application/json");
-            RequestHelper.setTimeOut(request.options, 3500);
-            RequestHelper.setProxy(request.options, request.proxyHost, request.proxyPort);
-            httpPost.setConfig(request.options.build());
-
-            JSONObject json = new JSONObject();
-            json.put("Comentario", request.comment);
-
-            StringEntity entity = new StringEntity(json.toString());
-            httpPost.setEntity(entity);
-
-            CloseableHttpResponse responseB = client.execute(httpPost);
-
-            int status = responseB.getStatusLine().getStatusCode();
-            String responseString = EntityUtils.toString(responseB.getEntity(), "UTF-8");
-            JSONObject body = new JSONObject(responseString);
-
-            client.close();
-            responseB.close();
-
-            if (status == 200) {
-                return new BalanceAcctResponse(status, body.getString("status"), body.getString("data"), "");
-            } else {
-                String messageDetail = "";
-
-                if (!body.isNull("messageDetail")) {
-                    messageDetail = body.getString("messageDetail");
-                }
-                return new BalanceAcctResponse(status, body.getString("status"), body.getString("message"),
-                        messageDetail);
-            }
-
         } catch (JSONException e) {
             throw new GeneralException(500, e.getMessage());
         }

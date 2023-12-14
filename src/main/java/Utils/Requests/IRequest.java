@@ -2,6 +2,7 @@ package Utils.Requests;
 import java.util.UUID;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.config.RequestConfig.Builder;
+import Utils.Helpers.EnumBalanceStamp.AccountBalanceAction;
 
 public abstract class IRequest {
     public String Token;
@@ -19,6 +20,7 @@ public abstract class IRequest {
     public Builder options = RequestConfig.custom();
     public String proxyHost;
     public int proxyPort;
+    public AccountBalanceAction action;
 
     public IRequest(String URI, String user, String password, String version, boolean isb64, String proxyHost, int proxyPort) {
         this.URI = URI;
@@ -73,12 +75,13 @@ public abstract class IRequest {
         this.proxyPort = proxyPort;
     }
 
-    public IRequest(String token, String URI, UUID idUser, int stamps, String comment, String proxyHost, int proxyPort) {
+    public IRequest(String token, String URI, UUID idUser, int stamps, String comment, AccountBalanceAction action, String proxyHost, int proxyPort) {
         Token = token;
         this.URI = URI;
         this.idUser = idUser;
         this.stamps = stamps;
         this.comment = comment;
+        this.action = action;
         this.proxyHost = proxyHost;
         this.proxyPort = proxyPort;
     }

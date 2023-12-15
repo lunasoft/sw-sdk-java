@@ -7,8 +7,7 @@ import Utils.Helpers.EnumAccountUser.AccountUserProfiles;
 import Utils.Requests.IRequest;
 
 /**
- * La clase AccountUserOptionsRequest representa las opciones de solicitud para
- * operaciones relacionadas con usuarios de cuentas.
+ * La clase AccountUserOptionsRequest representa las opciones de solicitud para operaciones relacionadas con usuarios de cuentas.
  * Extiende la clase IRequest para incluir información común de solicitud.
  */
 public class AccountUserOptionsRequest extends IRequest {
@@ -22,8 +21,7 @@ public class AccountUserOptionsRequest extends IRequest {
     private boolean active;
 
     /**
-     * Constructor privado para crear una instancia de AccountUserOptionsRequest.
-     * Utilizado por los métodos estáticos de creación de solicitudes.
+     * Constructor privado para crear una instancia de AccountUserOptionsRequest. Utilizado por los métodos estáticos de creación de solicitudes.
      */
     private AccountUserOptionsRequest(String token, String URIAPI, String proxyHost, int proxyPort) {
         super(token, URIAPI, proxyHost, proxyPort);
@@ -50,8 +48,7 @@ public class AccountUserOptionsRequest extends IRequest {
     }
 
     /**
-     * Método estático para crear una solicitud de obtención y eliminación de us
-     * ario por ID.
+     * Método estático para crear una solicitud de obtención y eliminación de usuario por ID.
      */
     public static AccountUserOptionsRequest usuarioIdRequest(String token, String URIAPI, UUID idUsuario,
             String proxyHost, int proxyPort) {
@@ -60,8 +57,7 @@ public class AccountUserOptionsRequest extends IRequest {
     }
 
     /**
-     * Método estático para crear una solicitud paginada de obtención de todos lo
-     *  usuarios.
+     * Método estático para crear una solicitud paginada de obtención de todos los usuarios.
      */
     public static AccountUserOptionsRequest obtenerUsuariosRequest(String token, String URIAPI, int page,
             int pageSize, String proxyHost, int proxyPort) {
@@ -70,16 +66,14 @@ public class AccountUserOptionsRequest extends IRequest {
     }
 
     /**
-     * Método estático para crear una solicitud de obtención de usuario por to
-     * en.
+     * Método estático para crear una solicitud de obtención de usuario por token.
      */
     public static AccountUserOptionsRequest obtenerUsuarioPorTokenRequest(String token, String URIAPI, String proxyHost,
             int proxyPort) {
         return new AccountUserOptionsRequest(token, URIAPI + Constants.USUARIOS, proxyHost, proxyPort);
     }
 
-    // Métodos privados para configurar los parámetros específicos de la so
-    // icitud.
+    // Métodos privados para configurar los parámetros específicos de la solicitud.
 
     private AccountUserOptionsRequest crearUsuario(String email, String passwordUser, String name, String rfc,
             int stamps, AccountUserProfiles profile, boolean unlimited, boolean active) {

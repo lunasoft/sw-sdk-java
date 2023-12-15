@@ -3,7 +3,6 @@ package Tests.Resend;
 import java.util.UUID;
 
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import Services.Resend.SWResendService;
@@ -55,44 +54,55 @@ public class SWResendServiceTest {
                 Assert.assertTrue(response.Status.equals("error"));
 
         }
-        //Se ignoran por que lanzan excepciones y no como tal un mensaje de error
-        @Ignore
+
+        @Test
         public void ResendEmail_Emails_Error() throws Exception {
-                SWResendService app = new SWResendService(Utils.tokenSW, Utils.urlApiSW, null, 0);
-                ResendResponse response = null;
-                response = (ResendResponse) app.ResendEmail(UUID.fromString("4714f6f7-ccb4-4eb5-8ba6-3a523092e2b4"),
-                                "ex1@gmail.com,ex2@gmail.com, ex3@gmail.com,ex4@gmail.com,ex5@gmail.com");
-                Assert.assertNotNull(response.HttpStatusCode);
-                Assert.assertNotNull(response.Status);
-                Assert.assertNotNull(response.message);
-                Assert.assertNotNull(response.messageDetail);
-                Assert.assertTrue(response.Status.equals("error"));
+                try {
+                        SWResendService app = new SWResendService(Utils.tokenSW, Utils.urlApiSW, null, 0);
+                        ResendResponse response = null;
+                        response = (ResendResponse) app.ResendEmail(
+                                        UUID.fromString("4714f6f7-ccb4-4eb5-8ba6-3a523092e2b4"),
+                                        "ex1@gmail.com,ex2@gmail.com, ex3@gmail.com,ex4@gmail.com,ex5@gmail.com");
+                        Assert.fail("Se esperaba una ValidationException");
+                } catch (Exception e) {
+                        Assert.assertEquals("No debe haber espacios entre los correos.", e.getMessage());
 
+                } catch (Throwable e) {
+                        Assert.fail("Se esperaba una ValidationException.");
+                }
         }
-        @Ignore
+
+        @Test
         public void ResendEmail_EmailSize_Error() throws Exception {
-                SWResendService app = new SWResendService(Utils.tokenSW, Utils.urlApiSW, null, 0);
-                ResendResponse response = null;
-                response = (ResendResponse) app.ResendEmail(UUID.fromString("4714f6f7-ccb4-4eb5-8ba6-3a523092e2b4"),
-                                "ex1@gmail.com,ex2@gmail.com,ex3@gmail.com,ex4@gmail.com,ex5@gmail.com,ex6@gmail.com");
-                Assert.assertNotNull(response.HttpStatusCode);
-                Assert.assertNotNull(response.Status);
-                Assert.assertNotNull(response.message);
-                Assert.assertNotNull(response.messageDetail);
-                Assert.assertTrue(response.Status.equals("error"));
+                try {
+                        SWResendService app = new SWResendService(Utils.tokenSW, Utils.urlApiSW, null, 0);
+                        ResendResponse response = null;
+                        response = (ResendResponse) app.ResendEmail(
+                                        UUID.fromString("4714f6f7-ccb4-4eb5-8ba6-3a523092e2b4"),
+                                        "ex1@gmail.com,ex2@gmail.com,ex3@gmail.com,ex4@gmail.com,ex5@gmail.com,ex6@gmail.com");
+                        Assert.fail("Se esperaba una ValidationException");
+                } catch (Exception e) {
+                        Assert.assertEquals("Excediste el máximo de correos, sólo se pueden agregar 5 destinatarios.", e.getMessage());
 
+                } catch (Throwable e) {
+                        Assert.fail("Se esperaba una ValidationException.");
+                }
         }
-        @Ignore
-        public void ResendEmail_EmptyEmail_Error() throws Exception {
-                SWResendService app = new SWResendService(Utils.tokenSW, Utils.urlApiSW, null, 0);
-                ResendResponse response = null;
-                response = (ResendResponse) app.ResendEmail(UUID.fromString("4714f6f7-ccb4-4eb5-8ba6-3a523092e2b4"),
-                                "");
-                Assert.assertNotNull(response.HttpStatusCode);
-                Assert.assertNotNull(response.Status);
-                Assert.assertNotNull(response.message);
-                Assert.assertNotNull(response.messageDetail);
-                Assert.assertTrue(response.Status.equals("error"));
 
+        @Test
+        public void ResendEmail_EmptyEmail_Error() throws Exception {
+                try {
+                        SWResendService app = new SWResendService(Utils.tokenSW, Utils.urlApiSW, null, 0);
+                        ResendResponse response = null;
+                        response = (ResendResponse) app.ResendEmail(
+                                        UUID.fromString("4714f6f7-ccb4-4eb5-8ba6-3a523092e2b4"),
+                                        "");
+                        Assert.fail("Se esperaba una ValidationException");
+                } catch (Exception e) {
+                        Assert.assertEquals("Cadena vacía.", e.getMessage());
+
+                } catch (Throwable e) {
+                        Assert.fail("Se esperaba una ValidationException.");
+                }
         }
 }

@@ -31,7 +31,7 @@ public class ResendOptionsRequest extends IRequest {
     // rrespondientes
     private ResendOptionsRequest resendEmail(UUID uuid, String correos) throws ValidationException {
         if (correos == null || correos.isEmpty()) {
-            throw new ValidationException("Cadena vacía", "Las direcciones de correo no pueden ser nulas o vacías.");
+            throw new ValidationException("Cadena vacía.", "Las direcciones de correo no pueden ser nulas o vacías.");
         }
         if (correos.contains(" ")) {
             throw new ValidationException("No debe haber espacios entre los correos.",

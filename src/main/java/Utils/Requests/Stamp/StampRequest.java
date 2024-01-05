@@ -42,6 +42,17 @@ public class StampRequest implements IRequestor {
 			httppost.setHeader("Authorization", "bearer " + request.Token);
 			httppost.addHeader("Content-Type", "multipart/form-data; boundary=" + boundary);
 			httppost.addHeader("Content-Disposition", "form-data; name=xml; filename=xml");
+			String emails = ((StampOptionsRequest) request).getEmails();
+			String customId = ((StampOptionsRequest) request).getCustomId();
+                        if (emails != null && !emails.isEmpty()) {
+                           httppost.setHeader("email", ((StampOptionsRequest) request).getEmails()); 
+                    }
+                        if (customId != null && !customId.isEmpty()) {
+                            httppost.setHeader("customid", ((StampOptionsRequest) request).getCustomId()); 
+                    }
+                        if (((StampOptionsRequest) request).getPfd() == true) {
+                            httppost.addHeader("extra", "pdf");
+                    }
 			MultipartEntityBuilder builder = MultipartEntityBuilder.create();
 			Charset chars = Charset.forName("UTF-8");
 			builder.setCharset(chars);

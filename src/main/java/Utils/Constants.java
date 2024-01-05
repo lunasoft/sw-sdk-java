@@ -9,6 +9,9 @@ public class Constants {
     public static String ISSUE_JSON_PATH = "/v3/cfdi33/issue/json/";
     public static String ISSUE_XML_PATH = "/cfdi33/issue/";
     public static String ISSUE_XML_V2_PATH = "/cfdi33/v2/issue/";
+    public static String ISSUE_JSON_XMLV4_PATH = "/v4/cfdi33/issue/json/";
+    public static String ISSUE_XMLV4_PATH = "/v4/cfdi33/issue/";
+    public static String STAMP_XMLV4_PATH = "/v4/cfdi33/stamp/";
     public static String CANCELATION_CSD_PATH = "/cfdi33/cancel/csd";
     public static String CANCELATION_XML_PATH = "/cfdi33/cancel/xml";
     public static String CANCELATION_PFX_PATH = "/cfdi33/cancel/pfx";

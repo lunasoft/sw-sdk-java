@@ -40,6 +40,17 @@ public class IssueRequest implements IRequestor {
 			httppost.setConfig(request.options.build());
 			httppost.setHeader("Authorization", "bearer " + request.Token);
 			httppost.addHeader("Content-Type", "application/jsontoxml");
+			String emails = ((IssueOptionsRequest) request).getEmails();
+			String customId = ((IssueOptionsRequest) request).getCustomId();
+                        if (emails != null && !emails.isEmpty()) {
+                           httppost.setHeader("email", emails); 
+                    }
+                        if (customId != null && !customId.isEmpty()) {
+                            httppost.setHeader("customid", customId); 
+                    }
+                        if (((IssueOptionsRequest) request).getPfd() == true) {
+                            httppost.addHeader("extra", "pdf");
+                    }
 			StringEntity stringEntity = new StringEntity(xmlStr,ContentType.create("application/json", Consts.UTF_8));
 			httppost.setEntity(stringEntity);
 
@@ -79,6 +90,17 @@ public class IssueRequest implements IRequestor {
 			httppost.setHeader("Authorization", "bearer " + request.Token);
 			httppost.addHeader("Content-Type", "multipart/form-data; boundary=" + boundary);
 			httppost.addHeader("Content-Disposition", "form-data; name=xml; filename=xml");
+			String emails = ((IssueOptionsRequest) request).getEmails();
+			String customId = ((IssueOptionsRequest) request).getCustomId();
+                        if (emails != null && !emails.isEmpty()) {
+                           httppost.setHeader("email", emails); 
+                    }
+                        if (customId != null && !customId.isEmpty()) {
+                            httppost.setHeader("customid", customId); 
+                    }
+                        if (((IssueOptionsRequest) request).getPfd() == true) {
+                            httppost.addHeader("extra", "pdf");
+                    }
 			MultipartEntityBuilder builder = MultipartEntityBuilder.create();
 			Charset chars = Charset.forName("UTF-8");
 			builder.setCharset(chars);

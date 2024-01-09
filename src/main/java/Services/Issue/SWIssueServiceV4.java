@@ -32,9 +32,8 @@ public class SWIssueServiceV4 extends SWService {
     /**
      * Servicio para emitir un CFDI en formato JSON.
      *
-     * Realiza el timbrado de un CFDI en formato JSON. Se puede especificar un
-     * Custom Id y realizar el envío del CFDI y PDF por correo,
-     * así como guardar el PDF en el ADT.
+     * Se puede especificar un Custom Id y realizar el envío del CFDI 
+     * y PDF por correo, así como guardar el PDF en el ADT.
      *
      * @param json     String del CFDI en formato JSON.
      * @param version  Versión del servicio.
@@ -42,7 +41,7 @@ public class SWIssueServiceV4 extends SWService {
      * @param customId Identificador único asignado al comprobante.
      * @param isPdf    Opción para habilitar la generación y guardado del PDF en el
      *                 ADT.
-     * @return Respuesta del servicio.
+     * @return                  Respuesta del servicio.
      * @throws AuthException    Excepción de autenticación.
      * @throws GeneralException Excepción general.
      * @throws IOException      Excepción de entrada/salida.
@@ -68,7 +67,7 @@ public class SWIssueServiceV4 extends SWService {
      * @param customId Identificador único asignado al comprobante.
      * @param isPdf    Opción para habilitar la generación y guardado del PDF en el
      *                 ADT.
-     * @return Respuesta del servicio.
+     * @return                  Respuesta del servicio.
      * @throws AuthException    Excepción de autenticación.
      * @throws GeneralException Excepción general.
      * @throws IOException      Excepción de entrada/salida.
@@ -85,7 +84,6 @@ public class SWIssueServiceV4 extends SWService {
     /**
      * Servicio para emitir un CFDI en formato XML.
      *
-     * Realiza el timbrado de un CFDI en formato XML.
      * Se puede especificar un Custom Id y realizar el envío del CFDI y PDF por
      * correo, así como guardar el PDF en el ADT.
      *
@@ -95,7 +93,7 @@ public class SWIssueServiceV4 extends SWService {
      * @param customId Identificador único asignado al comprobante.
      * @param isPdf    Opción para habilitar la generación y guardado del PDF en el
      *                 ADT.
-     * @return Respuesta del servicio.
+     * @return                  Respuesta del servicio.
      * @throws AuthException    Excepción de autenticación.
      * @throws GeneralException Excepción general.
      * @throws IOException      Excepción de entrada/salida.
@@ -111,7 +109,6 @@ public class SWIssueServiceV4 extends SWService {
     /**
      * Servicio para emitir un CFDI en formato XML a partir de un archivo byte[].
      *
-     * Realiza el timbrado de un CFDI en formato XML a partir de un archivo byte[].
      * Se puede especificar un Custom Id y realizar el envío del CFDI y PDF por
      * correo, así como guardar el PDF en el ADT.
      *
@@ -120,7 +117,7 @@ public class SWIssueServiceV4 extends SWService {
      * @param emails   Arreglo de correos para el envío del CFDI y PDF.
      * @param customId Identificador único asignado al comprobante.
      * @param isPdf    Opción para habilitar la generación y guardado del PDF en el ADT.                
-     * @return Respuesta del servicio.
+     * @return                  Respuesta del servicio.
      * @throws AuthException    Excepción de autenticación.
      * @throws GeneralException Excepción general.
      * @throws IOException      Excepción de entrada/salida.

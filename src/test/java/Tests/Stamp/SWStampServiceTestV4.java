@@ -23,8 +23,8 @@ public class SWStampServiceTestV4 {
         SuccessV1Response response = null;
         String[] mails = { "prueba@test.com" };
         UUID uuid = UUID.randomUUID();
-        String uuidString = uuid.toString();
-        response = (SuccessV1Response) api.Stamp(ut.StringgenBasico(false), "v1", mails, uuidString, true);
+        String customId = uuid.toString();
+        response = (SuccessV1Response) api.Stamp(ut.StringgenBasico(false), "v1", mails, customId, true);
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
@@ -39,8 +39,8 @@ public class SWStampServiceTestV4 {
         SuccessV2Response response = null;
         String[] mails = { "prueba@test.com" };
         UUID uuid = UUID.randomUUID();
-        String uuidString = uuid.toString();
-        response = (SuccessV2Response) api.Stamp(ut.StringgenBasico(false), "v2", mails, uuidString, true);
+        String customId = uuid.toString();
+        response = (SuccessV2Response) api.Stamp(ut.StringgenBasico(false), "v2", mails, customId, true);
         System.out.println(response.message);
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
@@ -56,8 +56,8 @@ public class SWStampServiceTestV4 {
         SuccessV3Response response = null;
         String[] mails = { "prueba@test.com" };
         UUID uuid = UUID.randomUUID();
-        String uuidString = uuid.toString();
-        response = (SuccessV3Response) api.Stamp(ut.StringgenBasico(false), "v3", mails, uuidString, true);
+        String customId = uuid.toString();
+        response = (SuccessV3Response) api.Stamp(ut.StringgenBasico(false), "v3", mails, customId, true);
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.cfdi);
@@ -72,8 +72,8 @@ public class SWStampServiceTestV4 {
         SuccessV4Response response = null;
         String[] mails = { "prueba@test.com" };
         UUID uuid = UUID.randomUUID();
-        String uuidString = uuid.toString();
-        response = (SuccessV4Response) api.Stamp(ut.StringgenBasico(false), "v4", mails, uuidString, true);
+        String customId = uuid.toString();
+        response = (SuccessV4Response) api.Stamp(ut.StringgenBasico(false), "v4", mails, customId, true);
         System.out.println(response.message);
         System.out.println(response.Status);
         System.out.println(response.cfdi);
@@ -97,8 +97,8 @@ public class SWStampServiceTestV4 {
             SuccessV1Response response = null;
             String[] mails = { "" };
             UUID uuid = UUID.randomUUID();
-            String uuidString = uuid.toString();
-            response = (SuccessV1Response) api.Stamp(ut.StringgenBasico(false), "v1", mails, uuidString, true);
+            String customId = uuid.toString();
+            response = (SuccessV1Response) api.Stamp(ut.StringgenBasico(false), "v1", mails, customId, true);
             System.out.println(response.Status);
             System.out.println(response.HttpStatusCode);
             System.out.println(response.message);
@@ -117,8 +117,8 @@ public class SWStampServiceTestV4 {
             SuccessV1Response response = null;
             String[] mails = { "", null };
             UUID uuid = UUID.randomUUID();
-            String uuidString = uuid.toString();
-            response = (SuccessV1Response) api.Stamp(ut.StringgenBasico(false), "v1", mails, uuidString, true);
+            String customId = uuid.toString();
+            response = (SuccessV1Response) api.Stamp(ut.StringgenBasico(false), "v1", mails, customId, true);
             System.out.println(response.Status);
             System.out.println(response.HttpStatusCode);
             System.out.println(response.message);

@@ -25,8 +25,8 @@ public class SWIssueServiceTestV4 {
         SuccessV1Response response = null;
         String[] mails = { "prueba@test.com" };
         UUID uuid = UUID.randomUUID();
-        String uuidString = uuid.toString();
-        response = (SuccessV1Response) api.IssueJson(testJson, "v1", mails, uuidString, true);
+        String customId = uuid.toString();
+        response = (SuccessV1Response) api.IssueJson(testJson, "v1", mails, customId, true);
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
@@ -41,8 +41,8 @@ public class SWIssueServiceTestV4 {
         String testJson = ut.JsonGenBasico(false);
         SuccessV2Response response = null;
         UUID uuid = UUID.randomUUID();
-        String uuidString = uuid.toString();
-        response = (SuccessV2Response) api.IssueJson(testJson, "v2", null, uuidString, true);
+        String customId = uuid.toString();
+        response = (SuccessV2Response) api.IssueJson(testJson, "v2", null, customId, true);
         System.out.println(response.message);
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
@@ -74,8 +74,8 @@ public class SWIssueServiceTestV4 {
         SuccessV4Response response = null;
         String[] mails = { "prueba@test.com" };
         UUID uuid = UUID.randomUUID();
-        String uuidString = uuid.toString();
-        response = (SuccessV4Response) api.IssueJson(testJson, "v4", mails, uuidString, false);
+        String customId = uuid.toString();
+        response = (SuccessV4Response) api.IssueJson(testJson, "v4", mails, customId, false);
         System.out.println(response.message);
         System.out.println(response.Status);
         System.out.println(response.cfdi);
@@ -98,8 +98,8 @@ public class SWIssueServiceTestV4 {
         SuccessV1Response response = null;
         String[] mails = { "prueba@test.com" };
         UUID uuid = UUID.randomUUID();
-        String uuidString = uuid.toString();
-        response = (SuccessV1Response) api.IssueXml(ut.StringgenBasico(false), "v1", mails, uuidString, true);
+        String customId = uuid.toString();
+        response = (SuccessV1Response) api.IssueXml(ut.StringgenBasico(false), "v1", mails, customId, true);
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.tfd);
@@ -114,8 +114,8 @@ public class SWIssueServiceTestV4 {
         SuccessV2Response response = null;
         String[] mails = { "prueba@test.com" };
         UUID uuid = UUID.randomUUID();
-        String uuidString = uuid.toString();
-        response = (SuccessV2Response) api.IssueXml(ut.StringgenBasico(false), "v2", mails, uuidString, true);
+        String customId = uuid.toString();
+        response = (SuccessV2Response) api.IssueXml(ut.StringgenBasico(false), "v2", mails, customId, true);
         System.out.println(response.message);
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
@@ -131,8 +131,8 @@ public class SWIssueServiceTestV4 {
         SuccessV3Response response = null;
         String[] mails = { "prueba@test.com" };
         UUID uuid = UUID.randomUUID();
-        String uuidString = uuid.toString();
-        response = (SuccessV3Response) api.IssueXml(ut.StringgenBasico(false), "v3", mails, uuidString, true);
+        String customId = uuid.toString();
+        response = (SuccessV3Response) api.IssueXml(ut.StringgenBasico(false), "v3", mails, customId, true);
         System.out.println(response.Status);
         System.out.println(response.HttpStatusCode);
         System.out.println(response.cfdi);
@@ -147,8 +147,8 @@ public class SWIssueServiceTestV4 {
         SuccessV4Response response = null;
         String[] mails = { "prueba@test.com" };
         UUID uuid = UUID.randomUUID();
-        String uuidString = uuid.toString();
-        response = (SuccessV4Response) api.IssueXml(ut.StringgenBasico(false), "v4", mails, uuidString, true);
+        String customId = uuid.toString();
+        response = (SuccessV4Response) api.IssueXml(ut.StringgenBasico(false), "v4", mails, customId, true);
         System.out.println(response.message);
         System.out.println(response.Status);
         System.out.println(response.cfdi);
@@ -172,8 +172,8 @@ public class SWIssueServiceTestV4 {
             SuccessV1Response response = null;
             String[] mails = { "" };
             UUID uuid = UUID.randomUUID();
-            String uuidString = uuid.toString();
-            response = (SuccessV1Response) api.IssueXml(ut.StringgenBasico(false), "v1", mails, uuidString, true);
+            String customId = uuid.toString();
+            response = (SuccessV1Response) api.IssueXml(ut.StringgenBasico(false), "v1", mails, customId, true);
             System.out.println(response.Status);
             System.out.println(response.HttpStatusCode);
             System.out.println(response.message);
@@ -192,8 +192,8 @@ public class SWIssueServiceTestV4 {
             SuccessV1Response response = null;
             String[] mails = { "", null };
             UUID uuid = UUID.randomUUID();
-            String uuidString = uuid.toString();
-            response = (SuccessV1Response) api.IssueXml(ut.StringgenBasico(false), "v1", mails, uuidString, true);
+            String customId = uuid.toString();
+            response = (SuccessV1Response) api.IssueXml(ut.StringgenBasico(false), "v1", mails, customId, true);
             System.out.println(response.Status);
             System.out.println(response.HttpStatusCode);
             System.out.println(response.message);

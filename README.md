@@ -2042,8 +2042,369 @@ public class ExampleReadme {
 ```
 </details>
 
+</details>
 
----
+## TimbradoV4 ##
+
+### **Email** ###
+
+Este servicio recibe un comprobante CFDI para ser timbrado y recibe un listado de uno o hasta 5 correos electrónicos a los que se requiera enviar el XML timbrado.
+
+Existen varias versiones de respuesta a este método, las cuales puede consultar mas a detalle en el siguiente [link](https://developers.sw.com.mx/knowledge-base/versiones-de-respuesta-timbrado/).
+
+<details>
+  <summary>Timbrado CFDI (StampV4)</summary>
+
+**<br>Ejemplo del consumo de la librería para el servicio StampV4 (Email) XML en formato string enviando a correos mediante usuario y contraseña**
+```java
+import Services.Stamp.SWStampServiceV4;
+import Utils.Responses.Stamp.SuccessV1Response;
+
+namespace ExampleReadme 
+{
+    public static void main(String[] args) {
+        try {
+            // Inicializar el objeto con la información de la cuenta o el token de acceso especifica la URL base para acceder al entorno deseado
+            SWStampServiceV4 stamp = new SWStampServiceV4("user", "password", "http://services.test.sw.com.mx");
+            // Inicializar un objeto de respuesta para almacenar la respuesta
+            SuccessV1Response response = null;
+            // Se inicializa la lista de correos
+            string emails = "ejemplo1@gmail.com,ejemplo2@gmail.com,ejemplo3@gmail.com,ejemplo4@gmail.com,ejemplo5@gmail.com";
+            //Se llama al método Stamp y se envia XML previamente sellado, versión de respuesta y lista de correos en los parametros
+            response = (SuccessV1Response) stamp.Stamp(stringXML, "v1", emails, null, false);
+            // En response se mostrará la informacion de respuesta del servicio-
+            System.out.println(response.Status);
+            System.out.println(response.HttpStatusCode);
+            System.out.println(response.tfd);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+**Timbrar XML StampV4(Email) utilizando token**
+
+```java
+    //Basta con sustituir esta linea en el ejemplo anterior, colocarás el token de tu cuenta y la URL base del ambiente que requieres acceder
+    SWStampServiceV4 stamp = new SWStampServiceV4("tokenUser", "http://services.test.sw.com.mx");
+```
+
+</details>
+<details>
+  <summary>Emisión Timbrado (IssueV4)</summary>
+
+  **Ejemplo del consumo de la librería para el servicio IssueV4 (Email) Json en formato string mediante usuario y contraseña.**
+```cs
+
+import Services.Issue.SWIssueService;
+import Utils.Responses.Stamp.SuccessV1Response;
+
+public class ExampleReadme {
+
+    public static void main(String[] args) {
+        try {
+            // Inicializar el objeto con la información de la cuenta o el token de acceso especifica la URL base para acceder al entorno deseado
+            SWIssueServiceV4 stamp = new SWIssueServiceV4("user", "password", "http://services.test.sw.com.mx");
+            // Inicializar un objeto de respuesta para almacenar la respuesta
+            SuccessV1Response response = null;
+            // Se inicializa la lista de correos
+            string emails = "ejemplo1@gmail.com,ejemplo2@gmail.com,ejemplo3@gmail.com,ejemplo4@gmail.com,ejemplo5@gmail.com";
+            //Se llama al método IssueXml y se envia XML, versión de respuesta y lista de correos en los parametros
+           response = (SuccessV1Response) stamp.IssueXml(stringXML, "v1", emails, null, false);
+            // En response se mostrará la informacion de respuesta del servicio-
+            System.out.println(response.Status);
+            System.out.println(response.HttpStatusCode);
+            System.out.println(response.tfd);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+**Timbrar XML IssueV4 (Email) utilizando token**
+
+```java
+    //Basta con sustituir esta linea en el ejemplo anterior, colocarás el token de tu cuenta y la URL base del ambiente que requieres acceder
+    SWIssueServiceV4 stamp = new SWIssueServiceV4("tokenUser", "http://services.test.sw.com.mx");
+```
+</details>
+
+<details>
+  <summary>Timbrado JSON (IssueJsonV4)</summary>
+
+  **Ejemplo del consumo de la librería para el servicio IssueJsonV4 (Email) Json en formato string mediante usuario y contraseña.**
+```cs
+
+import Services.Issue.SWIssueService;
+import Utils.Responses.Stamp.SuccessV1Response;
+
+public class ExampleReadme {
+
+    public static void main(String[] args) {
+        try {
+            // Inicializar el objeto con la información de la cuenta o el token de acceso especifica la URL base para acceder al entorno deseado
+            SWIssueServiceV4 stamp = new SWIssueServiceV4("user", "password", "http://services.test.sw.com.mx");
+            // Inicializar un objeto de respuesta para almacenar la respuesta
+            SuccessV1Response response = null;
+            // Se inicializa la lista de correos
+            string emails = "ejemplo1@gmail.com,ejemplo2@gmail.com,ejemplo3@gmail.com,ejemplo4@gmail.com,ejemplo5@gmail.com";
+            //Se llama al método IssueJson y se envia JSON, versión de respuesta y lista de correos en los parametros
+           response = (SuccessV1Response) stamp.IssueJson(stringJson, "v1", emails, null, false);
+            // En response se mostrará la informacion de respuesta del servicio-
+            System.out.println(response.Status);
+            System.out.println(response.HttpStatusCode);
+            System.out.println(response.tfd);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+**Timbrar JSON IssueJsonV4 (Email) utilizando token**
+
+```java
+    //Basta con sustituir esta linea en el ejemplo anterior, colocarás el token de tu cuenta y la URL base del ambiente que requieres acceder
+    SWIssueServiceV4 stamp = new SWIssueServiceV4("tokenUser", "http://services.test.sw.com.mx");
+```
+</details>
+
+### **CustomId** ###
+Este servicio recibe un comprobante CFDI para ser timbrado y recibe un header conocido como CustomID, el cuál tiene el objetivo de agregar un filtro adicional al timbrado para evitar la duplicidad de timbrado.
+El CustomId es un string y el valor es asignado por el usuario, el cual tiene un límite de 100 caracteres.
+
+Existen varias versiones de respuesta a este método, las cuales puede consultar mas a detalle en el siguiente [link](https://developers.sw.com.mx/knowledge-base/versiones-de-respuesta-timbrado/).
+
+<details>
+  <summary>Timbrado CFDI (StampV4)</summary>
+
+**<br>Ejemplo del consumo de la librería para el servicio StampV4 (CustomId) XML en formato string mediante usuario y contraseña**
+```java
+import Services.Stamp.SWStampServiceV4;
+import Utils.Responses.Stamp.SuccessV1Response;
+import java.util.UUID;
+
+namespace ExampleReadme 
+{
+    public static void main(String[] args) {
+        try {
+            // Inicializar el objeto con la información de la cuenta o el token de acceso especifica la URL base para acceder al entorno deseado
+            SWStampServiceV4 stamp = new SWStampServiceV4("user", "password", "http://services.test.sw.com.mx");
+            // Inicializar un objeto de respuesta para almacenar la respuesta
+            SuccessV1Response response = null;
+            // Se inicializa el customid
+            UUID uuid = UUID.randomUUID();
+            String customId = uuid.toString();
+            //Se llama al método Stamp y se envia XML previamente sellado, versión de respuesta y customid en los parametros
+            response = (SuccessV1Response) stamp.Stamp(stringXML, "v1", null, customId, false);
+            // En response se mostrará la informacion de respuesta del servicio-
+            System.out.println(response.Status);
+            System.out.println(response.HttpStatusCode);
+            System.out.println(response.tfd);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+**Timbrar XML StampV4(CustomId) utilizando token**
+
+```java
+    //Basta con sustituir esta linea en el ejemplo anterior, colocarás el token de tu cuenta y la URL base del ambiente que requieres acceder
+    SWIssueServiceV4 stamp = new SWIssueServiceV4("tokenUser", "http://services.test.sw.com.mx");
+```
+</details>
+<details>
+  <summary>Emisión Timbrado (IssueV4)</summary>
+
+  **Ejemplo del consumo de la librería para el servicio IssueV4 (CustomId) Json en formato string mediante usuario y contraseña.**
+```cs
+
+import Services.Issue.SWIssueService;
+import Utils.Responses.Stamp.SuccessV1Response;
+
+public class ExampleReadme {
+
+    public static void main(String[] args) {
+        try {
+            // Inicializar el objeto con la información de la cuenta o el token de acceso especifica la URL base para acceder al entorno deseado
+            SWIssueServiceV4 stamp = new SWIssueServiceV4("user", "password", "http://services.test.sw.com.mx");
+            // Inicializar un objeto de respuesta para almacenar la respuesta
+            // Se inicializa el customid
+            UUID uuid = UUID.randomUUID();
+            String customId = uuid.toString();
+            //Se llama al método IssueXml y se envia XML, versión de respuesta y customid en los parametros
+           response = (SuccessV1Response) stamp.IssueXml(stringXML, "v1", customId, null, false);
+            // En response se mostrará la informacion de respuesta del servicio-
+            System.out.println(response.Status);
+            System.out.println(response.HttpStatusCode);
+            System.out.println(response.tfd);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+**Timbrar XML IssueV4 (Email) utilizando token**
+
+```java
+    //Basta con sustituir esta linea en el ejemplo anterior, colocarás el token de tu cuenta y la URL base del ambiente que requieres acceder
+    SWIssueServiceV4 stamp = new SWIssueServiceV4("tokenUser", "http://services.test.sw.com.mx");
+```
+</details>
+<details>
+ <summary>Timbrado Json (IssueJsonV4)</summary>
+
+ **Ejemplo del consumo de la librería para el servicio IssueJsonV4 (CustomId) Json en formato string mediante usuario y contraseña.**
+```java
+import Services.Issue.SWIssueService;
+import Utils.Responses.Stamp.SuccessV1Response;
+
+public class ExampleReadme {
+
+    public static void main(String[] args) {
+        try {
+            // Inicializar el objeto con la información de la cuenta o el token de acceso especifica la URL base para acceder al entorno deseado
+            SWIssueServiceV4 stamp = new SWIssueServiceV4("user", "password", "http://services.test.sw.com.mx");
+            // Inicializar un objeto de respuesta para almacenar la respuesta
+            SuccessV1Response response = null;
+            // Se inicializa el customid
+            UUID uuid = UUID.randomUUID();
+            String customId = uuid.toString();
+            //Se llama al método IssueJson y se envia JSON, versión de respuesta y customid en los parametros
+           response = (SuccessV1Response) stamp.IssueJson(stringJson, "v1", null, customId, false);
+            // En response se mostrará la informacion de respuesta del servicio-
+            System.out.println(response.Status);
+            System.out.println(response.HttpStatusCode);
+            System.out.println(response.tfd);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+**Timbrar JSON IssueJsonV4 (CustomId) utilizando token**
+
+```java
+    //Basta con sustituir esta linea en el ejemplo anterior, colocarás el token de tu cuenta y la URL base del ambiente que requieres acceder
+    SWIssueServiceV4 stamp = new SWIssueServiceV4("tokenUser", "http://services.test.sw.com.mx");
+```
+</details>
+
+
+### **PDF** ###
+Este servicio recibe un comprobante CFDI para ser timbrado y que recibe un header conocido como extra mediante el cual se confirma la generación de un PDF del CFDI timbrado que será guardado en automático en el ADT.
+
+Existen varias versiones de respuesta a este método, las cuales puede consultar mas a detalle en el siguiente [link](https://developers.sw.com.mx/knowledge-base/versiones-de-respuesta-timbrado/).
+
+***NOTA:*** En caso de que no se cuente con una plantilla PDF customizada los PDF’s serán generados con las plantillas genéricas.
+
+<details>
+  <summary>Timbrado CFDI (StampV4)</summary>
+
+**<br>Ejemplo del consumo de la librería para el servicio StampV4 (PDF) XML en formato string mediante usuario y contraseña**
+```java
+import Services.Stamp.SWStampServiceV4;
+import Utils.Responses.Stamp.SuccessV1Response;
+
+namespace ExampleReadme 
+{
+    public static void main(String[] args) {
+        try {
+            // Inicializar el objeto con la información de la cuenta o el token de acceso especifica la URL base para acceder al entorno deseado
+            SWStampServiceV4 stamp = new SWStampServiceV4("user", "password", "http://services.test.sw.com.mx");
+            // Inicializar un objeto de respuesta para almacenar la respuesta
+            SuccessV1Response response = null;
+            //Se llama al método Stamp y se envia XML previamente sellado, versión de respuesta y la opción para generar un PDF
+            response = (SuccessV1Response) stamp.Stamp(stringXML, "v1", null, null, true);
+            // En response se mostrará la informacion de respuesta del servicio-
+            System.out.println(response.Status);
+            System.out.println(response.HttpStatusCode);
+            System.out.println(response.tfd);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+**Timbrar XML StampV4 (PDF) utilizando token**
+
+```java
+    //Basta con sustituir esta linea en el ejemplo anterior, colocarás el token de tu cuenta y la URL base del ambiente que requieres acceder
+    SWIssueServiceV4 stamp = new SWIssueServiceV4("tokenUser", "http://services.test.sw.com.mx");
+```
+</details>
+<details>
+  <summary>Emisión Timbrado (IssueV4)</summary>
+
+  **Ejemplo del consumo de la librería para el servicio IssueV4 (PDF) Json en formato string mediante usuario y contraseña.**
+```cs
+
+import Services.Issue.SWIssueService;
+import Utils.Responses.Stamp.SuccessV1Response;
+
+public class ExampleReadme {
+
+    public static void main(String[] args) {
+        try {
+            // Inicializar el objeto con la información de la cuenta o el token de acceso especifica la URL base para acceder al entorno deseado
+            SWIssueServiceV4 stamp = new SWIssueServiceV4("user", "password", "http://services.test.sw.com.mx");
+            // Inicializar un objeto de respuesta para almacenar la respuesta
+            SuccessV1Response response = null;
+            //Se llama al método IssueXml y se envia XML, versión de respuesta y la opción para generar un PDF
+            response = (SuccessV1Response) stamp.IssueXml(stringXML, "v1", null, null, true);
+            // En response se mostrará la informacion de respuesta del servicio-
+            System.out.println(response.Status);
+            System.out.println(response.HttpStatusCode);
+            System.out.println(response.tfd);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+**Timbrar XML IssueV4 (PDF) utilizando token**
+
+```java
+    //Basta con sustituir esta linea en el ejemplo anterior, colocarás el token de tu cuenta y la URL base del ambiente que requieres acceder
+    SWIssueServiceV4 stamp = new SWIssueServiceV4("tokenUser", "http://services.test.sw.com.mx");
+```
+</details>
+<details>
+ <summary>Timbrado Json (IssueJsonV4)</summary>
+
+ **Ejemplo del consumo de la librería para el servicio IssueJsonV4 (PDF) Json en formato string mediante usuario y contraseña.**
+```java
+import Services.Issue.SWIssueService;
+import Utils.Responses.Stamp.SuccessV1Response;
+
+public class ExampleReadme {
+
+    public static void main(String[] args) {
+        try {
+            // Inicializar el objeto con la información de la cuenta o el token de acceso especifica la URL base para acceder al entorno deseado
+            SWIssueServiceV4 stamp = new SWIssueServiceV4("user", "password", "http://services.test.sw.com.mx");
+            // Inicializar un objeto de respuesta para almacenar la respuesta
+            SuccessV1Response response = null;
+            //Se llama al método IssueJson y se envia JSON, versión de respuesta y la opción para generar un PDF
+            response = (SuccessV1Response) stamp.IssueJson(stringJson, "v1", null, customId, true);
+            // En response se mostrará la informacion de respuesta del servicio-
+            System.out.println(response.Status);
+            System.out.println(response.HttpStatusCode);
+            System.out.println(response.tfd);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+**Timbrar JSON IssueJsonV4 (PDF) utilizando token**
+
+```java
+    //Basta con sustituir esta linea en el ejemplo anterior, colocarás el token de tu cuenta y la URL base del ambiente que requieres acceder
+    SWIssueServiceV4 stamp = new SWIssueServiceV4("tokenUser", "http://services.test.sw.com.mx");
+```
+</details>
+----------------
 
 
 Para mayor referencia de un listado completo de los servicios favor de visitar nuestro [sitio developers](https://developers.sw.com.mx/).

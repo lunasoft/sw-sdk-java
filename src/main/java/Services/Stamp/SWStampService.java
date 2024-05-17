@@ -8,10 +8,12 @@ import Utils.Requests.Stamp.StampRequest;
 import Utils.Requests.Stamp.StampRequestZip;
 import Utils.Responses.IResponse;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 public class SWStampService extends SWService {
 
@@ -64,17 +66,29 @@ public class SWStampService extends SWService {
 	}
 
 	public IResponse Stamp(byte[] xmlFile, String version) throws AuthException, GeneralException, IOException {
-		String xmlProcess = new String(xmlFile, Charset.forName("UTF-8"));
-		StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), xmlProcess, version,
-				getProxyHost(), getProxyPort(), false);
-		StampRequest req = new StampRequest();
-		return req.sendRequest(settings);
+		if (xmlFile.length > 27 * 1024 * 1024) { 
+			xmlFile = convertToZip(xmlFile);
+			StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), xmlFile, version, getProxyHost(),
+					getProxyPort());
+			StampRequestZip req = new StampRequestZip();
+			return req.sendRequestZip(settings);
+		} else {
+			String xmlProcess = new String(xmlFile, Charset.forName("UTF-8"));
+			StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), xmlProcess, version,
+					getProxyHost(), getProxyPort(), false);
+			StampRequest req = new StampRequest(); 
+			return req.sendRequest(settings);
+		}
 	}
 
-	public IResponse StampZip(byte[] zipFile, String version) throws AuthException, GeneralException, IOException {
-		StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), zipFile, version, getProxyHost(),
-				getProxyPort());
-		StampRequestZip req = new StampRequestZip();
-		return req.sendRequestZip(settings);
+	private byte[] convertToZip(byte[] data) throws IOException {
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		try (ZipOutputStream zos = new ZipOutputStream(baos)) {
+			ZipEntry entry = new ZipEntry("file.xml");
+			zos.putNextEntry(entry);
+			zos.write(data);
+			zos.closeEntry();
+		}
+		return baos.toByteArray();
 	}
 }

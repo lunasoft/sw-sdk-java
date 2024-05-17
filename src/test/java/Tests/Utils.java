@@ -227,6 +227,9 @@ public class Utils {
     public String StringgenBasico(boolean isBase64) {
         return getCFDI("src/test/resources/CFDI40/CFDI40/CFDI40_Ingreso.xml", true, "4.0", isBase64);
     }
+    public String StringgenZip(boolean isBase64) {
+        return getCFDI("src/test/resources/CFDI40/ZIP/120000conceptos.xml", true, "4.0", isBase64);
+    }
 
     public String StringgenBasicoTimbrePrevio(boolean isBase64) {
         return getCFDI("src/test/resources/Extras/CFDI40_Ingreso_Timbrado.xml", true, "4.0", isBase64);

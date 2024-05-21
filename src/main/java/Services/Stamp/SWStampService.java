@@ -8,10 +8,10 @@ import Utils.Requests.Stamp.StampRequest;
 import Utils.Requests.Stamp.StampRequestZip;
 import Utils.Responses.IResponse;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -35,10 +35,18 @@ public class SWStampService extends SWService {
 	}
 
 	public IResponse Stamp(String xml, String version) throws AuthException, GeneralException, IOException {
-		StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), xml, version, getProxyHost(),
-				getProxyPort(), false);
-		StampRequest req = new StampRequest();
-		return req.sendRequest(settings);
+		byte[] xmlFile = xml.getBytes(StandardCharsets.UTF_8);
+		if (xmlFile.length > 35 * 1024 * 1024) { 
+			xmlFile = convertToZip(xmlFile);
+			StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), xmlFile, version, getProxyHost(), getProxyPort());
+			StampRequestZip req = new StampRequestZip();
+			return req.sendRequestZip(settings);
+		} else {
+			String xmlProcess = new String(xmlFile, Charset.forName("UTF-8"));
+			StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), xmlProcess, version, getProxyHost(), getProxyPort(), false);
+			StampRequest req = new StampRequest();
+			return req.sendRequest(settings);
+		}
 	}
 
 	public IResponse Stamp(String xml, String version, boolean isb64)
@@ -66,7 +74,7 @@ public class SWStampService extends SWService {
 	}
 
 	public IResponse Stamp(byte[] xmlFile, String version) throws AuthException, GeneralException, IOException {
-		if (xmlFile.length > 27 * 1024 * 1024) { 
+		if (xmlFile.length > 35 * 1024 * 1024) { 
 			xmlFile = convertToZip(xmlFile);
 			StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), xmlFile, version, getProxyHost(),
 					getProxyPort());

@@ -5,15 +5,12 @@ import Exceptions.GeneralException;
 import Services.SWService;
 import Utils.Requests.Stamp.StampOptionsRequest;
 import Utils.Requests.Stamp.StampRequest;
-import Utils.Requests.Stamp.StampRequestZip;
 import Utils.Responses.IResponse;
+import Utils.Helpers.RequestZipHelper;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
 
 public class SWStampService extends SWService {
 
@@ -36,17 +33,7 @@ public class SWStampService extends SWService {
 
 	public IResponse Stamp(String xml, String version) throws AuthException, GeneralException, IOException {
 		byte[] xmlFile = xml.getBytes(StandardCharsets.UTF_8);
-		if (xmlFile.length > 35 * 1024 * 1024) { 
-			xmlFile = convertToZip(xmlFile);
-			StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), xmlFile, version, getProxyHost(), getProxyPort());
-			StampRequestZip req = new StampRequestZip();
-			return req.sendRequestZip(settings);
-		} else {
-			String xmlProcess = new String(xmlFile, Charset.forName("UTF-8"));
-			StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), xmlProcess, version, getProxyHost(), getProxyPort(), false);
-			StampRequest req = new StampRequest();
-			return req.sendRequest(settings);
-		}
+		return RequestZipHelper.processStampRequest(xmlFile, version, this);
 	}
 
 	public IResponse Stamp(String xml, String version, boolean isb64)
@@ -74,29 +61,6 @@ public class SWStampService extends SWService {
 	}
 
 	public IResponse Stamp(byte[] xmlFile, String version) throws AuthException, GeneralException, IOException {
-		if (xmlFile.length > 35 * 1024 * 1024) { 
-			xmlFile = convertToZip(xmlFile);
-			StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), xmlFile, version, getProxyHost(),
-					getProxyPort());
-			StampRequestZip req = new StampRequestZip();
-			return req.sendRequestZip(settings);
-		} else {
-			String xmlProcess = new String(xmlFile, Charset.forName("UTF-8"));
-			StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), xmlProcess, version,
-					getProxyHost(), getProxyPort(), false);
-			StampRequest req = new StampRequest(); 
-			return req.sendRequest(settings);
-		}
-	}
-
-	private byte[] convertToZip(byte[] data) throws IOException {
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		try (ZipOutputStream zos = new ZipOutputStream(baos)) {
-			ZipEntry entry = new ZipEntry("file.xml");
-			zos.putNextEntry(entry);
-			zos.write(data);
-			zos.closeEntry();
-		}
-		return baos.toByteArray();
+		return RequestZipHelper.processStampRequest(xmlFile, version, this);
 	}
 }

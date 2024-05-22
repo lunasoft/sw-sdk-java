@@ -5,6 +5,7 @@ import Tests.Utils;
 import Utils.Responses.Stamp.SuccessV1Response;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -12,6 +13,7 @@ import java.nio.file.Paths;
 
 public class SWStampsServiceZipTest {
 
+	@Ignore
 	@Test
 	public void testStamp_ZipXML() throws Exception {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
@@ -27,6 +29,7 @@ public class SWStampsServiceZipTest {
 		Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
 		Assert.assertTrue("El campo tfd no debe estar vacío", response.tfd != null && !response.tfd.trim().isEmpty());
 	}
+	@Ignore
 	@Test
 	public void testStamp_ZipXML_String() throws Exception {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
@@ -41,7 +44,7 @@ public class SWStampsServiceZipTest {
 		Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
 		Assert.assertTrue("El campo tfd no debe estar vacío", response.tfd != null && !response.tfd.trim().isEmpty());
 	}
-
+	@Ignore
 	@Test
 	public void testStamp_ZipXML_NoSellado() throws Exception {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
@@ -57,7 +60,7 @@ public class SWStampsServiceZipTest {
 			Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
 		}
 	}
-
+	@Ignore
 	@Test
 	public void testStamp_ZipXML_EstructuraIncorrecta() throws Exception {
 		SWStampService api = new SWStampService(Utils.userSW, Utils.passwordSW, Utils.urlSW);

@@ -5,13 +5,12 @@ import Exceptions.GeneralException;
 import Services.SWService;
 import Utils.Requests.Stamp.StampOptionsRequest;
 import Utils.Requests.Stamp.StampRequest;
-import Utils.Requests.Stamp.StampRequestZip;
 import Utils.Responses.IResponse;
+import Utils.Helpers.RequestZipHelper;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.nio.charset.StandardCharsets;
 
 public class SWStampService extends SWService {
 
@@ -33,10 +32,8 @@ public class SWStampService extends SWService {
 	}
 
 	public IResponse Stamp(String xml, String version) throws AuthException, GeneralException, IOException {
-		StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), xml, version, getProxyHost(),
-				getProxyPort(), false);
-		StampRequest req = new StampRequest();
-		return req.sendRequest(settings);
+		byte[] xmlFile = xml.getBytes(StandardCharsets.UTF_8);
+		return RequestZipHelper.processStampRequest(xmlFile, version, this);
 	}
 
 	public IResponse Stamp(String xml, String version, boolean isb64)
@@ -64,17 +61,6 @@ public class SWStampService extends SWService {
 	}
 
 	public IResponse Stamp(byte[] xmlFile, String version) throws AuthException, GeneralException, IOException {
-		String xmlProcess = new String(xmlFile, Charset.forName("UTF-8"));
-		StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), xmlProcess, version,
-				getProxyHost(), getProxyPort(), false);
-		StampRequest req = new StampRequest();
-		return req.sendRequest(settings);
-	}
-
-	public IResponse StampZip(byte[] zipFile, String version) throws AuthException, GeneralException, IOException {
-		StampOptionsRequest settings = new StampOptionsRequest(getToken(), getURI(), zipFile, version, getProxyHost(),
-				getProxyPort());
-		StampRequestZip req = new StampRequestZip();
-		return req.sendRequestZip(settings);
+		return RequestZipHelper.processStampRequest(xmlFile, version, this);
 	}
 }

@@ -122,8 +122,6 @@
                 <extensions>true</extensions>
                 <configuration>
                     <serverId>ossrh</serverId>
-                    <username>${ossrh.username}</username>
-                    <password>${ossrh.password}</password>
                     <nexusUrl>https://oss.sonatype.org/</nexusUrl>
                     <autoReleaseAfterClose>true</autoReleaseAfterClose>
                 </configuration>
@@ -240,7 +238,6 @@
                                     <goal>sign</goal>
                                 </goals>
                                 <configuration>
-                                    <skip>true</skip>
                                     <gpgArguments>
                                         <arg>--batch</arg>
                                         <arg>--pinentry-mode</arg>

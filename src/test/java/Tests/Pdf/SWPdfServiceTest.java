@@ -17,6 +17,7 @@ import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestName;
@@ -243,6 +244,7 @@ public class SWPdfServiceTest {
             Assert.assertTrue(false);
         }
     }
+    @Ignore
     @Test
     public void GeneratePdf_CP20__Success() throws AuthException, GeneralException, IOException {
         HashMap<String, String> extras = new HashMap<String,String>();

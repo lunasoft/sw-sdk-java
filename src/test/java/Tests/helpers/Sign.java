@@ -3,7 +3,7 @@ package Tests.helpers;
 import java.io.*;
 import java.security.Signature;
 import org.apache.commons.ssl.PKCS8Key;
-import javax.xml.bind.DatatypeConverter;
+import jakarta.xml.bind.DatatypeConverter;
 
 /**
  * Sign Está clase permite realizar sellado y transformacion de CFDI.

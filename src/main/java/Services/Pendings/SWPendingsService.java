@@ -2,7 +2,7 @@ package Services.Pendings;
 
 import java.io.IOException;
 
-import javax.xml.soap.SOAPException;
+import jakarta.xml.soap.SOAPException;
 
 import Exceptions.AuthException;
 import Exceptions.GeneralException;

@@ -105,7 +105,7 @@ public class AccountUserOptionsRequest extends IRequest {
     }
 
     /**
-     * Método estático para crear una solicitud paginada de obtención de todos los usuarios.
+     * Método estático para crear una solicitud de obtención de todos los usuarios.
      *
      * @param token      Token de autenticación
      * @param URIAPI     URI base de la API

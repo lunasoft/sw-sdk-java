@@ -46,8 +46,7 @@ public class AccountUserRequestHelper {
             throws IOException, GeneralException {
         int status = response.getStatusLine().getStatusCode();
 
-        // Verifica si el código de estado es 204 (No Content) para la respuesta OK de 
-        // elete user
+        // Verifica si el código de estado es 204 (No Content) para la respuesta OK de Delete user
         if (status == 204) {
             return new AccountUserResponse<>(status, "success", null, "Usuario eliminado correctamente.", "");
         }

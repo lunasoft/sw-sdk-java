@@ -1,7 +1,9 @@
 package Utils.Requests.Account.AccountUser;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -46,27 +48,35 @@ public class AccountUserRequest {
 
     public static IResponse createGetAllUsersRequest(IRequest request)
             throws GeneralException, AuthException, IOException {
-        return new AccountUserRequest().getUserFiltersRequest(request, null, null, null, null, List.class);
+        return new AccountUserRequest().getUserFiltersRequest(request, new HashMap<>(), List.class);
     }
 
     public static IResponse createGetUserById(IRequest request, UUID idUser)
             throws GeneralException, AuthException, IOException {
-        return new AccountUserRequest().getUserFiltersRequest(request, null, null, idUser, null, List.class);
+        Map<AccountUserFilters, String> filters = new HashMap<>();
+        filters.put(AccountUserFilters.ID_USER, idUser.toString());
+        return new AccountUserRequest().getUserFiltersRequest(request, filters, List.class);
     }
 
     public static IResponse createGetUserByEmail(IRequest request, String email)
             throws GeneralException, AuthException, IOException {
-        return new AccountUserRequest().getUserFiltersRequest(request, email, null, null, null, List.class);
+        Map<AccountUserFilters, String> filters = new HashMap<>();
+        filters.put(AccountUserFilters.EMAIL, email);
+        return new AccountUserRequest().getUserFiltersRequest(request, filters, List.class);
     }
 
     public static IResponse createGetUserByRfc(IRequest request, String rfc)
             throws GeneralException, AuthException, IOException {
-        return new AccountUserRequest().getUserFiltersRequest(request, null, rfc, null, null, List.class);
+        Map<AccountUserFilters, String> filters = new HashMap<>();
+        filters.put(AccountUserFilters.TAX_ID, rfc);
+        return new AccountUserRequest().getUserFiltersRequest(request, filters, List.class);
     }
 
     public static IResponse createGetUserByActive(IRequest request, Boolean isActive)
             throws GeneralException, AuthException, IOException {
-        return new AccountUserRequest().getUserFiltersRequest(request, null, null, null, isActive, List.class);
+        Map<AccountUserFilters, String> filters = new HashMap<>();
+        filters.put(AccountUserFilters.IS_ACTIVE, isActive.toString());
+        return new AccountUserRequest().getUserFiltersRequest(request, filters, List.class);
     }
 
     // Métodos internos con clases de respuesta específicas
@@ -98,39 +108,31 @@ public class AccountUserRequest {
         return executeHttpRequest(httpDelete, responseClass);
     }
 
-    private <T> IResponse getUserFiltersRequest(IRequest request, String filterEmail, String filterRFC,
-            UUID filterIdUser, Boolean filterIsActive, Class<T> responseClass)
+    private <T> IResponse getUserFiltersRequest(IRequest request, Map<AccountUserFilters, String> filters,
+            Class<T> responseClass)
             throws GeneralException, AuthException, IOException {
-        HttpGet httpGet = new HttpGet(
-                filterEmail == null && filterRFC == null && filterIdUser == null && filterIsActive == null ? request.URI
-                        : buildUriWithFilter(request.URI, filterEmail, filterRFC, filterIdUser, filterIsActive));
+
+        String uriWithFilters = buildUriWithFilter(request.URI, filters);
+        HttpGet httpGet = new HttpGet(uriWithFilters);
+
         AccountUserRequestHelper.configureHttpRequest(request, httpGet, new JSONObject());
         return executeHttpRequest(httpGet, responseClass);
     }
 
     // Métodos auxiliares
 
-    private String buildUriWithFilter(String baseUri, String filterEmail, String filterRFC,
-            UUID filterIdUser, Boolean filterIsActive) {
-
+    private String buildUriWithFilter(String baseUri, Map<AccountUserFilters, String> filters) {
         StringBuilder uriBuilder = new StringBuilder(baseUri);
         boolean hasQueryParams = false;
 
-        // Agregar filtros según su disponibilidad
-        if (filterEmail != null) {
-            uriBuilder.append(hasQueryParams ? "&" : "?").append("Email=").append(filterEmail);
-            hasQueryParams = true;
-        }
-        if (filterRFC != null) {
-            uriBuilder.append(hasQueryParams ? "&" : "?").append("TaxId=").append(filterRFC);
-            hasQueryParams = true;
-        }
-        if (filterIdUser != null) {
-            uriBuilder.append(hasQueryParams ? "&" : "?").append("IdUser=").append(filterIdUser);
-            hasQueryParams = true;
-        }
-        if (filterIsActive != null) {
-            uriBuilder.append(hasQueryParams ? "&" : "?").append("IsActive=").append(filterIsActive);
+        for (Map.Entry<AccountUserFilters, String> filter : filters.entrySet()) {
+            if (filter.getValue() != null) { // Verifica que el valor del filtro no sea null
+                uriBuilder.append(hasQueryParams ? "&" : "?")
+                        .append(filter.getKey().getQueryKey())
+                        .append("=")
+                        .append(filter.getValue());
+                hasQueryParams = true;
+            }
         }
 
         return uriBuilder.toString();

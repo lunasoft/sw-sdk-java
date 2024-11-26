@@ -14,7 +14,7 @@ public class SWAuthenticationServiceTest {
 	@Test
     public void testAuth(){
         try {
-        	SWAuthenticationService auth = new SWAuthenticationService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
+        	SWAuthenticationService auth = new SWAuthenticationService("marifer.mares@sw.com.mx", "M4rifer+SW24", Utils.urlSW);
             SuccessAuthResponse res = (SuccessAuthResponse) auth.Token();
             String expected = "success";
             System.out.println(res.token);

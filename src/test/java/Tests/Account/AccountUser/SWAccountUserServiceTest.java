@@ -2,7 +2,6 @@ package Tests.Account.AccountUser;
 
 import java.util.List;
 import java.util.UUID;
-import java.util.concurrent.ThreadLocalRandom;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -388,6 +387,58 @@ public class SWAccountUserServiceTest {
 		Assert.assertNotNull(response.message);
 		Assert.assertNotNull(response.messageDetail);
 		Assert.assertTrue(response.Status.equals("error"));
+	}
+
+	@Test
+	public void UsuariosPorEmail_Token_Success() throws Exception {
+		SWAccountUserService app = new SWAccountUserService(Utils.tokenSW, Utils.urlApiSW, null, 0);
+		AccountUserResponse<List<DataAccountUser>> response = null;
+		response = (AccountUserResponse<List<DataAccountUser>>) app.ObtenerUsuarioPorEmail(Utils.userSW);
+		List<DataAccountUser> lista = response.data;
+		if (lista != null) {
+			for (int i = 0; i < lista.size(); i++) {
+				DataAccountUser dato = lista.get(i);
+				System.out.println("Email: " + dato.email);
+				System.out.println("Nombre: " + dato.name);
+				System.out.println("Perfil: " + dato.profile);
+				System.out.println("Stamps: " + dato.stamps);
+				System.out.println("idUsuario: " + dato.idUsuario);
+				System.out.println("Rfc: " + dato.taxId);
+				System.out.println("Ilimitado: " + dato.isUnlimited);
+				System.out.println("Activo: " + dato.isActive + "\n");
+			}
+		}
+		Assert.assertNotNull(response.HttpStatusCode);
+		Assert.assertNotNull(response.Status);
+		Assert.assertNotNull(response.message);
+		Assert.assertNotNull(response.messageDetail);
+		Assert.assertTrue(response.Status.equals("success"));
+	}
+
+	@Test
+	public void UsuariosPorId_Token_Success() throws Exception {
+		SWAccountUserService app = new SWAccountUserService(Utils.tokenSW, Utils.urlApiSW, null, 0);
+		AccountUserResponse<List<DataAccountUser>> response = null;
+		response = (AccountUserResponse<List<DataAccountUser>>) app.ObtenerUsuarioPorId(UUID.fromString("be2a859c-cd5f-42b5-b35d-f065b3a9aac4"));
+		List<DataAccountUser> lista = response.data;
+		if (lista != null) {
+			for (int i = 0; i < lista.size(); i++) {
+				DataAccountUser dato = lista.get(i);
+				System.out.println("Email: " + dato.email);
+				System.out.println("Nombre: " + dato.name);
+				System.out.println("Perfil: " + dato.profile);
+				System.out.println("Stamps: " + dato.stamps);
+				System.out.println("idUsuario: " + dato.idUsuario);
+				System.out.println("Rfc: " + dato.taxId);
+				System.out.println("Ilimitado: " + dato.isUnlimited);
+				System.out.println("Activo: " + dato.isActive + "\n");
+			}
+		}
+		Assert.assertNotNull(response.HttpStatusCode);
+		Assert.assertNotNull(response.Status);
+		Assert.assertNotNull(response.message);
+		Assert.assertNotNull(response.messageDetail);
+		Assert.assertTrue(response.Status.equals("success"));
 	}
 
 }

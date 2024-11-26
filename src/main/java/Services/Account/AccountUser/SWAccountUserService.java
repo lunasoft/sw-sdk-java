@@ -10,7 +10,6 @@ import java.util.UUID;
 import Exceptions.AuthException;
 import Exceptions.GeneralException;
 import Services.SWService;
-import Utils.Helpers.EnumAccountUser.AccountUserProfiles;
 import Utils.Requests.Account.AccountUser.AccountUserOptionsRequest;
 import Utils.Requests.Account.AccountUser.AccountUserRequest;
 import Utils.Responses.IResponse;
@@ -22,12 +21,13 @@ import Utils.Responses.IResponse;
 public class SWAccountUserService extends SWService {
 
     /**
-     * Constructor que requiere credenciales de autenticación para el servicio.
+     * Constructor que inicializa el servicio utilizando credenciales de
+     * autenticación.
      *
      * @param user      Nombre de usuario para la autenticación.
      * @param password  Contraseña para la autenticación.
      * @param URI       URI base para la autenticación.
-     * @param URIAPI    URI de la API para el servicio.
+     * @param URIAPI    URI base para la autenticación.
      * @param proxyHost Host del proxy (puede ser nulo).
      * @param proxyPort Puerto del proxy.
      * @throws AuthException Si la autenticación falla.
@@ -38,7 +38,7 @@ public class SWAccountUserService extends SWService {
     }
 
     /**
-     * Constructor que utiliza un token de autenticación para el servicio.
+     * Constructor que inicializa el servicio utilizando un token de autenticación.
      *
      * @param token     Token de autenticación.
      * @param URIAPI    URI de la API para el servicio.
@@ -52,48 +52,47 @@ public class SWAccountUserService extends SWService {
     /**
      * Crea un nuevo usuario de cuenta con la información proporcionada.
      *
-     * @param email        Correo electrónico del nuevo usuario.
-     * @param passwordUser Contraseña del nuevo usuario.
-     * @param name         Nombre del nuevo usuario.
-     * @param rfc          RFC del nuevo usuario.
-     * @param stamps       Número de timbres del nuevo usuario.
-     * @param profile      Perfil del nuevo usuario.
-     * @param unlimited    Indica si el usuario tiene acceso ilimitado.
-     * @param active       Indica si el usuario está activo.
+     * @param email             Correo electrónico del nuevo usuario.
+     * @param passwordUser      Contraseña del nuevo usuario.
+     * @param name              Nombre del nuevo usuario.
+     * @param rfc               RFC del nuevo usuario.
+     * @param stamps            Número de timbres asignados al usuario.
+     * @param phone             Número telefónico del usuario.
+     * @param unlimited         Indica si el usuario tiene acceso ilimitado.
+     * @param notificationEmail Correo electrónico para notificaciones.
      * @return IResponse con el resultado de la operación.
      * @throws AuthException    Si la autenticación falla.
      * @throws GeneralException Si ocurre un error general.
      * @throws IOException      Si hay un error de entrada/salida.
      */
-
     public IResponse CrearUsuario(String email, String passwordUser, String name, String rfc, int stamps,
-            AccountUserProfiles profile, boolean unlimited, boolean active)
+            String phone, boolean unlimited, String notificationEmail)
             throws AuthException, GeneralException, IOException {
         AccountUserOptionsRequest settings = AccountUserOptionsRequest.crearUsuarioRequest(getToken(), getURIAPI(),
-                email, passwordUser,
-                name, rfc, stamps, profile, unlimited, active, getProxyHost(), getProxyPort());
+                email, passwordUser, name, rfc, stamps, phone, unlimited, notificationEmail, getProxyHost(),
+                getProxyPort());
         return AccountUserRequest.createCreateUserRequest(settings);
     }
 
     /**
      * Actualiza la información de un usuario existente.
      *
-     * @param idUser    Identificador único del usuario a actualizar.
-     * @param name      Nuevo nombre del usuario.
-     * @param rfc       Nuevo RFC del usuario.
-     * @param unlimited Indica si el usuario tiene acceso ilimitado.
-     * @param active    Indica si el usuario está activo.
+     * @param idUser            Identificador único del usuario a actualizar.
+     * @param name              Nuevo nombre del usuario.
+     * @param rfc               Nuevo RFC del usuario.
+     * @param unlimited         Indica si el usuario tiene acceso ilimitado.
+     * @param phone             Nuevo número telefónico.
+     * @param notificationEmail Nuevo correo para notificaciones.
      * @return IResponse con el resultado de la operación.
      * @throws AuthException    Si la autenticación falla.
      * @throws GeneralException Si ocurre un error general.
      * @throws IOException      Si hay un error de entrada/salida.
      */
-    public IResponse ActualizarUsuario(UUID idUser, String name, String rfc, boolean unlimited, boolean active)
+    public IResponse ActualizarUsuario(UUID idUser, String name, String rfc, boolean unlimited, String phone,
+            String notificationEmail)
             throws AuthException, GeneralException, IOException {
-
         AccountUserOptionsRequest settings = AccountUserOptionsRequest.actualizarUsuarioRequest(getToken(), getURIAPI(),
-                idUser, name, rfc,
-                unlimited, active, getProxyHost(), getProxyPort());
+                idUser, name, rfc, unlimited, phone, notificationEmail, getProxyHost(), getProxyPort());
         return AccountUserRequest.createUpdateUserRequest(settings, idUser);
     }
 
@@ -113,41 +112,21 @@ public class SWAccountUserService extends SWService {
     }
 
     /**
-     * Obtiene la lista de usuarios paginada.
+     * Obtiene la lista de usuarios existentes.
      *
-     * @param page     Número de página.
-     * @param pageSize Número usuarios por página.
      * @return IResponse con la lista de usuarios.
      * @throws AuthException    Si la autenticación falla.
      * @throws GeneralException Si ocurre un error general.
      * @throws IOException      Si hay un error de entrada/salida.
      */
-    public IResponse ObtenerUsuarios(int page, int pageSize) throws AuthException, GeneralException, IOException {
-
+    public IResponse ObtenerUsuariosHijo() throws AuthException, GeneralException, IOException {
         AccountUserOptionsRequest settings = AccountUserOptionsRequest.obtenerUsuariosRequest(getToken(), getURIAPI(),
-                page, pageSize,
                 getProxyHost(), getProxyPort());
-        return AccountUserRequest.createGetAllUsersRequest(settings, page, pageSize);
+        return AccountUserRequest.createGetAllUsersRequest(settings);
     }
 
     /**
-     * Obtiene la información del usuario actual.
-     *
-     * @return IResponse con la información del usuario.
-     * @throws AuthException    Si la autenticación falla.
-     * @throws GeneralException Si ocurre un error general.
-     * @throws IOException      Si hay un error de entrada/salida.
-     */
-    public IResponse ObtenerInfoUsuario() throws AuthException, GeneralException, IOException {
-        AccountUserOptionsRequest settings = AccountUserOptionsRequest.obtenerUsuarioPorTokenRequest(getToken(),
-                getURIAPI(), getProxyHost(),
-                getProxyPort());
-        return AccountUserRequest.createGetUserRequest(settings);
-    }
-
-    /**
-     * Obtiene la información de un usuario específico por su identificador ú
-     * ico.
+     * Obtiene información de un usuario específico por su ID.
      *
      * @param idUser Identificador único del usuario.
      * @return IResponse con la información del usuario.
@@ -155,9 +134,54 @@ public class SWAccountUserService extends SWService {
      * @throws GeneralException Si ocurre un error general.
      * @throws IOException      Si hay un error de entrada/salida.
      */
-    public IResponse ObtenerInfoUsuarioId(UUID idUser) throws AuthException, GeneralException, IOException {
-        AccountUserOptionsRequest settings = AccountUserOptionsRequest.usuarioIdRequest(getToken(), getURIAPI(), idUser,
-                getProxyHost(), getProxyPort());
-        return AccountUserRequest.createGetUserIdRequest(settings, idUser);
+    public IResponse ObtenerUsuarioPorId(UUID idUser) throws AuthException, GeneralException, IOException {
+        AccountUserOptionsRequest settings = AccountUserOptionsRequest.obtenerUsuarioPorTokenRequest(getToken(),
+                getURIAPI(), getProxyHost(), getProxyPort());
+        return AccountUserRequest.createGetUserById(settings, idUser);
+    }
+
+    /**
+     * Obtiene un usuario por su RFC.
+     *
+     * @param rfc RFC del usuario.
+     * @return IResponse con la información del usuario.
+     * @throws AuthException    Si la autenticación falla.
+     * @throws GeneralException Si ocurre un error general.
+     * @throws IOException      Si hay un error de entrada/salida.
+     */
+    public IResponse ObtenerUsuarioPorRfc(String rfc) throws AuthException, GeneralException, IOException {
+        AccountUserOptionsRequest settings = AccountUserOptionsRequest.obtenerUsuarioPorTokenRequest(getToken(),
+                getURIAPI(), getProxyHost(), getProxyPort());
+        return AccountUserRequest.createGetUserByRfc(settings, rfc);
+    }
+
+    /**
+     * Obtiene un usuario por su correo electrónico.
+     *
+     * @param email Correo electrónico del usuario.
+     * @return IResponse con la información del usuario.
+     * @throws AuthException    Si la autenticación falla.
+     * @throws GeneralException Si ocurre un error general.
+     * @throws IOException      Si hay un error de entrada/salida.
+     */
+    public IResponse ObtenerUsuarioPorEmail(String email) throws AuthException, GeneralException, IOException {
+        AccountUserOptionsRequest settings = AccountUserOptionsRequest.obtenerUsuarioPorTokenRequest(getToken(),
+                getURIAPI(), getProxyHost(), getProxyPort());
+        return AccountUserRequest.createGetUserByEmail(settings, email);
+    }
+
+    /**
+     * Obtiene los usuarios activos.
+     *
+     * @param isActive Indica si se buscan usuarios activos o inactivos.
+     * @return IResponse con la lista de usuarios.
+     * @throws AuthException    Si la autenticación falla.
+     * @throws GeneralException Si ocurre un error general.
+     * @throws IOException      Si hay un error de entrada/salida.
+     */
+    public IResponse ObtenerUsuariosActivos(Boolean isActive) throws AuthException, GeneralException, IOException {
+        AccountUserOptionsRequest settings = AccountUserOptionsRequest.obtenerUsuarioPorTokenRequest(getToken(),
+                getURIAPI(), getProxyHost(), getProxyPort());
+        return AccountUserRequest.createGetUserByActive(settings, isActive);
     }
 }

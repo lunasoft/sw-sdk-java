@@ -21,22 +21,26 @@ public class BalanceAcctOptionsRequest extends IRequest {
      * Constructor privado para crear una instancia de BalanceAcctOptionsRequest.
      * Utilizado por los métodos estáticos de creación de solicitudes.
      */
-    private BalanceAcctOptionsRequest(String token, String URI, String proxyHost, int proxyPort) {
-        super(token, URI, proxyHost, proxyPort);
+    private BalanceAcctOptionsRequest(String token, String URIAPI, String proxyHost, int proxyPort) {
+        super(token, URIAPI, proxyHost, proxyPort);
     }
 
     /**
      * Método estático para crear una solicitud de obtención de saldo de cuenta.
      */
-    public static BalanceAcctOptionsRequest sendRequest(String token, String URI, String proxyHost, int proxyPort) {
-        return new BalanceAcctOptionsRequest(token, URI + Constants.BALANCE_ACCOUNT_PATH, proxyHost, proxyPort);
+    public static BalanceAcctOptionsRequest sendRequest(String token, String URIAPI, String proxyHost, int proxyPort) {
+        return new BalanceAcctOptionsRequest(token, URIAPI + Constants.BALANCE_ACCOUNTV2_MANAGEMENT_PATH + "users/balance",
+                proxyHost, proxyPort);
     }
 
     /**
      * Método estático para crear una solicitud de movimiento de saldo de cuenta.
      */
-    public static BalanceAcctOptionsRequest balanceAccountStamp(String token, String URI, UUID idUser, int stamps, String comment, AccountBalanceAction action, String proxyHost, int proxyPort) {
-        return new BalanceAcctOptionsRequest(token, URI + Constants.BALANCE_ACCOUNT_MANAGEMENT_PATH + "/" + idUser + "/" + action + "/" + stamps , proxyHost, proxyPort);
+    public static BalanceAcctOptionsRequest balanceAccountStamp(String token, String URIAPI, UUID idUser, int stamps,
+            String comment, AccountBalanceAction action, String proxyHost, int proxyPort) {
+        return new BalanceAcctOptionsRequest(token,
+                URIAPI + Constants.BALANCE_ACCOUNTV2_MANAGEMENT_PATH + "dealers/users" + "/" + idUser +  "/stamps",
+                proxyHost, proxyPort);
     }
 
     /**

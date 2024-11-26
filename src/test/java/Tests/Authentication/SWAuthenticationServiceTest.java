@@ -11,10 +11,10 @@ import Exceptions.AuthException;
 import Exceptions.GeneralException;
 
 public class SWAuthenticationServiceTest {
-	@Test
-    public void testAuth(){
+    @Test
+    public void testAuth() {
         try {
-        	SWAuthenticationService auth = new SWAuthenticationService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
+            SWAuthenticationService auth = new SWAuthenticationService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
             SuccessAuthResponse res = (SuccessAuthResponse) auth.Token();
             String expected = "success";
             System.out.println(res.token);
@@ -23,22 +23,23 @@ public class SWAuthenticationServiceTest {
             System.out.println(res.messageDetail);
             Assert.assertTrue(expected.equalsIgnoreCase(res.Status));
         } catch (Exception e) {
-        	Assert.fail(e.getMessage());
+            Assert.fail(e.getMessage());
         }
     }
-	@Test
-    public void testBadAuth(){
+
+    @Test
+    public void testBadAuth() {
         try {
-        	SWAuthenticationService auth = new SWAuthenticationService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
+            SWAuthenticationService auth = new SWAuthenticationService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
             auth.Token();
         } catch (AuthException e) {
             System.out.println(e.getErrorMSG());
             System.out.println(e.getHttpStatusCode());
             Assert.assertTrue(true);
         } catch (GeneralException e) {
-        	Assert.fail(e.getMessage());
-		} catch (IOException e) {
-			Assert.fail(e.getMessage());
-		}
+            Assert.fail(e.getMessage());
+        } catch (IOException e) {
+            Assert.fail(e.getMessage());
+        }
     }
 }

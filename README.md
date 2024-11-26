@@ -508,19 +508,34 @@ public class ExampleReadme {
 
         try {
             //Intancia del servicio de Consulta de saldo y autenticación
-            SWBalanceAccountService sdk = new SWBalanceAccountService("user", "password", "https://services.test.sw.com.mx");
+            SWBalanceAccountService sdk = new SWBalanceAccountService("user", "password", "https://services.test.sw.com.mx","https://api.test.sw.com.mx" );
             BalanceAcctResponse response = null;
             response = (BalanceAcctResponse) sdk.GetBalanceAccount();
             //Imprimimos los datos de la respuesta que se obtuvo
-            System.out.println(response.Status);
-            System.out.println(response.timbresAsignados);
-            System.out.println(response.HttpStatusCode);
-            System.out.println(response.fechaExpiracion);
-            System.out.println(response.idClienteUsuario);
-            System.out.println(response.idSaldoCliente);
-            System.out.println(response.saldoTimbres);
-            System.out.println(response.timbresUtilizados);
-            System.out.println(response.unlimited);
+           System.out.println(response.Status);
+        System.out.println(response.HttpStatusCode);
+        System.out.println(response.idUserBalance);
+        System.out.println(response.idUser);
+        System.out.println(response.stampsBalance);
+        System.out.println(response.stampsUsed);
+        System.out.println(response.expirationDate);
+        System.out.println(response.isUnlimited);
+        System.out.println(response.stampsAssigned);
+        if (response.lastTransaction != null) {
+            System.out.println("Folio: " + response.lastTransaction.folio);
+            System.out.println("ID Usuario: " + response.lastTransaction.idUser);
+            System.out.println("ID Usuario Receptor: " + response.lastTransaction.idUserReceiver);
+            System.out.println("Nombre Receptor: " + response.lastTransaction.nameReceiver);
+            System.out.println("Stamps In: " + response.lastTransaction.stampsIn);
+            System.out.println("Stamps Out: "
+                    + (response.lastTransaction.stampsOut != null ? response.lastTransaction.stampsOut : "null"));
+            System.out.println("Stamps Current: " + response.lastTransaction.stampsCurrent);
+            System.out.println("Comentario: " + response.lastTransaction.comment);
+            System.out.println("Fecha: " + response.lastTransaction.date);
+            System.out.println("Email Enviado: " + response.lastTransaction.isEmailSent);
+        } else {
+            System.out.println("No hay transacción disponible.");
+        }
             //En caso de obtener error, este puede obtenerse de los siguientes campos
             System.out.println(response.message);
             System.out.println(response.messageDetail);
@@ -547,6 +562,7 @@ Consulta de timbres
 <br>Este método recibe los siguientes parametros:
 * Usuario y contraseña o Token
 * Url Servicios SW
+* Url APIs SW
 
 **Ejemplo de consumo de la libreria para consultar el saldo utilizando Token**
 
@@ -567,21 +583,35 @@ public class ExampleReadme {
 
         try {
             //Intancia del servicio de Consulta de saldo y autenticación
-            SWBalanceAccountService sdk = new SWBalanceAccountService("T2lYQ0t4L0R...", "https://services.test.sw.com.mx");
+            SWBalanceAccountService sdk = new SWBalanceAccountService("T2lYQ0t4L0R...", "https://services.test.sw.com.mx","https://api.test.sw.com.mx");
             BalanceAcctResponse response = null;
             response = (BalanceAcctResponse) sdk.GetBalanceAccount();
 
             //Imprimimos los datos de la respuesta que se obtuvo
-            System.out.println(response.Status);
-            System.out.println(response.timbresAsignados);
-            System.out.println(response.HttpStatusCode);
-            System.out.println(response.fechaExpiracion);
-            System.out.println(response.idClienteUsuario);
-            System.out.println(response.idSaldoCliente);
-            System.out.println(response.saldoTimbres);
-            System.out.println(response.timbresUtilizados);
-            System.out.println(response.unlimited);
-
+             System.out.println(response.Status);
+        System.out.println(response.HttpStatusCode);
+        System.out.println(response.idUserBalance);
+        System.out.println(response.idUser);
+        System.out.println(response.stampsBalance);
+        System.out.println(response.stampsUsed);
+        System.out.println(response.expirationDate);
+        System.out.println(response.isUnlimited);
+        System.out.println(response.stampsAssigned);
+        if (response.lastTransaction != null) {
+            System.out.println("Folio: " + response.lastTransaction.folio);
+            System.out.println("ID Usuario: " + response.lastTransaction.idUser);
+            System.out.println("ID Usuario Receptor: " + response.lastTransaction.idUserReceiver);
+            System.out.println("Nombre Receptor: " + response.lastTransaction.nameReceiver);
+            System.out.println("Stamps In: " + response.lastTransaction.stampsIn);
+            System.out.println("Stamps Out: "
+                    + (response.lastTransaction.stampsOut != null ? response.lastTransaction.stampsOut : "null"));
+            System.out.println("Stamps Current: " + response.lastTransaction.stampsCurrent);
+            System.out.println("Comentario: " + response.lastTransaction.comment);
+            System.out.println("Fecha: " + response.lastTransaction.date);
+            System.out.println("Email Enviado: " + response.lastTransaction.isEmailSent);
+        } else {
+            System.out.println("No hay transacción disponible.");
+        }
             //En caso de obtener error, este puede obtenerse de los siguientes campos
             System.out.println(response.message);
             System.out.println(response.messageDetail);
@@ -1727,14 +1757,14 @@ Crear Usuario
 Método para crear un nuevo usuario.
 
 Este metodo recibe los siguientes parametros:
-- Email
 - Nombre
-- Password
 - RFC
-- Profile
+- Email
 - Stamps
-- Unlimited
-- Active
+- isUnlimited
+- Contraseña
+- Email de notificaciones
+- Numero de telefono
 
 **Ejemplo de consumo de la libreria para crear una cuenta nueva**
 
@@ -1757,10 +1787,9 @@ public class ExampleReadme {
         //Creamos la instancia del servicio y nos autenticamos con user y password   
         SWAccountUserService app = new SWAccountUserService ("user", "password", "https://services.test.sw.com.mx","https://api.test.sw.com.mx",null, 0)
 		ccountUserResponse<String> response = null;
-			response = (AccountUserResponse<String>) app.CrearUsuario("usuario_nuevo", "password_nuevo", "Prueba SW Java 1.6", "CACX7605101P8", 20, AccountUserProfiles.Hijo, false, true);
+			response = (AccountUserResponse<String>) app.CrearUsuario("usuario_nuevo", "password_nuevo", "Prueba SW Java 1.6", "CACX7605101P8", 20, "0000000000", false, "notification_email@gmail.com");
 		//Imprimimos los datos de la solicitud
         System.out.println(response.HttpStatusCode);
-		System.out.println(response.data);
 		System.out.println(response.Status);
         //En caso de obtener un error, este puede obtenerse de los campos
 		System.out.println(response.message);
@@ -1783,7 +1812,8 @@ Este metodo recibe los siguientes parametros:
 - Nombre
 - RFC
 - Unlimited
-- Active
+- Numero de telefono
+- Correo para notificaciones
 
 **Ejemplo de consumo de la libreria para modificar una cuenta**
 
@@ -1806,10 +1836,9 @@ public class ExampleReadme {
         SWAccountUserService app = new SWAccountUserService ("user", "password", "https://services.test.sw.com.mx","https://api.test.sw.com.mx",null, 0)
 		ccountUserResponse<String> response = null;
 			response = (AccountUserResponse<String>) app.ActualizarUsuario(UUID.fromString("be2a859c-cd5f-42b5-b35d-f065b3dfecac4"),
-				"Prueba", "RAQÑ7701212M3", false, true);
+				"Prueba", "RAQÑ7701212M3", false, "0000000000", "correo@email.com");
 		//Imprimimos los datos de la solicitud
         System.out.println(response.HttpStatusCode);
-		System.out.println(response.data);
 		System.out.println(response.Status);
         //En caso de obtener un error, este puede obtenerse de los campos
 		System.out.println(response.message);
@@ -1853,7 +1882,6 @@ public class ExampleReadme {
 			response = (AccountUserResponse<String>) app.EliminarUsuario(UUID.fromString("be2a859c-cd5f-42b5-b35d-f065b3dfecac4"));
 		//Imprimimos los datos de la solicitud
         System.out.println(response.HttpStatusCode);
-		System.out.println(response.data);
 		System.out.println(response.Status);
         //En caso de obtener un error, este puede obtenerse de los campos
 		System.out.println(response.message);
@@ -1871,11 +1899,9 @@ Consultar todos los usuarios de una cuenta
 </summary> 
 Método para consultar todos las cuentas hijas.
 
-Este metodo muestra los datos de la consulta de forma paginada, por ello se debe agregar:
-- Page (numero de página a consultar)
-- PageSize (numero de registros por página)
+Este metodo muestra los datos de la consulta de las cuentas hijas de la cuenta que se coloca como autenticación.
 
-**Ejemplo de consumo de la libreria para Consultar todos los Certificados**
+**Ejemplo de consumo de la libreria para Consultar todos las cuentas hija**
 
 ```java
 package com.mycompany.examplereadme;
@@ -1897,21 +1923,20 @@ public class ExampleReadme {
         //Creamos la instancia del servicio y nos autenticamos con user y password   
         SWAccountUserService app = new SWAccountUserService ("user", "password", "https://services.test.sw.com.mx","https://api.test.sw.com.mx",null, 0)
 		AccountUserResponse<List<DataAccountUser>> response = null;
-		response = (AccountUserResponse<List<DataAccountUser>>) app.ObtenerUsuarios(1, 10);
+		response = (AccountUserResponse<List<DataAccountUser>>) app.ObtenerUsuariosHijo();
 		System.out.println(response.HttpStatusCode);
 		List<DataAccountUser> lista = response.data;
 		if (lista != null) {
 			for (int i = 0; i < lista.size(); i++) {
 				DataAccountUser dato = lista.get(i);
-				System.out.println("Email: " + dato.email);
-				System.out.println("Password: " + dato.password);
+			System.out.println("Email: " + dato.email);
 				System.out.println("Nombre: " + dato.name);
 				System.out.println("Perfil: " + dato.profile);
 				System.out.println("Stamps: " + dato.stamps);
 				System.out.println("idUsuario: " + dato.idUsuario);
-				System.out.println("Rfc: " + dato.apellidoPaterno);
-				System.out.println("Ilimitado: " + dato.unlimited);
-				System.out.println("Activo: " + dato.activo + "\n");
+				System.out.println("Rfc: " + dato.taxId);
+				System.out.println("Ilimitado: " + dato.isUnlimited);
+				System.out.println("Activo: " + dato.isActive + "\n");
 			}
 		}
 		//Imprimimos los datos de la solicitud
@@ -1931,7 +1956,7 @@ public class ExampleReadme {
 
 <details>
 <summary>
-Consultar certificados por ID Usuario
+Consultar usuarios por ID Usuario
 </summary> 
 Método para consultar la informacion de una cuenta.
 
@@ -1959,7 +1984,7 @@ public class ExampleReadme {
         //Creamos la instancia del servicio y nos autenticamos con user y password   
         SWAccountUserService app = new SWAccountUserService ("user", "password", "https://services.test.sw.com.mx","https://api.test.sw.com.mx",null, 0)
 		AccountUserResponse<DataAccountUser> response = null;
-		response = (AccountUserResponse<DataAccountUser>) app.ObtenerInfoUsuarioId(UUID.fromString("be2a859c-cd5f-42b5-b35d-f058b3a9aac4"));
+		response = (AccountUserResponse<DataAccountUser>) app.ObtenerUsuarioPorId(UUID.fromString("be2a859c-cd5f-42b5-b35d-f058b3a9aac4"));
 		DataAccountUser usuario = response.data;
 		if (usuario != null) {
 			System.out.println("Email: " + usuario.email);
@@ -1989,12 +2014,14 @@ public class ExampleReadme {
 
 <details>
 <summary>
-Consultar certificados por token
+Consultar usuarios por Email
 </summary> 
-Método para obtener la informacion de una cuenta por el medio de autenticacion ya sea por token o usuario y contraseña.
+Método para consultar la informacion de las cuentas por email.
 
+Este metodo requiere sólo un parametro:
+- Email
 
-**Ejemplo de consumo de la libreria para Consultar la informacion de una cuenta**
+**Ejemplo de consumo de la libreria para Consultar la informacion de las cuentas con un mismo email o que coincidan**
 
 ```java
 package com.mycompany.examplereadme;
@@ -2015,7 +2042,7 @@ public class ExampleReadme {
         //Creamos la instancia del servicio y nos autenticamos con user y password   
         SWAccountUserService app = new SWAccountUserService ("user", "password", "https://services.test.sw.com.mx","https://api.test.sw.com.mx",null, 0)
 		AccountUserResponse<DataAccountUser> response = null;
-		response = (AccountUserResponse<DataAccountUser>) app.ObtenerInfoUsuario();
+		response = (AccountUserResponse<DataAccountUser>) app.ObtenerUsuarioPorEmail("email@correo.com");
 		DataAccountUser usuario = response.data;
 		if (usuario != null) {
 			System.out.println("Email: " + usuario.email);
@@ -2039,6 +2066,121 @@ public class ExampleReadme {
         }
     }
 }
+
+```
+</details>
+
+<details>
+<summary>
+Consultar usuarios por RFC Usuario
+</summary> 
+Método para consultar la informacion de los usuarios que contengan el mismo RFC.
+
+Este metodo requiere sólo un parametro:
+- RFC
+
+**Ejemplo de consumo de la libreria para Consultar la informacion de una cuenta**
+
+```java
+package com.mycompany.examplereadme;
+
+import Exceptions.AuthException;
+import Exceptions.GeneralException;
+import Services.Account.AccountUser.SWAccountUserService;
+import Utils.Responses.Account.AccountUser.DataAccountUser;
+import Utils.Responses.Account.AccountUserDataAccountUserResponse;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class ExampleReadme {
+
+    public static void main(String[] args) {
+        try {
+        //Creamos la instancia del servicio y nos autenticamos con user y password   
+        SWAccountUserService app = new SWAccountUserService ("user", "password", "https://services.test.sw.com.mx","https://api.test.sw.com.mx",null, 0)
+		AccountUserResponse<DataAccountUser> response = null;
+		response = (AccountUserResponse<DataAccountUser>) app.ObtenerUsuarioPorRfc("EKU9003173C9");
+		DataAccountUser usuario = response.data;
+		if (usuario != null) {
+			System.out.println("Email: " + dato.email);
+				System.out.println("Nombre: " + dato.name);
+				System.out.println("Perfil: " + dato.profile);
+				System.out.println("Stamps: " + dato.stamps);
+				System.out.println("idUsuario: " + dato.idUsuario);
+				System.out.println("Rfc: " + dato.taxId);
+				System.out.println("Ilimitado: " + dato.isUnlimited);
+				System.out.println("Activo: " + dato.isActive + "\n");
+		}
+		//Imprimimos los datos de la solicitud
+        System.out.println(response.HttpStatusCode);
+		System.out.println(response.Status);
+        //En caso de obtener un error, este puede obtenerse de los campos
+		System.out.println(response.message);
+		System.out.println(response.messageDetail);
+        } catch (AuthException | GeneralException | IOException ex) {
+            Logger.getLogger(ExampleReadme.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+}
+
+```
+</details>
+
+<details>
+<summary>
+Consultar usuarios activos
+</summary> 
+Método para consultar la informacion de los usuarios que esten activos o no.
+
+Este metodo requiere sólo un parametro:
+- true o false
+
+**Ejemplo de consumo de la libreria para Consultar la informacion de los usuarios activos**
+
+```java
+package com.mycompany.examplereadme;
+
+import Exceptions.AuthException;
+import Exceptions.GeneralException;
+import Services.Account.AccountUser.SWAccountUserService;
+import Utils.Responses.Account.AccountUser.DataAccountUser;
+import Utils.Responses.Account.AccountUserDataAccountUserResponse;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class ExampleReadme {
+
+    public static void main(String[] args) {
+        try {
+        //Creamos la instancia del servicio y nos autenticamos con user y password   
+        SWAccountUserService app = new SWAccountUserService ("user", "password", "https://services.test.sw.com.mx","https://api.test.sw.com.mx",null, 0)
+		AccountUserResponse<DataAccountUser> response = null;
+		response = (AccountUserResponse<DataAccountUser>) app.ObtenerUsuariosActivos(false); // Si quieres los activos coloca "true"
+		DataAccountUser usuario = response.data;
+		if (usuario != null) {
+			System.out.println("Email: " + dato.email);
+				System.out.println("Nombre: " + dato.name);
+				System.out.println("Perfil: " + dato.profile);
+				System.out.println("Stamps: " + dato.stamps);
+				System.out.println("idUsuario: " + dato.idUsuario);
+				System.out.println("Rfc: " + dato.taxId);
+				System.out.println("Ilimitado: " + dato.isUnlimited);
+				System.out.println("Activo: " + dato.isActive + "\n");
+		}
+		//Imprimimos los datos de la solicitud
+        System.out.println(response.HttpStatusCode);
+		System.out.println(response.Status);
+        //En caso de obtener un error, este puede obtenerse de los campos
+		System.out.println(response.message);
+		System.out.println(response.messageDetail);
+        } catch (AuthException | GeneralException | IOException ex) {
+            Logger.getLogger(ExampleReadme.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+}
+
 ```
 </details>
 

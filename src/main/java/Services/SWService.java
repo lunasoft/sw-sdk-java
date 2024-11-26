@@ -10,6 +10,9 @@ import Utils.Requests.Authentication.AuthRequest;
 import Utils.Responses.Authentication.SuccessAuthResponse;
 
 public abstract class SWService {
+    static {
+        System.setProperty("https.protocols", "TLSv1.2");
+    }
 	private String URI;
     private String URIAPI;
     private String Token = null;

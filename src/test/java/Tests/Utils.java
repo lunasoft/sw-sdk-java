@@ -30,8 +30,8 @@ import javax.xml.parsers.ParserConfigurationException;
  * @since 2022-04-30
  */
 public class Utils {
-    public static String urlSW = "http://services.test.sw.com.mx";
-    public static String urlApiSW = "http://api.test.sw.com.mx";
+    public static String urlSW = "https://services.test.sw.com.mx";
+    public static String urlApiSW = "https://api.test.sw.com.mx";
     public static String userSW = System.getenv("SDKTEST_USER");
     public static String passwordSW = System.getenv("SDKTEST_PASSWORD");
     public static String tokenSW = System.getenv("SDKTEST_TOKEN");
@@ -44,8 +44,8 @@ public class Utils {
     public static String rfc = "EKU9003173C9";
     public static String cancelacionXml = loadResourceAsString("src/test/resources/Extras/CancelacionXML.xml");
     public static String aceptacionRechazoXml = loadResourceAsString("src/test/resources/Extras/AceptacionRechazo.xml");
-    public static String uuid = "fe4e71b0-8959-4fb9-8091-f5ac4fb0fef8";
-    public static String foliosustitucion = "0e4c30b8-11d8-40d8-894d-ef8b32eb4bdf";
+    public static String uuid = "1f0110e0-6e11-49b9-b78c-5929cc3bfc01";
+    public static String foliosustitucion = "9509174a-f367-474e-bde7-4fb3347a9a22";
 
     /**
      * Genera un CFDI especifico y lo sella en caso de indicarse.

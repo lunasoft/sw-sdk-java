@@ -20,7 +20,7 @@ public class SWStorageServiceTest {
         public void testGetXmlToken_Success() throws AuthException, GeneralException, IOException {
                 SWStorageService storage = new SWStorageService(Utils.tokenSW, Utils.urlApiSW, null, 0);
                 StorageResponse res = (StorageResponse) storage
-                                .getXml(UUID.fromString("4714f6f7-ccb4-4eb5-8ba6-3a523092e2b4"));
+                                .getXml(UUID.fromString("da3b7571-1cfd-4fb7-8bcd-123ef1cba77f"));
                 Assert.assertNotNull(res);
                 Assert.assertEquals(res.message, "success", res.Status);
                 Assert.assertNotNull(res.getData());
@@ -33,7 +33,7 @@ public class SWStorageServiceTest {
                 SWStorageService storage = new SWStorageService(Utils.userSW, Utils.passwordSW, Utils.urlSW,
                                 Utils.urlApiSW, null, 0);
                 StorageResponse res = (StorageResponse) storage
-                                .getXml(UUID.fromString("4714f6f7-ccb4-4eb5-8ba6-3a523092e2b4"));
+                                .getXml(UUID.fromString("da3b7571-1cfd-4fb7-8bcd-123ef1cba77f"));
                 Assert.assertNotNull(res);
                 Assert.assertEquals(res.message, "success", res.Status);
                 // Assert.assertNotNull(res.getData());

@@ -1,8 +1,8 @@
 package Utils;
 
 public class Constants {
-    public static String BASE_PATH = "http://services.test.sw.com.mx";
-    public static String AUTH_PATH = "/security/authenticate";
+    public static String BASE_PATH = "https://services.test.sw.com.mx";
+    public static String AUTH_PATH_V2 = "/v2/security/authenticate";
     public static String STAMP_PATH = "/cfdi33/stamp/";
     public static String STAMP_ZIP_PATH = "/cfdi/stamp/v1/zip/";
     public static String STAMP_V2_PATH = "/cfdi33/v2/stamp/";
@@ -18,6 +18,7 @@ public class Constants {
     public static String CANCELATION_UUID_PATH = "/cfdi33/cancel/";
     public static String BALANCE_ACCOUNT_PATH = "/account/balance/";
     public static String BALANCE_ACCOUNT_MANAGEMENT_PATH = "/management/api/balance/";
+    public static String BALANCE_ACCOUNTV2_MANAGEMENT_PATH = "/management/v2/api/";
     public static String VALIDATE_XML_PATH = "/validate/cfdi33";
     public static String GENERATE_PDF_PATH = "/pdf/v1/api/GeneratePdf";
     public static String ACEPTAR_RECHAZAR_CANCELACION_CSD_PATH = "/acceptreject/csd";
@@ -35,8 +36,6 @@ public class Constants {
     public static String DISABLE_SEARCH_CSD = "/certificates/";
     public static String LIST_CSD = "/certificates";
     public static String REGENERATE_PDF = "/pdf/v1/api/regeneratepdf/";
-    public static String USUARIOS = "/management/api/users";
-    public static String USUARIOS_ID = "/management/api/users/";
-    public static String USUARIOS_TOKEN = "/management/api/users/info";
+    public static String USUARIOSV2 = "/management/v2/api/dealers/users";
     public static String RESEND = "/comprobante/resendemail";
 }

@@ -2479,7 +2479,7 @@ namespace ExampleReadme
   <summary>Emisión Timbrado (IssueV4)</summary>
 
   **Ejemplo del consumo de la librería para el servicio IssueV4 (PDF) Json en formato string mediante usuario y contraseña.**
-```cs
+```java
 
 import Services.Issue.SWIssueService;
 import Utils.Responses.Stamp.SuccessV1Response;

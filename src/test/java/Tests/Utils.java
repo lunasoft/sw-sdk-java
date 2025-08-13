@@ -18,6 +18,7 @@ import javax.xml.transform.dom.DOMSource;
 import org.apache.commons.codec.binary.Base64;
 import org.junit.rules.TestName;
 import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -46,6 +47,34 @@ public class Utils {
     public static String aceptacionRechazoXml = loadResourceAsString("src/test/resources/Extras/AceptacionRechazo.xml");
     public static String uuid = "1f0110e0-6e11-49b9-b78c-5929cc3bfc01";
     public static String foliosustitucion = "9509174a-f367-474e-bde7-4fb3347a9a22";
+
+    /**
+     * Genera un CFDI especifico y lo sella en caso de indicarse.
+     * 
+     * @param fileName
+     * @param signed
+     * @param isBase64
+     * @return String
+     */
+    public String getRetentionCFDI(String fileName, boolean signed, boolean isBase64){
+        String xml = "";
+        try {
+            xml = new String(Files.readAllBytes(Paths.get(fileName)), "UTF-8");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //Sellado.
+        String cfdi = changeDateAndSignRetention(xml,signed);
+
+        if (isBase64) {
+            try {
+                return encodeBase64(cfdi);
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+        }
+        return cfdi;
+    }
 
     /**
      * Genera un CFDI especifico y lo sella en caso de indicarse.
@@ -111,6 +140,54 @@ public class Utils {
         }
 
         return gson.toJson(data);
+    }
+
+    /**
+     * Genera un CFDI de retenciones y lo sella en caso de indicarse.
+     * 
+     * @param xml
+     * @param signed
+     * @return String
+     */
+    private String changeDateAndSignRetention(String xml, boolean signed){
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        factory.setNamespaceAware(true);
+        DocumentBuilder builder;
+        TransformerFactory tf = TransformerFactory.newInstance();
+        Transformer transformer;
+        try {
+            builder = factory.newDocumentBuilder();
+            Document doc = builder.parse(new InputSource(new StringReader(xml)));
+            doc.getDocumentElement().setAttribute("FechaExp", getDateCFDI());
+            doc.getDocumentElement().setAttribute("Certificado", cerb64);
+            doc.getDocumentElement().setAttribute("NoCertificado", noCer);
+            if (signed) {
+                Sign sign = new Sign();
+                String cadena = GenerateCadenaRetention(doc,"src/test/resources/XSLT/Retention20/retencion20.xslt");
+                String sello = sign.getSign(cadena,
+                        Files.readAllBytes(Paths.get("src/test/resources/CertificadosDePrueba/CSD_EKU9003173C9.key")),
+                        "12345678a");
+                doc.getDocumentElement().setAttribute("Sello", sello);
+            }
+            transformer = tf.newTransformer();
+            StringWriter writer = new StringWriter();
+            transformer.transform(new DOMSource(doc), new StreamResult(writer));
+            String output = writer.getBuffer().toString();
+            return output;
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (TransformerConfigurationException e) {
+            e.printStackTrace();
+        } catch (TransformerException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     /**
@@ -180,6 +257,22 @@ public class Utils {
         return realDate;
     }
 
+    private String GenerateCadenaRetention(Document xml, String xsltPath)
+            throws TransformerConfigurationException, TransformerException, URISyntaxException {
+
+        TransformerFactory factory = TransformerFactory.newInstance();
+        Transformer transformer = factory.newTransformer(new StreamSource(new File(xsltPath)));
+        StringWriter writer = new StringWriter();
+        transformer.transform(new DOMSource(xml), new StreamResult(writer));
+        // Quitar saltos, tabs y espacios extra
+        String cadena = writer.toString();
+        cadena = cadena.replaceAll("\\r|\\n|\\t", ""); 
+        cadena = cadena.replaceAll(" +", " ");         
+        cadena = cadena.trim();                        
+
+        return cadena;
+    }
+
     private String GenerateCadena(Document xml, String version)
             throws TransformerConfigurationException, TransformerException, URISyntaxException {
 
@@ -226,6 +319,9 @@ public class Utils {
 
     public String StringgenBasico(boolean isBase64) {
         return getCFDI("src/test/resources/CFDI40/CFDI40/CFDI40_Ingreso.xml", true, "4.0", isBase64);
+    }
+    public String StringgenBasicoRetention(boolean isBase64) {
+        return getRetentionCFDI("src/test/resources/Retenciones20/retencion20.xml", true, isBase64);
     }
     public String StringgenLongXML(boolean isBase64) {
         return getCFDI("src/test/resources/CFDI40/ZIP/155000conceptos.xml", true, "4.0", isBase64);

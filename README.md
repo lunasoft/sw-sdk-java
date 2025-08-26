@@ -2546,7 +2546,6 @@ public class ExampleReadme {
     SWIssueServiceV4 stamp = new SWIssueServiceV4("tokenUser", "http://services.test.sw.com.mx");
 ```
 </details>
-----------------
 
 # Timbrado Retenciones #
 <details><summary><b>Timbrado Retenciones</b></summary>

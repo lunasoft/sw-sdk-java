@@ -1,5 +1,4 @@
 package Tests;
-
 import java.io.*;
 import java.util.*;
 import java.nio.file.Files;
@@ -49,7 +48,7 @@ public class Utils {
     public static String foliosustitucion = "9509174a-f367-474e-bde7-4fb3347a9a22";
 
     /**
-     * Genera un CFDI especifico y lo sella en caso de indicarse.
+     * Genera un CFDI de retenciones especifico y lo sella en caso de indicarse.
      * 
      * @param fileName
      * @param signed
@@ -57,23 +56,11 @@ public class Utils {
      * @return String
      */
     public String getRetentionCFDI(String fileName, boolean signed, boolean isBase64){
-        String xml = "";
-        try {
-            xml = new String(Files.readAllBytes(Paths.get(fileName)), "UTF-8");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        String xml = readFile(fileName);
         //Sellado.
-        String cfdi = changeDateAndSignRetention(xml,signed);
+        String cfdi = changeDateAndSignGeneric(xml, signed, null, true);
 
-        if (isBase64) {
-            try {
-                return encodeBase64(cfdi);
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
-        }
-        return cfdi;
+        return isBase64 ? encodeSafe(cfdi) : cfdi;
     }
 
     /**
@@ -86,25 +73,11 @@ public class Utils {
      * @return String
      */
     public String getCFDI(String fileName, boolean signed, String version, boolean isBase64) {
+        String xml = readFile(fileName);
+         //Sellado.
+        String cfdi = changeDateAndSignGeneric(xml, signed, version, false);
 
-        String xml = "";
-        try {
-            xml = new String(Files.readAllBytes(Paths.get(fileName)), "UTF-8");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        String cfdi = changeDateAndSign(xml, signed, version);
-
-        if (isBase64) {
-            try {
-                return encodeBase64(cfdi);
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
-        }
-
-        return cfdi;
+        return isBase64 ? encodeSafe(cfdi) : cfdi;
     }
 
     /**
@@ -143,99 +116,57 @@ public class Utils {
     }
 
     /**
-     * Genera un CFDI de retenciones y lo sella en caso de indicarse.
+     * Genera un CFDI de retenciones o normal y lo sella en caso de indicarse.
      * 
      * @param xml
      * @param signed
+     * @param version
+     * @param isRetention
      * @return String
      */
-    private String changeDateAndSignRetention(String xml, boolean signed){
+    private String changeDateAndSignGeneric(String xml, boolean signed, String version, boolean isRetention) {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         factory.setNamespaceAware(true);
-        DocumentBuilder builder;
-        TransformerFactory tf = TransformerFactory.newInstance();
-        Transformer transformer;
-        try {
-            builder = factory.newDocumentBuilder();
-            Document doc = builder.parse(new InputSource(new StringReader(xml)));
-            doc.getDocumentElement().setAttribute("FechaExp", getDateCFDI());
-            doc.getDocumentElement().setAttribute("Certificado", cerb64);
-            doc.getDocumentElement().setAttribute("NoCertificado", noCer);
-            if (signed) {
-                Sign sign = new Sign();
-                String cadena = GenerateCadenaRetention(doc,"src/test/resources/XSLT/Retention20/retencion20.xslt");
-                String sello = sign.getSign(cadena,
-                        Files.readAllBytes(Paths.get("src/test/resources/CertificadosDePrueba/CSD_EKU9003173C9.key")),
-                        "12345678a");
-                doc.getDocumentElement().setAttribute("Sello", sello);
-            }
-            transformer = tf.newTransformer();
-            StringWriter writer = new StringWriter();
-            transformer.transform(new DOMSource(doc), new StreamResult(writer));
-            String output = writer.getBuffer().toString();
-            return output;
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (TransformerConfigurationException e) {
-            e.printStackTrace();
-        } catch (TransformerException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 
-    /**
-     * Genera un CFDI Ãºnico y lo sella en caso de indicarse.
-     * 
-     * @param xml
-     * @param signed
-     * @return String
-     */
-    private String changeDateAndSign(String xml, boolean signed, String version) {
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        factory.setNamespaceAware(true);
-        DocumentBuilder builder;
-        TransformerFactory tf = TransformerFactory.newInstance();
-        Transformer transformer;
         try {
-            UUID uuid = UUID.randomUUID();
-            String randomUUIDString = uuid.toString().replace("-", "");
-            builder = factory.newDocumentBuilder();
+            DocumentBuilder builder = factory.newDocumentBuilder();
             Document doc = builder.parse(new InputSource(new StringReader(xml)));
-            doc.getDocumentElement().setAttribute("Fecha", getDateCFDI());
-            doc.getDocumentElement().setAttribute("Folio", randomUUIDString + "sdk-java");
+
+            // UUID solo en CFDI normal
+            if (!isRetention) {
+                String folio = UUID.randomUUID().toString().replace("-", "") + "sdk-java";
+                doc.getDocumentElement().setAttribute("Folio", folio);
+                doc.getDocumentElement().setAttribute("Fecha", getDateCFDI());
+            } else {
+                doc.getDocumentElement().setAttribute("FechaExp", getDateCFDI());
+            }
+
+            // Atributos comunes
             doc.getDocumentElement().setAttribute("Certificado", cerb64);
             doc.getDocumentElement().setAttribute("NoCertificado", noCer);
+
+            // Firmado
             if (signed) {
                 Sign sign = new Sign();
-                String cadena = GenerateCadena(doc, version);
-                String sello = sign.getSign(cadena,
-                        Files.readAllBytes(Paths.get("src/test/resources/CertificadosDePrueba/CSD_EKU9003173C9.key")),
-                        "12345678a");
+                String cadena = isRetention
+                    ? GenerateCadenaRetention(doc,"src/test/resources/XSLT/Retention20/retencion20.xslt")
+                    : GenerateCadena(doc, version);
+
+                String sello = sign.getSign(
+                    cadena,
+                    Files.readAllBytes(Paths.get("src/test/resources/CertificadosDePrueba/CSD_EKU9003173C9.key")),
+                    "12345678a"
+                );
                 doc.getDocumentElement().setAttribute("Sello", sello);
             }
-            transformer = tf.newTransformer();
+
+            // Convertir a String
+            Transformer transformer = TransformerFactory.newInstance().newTransformer();
             StringWriter writer = new StringWriter();
             transformer.transform(new DOMSource(doc), new StreamResult(writer));
-            String output = writer.getBuffer().toString();
-            return output;
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (TransformerConfigurationException e) {
-            e.printStackTrace();
-        } catch (TransformerException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (URISyntaxException e) {
+            return writer.toString();
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
@@ -395,6 +326,24 @@ public class Utils {
             return new String(binaryData, "UTF-8").trim();
         } catch (IOException e) {
             return "";
+        }
+    }
+
+    private String readFile(String fileName) {
+        try {
+            return new String(Files.readAllBytes(Paths.get(fileName)), "UTF-8");
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "";
+        }
+    }
+
+    private String encodeSafe(String input) {
+        try {
+            return encodeBase64(input);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            return input;
         }
     }
 }

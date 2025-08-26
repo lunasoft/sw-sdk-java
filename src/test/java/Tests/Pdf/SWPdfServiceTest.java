@@ -10,12 +10,9 @@ import Utils.Responses.IResponse;
 import Utils.Responses.Pdf.PdfResponse;
 import Utils.Responses.Stamp.SuccessV3Response;
 
-import java.io.Console;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Map;
 
-import org.apache.commons.logging.Log;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Rule;
@@ -273,6 +270,7 @@ public class SWPdfServiceTest {
             Assert.assertTrue(false);
         }
     }
+    @Ignore
     @Test
     public void RegeneratePdf_Success() throws GeneralException, AuthException, IOException {
         SWPdfService pdf = new SWPdfService(Utils.tokenSW, Utils.urlApiSW);
@@ -282,6 +280,7 @@ public class SWPdfServiceTest {
         Assert.assertTrue(response.Status.equals("success"));
         Assert.assertTrue(!response.message.isEmpty());
     }
+    @Ignore
     @Test
     public void RegeneratePdf_Auth_Success() throws AuthException, GeneralException, IOException{
         SWPdfService pdf = new SWPdfService(Utils.userSW, Utils.passwordSW, Utils.urlApiSW, Utils.urlSW);

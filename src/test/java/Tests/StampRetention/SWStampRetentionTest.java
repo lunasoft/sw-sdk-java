@@ -12,7 +12,8 @@ public class SWStampRetentionTest {
         SWStampRetentionService api = new SWStampRetentionService(Utils.userSW, Utils.passwordSW, Utils.urlSW);
         SuccessV3Response response = null;
         Utils ut = new Utils();
-        response = (SuccessV3Response) api.StampRetention(ut.StringgenBasicoRetention(false), "v3");
+        String xml = ut.StringgenBasicoRetention(false);
+        response = (SuccessV3Response) api.StampRetention(xml, "v3");
         System.out.println(response.Status);
 		System.out.println(response.HttpStatusCode);
 		System.out.println(response.retencion);
@@ -27,7 +28,8 @@ public class SWStampRetentionTest {
         SWStampRetentionService api = new SWStampRetentionService(Utils.tokenSW, Utils.urlSW);
         SuccessV3Response response = null;
         Utils ut = new Utils();
-        response = (SuccessV3Response) api.StampRetention(ut.StringgenBasicoRetention(false), "v3");
+        String xml = ut.StringgenBasicoRetention(false);
+        response = (SuccessV3Response) api.StampRetention(xml, "v3");
         System.out.println(response.Status);
 		System.out.println(response.HttpStatusCode);
 		System.out.println(response.retencion);

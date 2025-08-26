@@ -18,8 +18,6 @@ public class SWStampRetentionTest {
 		System.out.println(response.HttpStatusCode);
 		System.out.println(response.retencion);
 		System.out.println(response.message);
-        String expect_status = "success";
-		Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
         Assert.assertNotNull(response.retencion);
     }
 

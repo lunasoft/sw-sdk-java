@@ -2479,7 +2479,7 @@ namespace ExampleReadme
   <summary>Emisión Timbrado (IssueV4)</summary>
 
   **Ejemplo del consumo de la librería para el servicio IssueV4 (PDF) Json en formato string mediante usuario y contraseña.**
-```cs
+```java
 
 import Services.Issue.SWIssueService;
 import Utils.Responses.Stamp.SuccessV1Response;
@@ -2546,7 +2546,72 @@ public class ExampleReadme {
     SWIssueServiceV4 stamp = new SWIssueServiceV4("tokenUser", "http://services.test.sw.com.mx");
 ```
 </details>
-----------------
+
+# Timbrado Retenciones #
+<details><summary><b>Timbrado Retenciones</b></summary>
+    
+<br>Recibe el contenido de un XML ya emitido (sellado) en formato String, posteriormente si la factura y el token son correctos devuelve el CFDI timbrado, en caso contrario lanza una excepción.
+
+Este método recibe los siguientes parámetros:
+* Archivo en formato **String** ó **Base64**
+* Usuario y contraseña ó Token
+* Url Servicios SW
+
+**Ejemplo de consumo de la librería para timbrar XML en formato string utilizando usuario y contraseña**
+```java
+import Utils.Responses.StampRetention.SuccessV3Response;
+import Services.StampRetention.SWStampRetentionService;
+
+public class ExampleReadme {
+    public static void main(String[] args) {
+        try {
+            // Inicializar el objeto con la información de la cuenta y especifica la URL base para acceder al entorno deseado
+            SWStampRetentionService api = new SWStampRetentionService("user", "password", "http://services.test.sw.com.mx");
+            // Inicializar un objeto de respuesta para almacenar la respuesta
+            SuccessV3Response response = null;
+            //Se llama al método StampRetention y se envia el xml y versión de respuesta
+            response = (SuccessV3Response) api.StampRetention(stringXML, "v3");
+            // En response se mostrará la informacion de respuesta del servicio
+            System.out.println(response.Status);
+            System.out.println(response.HttpStatusCode);
+            System.out.println(response.retencion);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+**Ejemplo de consumo de la librería para timbrar XML en formato string utilizando token** [¿Como obtener token?](http://developers.sw.com.mx/knowledge-base/generar-un-token-infinito/)
+```java
+import Utils.Responses.StampRetention.SuccessV3Response;
+import Services.StampRetention.SWStampRetentionService;
+
+public class ExampleReadme {
+    public static void main(String[] args) {
+        try {
+            // Inicializar el objeto con la información del token de acceso y especifica la URL base para acceder al entorno deseado
+            SWStampRetentionService api = new SWStampRetentionService("tokenUser", "http://services.test.sw.com.mx");
+            // Inicializar un objeto de respuesta para almacenar la respuesta
+            SuccessV3Response response = null;
+            //Se llama al método StampRetention y se envia el xml y versión de respuesta
+            response = (SuccessV3Response) api.StampRetention(stringXML, "v3");
+            // En response se mostrará la informacion de respuesta del servicio
+            System.out.println(response.Status);
+            System.out.println(response.HttpStatusCode);
+            System.out.println(response.retencion);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+</details>
+
+| Version |                         Respuesta                             | 
+|---------|---------------------------------------------------------------|
+|  V3     | Devuelve el CFDI timbrado                                     | 
 
 
 Para mayor referencia de un listado completo de los servicios favor de visitar nuestro [sitio developers](https://developers.sw.com.mx/).

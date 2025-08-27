@@ -4,6 +4,7 @@ public class Constants {
     public static String BASE_PATH = "https://services.test.sw.com.mx";
     public static String AUTH_PATH_V2 = "/v2/security/authenticate";
     public static String STAMP_PATH = "/cfdi33/stamp/";
+    public static String STAMP_RETENTION_PATH = "/retencion/stamp/";
     public static String STAMP_ZIP_PATH = "/cfdi/stamp/v1/zip/";
     public static String STAMP_V2_PATH = "/cfdi33/v2/stamp/";
     public static String ISSUE_JSON_PATH = "/v3/cfdi33/issue/json/";

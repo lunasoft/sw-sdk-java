@@ -16,6 +16,9 @@ public class Constants {
     public static String CANCELATION_CSD_PATH = "/cfdi33/cancel/csd";
     public static String CANCELATION_XML_PATH = "/cfdi33/cancel/xml";
     public static String CANCELATION_PFX_PATH = "/cfdi33/cancel/pfx";
+    public static String CANCELATION_RET_CSD_PATH = "/retencion/cancel/csd";
+    public static String CANCELATION_RET_XML_PATH = "/retencion/cancel/xml";
+    public static String CANCELATION_RET_PFX_PATH = "/retencion/cancel/pfx";
     public static String CANCELATION_UUID_PATH = "/cfdi33/cancel/";
     public static String BALANCE_ACCOUNT_PATH = "/account/balance/";
     public static String BALANCE_ACCOUNT_MANAGEMENT_PATH = "/management/api/balance/";

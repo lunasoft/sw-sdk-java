@@ -13,9 +13,10 @@ public class CancelationOptionsRequest extends IRequest{
     private String xml;
     private String motivo;
     private String folioSustitucion;
+    private boolean isRetention;
       
 
-    public CancelationOptionsRequest(String token, String URI, String uuid, String password, String rfc, String b64Cer, String b64Key, String motivo, String folioSustitucion, String proxyHost, int proxyPort) {
+    public CancelationOptionsRequest(String token, String URI, String uuid, String password, String rfc, String b64Cer, String b64Key, String motivo, String folioSustitucion, boolean isRetention, String proxyHost, int proxyPort) {
         super(token, URI+ Constants.CANCELATION_CSD_PATH, proxyHost, proxyPort);
         this.uuid = uuid;
         this.password = password;
@@ -26,7 +27,7 @@ public class CancelationOptionsRequest extends IRequest{
         this.folioSustitucion = folioSustitucion;
     }
     
-    public CancelationOptionsRequest(String token, String URI, String uuid, String password, String rfc, String b64Pfx, String motivo, String folioSustitucion, String proxyHost, int proxyPort) {
+    public CancelationOptionsRequest(String token, String URI, String uuid, String password, String rfc, String b64Pfx, String motivo, String folioSustitucion, boolean isRetention, String proxyHost, int proxyPort) {
         super(token, URI+ Constants.CANCELATION_PFX_PATH, proxyHost, proxyPort);
         this.uuid = uuid;
         this.password = password;
@@ -36,11 +37,11 @@ public class CancelationOptionsRequest extends IRequest{
         this.folioSustitucion = folioSustitucion;
     }
     
-    public CancelationOptionsRequest(String token, String URI, String xml, String proxyHost, int proxyPort) {
-        super(token, URI+ Constants.CANCELATION_XML_PATH, proxyHost, proxyPort);
+    public CancelationOptionsRequest(String token, String URI, String xml, boolean isRetention, String proxyHost, int proxyPort) {
+        super(token, URI+ (isRetention ? Constants.CANCELATION_RET_XML_PATH : Constants.CANCELATION_XML_PATH), proxyHost, proxyPort);
         this.xml = xml;
     }
-    public CancelationOptionsRequest(String token, String URI, String uuid, String rfc, String motivo, String folioSustitucion, String proxyHost, int proxyPort) {
+    public CancelationOptionsRequest(String token, String URI, String uuid, String rfc, String motivo, String folioSustitucion, boolean isRetention, String proxyHost, int proxyPort) {
         //super(token, URI + Constants.CANCELATION_UUID_PATH + rfc + "/" + uuid + "/" + motivo + "/" + foliosustitucion, proxyHost, proxyPort);
         super(token, URI + Constants.CANCELATION_UUID_PATH + String.format("%s/%s/%s/%s", rfc, uuid,  motivo, folioSustitucion ), proxyHost, proxyPort);
         this.uuid = uuid;
@@ -80,5 +81,8 @@ public class CancelationOptionsRequest extends IRequest{
     }
     public String getFolioSustitucion() {
         return folioSustitucion;
+    }
+    public boolean getRetention() {
+        return isRetention;
     }
 }

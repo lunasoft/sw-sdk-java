@@ -45,7 +45,7 @@ public class Utils {
     public static String cancelacionXml = loadResourceAsString("src/test/resources/Extras/CancelacionXML.xml");
     public static String cancelacionXmlRet = loadResourceAsString("src/test/resources/Extras/CancelacionXMLRet.xml");
     public static String aceptacionRechazoXml = loadResourceAsString("src/test/resources/Extras/AceptacionRechazo.xml");
-    public static String uuid = "1f0110e0-6e11-49b9-b78c-5929cc3bfc01";
+    public static String uuid = "d46316cf-416c-4777-848d-e3ef4ea5a47c";
     public static String uuidRetencion = "42270add-4b74-401b-ad65-7db8ca6ca985";
     public static String foliosustitucion = "9509174a-f367-474e-bde7-4fb3347a9a22";
     public static String folioSustitucionRet = "5c45cffb-63e3-48e1-9023-d9d0873ffd7a";

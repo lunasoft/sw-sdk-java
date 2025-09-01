@@ -17,7 +17,7 @@ public class CancelationOptionsRequest extends IRequest{
       
 
     public CancelationOptionsRequest(String token, String URI, String uuid, String password, String rfc, String b64Cer, String b64Key, String motivo, String folioSustitucion, boolean isRetention, String proxyHost, int proxyPort) {
-        super(token, URI+ Constants.CANCELATION_CSD_PATH, proxyHost, proxyPort);
+        super(token, URI+ (isRetention ? Constants.CANCELATION_RET_CSD_PATH : Constants.CANCELATION_CSD_PATH), proxyHost, proxyPort);
         this.uuid = uuid;
         this.password = password;
         this.rfc = rfc;
@@ -28,7 +28,7 @@ public class CancelationOptionsRequest extends IRequest{
     }
     
     public CancelationOptionsRequest(String token, String URI, String uuid, String password, String rfc, String b64Pfx, String motivo, String folioSustitucion, boolean isRetention, String proxyHost, int proxyPort) {
-        super(token, URI+ Constants.CANCELATION_PFX_PATH, proxyHost, proxyPort);
+        super(token, URI+ (isRetention ? Constants.CANCELATION_RET_PFX_PATH : Constants.CANCELATION_PFX_PATH), proxyHost, proxyPort);
         this.uuid = uuid;
         this.password = password;
         this.rfc = rfc;

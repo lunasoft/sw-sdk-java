@@ -30,25 +30,25 @@ public class SWCancelationService extends SWService {
     }
     
     public IResponse Cancelation(String uuid, String password, String rfc, String b64Cer, String b64Key, String motivo, String folioSustitucion) throws AuthException, GeneralException, IOException {
-        CancelationOptionsRequest settings = new CancelationOptionsRequest(getToken(), getURI(), uuid, password, rfc, b64Cer, b64Key, motivo, folioSustitucion, getProxyHost(), getProxyPort());
+        CancelationOptionsRequest settings = new CancelationOptionsRequest(getToken(), getURI(), uuid, password, rfc, b64Cer, b64Key, motivo, folioSustitucion, false, getProxyHost(), getProxyPort());
         CancelationRequest req = new CancelationRequest();
         return req.sendRequest(settings);
     }
     
     public IResponse Cancelation(String xml) throws AuthException, GeneralException, IOException {
-        CancelationOptionsRequest settings = new CancelationOptionsRequest(getToken(), getURI(), xml, getProxyHost(), getProxyPort());
+        CancelationOptionsRequest settings = new CancelationOptionsRequest(getToken(), getURI(), xml, false, getProxyHost(), getProxyPort());
         CancelationRequest req = new CancelationRequest();
         return req.sendRequestXml(settings, true);
     }
     
     public IResponse Cancelation(String uuid, String password, String rfc, String b64Pfx, String motivo, String folioSustitucion) throws AuthException, GeneralException, IOException {
-        CancelationOptionsRequest settings = new CancelationOptionsRequest(getToken(), getURI(), uuid, password, rfc, b64Pfx, motivo, folioSustitucion, getProxyHost(), getProxyPort());
+        CancelationOptionsRequest settings = new CancelationOptionsRequest(getToken(), getURI(), uuid, password, rfc, b64Pfx, motivo, folioSustitucion, false, getProxyHost(), getProxyPort());
         CancelationRequest req = new CancelationRequest();
         return req.sendRequestPfx(settings);
     }
     
     public IResponse Cancelation(String uuid, String rfc, String motivo, String folioSustitucion) throws AuthException, GeneralException, IOException {
-        CancelationOptionsRequest settings = new CancelationOptionsRequest(getToken(), getURI(), uuid, rfc, motivo, folioSustitucion, getProxyHost(), getProxyPort());
+        CancelationOptionsRequest settings = new CancelationOptionsRequest(getToken(), getURI(), uuid, rfc, motivo, folioSustitucion, false, getProxyHost(), getProxyPort());
         CancelationRequest req = new CancelationRequest();
         return req.sendRequestUuid(settings);
     }

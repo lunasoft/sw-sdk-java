@@ -275,7 +275,11 @@ public class SWPdfServiceTest {
     @Test
     public void RegeneratePdf_Success() throws GeneralException, AuthException, IOException {
         SWPdfService pdf = new SWPdfService(Utils.tokenSW, Utils.urlApiSW);
+<<<<<<< HEAD
         PdfResponse response = (PdfResponse)pdf.RegeneratePdf("10db53c4-f816-4c9f-a3eb-2c5b336f828d");
+=======
+        PdfResponse response = (PdfResponse)pdf.RegeneratePdf("da3b7571-1cfd-4fb7-8bcd-123ef1cba77f");
+>>>>>>> master
         Assert.assertNotNull(response);
         System.out.println(response.message);
         Assert.assertTrue(response.Status.equals("success"));
@@ -285,7 +289,11 @@ public class SWPdfServiceTest {
     @Test
     public void RegeneratePdf_Auth_Success() throws AuthException, GeneralException, IOException{
         SWPdfService pdf = new SWPdfService(Utils.userSW, Utils.passwordSW, Utils.urlApiSW, Utils.urlSW);
+<<<<<<< HEAD
         PdfResponse response = (PdfResponse)pdf.RegeneratePdf("10db53c4-f816-4c9f-a3eb-2c5b336f828d");
+=======
+        PdfResponse response = (PdfResponse)pdf.RegeneratePdf("da3b7571-1cfd-4fb7-8bcd-123ef1cba77f");
+>>>>>>> master
         Assert.assertNotNull(response);
         System.out.println(response.message);
         Assert.assertTrue(response.Status.equals("success"));

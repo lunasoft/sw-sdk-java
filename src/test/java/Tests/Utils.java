@@ -32,6 +32,8 @@ import javax.xml.parsers.ParserConfigurationException;
 public class Utils {
     public static String urlSW = "https://services.test.sw.com.mx";
     public static String urlApiSW = "https://api.test.sw.com.mx";
+    public static String urlSW = "https://services.test.sw.com.mx";
+    public static String urlApiSW = "https://api.test.sw.com.mx";
     public static String userSW = System.getenv("SDKTEST_USER");
     public static String passwordSW = System.getenv("SDKTEST_PASSWORD");
     public static String tokenSW = System.getenv("SDKTEST_TOKEN");

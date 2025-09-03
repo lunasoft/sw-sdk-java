@@ -281,7 +281,7 @@ public class SWPdfServiceTest {
         Assert.assertTrue(response.Status.equals("success"));
         Assert.assertTrue(!response.message.isEmpty());
     }
-
+  
     @Test
     public void RegeneratePdf_Auth_Success() throws AuthException, GeneralException, IOException{
         SWPdfService pdf = new SWPdfService(Utils.userSW, Utils.passwordSW, Utils.urlApiSW, Utils.urlSW);

@@ -418,6 +418,205 @@ public class ExampleReadme {
 ```
 </details>
 
+# Cancelación de Retenciones #
+
+Este servicio se utiliza para cancelar retenciones, aquí los métodos que se ofrecen:
+
+<details>
+<summary>
+Cancelación de Retenciones por CSD
+</summary>
+Como su nombre lo indica, este método recibe todos los elementos que componen el CSD los cuales son los siguientes:
+
+- Certificado (.cer) en Base64
+- Key (.key) en Base64
+- RFC emisor
+- Password del archivo key
+- UUID
+- Motivo
+- Folio Sustitución (requerido sólo cuando Motivo es 01)
+
+**Ejemplo de consumo de la librería para cancelar retenciones con CSD**
+
+```java
+package com.mycompany.examplereadme;
+
+import Exceptions.AuthException;
+import Exceptions.GeneralException;
+import Services.CancelationRetention.SWCancelationRetentionService;
+import Utils.Responses.Cancelation.CancelationResponse;
+import java.io.IOException;
+
+public class ExampleReadme {
+
+    public static void main(String[] args) {
+        try {
+            //Instancia del servicio y autenticación
+            SWCancelationRetentionService sdk = new SWCancelationRetentionService("user", "password", "https://services.test.sw.com.mx");
+            CancelationResponse response = null;
+            //Paso de datos de cancelación
+            response = (CancelationResponse) sdk.Cancelation("uuid", "password_csd", "rfc", "b64Cer", "b64Key", "motivo", "folio_sustitucion");
+           //Muestra los resultados
+            System.out.println(response.Status);
+            System.out.println(response.HttpStatusCode);
+            System.out.println(response.acuse);
+            System.out.println(response.uuid);
+            System.out.println(response.uuidStatusCode);
+           //En caso de obtener un error, este puede obtenerse de los campos
+            System.out.println(response.message);
+            System.out.println(response.messageDetail);
+        } catch (AuthException | GeneralException | IOException e) {
+            System.out.println(e);
+        }
+
+    }
+}
+```
+
+**Cancelar retenciones con CSD utilizando token**
+
+```java
+    //Basta con sustituir esta linea en el ejemplo anterior, colocarás el token de tu cuenta y la URL base del ambiente que requieres acceder
+    SWCancelationRetentionService sdk = new SWCancelationRetentionService("tokenUser", "https://services.test.sw.com.mx");
+```
+</details>
+
+<details>
+<summary>
+Cancelación de Retenciones por PFX
+</summary>
+
+Este método recibe los siguientes parámetros:
+
+- Archivo PFX en Base64
+- RFC emisor
+- Password de PFX
+- UUID
+- Motivo
+- Folio Sustitución (requerido sólo cuando Motivo es 01)
+
+**Ejemplo de consumo de la librería para cancelar retenciones con PFX**
+
+```java
+package com.mycompany.examplereadme;
+
+import Exceptions.AuthException;
+import Exceptions.GeneralException;
+import Services.CancelationRetention.SWCancelationRetentionService;
+import Utils.Responses.Cancelation.CancelationResponse;
+import java.io.IOException;
+
+public class ExampleReadme {
+
+    public static void main(String[] args) {
+        try {
+            //Instancia del servicio y autenticación
+            SWCancelationRetentionService sdk = new SWCancelationRetentionService("user", "password", "https://services.test.sw.com.mx");
+            CancelationResponse response = null;
+            //Paso de datos de cancelación
+            response = (CancelationResponse) sdk.Cancelation("uuid", "password_pfx", "rfc", "pfxb64", "motivo", "folio_sustitucion");
+           //Muestra los resultados
+            System.out.println(response.Status);
+            System.out.println(response.HttpStatusCode);
+            System.out.println(response.acuse);
+            System.out.println(response.uuid);
+            System.out.println(response.uuidStatusCode);
+           //En caso de obtener un error, este puede obtenerse de los campos
+            System.out.println(response.message);
+            System.out.println(response.messageDetail);
+        } catch (AuthException | GeneralException | IOException e) {
+            System.out.println(e);
+        }
+
+    }
+}
+```
+
+**Cancelar retenciones con PFX utilizando token**
+
+```java
+    //Basta con sustituir esta linea en el ejemplo anterior, colocarás el token de tu cuenta y la URL base del ambiente que requieres acceder
+    SWCancelationRetentionService sdk = new SWCancelationRetentionService("tokenUser", "https://services.test.sw.com.mx");
+```
+</details>
+
+<details>
+<summary>
+Cancelación de Retenciones por XML
+</summary>
+
+Este método recibe únicamente el XML sellado con los UUID a cancelar.
+
+**Ejemplo de XML para cancelar retenciones**
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<Cancelacion xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+             Fecha="2025-08-31T01:57:44" 
+             RfcEmisor="EKU9003173C9" 
+             xmlns="http://www.sat.gob.mx/esquemas/retencionpago/1">
+    <Folios>
+        <Folio UUID="3044cc3f-572f-4535-85e2-374c205f5b11" Motivo="02" FolioSustitucion=""/>
+    </Folios>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+        <!-- ... contenido de la firma ... -->
+    </Signature>
+</Cancelacion>
+```
+
+Para caso de motivo 01 deberá añadir el atributo "FolioSustitucion" dentro del Nodo
+**Ejemplo nodo Folio motivo 01**
+```xml
+<Folios>
+    <Folio UUID="3044cc3f-572f-4535-85e2-374c205f5b11" Motivo="01" FolioSustitucion="b3641a4b-7177-4323-aaa0-29bd34bf1ff8" />
+</Folios>
+```
+
+**Ejemplo de consumo de la librería para cancelar retenciones por XML**
+
+```java
+package com.mycompany.examplereadme;
+
+import Exceptions.AuthException;
+import Exceptions.GeneralException;
+import Services.CancelationRetention.SWCancelationRetentionService;
+import Utils.Responses.Cancelation.CancelationResponse;
+import java.io.IOException;
+
+public class ExampleReadme {
+
+    public static void main(String[] args) {
+        try {
+            //Instancia del servicio y autenticación
+            SWCancelationRetentionService sdk = new SWCancelationRetentionService("user", "password", "https://services.test.sw.com.mx");
+            CancelationResponse response = null;
+            //Paso de XML de cancelación
+            response = (CancelationResponse) sdk.Cancelation("xmlCancelacion");
+           //Muestra los resultados
+            System.out.println(response.Status);
+            System.out.println(response.HttpStatusCode);
+            System.out.println(response.acuse);
+            System.out.println(response.uuid);
+            System.out.println(response.uuidStatusCode);
+           //En caso de obtener un error, este puede obtenerse de los campos
+            System.out.println(response.message);
+            System.out.println(response.messageDetail);
+        } catch (AuthException | GeneralException | IOException e) {
+            System.out.println(e);
+        }
+
+    }
+}
+```
+
+**Cancelar retenciones por XML utilizando token**
+
+```java
+    //Basta con sustituir esta linea en el ejemplo anterior, colocarás el token de tu cuenta y la URL base del ambiente que requieres acceder
+    SWCancelationRetentionService sdk = new SWCancelationRetentionService("tokenUser", "https://services.test.sw.com.mx");
+```
+</details>
+
 
 # Validación #
 
@@ -2479,7 +2678,7 @@ namespace ExampleReadme
   <summary>Emisión Timbrado (IssueV4)</summary>
 
   **Ejemplo del consumo de la librería para el servicio IssueV4 (PDF) Json en formato string mediante usuario y contraseña.**
-```cs
+```java
 
 import Services.Issue.SWIssueService;
 import Utils.Responses.Stamp.SuccessV1Response;
@@ -2546,7 +2745,72 @@ public class ExampleReadme {
     SWIssueServiceV4 stamp = new SWIssueServiceV4("tokenUser", "http://services.test.sw.com.mx");
 ```
 </details>
-----------------
+
+# Timbrado Retenciones #
+<details><summary><b>Timbrado Retenciones</b></summary>
+    
+<br>Recibe el contenido de un XML ya emitido (sellado) en formato String, posteriormente si la factura y el token son correctos devuelve el CFDI timbrado, en caso contrario lanza una excepción.
+
+Este método recibe los siguientes parámetros:
+* Archivo en formato **String** ó **Base64**
+* Usuario y contraseña ó Token
+* Url Servicios SW
+
+**Ejemplo de consumo de la librería para timbrar XML en formato string utilizando usuario y contraseña**
+```java
+import Utils.Responses.StampRetention.SuccessV3Response;
+import Services.StampRetention.SWStampRetentionService;
+
+public class ExampleReadme {
+    public static void main(String[] args) {
+        try {
+            // Inicializar el objeto con la información de la cuenta y especifica la URL base para acceder al entorno deseado
+            SWStampRetentionService api = new SWStampRetentionService("user", "password", "http://services.test.sw.com.mx");
+            // Inicializar un objeto de respuesta para almacenar la respuesta
+            SuccessV3Response response = null;
+            //Se llama al método StampRetention y se envia el xml y versión de respuesta
+            response = (SuccessV3Response) api.StampRetention(stringXML, "v3");
+            // En response se mostrará la informacion de respuesta del servicio
+            System.out.println(response.Status);
+            System.out.println(response.HttpStatusCode);
+            System.out.println(response.retencion);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+**Ejemplo de consumo de la librería para timbrar XML en formato string utilizando token** [¿Como obtener token?](http://developers.sw.com.mx/knowledge-base/generar-un-token-infinito/)
+```java
+import Utils.Responses.StampRetention.SuccessV3Response;
+import Services.StampRetention.SWStampRetentionService;
+
+public class ExampleReadme {
+    public static void main(String[] args) {
+        try {
+            // Inicializar el objeto con la información del token de acceso y especifica la URL base para acceder al entorno deseado
+            SWStampRetentionService api = new SWStampRetentionService("tokenUser", "http://services.test.sw.com.mx");
+            // Inicializar un objeto de respuesta para almacenar la respuesta
+            SuccessV3Response response = null;
+            //Se llama al método StampRetention y se envia el xml y versión de respuesta
+            response = (SuccessV3Response) api.StampRetention(stringXML, "v3");
+            // En response se mostrará la informacion de respuesta del servicio
+            System.out.println(response.Status);
+            System.out.println(response.HttpStatusCode);
+            System.out.println(response.retencion);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+</details>
+
+| Version |                         Respuesta                             | 
+|---------|---------------------------------------------------------------|
+|  V3     | Devuelve el CFDI timbrado                                     | 
 
 
 Para mayor referencia de un listado completo de los servicios favor de visitar nuestro [sitio developers](https://developers.sw.com.mx/).

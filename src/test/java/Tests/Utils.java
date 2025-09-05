@@ -44,8 +44,11 @@ public class Utils {
     public static String rfc = "EKU9003173C9";
     public static String cancelacionXml = loadResourceAsString("src/test/resources/Extras/CancelacionXML.xml");
     public static String aceptacionRechazoXml = loadResourceAsString("src/test/resources/Extras/AceptacionRechazo.xml");
+    public static String cancelacionXmlRet = loadResourceAsString("src/test/resources/Extras/CancelacionXMLRet.xml");
     public static String uuid = "1f0110e0-6e11-49b9-b78c-5929cc3bfc01";
     public static String foliosustitucion = "9509174a-f367-474e-bde7-4fb3347a9a22";
+    public static String uuidRetencion = "42270add-4b74-401b-ad65-7db8ca6ca985";
+    public static String folioSustitucionRet = "5c45cffb-63e3-48e1-9023-d9d0873ffd7a";
 
     /**
      * Genera un CFDI especifico y lo sella en caso de indicarse.
@@ -76,6 +79,24 @@ public class Utils {
         }
 
         return cfdi;
+    }
+
+    /**
+     * Obtiene un CFDI de retenciones.
+     * 
+     * @param fileName
+     * @return String
+     */
+    public String getCFDIRetention(String fileName) {
+
+        String xml = "";
+        try {
+            xml = new String(Files.readAllBytes(Paths.get(fileName)), "UTF-8");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return xml;
     }
 
     /**
@@ -114,7 +135,7 @@ public class Utils {
     }
 
     /**
-     * Genera un CFDI Ãºnico y lo sella en caso de indicarse.
+     * Genera un CFDI especifico y lo sella en caso de indicarse.
      * 
      * @param xml
      * @param signed
@@ -241,6 +262,9 @@ public class Utils {
 
     public static boolean isValidB64(String value) {
         return Base64.isBase64(value.getBytes());
+    }
+    public String GetRetention() {
+        return getCFDIRetention("src/test/resources/Retenciones20/retencion20.xml");
     }
 
     public static String getCertificadoB64() {

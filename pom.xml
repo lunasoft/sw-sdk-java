@@ -99,7 +99,7 @@
                 <version>0.8.0</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <publishingServerId>central</publishingServerId>
+                    <serverId>central</serverId>
                     <autoPublish>true</autoPublish>
                 </configuration>
             </plugin>
@@ -210,7 +210,7 @@
                         <version>0.8.0</version>
                         <extensions>true</extensions>
                         <configuration>
-                            <publishingServerId>central</publishingServerId>
+                            <serverId>central</serverId>
                             <autoPublish>true</autoPublish>
                         </configuration>
                     </plugin>

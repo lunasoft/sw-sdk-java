@@ -104,6 +104,7 @@
                     <autoReleaseAfterClose>true</autoReleaseAfterClose>
                     <username>${env.SONATYPE_USERNAME}</username>
                     <password>${env.SONATYPE_PASSWORD}</password>
+                    <skipStagingRepositoryClose>false</skipStagingRepositoryClose>
                 </configuration>
             </plugin>
             <plugin>
@@ -218,6 +219,7 @@
                             <autoReleaseAfterClose>true</autoReleaseAfterClose>
                             <username>${env.SONATYPE_USERNAME}</username>
                             <password>${env.SONATYPE_PASSWORD}</password>
+                            <skipStagingRepositoryClose>false</skipStagingRepositoryClose>
                         </configuration>
                     </plugin>
                     <plugin>

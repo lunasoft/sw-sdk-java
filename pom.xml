@@ -6,7 +6,7 @@
         <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
     </properties>
     <artifactId>SW-JAVA</artifactId>
-    <version>1.0.24.1</version>
+    <version>1.0.21.2</version>
     <packaging>jar</packaging>
     <scm>
         <url>https://github.com/lunasoft/sw-sdk-java</url>
@@ -54,12 +54,12 @@
     <url>https://sw.com.mx/</url>
     <distributionManagement>
         <snapshotRepository>
-            <id>central</id>
-            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
         <repository>
-            <id>central</id>
-            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
         </repository>
     </distributionManagement>
     <build>
@@ -94,13 +94,14 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.sonatype.central</groupId>
-                <artifactId>central-publishing-maven-plugin</artifactId>
-                <version>0.8.0</version>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.7</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <serverId>central</serverId>
-                    <autoPublish>true</autoPublish>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
                 </configuration>
             </plugin>
             <plugin>
@@ -205,13 +206,14 @@
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>org.sonatype.central</groupId>
-                        <artifactId>central-publishing-maven-plugin</artifactId>
-                        <version>0.8.0</version>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>1.6.7</version>
                         <extensions>true</extensions>
                         <configuration>
-                            <serverId>central</serverId>
-                            <autoPublish>true</autoPublish>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
                         </configuration>
                     </plugin>
                     <plugin>

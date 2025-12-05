@@ -1,13 +1,8 @@
 package Utils.Requests.BalanceAccount;
 
-import Exceptions.AuthException;
-import Exceptions.GeneralException;
-import Utils.Helpers.RequestHelper;
-import Utils.Requests.IRequest;
-import Utils.Responses.IResponse;
-import Utils.Responses.BalanceAccount.BalanceAcctResponse;
 import java.io.IOException;
 import java.net.URI;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
@@ -19,6 +14,13 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import Exceptions.AuthException;
+import Exceptions.GeneralException;
+import Utils.Helpers.RequestHelper;
+import Utils.Requests.IRequest;
+import Utils.Responses.BalanceAccount.BalanceAcctResponse;
+import Utils.Responses.IResponse;
 
 /**
  * La clase BalanceAcctRequest maneja las solicitudes relacionadas con las
@@ -34,6 +36,11 @@ public class BalanceAcctRequest {
     public static IResponse createBalanceStampRequest(IRequest request, String action, int stamps, String comment)
             throws GeneralException, AuthException, IOException {
         return new BalanceAcctRequest().balanceAcctStampRequest(request, action, stamps, comment);
+    }
+
+    public static IResponse createUserBalanceRequest(IRequest request)
+            throws GeneralException, AuthException, IOException {
+        return new BalanceAcctRequest().balanceAcctRequest(request);
     }
 
     private IResponse balanceAcctRequest(IRequest request) throws GeneralException, AuthException, IOException {

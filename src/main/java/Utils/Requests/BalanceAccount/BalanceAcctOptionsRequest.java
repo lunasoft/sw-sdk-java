@@ -1,9 +1,10 @@
 package Utils.Requests.BalanceAccount;
 
 import java.util.UUID;
+
 import Utils.Constants;
-import Utils.Requests.IRequest;
 import Utils.Helpers.EnumBalanceStamp.AccountBalanceAction;
+import Utils.Requests.IRequest;
 
 /**
  * La clase BalanceAcctOptionsRequest representa las opciones de solicitud para
@@ -30,6 +31,16 @@ public class BalanceAcctOptionsRequest extends IRequest {
      */
     public static BalanceAcctOptionsRequest sendRequest(String token, String URIAPI, String proxyHost, int proxyPort) {
         return new BalanceAcctOptionsRequest(token, URIAPI + Constants.BALANCE_ACCOUNTV2_MANAGEMENT_PATH + "users/balance",
+                proxyHost, proxyPort);
+    }
+
+    /**
+     * Método estático para crear una solicitud de obtención de saldo de cuenta de un usuario específico.
+     */
+    public static BalanceAcctOptionsRequest getUserBalanceRequest(String token, String URIAPI, UUID idUser,
+            String proxyHost, int proxyPort) {
+        return new BalanceAcctOptionsRequest(token,
+                URIAPI + Constants.BALANCE_ACCOUNTV2_MANAGEMENT_PATH + "dealers/balance/users/" + idUser,
                 proxyHost, proxyPort);
     }
 

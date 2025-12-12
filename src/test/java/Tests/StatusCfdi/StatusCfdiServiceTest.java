@@ -3,11 +3,13 @@ package Tests.StatusCfdi;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+
 import Services.StatusCfdi.StatusCfdiService;
 import Utils.Responses.StatusCfdi.StatusCfdiResponse;
 
 public class StatusCfdiServiceTest {
-	@Test
+	@Disabled("Pendiente de revisión por cambios en el servicio SAT")
 	public void testStatusCancelationService_Real() throws Exception {
 		StatusCfdiService app = new StatusCfdiService("https://consultaqr.facturaelectronica.sat.gob.mx/ConsultaCFDIService.svc", "http://tempuri.org/IConsultaCFDIService/Consulta");
 		StatusCfdiResponse response = null;

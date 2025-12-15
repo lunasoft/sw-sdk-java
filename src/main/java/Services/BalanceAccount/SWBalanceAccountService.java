@@ -6,12 +6,13 @@ package Services.BalanceAccount;
 
 import java.io.IOException;
 import java.util.UUID;
+
 import Exceptions.AuthException;
 import Exceptions.GeneralException;
 import Services.SWService;
+import Utils.Helpers.EnumBalanceStamp.AccountBalanceAction;
 import Utils.Requests.BalanceAccount.BalanceAcctOptionsRequest;
 import Utils.Requests.BalanceAccount.BalanceAcctRequest;
-import Utils.Helpers.EnumBalanceStamp.AccountBalanceAction;
 import Utils.Responses.IResponse;
 
 /**
@@ -57,6 +58,22 @@ public class SWBalanceAccountService extends SWService {
                 getURIAPI() == null ? getURI() : getURIAPI(),
                 getProxyHost(), getProxyPort());
         return BalanceAcctRequest.createBalanceAcctRequest(settings);
+    }
+
+    /**
+     * Obtiene el saldo de la cuenta de un usuario específico.
+     * 
+     * @param idUser ID del usuario del cual se desea obtener el saldo.
+     * @return IResponse con el resultado de la operación.
+     * @throws AuthException    Si la autenticación falla.
+     * @throws GeneralException Si ocurre un error general.
+     * @throws IOException      Si hay un error de entrada/salida.
+     */
+    public IResponse GetUserBalanceAccount(UUID idUser) throws AuthException, GeneralException, IOException {
+        BalanceAcctOptionsRequest settings = BalanceAcctOptionsRequest.getUserBalanceRequest(getToken(),
+                getURIAPI() == null ? getURI() : getURIAPI(), idUser,
+                getProxyHost(), getProxyPort());
+        return BalanceAcctRequest.createUserBalanceRequest(settings);
     }
 
     /**

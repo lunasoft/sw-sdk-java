@@ -829,6 +829,145 @@ public class ExampleReadme {
 
 <details>
 <summary>
+Consulta de saldo de un usuario específico
+</summary>
+
+<br>Este método recibe los siguientes parametros:
+* Usuario y contraseña o Token
+* Url APIs SW (Url Servicios SW solo es necesaria cuando se usa autenticación con usuario y contraseña)
+* IdUser (UUID del usuario del cual se desea obtener el saldo)
+
+**Ejemplo de consumo de la libreria para consultar el saldo de un usuario específico utilizando Token**
+
+```java
+package com.mycompany.examplereadme;
+
+import Exceptions.AuthException;
+import Exceptions.GeneralException;
+import Services.BalanceAccount.SWBalanceAccountService;
+import Utils.Responses.BalanceAccount.BalanceAcctResponse;
+import java.io.IOException;
+import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class ExampleReadme {
+
+    public static void main(String[] args) {
+
+        try {
+            //Intancia del servicio de Consulta de saldo y autenticación con Token
+            SWBalanceAccountService sdk = new SWBalanceAccountService("T2lYQ0t4L0R...", "https://api.test.sw.com.mx");
+            BalanceAcctResponse response = null;
+            response = (BalanceAcctResponse) sdk.GetUserBalanceAccount(UUID.fromString("828f19b1-77dc-48bc-9cfa-d48b5cf7e30c"));
+
+            //Imprimimos los datos de la respuesta que se obtuvo
+            System.out.println(response.Status);
+            System.out.println(response.HttpStatusCode);
+            System.out.println(response.idUserBalance);
+            System.out.println(response.idUser);
+            System.out.println(response.stampsBalance);
+            System.out.println(response.stampsUsed);
+            System.out.println(response.expirationDate);
+            System.out.println(response.isUnlimited);
+            System.out.println(response.stampsAssigned);
+            if (response.lastTransaction != null) {
+                System.out.println("Folio: " + response.lastTransaction.folio);
+                System.out.println("ID Usuario: " + response.lastTransaction.idUser);
+                System.out.println("ID Usuario Receptor: " + response.lastTransaction.idUserReceiver);
+                System.out.println("Nombre Receptor: " + response.lastTransaction.nameReceiver);
+                System.out.println("Stamps In: " + response.lastTransaction.stampsIn);
+                System.out.println("Stamps Out: "
+                        + (response.lastTransaction.stampsOut != null ? response.lastTransaction.stampsOut : "null"));
+                System.out.println("Stamps Current: " + response.lastTransaction.stampsCurrent);
+                System.out.println("Comentario: " + response.lastTransaction.comment);
+                System.out.println("Fecha: " + response.lastTransaction.date);
+                System.out.println("Email Enviado: " + response.lastTransaction.isEmailSent);
+            } else {
+                System.out.println("No hay transacción disponible.");
+            }
+            //En caso de obtener error, este puede obtenerse de los siguientes campos
+            System.out.println(response.message);
+            System.out.println(response.messageDetail);
+        } catch (AuthException ex) {
+            System.out.println(ex);
+        } catch (GeneralException ex) {
+            Logger.getLogger(ExampleReadme.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ExampleReadme.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+}
+
+```
+
+**Ejemplo de consumo de la libreria para consultar el saldo de un usuario específico utilizando Usuario y Contraseña**
+
+```java
+package com.mycompany.examplereadme;
+
+import Exceptions.AuthException;
+import Exceptions.GeneralException;
+import Services.BalanceAccount.SWBalanceAccountService;
+import Utils.Responses.BalanceAccount.BalanceAcctResponse;
+import java.io.IOException;
+import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class ExampleReadme {
+
+    public static void main(String[] args) {
+
+        try {
+            //Intancia del servicio de Consulta de saldo y autenticación con Usuario y Contraseña
+            SWBalanceAccountService sdk = new SWBalanceAccountService("user", "password", "https://services.test.sw.com.mx", "https://api.test.sw.com.mx");
+            BalanceAcctResponse response = null;
+            response = (BalanceAcctResponse) sdk.GetUserBalanceAccount(UUID.fromString("828f19b1-77dc-48bc-9cfa-d48b5cf7e30c"));
+
+            //Imprimimos los datos de la respuesta que se obtuvo
+            System.out.println(response.Status);
+            System.out.println(response.HttpStatusCode);
+            System.out.println(response.idUserBalance);
+            System.out.println(response.idUser);
+            System.out.println(response.stampsBalance);
+            System.out.println(response.stampsUsed);
+            System.out.println(response.expirationDate);
+            System.out.println(response.isUnlimited);
+            System.out.println(response.stampsAssigned);
+            if (response.lastTransaction != null) {
+                System.out.println("Folio: " + response.lastTransaction.folio);
+                System.out.println("ID Usuario: " + response.lastTransaction.idUser);
+                System.out.println("ID Usuario Receptor: " + response.lastTransaction.idUserReceiver);
+                System.out.println("Nombre Receptor: " + response.lastTransaction.nameReceiver);
+                System.out.println("Stamps In: " + response.lastTransaction.stampsIn);
+                System.out.println("Stamps Out: "
+                        + (response.lastTransaction.stampsOut != null ? response.lastTransaction.stampsOut : "null"));
+                System.out.println("Stamps Current: " + response.lastTransaction.stampsCurrent);
+                System.out.println("Comentario: " + response.lastTransaction.comment);
+                System.out.println("Fecha: " + response.lastTransaction.date);
+                System.out.println("Email Enviado: " + response.lastTransaction.isEmailSent);
+            } else {
+                System.out.println("No hay transacción disponible.");
+            }
+            //En caso de obtener error, este puede obtenerse de los siguientes campos
+            System.out.println(response.message);
+            System.out.println(response.messageDetail);
+        } catch (AuthException ex) {
+            System.out.println(ex);
+        } catch (GeneralException ex) {
+            Logger.getLogger(ExampleReadme.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ExampleReadme.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+}
+
+```
+</details>
+
+<details>
+<summary>
 Agregar timbres
 </summary> 
 

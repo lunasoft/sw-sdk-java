@@ -45,7 +45,7 @@
             "Base": "200",
             "Impuesto": "001",
             "TipoFactor": "Tasa",
-            "TasaOCuota": "0.1",
+            "TasaOCuota": "0.100000",
             "Importe": "20"
           }
         ]

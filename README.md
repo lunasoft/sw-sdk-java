@@ -8,13 +8,13 @@ Registrate en sw.com.mx
 
 ## Requerimientos ##
 
-Java 1.6 o superior
+Java 8 o superior.
 
 ## Dependencias ##
 * [org.json](https://mavenlibs.com/jar/file/org.json/json)
-* [httpclient 4.3.6](http://hc.apache.org/downloads.cgi)
-* [httpmime 4.3.6](http://hc.apache.org/downloads.cgi)
-* [httpasyncclient 4.0.2](http://hc.apache.org/downloads.cgi)
+* [httpclient 4.5.13](http://hc.apache.org/downloads.cgi)
+* [httpmime 4.5.14](http://hc.apache.org/downloads.cgi)
+* [httpasyncclient 4.1.5](http://hc.apache.org/downloads.cgi)
 
 
 ## Instalación ##
@@ -27,7 +27,7 @@ Descargas el modulo mediante Maven:
         <dependency>
             <groupId>mx.com.sw.services</groupId>
             <artifactId>SW-JAVA</artifactId>
-            <version>1.0.7.1</version>
+            <version>1.1.0.1</version>
         </dependency>
 
 </dependencies>
@@ -36,13 +36,13 @@ Descargas el modulo mediante Maven:
 Descargar el modulo directamente de los siguientes links:
 
 * [Relase Github](https://github.com/lunasoft/sw-sdk-java/releases)
-* [Maven](https://oss.sonatype.org/service/local/artifact/maven/redirect?r=releases&g=mx.com.sw.services&a=SW-JAVA&v=1.0.7.1&e=jar)
+* [Maven](https://oss.sonatype.org/service/local/artifact/maven/redirect?r=releases&g=mx.com.sw.services&a=SW-JAVA&v=1.1.0.1&e=jar)
 
 Así como instalar manualmente cada una de las dependencias:
 * [org.json](http://www.json.org/java)
-* [httpclient 4.3.6](http://hc.apache.org/downloads.cgi)
-* [httpmime 4.3.6](http://hc.apache.org/downloads.cgi)
-* [httpasyncclient 4.0.2](http://hc.apache.org/downloads.cgi)
+* [httpclient 4.5.13](http://hc.apache.org/downloads.cgi)
+* [httpmime 4.5.14](http://hc.apache.org/downloads.cgi)
+* [httpasyncclient 4.1.5](http://hc.apache.org/downloads.cgi)
 
 Alternativamente, tambien se cuenta con un archivo JAR en el que se incluyen todas las dependencias, este se encuentra en la carpeta [Relase Github](https://github.com/lunasoft/sw-sdk-java/releases),  con el sufijo _"jar-with-dependencies.jar"_
 

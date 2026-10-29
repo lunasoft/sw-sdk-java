@@ -12,7 +12,7 @@ public class SWCancelationRetetentionTest {
 		SWCancelationRetentionService app = new SWCancelationRetentionService(Utils.userSW, Utils.passwordSW,
 				Utils.urlSW);
 		CancelationResponse response = null;
-		response = (CancelationResponse) app.Cancelation(Utils.uuidRetencion, Utils.passwordCsd, Utils.rfc,
+		response = (CancelationResponse) app.Cancelation(Utils.uuidRetencionCsd, Utils.passwordCsd, Utils.rfc,
 				Utils.cerb64, Utils.keyb64, "01",
 				Utils.foliosustitucion);
 		System.out.println(response.Status);
@@ -28,7 +28,7 @@ public class SWCancelationRetetentionTest {
 	public void testCancelationServiceCSD_authToken() throws Exception {
 		SWCancelationRetentionService app = new SWCancelationRetentionService(Utils.tokenSW, Utils.urlSW);
 		CancelationResponse response = null;
-		response = (CancelationResponse) app.Cancelation(Utils.uuid, Utils.passwordCsd, Utils.rfc, Utils.cerb64,
+		response = (CancelationResponse) app.Cancelation(Utils.uuidRetencionCsd, Utils.passwordCsd, Utils.rfc, Utils.cerb64,
 				Utils.keyb64, "01",
 				Utils.foliosustitucion);
 		System.out.println(response.Status);
@@ -83,15 +83,15 @@ public class SWCancelationRetetentionTest {
 		System.out.println(response.messageDetail);
 		String expect_status = "error";
 		Assert.assertTrue(expect_status.equalsIgnoreCase(response.Status));
-		Assert.assertTrue(response.message.contains("CASD - Acuse"));
+		Assert.assertTrue(response.message.contains("CR1002"));
 	}
 
 	@Test
 	public void testCancelationServicePfx_authToken() throws Exception {
 		SWCancelationRetentionService app = new SWCancelationRetentionService(Utils.tokenSW, Utils.urlSW);
 		CancelationResponse response = null;
-		response = (CancelationResponse) app.Cancelation(Utils.uuidRetencion, Utils.passwordPfx, Utils.rfc,
-				Utils.pfxb64, "01", Utils.folioSustitucionRet);
+		response = (CancelationResponse) app.Cancelation(Utils.uuidRetencionPfx, Utils.passwordPfxRet, Utils.rfc,
+				Utils.pfxRetb64, "01", Utils.folioSustitucionRet);
 		System.out.println(response.Status);
 		System.out.println(response.HttpStatusCode);
 		System.out.println(response.acuse);

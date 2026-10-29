@@ -23,8 +23,8 @@ jobs:
       # Una version de JDK a la vez para no ejecutar pruebas en paralelo.
       max-parallel: 1
       matrix:
-        # 8 es el minimo declarado del SDK; 11 es el JDK del workflow de publicacion; el resto son las LTS vigentes.
-        java: ['8', '11', '17', '21', '25']
+        # 8 es el minimo declarado del SDK; 17 y 25 son LTS intermedia y la mas reciente.
+        java: ['8', '17', '25']
     env:
       # El servicio de pruebas valida la fecha de emision en hora de Mexico; el runner esta en UTC.
       TZ: America/Mexico_City

@@ -18,6 +18,13 @@ jobs:
   pruebas:
     runs-on: ubuntu-latest
     timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      # Una version de JDK a la vez para no ejecutar pruebas en paralelo.
+      max-parallel: 1
+      matrix:
+        # 8 es el minimo declarado del SDK; 11 es el JDK del workflow de publicacion; el resto son las LTS vigentes.
+        java: ['8', '11', '17', '21', '25']
     env:
       # El servicio de pruebas valida la fecha de emision en hora de Mexico; el runner esta en UTC.
       TZ: America/Mexico_City
@@ -31,7 +38,7 @@ jobs:
 
       - uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0
         with:
-          java-version: '11'
+          java-version: ${{ matrix.java }}
           distribution: 'temurin'
           cache: maven
 

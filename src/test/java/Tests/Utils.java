@@ -47,7 +47,6 @@ public class Utils {
     public static String cancelacionXmlRet = loadResourceAsString("src/test/resources/Extras/CancelacionXMLRet.xml");
     public static String uuid = "1f0110e0-6e11-49b9-b78c-5929cc3bfc01";
     public static String foliosustitucion = "9509174a-f367-474e-bde7-4fb3347a9a22";
-    public static String uuidRetencion = "42270add-4b74-401b-ad65-7db8ca6ca985";
     public static String uuidRetencionCsd = "1fae5735-ca51-4be4-9180-827c44fdb227";
     public static String uuidRetencionPfx = "578052ce-710f-4d0b-9ffc-6ca73daf92a5";
     public static String pfxRetb64 = loadResouceAsB64("src/test/resources/CertificadosDePrueba/EKU9003173C9_Retenciones.pfx");

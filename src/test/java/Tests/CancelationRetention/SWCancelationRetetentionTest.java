@@ -91,7 +91,7 @@ public class SWCancelationRetetentionTest {
 		SWCancelationRetentionService app = new SWCancelationRetentionService(Utils.tokenSW, Utils.urlSW);
 		CancelationResponse response = null;
 		response = (CancelationResponse) app.Cancelation(Utils.uuidRetencionPfx, Utils.passwordPfxRet, Utils.rfc,
-				Utils.pfxRetb64, "02", null);
+				Utils.pfxRetb64, "01", Utils.folioSustitucionRet);
 		System.out.println(response.Status);
 		System.out.println(response.HttpStatusCode);
 		System.out.println(response.acuse);

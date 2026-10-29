@@ -97,7 +97,14 @@ Test resources in `src/test/resources/CFDI40/` show supported document types:
 ## Dependencies
 
 The SDK uses:
-- Apache HttpClient 5 for HTTP operations
+- Apache HttpClient 4.x (`httpclient`, `httpmime`; `httpclient` comes in through `httpasyncclient`) for HTTP operations. The code imports `org.apache.http.*`; there is no HttpClient 5 usage.
 - org.json and Gson for JSON processing
-- JUnit Jupiter 5 for testing
+- `jakarta.xml.soap` (`jakarta.xml.ws-api` + `saaj-impl`) for the SOAP status query
+- JUnit 4 (comes through `sw-resources-java`) for testing; `junit-jupiter-api` is test scope and only provides `@Disabled`
 - External dependency `sw-resources-java` for CFDI cadena original generation
+
+## Java Version
+
+- `pom.xml` compiles to Java 1.8 (`source`/`target`). Do not claim a lower minimum in the README.
+- The SOAP stack must stay at Java 8 bytecode: `jakarta.xml.ws-api` 3.0.1, `jakarta.xml.soap-api` 2.0.1 and `saaj-impl` 2.0.1 (all class version 52). The 4.x/3.x versions used between 1.0.20.1 and 1.0.26.1 are Java 11 bytecode and made `StatusCfdiService` fail on Java 8 with `UnsupportedClassVersionError`. Do not upgrade them without checking the bytecode.
+- JDK 25 cannot target below Java 8. Use JDK 11 (the publish workflow) or JDK 8 to build.

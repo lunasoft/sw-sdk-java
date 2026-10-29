@@ -6,7 +6,7 @@
         <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
     </properties>
     <artifactId>SW-JAVA</artifactId>
-    <version>1.0.26.1</version>
+    <version>1.1.0.1</version>
     <packaging>jar</packaging>
     <scm>
         <url>https://github.com/lunasoft/sw-sdk-java</url>
@@ -133,11 +133,7 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>5.8.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents.client5</groupId>
-            <artifactId>httpclient5</artifactId>
-            <version>5.3.1</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
@@ -167,17 +163,17 @@
         <dependency>
             <groupId>jakarta.xml.ws</groupId>
             <artifactId>jakarta.xml.ws-api</artifactId>
-            <version>4.0.2</version>
+            <version>3.0.1</version>
         </dependency>             
         <dependency>
             <groupId>com.sun.xml.messaging.saaj</groupId>
             <artifactId>saaj-impl</artifactId>
-            <version>3.0.4</version>
+            <version>2.0.1</version>
         </dependency>
         <dependency>
             <groupId>mx.com.sw.services</groupId>
             <artifactId>sw-resources-java</artifactId>
-            <version>0.1.0</version>
+            <version>0.4.1</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>

@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+# Permisos minimos: el workflow solo necesita leer el codigo.
+permissions:
+  contents: read
+
+# Maximo una ejecucion a la vez en todo el repositorio. Las demas esperan en
+# cola y nunca se cancela una en curso (las pruebas golpean el servicio de pruebas).
+concurrency:
+  group: sw-sdk-java-ci
+  cancel-in-progress: false
+
+jobs:
+  pruebas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      # Una version de JDK a la vez para no ejecutar pruebas en paralelo.
+      max-parallel: 1
+      matrix:
+        # 8 es el minimo declarado del SDK; 17 y 25 son LTS intermedia y la mas reciente.
+        java: ['8', '17', '25']
+    env:
+      # El servicio de pruebas valida la fecha de emision en hora de Mexico; el runner esta en UTC.
+      TZ: America/Mexico_City
+      SDKTEST_TOKEN: ${{ secrets.SDKTEST_TOKEN }}
+      SDKTEST_USER: ${{ secrets.SDKTEST_USER }}
+      SDKTEST_PASSWORD: ${{ secrets.SDKTEST_PASSWORD }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0
+        with:
+          java-version: ${{ matrix.java }}
+          distribution: 'temurin'
+          cache: maven
+
+      - run: mvn -B clean test
